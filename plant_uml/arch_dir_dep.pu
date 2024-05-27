@@ -1,0 +1,43 @@
+@startuml
+
+rectangle app {
+    rectangle  src as app_src
+}
+
+rectangle controller {
+    rectangle  h as controller_h
+    rectangle  src as controller_src
+    rectangle  ut as controller_ut
+}
+
+rectangle model {
+    rectangle  h as model_h
+    rectangle  src as model_src
+    rectangle  ut as model_ut
+}
+
+rectangle view {
+    rectangle  h as view_h
+    rectangle  src as view_src
+    rectangle  ut as view_ut
+}
+
+
+app_src         -[#green]down-> controller_h
+app_src         -[#green]down-> model_h
+app_src         -[#green]down-> view_h
+
+controller_src  -[#green]up-> controller_h
+controller_h    -[#green]up-> model_h
+controller_ut   -[#green]up-> controller_h
+
+model_src       -[#green]up-> model_h
+model_ut        -[#green]up-> model_h
+
+view_src        -[#green]up-> view_h
+view_h          -[#green]up-> model_h
+view_ut         -[#green]up-> view_h
+
+
+@enduml
+

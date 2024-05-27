@@ -1,0 +1,64 @@
+@startuml
+scale max 730 width
+rectangle "a_1_c.c" as a_1_c.c
+rectangle "a_1_c.h" as a_1_c.h
+rectangle "a_1_cpp.cpp" as a_1_cpp.cpp
+rectangle "a_1_cpp.h" as a_1_cpp.h
+rectangle "a_2_c.C" as a_2_c.C
+rectangle "a_2_c.H" as a_2_c.H
+rectangle "a_2_cpp.cxx" as a_2_cpp.cxx
+rectangle "a_2_cpp.hpp" as a_2_cpp.hpp
+rectangle "a_3_cpp.cc" as a_3_cpp.cc
+rectangle "b_1.cpp" as b_1.cpp
+rectangle "b_1.h" as b_1.h
+rectangle "mod1_1.cpp" as mod1_1.cpp
+rectangle "mod1_1.hpp" as mod1_1.hpp
+rectangle "mod1_2.hpp" as mod1_2.hpp
+rectangle "mod2_1.cpp" as mod2_1.cpp
+rectangle "mod2_1.hpp" as mod2_1.hpp
+rectangle "mod2_1_1.cpp" as mod2_1_1.cpp
+rectangle "mod2_1_1.h" as mod2_1_1.h
+rectangle "mod2_2_1.cpp" as mod2_2_1.cpp
+rectangle "mod2_2_1.h" as mod2_2_1.h
+
+a_1_c.c "1" -[#green]-> a_1_c.h
+a_1_c.c "1" -[#green]-> a_1_cpp.h
+a_1_c.c "1" -[#green]-> mod1_1.hpp
+a_1_c.c "1" -[#green]-> mod1_2.hpp
+a_1_c.c "1" -[#green]-> mod2_1_1.h
+a_1_c.c "1" -[#green]-> mod2_2_1.h
+a_1_c.h "1" -[#green]-> a_1_cpp.h
+a_1_c.h "1" -[#green]-> mod1_1.hpp
+a_1_c.h "1" -[#green]-> mod1_2.hpp
+a_1_c.h "1" -[#green]-> mod2_1_1.h
+a_1_c.h "1" -[#green]-> mod2_2_1.h
+b_1.cpp "1" -[#green]-> a_1_cpp.h
+b_1.h "1" -[#green]-> a_1_cpp.h
+a_1_cpp.h "1" <-[#red]-> "1" mod1_1.hpp
+a_1_cpp.h "1" -[#green]-> mod1_2.hpp
+a_1_cpp.h "1" <-[#red]-> "1" mod2_1_1.h
+mod2_2_1.cpp "1" -[#green]-> a_1_cpp.h
+a_1_cpp.h "1" <-[#red]-> "1" mod2_2_1.h
+b_1.cpp "1" -[#green]-> a_2_cpp.hpp
+b_1.cpp "1" -[#green]-> b_1.h
+b_1.cpp "1" -[#green]-> mod1_1.hpp
+b_1.cpp "1" -[#green]-> mod1_2.hpp
+b_1.cpp "1" -[#green]-> mod2_1_1.h
+b_1.cpp "1" -[#green]-> mod2_2_1.h
+b_1.h "1" -[#green]-> mod1_1.hpp
+b_1.h "1" -[#green]-> mod1_2.hpp
+b_1.h "1" -[#green]-> mod2_1_1.h
+b_1.h "1" -[#green]-> mod2_2_1.h
+mod1_1.cpp "1" -[#green]-> mod2_1.hpp
+mod1_1.hpp "1" -[#green]-> mod1_2.hpp
+mod1_1.hpp "1" <-[#red]-> "1" mod2_1_1.h
+mod2_2_1.cpp "1" -[#green]-> mod1_1.hpp
+mod1_1.hpp "1" <-[#red]-> "1" mod2_2_1.h
+mod2_1_1.h "1" -[#green]-> mod1_2.hpp
+mod2_2_1.cpp "1" -[#green]-> mod1_2.hpp
+mod2_2_1.h "1" -[#green]-> mod1_2.hpp
+mod2_2_1.cpp "1" -[#green]-> mod2_1_1.h
+mod2_1_1.h "1" <-[#red]-> "1" mod2_2_1.h
+mod2_2_1.cpp "1" -[#green]-> mod2_2_1.h
+
+@enduml

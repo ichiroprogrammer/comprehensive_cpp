@@ -1,0 +1,389 @@
+[
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/runtime_ut.o",
+            "runtime_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "runtime_ut.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/fixed_point_ut.o",
+            "fixed_point_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "fixed_point_ut.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/preprocessor_ut.o",
+            "preprocessor_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "preprocessor_ut.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/string_vector.o",
+            "string_vector.cpp"
+        ],
+        "directory": ".",
+        "file": "string_vector.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/scope_ut.o",
+            "scope_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "scope_ut.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/scoped_guard_ut.o",
+            "scoped_guard_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "scoped_guard_ut.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/class_ut.o",
+            "class_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "class_ut.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/type_ut.o",
+            "type_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "type_ut.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/type_const_ut.o",
+            "type_const_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "type_const_ut.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I",
+            "../../../googletest/googletest/",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "../gtest/g++/gtest_main.o",
+            "../../../googletest/googletest/src/gtest_main.cc"
+        ],
+        "directory": ".",
+        "file": "../../../googletest/googletest/src/gtest_main.cc"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I",
+            "../../../googletest/googletest/",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "../gtest/g++/gtest-all.o",
+            "../../../googletest/googletest/src/gtest-all.cc"
+        ],
+        "directory": ".",
+        "file": "../../../googletest/googletest/src/gtest-all.cc"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/lib/header.o",
+            "lib/header.cpp"
+        ],
+        "directory": ".",
+        "file": "lib/header.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/float_ut.o",
+            "float_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "float_ut.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/syntax_ut.o",
+            "syntax_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "syntax_ut.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/etc.o",
+            "etc.cpp"
+        ],
+        "directory": ".",
+        "file": "etc.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/func_ut.o",
+            "func_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "func_ut.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/string_view_ut.o",
+            "string_view_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "string_view_ut.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/operator_ut.o",
+            "operator_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "operator_ut.cpp"
+    },
+    {
+        "arguments": [
+            "g++",
+            "-c",
+            "-I../../../googletest/googletest/include/",
+            "-I../h",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Weffc++",
+            "-Werror",
+            "-g",
+            "-coverage",
+            "-D_GLIBCXX_USE_CXX11_ABI=0",
+            "-o",
+            "g++/header_ut.o",
+            "header_ut.cpp"
+        ],
+        "directory": ".",
+        "file": "header_ut.cpp"
+    }
+]

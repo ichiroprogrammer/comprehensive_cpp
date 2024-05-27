@@ -1,0 +1,7 @@
+#dir
+ut_data/app1
+ut_data/app1/mod1
+ut_data/app1/mod2
+ut_data/app1/mod2/mod2_1
+ut_data/app1/mod2/mod2_2
+ut_data/app2

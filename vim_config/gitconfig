@@ -1,0 +1,20 @@
+[user]
+[color]
+	ui = auto
+[push]
+	default = simple
+[core]
+    excludesfile = /mnt/c/linux_home/.gitignore
+	editor = nvim
+[alias]
+    graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %C(yellow)%cn %Cred%d %Creset%s'
+    st = status
+    ci = commit
+    co = checkout
+    b =  branch
+    sb =  show-branch --sha1-name
+    patch = !git diff --no-prefix
+	ll = log --pretty=format:'%C(yellow)%h %cd %C(red)%d%Creset %s' --date=short
+	ld = log --pretty=format:'%C(yellow)%h%C(cyan)[%ci]%C(red)%d%Creset by %cn%n%s' --numstat
+[merge]
+	ff = true

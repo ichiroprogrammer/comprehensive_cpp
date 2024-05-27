@@ -1,0 +1,11 @@
+#dir
+it_data/fake/a
+it_data/fake/a/e
+it_data/fake/b
+it_data/fake/b/e
+it_data/fake/c
+it_data/fake/c/e
+it_data/fake/d
+it_data/fake/d/e
+it_data/fake/e
+it_data/fake/e/e

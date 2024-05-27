@@ -1,0 +1,22 @@
+@@@ sample begin 2:0
+
+code_analysis.cpp:120:29: warning: Attempt to free released memory
+    ~IllegalShallowCopy() { delete x_; }
+                            ^~~~~~~~~
+@@@ sample end
+@@@ sample begin 2:1
+
+code_analysis.cpp:145:9: warning: Potential leak of memory pointed to by 'x'
+        return;
+        ^~~~~~
+@@@ sample end
+code_analysis.cpp:245:57: warning: The result of the left shift is undefined because the right operand is negative
+int32_t shift(int32_t x, int32_t y) noexcept { return x << y; }
+                                                        ^  ~
+code_analysis.cpp:272:5: warning: Called C++ object pointer is null
+    n->Get();
+    ^~~~~~~~
+code_analysis.cpp:332:5: warning: Assigned value is garbage or undefined
+    auto b = *a;
+    ^~~~~~   ~~
+5 warnings generated.

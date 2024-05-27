@@ -1,0 +1,11 @@
+*.a
+*.d
+*.o
+*.gcda
+*.gcno
+*.profraw
+*.exe
+*.exe.done
+*.lcov
+coverage/
+doxygen_result/

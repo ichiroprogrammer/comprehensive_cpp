@@ -1,0 +1,136 @@
+#deps
+app -> app/ut : 0 
+app/ut -> app : 1 app/src/deps_opts.h
+
+app -> dependency : 1 dependency/h/deps_scenario.h
+dependency -> app : 0 
+
+app -> dependency/ut : 0 
+dependency/ut -> app : 0 
+
+app -> file_utils : 3 file_utils/h/path_utils.h
+file_utils -> app : 0 
+
+app -> file_utils/ut : 0 
+file_utils/ut -> app : 0 
+
+app -> lib : 2 lib/h/nstd.h
+lib -> app : 0 
+
+app -> lib/ut : 0 
+lib/ut -> app : 0 
+
+app -> logging : 1 logging/h/logger.h
+logging -> app : 0 
+
+app -> logging/ut : 0 
+logging/ut -> app : 0 
+
+app/ut -> dependency : 0 
+dependency -> app/ut : 0 
+
+app/ut -> dependency/ut : 0 
+dependency/ut -> app/ut : 0 
+
+app/ut -> file_utils : 1 file_utils/h/path_utils.h
+file_utils -> app/ut : 0 
+
+app/ut -> file_utils/ut : 0 
+file_utils/ut -> app/ut : 0 
+
+app/ut -> lib : 1 lib/h/nstd.h
+lib -> app/ut : 0 
+
+app/ut -> lib/ut : 0 
+lib/ut -> app/ut : 0 
+
+app/ut -> logging : 0 
+logging -> app/ut : 0 
+
+app/ut -> logging/ut : 0 
+logging/ut -> app/ut : 0 
+
+dependency -> dependency/ut : 0 
+dependency/ut -> dependency : 16 dependency/h/deps_scenario.h dependency/src/arch_pkg.h dependency/src/cpp_deps.h dependency/src/cpp_dir.h dependency/src/cpp_src.h dependency/src/load_store_format.h
+
+dependency -> file_utils : 14 file_utils/h/load_store.h file_utils/h/path_utils.h
+file_utils -> dependency : 0 
+
+dependency -> file_utils/ut : 0 
+file_utils/ut -> dependency : 0 
+
+dependency -> lib : 4 lib/h/nstd.h
+lib -> dependency : 0 
+
+dependency -> lib/ut : 0 
+lib/ut -> dependency : 0 
+
+dependency -> logging : 0 
+logging -> dependency : 0 
+
+dependency -> logging/ut : 0 
+logging/ut -> dependency : 0 
+
+dependency/ut -> file_utils : 10 file_utils/h/load_store.h file_utils/h/load_store_row.h file_utils/h/path_utils.h
+file_utils -> dependency/ut : 0 
+
+dependency/ut -> file_utils/ut : 0 
+file_utils/ut -> dependency/ut : 0 
+
+dependency/ut -> lib : 0 
+lib -> dependency/ut : 0 
+
+dependency/ut -> lib/ut : 0 
+lib/ut -> dependency/ut : 0 
+
+dependency/ut -> logging : 0 
+logging -> dependency/ut : 0 
+
+dependency/ut -> logging/ut : 0 
+logging/ut -> dependency/ut : 0 
+
+file_utils -> file_utils/ut : 0 
+file_utils/ut -> file_utils : 6 file_utils/h/load_store.h file_utils/h/load_store_row.h file_utils/h/path_utils.h
+
+file_utils -> lib : 0 
+lib -> file_utils : 0 
+
+file_utils -> lib/ut : 0 
+lib/ut -> file_utils : 0 
+
+file_utils -> logging : 0 
+logging -> file_utils : 0 
+
+file_utils -> logging/ut : 0 
+logging/ut -> file_utils : 0 
+
+file_utils/ut -> lib : 1 lib/h/nstd.h
+lib -> file_utils/ut : 0 
+
+file_utils/ut -> lib/ut : 0 
+lib/ut -> file_utils/ut : 0 
+
+file_utils/ut -> logging : 1 logging/h/logger.h
+logging -> file_utils/ut : 0 
+
+file_utils/ut -> logging/ut : 0 
+logging/ut -> file_utils/ut : 0 
+
+lib -> lib/ut : 0 
+lib/ut -> lib : 1 lib/h/nstd.h
+
+lib -> logging : 0 
+logging -> lib : 2 lib/h/nstd.h
+
+lib -> logging/ut : 0 
+logging/ut -> lib : 1 lib/h/nstd.h
+
+lib/ut -> logging : 0 
+logging -> lib/ut : 0 
+
+lib/ut -> logging/ut : 0 
+logging/ut -> lib/ut : 0 
+
+logging -> logging/ut : 0 
+logging/ut -> logging : 1 logging/h/logger.h
+

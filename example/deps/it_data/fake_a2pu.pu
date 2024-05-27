@@ -1,0 +1,15 @@
+@startuml
+scale max 730 width
+rectangle "a" as it_data___fake___a
+rectangle "b" as it_data___fake___b
+rectangle "c" as it_data___fake___c
+rectangle "d" as it_data___fake___d
+rectangle "e" as it_data___fake___e
+
+it_data___fake___a "1" -[#orange]-> it_data___fake___b
+it_data___fake___c "1" -[#orange]-> it_data___fake___a
+it_data___fake___a "1" -[#green]-> it_data___fake___d
+it_data___fake___b "1" -[#orange]-> it_data___fake___c
+it_data___fake___d "1" <-[#red]-> "1" it_data___fake___e
+
+@enduml

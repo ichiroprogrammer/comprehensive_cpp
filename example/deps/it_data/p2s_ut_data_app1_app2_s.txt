@@ -1,0 +1,34 @@
+#dir2srcs
+a_1_c.c
+    ut_data/app1/a_1_c.c
+
+a_1_c.h
+    ut_data/app1/a_1_c.h
+
+a_1_cpp.cpp
+    ut_data/app1/a_1_cpp.cpp
+
+a_1_cpp.h
+    ut_data/app1/a_1_cpp.h
+
+a_2_c.C
+    ut_data/app1/a_2_c.C
+
+a_2_c.H
+    ut_data/app1/a_2_c.H
+
+a_2_cpp.cxx
+    ut_data/app1/a_2_cpp.cxx
+
+a_2_cpp.hpp
+    ut_data/app1/a_2_cpp.hpp
+
+a_3_cpp.cc
+    ut_data/app1/a_3_cpp.cc
+
+b_1.cpp
+    ut_data/app2/b_1.cpp
+
+b_1.h
+    ut_data/app2/b_1.h
+

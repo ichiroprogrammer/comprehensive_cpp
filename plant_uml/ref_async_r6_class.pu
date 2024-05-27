@@ -1,0 +1,33 @@
+@startuml
+package Model as ModelPkg {
+    class Model {
+        notify()
+    }
+
+    class Observer {
+        Update(const& Model);
+    }
+
+    class TwoPhaseTaskPtr
+    class Dispatcher
+}
+
+class View {
+    Update(const& Model);
+}
+
+class Controller
+
+note top of TwoPhaseTaskPtr : 非同期処理スレッド
+note top of Dispatcher : TwoPhaseTaskPtr管理
+
+View -up-|> Observer
+Model-up->TwoPhaseTaskPtr : Modelが\nConvertStoreAsync()の\n処理の実行を\nTwoPhaseTaskPtrに\n委譲するための依存関係。
+Model-up->Dispatcher : Modelが\nTwoPhaseTaskPtrの\n管理をDispatcherに\n委譲するための依存関係。
+Model-left->Observer
+Controller-up->Dispatcher : Controllerが\nDispatcherの\nメインループを終了\nさせるための依存関係。
+Controller->Model
+TwoPhaseTaskPtr <-right->Dispatcher
+
+@enduml
+

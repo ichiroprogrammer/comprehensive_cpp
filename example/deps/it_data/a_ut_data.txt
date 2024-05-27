@@ -1,0 +1,58 @@
+#arch
+package  :app1:CYCLIC
+fullname :ut_data/app1
+parent   :TOP
+depend_on: {
+    mod1 : CYCLIC
+    mod2_1 : CYCLIC
+    mod2_2 : CYCLIC
+}
+children : {
+    package  :mod1:CYCLIC
+    fullname :ut_data/app1/mod1
+    parent   :app1
+    depend_on: {
+        app1 : CYCLIC
+        mod2 : STRAIGHT
+        mod2_1 : CYCLIC
+        mod2_2 : CYCLIC
+    }
+    children : { }
+
+    package  :mod2
+    fullname :ut_data/app1/mod2
+    parent   :app1
+    depend_on: { }
+    children : {
+        package  :mod2_1:CYCLIC
+        fullname :ut_data/app1/mod2/mod2_1
+        parent   :mod2
+        depend_on: {
+            app1 : CYCLIC
+            mod1 : CYCLIC
+            mod2_2 : CYCLIC
+        }
+        children : { }
+
+        package  :mod2_2:CYCLIC
+        fullname :ut_data/app1/mod2/mod2_2
+        parent   :mod2
+        depend_on: {
+            app1 : CYCLIC
+            mod1 : CYCLIC
+            mod2_1 : CYCLIC
+        }
+        children : { }
+    }
+}
+
+package  :app2
+fullname :ut_data/app2
+parent   :TOP
+depend_on: {
+    app1 : STRAIGHT
+    mod1 : STRAIGHT
+    mod2_1 : STRAIGHT
+    mod2_2 : STRAIGHT
+}
+children : { }

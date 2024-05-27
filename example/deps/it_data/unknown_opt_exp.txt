@@ -1,0 +1,30 @@
+deps CMD [option] [DIRS] ...
+   CMD:
+         p    : generate package to OUT.
+         s    : generate srcs with incs to OUT.
+         p2s  : generate package and srcs pairs to OUT.
+         p2p  : generate packages' dependencies to OUT.
+         a    : generate structure to OUT from p2p output.
+         a2pu : generate plant uml package to OUT from p2p output.
+         cyc  : exit !0 if found cyclic dependencies.
+         help : show help message.
+         h    : same as help(-h, --help).
+
+   opptions:
+         --in IN     : use IN to execute CMD.
+         --out OUT   : CMD outputs to OUT.
+         --recursive : search dir as package from DIRS or IN contents.
+         -R          : same as --recursive.
+         --src_as_pkg: every src is as a package.
+         -s          : same as --src_as_pkg.
+         --log LOG   : loggin to LOG(if LOG is "-", using STDOUT).
+         --exclude PTN : exclude dirs which matchs to PTN(JS regex).
+         -e PTN      : same as --exclude.
+
+   DIRS: use DIRS to execute CMD.
+   IN  : 1st line in this file must be
+             #dir2srcs for pkg-srcs file
+         or
+             #dir for pkg file.
+
+

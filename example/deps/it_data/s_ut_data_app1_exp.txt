@@ -1,0 +1,126 @@
+---
+a_1_c.c
+file              : a_1_c.c
+path              : ut_data/app1/a_1_c.c
+include           : ut_data/app1/a_1_c.h ut_data/app1/a_1_cpp.h ut_data/app1/mod1/mod1_1.hpp ut_data/app1/mod1/mod1_2.hpp ut_data/app1/mod2/mod2_1/mod2_1_1.h ut_data/app1/mod2/mod2_2/mod2_2_1.h
+include not found : stdio.h string.h
+
+---
+a_1_c.h
+file              : a_1_c.h
+path              : ut_data/app1/a_1_c.h
+include           : ut_data/app1/a_1_cpp.h ut_data/app1/mod1/mod1_1.hpp ut_data/app1/mod1/mod1_2.hpp ut_data/app1/mod2/mod2_1/mod2_1_1.h ut_data/app1/mod2/mod2_2/mod2_2_1.h
+include not found : stdio.h string.h
+
+---
+a_1_cpp.cpp
+file              : a_1_cpp.cpp
+path              : ut_data/app1/a_1_cpp.cpp
+include           : 
+include not found : 
+
+---
+a_1_cpp.h
+file              : a_1_cpp.h
+path              : ut_data/app1/a_1_cpp.h
+include           : ut_data/app1/a_1_cpp.h ut_data/app1/mod1/mod1_1.hpp ut_data/app1/mod1/mod1_2.hpp ut_data/app1/mod2/mod2_1/mod2_1_1.h ut_data/app1/mod2/mod2_2/mod2_2_1.h
+include not found : 
+
+---
+a_2_c.C
+file              : a_2_c.C
+path              : ut_data/app1/a_2_c.C
+include           : 
+include not found : 
+
+---
+a_2_c.H
+file              : a_2_c.H
+path              : ut_data/app1/a_2_c.H
+include           : 
+include not found : 
+
+---
+a_2_cpp.cxx
+file              : a_2_cpp.cxx
+path              : ut_data/app1/a_2_cpp.cxx
+include           : 
+include not found : 
+
+---
+a_2_cpp.hpp
+file              : a_2_cpp.hpp
+path              : ut_data/app1/a_2_cpp.hpp
+include           : 
+include not found : 
+
+---
+a_3_cpp.cc
+file              : a_3_cpp.cc
+path              : ut_data/app1/a_3_cpp.cc
+include           : 
+include not found : 
+
+---
+mod1_1.cpp
+file              : mod1_1.cpp
+path              : ut_data/app1/mod1/mod1_1.cpp
+include           : ut_data/app1/mod2/mod2_1.hpp
+include not found : 
+
+---
+mod1_1.hpp
+file              : mod1_1.hpp
+path              : ut_data/app1/mod1/mod1_1.hpp
+include           : ut_data/app1/a_1_cpp.h ut_data/app1/mod1/mod1_1.hpp ut_data/app1/mod1/mod1_2.hpp ut_data/app1/mod2/mod2_1/mod2_1_1.h ut_data/app1/mod2/mod2_2/mod2_2_1.h
+include not found : 
+
+---
+mod1_2.hpp
+file              : mod1_2.hpp
+path              : ut_data/app1/mod1/mod1_2.hpp
+include           : 
+include not found : 
+
+---
+mod2_1_1.cpp
+file              : mod2_1_1.cpp
+path              : ut_data/app1/mod2/mod2_1/mod2_1_1.cpp
+include           : 
+include not found : 
+
+---
+mod2_1_1.h
+file              : mod2_1_1.h
+path              : ut_data/app1/mod2/mod2_1/mod2_1_1.h
+include           : ut_data/app1/a_1_cpp.h ut_data/app1/mod1/mod1_1.hpp ut_data/app1/mod1/mod1_2.hpp ut_data/app1/mod2/mod2_1/mod2_1_1.h ut_data/app1/mod2/mod2_2/mod2_2_1.h
+include not found : 
+
+---
+mod2_1.cpp
+file              : mod2_1.cpp
+path              : ut_data/app1/mod2/mod2_1.cpp
+include           : 
+include not found : 
+
+---
+mod2_1.hpp
+file              : mod2_1.hpp
+path              : ut_data/app1/mod2/mod2_1.hpp
+include           : 
+include not found : 
+
+---
+mod2_2_1.cpp
+file              : mod2_2_1.cpp
+path              : ut_data/app1/mod2/mod2_2/mod2_2_1.cpp
+include           : ut_data/app1/a_1_cpp.h ut_data/app1/mod1/mod1_1.hpp ut_data/app1/mod1/mod1_2.hpp ut_data/app1/mod2/mod2_1/mod2_1_1.h ut_data/app1/mod2/mod2_2/mod2_2_1.h
+include not found : 
+
+---
+mod2_2_1.h
+file              : mod2_2_1.h
+path              : ut_data/app1/mod2/mod2_2/mod2_2_1.h
+include           : ut_data/app1/a_1_cpp.h ut_data/app1/mod1/mod1_1.hpp ut_data/app1/mod1/mod1_2.hpp ut_data/app1/mod2/mod2_1/mod2_1_1.h ut_data/app1/mod2/mod2_2/mod2_2_1.h
+include not found : 
+

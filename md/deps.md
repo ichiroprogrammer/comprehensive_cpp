@@ -1,0 +1,416 @@
+# deps
+本ドキュメントでは、いくつかの場所でパッケージ間の依存関係の重要性について説明したため、
+これに従って開発を行うのであれば、依存関係の維持、監視が必要になる。
+
+そのための市販のツールを購入することもできるが、
+やりたいことと完全にマッチしたものがあるわけではないため、
+このドキュメント専用のツールdepsを開発した。
+
+このようなツールの開発にはpythonやrubyが適しているが、
+このドキュメントの目的に合わせて、depsは下記のようにC++で書かれている。
+
+|ファイル名                                                  |機能、目的                       |
+|------------------------------------------------------------|---------------------------------|
+|                                                            |                                 |
+| example/deps/app/                                          |depsのメインディレクト           |
+|"[example/deps/app/src/main.cpp](---)"                      |depsのmain関数を含むファイル     |
+|"[example/deps/app/src/deps_opts.cpp](---)"                 |depsのオプション処理             |
+|"[example/deps/app/src/deps_opts.h](---)"                   |deps_opts.cppのヘッダ            |
+|"[example/deps/app/ut/deps_opts_ut.cpp](---)"               |deps_opts.cppの単体テスト        |
+|                                                            |                                 |
+| example/deps/dependency/                                   |deps_scenario.a用のディレクトリ  |
+|"[example/deps/dependency/h/deps_scenario.h](---)"          |deps_scenario.aの外部公開ヘッダ  |
+|"[example/deps/dependency/src/arch_pkg.cpp](---)"           |パッケージの依存関係             |
+|"[example/deps/dependency/src/arch_pkg.h](---)"             |arch_pkg.cppのヘッダ             |
+|"[example/deps/dependency/src/cpp_deps.cpp](---)"           |ファイル間依存関係               |
+|"[example/deps/dependency/src/cpp_deps.h](---)"             |cpp_deps.cppのヘッダ             |
+|"[example/deps/dependency/src/cpp_dir.cpp](---)"            |C++ファイルを含むディレクトリ抽出|
+|"[example/deps/dependency/src/cpp_dir.h](---)"              |cpp_dir.cppのヘッダ              |
+|"[example/deps/dependency/src/cpp_src.cpp](---)"            |C++ファイルの抽出                |
+|"[example/deps/dependency/src/cpp_src.h](---)"              |cpp_src.cppのヘッダ              |
+|"[example/deps/dependency/src/deps_scenario.cpp](---)"      |依存関係表示のシナリオ           |
+|"[example/deps/dependency/src/load_store_format.cpp](---)"  |deps生成ファイルのロード/ストア  |
+|"[example/deps/dependency/src/load_store_format.h](---)"    |load_store_format.cppのヘッダ    |
+|"[example/deps/dependency/ut/arch_pkg_ut.cpp](---)"         |arch_pkg.cppの単体テスト         |
+|"[example/deps/dependency/ut/cpp_deps_ut.cpp](---)"         |cpp_deps.cppの単体テスト         |
+|"[example/deps/dependency/ut/cpp_dir_ut.cpp](---)"          |cpp_dir.cppの単体テスト          |
+|"[example/deps/dependency/ut/cpp_src_ut.cpp](---)"          |cpp_src.cppの単体テスト          |
+|"[example/deps/dependency/ut/deps_scenario_ut.cpp](---)"    |deps_scenario.cppの単体テスト    |
+|"[example/deps/dependency/ut/load_store_format_ut.cpp](---)"|load_store_format.cppの単体テスト|
+|                                                            |                                 |
+| example/deps/file_utils/                                   |file_utils.a用のディレクトリ     |
+|"[example/deps/file_utils/h/load_store.h](---)"             |ファイルのロード/ストア          |
+|"[example/deps/file_utils/h/load_store_row.h](---)"         |load_store_row.cppのヘッダ       |
+|"[example/deps/file_utils/h/path_utils.h](---)"             |path_utils.cppのヘッダ           |
+|"[example/deps/file_utils/src/load_store_row.cpp](---)"     |ファイルののロード/ストア        |
+|"[example/deps/file_utils/src/path_utils.cpp](---)"         |ファイル操作                     |
+|"[example/deps/file_utils/ut/load_store_row_ut.cpp](---)"   |load_store_row.cppの単体テスト   |
+|"[example/deps/file_utils/ut/path_utils_ut.cpp](---)"       |path_utils.cppの単体テスト       |
+|                                                            |                                 |
+| example/deps/lib/                                          |                                 |
+|"[example/deps/lib/h/nstd.h](---)"                          |一般的なテンプレート             |
+|"[example/deps/lib/ut/nstd_ut.cpp](---)"                    |nstd.hの単体テスト               |
+|                                                            |                                 |
+| example/deps/logging/                                      |logging.a用のディレクトリ        |
+|"[example/deps/logging/h/logger.h](---)"                    |logger.cppのヘッダ               |
+|"[example/deps/logging/src/logger.cpp](---)"                |ログの取得                       |
+|"[example/deps/logging/ut/logger_ut.cpp](---)"              |logger.cppの単体テスト           |
+
+## depsの構造
+depsのソースコードやそのディレクトリは、
+
+|ディレクトリ名|目的                               |
+|--------------|-----------------------------------|
+|\*/src        |cppファイルとパッケージ内部用ヘッダ|
+|\*/h          |パッケージ外部公開用ヘッダ         |
+|\*/ut         |このパッケージの単体テスト         |
+
+
+のように配置されており、src、h、ut
+をその一つ上の階層で括ったディレクトリをパッケージとみなした場合の依存関係は、
+
+![depsのファイル構造分類](plant_uml/deps.png)
+
+のようになっている。
+
+当然ながら、「[パッケージとその構成ファイル](---)」で述べた構造と相似である。
+
+なお、utディレクトリを別パッケージとした場合の依存関係は、
+
+![depsのファイル構造分類](plant_uml/deps_2.png)
+
+のようになっており、整理された依存関係であるといえる。
+
+自分が開発しているソースコードの整理をする場合、depsの構造を真似れば、
+大きく失敗することは少ない。
+
+## depsの使い方
+
+depsのコマンドオプションを以下に示す。
+
+```
+    deps CMD [option] [DIRS] ...
+       CMD:
+             p    : generate package to OUT.
+             s    : generate srcs with incs to OUT.
+             p2s  : generate package and srcs pairs to OUT.
+             p2p  : generate packages' dependencies to OUT.
+             a    : generate structure to OUT from p2p output.
+             a2pu : generate plant uml package to OUT from p2p output.
+             cyc  : exit !0 if found cyclic dependencies.
+             help : show help message.
+             h    : same as help(-h, --help).
+
+       opptions:
+             --in IN     : use IN to execute CMD.
+             --out OUT   : CMD outputs to OUT.
+             --recursive : search dir as package from DIRS or IN contents.
+             -R          : same as --recursive.
+             --src_as_pkg: every src is as a package.
+             -s          : same as --src_as_pkg.
+             --log LOG   : loggin to LOG(if LOG is "-", using STDOUT).
+             --exclude PTN : exclude dirs which matchs to PTN(JS regex).
+             -e PTN      : same as --exclude.
+
+       DIRS: use DIRS to execute CMD.
+       IN  : 1st line in this file must be
+                 #dir2srcs for pkg-srcs file
+             or
+                 #dir for pkg file.
+```
+
+各ユースケース
+
+* [ユースケース-循環依存を発見した場合、非0でexitする](---)
+* [ユースケース-C++のソースコードを含むディレクトリを探す](---)
+* [ユースケース-ディレクトリをパッケージとみなして、パッケージとソースコードの関係を示す](---)
+* [ユースケース-パッケージ間の依存関係を示す](---)
+* [ユースケース-パッケージ間の依存関係を構造的に表す](---)
+* [ユースケース-パッケージ間の依存関係をplant umlで表す](---)
+* [ユースケース-ソースコード間の依存関係をplant umlで表す](---)
+* [ユースケース-パッケージでないディレクトリをそれとみなさない](---)
+
+におけるdepsの使い方や出力等を示す。
+
+### ユースケース-循環依存を発見した場合、非0でexitする
+
+このツールの主な目的は、パッケージ間の循環依存を検出することである。
+このユースケースは、これを実現する方法を提示する。
+
+ソースコードを含むディレクトリut_data/で下記のようにすれば、
+ディレクトリをパッケージとみなした依存関係が循環した場合、depsは非0でexitする。
+
+```
+    > ./g++/deps p2p -R -s --out p2p.txt ut_data/
+    > ./g++/deps cyc --in p2p.txt
+```
+
+CIのチェック項目(「[CI(継続的インテグレーション)](---)」参照)に上記を導入することで、
+循環の無い依存関係を維持することができる。
+
+下記に、「ディレクトリが必ずしもパッケージに対応するわけではない」場合の対処法を掲載する。
+
+### ユースケース-C++のソースコードを含むディレクトリを探す
+
+以下のコマンドは、CMD pによりut_data/配下のソースコードを含むディレクトリを探す。
+
+```
+    > ./g++/deps p -R ut_data/
+```
+
+アウトプットは以下のようになる。
+
+```
+    #dir
+    ut_data/app1
+    ut_data/app1/mod1
+    ut_data/app1/mod2
+    ut_data/app1/mod2/mod2_1
+    ut_data/app1/mod2/mod2_2
+    ut_data/app2
+```
+
+--out OUT-FILEを指定すれば、上記出力はOUT-FILEに書き出される。
+OUT-FILEを適切に編集し、他のCMDの入力(--in IN-FILE)に使用することもできる。
+
+### ユースケース-ディレクトリをパッケージとみなして、パッケージとソースコードの関係を示す
+
+以下のコマンドは、CMD p2sによりut_data配下のディレクトリをパッケージとみなして、
+パッケージとソースコードの関係を出力する。
+
+```
+    > ./g++/deps p2s -R ut_data/
+```
+
+アウトプットは以下のようになる。
+
+```
+    #dir2srcs
+    ut_data/app1
+        ut_data/app1/a_1_c.c
+        ut_data/app1/a_1_c.h
+        ut_data/app1/a_1_cpp.cpp
+        ut_data/app1/a_1_cpp.h
+    
+    ... 中略 ...
+    
+    ut_data/app1/mod2/mod2_2
+        ut_data/app1/mod2/mod2_2/mod2_2_1.cpp
+        ut_data/app1/mod2/mod2_2/mod2_2_1.h
+
+    ut_data/app2
+        ut_data/app2/b_1.cpp
+        ut_data/app2/b_1.h
+```
+
+
+### ユースケース-パッケージ間の依存関係を示す
+
+以下のコマンドは、CMD p2pによりdeps/ut_data配下のパッケージとの依存関係をp2p.txtに出力する。
+
+```
+    > cd ./deps
+    > ./g++/deps p2p -R --out p2p.txt ut_data/
+```
+
+アウトプットは以下のようになる。
+
+```
+    #deps
+    ut_data/app1 -> ut_data/app1/mod1 : 2 ut_data/app1/mod1/mod1_1.hpp ut_data/app1/mod1/mod1_2.hpp
+    ut_data/app1/mod1 -> ut_data/app1 : 0
+    
+    ut_data/app1 -> ut_data/app1/mod2 : 0
+    ut_data/app1/mod2 -> ut_data/app1 : 0
+    
+    ... 中略 ...
+    
+    ut_data/app1/mod2 -> ut_data/app2 : 0
+    ut_data/app2 -> ut_data/app1/mod2 : 0
+    
+    ut_data/app1/mod2/mod2_1 -> ut_data/app1/mod2/mod2_2 : 1 ut_data/app1/mod2/mod2_2/mod2_2_1.h
+    ut_data/app1/mod2/mod2_2 -> ut_data/app1/mod2/mod2_1 : 2 ut_data/app1/mod2/mod2_1/mod2_1_1.h
+    
+    ut_data/app1/mod2/mod2_1 -> ut_data/app2 : 0
+    ut_data/app2 -> ut_data/app1/mod2/mod2_1 : 0
+    
+    ut_data/app1/mod2/mod2_2 -> ut_data/app2 : 0
+    ut_data/app2 -> ut_data/app1/mod2/mod2_2 : 0
+```
+
+例を上げて、上記の意味を説明する。  
+
+[例]
+```
+    ut_data/app1/mod2/mod2_1 -> ut_data/app1/mod2/mod2_2 : 1 ut_data/app1/mod2/mod2_2/mod2_2_1.h
+    ut_data/app1/mod2/mod2_2 -> ut_data/app1/mod2/mod2_1 : 2 ut_data/app1/mod2/mod2_1/mod2_1_1.h
+```
+
+[例の意味]  
+
+* ut_data/app1/mod2/mod2_1からut_data/app1/mod2/mod2_2への依存ファイルは
+  ut_data/app1/mod2/mod2_2/mod2_2_1.hで、1箇所includeされている。
+
+* ut_data/app1/mod2/mod2_2からut_data/app1/mod2/mod2_1の依存ファイルは
+  ut_data/app1/mod2/mod2_1/mod2_1_1.hで、2箇所includeされている。
+
+
+### ユースケース-パッケージ間の依存関係を構造的に表す
+
+以下のコマンドは、CMD aにより上記p2p.txtを構造的に出力する。
+
+```
+    > ./g++/deps a  --in p2p.txt
+```
+
+アウトプットは以下のようになる。
+
+```
+    #arch
+    package  :app1:CYCLIC
+    parent   :TOP
+    depend_on: {
+        mod1 : CYCLIC
+    }
+    children : {
+        package  :mod1:CYCLIC
+        parent   :app1
+        depend_on: {
+            mod2 : STRAIGHT
+            mod2_2 : CYCLIC
+        }
+        children : { }
+
+        package  :mod2
+        parent   :app1
+        depend_on: { }
+        children : {
+            package  :mod2_1:CYCLIC
+            parent   :mod2
+            depend_on: {
+                mod2_2 : CYCLIC
+            }
+            children : { }
+
+            package  :mod2_2:CYCLIC
+            parent   :mod2
+            depend_on: {
+                app1 : CYCLIC
+                mod2_1 : CYCLIC
+            }
+            children : { }
+        }
+    }
+
+    package  :app2
+    parent   :TOP
+    depend_on: {
+        app1 : STRAIGHT
+        mod1 : STRAIGHT
+    }
+    children : { }
+```
+
+ディレクトリ名の後ろの
+
+* STRAIGHTは依存関係が循環していない
+* CYCLICは依存関係が循環している
+
+ことを示している。
+
+### ユースケース-パッケージ間の依存関係をplant umlで表す
+
+以下のコマンドは、CMD a2puにより上記p2p.txtをplant uml形式で出力する。
+
+```
+    > ./g++/deps a2pu  --in p2p.txt
+```
+
+アウトプットは以下のようになる。
+
+```
+    @startuml
+    scale max 730 width
+    rectangle "app1" as ut_data___app1 {
+        rectangle "mod1" as ut_data___app1___mod1
+        rectangle "mod2" as ut_data___app1___mod2 {
+            rectangle "mod2_1" as ut_data___app1___mod2___mod2_1
+            rectangle "mod2_2" as ut_data___app1___mod2___mod2_2
+        }
+    }
+    rectangle "app2" as ut_data___app2
+
+    ut_data___app1 "6" <-[#red]-> "1" ut_data___app1___mod1
+    ut_data___app1 "3" <-[#red]-> "1" ut_data___app1___mod2___mod2_1
+    ut_data___app1 "3" <-[#red]-> "2" ut_data___app1___mod2___mod2_2
+    ut_data___app2 "3" -[#green]-> ut_data___app1
+    ut_data___app1___mod1 "1" -[#green]-> ut_data___app1___mod2
+    ut_data___app1___mod1 "1" <-[#red]-> "2" ut_data___app1___mod2___mod2_1
+    ut_data___app1___mod1 "1" <-[#red]-> "4" ut_data___app1___mod2___mod2_2
+    ut_data___app2 "4" -[#green]-> ut_data___app1___mod1
+    ut_data___app1___mod2___mod2_1 "1" <-[#red]-> "2" ut_data___app1___mod2___mod2_2
+    ut_data___app2 "2" -[#green]-> ut_data___app1___mod2___mod2_1
+    ut_data___app2 "2" -[#green]-> ut_data___app1___mod2___mod2_2
+
+    @enduml
+```
+
+このアウトプットを[plant umlオンラインジェネレータ](http://www.plantuml.com/plantuml/)
+のテキストボックスに貼り付ければpngファイルが得られ、視覚的に依存関係を把握できる。
+
+### ユースケース-ソースコード間の依存関係をplant umlで表す
+
+ソースコードをパッケージとみなすオプション(-sもしくは--src_as_pkg)を付加して、
+これまでの説明と同様のことを行うと、
+
+```
+    > ./g++/deps p2p -R -s --out p2p.txt ut_data/
+    > ./g++/deps a2pu  --in p2p.txt --out p2p.pu
+```
+
+ソースコードの依存関係がplant uml形式で得られる。
+
+
+### ユースケース-パッケージでないディレクトリをそれとみなさない
+
+depsのソースコードを含むdependency/hは、
+dependencyパッケージのインターフェースを外部公開するためのものであり、
+dependencyのサブパッケージではない。
+このような場合、dependency/h/deps_scenario.hのようなファイルは、
+dependencyに直接属するように扱うべきであるが、
+このツールがファイル構造からそれを読み解くことは不可能である。
+
+このような場合に対処する方法は下記の3通りある。
+
+* -Rを指定せず、パッケージとなる全ディレクトリをINに記述する。
+* pコマンドで候補ディレクトリを全てファイルに出力し、
+  パッケージでないディレクトリをそのファイルから削除した後、
+  そのファイルをINファイルとしてp2pコマンド等を使う。
+* --exclude PTNでパッケージ対象でないディレクトリを指定しp2pコマンド等を使う。
+  なお、例えばhディレクトリを排除する場合のPTNの指定は下記のようになる(PTNはC++の正規表現)。
+
+```
+    --exclude ".*/h/?.*"
+```
+
+
+## makeによる依存関係の維持
+ビルドツールにmake、コンパイラにg++やclang++を使うのであれば、
+
+* 下記のMakefileのように、コンパイラに指定するインクルードパスを制限し、
+  パッケージごとにライブラリを作る
+
+```Makefile
+    // @@@ example/deps/Makefile #0:0 begin
+```
+
+* #includeディレクティブでのパスにに上方向のディレクトリ指定("../")を使わない
+  (「[#includeで指定するパス名](---)」参照)
+
+とすることで、ビルド時に循環依存を作らないことを担保することができる
+(「[アーキテクチャの設計](---)」参照)。
+
+CMakeやVisual Studioを含むほとんどのビルドツールでも同様のことは可能である
+(逆に言えば、このようなことができないビルドツールを使うべきではない)。
+
+

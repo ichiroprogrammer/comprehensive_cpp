@@ -1,0 +1,93 @@
+@startuml
+scale max 700 width
+
+participant Controller
+participant View
+participant Model
+participant MainThread
+participant Dispatcher
+participant TwoPhaseTaskPtr
+
+MainThread ->> Controller : WaitInput
+Controller -> Controller : watch_input
+activate Controller
+Controller -> Controller : getline
+activate Controller
+
+MainThread -> Dispatcher : ExecUntilStop
+activate Dispatcher
+Dispatcher -> Dispatcher : pop_task
+activate Dispatcher
+note right: codition_variable\nでイベント待ち
+
+[-> Controller : コマンド入力
+deactivate Controller
+
+Controller -> Model:ConvertStoreAsync
+activate Model
+
+create TwoPhaseTaskPtr
+Model -> TwoPhaseTaskPtr : MakeTwoPhaseTaskPtr\n(pre_task, post_task)
+
+Model -> Dispatcher::Invoke(TwoPhaseTaskPtr)
+activate Dispatcher
+
+Dispatcher -> Dispatcher::push_task
+note left
+TwoPhaseTaskPtr
+オブジェクトを
+キューへプッシュ
+end note
+
+Dispatcher ->> TwoPhaseTaskPtr : DoPreTask
+note right: pre_task\n非同期実行
+
+activate TwoPhaseTaskPtr
+deactivate Dispatcher
+deactivate Model
+
+TwoPhaseTaskPtr -> TwoPhaseTaskPtr : do_pre_task
+TwoPhaseTaskPtr -> Dispatcher : Notify
+deactivate TwoPhaseTaskPtr
+
+Dispatcher --> Dispatcher : pop_task
+deactivate Dispatcher
+note left
+TwoPhaseTaskPtr
+オブジェクトを
+キューからポップ
+end note
+
+Dispatcher -> TwoPhaseTaskPtr : DoPostTask
+activate Dispatcher
+note right
+競合する処
+理の直列化
+end note
+
+activate TwoPhaseTaskPtr
+TwoPhaseTaskPtr -> Model
+
+activate Model
+note left: pre_taskの\n戻り文字列を\nstrings_に追加
+Model -> Model : notify
+
+Model->View : Update
+activate View
+
+note left 
+Modelの
+内容を表示
+end note
+
+deactivate View
+
+Model --> TwoPhaseTaskPtr
+deactivate Model
+
+TwoPhaseTaskPtr --> Dispatcher
+deactivate Dispatcher
+deactivate TwoPhaseTaskPtr
+destroy TwoPhaseTaskPtr
+
+@enduml

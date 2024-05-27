@@ -1,0 +1,28 @@
+@startuml
+
+:コードインスペクション;
+
+while(ソースコードに問題がある?) is (yes)
+
+    :ソースコード修正;
+        note right
+            対象ソースコードにUTがある
+            ことが前提。
+            ない場合は先にUTを作る。
+        end note
+
+    :UTをパスさせる;
+
+endwhile(no)
+
+if(ソースコードを修正した) then (yes)
+:commit;
+else (no)
+
+endif
+
+stop
+
+@enduml
+
+

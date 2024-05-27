@@ -1,0 +1,31 @@
+#deps
+it_data/fake/a -> it_data/fake/b : 1 it_data/fake/b/e/b.h
+it_data/fake/b -> it_data/fake/a : 0 
+
+it_data/fake/a -> it_data/fake/c : 0 
+it_data/fake/c -> it_data/fake/a : 1 it_data/fake/a/e/a.h
+
+it_data/fake/a -> it_data/fake/d : 1 it_data/fake/d/e/d.hpp
+it_data/fake/d -> it_data/fake/a : 0 
+
+it_data/fake/a -> it_data/fake/e : 0 
+it_data/fake/e -> it_data/fake/a : 0 
+
+it_data/fake/b -> it_data/fake/c : 1 it_data/fake/c/e/c.h
+it_data/fake/c -> it_data/fake/b : 0 
+
+it_data/fake/b -> it_data/fake/d : 0 
+it_data/fake/d -> it_data/fake/b : 0 
+
+it_data/fake/b -> it_data/fake/e : 0 
+it_data/fake/e -> it_data/fake/b : 0 
+
+it_data/fake/c -> it_data/fake/d : 0 
+it_data/fake/d -> it_data/fake/c : 0 
+
+it_data/fake/c -> it_data/fake/e : 0 
+it_data/fake/e -> it_data/fake/c : 0 
+
+it_data/fake/d -> it_data/fake/e : 1 it_data/fake/e/e/e.h
+it_data/fake/e -> it_data/fake/d : 1 it_data/fake/d/e/d.hpp
+

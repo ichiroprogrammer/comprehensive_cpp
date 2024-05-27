@@ -1,0 +1,12 @@
+@startuml
+
+rectangle "パッケージA" as A
+rectangle "パッケージB" as B
+
+A -> B
+
+note left of A
+AはBに依存する
+end note
+@enduml
+

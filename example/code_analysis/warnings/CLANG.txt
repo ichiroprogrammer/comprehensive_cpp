@@ -1,0 +1,34 @@
+code_analysis.cpp:29:15: warning: comparison of integers of different signs: 'int32_t' (aka 'int') and 'uint32_t' (aka 'unsigned int') [-Wsign-compare]
+    bool b0{x < y};
+            ~ ^ ~
+code_analysis.cpp:33:15: warning: comparison of integers of different signs: 'int32_t' (aka 'int') and 'uint32_t' (aka 'unsigned int') [-Wsign-compare]
+    bool b1{x < y};
+            ~ ^ ~
+code_analysis.cpp:51:16: warning: deleting pointer to incomplete type 'Pimpl::PimplCore' may cause undefined behavior [-Wdelete-incomplete]
+    ~Pimpl() { delete core_; }  // 不完全型のdelete
+               ^      ~~~~~
+code_analysis.cpp:53:11: note: forward declaration of 'Pimpl::PimplCore'
+    class PimplCore;
+          ^
+code_analysis.cpp:82:12: warning: moving a local object in a return statement prevents copy elision [-Wpessimizing-move]
+    return std::move(ret);  // std::moveのためにRVOが阻害される
+           ^
+code_analysis.cpp:82:12: note: remove std::move call here
+    return std::move(ret);  // std::moveのためにRVOが阻害される
+           ^~~~~~~~~~   ~
+@@@ sample begin 1:0
+
+code_analysis.cpp:108:18: warning: 'OverloadVirtualDerived::DoSomething' hides overloaded virtual function [-Woverloaded-virtual]
+    virtual void DoSomething(uint32_t) noexcept
+                 ^
+code_analysis.cpp:98:18: note: hidden overloaded virtual function 'OverloadVirtualBase::DoSomething' declared here: type mismatch at 1st parameter ('int32_t' (aka 'int') vs 'uint32_t' (aka 'unsigned int'))
+    virtual void DoSomething(int32_t) noexcept  // 派生クラスがオーバーライドできる。
+@@@ sample end
+                 ^
+code_analysis.cpp:258:13: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+        if (this == nullptr) {
+            ^~~~    ~~~~~~~
+code_analysis.cpp:279:1: warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+7 warnings generated.

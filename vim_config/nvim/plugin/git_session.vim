@@ -1,0 +1,5 @@
+command! -nargs=0 SessionBegin  call git_session#begin()
+command! -nargs=0 SessionDir    call git_session#dir()
+command! -nargs=0 SessionMake   call git_session#make()
+command! -nargs=0 SessionNew    call git_session#new_session()
+command! -nargs=0 SessionPath   call git_session#set_path()

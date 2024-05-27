@@ -1,0 +1,15 @@
+@@@ sample begin 1:0
+
+code_analysis.cpp:158:17: error: Array 'array[8]' accessed at index 8, which is out of bounds. [arrayIndexOutOfBounds]
+    return array[index];
+                ^
+code_analysis.cpp:163:18: note: Calling function 'array_access', 1st argument '8' value is 8
+    array_access(8);  // off-by-1 このようなコードは意外なほど多い
+                 ^
+code_analysis.cpp:158:17: note: Array index out of bounds
+    return array[index];
+                ^
+@@@ sample end
+code_analysis.cpp:313:47: error: Invalid div() argument nr 2. The value is 0 but the valid values are ':-1,1:'. [invalidFunctionArg]
+void float_div_by_zero() noexcept { div(3.0F, 0); }
+                                              ^

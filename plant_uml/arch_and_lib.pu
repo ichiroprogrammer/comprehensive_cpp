@@ -1,0 +1,41 @@
+@startuml
+
+allow_mixing
+
+rectangle Appli {
+    package A {
+        class A_0
+        class A_1
+        class A_2
+    }
+    package B {
+        class B_0
+        class B_1
+    }
+    package C
+    package D
+    package E
+}
+
+B_0 -up-> A_0
+C -up-> A_1
+C -up-> A_2
+D -up-> B
+D -up-> C
+E -up-> C
+
+note bottom of A_0 
+class A_0は
+* a_0.h
+* a_0.cpp
+で宣言、定義される。
+他も同様。
+end note
+
+note top of Appli
+A-Dの各パッケージは
+それぞれがライブラリ
+としてAppliにリンクされる
+end note
+
+@enduml

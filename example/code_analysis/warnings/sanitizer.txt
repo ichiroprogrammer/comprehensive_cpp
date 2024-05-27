@@ -1,0 +1,582 @@
+code_analysis.cpp:300:9: runtime error: signed integer overflow: 2147483647 + 1 cannot be represented in type 'int'
+code_analysis.cpp:306:9: runtime error: signed integer overflow: 9223372036854775807 + 1 cannot be represented in type 'long int'
+=================================================================
+@@@ sample begin 3:0
+
+==25685==ERROR: AddressSanitizer: new-delete-type-mismatch on 0x6020000003f0 in thread T0:
+  object passed to delete has wrong type:
+  size of the allocated type:   8 bytes;
+  size of the deallocated type: 1 bytes.
+    #0 0x7fa6690c2f8f in operator delete(void*, unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:172
+    #1 0x7fa669a7ce0a in std::default_delete<NonVirtualDestructorBase>::operator()(NonVirtualDestructorBase*) const /usr/include/c++/10/bits/unique_ptr.h:85
+    #2 0x7fa669a7aa1b in std::unique_ptr<NonVirtualDestructorBase, std::default_delete<NonVirtualDestructorBase> >::~unique_ptr() /usr/include/c++/10/bits/unique_ptr.h:361
+    #3 0x7fa669a6ff54 in non_virtual_destructor() .../org/example/code_analysis/code_analysis.cpp:189
+
+@@@ ignore begin
+
+    #4 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #5 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #6 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #7 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #8 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #9 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #10 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #11 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #12 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #13 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #14 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #15 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #16 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #17 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #18 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+    #19 0x7fa669a6e06d in _start (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x3806d)
+
+0x6020000003f0 is located 0 bytes inside of 8-byte region [0x6020000003f0,0x6020000003f8)
+allocated by thread T0 here:
+    #0 0x7fa6690c1f27 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
+    #1 0x7fa669a7a080 in std::_MakeUniq<NonVirtualDestructorDerived>::__single_object std::make_unique<NonVirtualDestructorDerived, char const (&) [2]>(char const (&) [2]) /usr/include/c++/10/bits/unique_ptr.h:962
+    #2 0x7fa669a6fe9c in non_virtual_destructor() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:189
+    #3 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #4 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #5 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #6 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #7 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #8 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #9 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #10 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #11 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #12 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #13 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #14 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #15 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #16 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #17 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+
+@@@ ignore end
+
+SUMMARY: AddressSanitizer: new-delete-type-mismatch ../../../../src/libsanitizer/asan/asan_new_delete.cpp:172 in operator delete(void*, unsigned long)
+@@@ sample end
+
+==25685==HINT: if you don't care about these errors you may set ASAN_OPTIONS=new_delete_type_mismatch=0
+==25685==ABORTING
+=================================================================
+==25686==ERROR: AddressSanitizer: attempting double-free on 0x602000000410 in thread T0:
+    #0 0x7fa6690c2f8f in operator delete(void*, unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:172
+    #1 0x7fa669a77758 in IllegalShallowCopy::~IllegalShallowCopy() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:120
+    #2 0x7fa669a6f849 in illegal_shallow_copy() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:128
+    #3 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #4 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #5 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #6 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #7 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #8 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #9 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #10 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #11 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #12 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #13 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #14 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #15 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #16 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #17 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+    #18 0x7fa669a6e06d in _start (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x3806d)
+
+0x602000000410 is located 0 bytes inside of 4-byte region [0x602000000410,0x602000000414)
+freed by thread T0 here:
+    #0 0x7fa6690c2f8f in operator delete(void*, unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:172
+    #1 0x7fa669a77758 in IllegalShallowCopy::~IllegalShallowCopy() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:120
+    #2 0x7fa669a6f82a in illegal_shallow_copy() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:129
+    #3 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #4 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #5 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #6 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #7 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #8 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #9 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #10 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #11 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #12 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #13 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #14 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #15 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #16 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #17 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+
+previously allocated by thread T0 here:
+    #0 0x7fa6690c1f27 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
+    #1 0x7fa669a775ea in IllegalShallowCopy::IllegalShallowCopy() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:119
+    #2 0x7fa669a6f7bd in illegal_shallow_copy() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:129
+    #3 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #4 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #5 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #6 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #7 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #8 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #9 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #10 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #11 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #12 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #13 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #14 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #15 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #16 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #17 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_new_delete.cpp:172 in operator delete(void*, unsigned long)
+==25686==ABORTING
+
+=================================================================
+==25687==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 4 byte(s) in 1 object(s) allocated from:
+    #0 0x7fa6690c1f27 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
+    #1 0x7fa669a774f4 in Pimpl::PimplCore::PimplCore() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:59
+    #2 0x7fa669a6efd7 in Pimpl::Pimpl() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:66
+    #3 0x7fa669a6f152 in incomplete_class() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:72
+    #4 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #5 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #6 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #7 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #8 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #9 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #10 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #11 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #12 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #13 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #14 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #15 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #16 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #17 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #18 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+
+SUMMARY: AddressSanitizer: 4 byte(s) leaked in 1 allocation(s).
+=================================================================
+==25693==ERROR: AddressSanitizer: heap-use-after-free on address 0x6020000003f0 at pc 0x7fa669a70277 bp 0x7fffcc6c16b0 sp 0x7fffcc6c16a0
+READ of size 4 at 0x6020000003f0 thread T0
+    #0 0x7fa669a70276 in access_deleted_memory() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:202
+    #1 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #2 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #3 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #4 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #5 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #6 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #7 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #8 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #9 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #10 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #11 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #12 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #13 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #14 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #15 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+    #16 0x7fa669a6e06d in _start (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x3806d)
+
+0x6020000003f0 is located 0 bytes inside of 4-byte region [0x6020000003f0,0x6020000003f4)
+freed by thread T0 here:
+    #0 0x7fa6690c2f8f in operator delete(void*, unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:172
+    #1 0x7fa669a7d303 in std::default_delete<X>::operator()(X*) const /usr/include/c++/10/bits/unique_ptr.h:85
+    #2 0x7fa669a7adf7 in std::unique_ptr<X, std::default_delete<X> >::~unique_ptr() /usr/include/c++/10/bits/unique_ptr.h:361
+    #3 0x7fa669a701a7 in access_deleted_memory() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:199
+    #4 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #5 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #6 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #7 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #8 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #9 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #10 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #11 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #12 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #13 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #14 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #15 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #16 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #17 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #18 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+
+previously allocated by thread T0 here:
+    #0 0x7fa6690c1f27 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
+    #1 0x7fa669a7aac7 in std::_MakeUniq<X>::__single_object std::make_unique<X>() /usr/include/c++/10/bits/unique_ptr.h:962
+    #2 0x7fa669a70113 in access_deleted_memory() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:199
+    #3 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #4 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #5 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #6 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #7 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #8 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #9 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #10 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #11 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #12 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #13 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #14 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #15 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #16 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #17 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+
+SUMMARY: AddressSanitizer: heap-use-after-free /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:202 in access_deleted_memory()
+Shadow bytes around the buggy address:
+  0x0c047fff8020: fa fa fd fd fa fa 00 fa fa fa 04 fa fa fa fd fa
+  0x0c047fff8030: fa fa fd fa fa fa 00 fa fa fa fd fd fa fa fd fa
+  0x0c047fff8040: fa fa 00 fa fa fa 00 00 fa fa 00 fa fa fa 00 fa
+  0x0c047fff8050: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fa
+  0x0c047fff8060: fa fa fd fa fa fa fd fd fa fa fd fd fa fa 00 fa
+=>0x0c047fff8070: fa fa fd fd fa fa fd fd fa fa 00 00 fa fa[fd]fa
+  0x0c047fff8080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8090: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff80a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff80b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff80c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==25693==ABORTING
+=================================================================
+==25694==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7fffcc6c1700 at pc 0x7fa669a705d5 bp 0x7fffcc6c16b0 sp 0x7fffcc6c16a0
+READ of size 4 at 0x7fffcc6c1700 thread T0
+    #0 0x7fa669a705d4 in access_after_scope() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:210
+    #1 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #2 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #3 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #4 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #5 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #6 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #7 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #8 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #9 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #10 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #11 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #12 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #13 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #14 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #15 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+    #16 0x7fa669a6e06d in _start (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x3806d)
+
+Address 0x7fffcc6c1700 is located in stack of thread T0 at offset 48 in frame
+    #0 0x7fa669a703b4 in access_after_scope() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:207
+
+  This frame has 2 object(s):
+    [48, 52) '<unknown>' <== Memory access at offset 48 is inside this variable
+    [64, 68) 'b' (line 210)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-scope /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:210 in access_after_scope()
+Shadow bytes around the buggy address:
+  0x1000798d0290: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02d0: 00 00 00 00 00 00 00 00 00 00 f1 f1 f1 f1 f1 f1
+=>0x1000798d02e0:[f8]f2 04 f3 f3 f3 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02f0: 00 00 00 00 00 00 f1 f1 f1 f1 04 f3 f3 f3 00 00
+  0x1000798d0300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d0310: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d0320: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d0330: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==25694==ABORTING
+code_analysis.cpp:158:23: runtime error: index 8 out of bounds for type 'unsigned int [8]'
+code_analysis.cpp:158:23: runtime error: load of address 0x7fffcc6c1700 with insufficient space for an object of type 'uint32_t'
+0x7fffcc6c1700: note: pointer points here
+ 00 00 00 00  60 17 6c cc ff 7f 00 00  8d 93 10 69 a6 7f 00 00  08 00 00 00 30 00 00 00  40 18 6c cc
+              ^ 
+=================================================================
+==25695==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fffcc6c1700 at pc 0x7fa669a6fcd1 bp 0x7fffcc6c16a0 sp 0x7fffcc6c1690
+READ of size 4 at 0x7fffcc6c1700 thread T0
+    #0 0x7fa669a6fcd0 in array_access(int) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:158
+    #1 0x7fa669a6fd7f in array_stask_read_overflow() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:163
+    #2 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #3 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #4 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #5 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #6 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #7 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #8 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #9 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #10 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #11 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #12 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #13 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #14 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #15 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #16 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+    #17 0x7fa669a6e06d in _start (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x3806d)
+
+Address 0x7fffcc6c1700 is located in stack of thread T0 at offset 64 in frame
+    #0 0x7fa669a6fa77 in array_access(int) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:155
+
+  This frame has 1 object(s):
+    [32, 64) 'array' (line 156) <== Memory access at offset 64 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:158 in array_access(int)
+Shadow bytes around the buggy address:
+  0x1000798d0290: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02d0: 00 00 00 00 00 00 00 00 f1 f1 f1 f1 00 00 00 00
+=>0x1000798d02e0:[f3]f3 f3 f3 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02f0: 00 00 00 00 00 00 f1 f1 f1 f1 04 f3 f3 f3 00 00
+  0x1000798d0300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d0310: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d0320: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d0330: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==25695==ABORTING
+=================================================================
+==25696==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fffcc6c171c at pc 0x7fa669a707af bp 0x7fffcc6c1690 sp 0x7fffcc6c1680
+WRITE of size 4 at 0x7fffcc6c171c thread T0
+    #0 0x7fa669a707ae in array_fill(unsigned int*) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:217
+    #1 0x7fa669a70945 in array_stask_write_overflow() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:225
+    #2 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #3 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #4 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #5 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #6 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #7 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #8 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #9 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #10 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #11 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #12 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #13 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #14 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #15 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #16 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+    #17 0x7fa669a6e06d in _start (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x3806d)
+
+Address 0x7fffcc6c171c is located in stack of thread T0 at offset 60 in frame
+    #0 0x7fa669a70808 in array_stask_write_overflow() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:222
+
+  This frame has 1 object(s):
+    [32, 60) 'array' (line 223) <== Memory access at offset 60 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:217 in array_fill(unsigned int*)
+Shadow bytes around the buggy address:
+  0x1000798d0290: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02d0: 00 00 00 00 00 00 00 00 00 00 00 00 f1 f1 f1 f1
+=>0x1000798d02e0: 00 00 00[04]f3 f3 f3 f3 00 00 00 00 00 00 00 00
+  0x1000798d02f0: 00 00 00 00 00 00 f1 f1 f1 f1 04 f3 f3 f3 00 00
+  0x1000798d0300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d0310: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d0320: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d0330: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==25696==ABORTING
+=================================================================
+==25697==ERROR: AddressSanitizer: global-buffer-overflow on address 0x7fa669b4cb7c at pc 0x7fa669a707af bp 0x7fffcc6c1730 sp 0x7fffcc6c1720
+WRITE of size 4 at 0x7fa669b4cb7c thread T0
+    #0 0x7fa669a707ae in array_fill(unsigned int*) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:217
+    #1 0x7fa669a709fd in array_global_write_overflow() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:232
+    #2 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #3 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #4 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #5 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #6 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #7 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #8 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #9 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #10 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #11 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #12 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #13 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #14 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #15 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #16 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+    #17 0x7fa669a6e06d in _start (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x3806d)
+
+0x7fa669b4cb7c is located 0 bytes to the right of global variable 'array' defined in 'code_analysis.cpp:228:10' (0x7fa669b4cb60) of size 28
+0x7fa669b4cb7c is located 36 bytes to the left of global variable 'test_info_' defined in 'code_analysis.cpp:283:1' (0x7fa669b4cba0) of size 8
+SUMMARY: AddressSanitizer: global-buffer-overflow /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:217 in array_fill(unsigned int*)
+Shadow bytes around the buggy address:
+  0x0ff54d361910: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ff54d361920: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ff54d361930: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ff54d361940: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ff54d361950: 00 00 00 00 00 00 00 00 00 00 00 00 01 f9 f9 f9
+=>0x0ff54d361960: f9 f9 f9 f9 00 f9 f9 f9 f9 f9 f9 f9 00 00 00[04]
+  0x0ff54d361970: f9 f9 f9 f9 00 f9 f9 f9 f9 f9 f9 f9 00 f9 f9 f9
+  0x0ff54d361980: f9 f9 f9 f9 00 f9 f9 f9 f9 f9 f9 f9 00 00 f9 f9
+  0x0ff54d361990: f9 f9 f9 f9 00 00 00 00 00 00 f9 f9 f9 f9 f9 f9
+  0x0ff54d3619a0: 00 00 00 00 00 00 f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x0ff54d3619b0: 00 00 f9 f9 f9 f9 f9 f9 00 00 00 00 00 00 f9 f9
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==25697==ABORTING
+code_analysis.cpp:311:51: runtime error: division by zero
+code_analysis.cpp:241:14: runtime error: load of address 0x7fffcc6c1720 with insufficient space for an object of type 'uint32_t'
+0x7fffcc6c1720: note: pointer points here
+ 00 00 00 00  80 17 6c cc ff 7f 00 00  00 72 ea b3 1b 43 e6 59  78 a2 f8 68 a6 7f 00 00  40 19 6c cc
+              ^ 
+=================================================================
+==25700==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fffcc6c1720 at pc 0x7fa669a70c77 bp 0x7fffcc6c16a0 sp 0x7fffcc6c1690
+READ of size 4 at 0x7fffcc6c1720 thread T0
+    #0 0x7fa669a70c76 in pointer_overflow() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:241
+    #1 0x7fa669a7459d in exec_background(void (*)()) /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:366
+    #2 0x7fa669a74803 in all() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:378
+    #3 0x7fa669a74880 in CodeAnalysis_others_Test::TestBody() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:382
+    #4 0x7fa669ac56a0 in void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x8f6a0)
+    #5 0x7fa669abd9d2 in void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x879d2)
+    #6 0x7fa669a9a957 in testing::Test::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x64957)
+    #7 0x7fa669a9b36f in testing::TestInfo::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x6536f)
+    #8 0x7fa669a9bc54 in testing::TestSuite::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x65c54)
+    #9 0x7fa669aaa791 in testing::internal::UnitTestImpl::RunAllTests() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x74791)
+    #10 0x7fa669ac6b92 in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x90b92)
+    #11 0x7fa669abebe6 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x88be6)
+    #12 0x7fa669aa8eb5 in testing::UnitTest::Run() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x72eb5)
+    #13 0x7fa669adc3e1 in RUN_ALL_TESTS() (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa63e1)
+    #14 0x7fa669adc363 in main (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0xa6363)
+    #15 0x7fa6681370b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+    #16 0x7fa669a6e06d in _start (/mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/sanitizer/example.exe+0x3806d)
+
+Address 0x7fffcc6c1720 is located in stack of thread T0 at offset 96 in frame
+    #0 0x7fa669a70a22 in pointer_overflow() /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:236
+
+  This frame has 2 object(s):
+    [48, 52) 'y' (line 241)
+    [64, 96) 'array' (line 237) <== Memory access at offset 96 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /mnt/c/linux_home/bitbucket/cpp_guideline/org/example/code_analysis/code_analysis.cpp:241 in pointer_overflow()
+Shadow bytes around the buggy address:
+  0x1000798d0290: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d02d0: 00 00 00 00 00 00 00 00 f1 f1 f1 f1 f1 f1 04 f2
+=>0x1000798d02e0: 00 00 00 00[f3]f3 f3 f3 00 00 00 00 00 00 00 00
+  0x1000798d02f0: 00 00 00 00 00 00 f1 f1 f1 f1 04 f3 f3 f3 00 00
+  0x1000798d0300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d0310: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d0320: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000798d0330: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==25700==ABORTING
+code_analysis.cpp:245:57: runtime error: shift exponent -1 is negative
+code_analysis.cpp:272:11: runtime error: member call on null pointer of type 'struct NullObj'
+code_analysis.cpp:276:9: runtime error: execution reached the end of a value-returning function without returning a value
+code_analysis.cpp:319:7: runtime error: division of -2147483648 by -1 cannot be represented in type 'int'
+code_analysis.cpp:319:7: runtime error: negation of -2147483648 cannot be represented in type 'int'; cast to an unsigned type to negate this value to itself
+code_analysis.cpp:332:14: runtime error: load of misaligned address 0x7fffcc6c1724 for type 'long unsigned int', which requires 8 byte alignment
+0x7fffcc6c1724: note: pointer points here
+  80 17 6c cc ff 7f 00 00  00 72 ea b3 1b 43 e6 59  78 a2 f8 68 a6 7f 00 00  40 19 6c cc ff 7f 00 00
+              ^ 
+@@@ sample begin 3:1
+
+code_analysis.cpp:390:17: runtime error: 4.29497e+09 is outside the range of representable values of type 'int'
+@@@ sample end

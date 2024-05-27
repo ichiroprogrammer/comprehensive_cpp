@@ -1,0 +1,57 @@
+# // @@@ sample begin 0:0
+
+# default
+BasedOnStyle: Google
+
+# indents
+AccessModifierOffset: -4
+IndentCaseLabels: false
+IndentWidth: 4
+NamespaceIndentation: None
+
+# alignment
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AlignOperands: true
+AlignTrailingComments: true
+
+#IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex:           '^<.*\.h>'
+    Priority:        -10
+  - Regex:           '^<'
+    Priority:        -9
+  - Regex:           'gtest_wrapper\.h'
+    Priority:        -8
+  - Regex:           'h/.*'
+    Priority:        -7 
+  - Regex:           '.*'
+    Priority:        -6 
+SortIncludes: true
+
+# new line
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: All
+AllowShortBlocksOnASingleLine: false
+BreakBeforeBinaryOperators: All
+BreakBeforeBraces: Custom
+BraceWrapping:
+    AfterClass: false
+    AfterControlStatement: false
+    AfterEnum: false
+    AfterFunction: true
+    AfterNamespace: false
+    AfterObjCDeclaration: false
+    AfterStruct: false
+    AfterUnion: false
+    AfterExternBlock: false
+    BeforeCatch: true
+    BeforeElse: true
+ColumnLimit: 100
+
+# space
+DerivePointerAlignment: false
+PointerAlignment: Left
+
+# // @@@ sample end
+

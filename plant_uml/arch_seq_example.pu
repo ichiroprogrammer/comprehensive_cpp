@@ -1,0 +1,13 @@
+@startuml
+
+actor "User" as user 
+
+user            ->  GuiFrameWork    : "OK"をクリック
+GuiFrameWork    ->  Controller      : 通知
+Controller      ->  Model           : 命令の実行
+View            <<- Model           : 命令完了後、状態変更の通知
+View            ->  Model           : 表示データの取得
+View            ->  GuiFrameWork    : 描画命令
+user            <-  GuiFrameWork    : 表示
+
+@enduml

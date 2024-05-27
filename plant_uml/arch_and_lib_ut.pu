@@ -1,0 +1,60 @@
+@startuml
+
+allow_mixing
+
+rectangle "A_ut.exe" as A_ut_exe {
+    package A {
+        class A_0
+        class A_1
+        class A_2
+    }
+
+    package A_ut {
+        class A_0_ut
+        class A_1_ut
+        class A_2_ut
+    }
+}
+
+rectangle "B_ut.exe" as B_ut_exe {
+    class A_0_stub
+    package B {
+        class B_0
+        class B_1
+    }
+    package B_ut {
+        class B_0_ut
+        class B_1_ut
+    }
+}
+
+rectangle "C_ut.exe" as C_ut_exe {
+    package C
+    package C_ut
+}
+
+A_0 <-up- A_0_ut
+A_1 <-up- A_1_ut
+A_2 <-up- A_2_ut
+
+B_0 <-down- B_0_ut
+B_1 <-down- B_1_ut
+A_0_stub <-down- B_0
+
+A_0 <.down. A_0_stub : A_0_stubのヘッダファイルはa_0.h
+
+C <-up- C_ut
+
+note right of A_0_stub : class A_0の代わり
+
+note as UT_EXE_A
+X_ut.exeは
+Xライブラリの
+UTの実行プログラム
+(D、Eは省略)
+end note
+
+UT_EXE_A .down. A_ut_exe
+UT_EXE_A .down. C_ut_exe
+
+@enduml

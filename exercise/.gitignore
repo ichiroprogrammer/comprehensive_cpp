@@ -1,0 +1,15 @@
+*.a
+*.d
+*.o
+*.gcda
+*.gcno
+*.profraw
+*.exe
+*.exe.done
+*.lcov
+coverage/
+doxygen_result/
+!ut_data/d/
+!ut_data/d/a.d
+!ut_data/o/
+!ut_data/o/a.o

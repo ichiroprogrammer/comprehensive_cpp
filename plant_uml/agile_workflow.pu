@@ -1,0 +1,38 @@
+@startuml
+
+|開発者|
+
+
+:featureブランチ上でのTDDによる機能開発;
+
+repeat :pull-request前作業\n* 自己インスペクション\n* develop→featrueへのマージ\n* コード修正後には必ず全UT\n* インスペクション指摘修正;
+
+    :pull-request;
+
+|他の開発者|
+
+    :インスペクション;
+
+repeat while (pull-request承認?) is (却下)
+
+|開発者|
+
+:pull-request承認後、\nfeatrueブランチから\ndevelopブランチへのマージ;
+
+|CIサーバー|
+
+if(build/UT/IT) then (OK)
+    stop
+    note :機能追加完
+else (ERROR)
+
+endif
+        
+:チーム全員にエラー通知;
+
+|開発者|
+
+:問題点修正/コミット取り消し\n(CIのエラーは、チーム全体の最優先課題\nであるため解決は誰が行っても良い) ;
+stop
+
+@enduml

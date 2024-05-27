@@ -1,0 +1,7 @@
+"このファイルは$HOME/.gvimrcにコピーするかシンボリックリンクを張る。
+
+set guifont=ＭＳ_ゴシック:h10:cSHIFTJIS
+
+let g:bg_coler='black'
+highlight Normal guibg='black' guifg='white'
+

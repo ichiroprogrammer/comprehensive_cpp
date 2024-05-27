@@ -1,0 +1,38 @@
+@startuml
+scale max 700 width
+
+class ios_base
+class basic_ios
+class istream
+note left : std::cinの型
+
+class ifstream
+
+class ostream
+note right : std::coutの型
+
+class ofstream
+
+class iostream
+class stringstream
+class istringstream
+class ostringstream
+class fstream
+
+basic_ios -up-|> ios_base
+istream -up-|> basic_ios
+ostream -up-|> basic_ios
+iostream -up-|> istream
+iostream -up-|> ostream
+
+ifstream -up-|> istream
+istringstream -up-|> istream
+ofstream -up-|> ostream
+ostringstream -up-|> ostream
+
+fstream -up-|> iostream
+stringstream -up-|> iostream
+
+
+@enduml
+

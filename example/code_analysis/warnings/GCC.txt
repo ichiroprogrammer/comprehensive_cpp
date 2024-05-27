@@ -1,0 +1,69 @@
+code_analysis.cpp: In member function ‘virtual void CodeAnalysis_signed_to_unsigned_Test::TestBody()’:
+@@@ sample begin 0:0
+
+code_analysis.cpp:29:15: warning: comparison of integer expressions of different signedness: ‘int32_t’ {aka ‘int’} and ‘uint32_t’ {aka ‘unsigned int’} [-Wsign-compare]
+   29 |     bool b0{x < y};
+      |             ~~^~~
+code_analysis.cpp:33:15: warning: comparison of integer expressions of different signedness: ‘int32_t’ {aka ‘int’} and ‘uint32_t’ {aka ‘unsigned int’} [-Wsign-compare]
+   33 |     bool b1{x < y};
+      |             ~~^~~
+@@@ sample end
+code_analysis.cpp: At global scope:
+code_analysis.cpp:48:7: warning: ‘class Pimpl’ has pointer data members [-Weffc++]
+   48 | class Pimpl {
+      |       ^~~~~
+code_analysis.cpp:48:7: warning:   but does not declare ‘Pimpl(const Pimpl&)’ [-Weffc++]
+code_analysis.cpp:48:7: warning:   or ‘operator=(const Pimpl&)’ [-Weffc++]
+code_analysis.cpp:54:16: note: pointer member ‘Pimpl::core_’ declared here
+   54 |     PimplCore* core_;
+      |                ^~~~~
+@@@ sample begin 0:1
+
+code_analysis.cpp: In destructor ‘Pimpl::~Pimpl()’:
+code_analysis.cpp:51:16: warning: possible problem detected in invocation of ‘operator delete’ [-Wdelete-incomplete]
+   51 |     ~Pimpl() { delete core_; }  // 不完全型のdelete
+      |                ^~~~~~~~~~~~
+code_analysis.cpp:51:23: warning: invalid use of incomplete type ‘class Pimpl::PimplCore’
+   51 |     ~Pimpl() { delete core_; }  // 不完全型のdelete
+      |                       ^~~~~
+code_analysis.cpp:53:11: note: forward declaration of ‘class Pimpl::PimplCore’
+   53 |     class PimplCore;
+      |           ^~~~~~~~~
+@@@ sample end
+code_analysis.cpp:51:16: note: neither the destructor nor the class-specific ‘operator delete’ will be called, even if they are declared when the class is defined
+   51 |     ~Pimpl() { delete core_; }  // 不完全型のdelete
+      |                ^~~~~~~~~~~~
+code_analysis.cpp: At global scope:
+code_analysis.cpp:57:14: warning: ‘class Pimpl::PimplCore’ has pointer data members [-Weffc++]
+   57 | class Pimpl::PimplCore {
+      |              ^~~~~~~~~
+code_analysis.cpp:57:14: warning:   but does not declare ‘Pimpl::PimplCore(const Pimpl::PimplCore&)’ [-Weffc++]
+code_analysis.cpp:57:14: warning:   or ‘operator=(const Pimpl::PimplCore&)’ [-Weffc++]
+code_analysis.cpp:63:8: note: pointer member ‘Pimpl::PimplCore::x_’ declared here
+   63 |     X* x_;
+      |        ^~
+@@@ sample begin 0:2
+
+code_analysis.cpp: In function ‘std::string prevent_copy_elision()’:
+code_analysis.cpp:82:21: warning: moving a local object in a return statement prevents copy elision [-Wpessimizing-move]
+   82 |     return std::move(ret);  // std::moveのためにRVOが阻害される
+      |            ~~~~~~~~~^~~~~
+code_analysis.cpp:82:21: note: remove ‘std::move’ call
+// @@@ sample end
+code_analysis.cpp: At global scope:
+code_analysis.cpp:117:7: warning: ‘class IllegalShallowCopy’ has pointer data members [-Weffc++]
+  117 | class IllegalShallowCopy {
+      |       ^~~~~~~~~~~~~~~~~~
+code_analysis.cpp:117:7: warning:   but does not declare ‘IllegalShallowCopy(const IllegalShallowCopy&)’ [-Weffc++]
+code_analysis.cpp:117:7: warning:   or ‘operator=(const IllegalShallowCopy&)’ [-Weffc++]
+code_analysis.cpp:123:8: note: pointer member ‘IllegalShallowCopy::x_’ declared here
+  123 |     X* x_;
+      |        ^~
+code_analysis.cpp: In function ‘int32_t non_return_statement()’:
+code_analysis.cpp:279:1: warning: no return statement in function returning non-void [-Wreturn-type]
+  279 | }
+      | ^
+code_analysis.cpp: In member function ‘const char* NullObj::Get()’:
+code_analysis.cpp:258:9: warning: ‘nonnull’ argument ‘this’ compared to NULL [-Wnonnull-compare]
+  258 |         if (this == nullptr) {
+      |         ^~

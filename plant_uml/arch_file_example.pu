@@ -1,0 +1,33 @@
+@startditaa
+
+ project/ -+- app/ --------+- src/ -+- main.cpp
+           |                      
+           +- controller/ -+- h/ ---+- controller.h
+           |               |       
+           |               +- src/ -+- controller.cpp
+           |               |      
+           |               +- ut/ --+- controller_ut.cpp
+           |
+           |
+           +- model/ ------+- h/ ---+- model.h
+           |               |        |
+           |               |        +- observer.h
+           |               |      
+           |               +- src/ -+- model.cpp
+           |               |        |
+           |               |        +- model_local.h
+           |               |        |
+           |               |        +- observer.cpp
+           |               |      
+           |               +- ut/  -+- model_ut.cpp
+           |                        |
+           |                        +- observer_ut.cpp
+           |                      
+           +- view/ -------+- h/ ---+- view.h
+                           |       
+                           +- src/ -+- view.cpp
+                           |        |
+                           |        +- view_local.h
+                           |      
+                           +- ut/ --+- view_ut.cpp
+@endditaa

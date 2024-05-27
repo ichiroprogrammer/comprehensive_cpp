@@ -1,0 +1,12 @@
+app/src/main.cpp:109:Options
+cmd       : GenPkg
+in        : 
+out       : 
+recursive : true
+src_as_pkg: false
+log       : it_data/log_exp.txt.act
+dirs      : ut_data
+exclude   : 
+parsed    : true
+app/src/main.cpp: 51:start GenPkg
+app/src/main.cpp:114:Exit:0

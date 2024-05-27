@@ -1,0 +1,69 @@
+@startuml
+
+:実装する機能を決定;
+
+if(新規クラスを作る) then (yes)
+    :設計;
+        note right
+            新規クラスを宣言する("*.h"を書く)。
+            その前にクラス図を描いても良い。
+        end note
+
+    :UT新規作成;
+        note right
+            "*.cpp"の中身がないため
+            リンクエラーは解消できない。
+        end note
+
+    :"*.cpp"を書く;
+        note right
+            ビルドできるまで、
+            UTと.cppを修正。
+        end note
+
+else(no(既存クラスの修正))
+    :設計;
+        note right
+            該当するクラス宣言
+            ("*.h")の修正を行う。
+        end note
+
+    :UTの追加;
+        note right
+            新規関数が追加された場合
+            リンクエラーは解消できない。
+        end note
+
+    :"*.cpp"の修正;
+        note right
+            ビルドできるまで、
+            UTと.cppを修正。
+        end note
+endif
+
+if(UTはエラーするか？) then (no)
+    :エラーするUTを追加;
+        note right
+            エラーすることでこの新規UTが
+            実行されていることを確認する。
+        end note
+else(yes)
+
+endif
+
+while(UTはパスするか?) is (no)
+    :UTがパスするまでデバッグ;
+        note right
+            UTのカバレッジが不十分ならば、
+            UTの追加も行う。
+        end note
+endwhile(yes)
+
+while(新規ソースコードのインスペクションを行う) is (問題あり)
+    :リファクタリングを行う;
+endwhile(問題なし)
+
+:commit;
+
+@enduml
+

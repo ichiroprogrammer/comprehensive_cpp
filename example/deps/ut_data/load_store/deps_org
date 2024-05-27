@@ -1,0 +1,46 @@
+#deps
+ut_data/app1 -> ut_data/app1/mod1 : 2 ut_data/app1/mod1/mod1_1.hpp ut_data/app1/mod1/mod1_2.hpp
+ut_data/app1/mod1 -> ut_data/app1 : 0 
+
+ut_data/app1 -> ut_data/app1/mod2 : 0 
+ut_data/app1/mod2 -> ut_data/app1 : 0 
+
+ut_data/app1 -> ut_data/app1/mod2/mod2_1 : 0 
+ut_data/app1/mod2/mod2_1 -> ut_data/app1 : 0 
+
+ut_data/app1 -> ut_data/app1/mod2/mod2_2 : 0 
+ut_data/app1/mod2/mod2_2 -> ut_data/app1 : 1 ut_data/app1/a_1_cpp.h
+
+ut_data/app1 -> ut_data/app2 : 0 
+ut_data/app2 -> ut_data/app1 : 1 ut_data/app1/a_2_cpp.hpp
+
+ut_data/app1/mod1 -> ut_data/app1/mod2 : 1 ut_data/app1/mod2/mod2_1.hpp
+ut_data/app1/mod2 -> ut_data/app1/mod1 : 0 
+
+ut_data/app1/mod1 -> ut_data/app1/mod2/mod2_1 : 0 
+ut_data/app1/mod2/mod2_1 -> ut_data/app1/mod1 : 0 
+
+ut_data/app1/mod1 -> ut_data/app1/mod2/mod2_2 : 1 ut_data/app1/mod2/mod2_2/mod2_2_1.h
+ut_data/app1/mod2/mod2_2 -> ut_data/app1/mod1 : 0 
+
+ut_data/app1/mod1 -> ut_data/app2 : 0 
+ut_data/app2 -> ut_data/app1/mod1 : 2 ut_data/app1/mod1/mod1_1.hpp ut_data/app1/mod1/mod1_2.hpp
+
+ut_data/app1/mod2 -> ut_data/app1/mod2/mod2_1 : 0 
+ut_data/app1/mod2/mod2_1 -> ut_data/app1/mod2 : 0 
+
+ut_data/app1/mod2 -> ut_data/app1/mod2/mod2_2 : 0 
+ut_data/app1/mod2/mod2_2 -> ut_data/app1/mod2 : 0 
+
+ut_data/app1/mod2 -> ut_data/app2 : 0 
+ut_data/app2 -> ut_data/app1/mod2 : 0 
+
+ut_data/app1/mod2/mod2_1 -> ut_data/app1/mod2/mod2_2 : 1 ut_data/app1/mod2/mod2_2/mod2_2_1.h
+ut_data/app1/mod2/mod2_2 -> ut_data/app1/mod2/mod2_1 : 2 ut_data/app1/mod2/mod2_1/mod2_1_1.h
+
+ut_data/app1/mod2/mod2_1 -> ut_data/app2 : 0 
+ut_data/app2 -> ut_data/app1/mod2/mod2_1 : 0 
+
+ut_data/app1/mod2/mod2_2 -> ut_data/app2 : 0 
+ut_data/app2 -> ut_data/app1/mod2/mod2_2 : 0 
+

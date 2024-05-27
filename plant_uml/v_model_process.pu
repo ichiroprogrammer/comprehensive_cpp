@@ -1,0 +1,46 @@
+@startuml
+
+skinparam shadowing false
+
+skinparam interface {
+  BorderColor #FFFFFF
+  BackgroundColor #FFFFFF
+}
+
+rectangle 要件定義 as RD
+rectangle 基本設計 as BD
+rectangle 詳細設計 as DD
+rectangle コーディング as CD
+rectangle 単体テスト as UT
+rectangle 結合テスト as IT
+rectangle 受け入れテスト as RT
+
+RD -down-> BD
+BD -down-> DD
+DD -down-> CD
+CD -up-> UT
+UT -up-> IT
+IT -up-> RT
+
+() " " as SP00
+() " " as SP01
+() " " as SP02
+() " " as SP03
+
+RD  <.right.  SP00
+SP00 .right.  SP01
+SP01 .right.  SP02
+SP02 .right.  SP03
+SP03 .right.> RT
+
+() " " as SP10
+() " " as SP11
+
+BD   <.right.  SP10
+SP10  .right.  SP11
+SP11  .right.> IT
+
+DD <.right.> UT
+
+@enduml
+

@@ -1,0 +1,38 @@
+@startuml
+scale max 730 width
+rectangle "app" as app {
+    rectangle "ut" as app___ut
+}
+rectangle "dependency" as dependency {
+    rectangle "ut" as dependency___ut
+}
+rectangle "file_utils" as file_utils {
+    rectangle "ut" as file_utils___ut
+}
+rectangle "lib" as lib {
+    rectangle "ut" as lib___ut
+}
+rectangle "logging" as logging {
+    rectangle "ut" as logging___ut
+}
+
+app___ut "1" -[#green]-> app
+app "1" -[#green]-> dependency
+app "3" -[#green]-> file_utils
+app "2" -[#green]-> lib
+app "1" -[#green]-> logging
+app___ut "1" -[#green]-> file_utils
+app___ut "1" -[#green]-> lib
+dependency___ut "16" -[#green]-> dependency
+dependency "14" -[#green]-> file_utils
+dependency "4" -[#green]-> lib
+dependency___ut "10" -[#green]-> file_utils
+file_utils___ut "6" -[#green]-> file_utils
+file_utils___ut "1" -[#green]-> lib
+file_utils___ut "1" -[#green]-> logging
+lib___ut "1" -[#green]-> lib
+logging "2" -[#green]-> lib
+logging___ut "1" -[#green]-> lib
+logging___ut "1" -[#green]-> logging
+
+@enduml

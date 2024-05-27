@@ -1,0 +1,33 @@
+@startuml
+
+:コードインスペクション;
+    note right
+        * これから機能追加/修正するソースコード
+        * コミット前の自作ソースコード
+        * サイクロマティック複雑度が高い関数
+        * 凝集度の低いクラス
+        等に対して行う。
+    end note
+
+while(ソースコードに問題がある?) is (yes)
+
+    :ソースコード修正;
+
+    :修正前後で動作の違いがないことを確認;
+        note right
+            通常は、UT等の回帰テストを
+            パスさせることで確認する。
+        end note
+
+endwhile(no)
+
+if(ソースコードを修正した) then (yes)
+:commit;
+else (no)
+
+endif
+
+stop
+
+@enduml
+

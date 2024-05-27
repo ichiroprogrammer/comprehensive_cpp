@@ -1,0 +1,27 @@
+@startuml
+
+hide footbox
+
+participant main
+participant Controller
+participant "std::cin"
+
+alt not use DI
+
+    create Controller
+    main -> Controller : 生成
+    Controller -> "std::cin" : getline
+
+else use DI
+
+    create xxxstream
+    main -> xxxstream : 生成
+    note right : cin, ifstream, \nistringstream等
+
+    create Controller
+    main -> Controller : 生成(xxxstream)
+    
+    Controller -> xxxstream : getline
+
+end
+@enduml

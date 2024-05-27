@@ -1,0 +1,37 @@
+@startuml
+participant Controller
+participant View
+participant Model
+participant MainThread
+
+MainThread ->> Controller : 入力監視用スレッド起動
+MainThread -> MainThread : Wait
+note right : 終了まで待つ
+activate MainThread
+
+Controller -> Controller : getline
+activate Controller
+
+[->> Controller : コマンド入力
+deactivate Controller
+
+Controller ->> Model:ConvertStoreAsync
+activate Model
+
+note right 
+ConvertStoreAsyncは
+上限なく同時実行できる
+end note
+
+Model->View : Update
+activate View
+
+note left 
+Modelの
+内容を表示
+end note
+
+deactivate View
+deactivate Model
+
+@enduml
