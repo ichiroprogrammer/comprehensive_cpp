@@ -67,3 +67,10 @@ code_analysis.cpp: In member function ‘const char* NullObj::Get()’:
 code_analysis.cpp:258:9: warning: ‘nonnull’ argument ‘this’ compared to NULL [-Wnonnull-compare]
   258 |         if (this == nullptr) {
       |         ^~
+code_analysis.cpp: In function ‘void illegal_alignment()’:
+code_analysis.cpp:332:14: warning: ‘y.Y::buff’ is used uninitialized [-Wuninitialized]
+  332 |     auto b = *a;
+      |              ^~
+code_analysis.cpp:329:10: note: ‘y’ declared here
+  329 |     Y    y;
+      |          ^

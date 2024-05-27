@@ -1,15 +1,21 @@
 @@@ sample begin 1:0
 
-code_analysis.cpp:158:17: error: Array 'array[8]' accessed at index 8, which is out of bounds. [arrayIndexOutOfBounds]
+[1mcode_analysis.cpp:158:17: [31merror:[39m Array 'array[8]' accessed at index 8, which is out of bounds. [arrayIndexOutOfBounds][0m
     return array[index];
                 ^
-code_analysis.cpp:163:18: note: Calling function 'array_access', 1st argument '8' value is 8
+[1mcode_analysis.cpp:163:18: [2mnote:[0m Calling function 'array_access', 1st argument '8' value is 8
     array_access(8);  // off-by-1 このようなコードは意外なほど多い
                  ^
-code_analysis.cpp:158:17: note: Array index out of bounds
+[1mcode_analysis.cpp:158:17: [2mnote:[0m Array index out of bounds
     return array[index];
                 ^
 @@@ sample end
-code_analysis.cpp:313:47: error: Invalid div() argument nr 2. The value is 0 but the valid values are ':-1,1:'. [invalidFunctionArg]
+[1mcode_analysis.cpp:279:1: [31merror:[39m Found a exit path from function with non-void return type that has missing return statement [missingReturn][0m
+}
+^
+[1mcode_analysis.cpp:313:47: [31merror:[39m Invalid div() argument nr 2. The value is 0 but the valid values are ':-1,1:'. [invalidFunctionArg][0m
 void float_div_by_zero() noexcept { div(3.0F, 0); }
                                               ^
+[1mcode_analysis.cpp:245:57: [31merror:[39m Shifting by a negative value is undefined behaviour [shiftNegative][0m
+int32_t shift(int32_t x, int32_t y) noexcept { return x << y; }
+                                                        ^

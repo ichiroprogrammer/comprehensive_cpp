@@ -1,4 +1,4 @@
-SHARED:=../../../shared/
+SHARED:=../../deep/
 include $(SHARED)make/env.mk
 
 EXES_UT:=$(addprefix $(O),lib_ut app_ut file_utils_ut dependency_ut logging_ut)

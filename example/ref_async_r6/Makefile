@@ -3,7 +3,7 @@ SRCS:=arg_ut.cpp controller_ut.cpp model_ut.cpp lib_ut.cpp \
 
 SRCS2:=main.cpp arg.cpp controller.cpp model.cpp view.cpp lib.cpp 
 
-SHARED:=../../../shared/
+SHARED:=../../deep/
 include $(SHARED)make/env.mk
 include $(SHARED)make/example.mk
 include $(SHARED)make/gtest.mk

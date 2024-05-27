@@ -3,37 +3,37 @@
         "arguments": [
             "g++",
             "-c",
-            "-I../../../googletest/googletest/include/",
+            "-I../../googletest/googletest/include/",
             "-I",
-            "../../../googletest/googletest/",
+            "../../googletest/googletest/",
             "-D_GLIBCXX_USE_CXX11_ABI=0",
             "-o",
             "../gtest/g++/gtest_main.o",
-            "../../../googletest/googletest/src/gtest_main.cc"
+            "../../googletest/googletest/src/gtest_main.cc"
         ],
         "directory": ".",
-        "file": "../../../googletest/googletest/src/gtest_main.cc"
+        "file": "../../googletest/googletest/src/gtest_main.cc"
     },
     {
         "arguments": [
             "g++",
             "-c",
-            "-I../../../googletest/googletest/include/",
+            "-I../../googletest/googletest/include/",
             "-I",
-            "../../../googletest/googletest/",
+            "../../googletest/googletest/",
             "-D_GLIBCXX_USE_CXX11_ABI=0",
             "-o",
             "../gtest/g++/gtest-all.o",
-            "../../../googletest/googletest/src/gtest-all.cc"
+            "../../googletest/googletest/src/gtest-all.cc"
         ],
         "directory": ".",
-        "file": "../../../googletest/googletest/src/gtest-all.cc"
+        "file": "../../googletest/googletest/src/gtest-all.cc"
     },
     {
         "arguments": [
             "g++",
             "-c",
-            "-I../../../googletest/googletest/include/",
+            "-I../../googletest/googletest/include/",
             "-I../h",
             "-std=c++17",
             "-Wall",

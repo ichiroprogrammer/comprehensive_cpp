@@ -4,7 +4,7 @@ SRCS:=\
     scoped_guard_ut.cpp string_vector.cpp string_view_ut.cpp syntax_ut.cpp type_ut.cpp \
 	type_const_ut.cpp
 
-SHARED:=../../../shared/
+SHARED:=../../deep/
 include $(SHARED)make/env.mk
 include $(SHARED)make/example.mk
 include $(SHARED)make/gtest.mk

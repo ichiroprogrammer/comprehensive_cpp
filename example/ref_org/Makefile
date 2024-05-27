@@ -1,6 +1,6 @@
 SRCS2:=main.cpp
 
-SHARED:=../../../shared/
+SHARED:=../../deep/
 include $(SHARED)make/env.mk
 include $(SHARED)make/example.mk
 

@@ -5,7 +5,7 @@
 readonly BASE_DIR=$(cd $(dirname $0); pwd)
 readonly BASENAME="$(basename $0)"
 
-$BASE_DIR/../../../shared/build/build_core.sh $BASE_DIR $@ -i
+$BASE_DIR/../../deep/build/build_core.sh $BASE_DIR $@ -i
 # build_core.shによって下記が行われ、何らかのエラーが発生した場合、非0でexitする。
 # * ビルド & UT & IT
 # * 静的解析
