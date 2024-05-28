@@ -4,7 +4,7 @@ SRCS:=\
     null_object.cpp nvi.cpp observer.cpp pimpl.cpp proxy.cpp raii.cpp singleton.cpp state.cpp \
     strategy.cpp template_method.cpp visitor.cpp crtp.cpp \
 
-SHARED:=../../../shared/
+SHARED:=../../deep/
 include $(SHARED)make/env.mk
 include $(SHARED)make/example.mk
 include $(SHARED)make/gtest.mk

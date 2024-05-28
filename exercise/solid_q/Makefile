@@ -4,7 +4,7 @@ SRCS:=\
     lsp_test_score_ut.cpp ocp_test_score.cpp ocp_test_score_ut.cpp \
     srp_test_score.cpp srp_test_score_ut.cpp
 
-SHARED:=../../../shared/
+SHARED:=../../deep/
 include $(SHARED)make/env.mk
 include $(SHARED)make/example.mk
 include $(SHARED)make/gtest.mk
