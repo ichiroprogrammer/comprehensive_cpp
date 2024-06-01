@@ -1,6 +1,6 @@
 [submodule "deep"]
 	path = deep
-	url = git@github-ichiroprogrammer:ichiroprogrammer/deep_cpp.git
+	url = git@github:ichiroprogrammer/deep_cpp.git
 [submodule "md_gen"]
 	path = md_gen
 	url = git@github.com:ichiroprogrammer/md_gen
