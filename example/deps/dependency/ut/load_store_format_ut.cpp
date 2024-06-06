@@ -1,7 +1,7 @@
 #include "gtest_wrapper.h"
 
-#include "h/load_store.h"
-#include "h/load_store_row.h"
+#include "file_utils/load_store.h"
+#include "file_utils/load_store_row.h"
 
 #include "load_store_format.h"
 

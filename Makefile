@@ -1,7 +1,7 @@
 MAKEFILE:=$(word $(words $(MAKEFILE_LIST)), $(MAKEFILE_LIST))
 
-TARGET:=o/cpp_guideline_org.md
-TITLE=C++ Programming Guideline($(VERSION))
+TARGET:=o/comprehensive_cpp.md
+TITLE=Comprehensive Knowledge of C++($(VERSION))
 
 MD_SEC_NUM:=--sec_num
 INDEX_OPT:=--exclude $(addsuffix :2,$(MDS) sample_code.md)

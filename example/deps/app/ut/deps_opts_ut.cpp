@@ -1,6 +1,6 @@
 #include "gtest_wrapper.h"
 
-#include "h/nstd.h"
+#include "lib/nstd.h"
 
 #include "deps_opts.h"
 

@@ -3,9 +3,9 @@
 #include <regex>
 #include <stdexcept>
 
-#include "h/deps_scenario.h"
-#include "h/load_store.h"
-#include "h/nstd.h"
+#include "dependency/deps_scenario.h"
+#include "file_utils/load_store.h"
+#include "lib/nstd.h"
 
 #include "arch_pkg.h"
 #include "cpp_deps.h"

@@ -77,14 +77,14 @@ INC_UT=-Iut -I$(GTEST_INC)
 
 ### lib 
 $(O)lib/ut/%.o : lib/ut/%.cpp
-	$(CXX) -Ilib $(INC_UT) $(SANITIZER_OPT) $(CCFLAGS) -c -o $@ $<
+	$(CXX) -Ilib/h $(INC_UT) $(SANITIZER_OPT) $(CCFLAGS) -c -o $@ $<
 
 $(O)lib_ut : $(LIB_UT_OBJS) $(GTEST_LIB)
 	$(CXX) -o $@ $^ -lpthread  -lstdc++fs $(SANITIZER_OPT) 
 
 # @@@ sample begin 0:0
 ### logging
-INC_LOGGER=-Ilib -Ilogging  # インクルードパスの指定
+INC_LOGGER=-Ilib/h -Ilogging/h  # インクルードパスの指定
 
 # 指定されたインクルードパスを使用したコンパイル
 $(O)logging/src/%.o : logging/src/%.cpp
@@ -103,7 +103,7 @@ $(O)logging_ut : $(LOGGER_UT_OBJS) $(FILE_UTILS_A) $(LOGGER_A) $(DEPENDENCY_A) $
 	$(CXX) -o $@ $^ -lpthread  -lstdc++fs $(SANITIZER_OPT) 
 
 ### file_utils
-INC_FILE_UTILS:=-Ilib -Ilogging -Ifile_utils  # インクルードパスの指定
+INC_FILE_UTILS:=-Ilib/h -Ilogging/h -Ifile_utils/h  # インクルードパスの指定
 
 # 指定されたインクルードパスを使用したコンパイル
 $(O)file_utils/src/%.o : file_utils/src/%.cpp
@@ -123,7 +123,7 @@ $(O)file_utils_ut : $(FILE_UTILS_UT_OBJS) $(FILE_UTILS_A) $(LOGGER_A) $(GTEST_LI
 # @@@ sample end
 
 ### dependency
-INC_DEPENDENCY:=-Ilib -Ifile_utils -Idependency
+INC_DEPENDENCY:=-Ilib/h -Ifile_utils/h -Idependency/h
 $(O)dependency/src/%.o : dependency/src/%.cpp
 	$(CXX) $(INC_DEPENDENCY) $(SANITIZER_OPT) $(CCFLAGS) -c -o $@ $<
 
@@ -137,7 +137,7 @@ $(O)dependency_ut : $(DEPENDENCY_UT_OBJS) $(FILE_UTILS_A) $(DEPENDENCY_A) $(GTES
 	$(CXX) -o $@ $^ -lpthread  -lstdc++fs $(SANITIZER_OPT) 
 
 ### app
-INC_APP:=-Ilib -Ilogging -Ifile_utils -Idependency
+INC_APP:=-Ilib/h -Ilogging/h -Ifile_utils/h -Idependency/h
 $(O)app/src/%.o : app/src/%.cpp
 	$(CXX) $(INC_APP) $(SANITIZER_OPT) $(CCFLAGS) -c -o $@ $<
 
@@ -155,8 +155,9 @@ $(O)deps: $(MAIN_OBJS) $(APP_A) $(FILE_UTILS_A) $(DEPENDENCY_A) $(LOGGER_A)
 	$(CXX) -o $@ $^ -lpthread  -lstdc++fs $(SANITIZER_OPT) 
 
 ### *.d
-INC_D:=$(addprefix -I,lib logging file_utils dependency) \
-	   $(addprefix -I,$(addsuffix /src,app logging file_utils dependency)) -I$(SHARED)h -I../h
+INC_D:=$(addprefix -I,lib/h logging/h file_utils/h dependency/h) \
+	   $(addprefix -I,$(addsuffix /src,app logging file_utils dependency)) \
+	   -I$(SHARED)h -I../h
 $(D)%.d : %.cpp
 	$(CXX) $(INC_UT) $(INC_D) -E -MM -w $< | sed -e 's@^\([^ ]\)@$$(O)$(dir $<)\1@g' > $@
 

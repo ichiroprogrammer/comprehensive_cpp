@@ -6,7 +6,7 @@
 
 #include "gtest_wrapper.h"
 
-#include "h/nstd.h"
+#include "lib/nstd.h"
 
 namespace Nstd {
 namespace {

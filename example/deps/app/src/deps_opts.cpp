@@ -3,7 +3,7 @@
 #include <cassert>
 #include <sstream>
 
-#include "h/nstd.h"
+#include "lib/nstd.h"
 
 #include "deps_opts.h"
 

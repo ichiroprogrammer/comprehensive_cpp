@@ -2,9 +2,9 @@
 
 #include "gtest_wrapper.h"
 
-#include "h/deps_scenario.h"
-#include "h/load_store.h"
-#include "h/load_store_row.h"
+#include "dependency/deps_scenario.h"
+#include "file_utils/load_store.h"
+#include "file_utils/load_store_row.h"
 
 namespace Dependency {
 namespace {

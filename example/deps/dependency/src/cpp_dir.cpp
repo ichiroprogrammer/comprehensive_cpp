@@ -2,7 +2,7 @@
 #include <sstream>
 #include <tuple>
 
-#include "h/nstd.h"
+#include "lib/nstd.h"
 
 #include "cpp_dir.h"
 #include "cpp_src.h"

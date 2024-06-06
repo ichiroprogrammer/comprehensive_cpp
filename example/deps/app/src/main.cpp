@@ -3,8 +3,8 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "h/deps_scenario.h"
-#include "h/logger.h"
+#include "dependency/deps_scenario.h"
+#include "logging/logger.h"
 
 #include "deps_opts.h"
 

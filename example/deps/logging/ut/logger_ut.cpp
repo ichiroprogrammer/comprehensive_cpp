@@ -2,7 +2,7 @@
 
 #include "gtest_wrapper.h"
 
-#include "h/logger.h"
+#include "logging/logger.h"
 
 namespace {
 

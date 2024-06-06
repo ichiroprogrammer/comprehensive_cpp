@@ -1,8 +1,8 @@
 #include "gtest_wrapper.h"
 
-#include "h/load_store.h"
-#include "h/load_store_row.h"
-#include "h/path_utils.h"
+#include "file_utils/load_store.h"
+#include "file_utils/load_store_row.h"
+#include "file_utils/path_utils.h"
 
 namespace FileUtils {
 namespace {
