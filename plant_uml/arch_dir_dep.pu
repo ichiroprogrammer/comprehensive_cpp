@@ -5,19 +5,19 @@ rectangle app {
 }
 
 rectangle controller {
-    rectangle  h as controller_h
+    rectangle  "h/controller" as controller_h
     rectangle  src as controller_src
     rectangle  ut as controller_ut
 }
 
 rectangle model {
-    rectangle  h as model_h
+    rectangle  "h/model" as model_h
     rectangle  src as model_src
     rectangle  ut as model_ut
 }
 
 rectangle view {
-    rectangle  h as view_h
+    rectangle  "h/view" as view_h
     rectangle  src as view_src
     rectangle  ut as view_ut
 }
