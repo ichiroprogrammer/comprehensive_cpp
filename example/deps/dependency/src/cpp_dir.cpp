@@ -2,10 +2,9 @@
 #include <sstream>
 #include <tuple>
 
-#include "lib/nstd.h"
-
 #include "cpp_dir.h"
 #include "cpp_src.h"
+#include "lib/nstd.h"
 
 namespace Dependency {
 

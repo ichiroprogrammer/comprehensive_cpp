@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 readonly BASE_DIR=$(cd $(dirname $0); pwd)
 readonly BASENAME="$(basename $0)"

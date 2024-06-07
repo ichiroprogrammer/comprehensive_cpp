@@ -1,0 +1,29 @@
+@startsalt
+{
+{T
++deps                    | depsアプリのソースコード
+++app                    | このディレクトリはエクスポートせず、インポートのみ(h/は存在しない)
++++src                   | main.cppを含むディレクトリ
++++ut                    | main.cpを除くapp内のファイルの単体テスト
+++dependency             | パッケージdependency
++++src                   | dependency実装ファイル、外部非公開ヘッダ
++++ut                    | dependencyの単体テスト
++++h                     | -
+++++dependency           | 外部公開ヘッダ
+++file_utils             | パッケージfile_utils
++++src                   | file_utils実装ファイル、外部非公開ヘッダ
++++ut                    | file_utilsの単体テスト
++++h                     | -
+++++file_utils           | 外部公開ヘッダ
+++lib                    | パッケージlibはテンプレートライブラリ(src/は存在しない)
++++ut                    | libの単体テスト
++++h                     | -
+++++lib                  | 外部公開ヘッダ
+++logging                | パッケージlogging
++++src                   | logging実装ファイル、外部非公開ヘッダ
++++ut                    | loggingの単体テスト
++++h                     | -
+++++logging              | 外部公開ヘッダ
+}
+}
+@endsalt

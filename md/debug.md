@@ -248,7 +248,7 @@ TATとはターンアラウンドタイムの略語であり、一度の試行�
   (「[ログ取得ライブラリの開発](---)」、「[ログ取得ライブラリの開発2](---)」参照)
 
 ```cpp
-    // @@@ example/deps/logging/h/logger.h #0:0 begin
+    // @@@ example/deps/logging/h/logging/logger.h #0:0 begin
 ```
 
 * オブジェクトを文字列変換するため関数

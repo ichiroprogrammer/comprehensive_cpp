@@ -4,9 +4,8 @@
 #include <stdexcept>
 
 #include "dependency/deps_scenario.h"
-#include "logging/logger.h"
-
 #include "deps_opts.h"
+#include "logging/logger.h"
 
 namespace {
 

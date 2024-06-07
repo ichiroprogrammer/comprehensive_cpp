@@ -1,9 +1,8 @@
 #include <cassert>
 #include <sstream>
 
-#include "lib/nstd.h"
-
 #include "arch_pkg.h"
+#include "lib/nstd.h"
 
 namespace Dependency {
 

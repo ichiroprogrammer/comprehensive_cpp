@@ -3,9 +3,8 @@
 #include <cassert>
 #include <sstream>
 
-#include "lib/nstd.h"
-
 #include "deps_opts.h"
+#include "lib/nstd.h"
 
 namespace App {
 std::string DepsOpts::Help()

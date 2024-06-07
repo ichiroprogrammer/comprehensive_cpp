@@ -1,8 +1,7 @@
 #include "gtest_wrapper.h"
 
-#include "lib/nstd.h"
-
 #include "deps_opts.h"
+#include "lib/nstd.h"
 
 namespace App {
 namespace {

@@ -3,7 +3,6 @@
 #include <regex>
 
 #include "file_utils/load_store.h"
-
 #include "load_store_format.h"
 
 namespace Dependency {

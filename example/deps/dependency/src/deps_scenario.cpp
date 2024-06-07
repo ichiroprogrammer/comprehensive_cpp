@@ -3,14 +3,16 @@
 #include <regex>
 #include <stdexcept>
 
-#include "dependency/deps_scenario.h"
-#include "file_utils/load_store.h"
-#include "lib/nstd.h"
+#include "arch_pkg.h"  // 実装用ヘッダファイル
+// @@@ sample begin 0:0
 
-#include "arch_pkg.h"
-#include "cpp_deps.h"
-#include "cpp_dir.h"
-#include "cpp_src.h"
+#include "cpp_deps.h"                  // 実装用ヘッダファイル
+#include "cpp_dir.h"                   // 実装用ヘッダファイル
+#include "cpp_src.h"                   // 実装用ヘッダファイル
+#include "dependency/deps_scenario.h"  // dependencyパッケージからのインポート
+#include "file_utils/load_store.h"     // file_utilsパッケージからのインポート
+#include "lib/nstd.h"                  // libパッケージからのインポート
+// @@@ sample end
 #include "load_store_format.h"
 
 namespace Dependency {
