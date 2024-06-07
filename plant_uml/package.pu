@@ -4,7 +4,7 @@ package PackageA {
 }
 
 package PackageB {
-    rectangle "h" as h {
+    rectangle "h/PackageB" as h {
         rectangle "B0.h" as B0_h
         rectangle "B3.h" as B3_h
     }
@@ -31,7 +31,7 @@ B2_cpp -up-> B2_h
 B2_cpp -down-> PackageSubB
 
 note top of h
-hに入っている
+h/PackageBに入っている
 ヘッダファイルのみが
 外部公開される
 end note
