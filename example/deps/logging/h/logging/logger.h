@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <string_view>
 
 #include "lib/nstd.h"
 
@@ -17,8 +18,12 @@ public:
     template <typename HEAD, typename... TAIL>
     void Set(char const* filename, uint32_t line_no, HEAD const& head, TAIL... tails)
     {
+        auto   path     = std::string_view{filename};
+        size_t npos     = path.find_last_of('/');
+        auto   basename = (npos != std::string_view::npos) ? path.substr(npos + 1) : path;
+
         os_.width(12);
-        os_ << filename << ":";
+        os_ << basename << ":";
 
         os_.width(3);
         os_ << line_no;

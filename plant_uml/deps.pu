@@ -2,9 +2,27 @@
 scale max 730 width
 rectangle "app" as app
 rectangle "dependency" as dependency
-rectangle "file_utils" as file_utils
+rectangle "file_utils" as file_utils {
+    rectangle "build" as file_utils___build {
+        rectangle "CMakeFiles" as file_utils___build___CMakeFiles {
+            rectangle "3.22.1" as file_utils___build___CMakeFiles___3.22.1 {
+                rectangle "CompilerIdC" as file_utils___build___CMakeFiles___3.22.1___CompilerIdC
+                rectangle "CompilerIdCXX" as file_utils___build___CMakeFiles___3.22.1___CompilerIdCXX
+            }
+        }
+    }
+}
 rectangle "lib" as lib
-rectangle "logging" as logging
+rectangle "logging" as logging {
+    rectangle "build" as logging___build {
+        rectangle "CMakeFiles" as logging___build___CMakeFiles {
+            rectangle "3.22.1" as logging___build___CMakeFiles___3.22.1 {
+                rectangle "CompilerIdC" as logging___build___CMakeFiles___3.22.1___CompilerIdC
+                rectangle "CompilerIdCXX" as logging___build___CMakeFiles___3.22.1___CompilerIdCXX
+            }
+        }
+    }
+}
 
 app "1" -[#green]-> dependency
 app "4" -[#green]-> file_utils

@@ -7,12 +7,28 @@ rectangle "dependency" as dependency {
     rectangle "ut" as dependency___ut
 }
 rectangle "file_utils" as file_utils {
+    rectangle "build" as file_utils___build {
+        rectangle "CMakeFiles" as file_utils___build___CMakeFiles {
+            rectangle "3.22.1" as file_utils___build___CMakeFiles___3.22.1 {
+                rectangle "CompilerIdC" as file_utils___build___CMakeFiles___3.22.1___CompilerIdC
+                rectangle "CompilerIdCXX" as file_utils___build___CMakeFiles___3.22.1___CompilerIdCXX
+            }
+        }
+    }
     rectangle "ut" as file_utils___ut
 }
 rectangle "lib" as lib {
     rectangle "ut" as lib___ut
 }
 rectangle "logging" as logging {
+    rectangle "build" as logging___build {
+        rectangle "CMakeFiles" as logging___build___CMakeFiles {
+            rectangle "3.22.1" as logging___build___CMakeFiles___3.22.1 {
+                rectangle "CompilerIdC" as logging___build___CMakeFiles___3.22.1___CompilerIdC
+                rectangle "CompilerIdCXX" as logging___build___CMakeFiles___3.22.1___CompilerIdCXX
+            }
+        }
+    }
     rectangle "ut" as logging___ut
 }
 

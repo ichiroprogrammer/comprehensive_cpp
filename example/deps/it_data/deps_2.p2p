@@ -11,6 +11,21 @@ dependency/ut -> app : 0
 app -> file_utils : 3 file_utils/h/file_utils/path_utils.h
 file_utils -> app : 0 
 
+app -> file_utils/build : 0 
+file_utils/build -> app : 0 
+
+app -> file_utils/build/CMakeFiles : 0 
+file_utils/build/CMakeFiles -> app : 0 
+
+app -> file_utils/build/CMakeFiles/3.22.1 : 0 
+file_utils/build/CMakeFiles/3.22.1 -> app : 0 
+
+app -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> app : 0 
+
+app -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> app : 0 
+
 app -> file_utils/ut : 0 
 file_utils/ut -> app : 0 
 
@@ -22,6 +37,21 @@ lib/ut -> app : 0
 
 app -> logging : 1 logging/h/logging/logger.h
 logging -> app : 0 
+
+app -> logging/build : 0 
+logging/build -> app : 0 
+
+app -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> app : 0 
+
+app -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> app : 0 
+
+app -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> app : 0 
+
+app -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> app : 0 
 
 app -> logging/ut : 0 
 logging/ut -> app : 0 
@@ -35,6 +65,21 @@ dependency/ut -> app/ut : 0
 app/ut -> file_utils : 1 file_utils/h/file_utils/path_utils.h
 file_utils -> app/ut : 0 
 
+app/ut -> file_utils/build : 0 
+file_utils/build -> app/ut : 0 
+
+app/ut -> file_utils/build/CMakeFiles : 0 
+file_utils/build/CMakeFiles -> app/ut : 0 
+
+app/ut -> file_utils/build/CMakeFiles/3.22.1 : 0 
+file_utils/build/CMakeFiles/3.22.1 -> app/ut : 0 
+
+app/ut -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> app/ut : 0 
+
+app/ut -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> app/ut : 0 
+
 app/ut -> file_utils/ut : 0 
 file_utils/ut -> app/ut : 0 
 
@@ -47,6 +92,21 @@ lib/ut -> app/ut : 0
 app/ut -> logging : 0 
 logging -> app/ut : 0 
 
+app/ut -> logging/build : 0 
+logging/build -> app/ut : 0 
+
+app/ut -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> app/ut : 0 
+
+app/ut -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> app/ut : 0 
+
+app/ut -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> app/ut : 0 
+
+app/ut -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> app/ut : 0 
+
 app/ut -> logging/ut : 0 
 logging/ut -> app/ut : 0 
 
@@ -55,6 +115,21 @@ dependency/ut -> dependency : 16 dependency/h/dependency/deps_scenario.h depende
 
 dependency -> file_utils : 14 file_utils/h/file_utils/load_store.h file_utils/h/file_utils/path_utils.h
 file_utils -> dependency : 0 
+
+dependency -> file_utils/build : 0 
+file_utils/build -> dependency : 0 
+
+dependency -> file_utils/build/CMakeFiles : 0 
+file_utils/build/CMakeFiles -> dependency : 0 
+
+dependency -> file_utils/build/CMakeFiles/3.22.1 : 0 
+file_utils/build/CMakeFiles/3.22.1 -> dependency : 0 
+
+dependency -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> dependency : 0 
+
+dependency -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> dependency : 0 
 
 dependency -> file_utils/ut : 0 
 file_utils/ut -> dependency : 0 
@@ -68,11 +143,41 @@ lib/ut -> dependency : 0
 dependency -> logging : 0 
 logging -> dependency : 0 
 
+dependency -> logging/build : 0 
+logging/build -> dependency : 0 
+
+dependency -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> dependency : 0 
+
+dependency -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> dependency : 0 
+
+dependency -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> dependency : 0 
+
+dependency -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> dependency : 0 
+
 dependency -> logging/ut : 0 
 logging/ut -> dependency : 0 
 
 dependency/ut -> file_utils : 10 file_utils/h/file_utils/load_store.h file_utils/h/file_utils/load_store_row.h file_utils/h/file_utils/path_utils.h
 file_utils -> dependency/ut : 0 
+
+dependency/ut -> file_utils/build : 0 
+file_utils/build -> dependency/ut : 0 
+
+dependency/ut -> file_utils/build/CMakeFiles : 0 
+file_utils/build/CMakeFiles -> dependency/ut : 0 
+
+dependency/ut -> file_utils/build/CMakeFiles/3.22.1 : 0 
+file_utils/build/CMakeFiles/3.22.1 -> dependency/ut : 0 
+
+dependency/ut -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> dependency/ut : 0 
+
+dependency/ut -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> dependency/ut : 0 
 
 dependency/ut -> file_utils/ut : 0 
 file_utils/ut -> dependency/ut : 0 
@@ -86,8 +191,38 @@ lib/ut -> dependency/ut : 0
 dependency/ut -> logging : 0 
 logging -> dependency/ut : 0 
 
+dependency/ut -> logging/build : 0 
+logging/build -> dependency/ut : 0 
+
+dependency/ut -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> dependency/ut : 0 
+
+dependency/ut -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> dependency/ut : 0 
+
+dependency/ut -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> dependency/ut : 0 
+
+dependency/ut -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> dependency/ut : 0 
+
 dependency/ut -> logging/ut : 0 
 logging/ut -> dependency/ut : 0 
+
+file_utils -> file_utils/build : 0 
+file_utils/build -> file_utils : 0 
+
+file_utils -> file_utils/build/CMakeFiles : 0 
+file_utils/build/CMakeFiles -> file_utils : 0 
+
+file_utils -> file_utils/build/CMakeFiles/3.22.1 : 0 
+file_utils/build/CMakeFiles/3.22.1 -> file_utils : 0 
+
+file_utils -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> file_utils : 0 
+
+file_utils -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> file_utils : 0 
 
 file_utils -> file_utils/ut : 0 
 file_utils/ut -> file_utils : 6 file_utils/h/file_utils/load_store.h file_utils/h/file_utils/load_store_row.h file_utils/h/file_utils/path_utils.h
@@ -101,8 +236,203 @@ lib/ut -> file_utils : 0
 file_utils -> logging : 0 
 logging -> file_utils : 0 
 
+file_utils -> logging/build : 0 
+logging/build -> file_utils : 0 
+
+file_utils -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> file_utils : 0 
+
+file_utils -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> file_utils : 0 
+
+file_utils -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> file_utils : 0 
+
+file_utils -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> file_utils : 0 
+
 file_utils -> logging/ut : 0 
 logging/ut -> file_utils : 0 
+
+file_utils/build -> file_utils/build/CMakeFiles : 0 
+file_utils/build/CMakeFiles -> file_utils/build : 0 
+
+file_utils/build -> file_utils/build/CMakeFiles/3.22.1 : 0 
+file_utils/build/CMakeFiles/3.22.1 -> file_utils/build : 0 
+
+file_utils/build -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> file_utils/build : 0 
+
+file_utils/build -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> file_utils/build : 0 
+
+file_utils/build -> file_utils/ut : 0 
+file_utils/ut -> file_utils/build : 0 
+
+file_utils/build -> lib : 0 
+lib -> file_utils/build : 0 
+
+file_utils/build -> lib/ut : 0 
+lib/ut -> file_utils/build : 0 
+
+file_utils/build -> logging : 0 
+logging -> file_utils/build : 0 
+
+file_utils/build -> logging/build : 0 
+logging/build -> file_utils/build : 0 
+
+file_utils/build -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> file_utils/build : 0 
+
+file_utils/build -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> file_utils/build : 0 
+
+file_utils/build -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> file_utils/build : 0 
+
+file_utils/build -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> file_utils/build : 0 
+
+file_utils/build -> logging/ut : 0 
+logging/ut -> file_utils/build : 0 
+
+file_utils/build/CMakeFiles -> file_utils/build/CMakeFiles/3.22.1 : 0 
+file_utils/build/CMakeFiles/3.22.1 -> file_utils/build/CMakeFiles : 0 
+
+file_utils/build/CMakeFiles -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> file_utils/build/CMakeFiles : 0 
+
+file_utils/build/CMakeFiles -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> file_utils/build/CMakeFiles : 0 
+
+file_utils/build/CMakeFiles -> file_utils/ut : 0 
+file_utils/ut -> file_utils/build/CMakeFiles : 0 
+
+file_utils/build/CMakeFiles -> lib : 0 
+lib -> file_utils/build/CMakeFiles : 0 
+
+file_utils/build/CMakeFiles -> lib/ut : 0 
+lib/ut -> file_utils/build/CMakeFiles : 0 
+
+file_utils/build/CMakeFiles -> logging : 0 
+logging -> file_utils/build/CMakeFiles : 0 
+
+file_utils/build/CMakeFiles -> logging/build : 0 
+logging/build -> file_utils/build/CMakeFiles : 0 
+
+file_utils/build/CMakeFiles -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> file_utils/build/CMakeFiles : 0 
+
+file_utils/build/CMakeFiles -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> file_utils/build/CMakeFiles : 0 
+
+file_utils/build/CMakeFiles -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> file_utils/build/CMakeFiles : 0 
+
+file_utils/build/CMakeFiles -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> file_utils/build/CMakeFiles : 0 
+
+file_utils/build/CMakeFiles -> logging/ut : 0 
+logging/ut -> file_utils/build/CMakeFiles : 0 
+
+file_utils/build/CMakeFiles/3.22.1 -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> file_utils/build/CMakeFiles/3.22.1 : 0 
+
+file_utils/build/CMakeFiles/3.22.1 -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> file_utils/build/CMakeFiles/3.22.1 : 0 
+
+file_utils/build/CMakeFiles/3.22.1 -> file_utils/ut : 0 
+file_utils/ut -> file_utils/build/CMakeFiles/3.22.1 : 0 
+
+file_utils/build/CMakeFiles/3.22.1 -> lib : 0 
+lib -> file_utils/build/CMakeFiles/3.22.1 : 0 
+
+file_utils/build/CMakeFiles/3.22.1 -> lib/ut : 0 
+lib/ut -> file_utils/build/CMakeFiles/3.22.1 : 0 
+
+file_utils/build/CMakeFiles/3.22.1 -> logging : 0 
+logging -> file_utils/build/CMakeFiles/3.22.1 : 0 
+
+file_utils/build/CMakeFiles/3.22.1 -> logging/build : 0 
+logging/build -> file_utils/build/CMakeFiles/3.22.1 : 0 
+
+file_utils/build/CMakeFiles/3.22.1 -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> file_utils/build/CMakeFiles/3.22.1 : 0 
+
+file_utils/build/CMakeFiles/3.22.1 -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> file_utils/build/CMakeFiles/3.22.1 : 0 
+
+file_utils/build/CMakeFiles/3.22.1 -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> file_utils/build/CMakeFiles/3.22.1 : 0 
+
+file_utils/build/CMakeFiles/3.22.1 -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> file_utils/build/CMakeFiles/3.22.1 : 0 
+
+file_utils/build/CMakeFiles/3.22.1 -> logging/ut : 0 
+logging/ut -> file_utils/build/CMakeFiles/3.22.1 : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> file_utils/ut : 0 
+file_utils/ut -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> lib : 0 
+lib -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> lib/ut : 0 
+lib/ut -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> logging : 0 
+logging -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> logging/build : 0 
+logging/build -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdC -> logging/ut : 0 
+logging/ut -> file_utils/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> file_utils/ut : 0 
+file_utils/ut -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> lib : 0 
+lib -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> lib/ut : 0 
+lib/ut -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> logging : 0 
+logging -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> logging/build : 0 
+logging/build -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+
+file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX -> logging/ut : 0 
+logging/ut -> file_utils/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
 
 file_utils/ut -> lib : 1 lib/h/lib/nstd.h
 lib -> file_utils/ut : 0 
@@ -113,6 +443,21 @@ lib/ut -> file_utils/ut : 0
 file_utils/ut -> logging : 1 logging/h/logging/logger.h
 logging -> file_utils/ut : 0 
 
+file_utils/ut -> logging/build : 0 
+logging/build -> file_utils/ut : 0 
+
+file_utils/ut -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> file_utils/ut : 0 
+
+file_utils/ut -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> file_utils/ut : 0 
+
+file_utils/ut -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> file_utils/ut : 0 
+
+file_utils/ut -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> file_utils/ut : 0 
+
 file_utils/ut -> logging/ut : 0 
 logging/ut -> file_utils/ut : 0 
 
@@ -122,15 +467,105 @@ lib/ut -> lib : 1 lib/h/lib/nstd.h
 lib -> logging : 0 
 logging -> lib : 2 lib/h/lib/nstd.h
 
+lib -> logging/build : 0 
+logging/build -> lib : 0 
+
+lib -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> lib : 0 
+
+lib -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> lib : 0 
+
+lib -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> lib : 0 
+
+lib -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> lib : 0 
+
 lib -> logging/ut : 0 
 logging/ut -> lib : 1 lib/h/lib/nstd.h
 
 lib/ut -> logging : 0 
 logging -> lib/ut : 0 
 
+lib/ut -> logging/build : 0 
+logging/build -> lib/ut : 0 
+
+lib/ut -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> lib/ut : 0 
+
+lib/ut -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> lib/ut : 0 
+
+lib/ut -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> lib/ut : 0 
+
+lib/ut -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> lib/ut : 0 
+
 lib/ut -> logging/ut : 0 
 logging/ut -> lib/ut : 0 
 
+logging -> logging/build : 0 
+logging/build -> logging : 0 
+
+logging -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> logging : 0 
+
+logging -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> logging : 0 
+
+logging -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> logging : 0 
+
+logging -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> logging : 0 
+
 logging -> logging/ut : 0 
 logging/ut -> logging : 1 logging/h/logging/logger.h
+
+logging/build -> logging/build/CMakeFiles : 0 
+logging/build/CMakeFiles -> logging/build : 0 
+
+logging/build -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> logging/build : 0 
+
+logging/build -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> logging/build : 0 
+
+logging/build -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> logging/build : 0 
+
+logging/build -> logging/ut : 0 
+logging/ut -> logging/build : 0 
+
+logging/build/CMakeFiles -> logging/build/CMakeFiles/3.22.1 : 0 
+logging/build/CMakeFiles/3.22.1 -> logging/build/CMakeFiles : 0 
+
+logging/build/CMakeFiles -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> logging/build/CMakeFiles : 0 
+
+logging/build/CMakeFiles -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> logging/build/CMakeFiles : 0 
+
+logging/build/CMakeFiles -> logging/ut : 0 
+logging/ut -> logging/build/CMakeFiles : 0 
+
+logging/build/CMakeFiles/3.22.1 -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> logging/build/CMakeFiles/3.22.1 : 0 
+
+logging/build/CMakeFiles/3.22.1 -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> logging/build/CMakeFiles/3.22.1 : 0 
+
+logging/build/CMakeFiles/3.22.1 -> logging/ut : 0 
+logging/ut -> logging/build/CMakeFiles/3.22.1 : 0 
+
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+
+logging/build/CMakeFiles/3.22.1/CompilerIdC -> logging/ut : 0 
+logging/ut -> logging/build/CMakeFiles/3.22.1/CompilerIdC : 0 
+
+logging/build/CMakeFiles/3.22.1/CompilerIdCXX -> logging/ut : 0 
+logging/ut -> logging/build/CMakeFiles/3.22.1/CompilerIdCXX : 0 
 
