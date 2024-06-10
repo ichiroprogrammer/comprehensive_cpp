@@ -13,4 +13,13 @@ add_subdirectory(${GTEST_DIR} ${CMAKE_BINARY_DIR}/googletest)
 add_subdirectory(lib)
 add_subdirectory(logging)
 add_subdirectory(file_utils)
+add_subdirectory(dependency)
+add_subdirectory(app)
+
+# カスタムターゲットを追加して、すべてのテストを実行
+add_custom_target(run_all_tests
+    COMMAND ${CMAKE_CTEST_COMMAND} -C $<CONFIG> --output-on-failure -T test --build-config $<CONFIG>
+    DEPENDS app_ut lib_ut logging_ut
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
 

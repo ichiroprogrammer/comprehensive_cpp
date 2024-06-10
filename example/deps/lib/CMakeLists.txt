@@ -18,7 +18,7 @@ target_link_libraries(lib_ut_exe gtest gtest_main)
 enable_testing()
 add_test(NAME lib_ut COMMAND lib_ut_exe)
 
-add_custom_target(lib_ut_run
+add_custom_target(lib_ut
     COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure
     DEPENDS lib_ut_exe
 )

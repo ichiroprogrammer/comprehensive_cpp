@@ -14,18 +14,13 @@ target_include_directories(logging PUBLIC h ../lib/h)
 
 add_executable(logging_ut_exe ut/logger_ut.cpp)
 
-# GoogleTestのターゲットをチェック
-if(NOT TARGET gtest)
-    message(FATAL_ERROR "gtest target not found. Make sure googletest is added at the top level CMakeLists.txt")
-endif()
-
 target_include_directories(logging_ut_exe PRIVATE ../../../deep/h ../lib/h)
 target_link_libraries(logging_ut_exe logging gtest gtest_main)
 
 enable_testing()
-add_test(NAME logger_ut COMMAND logging_ut_exe)
+add_test(NAME logging_ut COMMAND logging_ut_exe)
 
-add_custom_target(logging_ut_run
+add_custom_target(logging_ut
     COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure
     DEPENDS logging_ut_exe
 )

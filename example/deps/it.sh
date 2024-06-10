@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 
 readonly BASE_DIR=$(cd $(dirname $0); pwd)
 readonly BASENAME="$(basename $0)"
@@ -16,7 +16,7 @@ function help(){
 # @@@ ignore begin
 while getopts "a::dh" flag; do
     case $flag in 
-    a)  declare -r APP_ARG="$OPTARG" ;; 
+    a)  declare -r APP_ARG=$(realpath "$OPTARG") ;; 
     d)  set -x ;;
     h)  help 0 ;; 
     \?) help 1 ;; 
