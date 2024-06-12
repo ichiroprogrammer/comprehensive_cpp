@@ -4,7 +4,7 @@ project(app VERSION 1.0)
 
 # C++の標準を設定
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # アプリケーションのメインソースファイルを追加
 add_executable(deps src/main.cpp src/deps_opts.cpp)
@@ -29,11 +29,11 @@ add_custom_target(app_ut
     DEPENDS app_ut_exe
 )
 
-#   enable_testing()
-#   add_test(NAME deps_it_run COMMAND ../../it.sh deps)
-#
-#   add_custom_target(deps_it_run
-#       COMMAND ../../it.sh deps
-#       DEPENDS deps
-#   )
+enable_testing()
+add_test(NAME deps_it COMMAND ../../it.sh deps)
+
+add_custom_target(deps_it
+    COMMAND ../../it.sh deps
+    DEPENDS deps
+)
 

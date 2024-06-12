@@ -4,7 +4,7 @@ project(dependency VERSION 1.0)
 
 # C++の標準を設定
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # ライブラリのソースファイルを追加
 add_library(dependency STATIC

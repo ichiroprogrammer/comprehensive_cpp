@@ -5,6 +5,7 @@ project(lib VERSION 1.0)
 # C++の標準を設定
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_executable(lib_ut_exe ut/nstd_ut.cpp)
 

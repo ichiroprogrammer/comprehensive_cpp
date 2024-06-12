@@ -4,14 +4,14 @@ project(file_utils VERSION 1.0)
 
 # C++の標準を設定
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_library(file_utils STATIC
     src/load_store_row.cpp
     src/path_utils.cpp
 )
 
-target_include_directories(file_utils PUBLIC h)
+target_include_directories(file_utils PUBLIC ../file_utils/h)
 
 add_executable(file_utils_ut_exe ut/load_store_row_ut.cpp ut/path_utils_ut.cpp)
 

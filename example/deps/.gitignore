@@ -45,4 +45,4 @@ sanitizer/*
 d/**/*.d
 !ut_data/app1/a_1_c.d
 !ut_data/app1/a_2_c.d
-build/
+build_*/
