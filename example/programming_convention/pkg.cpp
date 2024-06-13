@@ -4,7 +4,7 @@
 #include <mutex>
 #include <string>
 
-#include "PackageA/xxx.h"      // PackageAのインクルード
-#include "PackageB/yyy.h"      // PackageBのインクルード
-#include "internal.h"          // パッケージ外部非公開ヘッダのインクルード
+#include "PackageA/xxx.h"  // PackageAのインクルード
+#include "PackageB/yyy.h"  // PackageBのインクルード
+#include "internal.h"      // パッケージ外部非公開ヘッダのインクルード
 // @@@ sample end

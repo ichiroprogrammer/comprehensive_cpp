@@ -2,24 +2,30 @@
 {
 {T
 +deps                    | depsアプリのソースコード
+++CMakeLists.txt         | cmake用
 ++app                    | このディレクトリはエクスポートせず、インポートのみ(h/は存在しない)
++++CMakeLists.txt        | cmake用
 +++src                   | main.cppを含むディレクトリ
 +++ut                    | main.cpを除くapp内のファイルの単体テスト
 ++dependency             | パッケージdependency
++++CMakeLists.txt        | cmake用
 +++src                   | dependency実装ファイル、外部非公開ヘッダ
 +++ut                    | dependencyの単体テスト
 +++h                     | -
 ++++dependency           | 外部公開ヘッダ
 ++file_utils             | パッケージfile_utils
++++CMakeLists.txt        | cmake用
 +++src                   | file_utils実装ファイル、外部非公開ヘッダ
 +++ut                    | file_utilsの単体テスト
 +++h                     | -
 ++++file_utils           | 外部公開ヘッダ
 ++lib                    | パッケージlibはテンプレートライブラリ(src/は存在しない)
++++CMakeLists.txt        | cmake用
 +++ut                    | libの単体テスト
 +++h                     | -
 ++++lib                  | 外部公開ヘッダ
 ++logging                | パッケージlogging
++++CMakeLists.txt        | cmake用
 +++src                   | logging実装ファイル、外部非公開ヘッダ
 +++ut                    | loggingの単体テスト
 +++h                     | -

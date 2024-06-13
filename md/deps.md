@@ -11,6 +11,7 @@
 
 |ファイル名                                                      |機能、目的                       |
 |----------------------------------------------------------------|---------------------------------|
+| "example/deps/CMakeLists.txt"                                  |メインのCMakeLists.txt           |
 |                                                                |                                 |
 | example/deps/app/                                              |depsのメインディレクト           |
 |"[example/deps/app/src/main.cpp](---)"                          |depsのmain関数を含むファイル     |
@@ -19,6 +20,7 @@
 |"[example/deps/app/ut/deps_opts_ut.cpp](---)"                   |deps_opts.cppの単体テスト        |
 |                                                                |                                 |
 | example/deps/dependency/                                       |deps_scenario.a用のディレクトリ  |
+|"[example/deps/dependency/CMakeLists.txt](---)"                 |dependencyのCMakeLists.txt       |
 |"[example/deps/dependency/h/dependency/deps_scenario.h](---)"   |deps_scenario.aの外部公開ヘッダ  |
 |"[example/deps/dependency/src/arch_pkg.cpp](---)"               |パッケージの依存関係             |
 |"[example/deps/dependency/src/arch_pkg.h](---)"                 |arch_pkg.cppのヘッダ             |
@@ -39,6 +41,7 @@
 |"[example/deps/dependency/ut/load_store_format_ut.cpp](---)"    |load_store_format.cppの単体テスト|
 |                                                                |                                 |
 | example/deps/file_utils/                                       |file_utils.a用のディレクトリ     |
+|"[example/deps/file_utils/CMakeLists.txt](---)"                 |file_utilsのCMakeLists.txt       |
 |"[example/deps/file_utils/h/file_utils/load_store.h](---)"      |ファイルのロード/ストア          |
 |"[example/deps/file_utils/h/file_utils/load_store_row.h](---)"  |load_store_row.cppのヘッダ       |
 |"[example/deps/file_utils/h/file_utils/path_utils.h](---)"      |path_utils.cppのヘッダ           |
@@ -48,10 +51,12 @@
 |"[example/deps/file_utils/ut/path_utils_ut.cpp](---)"           |path_utils.cppの単体テスト       |
 |                                                                |                                 |
 | example/deps/lib/                                              |                                 |
+|"[example/deps/lib/CMakeLists.txt](---)"                        |libのCMakeLists.txt              |
 |"[example/deps/lib/h/lib/nstd.h](---)"                          |一般的なテンプレート             |
 |"[example/deps/lib/ut/nstd_ut.cpp](---)"                        |nstd.hの単体テスト               |
 |                                                                |                                 |
 | example/deps/logging/                                          |logging.a用のディレクトリ        |
+|"[example/deps/logging/CMakeLists.txt](---)"                    |loggingのCMakeLists.txt          |
 |"[example/deps/logging/h/logging/logger.h](---)"                |logger.cppのヘッダ               |
 |"[example/deps/logging/src/logger.cpp](---)"                    |ログの取得                       |
 |"[example/deps/logging/ut/logger_ut.cpp](---)"                  |logger.cppの単体テスト           |
@@ -74,9 +79,15 @@ dependencyをインポートするソースコードのインクルードディ�
 ```
 
 上記から明らかな通り、このソースコードの外部パッケージとの依存関係が明確になる。
+このようなインクルードディレクトリを下記のように指定することでこのような記述が可能になる。
 
+```cpp
+    // @@@ example/deps/dependency/CMakeLists.txt #0:0 begin
+```
 
-
+CMakeの公式ガイドラインや一般的な慣習に沿ったこの構造とインクルードディレクティブの記述様式は、
+プロジェクトの可読性と保守性を向上させるために推奨される方法である。
+冗長に見えるディレクトリ名も、プロジェクト全体の理解を容易にするために有効である。
 
 depsの各パッケージの依存関係は、
 
@@ -91,6 +102,13 @@ depsの各パッケージの依存関係は、
 ![depsのファイル構造分類](plant_uml/deps_2.png)
 
 のようになっており、整理された依存関係であるといえる。
+
+パッケージとその単体テスト用ソースコードへのヘッダファイル公開は、
+必要以上に公開範囲を広げないようにするために下記のように行われる。
+
+```cpp
+    // @@@ example/deps/dependency/CMakeLists.txt #1:0 begin
+```
 
 ソースコードの構成をdepsのようにすることを推奨する。
 

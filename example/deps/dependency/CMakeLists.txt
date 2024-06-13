@@ -16,7 +16,14 @@ add_library(dependency STATIC
     src/load_store_format.cpp
 )
 
+# @@@ sample begin 0:0
+
+# dependency.aをリンクするファイルに
+# ../dependency/h ../file_utils/h ../lib/h
+# のヘッダファイルを公開する
+
 target_include_directories(dependency PUBLIC ../dependency/h ../file_utils/h ../lib/h)
+# @@@ sample end
 
 # テスト用のソースファイルを追加して単一の実行ファイルを生成
 add_executable(dependency_ut_exe
@@ -28,11 +35,17 @@ add_executable(dependency_ut_exe
     ut/load_store_format_ut.cpp
 )
 
-# テスト対象のライブラリとGoogleTestのリンク
+# @@@ sample begin 1:0
+
+# dependency_ut_exeはdependency.aの単体テスト
+# dependency_ut_exeが使用するライブラリのヘッダは下記の記述で公開される
 target_link_libraries(dependency_ut_exe dependency file_utils logging gtest gtest_main)
 
-# インクルードディレクトリの設定
+# dependency_ut_exeに上記では公開範囲が不十分である場合、
+# dependency_ut_exeが使用するライブラリのヘッダは下記の記述で限定的に公開される
+# dependency_ut_exeにはdependency/src/*.hへのアクセスが必要
 target_include_directories(dependency_ut_exe PRIVATE ../../../deep/h src)
+# @@@ sample end
 
 # テストを追加
 enable_testing()
