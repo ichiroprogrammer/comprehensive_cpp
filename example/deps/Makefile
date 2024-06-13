@@ -204,7 +204,7 @@ format:
 	clang-format -i $$(find -name "*.cpp" -o -name "*.h")
 
 complete : 
-	bear $(MAKE) --always-make
+	bear -- $(MAKE) --always-make
 	sed -i -e "s@$$(pwd)@.@" compile_commands.json # 絶対パスの変換
 
 CLANG_DIR=clang++/

@@ -31,6 +31,7 @@ function build() {
     if [[ $analysis == "ANALYSIS" ]]; then
         scan-build cmake $CMAKE_OPT ..
         scan-build --use-cc=clang --use-c++=clang++ make
+        cppcheck --project=$build_dir/compile_commands.json
     else
         cmake $CMAKE_OPT ..
         make
