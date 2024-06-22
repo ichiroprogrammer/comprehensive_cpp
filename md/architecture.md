@@ -163,10 +163,10 @@ h/<パケージ名>に配置されたヘッダファイルは、
 
 |パッケージ           |インクルードパス                |
 |---------------------|--------------------------------|
-|app/src/\*.cpp       |model/h/、controller/h/、view/h/|
-|model/src/\*.cpp     |model/h/                        |
-|controller/src/\*.cpp|model/h/、controller/h/         |
-|view/src/\*.cpp      |model/h/、view/h/               |
+|app                  |model/h/、controller/h/、view/h/|
+|model                |model/h/                        |
+|controller           |model/h/、controller/h/         |
+|view                 |model/h/、view/h/               |
 |...                  |...                             |
 
 上記ディレクトリ間の依存関係を自動的に維持できるようになる(依存関係を拡大すればビルドエラーになる)。

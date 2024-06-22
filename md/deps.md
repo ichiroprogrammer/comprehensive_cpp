@@ -9,69 +9,133 @@
 このようなツールの開発にはpythonやrubyが適しているが、
 このドキュメントの目的に合わせて、depsは下記のようにC++で書かれている。
 
-___
+---
 __この章の構成__
 
 <!-- index 1-3 -->
 
 
-|----------------------------------------------------------------|---------------------------------|
-|ファイル名                                                      |機能、目的                       |
-|----------------------------------------------------------------|---------------------------------|
-| "example/deps/CMakeLists.txt"                                  |メインのCMakeLists.txt           |
-|                                                                |                                 |
-| example/deps/app/                                              |depsのメインディレクト           |
-|"[example/deps/app/src/main.cpp](---)"                          |depsのmain関数を含むファイル     |
-|"[example/deps/app/src/deps_opts.cpp](---)"                     |depsのオプション処理             |
-|"[example/deps/app/src/deps_opts.h](---)"                       |deps_opts.cppのヘッダ            |
-|"[example/deps/app/ut/deps_opts_ut.cpp](---)"                   |deps_opts.cppの単体テスト        |
-|                                                                |                                 |
-| example/deps/dependency/                                       |deps_scenario.a用のディレクトリ  |
-|"[example/deps/dependency/CMakeLists.txt](---)"                 |dependencyのCMakeLists.txt       |
-|"[example/deps/dependency/h/dependency/deps_scenario.h](---)"   |deps_scenario.aの外部公開ヘッダ  |
-|"[example/deps/dependency/src/arch_pkg.cpp](---)"               |パッケージの依存関係             |
-|"[example/deps/dependency/src/arch_pkg.h](---)"                 |arch_pkg.cppのヘッダ             |
-|"[example/deps/dependency/src/cpp_deps.cpp](---)"               |ファイル間依存関係               |
-|"[example/deps/dependency/src/cpp_deps.h](---)"                 |cpp_deps.cppのヘッダ             |
-|"[example/deps/dependency/src/cpp_dir.cpp](---)"                |C++ファイルを含むディレクトリ抽出|
-|"[example/deps/dependency/src/cpp_dir.h](---)"                  |cpp_dir.cppのヘッダ              |
-|"[example/deps/dependency/src/cpp_src.cpp](---)"                |C++ファイルの抽出                |
-|"[example/deps/dependency/src/cpp_src.h](---)"                  |cpp_src.cppのヘッダ              |
-|"[example/deps/dependency/src/deps_scenario.cpp](---)"          |依存関係表示のシナリオ           |
-|"[example/deps/dependency/src/load_store_format.cpp](---)"      |deps生成ファイルのロード/ストア  |
-|"[example/deps/dependency/src/load_store_format.h](---)"        |load_store_format.cppのヘッダ    |
-|"[example/deps/dependency/ut/arch_pkg_ut.cpp](---)"             |arch_pkg.cppの単体テスト         |
-|"[example/deps/dependency/ut/cpp_deps_ut.cpp](---)"             |cpp_deps.cppの単体テスト         |
-|"[example/deps/dependency/ut/cpp_dir_ut.cpp](---)"              |cpp_dir.cppの単体テスト          |
-|"[example/deps/dependency/ut/cpp_src_ut.cpp](---)"              |cpp_src.cppの単体テスト          |
-|"[example/deps/dependency/ut/deps_scenario_ut.cpp](---)"        |deps_scenario.cppの単体テスト    |
-|"[example/deps/dependency/ut/load_store_format_ut.cpp](---)"    |load_store_format.cppの単体テスト|
-|                                                                |                                 |
-| example/deps/file_utils/                                       |file_utils.a用のディレクトリ     |
-|"[example/deps/file_utils/CMakeLists.txt](---)"                 |file_utilsのCMakeLists.txt       |
-|"[example/deps/file_utils/h/file_utils/load_store.h](---)"      |ファイルのロード/ストア          |
-|"[example/deps/file_utils/h/file_utils/load_store_row.h](---)"  |load_store_row.cppのヘッダ       |
-|"[example/deps/file_utils/h/file_utils/path_utils.h](---)"      |path_utils.cppのヘッダ           |
-|"[example/deps/file_utils/src/load_store_row.cpp](---)"         |ファイルののロード/ストア        |
-|"[example/deps/file_utils/src/path_utils.cpp](---)"             |ファイル操作                     |
-|"[example/deps/file_utils/ut/load_store_row_ut.cpp](---)"       |load_store_row.cppの単体テスト   |
-|"[example/deps/file_utils/ut/path_utils_ut.cpp](---)"           |path_utils.cppの単体テスト       |
-|                                                                |                                 |
-| example/deps/lib/                                              |                                 |
-|"[example/deps/lib/CMakeLists.txt](---)"                        |libのCMakeLists.txt              |
-|"[example/deps/lib/h/lib/nstd.h](---)"                          |一般的なテンプレート             |
-|"[example/deps/lib/ut/nstd_ut.cpp](---)"                        |nstd.hの単体テスト               |
-|                                                                |                                 |
-| example/deps/logging/                                          |logging.a用のディレクトリ        |
-|"[example/deps/logging/CMakeLists.txt](---)"                    |loggingのCMakeLists.txt          |
-|"[example/deps/logging/h/logging/logger.h](---)"                |logger.cppのヘッダ               |
-|"[example/deps/logging/src/logger.cpp](---)"                    |ログの取得                       |
-|"[example/deps/logging/ut/logger_ut.cpp](---)"                  |logger.cppの単体テスト           |
+## ディレクトリ、ファイル構成
+
+* app:main.cppを含むパッケージ
+    * "[example/deps/CMakeLists.txt](---)" **---** メインのCMakeLists.txt
+    * "[example/deps/app/src/main.cpp](---)" **---** depsのmain関数を含むファイル
+    * "[example/deps/app/src/deps_opts.cpp](---)" **---** depsのオプション処理
+    * "[example/deps/app/src/deps_opts.h](---)"
+    * "[example/deps/app/ut/deps_opts_ut.cpp](---)" **---** appパッケージの単体テスト
+
+* dependency:依存関係を導き出すアルゴリズムライブラリdependency.a用のパッケージ
+    * "[example/deps/dependency/CMakeLists.txt](---)" **---** dependencyのCMakeLists.txt
+    * "[example/deps/dependency/src/arch_pkg.cpp](---)" **---** パッケージの依存関係の導出
+    * "[example/deps/dependency/src/arch_pkg.h](---)" **---** arch_pkg.cppの非公開ヘッダ
+    * "[example/deps/dependency/src/cpp_deps.cpp](---)" **---** ファイル間依存関係の依存関係の導出
+    * "[example/deps/dependency/src/cpp_deps.h](---)" **---** cpp_deps.cppの非公開ヘッダ
+    * "[example/deps/dependency/src/cpp_dir.cpp](---)" **---** C++ファイルを含むディレクトリ抽出
+    * "[example/deps/dependency/src/cpp_dir.h](---)" **---** cpp_dir.cppの非公開ヘッダ
+    * "[example/deps/dependency/src/cpp_src.cpp](---)" **---** C++ファイルの抽出
+    * "[example/deps/dependency/src/cpp_src.h](---)" **---** cpp_src.cppの非公開ヘッダ
+    * "[example/deps/dependency/h/dependency/deps_scenario.h](---)" **---** 依存関係表示のシナリオの公開ヘッダ
+    * "[example/deps/dependency/src/deps_scenario.cpp](---)" **---** 依存関係表示のユースケースシナリオ
+    * "[example/deps/dependency/src/load_store_format.cpp](---)" **---** deps生成ファイルのロード/ストア
+    * "[example/deps/dependency/src/load_store_format.h](---)" **---** load_store_format.cppの非公開ヘッダ
+    * "[example/deps/dependency/ut/arch_pkg_ut.cpp](---)" **---** arch_pkg.cppの単体テスト
+    * "[example/deps/dependency/ut/cpp_deps_ut.cpp](---)" **---** cpp_deps.cppの単体テスト
+    * "[example/deps/dependency/ut/cpp_dir_ut.cpp](---)" **---** cpp_dir.cppの単体テスト
+    * "[example/deps/dependency/ut/cpp_src_ut.cpp](---)" **---** cpp_src.cppの単体テスト
+    * "[example/deps/dependency/ut/deps_scenario_ut.cpp](---)" **---** deps_scenario.cppの単体テスト
+    * "[example/deps/dependency/ut/load_store_format_ut.cpp](---)" **---** load_store_format.cppの単体テスト
+
+*  file_utils:file_utils.a用のディレクトリ
+    * "[example/deps/file_utils/CMakeLists.txt](---)" **---** file_utilsのCMakeLists.txt
+    * "[example/deps/file_utils/h/file_utils/load_store.h](---)" **---** ファイルのロード/ストア
+    * "[example/deps/file_utils/h/file_utils/load_store_row.h](---)" **---** load_store_row.cppのヘッダ
+    * "[example/deps/file_utils/h/file_utils/path_utils.h](---)" **---** path_utils.cppのヘッダ
+    * "[example/deps/file_utils/src/load_store_row.cpp](---)" **---** ファイルののロード/ストア
+    * "[example/deps/file_utils/src/path_utils.cpp](---)" **---** ファイル操作
+    * "[example/deps/file_utils/ut/load_store_row_ut.cpp](---)" **---** load_store_row.cppの単体テスト
+    * "[example/deps/file_utils/ut/path_utils_ut.cpp](---)" **---** path_utils.cppの単体テスト 
+
+*  lib:全域からアクセス可能なテンプレートライブラリ
+    * "[example/deps/lib/CMakeLists.txt](---)" **---** libのCMakeLists.txt
+    * "[example/deps/lib/h/lib/nstd.h](---)" **---** テンプレートライブラリ
+    * "[example/deps/lib/ut/nstd_ut.cpp](---)" **---** nstd.hの単体テスト
+
+*  logging:logging.a用のディレクトリ
+    * "[example/deps/logging/CMakeLists.txt](---)" **---** loggingのCMakeLists.txt
+    * "[example/deps/logging/h/logging/logger.h](---)" **---** logger.cppのヘッダ
+    * "[example/deps/logging/src/logger.cpp](---)" **---** ログの取得
+    * "[example/deps/logging/ut/logger_ut.cpp](---)" **---** logger.cppの単体テスト
                                                              
-## depsの構造
-depsのディレクトリ構造や各ディレクトリの役割を下記の図で表す。
                                                              
-![depsのファイル構造分類](plant_uml/pkg_tree.png)
+下記のをファイルツリーは上記を表す。
+
+```
+    deps
+    ├── makefile                    # makeでもビルドできる
+    ├── CMakeLists.txt              # cmakeのルートCMakeLists.txt
+    ├── app                         # パケージappはエクスポートするヘッダはないためhもない
+    │   ├── CMakeLists.txt
+    │   ├── src
+    │   │   ├── deps_opts.cpp
+    │   │   ├── deps_opts.h
+    │   │   └── main.cpp
+    │   └── ut
+    │       └── deps_opts_ut.cpp    # utはsrcにアクセスできる
+    ├── dependency
+    │   ├── CMakeLists.txt
+    │   ├── h
+    │   │   └── dependency          # このディレクトリにエクスポートするヘッダを配置
+    │   │       └── deps_scenario.h
+    │   ├── src
+    │   │   ├── arch_pkg.cpp
+    │   │   ├── arch_pkg.h
+    │   │   ├── cpp_deps.cpp
+    │   │   ├── cpp_deps.h
+    │   │   ├── cpp_dir.cpp
+    │   │   ├── cpp_dir.h
+    │   │   ├── cpp_src.cpp
+    │   │   ├── cpp_src.h
+    │   │   ├── deps_scenario.cpp
+    │   │   ├── load_store_format.cpp
+    │   │   └── load_store_format.h
+    │   └── ut                      # utはh、srcにアクセスできる
+    │       ├── arch_pkg_ut.cpp
+    │       ├── cpp_deps_ut.cpp
+    │       ├── cpp_dir_ut.cpp
+    │       ├── cpp_src_ut.cpp
+    │       ├── deps_scenario_ut.cpp
+    │       └── load_store_format_ut.cpp
+    ├── file_utils
+    │   ├── CMakeLists.txt
+    │   ├── h
+    │   │   └── file_utils      # このディレクトリにエクスポートするヘッダを配置
+    │   │       ├── load_store.h
+    │   │       ├── load_store_row.h
+    │   │       └── path_utils.h
+    │   ├── src
+    │   │   ├── load_store_row.cpp
+    │   │   └── path_utils.cpp
+    │   └── ut
+    │       ├── load_store_row_ut.cpp
+    │       └── path_utils_ut.cpp
+    ├── lib
+    │   ├── CMakeLists.txt
+    │   ├── h
+    │   │   └── lib             # このディレクトリにエクスポートするヘッダを配置
+    │   │       └── nstd.h
+    │   └── ut
+    │       └── nstd_ut.cpp     # utはh、srcにアクセスできる
+    └── logging
+        ├── CMakeLists.txt
+        ├── h
+        │   └── logging         # このディレクトリにエクスポートするヘッダを配置
+        │       └── logger.h
+        ├── src
+        │   └── logger.cpp
+        └── ut                  # utはh、srcにアクセスできる
+            └── logger_ut.cpp
+
+```
 
 例えば、dependencyの外部公開ヘッダを配置するためのディレクトリ
 
