@@ -3,5 +3,5 @@
 
 class View : public Observer {
 public:
-    void update(const Model& model) override;
+    void update(Model const& model) override;
 };

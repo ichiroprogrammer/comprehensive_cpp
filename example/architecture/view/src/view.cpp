@@ -1,6 +1,8 @@
-#include "view/view.h"
 #include <iostream>
 
-void View::update(const Model& model) {
+#include "view/view.h"
+
+void View::update(Model const& model)
+{
     std::cout << "View updated with model changes" << std::endl;
 }

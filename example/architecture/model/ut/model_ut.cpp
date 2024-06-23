@@ -1,17 +1,17 @@
+#include "gtest/gtest.h"
+
 #include "model/model.h"
 #include "model/observer.h"
-#include <gtest/gtest.h>
 
 class TestObserver : public Observer {
 public:
-    void update(const Model&) override {
-        notified = true;
-    }
+    void update(const Model&) override { notified = true; }
     bool notified = false;
 };
 
-TEST(ModelTest, NotifyObservers) {
-    Model model;
+TEST(ModelTest, NotifyObservers)
+{
+    Model        model;
     TestObserver observer;
 
     model.addObserver(&observer);

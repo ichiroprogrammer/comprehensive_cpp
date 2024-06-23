@@ -10,5 +10,5 @@ public:
 
 private:
     Model* model;
-    View* view;
+    View*  view;
 };
