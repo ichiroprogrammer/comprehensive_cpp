@@ -14,9 +14,6 @@ add_subdirectory(controller)
 add_subdirectory(model)
 add_subdirectory(view)
 
-# Include directories
-include_directories(controller/h model/h view/h)
-
 # Create the executable
 add_executable(app app/main.cpp)
 
@@ -40,3 +37,9 @@ add_custom_target(
 )
 
 add_dependencies(app clang-format)
+
+add_custom_target(ut
+    DEPENDS controller_ut view_ut model_ut
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
+
