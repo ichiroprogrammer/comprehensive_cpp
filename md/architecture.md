@@ -142,7 +142,41 @@ __この章の構成__
 
 この作業の完了時、パッケージ図は下記のようになっているだろう。
 
-![パッケージ図](plant_uml/arch_ut_pkg_example.png)
+```
+    architecture
+    ├── CMakeLists.txt
+    ├── app
+    │   └── main.cpp
+    ├── controller
+    │   ├── CMakeLists.txt
+    │   ├── h
+    │   │   └── controller
+    │   │       └── controller.h
+    │   ├── src
+    │   │   └── controller.cpp
+    │   └── ut
+    │       └── controller_ut.cpp
+    ├── model
+    │   ├── CMakeLists.txt
+    │   ├── h
+    │   │   └── model
+    │   │       ├── model.h
+    │   │       └── observer.h
+    │   ├── src
+    │   │   ├── model.cpp
+    │   │   └── observer.cpp
+    │   └── ut
+    │       └── model_ut.cpp
+    └── view
+        ├── CMakeLists.txt
+        ├── h
+        │   └── view
+        │       └── view.h
+        ├── src
+        │   └── view.cpp
+        └── ut
+            └── view_ut.cpp
+```
 
 ファイル構成は下記のようになっているだろう。
 
