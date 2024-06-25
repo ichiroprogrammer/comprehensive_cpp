@@ -15,6 +15,17 @@ protected:
     void TearDown() override { std::cout.rdbuf(orig); }
 };
 
+struct X {};
+void potential_leak(int a)
+{
+    X* x{new X};
+
+    if (a == 2) {  // aが2ならメモリリーク
+        return;
+    }
+
+    delete x;
+}
 TEST_F(ViewTest, Update)
 {
     View  view;
@@ -23,4 +34,6 @@ TEST_F(ViewTest, Update)
     view.update(model);
 
     ASSERT_EQ(out.str(), "View updated with model changes");
+
+    potential_leak(2);
 }

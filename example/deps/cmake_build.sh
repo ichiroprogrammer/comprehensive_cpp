@@ -8,7 +8,7 @@ function build() {
     local -r clean=$1
     local -r sanitizer=$2
     local -r analysis=$3
-    local -r compiler=$4
+    local -r compiler="$4"
 
     local -r build_dir="${BASE_DIR}/build_${compiler}"
 
@@ -18,29 +18,30 @@ function build() {
     cd $build_dir
 
 
-    local -r SANITIZER_FLAGS="-fsanitize=address,leak,undefined,float-divide-by-zero,float-cast-overflow"
-
-    CMAKE_OPT="-DCMAKE_CXX_COMPILER=$compiler -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
-
-    if [[ $sanitizer == "SANITIZER" ]]; then
-        CMAKE_OPT=$CMAKE_OPT
-        CMAKE_OPT="$CMAKE_OPT -DCMAKE_CXX_FLAGS=\"$SANITIZER_FLAGS\""
-        CMAKE_OPT="$CMAKE_OPT -DCMAKE_EXE_LINKER_FLAGS=\"$SANITIZER_FLAGS\""
+    if [[ "$compiler" == "g++" ]]; then
+        CMAKE_OPT=
+    else
+        CMAKE_OPT="-DCMAKE_CXX_COMPILER=$compiler"
     fi
+
+    [[ $sanitizer == "SANITIZER" ]] && CMAKE_OPT="$CMAKE_OPT -DUSE_SANITIZERS=ON"
 
     if [[ $analysis == "ANALYSIS" ]]; then
         scan-build cmake $CMAKE_OPT ..
-        scan-build --use-cc=clang --use-c++=clang++ make
+        scan-build make
         cppcheck --project=$build_dir/compile_commands.json
+
+        #https://github.com/llvm/llvm-project/blob/main/clang-tools-extra/clang-tidy/tool/run-clang-tidy.py
+       ${BASE_DIR}/run-clang-tidy.py -p $build_dir
     else
-        cmake $CMAKE_OPT ..
         make
     fi
 }
 
 function help(){
     echo "$BASENAME  [option]"
-    echo "    -g     : build b g++ only"
+    echo "    -g     : build by g++"
+    echo "    -C     : build by clang++"
     echo "    -c     : clean before build"
     echo "    -d     : debug mode"
     echo "    -A     : analysis cocde"
@@ -49,12 +50,13 @@ function help(){
     exit $1
 }
 
-
-while getopts "Acdghs" flag; do
+COMPILER="g++"
+while getopts "ACcdghs" flag; do
     case $flag in 
     c)  declare -r CLEAN="CLEAN";;
     d)  set -x ;;
-    g)  declare -r GCC_ONLY_temp=false ;; 
+    C)  COMPILER="clang++";;
+    g)  COMPILER="g++";;
     s)  declare -r SANITIZER="SANITIZER";;
     A)  declare -r ANALYSIS="ANALYSIS";;
     h)  help 0 ;; 
@@ -63,17 +65,14 @@ while getopts "Acdghs" flag; do
 done
 
 
-$GCC_ONLY_temp && declare -r GCC_ONLY=false || declare -r GCC_ONLY=true
-
 echo $CLEAN
 echo $SANITIZER
-$GCC_ONLY && echo "GCC_ONLY"
+echo $COMPILER
+echo $ANALYSIS  #scan-buildの効果を確かめるためには、 SCAN_BUILD_ERRORをgrepせよ
 
 
-build "$CLEAN" "$SANITIZER" "$ANALYSIS" "g++"
-
-if $GCC_ONLY ; then
-: 
+if [[ "$COMPILER" == "g++" ]]; then
+    build "$CLEAN" "$SANITIZER" "$ANALYSIS" "g++"
 else
     build "$CLEAN" "$SANITIZER" "$ANALYSIS" "clang++"
 fi

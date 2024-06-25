@@ -5,6 +5,19 @@ project(main_project)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# CMakeオプションを定義
+option(USE_SANITIZERS "Enable sanitizers" OFF)
+
+# USE_SANITIZERS オプションをチェック
+if(USE_SANITIZERS)
+    message(STATUS "Sanitizers are enabled")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address,leak,undefined,float-divide-by-zero,float-cast-overflow")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address,leak,undefined,float-divide-by-zero,float-cast-overflow")
+else()
+    message(STATUS "Sanitizers are disabled")
+endif()
+
+
 set(GTEST_DIR "../../googletest")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
