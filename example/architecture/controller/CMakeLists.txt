@@ -3,5 +3,5 @@ target_include_directories(controller PUBLIC ../controller/h ../model/h ../view/
 
 # Unit test
 add_executable(controller_ut ut/controller_ut.cpp)
-target_link_libraries(controller_ut controller model view gtest gtest_main)
+target_link_libraries(controller_ut controller model view gtest gtest_main logging)
 add_test(NAME ControllerTest COMMAND controller_ut)

@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "gtest/gtest.h"
 
 #include "model/model.h"
@@ -11,6 +13,7 @@ public:
 
 TEST(ModelTest, NotifyObservers)
 {
+    std::cout << "model" << std::endl;
     Model        model;
     TestObserver observer;
 

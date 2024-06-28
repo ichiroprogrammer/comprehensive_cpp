@@ -68,7 +68,7 @@ done
 echo $CLEAN
 echo $SANITIZER
 echo $COMPILER
-echo $ANALYSIS  #scan-build$B$N8z2L$r3N$+$a$k$?$a$K$O!"(B SCAN_BUILD_ERROR$B$r(Bgrep$B$;$h(B
+echo $ANALYSIS  #scan-buildの効果を確かめるためには、 SCAN_BUILD_ERRORをgrepせよ
 
 
 if [[ "$COMPILER" == "g++" ]]; then

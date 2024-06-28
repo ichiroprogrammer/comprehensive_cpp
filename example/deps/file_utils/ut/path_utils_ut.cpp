@@ -5,6 +5,22 @@
 #include "file_utils/path_utils.h"
 #include "logging/logger.h"
 
+#define SCAN_BUILD_ERROR 1
+
+#if SCAN_BUILD_ERROR ==1
+struct X {};
+void potential_leak(int a)
+{
+    X* x{new X};
+
+    if (a == 2) {  // aが2ならメモリリーク
+        return;
+    }
+
+    delete x;
+}
+#endif
+
 namespace FileUtils {
 namespace {
 
