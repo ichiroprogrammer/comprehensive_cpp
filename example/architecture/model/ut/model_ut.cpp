@@ -1,7 +1,6 @@
 #include <iostream>
 
 #include "gtest/gtest.h"
-
 #include "model/model.h"
 #include "model/observer.h"
 

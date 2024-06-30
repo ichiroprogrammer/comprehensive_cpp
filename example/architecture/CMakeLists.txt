@@ -32,7 +32,7 @@ target_link_libraries(app controller model view logging)
 file(GLOB_RECURSE ALL_CXX_SOURCE_FILES
     "${PROJECT_SOURCE_DIR}/app/*/*.[ch]*"
     "${PROJECT_SOURCE_DIR}/controller/*/*.[ch]*"
-    "${PROJECT_SOURCE_DIR}/model/*.h"
+    "${PROJECT_SOURCE_DIR}/model/*.[ch]*"
     "${PROJECT_SOURCE_DIR}/view/*/*.[ch]*"
 )
 
