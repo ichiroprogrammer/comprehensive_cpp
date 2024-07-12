@@ -1,7 +1,7 @@
 #include <thread>
 
 #include "gtest/gtest.h"
-#include "model/slow_mover.h"
+#include "model/x.h"
 
 TEST(SlowMoverTest, TestAsyncCommand)
 {

@@ -8,6 +8,7 @@
 #include <string>
 #include <thread>
 
+#include "logging/logger.h"
 #include "model/command_executor.h"
 
 struct CommandExecutor::pimpl_t {
@@ -35,14 +36,14 @@ class CommandExecutorState_Idle : CommandExecutorState {
 public:
     std::unique_ptr<CommandExecutorState> Exec(CommandExecutor::msg_t const& msg) override
     {
-        if (msg.id == CommandExecutor::MsgId::Idle) {
+        if (msg.id == CommandExecutor::CommandId::Start) {
         }
         return std::unique_ptr<CommandExecutorState>{};
     }
 
-    CommandExecutor::MsgId GetState() const noexcept override
+    CommandExecutor::State GetState() const noexcept override
     {
-        return CommandExecutor::MsgId::Idle;
+        return CommandExecutor::State::Idle;
     }
 };
 
@@ -52,7 +53,7 @@ CommandExecutor::CommandExecutor(std::unique_ptr<CommandExecutorState>&& state)
 {
 }
 
-CommandExecutor::MsgId CommandExecutor::GetState() const noexcept
+CommandExecutor::State CommandExecutor::GetState() const noexcept
 {
     std::unique_lock<std::mutex> lock{pimpl->mutex_state};
 
@@ -69,7 +70,7 @@ CommandExecutor::~CommandExecutor()
     pimpl->worker.join();
 }
 
-void CommandExecutor::command(CommandExecutor::MsgId id, std::function<void()> on_completion)
+void CommandExecutor::command(CommandExecutor::CommandId id, std::function<void()> on_completion)
 {
     {
         std::unique_lock<std::mutex> lock{pimpl->mutex_stop};
@@ -93,13 +94,11 @@ void CommandExecutor::workerFunction()
             pimpl->messages.pop_front();
         }
 
-        std::cout << "Processing message: " << MsgId2Sv(msg.id) << std::endl;
+        LOGGER("Processing message", CmdId2Sv(msg.id));
         std::this_thread::sleep_for(std::chrono::milliseconds(1500));
-        std::cout << "Message processed." << std::endl;
+        LOGGER("Message processed", MsgId2Sv(pimpl->state->GetState()));
 
-        std::cout << "Current State:" << MsgId2Sv(pimpl->state->GetState()) << std::endl;
-        auto next = pimpl->state->Exec(msg);
-        if (next) {
+        if (auto next = pimpl->state->Exec(msg)) {
             pimpl->state = std::move(next);
         }
 
@@ -109,20 +108,34 @@ void CommandExecutor::workerFunction()
     }
 }
 
-namespace {
-struct id2sv {
-    CommandExecutor::MsgId id;
-    std::string_view       sv;
-};
-
-id2sv table[]{{CommandExecutor::MsgId::Idle, std::string_view{"Idle"}},
-              {CommandExecutor::MsgId::SeqStep1, std::string_view{"SeqStep1"}},
-              {CommandExecutor::MsgId::SeqStep2, std::string_view{"SeqStep2"}}};
-}  // namespace
-
-std::string_view MsgId2Sv(CommandExecutor::MsgId id)
+std::string_view MsgId2Sv(CommandExecutor::State state)
 {
-    for (auto const& e : table) {
+    struct state2sv {
+        CommandExecutor::State state;
+        std::string_view       sv;
+    };
+    state2sv table_id2sv[]{
+        {CommandExecutor::State::Idle, std::string_view{"Idle"}},
+        {CommandExecutor::State::WaitingForCompletion, std::string_view{"WaitingForCompletion"}}};
+
+    for (auto const& e : table_id2sv) {
+        if (e.state == state) {
+            return e.sv;
+        }
+    }
+
+    return std::string_view{"None"};
+}
+
+std::string_view CmdId2Sv(CommandExecutor::CommandId id)
+{
+    struct cmd_id2sv {
+        CommandExecutor::CommandId id;
+        std::string_view           sv;
+    } cmd_id2sv[]{{CommandExecutor::CommandId::Start, std::string_view{"Start"}},
+                  {CommandExecutor::CommandId::Complete, std::string_view{"Complete"}}};
+
+    for (auto const& e : cmd_id2sv) {
         if (e.id == id) {
             return e.sv;
         }

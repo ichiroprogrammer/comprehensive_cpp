@@ -2,107 +2,96 @@
 #include "logging/logger.h"
 #include "model/command_executor.h"
 
-class TestCommandExecutorState_SeqStep2 : public CommandExecutorState {
+class CommandExecutorState_WaitingForCompletion : public CommandExecutorState {
 public:
-    TestCommandExecutorState_SeqStep2()
+    CommandExecutorState_WaitingForCompletion()
     {
-        std::cout << "TestCommandExecutorState_SeqStep2" << std::endl;
+        LOGGER("CommandExecutorState_WaitingForCompletion");
     }
     std::unique_ptr<CommandExecutorState> Exec(CommandExecutor::msg_t const& msg) override;
 
-    CommandExecutor::MsgId GetState() const noexcept override
+    CommandExecutor::State GetState() const noexcept override
     {
-        return CommandExecutor::MsgId::SeqStep2;
+        return CommandExecutor::State::WaitingForCompletion;
     }
 };
 
-class TestCommandExecutorState_SeqStep1 : public CommandExecutorState {
+class CommandExecutorState_Idle : public CommandExecutorState {
 public:
-    TestCommandExecutorState_SeqStep1()
-    {
-        std::cout << "TestCommandExecutorState_SeqStep1" << std::endl;
-    }
+    CommandExecutorState_Idle() { LOGGER("CommandExecutorState_Idle"); }
     std::unique_ptr<CommandExecutorState> Exec(CommandExecutor::msg_t const& msg) override
     {
-        if (msg.id != CommandExecutor::MsgId::SeqStep2) {
+        LOGGER("Command", CmdId2Sv(msg.id));
+        if (msg.id != CommandExecutor::CommandId::Start) {
             return std::unique_ptr<CommandExecutorState>{};
         }
 
-        std::cout << "gen TestCommandExecutorState_SeqStep2 !!!!!!!!" << std::endl;
-        return std::make_unique<TestCommandExecutorState_SeqStep2>();
+        LOGGER("gen CommandExecutorState_WaitingForCompletion !!!!!!!!");
+        return std::make_unique<CommandExecutorState_WaitingForCompletion>();
     }
 
-    CommandExecutor::MsgId GetState() const noexcept override
+    CommandExecutor::State GetState() const noexcept override
     {
-        return CommandExecutor::MsgId::SeqStep1;
+        return CommandExecutor::State::Idle;
     }
 };
 
-class TestCommandExecutorState_Idle : public CommandExecutorState {
-public:
-    TestCommandExecutorState_Idle() { std::cout << "TestCommandExecutorState_Idle" << std::endl; }
-    std::unique_ptr<CommandExecutorState> Exec(CommandExecutor::msg_t const& msg) override
-    {
-        if (msg.id != CommandExecutor::MsgId::SeqStep1) {
-            return std::unique_ptr<CommandExecutorState>{};
-        }
-
-        std::cout << "gen TestCommandExecutorState_SeqStep1 !!!!!!!!" << std::endl;
-        return std::make_unique<TestCommandExecutorState_SeqStep1>();
-    }
-
-    CommandExecutor::MsgId GetState() const noexcept override
-    {
-        return CommandExecutor::MsgId::Idle;
-    }
-};
-
-std::unique_ptr<CommandExecutorState> TestCommandExecutorState_SeqStep2::Exec(
+std::unique_ptr<CommandExecutorState> CommandExecutorState_WaitingForCompletion::Exec(
     CommandExecutor::msg_t const& msg)
 {
-    if (msg.id != CommandExecutor::MsgId::Idle) {
+    if (msg.id != CommandExecutor::CommandId::Complete) {
         return std::unique_ptr<CommandExecutorState>{};
     }
-    std::cout << "gen TestCommandExecutorState_Idle !!!!!!!!" << std::endl;
-    return std::make_unique<TestCommandExecutorState_Idle>();
+
+    LOGGER("gen CommandExecutorState_Idle !!!!!!!!");
+    return std::make_unique<CommandExecutorState_Idle>();
+}
+
+TEST(CommandExecutorTest, AAA_FistTest)
+{
+    LOGGER_INIT("log.txt");  // logging用のファイルの初期化
 }
 
 TEST(CommandExecutorTest, TestAsyncCommand)
 {
-    CommandExecutor executor{std::make_unique<TestCommandExecutorState_Idle>()};
+    CommandExecutor executor{std::make_unique<CommandExecutorState_Idle>()};
     int             on_completion_couner{};
 
-    std::this_thread::sleep_for(std::chrono::seconds(1));  // 非同期処理の完了を待つ
-    ASSERT_EQ(executor.GetState(), CommandExecutor::MsgId::Idle);
+    ASSERT_EQ(executor.GetState(), CommandExecutor::State::Idle);
 
-    executor.command(CommandExecutor::MsgId::SeqStep1, [&on_completion_couner]() {
+    executor.command(CommandExecutor::CommandExecutor::CommandId::Start, [&on_completion_couner]() {
         ++on_completion_couner;
-        std::cout << "on complete:" << on_completion_couner << std::endl;
+        LOGGER("on complete:");
     });
 
     std::this_thread::sleep_for(std::chrono::seconds(2));  // 非同期処理の完了を待つ
 
-    ASSERT_EQ(executor.GetState(), CommandExecutor::MsgId::SeqStep1);
+    executor.command(CommandExecutor::CommandExecutor::CommandId::Complete,
+                     [&on_completion_couner]() {
+                         ++on_completion_couner;
+                         LOGGER("on complete:");
+                     });
+    ASSERT_EQ(executor.GetState(), CommandExecutor::State::WaitingForCompletion);
     ASSERT_EQ(on_completion_couner, 1);
 
-    executor.command(CommandExecutor::MsgId::SeqStep2, [&on_completion_couner]() {
+    executor.command(CommandExecutor::CommandId::Complete, [&on_completion_couner]() {
         ++on_completion_couner;
-        std::cout << "on complete:" << on_completion_couner << std::endl;
+        LOGGER("on complete:");
     });
 
     std::this_thread::sleep_for(std::chrono::seconds(2));  // 非同期処理の完了を待つ
 
-    ASSERT_EQ(executor.GetState(), CommandExecutor::MsgId::SeqStep2);
+    ASSERT_EQ(executor.GetState(), CommandExecutor::State::Idle);
     ASSERT_EQ(on_completion_couner, 2);
 
     //
-    executor.command(CommandExecutor::MsgId::Idle, [&on_completion_couner]() {
+    executor.command(CommandExecutor::CommandId::Complete, [&on_completion_couner]() {
         ++on_completion_couner;
-        std::cout << "on complete:" << on_completion_couner << std::endl;
+        LOGGER("on complete:");
     });
 
     std::this_thread::sleep_for(std::chrono::seconds(2));  // 非同期処理の完了を待つ
 
-    ASSERT_EQ(executor.GetState(), CommandExecutor::MsgId::Idle);
+    ASSERT_EQ(executor.GetState(), CommandExecutor::State::Idle);
     ASSERT_EQ(on_completion_couner, 3);
 }

@@ -11,24 +11,25 @@ class CommandExecutorState;
 
 class CommandExecutor {
 public:
-    enum class MsgId { Idle, SeqStep1, SeqStep2 };
+    enum class CommandId { Start, Complete };
+    enum class State { Idle, WaitingForCompletion };
 
     CommandExecutor(std::unique_ptr<CommandExecutorState>&&);
     ~CommandExecutor();
-    void command(CommandExecutor::MsgId aid, std::function<void()> callback);
+    void command(CommandExecutor::CommandId aid, std::function<void()> on_completion);
 
     struct msg_t {
-        msg_t() : id{CommandExecutor::MsgId::Idle}, on_completion([] {}) {}
-        msg_t(CommandExecutor::MsgId id, std::function<void()> on_completion)
+        msg_t() : id{CommandExecutor::CommandId::Start}, on_completion([] {}) {}
+        msg_t(CommandExecutor::CommandId id, std::function<void()> on_completion)
             : id{id}, on_completion{std::move(on_completion)}
         {
         }
 
-        CommandExecutor::MsgId id;
-        std::function<void()>  on_completion;
+        CommandExecutor::CommandId id;
+        std::function<void()>      on_completion;
     };
 
-    MsgId GetState() const noexcept;
+    State GetState() const noexcept;
 
 private:
     void workerFunction();
@@ -42,8 +43,9 @@ class CommandExecutorState {
 public:
     CommandExecutorState()                                                                = default;
     virtual std::unique_ptr<CommandExecutorState> Exec(CommandExecutor::msg_t const& msg) = 0;
-    virtual CommandExecutor::MsgId                GetState() const noexcept               = 0;
+    virtual CommandExecutor::State                GetState() const noexcept               = 0;
     virtual ~CommandExecutorState()                                                       = default;
 };
 
-std::string_view MsgId2Sv(CommandExecutor::MsgId);
+std::string_view MsgId2Sv(CommandExecutor::State);
+std::string_view CmdId2Sv(CommandExecutor::CommandId);

@@ -3,7 +3,7 @@
 #include <iostream>
 #include <thread>
 
-#include "model/slow_mover.h"
+#include "model/x.h"
 
 void SlowMover::command(std::function<void()> on_completion)
 {
