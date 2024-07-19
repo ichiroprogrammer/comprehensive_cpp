@@ -7,16 +7,10 @@
 #include <string_view>
 #include <thread>
 
-class CommandExecutorState;
-
 class CommandExecutor {
 public:
     enum class CommandId { Start, Complete };
-    enum class State { Idle, WaitingForCompletion };
-
-    CommandExecutor(std::unique_ptr<CommandExecutorState>&&);
-    ~CommandExecutor();
-    void command(CommandExecutor::CommandId aid, std::function<void()> on_completion);
+    enum class StateSym { Idle, WaitingForCompletion };
 
     struct msg_t {
         msg_t() : id{CommandExecutor::CommandId::Start}, on_completion([] {}) {}
@@ -29,7 +23,22 @@ public:
         std::function<void()>      on_completion;
     };
 
-    State GetState() const noexcept;
+    class State {
+    public:
+        State(StateSym state_sym) : state_sym_{state_sym} {}
+
+        StateSym                       GetState() const noexcept { return state_sym_; }
+        virtual std::unique_ptr<State> Exec(CommandExecutor::msg_t const& msg) = 0;
+        virtual ~State()                                                       = default;
+
+    private:
+        StateSym state_sym_;
+    };
+
+    CommandExecutor(std::unique_ptr<State>&&);
+    ~CommandExecutor();
+    void     command(CommandExecutor::CommandId aid, std::function<void()> on_completion);
+    StateSym GetState() const noexcept;
 
 private:
     void workerFunction();
@@ -39,13 +48,17 @@ private:
     std::thread gen_worker();
 };
 
-class CommandExecutorState {
+class CommandExecutorState_Idle : public CommandExecutor::State {
 public:
-    CommandExecutorState()                                                                = default;
-    virtual std::unique_ptr<CommandExecutorState> Exec(CommandExecutor::msg_t const& msg) = 0;
-    virtual CommandExecutor::State                GetState() const noexcept               = 0;
-    virtual ~CommandExecutorState()                                                       = default;
+    CommandExecutorState_Idle();
+    std::unique_ptr<CommandExecutor::State> Exec(CommandExecutor::msg_t const& msg) override;
 };
 
-std::string_view MsgId2Sv(CommandExecutor::State);
+class CommandExecutorState_WaitingForCompletion : public CommandExecutor::State {
+public:
+    CommandExecutorState_WaitingForCompletion();
+    std::unique_ptr<CommandExecutor::State> Exec(CommandExecutor::msg_t const& msg) override;
+};
+
+std::string_view MsgId2Sv(CommandExecutor::StateSym);
 std::string_view CmdId2Sv(CommandExecutor::CommandId);

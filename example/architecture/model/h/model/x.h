@@ -4,12 +4,12 @@
 #include <functional>
 #include <future>
 
-class SlowMover {
+class X {
 public:
-    SlowMover() = default;
+    X() = default;
     void command(std::function<void()>);
 
-    ~SlowMover();
+    ~X();
 
     std::future<void> fu;
 };

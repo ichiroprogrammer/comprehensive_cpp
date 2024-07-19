@@ -5,8 +5,8 @@
 
 TEST(SlowMoverTest, TestAsyncCommand)
 {
-    SlowMover executor;
-    bool      callbackCalled = false;
+    X    executor;
+    bool callbackCalled = false;
 
     executor.command([&callbackCalled]() { callbackCalled = true; });
 
