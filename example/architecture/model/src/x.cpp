@@ -18,4 +18,9 @@ void X::command(std::function<void()> on_completion)
                     });
 }
 
-X::~X() { fu.get(); }
+X::~X()
+{
+    if (fu.valid()) {
+        fu.get();
+    }
+}

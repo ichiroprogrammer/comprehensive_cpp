@@ -35,10 +35,12 @@ public:
         StateSym state_sym_;
     };
 
-    CommandExecutor(std::unique_ptr<State>&&);
+    CommandExecutor(std::unique_ptr<State>&& state = gen_CommandExecutorState_Idle());
     ~CommandExecutor();
     void     command(CommandExecutor::CommandId aid, std::function<void()> on_completion);
     StateSym GetState() const noexcept;
+
+    static std::unique_ptr<State> gen_CommandExecutorState_Idle();
 
 private:
     void workerFunction();

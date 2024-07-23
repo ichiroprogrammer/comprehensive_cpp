@@ -11,6 +11,7 @@
 
 #include "logging/logger.h"
 #include "model/command_executor.h"
+#include "model/x.h"
 
 struct CommandExecutor::pimpl_t {
     pimpl_t(std::thread&& th, std::unique_ptr<CommandExecutor::State>&& state)
@@ -24,6 +25,7 @@ struct CommandExecutor::pimpl_t {
     std::thread                             worker;
     std::atomic<bool>                       stop = false;
     std::unique_ptr<CommandExecutor::State> state;
+    X                                       x[2]{};
 };
 
 std::thread CommandExecutor::gen_worker()
@@ -96,6 +98,10 @@ void CommandExecutor::command(CommandExecutor::CommandId id, std::function<void(
     pimpl->cv.notify_one();
 }
 
+std::unique_ptr<CommandExecutor::State> CommandExecutor::gen_CommandExecutorState_Idle()
+{
+    return std::make_unique<CommandExecutorState_Idle>();
+}
 void CommandExecutor::workerFunction()
 {
     for (;;) {
@@ -112,16 +118,11 @@ void CommandExecutor::workerFunction()
         }
 
         LOGGER("Processing message", CmdId2Sv(msg.id));
-        std::this_thread::sleep_for(std::chrono::milliseconds(1500));
         LOGGER("Message processed", MsgId2Sv(pimpl->state->GetState()));
 
         if (auto next = pimpl->state->Exec(msg)) {
             std::unique_lock<std::mutex> lock{pimpl->mutex_state};
             pimpl->state = std::move(next);
-        }
-
-        if (msg.on_completion) {
-            msg.on_completion();
         }
     }
 }

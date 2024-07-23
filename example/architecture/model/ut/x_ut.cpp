@@ -5,10 +5,10 @@
 
 TEST(SlowMoverTest, TestAsyncCommand)
 {
-    X    executor;
+    X    x;
     bool callbackCalled = false;
 
-    executor.command([&callbackCalled]() { callbackCalled = true; });
+    x.command([&callbackCalled]() { callbackCalled = true; });
 
     // 非同期処理の完了を待つ
     std::this_thread::sleep_for(std::chrono::seconds(3));

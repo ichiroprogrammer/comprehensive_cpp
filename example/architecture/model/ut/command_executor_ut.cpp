@@ -29,6 +29,9 @@ std::unique_ptr<CommandExecutor::State> TestCommandExecutorState_Idle::Exec(
         return std::unique_ptr<CommandExecutor::State>{};
     }
 
+    if (msg.on_completion) {
+        msg.on_completion();
+    }
     LOGGER("gen TestCommandExecutorState_WaitingForCompletion !!!!!!!!");
     return std::make_unique<TestCommandExecutorState_WaitingForCompletion>();
 }
@@ -40,6 +43,9 @@ std::unique_ptr<CommandExecutor::State> TestCommandExecutorState_WaitingForCompl
         return std::unique_ptr<CommandExecutor::State>{};
     }
 
+    if (msg.on_completion) {
+        msg.on_completion();
+    }
     LOGGER("gen TestCommandExecutorState_Idle !!!!!!!!");
     return std::make_unique<TestCommandExecutorState_Idle>();
 }
@@ -67,34 +73,28 @@ TEST(CommandExecutorTest, TestAsyncCommand)
         LOGGER("on complete:");
     });
 
-    std::this_thread::sleep_for(std::chrono::seconds(2));  // 非同期処理の完了を待つ
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));  // 非同期処理の完了を待つ
+    ASSERT_EQ(executor.GetState(), CommandExecutor::StateSym::WaitingForCompletion);
+    ASSERT_EQ(on_completion_couner, 1);
 
     executor.command(CommandExecutor::CommandExecutor::CommandId::Complete,
                      [&on_completion_couner]() {
                          ++on_completion_couner;
                          LOGGER("on complete:");
                      });
-    ASSERT_EQ(executor.GetState(), CommandExecutor::StateSym::WaitingForCompletion);
-    ASSERT_EQ(on_completion_couner, 1);
 
-    executor.command(CommandExecutor::CommandId::Complete, [&on_completion_couner]() {
-        ++on_completion_couner;
-        LOGGER("on complete:");
-    });
-
-    std::this_thread::sleep_for(std::chrono::seconds(2));  // 非同期処理の完了を待つ
-
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));  // 非同期処理の完了を待つ
     ASSERT_EQ(executor.GetState(), CommandExecutor::StateSym::Idle);
     ASSERT_EQ(on_completion_couner, 2);
 
-    //
+    // Idle状態でCompleteコマンドを受診しても捨てるのでon_completion()は呼び出されない
     executor.command(CommandExecutor::CommandId::Complete, [&on_completion_couner]() {
         ++on_completion_couner;
         LOGGER("on complete:");
     });
 
-    std::this_thread::sleep_for(std::chrono::seconds(2));  // 非同期処理の完了を待つ
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));  // 非同期処理の完了を待つ
 
     ASSERT_EQ(executor.GetState(), CommandExecutor::StateSym::Idle);
-    ASSERT_EQ(on_completion_couner, 3);
+    ASSERT_EQ(on_completion_couner, 2);
 }
