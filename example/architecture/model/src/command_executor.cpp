@@ -108,7 +108,8 @@ void CommandExecutor::workerFunction()
         msg_t msg;
         {
             std::unique_lock<std::mutex> lock{pimpl->mutex_msg};
-            pimpl->cv.wait(lock, [this] { return !pimpl->messages.empty() || pimpl->stop; });
+            pimpl->cv.wait(lock,
+                           [&pimpl = *pimpl] { return !pimpl.messages.empty() || pimpl.stop; });
             if (pimpl->stop && pimpl->messages.empty()) {
                 return;
             }

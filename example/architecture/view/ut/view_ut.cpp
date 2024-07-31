@@ -24,10 +24,13 @@ TEST_F(ViewTest, AAA_FistTest) {}
 
 TEST_F(ViewTest, Update)
 {
-    View  view;
-    Model model;
+    std::ostringstream out;
 
-    view.update(model);
+    View view{out};
 
-    ASSERT_EQ(out.str(), "View updated with model changes\n");
+    const auto* str = "View updated with model changes";
+
+    view.ShowAsync(str);
+    view.Sync();
+    ASSERT_EQ(out.str(), str);
 }

@@ -6,7 +6,7 @@ int main()
 {
     Controller controller;
     Model      model;
-    View       view;
+    View       view{std::cout};
 
     controller.setModel(&model);
     controller.setView(&view);
