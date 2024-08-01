@@ -14,18 +14,16 @@
 #include "model/x.h"
 
 struct CommandExecutor::pimpl_t {
-    pimpl_t(std::thread&& th, std::unique_ptr<CommandExecutor::State>&& state)
-        : worker{std::move(th)}, state{std::move(state)}
-    {
-    }
-    std::list<CommandExecutor::msg_t>       messages{};
-    std::mutex                              mutex_msg{};
-    std::mutex                              mutex_state{};
-    std::condition_variable                 cv{};
-    std::thread                             worker;
-    std::atomic<bool>                       stop = false;
-    std::unique_ptr<CommandExecutor::State> state;
-    X                                       x[2]{};
+    pimpl_t(std::thread&& th) : worker{std::move(th)} {}
+
+    std::list<CommandExecutor::msg_t> msgs{};
+    std::mutex                        msg_mtx{};
+    std::condition_variable           msg_cv{};
+
+    std::atomic<bool> busy = false;
+
+    std::thread       worker;
+    std::atomic<bool> stop = false;
 };
 
 std::thread CommandExecutor::gen_worker()
@@ -33,132 +31,68 @@ std::thread CommandExecutor::gen_worker()
     return std::thread{&CommandExecutor::workerFunction, this};
 }
 
-CommandExecutor::StateSym CommandExecutor::GetState() const noexcept
-{
-    std::unique_lock<std::mutex> lock{pimpl->mutex_state};
-
-    return pimpl->state->GetState();
-}
-
-// ### CommandExecutorState_Idle
-CommandExecutorState_Idle::CommandExecutorState_Idle()
-    : CommandExecutor::State{CommandExecutor::StateSym::Idle}
-{
-    LOGGER("CommandExecutorState_Idle");
-}
-
-std::unique_ptr<CommandExecutor::State> CommandExecutorState_Idle::Exec(
-    CommandExecutor::msg_t const& msg)
-{
-    LOGGER("Command", CmdId2Sv(msg.id));
-    if (msg.id != CommandExecutor::CommandId::Start) {
-        return std::unique_ptr<CommandExecutor::State>{};
-    }
-
-    LOGGER("gen CommandExecutorState_WaitingForCompletion !!!!!!!!");
-    return std::make_unique<CommandExecutorState_WaitingForCompletion>();
-}
-
-std::unique_ptr<CommandExecutor::State> CommandExecutorState_WaitingForCompletion::Exec(
-    CommandExecutor::msg_t const& msg)
-{
-    if (msg.id != CommandExecutor::CommandId::Complete) {
-        return std::unique_ptr<CommandExecutor::State>{};
-    }
-
-    LOGGER("gen CommandExecutorState_Idle !!!!!!!!");
-    return std::make_unique<CommandExecutorState_Idle>();
-}
-
-CommandExecutorState_WaitingForCompletion::CommandExecutorState_WaitingForCompletion()
-    : CommandExecutor::State{CommandExecutor::StateSym::WaitingForCompletion}
-{
-    LOGGER("CommandExecutorState_WaitingForCompletion");
-}
-
 // ###
-CommandExecutor::CommandExecutor(std::unique_ptr<CommandExecutor::State>&& state)
-    : pimpl{std::make_unique<CommandExecutor::pimpl_t>(gen_worker(), std::move(state))}
+CommandExecutor::CommandExecutor()
+    : pimpl_{std::make_unique<CommandExecutor::pimpl_t>(gen_worker())}
 {
 }
 
 CommandExecutor::~CommandExecutor()
 {
-    pimpl->stop = true;
-    pimpl->cv.notify_one();
-    pimpl->worker.join();
+    pimpl_->stop = true;
+    pimpl_->busy = false;
+    pimpl_->msg_cv.notify_one();
+    pimpl_->worker.join();
 }
 
-void CommandExecutor::command(CommandExecutor::CommandId id, std::function<void()> on_completion)
+bool CommandExecutor::IsBusy() const noexcept { return pimpl_->busy; }
+
+void CommandExecutor::Sync()
 {
-    {
-        std::unique_lock<std::mutex> lock{pimpl->mutex_msg};
-        pimpl->messages.push_back({id, on_completion});
+    for (;;) {
+        if (!pimpl_->busy) {
+            return;
+        }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
-    pimpl->cv.notify_one();
 }
 
-std::unique_ptr<CommandExecutor::State> CommandExecutor::gen_CommandExecutorState_Idle()
+bool CommandExecutor::ExecAsync(std::function<void()> exec)
 {
-    return std::make_unique<CommandExecutorState_Idle>();
+    if (pimpl_->busy) {
+        return false;
+    }
+
+    {
+        std::unique_lock<std::mutex> lock{pimpl_->msg_mtx};
+        pimpl_->msgs.push_back({exec});
+        pimpl_->busy = true;
+    }
+    pimpl_->msg_cv.notify_one();
+
+    return true;
 }
+
 void CommandExecutor::workerFunction()
 {
     for (;;) {
         msg_t msg;
         {
-            std::unique_lock<std::mutex> lock{pimpl->mutex_msg};
-            pimpl->cv.wait(lock,
-                           [&pimpl = *pimpl] { return !pimpl.messages.empty() || pimpl.stop; });
-            if (pimpl->stop && pimpl->messages.empty()) {
+            std::unique_lock<std::mutex> lock{pimpl_->msg_mtx};
+            pimpl_->msg_cv.wait(
+                lock, [&pimpl_ = *pimpl_] { return !pimpl_.msgs.empty() || pimpl_.stop; });
+            if (pimpl_->stop && pimpl_->msgs.empty()) {
                 return;
             }
 
-            msg = std::move(pimpl->messages.front());
-            pimpl->messages.pop_front();
+            msg = std::move(pimpl_->msgs.front());
+            pimpl_->msgs.pop_front();
         }
 
-        LOGGER("Processing message", CmdId2Sv(msg.id));
-        LOGGER("Message processed", MsgId2Sv(pimpl->state->GetState()));
+        msg.exec();
+        pimpl_->busy = false;
 
-        if (auto next = pimpl->state->Exec(msg)) {
-            std::unique_lock<std::mutex> lock{pimpl->mutex_state};
-            pimpl->state = std::move(next);
-        }
+        LOGGER("Processing message");
     }
-}
-
-std::string_view MsgId2Sv(CommandExecutor::StateSym state)
-{
-    struct state2sv {
-        CommandExecutor::StateSym state;
-        std::string_view          sv;
-    } table_id2sv[]{{CommandExecutor::StateSym::Idle, std::string_view{"Idle"}},
-                    {CommandExecutor::StateSym::WaitingForCompletion,
-                     std::string_view{"WaitingForCompletion"}}};
-
-    for (auto const& e : table_id2sv) {
-        if (e.state == state) {
-            return e.sv;
-        }
-    }
-
-    return std::string_view{"None"};
-}
-
-std::string_view CmdId2Sv(CommandExecutor::CommandId id)
-{
-    struct cmd_id2sv {
-        CommandExecutor::CommandId id;
-        std::string_view           sv;
-    } cmd_id2sv[]{{CommandExecutor::CommandId::Start, std::string_view{"Start"}},
-                  {CommandExecutor::CommandId::Complete, std::string_view{"Complete"}}};
-
-    for (auto const& e : cmd_id2sv) {
-        if (e.id == id) {
-            return e.sv;
-        }
-    }
-
-    return std::string_view{"None"};
 }
