@@ -10,7 +10,6 @@ int main()
 
     controller.setModel(&model);
     controller.setView(&view);
-    model.notify();
 
     return 0;
 }

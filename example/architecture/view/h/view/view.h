@@ -3,15 +3,15 @@
 #include <memory>
 #include <thread>
 
-#include "model/observer.h"
+#include "model/model.h"
 
-class View : public Observer {
+class View : public Model::Observer {
 public:
     View(std::ostream& ostream);
     ~View();
     void ShowAsync(std::string&& msg);
     void Sync();
-    void update(Model const& model);
+    void Update(Model const& model) override;
 
 private:
     void          show_msg(std::string const& msg);

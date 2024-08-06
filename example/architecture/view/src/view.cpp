@@ -96,9 +96,7 @@ void View::worker_function()
     }
 }
 
-void View::update(Model const& model)
+void View::Update(Model const& model)
 {
-    std::cout << "View updated with model changes" << std::endl;
-
-    LOGGER("in update");
+    ostream_ << "View updated with model changes" << std::endl;
 }
