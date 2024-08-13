@@ -3,8 +3,8 @@
 #include <fstream>
 #include <list>
 #include <string>
-#include <vector>
 #include <utility>
+#include <vector>
 
 namespace Nstd {
 template <typename T, size_t N>

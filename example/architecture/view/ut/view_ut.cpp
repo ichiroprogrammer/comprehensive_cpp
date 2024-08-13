@@ -14,7 +14,7 @@ protected:
     void SetUp() override
     {
         orig = std::cout.rdbuf(out.rdbuf());
-        LOGGER_INIT("log.txt");  // logging$BMQ$N%U%!%$%k$N=i4|2=(B
+        LOGGER_INIT("log.txt");  // logging用のファイルの初期化
     }
 
     void TearDown() override { std::cout.rdbuf(orig); }
