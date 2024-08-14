@@ -1,4 +1,4 @@
-add_library(model src/model.cpp)
+add_library(model src/model.cpp src/x.cpp)
 target_include_directories(model PRIVATE src ${DEPS_DIR}/logging/h ${DEPS_DIR}/lib/h)
 target_include_directories(model PUBLIC ../model/h)
 

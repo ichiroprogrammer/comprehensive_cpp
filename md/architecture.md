@@ -148,62 +148,56 @@ __この章の構成__
     ├── app
     │   └── main.cpp
     ├── controller
-    │   ├── CMakeLists.txt
+    │   ├── CMakeLists.txt              # controller.aのビルドcmake
     │   ├── h
     │   │   └── controller
-    │   │       └── controller.h
-    │   ├── src
+    │   │       └── controller.h        # controller.aの機能の公開ヘッダ
+    │   ├── src                         # controller.aの実装ファイル(*.h *.cpp)
     │   │   └── controller.cpp
-    │   └── ut
+    │   └── ut                          # controller.aの単体テスト
     │       └── controller_ut.cpp
     ├── model
-    │   ├── CMakeLists.txt
-    │   ├── h
+    │   ├── CMakeLists.txt              # model.aのビルドcmake
+    │   ├── h                           # model.aの機能の公開ヘッダ 
     │   │   └── model
     │   │       ├── model.h
     │   │       └── observer.h
-    │   ├── src
+    │   ├── src                         # model.aの実装ファイル(*.h *.cpp)
     │   │   ├── model.cpp
     │   │   └── observer.cpp
-    │   └── ut
+    │   │   └── x.cpp
+    │   │   └── x.h
+    │   └── ut                          # model.aの単体テスト
     │       └── model_ut.cpp
     └── view
-        ├── CMakeLists.txt
-        ├── h
+        ├── CMakeLists.txt              # view.aのビルドcmake
+        ├── h                           # view.aの機能の公開ヘッダ 
         │   └── view
         │       └── view.h
-        ├── src
+        ├── src                         # view.aの実装ファイル(*.h *.cpp)
         │   └── view.cpp
-        └── ut
+        └── ut                          # view.aの単体テスト
             └── view_ut.cpp
 ```
-
-ファイル構成は下記のようになっているだろう。
-
-![ファイル](plant_uml/arch_file_example.png)
 
 h/<パケージ名>に配置されたヘッダファイルは、
 パッケージの外部からアクセスできるソフトウェア構成物を宣言、
 定義する。その他に配置されたヘッダファイルは、パッケージ自身の実装用か、単体テスト用である。
-従って、ディレクトリの依存関係は、下記の様になるはずである。
+ここで例示したアプリケーションは[MVC](---)構造であるため、
+ディレクトリの依存関係は、下記の様になるはずである。
 
 ![ディレクトリ](plant_uml/arch_dir_dep.png)
 
 循環や相互依存が残ってしまう場合、「[|SOLID](---)」に記載したコードのパターンや
 「[|デザインパターン](---)」が役立つはずである。
 
-[#includeで指定するパス名](---)に"../"(ディレクトリ上方向への移動)を使用しないことと、
-各パッケージのインクルードパスを下記のように制限することで、
+[#includeで指定するパス名](---)でのルールに従うことで、パケージの依存関係は、
 
-|パッケージ           |インクルードパス                |
-|---------------------|--------------------------------|
-|app                  |model/h/、controller/h/、view/h/|
-|model                |model/h/                        |
-|controller           |model/h/、controller/h/         |
-|view                 |model/h/、view/h/               |
-|...                  |...                             |
+```cpp
+    // @@@ example/architecture/model/src/model.cpp #0:0 begin
+```
 
-上記ディレクトリ間の依存関係を自動的に維持できるようになる(依存関係を拡大すればビルドエラーになる)。
+のようにコードに投影されるため、メンテナンス性や可読性が向上する。
 
 従って、
 各ライブラリのビルド毎にインクルードパスを設定できないようなビルドツールやIDEを使うべきではない

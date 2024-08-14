@@ -4,13 +4,17 @@
 #include <functional>
 #include <iostream>
 #include <iterator>
-#include <list>
+// @@@ sample begin 0:0
+
+#include <list>             // stdの利用
 #include <mutex>
 #include <string>
 #include <thread>
 
-#include "logging/logger.h"
-#include "model/model.h"
+#include "logging/logger.h" // logger.aの利用
+#include "model/model.h"    // model.aの利用
+#include "./x.h"            // src/*.hの利用
+// @@@ sample end
 
 struct Model::pimpl_t {
     pimpl_t(std::thread&& th) : worker{std::move(th)} {}
@@ -25,6 +29,7 @@ struct Model::pimpl_t {
 
     std::thread       worker;
     std::atomic<bool> stop = false;
+    X x{};
 };
 
 void Model::Attach(std::unique_ptr<Observer>&& observer)
