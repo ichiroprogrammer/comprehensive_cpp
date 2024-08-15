@@ -6,14 +6,14 @@
 #include <iterator>
 // @@@ sample begin 0:0
 
-#include <list>             // stdの利用
+#include <list>  // stdの使用
 #include <mutex>
 #include <string>
 #include <thread>
 
-#include "logging/logger.h" // logger.aの利用
-#include "model/model.h"    // model.aの利用
-#include "./x.h"            // src/*.hの利用
+#include "./x.h"             // ローカルヘッダの使用
+#include "logging/logger.h"  // logger.aの使用
+#include "model/model.h"     // model.aの使用
 // @@@ sample end
 
 struct Model::pimpl_t {
@@ -29,7 +29,7 @@ struct Model::pimpl_t {
 
     std::thread       worker;
     std::atomic<bool> stop = false;
-    X x{};
+    X                 x{};
 };
 
 void Model::Attach(std::unique_ptr<Observer>&& observer)
