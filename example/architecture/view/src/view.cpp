@@ -15,7 +15,7 @@ char const* b2str(bool b) { return b ? "true" : "false"; }
 
 // @@@ sample begin 1:0
 
-void ViewCore::ShowAsync(std::string&& msg) // 非同期出力
+void ViewCore::ShowAsync(std::string&& msg)  // 非同期出力
 {
     {
         std::unique_lock<std::mutex> lock{msg_mtx_};
@@ -62,4 +62,3 @@ ViewCore::~ViewCore()
     worker_.join();
 }
 // @@@ sample end
-

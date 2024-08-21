@@ -27,13 +27,13 @@ TEST_F(ViewTest, Update)
     // @@@ sample begin 1:0
 
     std::ostringstream out;
-    View view{};
+    View               view{};
 
-    ViewCore::Inst().SetOStream(out);   // 出力の切り替え
+    ViewCore::Inst().SetOStream(out);  // 出力の切り替え
     const auto* str = "Output string to View";
 
-    view.ShowAsync(str);    // 非同期出力
-    view.Sync();            // 出力待ち
+    view.ShowAsync(str);  // 非同期出力
+    view.Sync();          // 出力待ち
     ASSERT_EQ(out.str(), str);
     // @@@ sample end
 }
