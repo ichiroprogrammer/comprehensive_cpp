@@ -14,46 +14,52 @@ TEST(ModelTest, AAA_FistTest)
     LOGGER_INIT("log.txt");  // logging用のファイルの初期化
 }
 
-class TestObserver : public Model::Observer {
+// @@@ sample begin 1:0
+
+class TestObserver : public Model::Observer {  // テスト用オブザーバー
 public:
     void          Update(const Model& model) override { ++update_counter_; }
     std::uint32_t update_counter_ = 0;
 };
+// @@@ sample end
 
 TEST(ModelTest, ExecAsync)
 {
+    // @@@ sample begin 1:1
+
     Model         model{};
     int           exec_counter{};
-    TestObserver* to = new TestObserver;
+    TestObserver* to = new TestObserver;  // 下のunique_ptrで管理
 
-    model.Attach(std::unique_ptr<TestObserver>{to});
+    model.Attach(std::unique_ptr<TestObserver>{to});  // オブザーバの登録
 
-    ASSERT_FALSE(model.IsBusy());
+    ASSERT_FALSE(model.IsBusy());  // ビジーでないことの確認
 
-    model.ExecAsync([&exec_counter]() {
+    model.ExecAsync([&exec_counter]() {  // 非同期要求のテスト開始
         ++exec_counter;
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
         LOGGER("in ExecAsync");
     });
 
-    ASSERT_TRUE(model.IsBusy());
-    ASSERT_EQ(to->update_counter_, 0);
+    ASSERT_TRUE(model.IsBusy());        // ラムダ内で100ms待つため、ビジーとなる
+    ASSERT_EQ(to->update_counter_, 0);  // まだラムダが実行されていないはず
 
-    ASSERT_FALSE(model.ExecAsync([&exec_counter]() {
+    ASSERT_FALSE(model.ExecAsync([&exec_counter]() {  // まだラムダが実行されていないはず
         ++exec_counter;
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
         LOGGER("in ExecAsync");
     }));
 
-    model.Sync();
+    model.Sync();  // 非同期要求の完了待ち
     ASSERT_EQ(exec_counter, 1);
-    ASSERT_EQ(to->update_counter_, 1);
+    ASSERT_EQ(to->update_counter_, 1);  // オブザーバーのUpdateが呼ばれたことの確認
 
     model.ExecAsync([&exec_counter]() {
         ++exec_counter;
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
         LOGGER("in ExecAsync");
     });
+    // @@@ sample end
 
     ASSERT_TRUE(model.IsBusy());
     model.Sync();

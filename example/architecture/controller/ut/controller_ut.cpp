@@ -7,7 +7,7 @@ TEST(ControllerTest, SetModelAndView)
 {
     Controller controller;
     Model      model;
-    View       view{std::cout};
+    View       view{};
 
     controller.setModel(&model);
     controller.setView(&view);

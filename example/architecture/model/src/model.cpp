@@ -3,64 +3,27 @@
 #include <cstring>
 #include <functional>
 #include <iostream>
-#include <iterator>
 // @@@ sample begin 0:0
 
-#include <list>  // stdの使用
-#include <mutex>
-#include <string>
-#include <thread>
+#include <iterator>  // stdの使用
 
 #include "./x.h"             // ローカルヘッダの使用
 #include "logging/logger.h"  // logger.aの使用
 #include "model/model.h"     // model.aの使用
 // @@@ sample end
 
-struct Model::pimpl_t {
-    pimpl_t(std::thread&& th) : worker{std::move(th)} {}
-
-    std::list<Model::msg_t> msgs{};
-    std::mutex              msg_mtx{};
-    std::condition_variable msg_cv{};
-
-    std::list<std::unique_ptr<Model::Observer>> observers{};
-
-    std::atomic<bool> busy = false;
-
-    std::thread       worker;
-    std::atomic<bool> stop = false;
-    X                 x{};
-};
-
-void Model::Attach(std::unique_ptr<Observer>&& observer)
-{
-    pimpl_->observers.emplace_back(std::move(observer));
-}
-
-std::thread Model::gen_worker() { return std::thread{&Model::workerFunction, this}; }
-
-Model::Model() : pimpl_{std::make_unique<Model::pimpl_t>(gen_worker())} {}
-void Model::notify()
-{
-    for (auto const& observer : pimpl_->observers) {
-        observer->Update(*this);
-    }
-}
-
 Model::~Model()
 {
-    pimpl_->stop = true;
-    pimpl_->busy = false;
-    pimpl_->msg_cv.notify_one();
-    pimpl_->worker.join();
+    stop_ = true;
+    busy_ = false;
+    msg_cv_.notify_one();
+    worker_.join();
 }
-
-bool Model::IsBusy() const noexcept { return pimpl_->busy; }
 
 void Model::Sync()
 {
     for (;;) {
-        if (!pimpl_->busy) {
+        if (!busy_) {  // busy_のポーリング
             return;
         }
 
@@ -68,43 +31,60 @@ void Model::Sync()
     }
 }
 
-bool Model::ExecAsync(std::function<void()> exec)
+// @@@ sample begin 1:1
+
+bool Model::ExecAsync(std::function<void()> exec)  // Modelに対する非同期要求
 {
-    if (pimpl_->busy) {
+    // 非同期要求のキューイングはしないが、キューイング可能に変更は容易
+    if (busy_) {
         return false;
     }
 
     {
-        std::unique_lock<std::mutex> lock{pimpl_->msg_mtx};
-        pimpl_->msgs.push_back({exec});
-        pimpl_->busy = true;
+        std::unique_lock<std::mutex> lock{msg_mtx_};
+        msgs_.emplace_back(std::move(exec));
+        busy_ = true;
     }
-    pimpl_->msg_cv.notify_one();
+    msg_cv_.notify_one();
 
     return true;
 }
+// @@@ sample end
+// @@@ sample begin 1:2
 
-void Model::workerFunction()
+void Model::worker_function()  // スレッドのメイン関数
 {
     for (;;) {
         msg_t msg;
         {
-            std::unique_lock<std::mutex> lock{pimpl_->msg_mtx};
-            pimpl_->msg_cv.wait(
-                lock, [&pimpl_ = *pimpl_] { return !pimpl_.msgs.empty() || pimpl_.stop; });
-            if (pimpl_->stop && pimpl_->msgs.empty()) {
+            std::unique_lock<std::mutex> lock{msg_mtx_};
+            msg_cv_.wait(lock, [&msgs = msgs_, &stop = stop_] { return !msgs.empty() || stop; });
+            if (stop_ && msgs_.empty()) {
                 return;
             }
 
-            msg = std::move(pimpl_->msgs.front());
-            pimpl_->msgs.pop_front();
+            msg = std::move(msgs_.front());
+            msgs_.pop_front();
         }
 
-        msg.exec();
-        pimpl_->busy = false;
+        msg.exec();  // ExecAsync(exec)で渡された関数オブジェクトの非同期呼び出し
+        busy_ = false;
 
-        notify();
-
-        LOGGER("Processing message");
+        notify();  // オブザーバーへの通知処理
     }
 }
+// @@@ sample end
+// @@@ sample begin 1:3
+
+void Model::Attach(std::unique_ptr<Observer>&& observer)  // オブザーバーのアタッチ
+{
+    observers_.emplace_back(std::move(observer));
+}
+
+void Model::notify()
+{
+    for (auto const& observer : observers_) {
+        observer->Update(*this);
+    }
+}
+// @@@ sample end
