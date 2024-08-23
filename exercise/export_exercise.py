@@ -6,46 +6,6 @@ import shutil
 import sys
 import subprocess
 
-readme_content = """
-# exercise solid/design pattern by C++ 
-
-このリポジトリはC++によるsolid/design patternの理解を促すための演習問題である。
-
-# 使い方
-
-演習は./exercise/xxx_qのソースコードの
-    //[Q] ...
-    のような個所に掲載されている。
-
-exercise/xxx_a/exercise/xxx_qの回答例である。
-
-# ビルド方法
-
-    exercise/build.sh   # すべてのソースコードがビルドされる。
-
-    cd exercise/some_dir
-    make            # some_dir内のソースコードのビルド
-    make ut         #  some_dir内のソースコードの単体テスト
-
-    ほとんどの演習問題は[Q}の指示に従いコードを書き単体テストで動作を確かめることで完了できる。
-
-makefileの各種のターゲットは
-
-    make help
-
-    を実行すればわかる。
-
-# パッケージ
-    このソースをビルドするためには救たなくとも以下のパッケージは必要である。
-
-    bash, g++, make, git
-"""
-
-def make_readme(dir):
-    with open(os.path.join(dir, "README.md"), "w", encoding="utf-8") as file:
-        file.write(readme_content)
-
-
 def _subprocess_run(cmd):
     print("executing ", cmd)
 
@@ -87,12 +47,12 @@ def make_git_repos(dir):
     cmd = f"git -C {dir} config --local user.name exercise.taro"
     _subprocess_run(cmd)
 
-    make_readme(dir)
     cmd = f"git -C {dir} add ."
     _subprocess_run(cmd)
 
     cmd = f"git -C {dir} commit -m fist-commit"
     _subprocess_run(cmd)
+
 
 def _main():
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -104,10 +64,12 @@ def _main():
     working_dir  = os.path.join(base_dir, "..")
     os.chdir(working_dir)
 
-    src_dirs = ["exercise", "deep/build", "deep/h", "deep/make", "googletest"]
+    sample_code_dir = "exercise"
+    src_dirs = [sample_code_dir, "deep/build", "deep/h", "deep/make", "googletest"]
 
     dst_dir = os.path.join(get_args(), "exercise.git")
     copy_directories(src_dirs, dst_dir)
+    shutil.copy(f"{sample_code_dir}/README.md", dst_dir)
 
     make_git_repos(dst_dir)
 
