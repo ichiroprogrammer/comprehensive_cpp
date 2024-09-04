@@ -346,6 +346,16 @@ __この章の構成__
     // @@@ example/programming_convention/type_ut.cpp #8:4 begin -2
 ```
 
+#### 生文字列リテラル
+* 正規表現を表す文字列リテラルを使用する場合、文字列内のエスケープシーケンスをエスケープするのでなく、
+  には生文字リテラルを使用する。これにより正規表現の可読性が向上する。
+
+```cpp
+    // @@@ example/cpp_improve/cpp11_ut.cpp #0:0 begin 
+
+    // @@@ example/cpp_improve/cpp11_ut.cpp #0:1 begin -1
+```
+
 * [演習-危険なconst_cast](---)
 * [演習-リテラル](---)
 
