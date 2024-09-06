@@ -351,9 +351,9 @@ __この章の構成__
   には生文字リテラルを使用する。これにより正規表現の可読性が向上する。
 
 ```cpp
-    // @@@ example/cpp_improve/cpp11_ut.cpp #0:0 begin 
+    // @@@ example/programming_convention/raw_literal_ut.cpp #0:0 begin 
 
-    // @@@ example/cpp_improve/cpp11_ut.cpp #0:1 begin -1
+    // @@@ example/programming_convention/raw_literal_ut.cpp #0:1 begin -1
 ```
 
 * [演習-危険なconst_cast](---)
