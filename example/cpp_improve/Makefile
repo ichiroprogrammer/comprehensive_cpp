@@ -1,5 +1,5 @@
 SRCS:=\
-   cpp11_ut.cpp
+   cpp11_ut.cpp cpp14_ut.cpp
 
 SHARED:=../../deep/
 include $(SHARED)make/env.mk
