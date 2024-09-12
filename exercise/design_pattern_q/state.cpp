@@ -20,12 +20,12 @@ public:
     {
         switch (lang_) {
         case Language::Japanese:
-            return u8"おはよう";
+            return "おはよう";
         case Language::French:
-            return u8"Bonjour";
+            return "Bonjour";
         case Language::English:
         default:
-            return u8"good morning";
+            return "good morning";
         }
     }
 
@@ -33,12 +33,12 @@ public:
     {
         switch (lang_) {
         case Language::Japanese:
-            return u8"こんにちは";
+            return "こんにちは";
         case Language::French:
-            return u8"Bonjour";
+            return "Bonjour";
         case Language::English:
         default:
-            return u8"hello";
+            return "hello";
         }
     }
 
@@ -46,12 +46,12 @@ public:
     {
         switch (lang_) {
         case Language::Japanese:
-            return u8"こんばんは";
+            return "こんばんは";
         case Language::French:
-            return u8"bonne soirée";
+            return "bonne soirée";
         case Language::English:
         default:
-            return u8"good evening";
+            return "good evening";
         }
     }
 
@@ -63,24 +63,24 @@ TEST(DesignPatternQ, State)
 {
     auto greeting = Greeting{};
 
-    ASSERT_EQ(u8"good morning", greeting.GoodMorning());
-    ASSERT_EQ(u8"hello", greeting.Hello());
-    ASSERT_EQ(u8"good evening", greeting.GoodEvening());
+    ASSERT_EQ("good morning", greeting.GoodMorning());
+    ASSERT_EQ("hello", greeting.Hello());
+    ASSERT_EQ("good evening", greeting.GoodEvening());
 
     greeting.SetLanguage(Language::Japanese);
-    ASSERT_EQ(u8"おはよう", greeting.GoodMorning());
-    ASSERT_EQ(u8"こんにちは", greeting.Hello());
-    ASSERT_EQ(u8"こんばんは", greeting.GoodEvening());
+    ASSERT_EQ("おはよう", greeting.GoodMorning());
+    ASSERT_EQ("こんにちは", greeting.Hello());
+    ASSERT_EQ("こんばんは", greeting.GoodEvening());
 
     greeting.SetLanguage(Language::French);
-    ASSERT_EQ(u8"Bonjour", greeting.GoodMorning());
-    ASSERT_EQ(u8"Bonjour", greeting.Hello());
-    ASSERT_EQ(u8"bonne soirée", greeting.GoodEvening());
+    ASSERT_EQ("Bonjour", greeting.GoodMorning());
+    ASSERT_EQ("Bonjour", greeting.Hello());
+    ASSERT_EQ("bonne soirée", greeting.GoodEvening());
 
     greeting.SetLanguage(Language::English);
-    ASSERT_EQ(u8"good morning", greeting.GoodMorning());
-    ASSERT_EQ(u8"hello", greeting.Hello());
-    ASSERT_EQ(u8"good evening", greeting.GoodEvening());
+    ASSERT_EQ("good morning", greeting.GoodMorning());
+    ASSERT_EQ("hello", greeting.Hello());
+    ASSERT_EQ("good evening", greeting.GoodEvening());
 }
 // @@@ sample end
 }  // namespace

@@ -18,21 +18,21 @@ private:
 };
 
 class GreetingState_English : public GreetingState {
-    virtual std::string good_morning() const override { return u8"good morning"; }
-    virtual std::string hello() const override { return u8"hello"; }
-    virtual std::string good_evening() const override { return u8"good evening"; }
+    virtual std::string good_morning() const override { return "good morning"; }
+    virtual std::string hello() const override { return "hello"; }
+    virtual std::string good_evening() const override { return "good evening"; }
 };
 
 class GreetingState_Japanese : public GreetingState {
-    virtual std::string good_morning() const override { return u8"おはよう"; }
-    virtual std::string hello() const override { return u8"こんにちは"; }
-    virtual std::string good_evening() const override { return u8"こんばんは"; }
+    virtual std::string good_morning() const override { return "おはよう"; }
+    virtual std::string hello() const override { return "こんにちは"; }
+    virtual std::string good_evening() const override { return "こんばんは"; }
 };
 
 class GreetingState_French : public GreetingState {
-    virtual std::string good_morning() const override { return u8"Bonjour"; }
-    virtual std::string hello() const override { return u8"Bonjour"; }
-    virtual std::string good_evening() const override { return u8"bonne soirée"; }
+    virtual std::string good_morning() const override { return "Bonjour"; }
+    virtual std::string hello() const override { return "Bonjour"; }
+    virtual std::string good_evening() const override { return "bonne soirée"; }
 };
 
 // @@@ sample begin 0:0
@@ -87,25 +87,25 @@ TEST(DesignPatternQ, NullObject)
 {
     auto e = Person{Language::English};
 
-    ASSERT_EQ(u8"good morning", e.GoodMorning());
-    ASSERT_EQ(u8"hello", e.Hello());
-    ASSERT_EQ(u8"good evening", e.GoodEvening());
+    ASSERT_EQ("good morning", e.GoodMorning());
+    ASSERT_EQ("hello", e.Hello());
+    ASSERT_EQ("good evening", e.GoodEvening());
 
     auto j = Person{Language::Japanese};
-    ASSERT_EQ(u8"おはよう", j.GoodMorning());
-    ASSERT_EQ(u8"こんにちは", j.Hello());
-    ASSERT_EQ(u8"こんばんは", j.GoodEvening());
+    ASSERT_EQ("おはよう", j.GoodMorning());
+    ASSERT_EQ("こんにちは", j.Hello());
+    ASSERT_EQ("こんばんは", j.GoodEvening());
 
     auto f = Person{Language::French};
-    ASSERT_EQ(u8"Bonjour", f.GoodMorning());
-    ASSERT_EQ(u8"Bonjour", f.Hello());
-    ASSERT_EQ(u8"bonne soirée", f.GoodEvening());
+    ASSERT_EQ("Bonjour", f.GoodMorning());
+    ASSERT_EQ("Bonjour", f.Hello());
+    ASSERT_EQ("bonne soirée", f.GoodEvening());
 
     auto e_s = Person{Language::English, true};
 
-    ASSERT_EQ(u8"", e_s.GoodMorning());
-    ASSERT_EQ(u8"", e_s.Hello());
-    ASSERT_EQ(u8"", e_s.GoodEvening());
+    ASSERT_EQ("", e_s.GoodMorning());
+    ASSERT_EQ("", e_s.Hello());
+    ASSERT_EQ("", e_s.GoodEvening());
 }
 // @@@ sample end
 }  // namespace

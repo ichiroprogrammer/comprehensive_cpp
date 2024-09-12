@@ -13,9 +13,7 @@ namespace OperatorPrioritySample {
 SUPPRESS_WARN_BEGIN;
 SUPPRESS_WARN_PARENTHESES;
 
-// 変数をvolatile にしたのはscan-build対策
-bool f(int8_t a, volatile int8_t& b, volatile int8_t& c, volatile int8_t& d, int8_t e,
-       int8_t f) noexcept
+bool f(int8_t a, int8_t& b, int8_t& c, int8_t& d, int8_t e, int8_t f) noexcept
 {
     // @@@ sample begin 0:0
 
@@ -83,9 +81,9 @@ SUPPRESS_WARN_PARENTHESES;
 SUPPRESS_WARN_GCC_SEQ_POINT;
 SUPPRESS_WARN_CLANG_UNSEQUENCED;
 
-// 変数をvolatile にしたのはscan-build対策
-bool f(volatile int32_t a, volatile int32_t b, volatile int32_t c) noexcept
+bool f(int32_t a, int32_t b, int32_t c) noexcept
 {
+#ifndef __clang_analyzer__  // @@@ delete
     // @@@ sample begin 2:0
 
     a = b = 0;              // OK
@@ -97,7 +95,8 @@ bool f(volatile int32_t a, volatile int32_t b, volatile int32_t c) noexcept
     ++a;         // OK
     auto i = a;  // OK
 
-    a = 0;  // OK
+    a = 0;                 // OK
+    IGNORE_UNUSED_VAR(a);  // @@@ delete
     // @@@ sample end
 
     auto fd1 = 0;
@@ -122,8 +121,11 @@ bool f(volatile int32_t a, volatile int32_t b, volatile int32_t c) noexcept
         // @@@ ignore end
     }
     // @@@ sample end
-
     return i + b < fd1;
+#endif  // @@@ delete
+
+    IGNORE_UNUSED_VAR(a, b, c);  // @@@ delete
+    return 0;
 }
 
 SUPPRESS_WARN_END;

@@ -269,17 +269,19 @@ public:
     {
         auto ret = std::vector<std::string>{};
 
-#if 1  // 手が滑って、strをstrs_としてしまったバグ([=]によってthisが導入されている)。
-
+#if __cplusplus == 201703L  // =でのキャプチャは範囲は大きすぎるため、C++20から非推奨
         std::copy_if(strs_.cbegin(), strs_.cend(), std::back_inserter(ret),
                      [=](auto const& str) noexcept { return (strs_.size() < length); });
 
-#else  // 本来は下記のように書きたかったが、
-       // キャプチャ範囲が大きすぎるため上記バグを生み出してしまった。
-
+#elif __cplusplus == 202002L
         std::copy_if(strs_.cbegin(), strs_.cend(), std::back_inserter(ret),
-                     [=](auto const& str) noexcept { return (str.size() < length); });
+                     [&strs = strs_, length = length](auto const& str) noexcept {
+                         return (strs.size() < length);
+                     });
+#else
+        static_assert(false, "C++ version not supported!");
 #endif
+
         return ret;
     }
 

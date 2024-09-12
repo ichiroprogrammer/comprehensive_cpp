@@ -28,6 +28,7 @@ TEST(cpp17, uniform_init)
     auto ill_formd0{0, 1};       // C++17からill-formd
 #endif
     // @@@ sample end
+    IGNORE_UNUSED_VAR(a0, a1, a2);
 }
 
 // @@@ sample begin 1:0
