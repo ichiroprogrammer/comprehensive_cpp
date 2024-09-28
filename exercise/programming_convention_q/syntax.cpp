@@ -5,14 +5,15 @@
 #include "gtest_wrapper.h"
 
 namespace {
-// @@@ sample begin 0:0
-// [Q]
-// 下記Accumlateのfor文を
-//  * イテレータを使ったfor文を使用したAccumlate2
-//  * 範囲for文を使用したAccumlate3
-// を作り、それらの単体テストを行え。また、その時にその他の不具合があれば合わせて修正せよ。
+_Pragma("GCC diagnostic push") _Pragma("GCC diagnostic ignored \"-Wdeprecated\"")
+    // @@@ sample begin 0:0
+    // [Q]
+    // 下記Accumlateのfor文を
+    //  * イテレータを使ったfor文を使用したAccumlate2
+    //  * 範囲for文を使用したAccumlate3
+    // を作り、それらの単体テストを行え。また、その時にその他の不具合があれば合わせて修正せよ。
 
-std::string Accumlate(std::vector<std::string> strings) noexcept
+    std::string Accumlate(std::vector<std::string> strings) noexcept
 {
     auto ret = std::string{};
 

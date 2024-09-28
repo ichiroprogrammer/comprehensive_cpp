@@ -1160,7 +1160,7 @@ google testを含むC++のソースコードと以下のようなコードコメ
     // @@@ exercise/template_q/is_void.cpp #0:0 begin
 ```
 
-* 参照 [is_void_fの実装](---)
+* 参照 [is_void_f](---)
 * [解答例-SFINAEを利用しない関数テンプレートの特殊化によるis_void](---)
 
 
@@ -1170,7 +1170,7 @@ google testを含むC++のソースコードと以下のようなコードコメ
 ```cpp
 ```
 
-* 参照 [is_void_sの実装](---)
+* 参照 [is_void_s](---)
 * [解答例-SFINAEを利用しないクラステンプレートの特殊化によるis_void](---)
 
 
@@ -1180,7 +1180,7 @@ google testを含むC++のソースコードと以下のようなコードコメ
     // @@@ exercise/template_q/is_void.cpp #2:0 begin
 ```
 
-* 参照 [is_void_sfinae_fの実装](---)
+* 参照 [is_void_sfinae_f](---)
 * [解答例-SFINAEを利用した関数テンプレートの特殊化によるis_void](---)
 
 
@@ -1190,7 +1190,7 @@ google testを含むC++のソースコードと以下のようなコードコメ
     // @@@ exercise/template_q/is_void.cpp #3:0 begin
 ```
 
-* 参照 [is_void_sfinae_sの実装](---)
+* 参照 [is_void_sfinae_s](---)
 * [解答例-SFINAEを利用したクラステンプレートの特殊化によるis_void](---)
 
 
@@ -1200,7 +1200,7 @@ google testを含むC++のソースコードと以下のようなコードコメ
     // @@@ exercise/template_q/template_template.cpp #0:0 begin
 ```
 
-* 参照 [is_same_templの実装](---)
+* 参照 [is_same_templ](---)
 * [解答例-テンプレートテンプレートパラメータ](---)
 
 
@@ -1210,7 +1210,7 @@ google testを含むC++のソースコードと以下のようなコードコメ
     // @@@ exercise/template_q/is_same.cpp #0:0 begin
 ```
 
-* 参照 [IsSameSomeOfの実装](---)
+* 参照 [IsSameSomeOf](---)
 * [解答例-テンプレートパラメータを可変長にしたstd::is_same](---)
 
 
