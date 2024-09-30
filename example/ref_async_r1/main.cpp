@@ -12,8 +12,8 @@ namespace {
 int main_loop()
 {
     auto strings = std::vector<std::string>{};
-    auto thd     = std::thread{[] {}};                   // NullObject & RAII
-    auto sg      = ScopedGuard{[&thd] { thd.join(); }};  // RAII
+    auto thd     = std::thread{[] {}};                         // NullObject & RAII
+    auto sg      = Nstd::ScopedGuard{[&thd] { thd.join(); }};  // RAII
 
     for (;;) {
         auto buffer = std::string{};

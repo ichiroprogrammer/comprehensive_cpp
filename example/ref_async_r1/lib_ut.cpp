@@ -5,6 +5,7 @@
 #include "lib.h"
 #include "scoped_guard.h"
 
+namespace Nstd {
 namespace {
 // @@@ sample begin 0:0
 
@@ -48,3 +49,4 @@ TEST(RefAsyncR1, dispatch)
 }
 // @@@ sample end
 }  // namespace
+}  // namespace Nstd

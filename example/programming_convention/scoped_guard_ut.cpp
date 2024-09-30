@@ -2,6 +2,7 @@
 
 #include "scoped_guard.h"
 
+namespace Nstd {
 namespace {
 
 // @@@ sample begin 0:0
@@ -18,3 +19,4 @@ TEST(ScopedGuard, scoped_guard)
 }
 // @@@ sample end
 }  // namespace
+}  // namespace Nstd

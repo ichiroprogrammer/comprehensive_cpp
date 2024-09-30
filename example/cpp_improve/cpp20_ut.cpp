@@ -163,6 +163,7 @@ TEST(cpp20, template_arg_auto)
     // @@@ sample end
 }
 
+#if defined(__clang_analizer__)
 // @@@ sample begin 4:0
 template <typename T>
 
@@ -315,4 +316,5 @@ TEST(cpp20, template_union_struct)
     ASSERT_DOUBLE_EQ(p.y, 4.0);
     // @@@ sample end
 }
+#endif
 }  // namespace

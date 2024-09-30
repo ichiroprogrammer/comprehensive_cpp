@@ -15,8 +15,8 @@
 int main(int, char**)
 {
     auto strings = std::vector<std::string>{};
-    auto thd     = std::make_unique<std::thread>([] {});  // Null Object & RAII
-    auto sg      = ScopedGuard{[&thd] { thd->join(); }};  // RAII
+    auto thd     = std::make_unique<std::thread>([] {});        // Null Object & RAII
+    auto sg      = Nstd::ScopedGuard{[&thd] { thd->join(); }};  // RAII
 
     for (;;) {
         auto buffer = std::string{};
