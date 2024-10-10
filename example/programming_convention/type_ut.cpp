@@ -140,7 +140,7 @@ bool f(CarLight cl) noexcept
     switch (cl) {
     // 非スコープドenumは下記のようなコードを許容する(if文でも同様)。
     // スコープドenumであればこのような間違いはコンパイルエラーで発見できる。
-    case WL_Red:  // CL_Regの間違い?
+    case WL_Red:  // CL_Redの間違い?
         // @@@ ignore begin
         // @@@ ignore end
         break;
