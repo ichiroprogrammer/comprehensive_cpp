@@ -172,18 +172,18 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 
 |機能                                         |説明                                                                                               |
 |:--------------------------------------------|:--------------------------------------------------------------------------------------------------|
-|16進浮動小数点数リテラル                     |十六進数表記で浮動小数点数リテラルを記述できるようにする                                           |
+|[16進浮動小数点数リテラル](---)              |16進数表記で浮動小数点数リテラルを記述できるようにする                                             |
 |インライン変数                               |inline 指定をすることで翻訳単位を跨いでひとつのオブジェクトになる変数を定義する                    |
-|構造化束縛                                   |「[戻り値型](---)></a>」参照                                                                       |
+|構造化束縛                                   |「[戻り値型](---)」参照                                                                            |
 |[単一要素の波カッコ初期化を非配列とする](---)|リストによる直接初期化の型推論の規則が変更された                                                   |
-|[[maybe_unused]]属性                         |使用しない可能性のある変数に対する警告を抑制                                                       |
-|[[nodiscard]]属性                            |関数の戻り値を捨ててはならないことを指定。「[グローバルnew/deleteのオーバーロードの実装](---)」参照|
+|[[maybe_unused]]属性                         |「[属性構文](---)」参照                                                                            | 
+|[[nodiscard]]属性                            |「[属性構文](---)」、[グローバルnew/deleteのオーバーロードの実装](---)」参照                       |
 |[RVO(Return Value Optimization)](---)        |右辺値を変数の初期化のために使用する場合、コピーもムーブも省略することを保証                       |
 |[厳密な式の評価順](https://cpprefjp.github.io/lang/cpp17/expression_evaluation_order.html)|C++14まで未規定であった部分式の評価順序を規定         |
-|[enum class変数の初期値のルール変更](---)    |std::byteの初期化を簡略化できる                                                                    |
+|enum class変数の初期値のルール変更           |「[スコープドenum](---)」、 「[underlying type](---)」参照                                         |
 |[newのアライメント指定](---)                 |                                                                                                   |
-|[if文とswitch文の条件式と初期化を分離](---)  |if (init; condition) のように初期化と条件式を分けて記述できる                                　　  |
-|[[fallthrough]]属性                          |フォールスルー時の警告を抑制。「[switch文](---)」参照                                              |
+|[初期化付きif/switch文](---)                 |if文とswitch文の条件式と初期化を分離する構文                                                       |
+|[[fallthrough]]属性                          |「[属性構文](---)」参照                                                                            |
 |[constexpr if文](---)                        |if constexpr(cond) とすることで、その if 文はコンパイル時に処理                                    |
 |[範囲for文のイテレータ型の不一致の許可](---) |std::istream_iteratorとstd::istreamに利用                                                          |
 |[ラムダ式での\*thisのコピーキャプチャ](---)  |キャプチャリストに\*this を指定することで、\*thisをコピーキャプチャする                            |
@@ -196,7 +196,7 @@ move挿入ができるようになった(「[その他のテンプレートテ�
     // @@@ example/cpp_improve/cpp17_ut.cpp #0:0 begin
 ```
 
-#### enum class変数の初期値のルール変更
+#### newのアライメント指定
 
 ```cpp
     // @@@ example/cpp_improve/cpp17_ut.cpp #1:0 begin
@@ -205,42 +205,21 @@ move挿入ができるようになった(「[その他のテンプレートテ�
     // @@@ example/cpp_improve/cpp17_ut.cpp #1:1 begin
 ```
 
-#### newのアライメント指定
-
+#### 範囲for文のイテレータ型の不一致の許可
 ```cpp
     // @@@ example/cpp_improve/cpp17_ut.cpp #2:0 begin
 ```
 ```cpp
-    // @@@ example/cpp_improve/cpp17_ut.cpp #2:1 begin
-```
-
-#### if文とswitch文の条件式と初期化を分離
-
-```cpp
-    // @@@ example/cpp_improve/cpp17_ut.cpp #3:0 begin
-```
-
-#### 範囲for文のイテレータ型の不一致の許可
-```cpp
-    // @@@ example/cpp_improve/cpp17_ut.cpp #4:0 begin
-```
-```cpp
-    // @@@ example/cpp_improve/cpp17_ut.cpp #4:1 begin
+    // @@@ example/cpp_improve/cpp17_ut.cpp #2:1 begin -1
 ```
 
 #### ラムダ式での\*thisのコピーキャプチャ
 
 ```cpp
-    // @@@ example/cpp_improve/cpp17_ut.cpp #5:0 begin
+    // @@@ example/cpp_improve/cpp17_ut.cpp #3:0 begin
 ```
 ```cpp
-    // @@@ example/cpp_improve/cpp17_ut.cpp #5:1 begin
-```
-
-#### constexprラムダ
-
-```cpp
-    // @@@ example/cpp_improve/cpp17_ut.cpp #6:0 begin
+    // @@@ example/cpp_improve/cpp17_ut.cpp #3:1 begin
 ```
 
 ## C++20の主な新規機能

@@ -33,24 +33,6 @@ TEST(cpp17, uniform_init)
 
 // @@@ sample begin 1:0
 
-enum class org_byte : uint8_t {};
-// @@@ sample end
-
-TEST(cpp17, enum_class_init)
-{
-    // @@@ sample begin 1:1
-
-    org_byte a0{static_cast<org_byte>(42)};   // well-formed in C++14
-    org_byte a1 = static_cast<org_byte>(42);  // well-formed in C++14
-    org_byte a2{42};                          // well-formed in C++17, ill-formed in C++14
-    org_byte a3 = org_byte{42};               // well-formed in C++17, ill-formed in C++14
-    // @@@ sample end
-
-    IGNORE_UNUSED_VAR(a0, a1, a2, a3);
-}
-
-// @@@ sample begin 2:0
-
 struct alignas(64) AlignedStruct {  // C++17 newのアライメント指定
     int x;
 };
@@ -59,7 +41,7 @@ struct alignas(64) AlignedStruct {  // C++17 newのアライメント指定
 
 TEST(cpp17, align_new)
 {
-    // @@@ sample begin 2:1
+    // @@@ sample begin 1:1
 
     AlignedStruct* ptr = new AlignedStruct;
 
@@ -69,31 +51,10 @@ TEST(cpp17, align_new)
     // @@@ sample end
 }
 
-TEST(cpp17, if_with_vale_define)
-{
-    // @@@ sample begin 3:0
-
-    if (int value = 5; value > 3) {
-        ASSERT_EQ(value, 5);  // 条件式で初期化されたvalueが使える
-    }
-    else {
-        ASSERT_FALSE(value > 10);  // 条件式で初期化されたvalueが使える
-    }
-
-    switch (int x = 2; x) {
-    case 2:
-        ASSERT_EQ(x, 2);  // 初期化と条件が分離されている
-        break;
-    case 3:
-        ASSERT_FALSE(true);  // ここには来ない
-        break;
-    }
-
-    // @@@ sample end
-}
+TEST(cpp17, if_with_vale_define) {}
 }  // namespace
 
-// @@@ sample begin 4:0
+// @@@ sample begin 2:0
 
 namespace org {
 struct custom_iterator {  // カスタムイテレータの定義
@@ -127,7 +88,7 @@ struct vec_int : std::vector<int> {};
 namespace {
 TEST(cpp17, string_view_range)
 {
-    // @@@ sample begin 4:1
+    // @@@ sample begin 2:1
 
     org::vec_int       nums{{1, 2, 3, 4, 5}};
     std::ostringstream os;
@@ -143,7 +104,7 @@ TEST(cpp17, string_view_range)
     // @@@ sample end
 }
 
-// @@@ sample begin 5:0
+// @@@ sample begin 3:0
 
 struct MyStruct {
     int value = 42;
@@ -157,7 +118,7 @@ struct MyStruct {
 
 TEST(cpp17, lambda_this)
 {
-    // @@@ sample begin 5:1
+    // @@@ sample begin 3:1
 
     MyStruct obj;
     auto     lambda = obj.getValue();
@@ -167,14 +128,4 @@ TEST(cpp17, lambda_this)
     // @@@ sample end
 }
 
-TEST(cpp17, lambda_constexpr)
-{
-    // @@@ sample begin 6:0
-
-    constexpr auto add = [](int a, int b) { return a + b; };
-
-    static_assert(add(2, 3) == 5);  // コンパイル時に評価される
-
-    // @@@ sample end
-}
 }  // namespace
