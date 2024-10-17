@@ -68,7 +68,7 @@ google testを含むC++のソースコードと以下のようなコードコメ
     // @@@ exercise/programming_convention_q/type.cpp #2:0 begin
 ```
 
-* 参照 [enum](---)
+* 参照 [用語解説|enum](---)
 * [解答例-enum](---)
 
 
@@ -137,7 +137,7 @@ google testを含むC++のソースコードと以下のようなコードコメ
     // @@@ exercise/programming_convention_q/type.cpp #7:0 begin
 ```
 
-* 参照 [リテラル](---)
+* 参照 [用語解説|リテラル](---)
 
 * [解答例-リテラル](---)
 
@@ -411,7 +411,7 @@ google testを含むC++のソースコードと以下のようなコードコメ
     // @@@ exercise/programming_convention_q/func.cpp #10:0 begin
 ```
 
-* 参照 [constexpr関数](---)
+* 参照 [constexpr|constexpr関数](---)
 * [解答例-constexpr関数](---)
 
 
@@ -438,7 +438,7 @@ google testを含むC++のソースコードと以下のようなコードコメ
     // @@@ exercise/programming_convention_q/syntax.cpp #0:0 begin
 ```
 
-* 参照 [構文|範囲for文](---)
+* 参照 [用語解説|構文|範囲for文](---)
 * [解答例-コンテナの範囲for文](---)
 
 
