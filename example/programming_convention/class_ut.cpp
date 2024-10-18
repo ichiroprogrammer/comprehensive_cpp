@@ -240,42 +240,8 @@ TEST(ProgrammingConvention, derived_virtual_destructor)
 SUPPRESS_WARN_CLANG_UNUSED_PRIVATE_FIELD;
 
 namespace NotStaticMemberVarInitializationSample {
-// @@@ sample begin 2:0
-
-class A0 {
-public:
-    // clang-format off
-    A0() noexcept : b_{0}    // 初期化方法１
-    {
-        c_ = 0;     // 初期化方法２
-    }
-
-private:
-    int32_t a_{0}; // 初期化方法０
-    int32_t b_;
-    int32_t c_;
-    // clang-format on
-};
-// @@@ sample end
 SUPPRESS_WARN_GCC_REORDER;
 SUPPRESS_WARN_CLANG_REORDER_CTOR;
-// @@@ sample begin 2:1
-
-class A_NG {
-public:
-    // clang-format off
-    A_NG(int32_t x, int32_t y) noexcept
-        : b_{x + y}, a_{x}, c_{y} // NG メンバ変数定義と初期化の順序が違う
-    {
-    }
-    // clang-format on
-
-private:
-    int32_t a_;
-    int32_t b_;
-    int32_t c_;
-};
-
 class A_OK {
 public:
     A_OK(int32_t x, int32_t y) noexcept : a_{x}, b_{x + y}, c_{x}  // OK
@@ -288,23 +254,23 @@ private:
     int32_t c_;
 };
 // @@@ sample end
-// @@@ sample begin 2:2
+// @@@ sample begin 2:0
 
 class A1 {
 public:
-    A1() noexcept {}  // OK 初期化方法０に統一
+    A1() noexcept {}  // OK NSDMIに統一
 
 private:
-    int32_t const a_{1};  // OK 初期化方法０による初期化。
+    int32_t const a_{1};  // OK NSDMIによる初期化。
                           //    ただし、static constexprにすべき。
-    int32_t b_[2]{0, 1};  // OK 初期化方法０による初期化
-    int32_t c_{5};        // OK 初期化方法０による初期化
+    int32_t b_[2]{0, 1};  // OK NSDMIによる初期化
+    int32_t c_{5};        // OK NSDMIによる初期化
 };
 
 class A2 {
 public:
-    explicit A2(int a) noexcept   // OK 初期化方法１に統一
-        : a_{a}, b_{0, 1}, c_{5}  // OK 初期化方法１による初期化
+    explicit A2(int a) noexcept   // OK 初期化子リストに統一
+        : a_{a}, b_{0, 1}, c_{5}  // OK 初期化子リストによる初期化
     {
     }
 
@@ -318,7 +284,7 @@ class A3 {
 public:
     explicit A3(int a) noexcept : a_{a}  // NG 初期化方法の混在
     {
-        c_ = 5;  // NG 初期化方法０、１使用可能にもかかわらず初期化方法２を使用している
+        c_ = 5;  // NG NSDMIか初期化子リストを使用するべき
     }
 
 private:
@@ -328,19 +294,19 @@ private:
 };
 // @@@ sample end
 
-// @@@ sample begin 2:3
+// @@@ sample begin 2:1
 
 class A4 {
 public:
-    A4() noexcept {}  // OK 初期化方法０
+    A4() noexcept {}  // OK
 
-    A4(int32_t e) noexcept : e_{e} {}  // OK 初期化方法１によるe_の上書き
+    A4(int32_t e) noexcept : e_{e} {}  // OK 初期化子リストによるe_の上書き
     // 注) A4()とA4(int32_t)はデフォルト引数を使用すれば統一できるが、
     // 例の単純化のためにあえてそれぞれを定義している。
 
 private:
-    int32_t d_{5};  // OK 初期化方法０による初期化
-    int32_t e_{0};  // OK 初期化方法０による初期化
+    int32_t d_{5};  // OK NSDMIによる初期化
+    int32_t e_{0};  // OK NSDMIによる初期化
 };
 // @@@ sample end
 
