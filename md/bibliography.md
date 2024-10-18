@@ -6,6 +6,10 @@
 その理由はソフトウェア開発の肝要は急激に変化することがないことと、
 これら書籍のほとんどが不朽の必読書と言って良いレベルであることによる。
 
+[このドキュメントの構成](---)に戻る。  
+
+___
+
 ## プロセス・プラクティス
 
 * [達人プログラマー](https://www.amazon.co.jp/%E9%81%94%E4%BA%BA%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%83%BC-%E2%80%95%E7%86%9F%E9%81%94%E3%81%AB%E5%90%91%E3%81%91%E3%81%9F%E3%81%82%E3%81%AA%E3%81%9F%E3%81%AE%E6%97%85%E2%80%95-%E7%AC%AC2%E7%89%88-David-Thomas-ebook/dp/B08T9BXSVD/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=%E9%81%94%E4%BA%BA%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%83%BC&qid=1670848429&sr=8-1)
@@ -34,5 +38,7 @@
 * [プログラミング作法](https://www.amazon.co.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E4%BD%9C%E6%B3%95-%E3%82%A2%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%89%E3%83%AF%E3%83%B3%E3%82%B4-Brian-W-Kernighan-ebook/dp/B01N6W842J/ref=sr_1_1?adgrpid=52265182934&dchild=1&gclid=EAIaIQobChMIs5HbuZfP6gIVBFdgCh0OWwrLEAAYASAAEgJB8PD_BwE&hvadid=338539017061&hvdev=c&hvlocphy=1009333&hvnetw=g&hvqmt=e&hvrand=14894038821643739018&hvtargid=kwd-334607424458&hydadcr=27263_11561109&jp-ad-ap=0&keywords=%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E4%BD%9C%E6%B3%95&qid=1594813554&sr=8-1&tag=googhydr-22)
 * [モダンC言語プログラミング](https://www.amazon.co.jp/%E3%83%A2%E3%83%80%E3%83%B3C%E8%A8%80%E8%AA%9E%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0-%E8%8A%B1%E4%BA%95-%E5%BF%97%E7%94%9F/dp/4048930672/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&dchild=1&keywords=C%E8%A8%80%E8%AA%9E+%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3&qid=1594813656&sr=8-1)
 * [テスト駆動開発による組み込みプログラミング](https://www.amazon.co.jp/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%81%AB%E3%82%88%E3%82%8B%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0-%E2%80%95C%E8%A8%80%E8%AA%9E%E3%81%A8%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E3%81%A7%E5%AD%A6%E3%81%B6%E3%82%A2%E3%82%B8%E3%83%A3%E3%82%A4%E3%83%AB%E3%81%AA%E8%A8%AD%E8%A8%88-James-W-Grenning/dp/4873116147/ref=pd_bxgy_img_3/357-5722640-9283243?_encoding=UTF8&pd_rd_i=4873116147&pd_rd_r=518ab9b2-c934-409d-b32f-e40aeb39bb30&pd_rd_w=1UAS3&pd_rd_wg=KE2Wn&pf_rd_p=e64b0a81-ca1b-4802-bd2c-a4b65bccc76e&pf_rd_r=BRJYK70KC4MB8HEECDH4&psc=1&refRID=BRJYK70KC4MB8HEECDH4)
+* [Binary Hacks Rebooted](https://www.amazon.co.jp/Binary-Hacks-Rebooted-%E2%80%94%E4%BD%8E%E3%83%AC%E3%82%A4%E3%83%A4%E3%81%AE%E4%B8%96%E7%95%8C%E3%82%92%E6%8E%A2%E6%A4%9C%E3%81%99%E3%82%8B%E3%83%86%E3%82%AF%E3%83%8B%E3%83%83%E3%82%AF89%E9%81%B8-%E6%B2%B3%E7%94%B0/dp/4814400853/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=130JUT586PGCE&dib=eyJ2IjoiMSJ9.R7KRHmij171DbUzZ2O0suu0LFOXuWX9CmDekBBVBJv7sUdSFIg_wM3IJnbc9cpTk.8NFZ43mA-P6nCnonJ5n0VIpDo3uYPUmJvDsfStrx1z4&dib_tag=se&keywords=%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E3%83%8F%E3%83%83%E3%82%AF&qid=1729171371&s=books&sprefix=%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E3%83%8F%E3%83%83%E3%82%AF%2Cstripbooks%2C159&sr=1-1)
+
 
 

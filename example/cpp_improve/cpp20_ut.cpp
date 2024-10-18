@@ -8,52 +8,6 @@ namespace {
 
 // @@@ sample begin 0:0
 
-template <typename T>
-class Box {
-public:
-    // clang-format off
-    template <typename U>
-    explicit(std::is_integral_v<U>) Box(U value) : value_(static_cast<T>(value)) { }
-    //       ^^^^Uがintegerの場合のみexplicit
-
-    T getValue() const { return value_; }
-
-private:
-    T value_;
-    // clang-format on
-};
-// @@@ sample end
-
-// テストケース
-TEST(cpp20, box_construction)
-{
-    // @@@ sample begin 0:1
-
-    Box<int> intBox{42};  // 明示的な構築
-    ASSERT_EQ(intBox.getValue(), 42);
-
-    // 以下はコンパイルエラー
-    // Box<int> implicitIntBox = 42;  // コンストラクタがexplicit(false)であるた
-
-    // static_assertを使用して、コンパイル時にexplicitであることを確認
-    static_assert(std::is_constructible_v<Box<int>, int>);
-    static_assert(!std::is_convertible_v<int, Box<int>>);
-
-    //
-    Box<float> floatBox{3.14f};  // 明示的な構築
-    EXPECT_FLOAT_EQ(floatBox.getValue(), 3.14f);
-
-    Box<float> implicitFloatBox = 2.71f;  // explicit(true)であるため、暗黙の変換が許可される
-    EXPECT_FLOAT_EQ(implicitFloatBox.getValue(), 2.71f);
-
-    // static_assertを使用して、コンパイル時に非explicitであることを確認
-    static_assert(std::is_constructible_v<Box<float>, float>);
-    static_assert(std::is_convertible_v<float, Box<float>>);
-    // @@@ sample end
-}
-
-// @@@ sample begin 1:0
-
 class A {
 public:
     A(int a0, int b0) : a0_{a0}, b0_{b0} {}
@@ -73,7 +27,7 @@ private:
 
 TEST(cpp20, structed_bind)
 {
-    // @@@ sample begin 1:1
+    // @@@ sample begin 0:1
 
     auto a = A{1, 2};
 
@@ -85,7 +39,7 @@ TEST(cpp20, structed_bind)
 }
 }  // namespace
 
-// @@@ sample begin 2:0
+// @@@ sample begin 1:0
 
 struct Point2D {  // C++17でも動作する例
     int x, y;
@@ -125,7 +79,7 @@ struct tuple_element<I, Point3D> {
 namespace {
 TEST(cpp20, structed_bind_specitalize)
 {
-    // @@@ sample begin 2:1
+    // @@@ sample begin 1:1
 
     // C++17までのスタイル
     Point2D p2d{10, 20};
@@ -144,27 +98,9 @@ TEST(cpp20, structed_bind_specitalize)
     // @@@ sample end
 }
 
-// @@@ sample begin 3:0
-template <typename T>  // C++17スタイル
-auto f_17(T a, T b)
-{
-    return a + b;
-}
-
-// C++20から導入
-auto f_20(auto a, auto b) { return a + b; }
-// @@@ sample end
-TEST(cpp20, template_arg_auto)
-{
-    // @@@ sample begin 3:1
-
-    ASSERT_EQ(3, f_17(1, 2));
-    ASSERT_EQ(3, f_20(1, 2));
-    // @@@ sample end
-}
-
 #if defined(__clang_analizer__)
-// @@@ sample begin 4:0
+// @@@ sample begin 2:0
+
 template <typename T>
 
 struct Ommit {
@@ -184,7 +120,7 @@ TEST(cpp20, template_ommit_typename)
     ASSERT_EQ(1, first_element);
 }
 
-// @@@ sample begin 5:0
+// @@@ sample begin 3:0
 
 struct X1 {
     int   i;
@@ -223,7 +159,7 @@ struct C4 {
     static constexpr decltype(V) value = V;  // V の型を推論し、その値を保持
 };
 // @@@ sample end
-// @@@ sample begin 5:1
+// @@@ sample begin 3:1
 
 static_assert(C1<42>::value == 42);  // テンプレートパラメータ N = 42 の動作を確認
 
@@ -240,7 +176,7 @@ static_assert(C4<x1>::value == x1);    // X1 オブジェクトの動作確認
 // @@@ sample end
 }  // namespace
 
-// @@@ sample begin 6:0
+// @@@ sample begin 4:0
 namespace adl_NS {
 struct X {};
 
@@ -255,7 +191,7 @@ void func(T)
 
 TEST(cpp20, template_union_struct)
 {
-    // @@@ sample begin 6:1
+    // @@@ sample begin 4:1
 
     adl_NS::X obj;
 
@@ -268,7 +204,7 @@ TEST(cpp20, template_union_struct)
 }
 
 namespace {
-// @@@ sample begin 7:0
+// @@@ sample begin 5:0
 
 template <typename T>
 class X {
@@ -285,7 +221,7 @@ using XAlias = X<T>;
 
 TEST(cpp20, template_alias)
 {
-    // @@@ sample begin 7:1
+    // @@@ sample begin 5:1
 
     XAlias obj1{42};  // 推論される型はint
     static_assert(std::is_same_v<decltype(obj1), X<int>>);
@@ -297,7 +233,7 @@ TEST(cpp20, template_alias)
     EXPECT_DOUBLE_EQ(obj2.getValue(), 3.14);
     // @@@ sample end
 }
-// @@@ sample begin 8:0
+// @@@ sample begin 6:0
 
 template <class T>
 struct Point {
@@ -308,7 +244,7 @@ struct Point {
 
 TEST(cpp20, template_union_struct)
 {
-    // @@@ sample begin 8:1
+    // @@@ sample begin 6:1
 
     Point p{3.0, 4.0};  // C++17:NG C++20:OK
 
