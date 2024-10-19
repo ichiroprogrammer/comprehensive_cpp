@@ -3,6 +3,8 @@
 #include <unistd.h>
 
 #include <algorithm>
+#include <array>
+#include <concepts>
 #include <exception>
 #include <functional>
 #include <initializer_list>
@@ -198,32 +200,26 @@ TEST(ProgrammingConvention, func_constructor)
     // @@@ sample begin 1:4
 
     A0 a0 = 1;           // NG 1からA0への暗黙の型変換。
-                         //    このような変換はセマンティクス的不整合につながる場合がある。
-//  A1 a1 = 1;           // OK explicitの効果で、意図通りコンパイルエラー。
+                         //    このような変換はセマンティクス的不整合につながる場合がある
+    // A1 a1 = 1;        // OK explicitの効果で、意図通りコンパイルエラー
 
-    f_A0(1);             // NG 1からA0への暗黙の型変換のためf_A0が呼び出せてしまう。
-#if 0
-    f_A1(1);             // OK explicitの効果で、意図通り以下のようなコンパイルエラー。
+    f_A0(1);             // NG 1からA0への暗黙の型変換のためf_A0が呼び出せてしまう
+    // f_A1(1);          // OK explicitの効果で、意図通り以下のようなコンパイルエラー
                          //    error: could not convert ‘1’ from ‘int’ to ‘A1’
-#else
     f_A1(A1{1});         // OK f_A1の呼び出し
-#endif
 
     auto i = 3;
-    A2  a2 = {i, &i};    // NG 代入演算子でのリスト初期化をしている。
+    A2  a2 = {i, &i};    // NG 代入演算子でのリスト初期化をしている
 
-//  A3 a3 = { i, &i };   // OK explicitの効果で、意図通りコンパイルエラー。
+    // A3 a3 = { i, &i };// OK explicitの効果で、意図通りコンパイルエラー
     A3 a3{i, &i};        // OK リスト初期化
     auto a4 = A3{i, &i}; // OK AAA
 
-    f_A2({i, &i});       // NG { i, &i }からA2への暗黙の型変換のためf_A2が呼び出せてしまう。
-#if 0
-    f_A3({i, &i});       // OK explicitの効果で、意図通り以下のようなコンパイルエラー。
+    f_A2({i, &i});       // NG { i, &i }からA2への暗黙の型変換のためf_A2が呼び出せてしまう
+    // f_A3({i, &i});    // OK explicitの効果で、意図通り以下のようなコンパイルエラー
                          //    error: converting to A3 from initializer list would use explicit 
                          //           constructor A3::A3(int32_t, int32_t*)’
-#else
     f_A3(A3{i, &i});     // OK f_A3の呼び出し
-#endif
     // @@@ sample end
 
     // clang-format on
@@ -497,10 +493,10 @@ int32_t f1(T) = delete;
 int32_t f1(int32_t a) noexcept { return a / 2; }
 
 // 実引数がunsigned以外を認めないパターン
-template <typename T, std::enable_if_t<!std::is_unsigned_v<T>>* = nullptr>
+template <typename T, std::enable_if_t<!std::is_unsigned_v<T>>* = nullptr>  // C++17スタイル
 uint64_t f2(T) = delete;
 
-template <typename T, std::enable_if_t<std::is_unsigned_v<T>>* = nullptr>
+template <typename T, std::enable_if_t<std::is_unsigned_v<T>>* = nullptr>  // C++17スタイル
 uint64_t f2(T t) noexcept
 {
     uint64_t f2_impl(uint64_t) noexcept;
@@ -510,6 +506,18 @@ uint64_t f2(T t) noexcept
     // Tがunsignedならば、f2_impl(uint64_t)の呼び出しによる算術変換は安全
 
     return f2_impl(t);
+}
+
+template <typename T>
+uint64_t f3(T) = delete;
+
+template <std::unsigned_integral T>  // C++20スタイル
+uint64_t f3(T t) noexcept
+{
+    uint64_t ret = t;
+    // 何らかの処理
+
+    return ret;
 }
 // @@@ sample end
 
@@ -536,6 +544,8 @@ TEST(ProgrammingConvention, overload_with_delete)
     f2(ui64);
     // f2(c);    呼び出そうとしたf2<char>(char)はdeleteされているので意図通りエラー
     // f2(i32);  呼び出そうとしたf2<int32_t>(int32_t)はdeleteされているので意図通りエラー
+    // f3(i8);   呼び出そうとしたf3<int8_t>(int8_t)はdeleteされているので意図通りエラー
+    f3(ui32);
     // @@@ sample end
     IGNORE_UNUSED_VAR(d);
 }
@@ -818,25 +828,28 @@ std::vector<std::string> g(Base const array[10], uint32_t n)  // NG 誤用しや
 // @@@ sample end
 
 namespace {
-// @@@ sample begin 6:5
 
 TEST(ProgrammingConvention, use_convert_to_ptr)
 {
+    // clang-format off
+    // @@@ sample begin 6:5
+
     Base    b[]{"0", "0"};
     Derived d[]{{"0", "1"}, {"2", "3"}};
 
     ASSERT_EQ((std::vector<std::string>{"0", "0"}), f(b, array_length(b)));  // OK これは良いが
     ASSERT_EQ((std::vector<std::string>{"0", "0"}), g(b, array_length(b)));  // OK これは良いが
 
-#if 0  // 本来なら、下記のようになるべきだが、
-    ASSERT_EQ((std::vector<std::string>{"0", "2"}), f(d, array_length(d)));  // NG
-    ASSERT_EQ((std::vector<std::string>{"0", "2"}), g(d, array_length(d)));  // NG
-#else  // レイアウトずれにより、下記のようになる
+    // 本来なら、下記のようになるべきだが、
+    // ASSERT_EQ((std::vector<std::string>{"0", "2"}), f(d, array_length(d)));  // NG
+    // ASSERT_EQ((std::vector<std::string>{"0", "2"}), g(d, array_length(d)));  // NG
+
+    // レイアウトずれにより、下記のようになる
     ASSERT_EQ((std::vector<std::string>{"0", "1"}), f(d, array_length(d)));  // NG
     ASSERT_EQ((std::vector<std::string>{"0", "1"}), g(d, array_length(d)));  // NG
-#endif
+    // @@@ sample end
+    // clang-format on
 }
-// @@@ sample end
 }  // namespace
 
 // @@@ sample begin 6:6
@@ -844,7 +857,7 @@ TEST(ProgrammingConvention, use_convert_to_ptr)
 // ポインタではなく、配列へのリファレンスを使用することで、
 // 上記のようなバグを避けることができる
 
-std::vector<std::string> f_ref_2(Base const (&array)[2])  // OK
+std::vector<std::string> f_ref_2(Base const (&array)[2])  // OK 配列へのリファレンス
 {
     auto ret = std::vector<std::string>{array_length(array)};
 
@@ -855,8 +868,8 @@ std::vector<std::string> f_ref_2(Base const (&array)[2])  // OK
     return ret;
 }
 
-template <uint32_t N>
-std::vector<std::string> f_ref_n(Base const (&array)[N])  // OK
+template <size_t N>                                       // 配列の長さの型はsize_t
+std::vector<std::string> f_ref_n(Base const (&array)[N])  // OK 配列へのリファレンス
 {
     auto ret = std::vector<std::string>{N};
 
@@ -865,19 +878,29 @@ std::vector<std::string> f_ref_n(Base const (&array)[N])  // OK
     return ret;
 }
 
-template <typename T, uint32_t N>
-std::vector<std::string> g_ref(T const (&array)[N])  // OK
+template <typename T, size_t N>                      // 配列の長さの型はsize_t
+std::vector<std::string> g_ref(T const (&array)[N])  // OK 配列へのリファレンス
 {
     auto ret = std::vector<std::string>{N};
 
     std::transform(array, std::end(array), ret.begin(), [](auto& b) noexcept { return b.Name0(); });
+
+    return ret;
+}
+
+template <typename T, size_t N>  // std::arrayの第2パラメータの型はsize_t
+std::vector<std::string> h_ref(std::array<T, N> const& array)  // OK std::arrayへのリファレンス
+{
+    auto ret = std::vector<std::string>{N};
+
+    std::transform(std::begin(array), std::end(array), ret.begin(),
+                   [](auto& b) noexcept { return b.Name0(); });
 
     return ret;
 }
 
 // NULLを渡す必要がある場合、配列へのリファレンスの代わりに、
 // 配列へのポインタを使うことができる
-
 template <typename T, uint32_t N>
 std::vector<std::string> g_ptr(T const (*array)[N])  // OK
 {
@@ -892,31 +915,32 @@ std::vector<std::string> g_ptr(T const (*array)[N])  // OK
 
     return ret;
 }
-
 // @@@ sample end
 
 namespace {
-// @@@ sample begin 6:7
 
 TEST(ProgrammingConvention, not_use_convert_to_ptr)
 {
+    // @@@ sample begin 6:7
     Base    b[]{"0", "0"};
     Derived d[]{{"0", "1"}, {"2", "3"}};
+    auto    d2 = std::array<Derived, 2>{Derived{"0", "1"}, Derived{"2", "3"}};
 
     ASSERT_EQ((std::vector<std::string>{"0", "0"}), f_ref_2(b));  // OK
     ASSERT_EQ((std::vector<std::string>{"0", "0"}), f_ref_n(b));  // OK
     ASSERT_EQ((std::vector<std::string>{"0", "0"}), g_ref(b));    // OK
 
     // ASSERT_EQ((std::vector<std::string>{"0", "2"}), f_ref_2(d));  OK 誤用なのでコンパイルエラー
-    ASSERT_EQ((std::vector<std::string>{"0", "2"}), g_ref(d));  // OK
+    ASSERT_EQ((std::vector<std::string>{"0", "2"}), g_ref(d));   // OK
+    ASSERT_EQ((std::vector<std::string>{"0", "2"}), h_ref(d2));  // OK
 
     // 配列へのポインタを使う場合
     ASSERT_EQ((std::vector<std::string>{"0", "0"}), g_ptr(&b));  // OK
 
     Derived(*d_null)[3]{nullptr};
     ASSERT_EQ((std::vector<std::string>{}), g_ptr(d_null));  // OK
+    // @@@ sample end
 }
-// @@@ sample end
 }  // namespace
 // @@@ sample begin 6:8
 
