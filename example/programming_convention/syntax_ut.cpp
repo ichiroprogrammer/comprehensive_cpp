@@ -306,13 +306,13 @@ public:
     {
         auto ret = std::vector<std::string>{};
 
-#if CPP_VER == 11  // c++11
-                   // [length]を代入キャプチャと呼ぶ。
+#if __cplusplus == 201103L  // c++11
+                            // [length]を代入キャプチャと呼ぶ。
 
         std::copy_if(strs_.cbegin(), strs_.cend(), std::back_inserter(ret),
                      [length](std::string const& str) noexcept { return (str.size() < length); });
 
-#elif CPP_VER == 14  // c++14以降
+#elif __cplusplus >= 201402L  // c++14以降
         // [length = length]を初期化キャプチャと呼ぶ。
         // 左のlengthのスコープはラムダ式内。右のlengthのスコープはGetNameLessThan内。
 
