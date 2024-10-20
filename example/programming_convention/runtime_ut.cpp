@@ -78,7 +78,7 @@ public:
     }
     // @@@ ignore begin
 
-    int32_t GetA() const noexcept { return a_; }
+    int32_t Value() const noexcept { return a_; }
 
 private:
     int32_t a_{0};
@@ -93,21 +93,21 @@ private:
     }
 };
 
-void f() noexcept
+// @@@ sample end
+TEST(ProgrammingConvention, op_plus)
 {
+    // @@@ sample begin 1:1
+
     auto a = A{1};
     auto b = A{2};
 
-    a = a + b;                                   // NG 無駄な動作が多い。
-    std::cout << "a:" << a.GetA() << std::endl;  // a:3と表示
+    a = a + b;  // NG 無駄なコピーが発生する
+    ASSERT_EQ(a.Value(), 3);
 
-    a += b;                                      // OK
-    std::cout << "a:" << a.GetA() << std::endl;  // a:5と表示
+    a += b;  // OK 無駄なコピーが発生しない
+    ASSERT_EQ(a.Value(), 5);
+    // @@@ sample end
 }
-// @@@ sample end
-namespace {
-TEST(ProgrammingConvention, op_plus) { f(); }
-}  // namespace
 }  // namespace OperatorPlusExample
 
 namespace ReturnObjectSample {
@@ -181,13 +181,18 @@ std::string MakeString(int a, int b)
 
 namespace String_StringRef_StringView {
 
+SUPPRESS_WARN_BEGIN;
+SUPPRESS_WARN_UNUSED_PARAM;
+// clang-format off
 // @@@ sample begin 4:0
 // テスト０用関数
 
-void f0([[maybe_unused]] std::string const& str) {}
-void f1([[maybe_unused]] std::string str) {}
-void f2([[maybe_unused]] std::string_view str) {}
+void f0(std::string const& str) { /* strを使用した何らかの処理 */ }
+void f1(std::string str)        { /* strを使用した何らかの処理 */ }
+void f2(std::string_view str)   { /* strを使用した何らかの処理 */ }
 // @@@ sample end
+// clang-format on
+SUPPRESS_WARN_END;
 
 namespace {
 TEST(ProgrammingConvention, string_string_ref_string_view_0)
@@ -205,7 +210,7 @@ TEST(ProgrammingConvention, string_string_ref_string_view_0)
     // f1 :222 msec
     // f2 : 55 msec
     // つまり、f0 < f2 < f1であり、f0とf2は大差がなく、f1は極めて非効率である。
-    // 従って、文字列を関数に渡す場合の引数の型は、
+    // 従って、文字列リテラルを関数に渡す場合の引数の型は、
     // std::string const&か、std::string_viewとするのが効率的である。
     // @@@ sample end
 
@@ -258,7 +263,7 @@ private:
 
 class A1 {
 public:
-    A1(std::string str) : str_{std::move(str)} {}
+    A1(std::string str) : str_{std::move(str)} {}  // strの一時オブジェクトをmoveで利用
 
 private:
     std::string str_;
@@ -289,7 +294,7 @@ TEST(ProgrammingConvention, string_string_ref_string_view_2)
     // A1 :314 msec
     // A2 :683 msec
     // つまり、A0 < A1 < A2であり、A0とA1は大差がなく、A2は極めて非効率である。
-    // 従って、文字列を関数に渡す場合の引数の型は、
+    // 従って、stringオブジェクトを関数に渡す場合の引数の型は、
     // std::string const&か、std::stringとするのが効率的である。
     // @@@ sample end
 
@@ -312,7 +317,7 @@ TEST(ProgrammingConvention, string_string_ref_string_view_3)
     // A1 :774 msec
     // A2 :704 msec
     // つまり、A2 < A1 < A0であり、A0の効率がやや悪い。
-    // 従って、文字列を関数に渡す場合の引数の型は、
+    // 従って、文字列リテラルを関数に渡す場合の引数の型は、
     // std::stringか、std::string_viewとするのが効率的である。
     //
     // コンストラクタのインターフェースとしては、
