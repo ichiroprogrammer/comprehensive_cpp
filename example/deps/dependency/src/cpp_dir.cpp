@@ -38,16 +38,6 @@ std::pair<uint32_t, FileUtils::Paths_t> CppDir::DependsOn(CppDir const& cpp_pack
     return {count, std::move(incs)};
 }
 
-bool operator==(CppDir const& lhs, CppDir const& rhs) noexcept
-{
-    return std::tie(lhs.path_, lhs.srcs_) == std::tie(rhs.path_, rhs.srcs_);
-}
-
-bool operator<(CppDir const& lhs, CppDir const& rhs) noexcept
-{
-    return std::tie(lhs.path_, lhs.srcs_) < std::tie(rhs.path_, rhs.srcs_);
-}
-
 CppDirs_t GenCppDirs(FileUtils::Paths_t const& srcs, FileUtils::Filename2Path_t const& db)
 {
     auto ret = CppDirs_t{};

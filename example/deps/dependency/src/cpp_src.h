@@ -21,19 +21,9 @@ private:
     FileUtils::Paths_t      incs_;
     FileUtils::Paths_t      not_found_;
 
-    friend bool operator==(CppSrc const& lhs, CppSrc const& rhs) noexcept;
-    friend bool operator<(CppSrc const& lhs, CppSrc const& rhs) noexcept;
+    friend bool operator==(CppSrc const& lhs, CppSrc const& rhs) noexcept  = default;
+    friend auto operator<=>(CppSrc const& lhs, CppSrc const& rhs) noexcept = default;
 };
-
-inline bool operator!=(CppSrc const& lhs, CppSrc const& rhs) noexcept { return !(lhs == rhs); }
-inline bool operator>(CppSrc const& lhs, CppSrc const& rhs) noexcept
-{
-    if (lhs < rhs) {
-        return false;
-    }
-
-    return lhs != rhs;
-}
 
 using CppSrcs_t = std::vector<CppSrc>;
 CppSrcs_t   GenCppSrc(FileUtils::Paths_t const& srcs, FileUtils::Filename2Path_t const& db);

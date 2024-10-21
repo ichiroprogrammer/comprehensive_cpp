@@ -10,14 +10,6 @@
 
 namespace Dependency {
 
-bool operator==(DepRelation const& lhs, DepRelation const& rhs) noexcept
-{
-    return std::tie(lhs.PackageA, lhs.CountAtoB, lhs.IncsAtoB, lhs.PackageB, lhs.CountBtoA,
-                    lhs.IncsBtoA)
-           == std::tie(rhs.PackageA, rhs.CountAtoB, rhs.IncsAtoB, rhs.PackageB, rhs.CountBtoA,
-                       rhs.IncsBtoA);
-}
-
 std::string ToStringDepRel(DepRelation const& rep_rel)
 {
     auto ss = std::ostringstream{};

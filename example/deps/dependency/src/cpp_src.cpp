@@ -71,18 +71,6 @@ CppSrc::CppSrc(FileUtils::Path_t const& pathname, FileUtils::Filename2Path_t con
     get_incs_full(db, pathname, incs_, not_found_, true);
 }
 
-bool operator==(CppSrc const& lhs, CppSrc const& rhs) noexcept
-{
-    return std::tie(lhs.path_, lhs.filename_, lhs.incs_, lhs.not_found_)
-           == std::tie(rhs.path_, rhs.filename_, rhs.incs_, rhs.not_found_);
-}
-
-bool operator<(CppSrc const& lhs, CppSrc const& rhs) noexcept
-{
-    return std::tie(lhs.path_, lhs.filename_, lhs.incs_, lhs.not_found_)
-           < std::tie(rhs.path_, rhs.filename_, rhs.incs_, rhs.not_found_);
-}
-
 CppSrcs_t GenCppSrc(FileUtils::Paths_t const& srcs, FileUtils::Filename2Path_t const& db)
 {
     auto ret = CppSrcs_t{};

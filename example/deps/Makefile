@@ -10,7 +10,7 @@ WARN_ERROR:=-Werror
 WARN:=-Wall -Wextra -Weffc++
 UT_COMP_OPT:=-g -D_GLIBCXX_USE_CXX11_ABI=0
 
-CCFLAGS:=-std=c++17 $(WARN) $(WARN_ERROR) $(UT_COMP_OPT) -I$(SHARED)h -I../h
+CCFLAGS:=-std=c++20 $(WARN) $(WARN_ERROR) $(UT_COMP_OPT) -I$(SHARED)h -I../h
 
 #
 FILE_UTILS_SRCS:=$(addprefix file_utils/src/,path_utils.cpp load_store_row.cpp)

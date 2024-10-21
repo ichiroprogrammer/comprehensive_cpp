@@ -27,22 +27,9 @@ private:
     FileUtils::Path_t const path_;
     CppSrcs_t const         srcs_;
 
-    friend bool operator==(CppDir const& lhs, CppDir const& rhs) noexcept;
-    friend bool operator<(CppDir const& lhs, CppDir const& rhs) noexcept;
+    friend bool operator==(CppDir const& lhs, CppDir const& rhs) noexcept  = default;
+    friend auto operator<=>(CppDir const& lhs, CppDir const& rhs) noexcept = default;
 };
-
-inline bool operator<=(CppDir const& lhs, CppDir const& rhs) noexcept
-{
-    if (lhs == rhs) {
-        return true;
-    }
-
-    return lhs < rhs;
-}
-
-inline bool operator!=(CppDir const& lhs, CppDir const& rhs) noexcept { return !(lhs == rhs); }
-inline bool operator>(CppDir const& lhs, CppDir const& rhs) noexcept { return rhs < lhs; }
-inline bool operator>=(CppDir const& lhs, CppDir const& rhs) noexcept { return rhs <= lhs; }
 
 using CppDirs_t = std::vector<CppDir>;
 

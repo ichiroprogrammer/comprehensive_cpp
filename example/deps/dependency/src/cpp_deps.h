@@ -1,4 +1,5 @@
 #pragma once
+#include <compare>
 #include <vector>
 
 #include "cpp_deps.h"
@@ -26,24 +27,24 @@ struct DepRelation {
     std::string const        PackageB;
     uint32_t const           CountBtoA;
     FileUtils::Paths_t const IncsBtoA;
+
+    friend bool operator==(DepRelation const& lhs, DepRelation const& rhs) noexcept = default;
 };
+
+inline auto operator<=>(DepRelation const& lhs, DepRelation const& rhs) noexcept
+{
+    // PackageA を比較し、等しくなければその比較結果を返す
+    if (auto cmp = lhs.PackageA <=> rhs.PackageA; cmp != 0) {
+        return cmp;
+    }
+
+    return lhs.PackageB <=> rhs.PackageB;  // PackageAが等しければ PackageBを比較
+}
 
 using Dir2Dir_t = std::pair<std::string, std::string>;
 using DepRels_t = std::list<DepRelation>;
 
 std::string ToStringDepRel(DepRelation const& rep_rel);
-
-bool        operator==(DepRelation const& lhs, DepRelation const& rhs) noexcept;
-inline bool operator!=(DepRelation const& lhs, DepRelation const& rhs) noexcept
-{
-    return !(lhs == rhs);
-}
-inline bool operator<(DepRelation const& lhs, DepRelation const& rhs) noexcept
-{
-    return lhs.PackageA != rhs.PackageA ? lhs.PackageA < rhs.PackageA : lhs.PackageB < rhs.PackageB;
-}
-
-inline bool operator>(DepRelation const& lhs, DepRelation const& rhs) noexcept { return rhs < lhs; }
 
 inline std::ostream& operator<<(std::ostream& os, DepRelation const& dep_rel)
 {
