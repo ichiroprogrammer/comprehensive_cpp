@@ -33,12 +33,12 @@ struct DepRelation {
 
 inline auto operator<=>(DepRelation const& lhs, DepRelation const& rhs) noexcept
 {
-    // PackageA $B$rHf3S$7!"Ey$7$/$J$1$l$P$=$NHf3S7k2L$rJV$9(B
+    // PackageA を比較し、等しくなければその比較結果を返す
     if (auto cmp = lhs.PackageA <=> rhs.PackageA; cmp != 0) {
         return cmp;
     }
 
-    return lhs.PackageB <=> rhs.PackageB;  // PackageA$B$,Ey$7$1$l$P(B PackageB$B$rHf3S(B
+    return lhs.PackageB <=> rhs.PackageB;  // PackageAが等しければ PackageBを比較
 }
 
 using Dir2Dir_t = std::pair<std::string, std::string>;
