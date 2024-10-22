@@ -247,7 +247,7 @@ Modelクラスに[Pimpl](---)を適用することでこのクラスの内部構
     // @@@ example/architecture/model/ut/model_ut.cpp #1:0 begin
 ```
 ```cpp
-    // @@@ example/architecture/model/ut/model_ut.cpp #1:1 begin
+    // @@@ example/architecture/model/ut/model_ut.cpp #1:1 begin -1
 ```
 
 以上からわかる通り、Modelはインスタンスごとにスレッドを持つため、
@@ -299,7 +299,7 @@ ModelオブジェクトやViewオブジェクトを複数必要とする。
 以下の単体テストでviewの使用例を以下に示す。
 
 ```cpp
-    // @@@ example/architecture/view/ut/view_ut.cpp #1:0 begin
+    // @@@ example/architecture/view/ut/view_ut.cpp #1:0 begin -1
 ```
 
 
