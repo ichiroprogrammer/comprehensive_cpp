@@ -213,7 +213,7 @@ int32_t f(bool xxx) noexcept
 }
 
 // @@@ sample begin 4:1
-// @fn terminate(char const* message)
+
 // @brief メッセージを出力してプログラムを終了させる。
 // @param const char* message 上記メッセージ
 [[noreturn]] void terminate(char const* message)

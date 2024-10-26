@@ -11,7 +11,6 @@ void Controller::WatchInput()
     future_ = std::async(std::launch::async, [this] { return watch_input(); });
 }
 
-/// @fn watch_input
 /// @brief Controllerのメインループ。std::istreamからコマンド文字列を受け取る。
 /// @return ループ終了の原因がエラーであるならば非0。そうでなければ0。
 ///         この値は、GetExitCode()により取得できる。
@@ -31,7 +30,6 @@ int Controller::watch_input()
     return 0;
 }
 
-/// @fn dispatch
 /// @brief 受け取った文字列をパースして、ディスパッチする
 /// @param std::istreamから受け取った文字列
 /// @return プログラムを終了する場合、exitコードを返す

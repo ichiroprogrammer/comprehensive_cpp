@@ -11,11 +11,9 @@ class Controller {
 public:
     explicit Controller(Model& model, std::istream& is) : model_{model}, is_{is}, future_{} {}
 
-    /// @fn WatchInput
     /// @brief 入力を受け取るスレッドを起動する
     void WatchInput();
 
-    /// @fn GetExitCode
     /// @brief 上記スレッドが終わるまで待ち合わせて、スレッドのリターンコードを返す。
     int GetExitCode();
 

@@ -8,13 +8,11 @@
 
 // @@@ sample begin 0:0
 
-/// @class FileFinder
 /// @brief ディレクトリ配下の特定のファイルをリカーシブに探して、その一覧を返すクラス
 class FileFinder {
 public:
     // @@@ sample end
 
-    /// @fn FileFinder(std::filesystem::path top_dir)
     /// @brief FileFinderのコンストラクタ
     /// @param top_dir 探索対象のトップディレクトリを指定。
     explicit FileFinder(std::filesystem::path top_dir = "") : top_dir_{std::move(top_dir)} {}
@@ -30,7 +28,6 @@ public:
     };
     // @@@ sample end
 
-    /// @fn std::vector<std::string> FindFileRecursively(FileSort condition)
     /// @brief 条件にマッチしたファイルをリカーシブに探して返す
     /// @param file_sort どのようなファイルかを指定する
     /// @return 条件にマッチしたファイル名をstd::vector<string>で返す
@@ -44,7 +41,6 @@ public:
     // @@@ sample end
     // @@@ sample begin 0:4
 
-    /// @fn std::vector<std::string> FindFileRecursively(IsMatch is_match)
     /// @brief 条件にマッチしたファイルをリカーシブに探して返す
     /// @param is_match どのようなファイルかをラムダ式で指定する
     /// @return 条件にマッチしたファイル名をvector<string>で返す
@@ -65,7 +61,6 @@ TEST(Comment, find_file)
 
 // @@@ sample begin 1:0
 
-/// @class FixedPoint
 /// @brief BASIC_TYPEで指定する基本型のビット長を持つ固定小数点を扱うためのクラス
 /// @tparam BASIC_TYPE       全体のビット長や、符号を指定するための整数型
 /// @tparam FRACTION_BIT_NUM 小数点保持のためのビット長

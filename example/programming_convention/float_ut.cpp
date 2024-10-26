@@ -21,7 +21,6 @@ TEST(ProgrammingConvention, float_comp_0)
 
 // @@@ sample begin 0:1
 
-/// @fn bool is_equal_f(float lhs, float rhs) noexcept
 /// @brief float比較用関数
 bool is_equal_f(float lhs, float rhs) noexcept
 {
@@ -46,7 +45,6 @@ TEST(ProgrammingConvention, float_comp_1)
 // @@@ sample begin 0:3
 
 // 上記例と似たソースコードであるが、下記のような問題が起こる
-/// @fn bool is_equal_d(double lhs, double rhs) noexcept
 /// @brief double比較用関数
 bool is_equal_d(double lhs, double rhs) noexcept
 {
@@ -73,7 +71,6 @@ TEST(ProgrammingConvention, float_comp_2)
 // @@@ sample begin 0:5
 
 // is_equal_dを改良して、引数の型が統一されていない呼び出しをコンパイルエラーにできるようにした。
-/// @fn bool is_equal(FLOAT_0 lhs, FLOAT_1 rhs) noexcept
 /// @brief 浮動小数点比較用関数
 template <typename FLOAT_0, typename FLOAT_1>
 bool is_equal(FLOAT_0 lhs, FLOAT_1 rhs) noexcept

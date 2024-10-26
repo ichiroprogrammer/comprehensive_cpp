@@ -19,7 +19,6 @@ using TwoPhaseTaskPtr = std::unique_ptr<TwoPhaseTaskIF>;
 
 // @@@ sample begin 1:0
 
-/// @class TwoPhaseTaskIF
 /// @brief Dispatcherに代理実行するためのタスクを定義するためのクラスのインターフェース。
 ///        TwoPhaseTask<>のベースクラス。
 class TwoPhaseTaskIF {
@@ -49,7 +48,6 @@ private:
 
 // @@@ sample begin 2:0
 
-/// @class Dispatcher
 /// @brief InvokeされたTwoPhaseTaskPtrの
 ///         * PreTaskを非同期に呼び出し、終了時自分に通知する。
 ///         * PreTask終了通知をトリガーに、PreTaskの結果を引数にしてPostTaskを
@@ -59,20 +57,16 @@ class Dispatcher {
 public:
     static Dispatcher& Inst();
 
-    /// @fn Invoke
     /// @brief TwoPhaseTaskPtrを登録してPreTaskを非同期実行。
     /// @param TwoPhaseTaskPtrオブジェクトのrvalue。
     void Invoke(TwoPhaseTaskPtr&&);
 
-    /// @fn Stop
     /// @brief 登録されているTaskの処理が終わったら、ExecUntilStop()がリターンする。
     void Stop();
 
-    /// @fn Notify
     /// @brief PreTaskがその終了を通知する
     void Notify(TwoPhaseTaskIF& task);
 
-    /// @fn ExecUntilStop
     /// @brief 終了したPreTaskの対のPostTaskをPreTaskの戻り値を添えて呼び出す。
     void ExecUntilStop();
 
@@ -98,7 +92,6 @@ private:
 
 // @@@ sample begin 3:0
 
-/// @class TwoPhaseTask
 /// @brief Dispatcherが管理するタスクを管理するTwoPhaseTaskIFの具象クラス
 /// @tparam PRE  非同期に行われる処理を記述したラムダ式の型。重い処理を行う。
 /// @tparam POST PREの実行の結果をModelに保存するラムダ式の型。
@@ -120,7 +113,6 @@ public:
     virtual ~TwoPhaseTask() override = default;
 
 private:
-    /// @fn do_pre_task
     /// @brief PREを非同期実行し、終了をDispatcherに通知
     virtual void do_pre_task() override
     {
@@ -131,7 +123,6 @@ private:
         });
     }
 
-    /// @fn do_post_task
     /// @brief PREの戻り値を添えてPOSTを同期実行
     virtual bool do_post_task() override { return post_task_(result_.get()); }
 
@@ -143,7 +134,6 @@ private:
 
 // @@@ sample begin 4:0
 
-/// @fn MakeTwoPhaseTaskPtr
 /// @brief TwoPhaseTaskIFオブジェクトを生成するファクトリ関数
 /// @tparam PRE       TwoPhaseTaskのPRE
 /// @tparam POST_BODY TwoPhaseTaskのPOSTの中身で、戻り値はvoid

@@ -454,7 +454,6 @@ SUPPRESS_WARN_END;
 namespace {
 // @@@ sample begin 6:0
 
-/// @class ClassStationery
 /// @brief クラスのひな形。クラスを定義、宣言するときには、このクラスの下記6関数を適切に
 ///        定義、宣言すること。
 class ClassStationery final {
