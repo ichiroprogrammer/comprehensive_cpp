@@ -54,7 +54,7 @@ ___
     // @@@ exercise/programming_convention_q/type.cpp #1:0 begin
 ```
 
-* 参照 [浮動小数点型](---)
+* 参照 [算術型|浮動小数点型](---)
 * [解答例-浮動小数点型](---)
 
 

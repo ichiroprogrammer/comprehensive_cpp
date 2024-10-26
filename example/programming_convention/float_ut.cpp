@@ -98,43 +98,4 @@ TEST(ProgrammingConvention, float_comp_3)
     ASSERT_TRUE(is_equal(0.05F, a + b));  // OK リテラルに型を指定して、引数の型を統一
     // @@@ sample end
 }
-
-// @@@ sample begin 0:7
-
-int   global_zero{0};
-float div(float a, float b) noexcept { return a / b; }
-// @@@ sample end
-
-TEST(ProgrammingConvention, float_except)
-{
-    // @@@ sample begin 0:8
-
-    std::feclearexcept(FE_ALL_EXCEPT);  // エラーをクリア
-
-    div(1.0F, 0.0F);  // 関数の中で0除算するが、終了シグナルは発生しない
-    ASSERT_TRUE(std::fetestexcept(FE_ALL_EXCEPT) & FE_DIVBYZERO);  // 0除算
-
-    std::feclearexcept(FE_ALL_EXCEPT);  // エラーをクリア
-
-    div(std::numeric_limits<double>::max(), 1);
-
-    auto const excepts = std::fetestexcept(FE_ALL_EXCEPT);
-
-    ASSERT_FALSE(excepts & FE_DIVBYZERO);  // 0除算
-    ASSERT_TRUE(excepts & FE_INEXACT);     // 演算が不正確
-    ASSERT_FALSE(excepts & FE_INVALID);    // 不正な操作
-    ASSERT_TRUE(excepts & FE_OVERFLOW);    // 演算がオーバーフローを起こした
-    ASSERT_FALSE(excepts & FE_UNDERFLOW);  // 演算がアンダーフローを起こした
-
-    std::feclearexcept(FE_ALL_EXCEPT);  // エラーをクリア
-
-    auto const a = 1.0F / global_zero;  // global_zero == 0
-    ASSERT_TRUE(std::isinf(a));
-
-    auto const b = std::sqrt(-1);
-    auto const c = std::sqrt(-1);
-    ASSERT_TRUE(std::isnan(b));
-    ASSERT_FALSE(b == c);  // NaN == NaNは常にfalse
-    // @@@ sample end
-}
 }  // namespace
