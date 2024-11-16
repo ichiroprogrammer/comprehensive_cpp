@@ -6,8 +6,9 @@ SRCS:=\
 
 SUPPRESS_WARN=-Wno-effc++ -Wno-unused-variable -Wno-delete-incomplete -Wno-unused-function \
               -Wno-sizeof-array-argument -Wno-unused-parameter -Wno-conversion-null \
-		      -Wno-literal-conversion
+              -Wno-literal-conversion
 
+OBJDIR:=
 SHARED:=../../deep/
 include $(SHARED)make/env.mk
 include $(SHARED)make/example.mk

@@ -2,6 +2,7 @@
 
 SRCS:=code_analysis.cpp
 
+OBJDIR:=
 SHARED:=../../deep/
 include $(SHARED)make/env.mk
 include $(SHARED)make/example.mk

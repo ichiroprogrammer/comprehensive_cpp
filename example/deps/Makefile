@@ -1,3 +1,4 @@
+OBJDIR:=
 SHARED:=../../deep/
 include $(SHARED)make/env.mk
 

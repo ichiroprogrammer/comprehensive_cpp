@@ -1,5 +1,6 @@
 SRCS2:=main.cpp
 
+OBJDIR:=
 SHARED:=../../deep/
 include $(SHARED)make/env.mk
 include $(SHARED)make/example.mk

@@ -4,6 +4,7 @@ SRCS:=\
     null_object.cpp nvi.cpp observer.cpp pimpl.cpp proxy.cpp raii.cpp singleton.cpp state.cpp \
     strategy.cpp template_method.cpp visitor.cpp crtp.cpp \
 
+OBJDIR:=
 SHARED:=../../deep/
 include $(SHARED)make/env.mk
 include $(SHARED)make/example.mk
