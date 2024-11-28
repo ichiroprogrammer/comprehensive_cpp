@@ -429,23 +429,20 @@ void f2(E&&) noexcept {}
 
 SUPPRESS_WARN_UNUSED_VAR;
 
-// @@@ sample begin 5:2
-
-void f0(E&) noexcept;
-void f1(E const&) noexcept;
-void f2(E&&) noexcept;
-// @@@ sample end
-
 void h() noexcept
 {
-    // @@@ sample begin 5:3
+    // @@@ sample begin 5:2
+
+    void f0(E&) noexcept;
+    void f1(E const&) noexcept;
+    void f2(E&&) noexcept;
 
     // f0(E{});  NG ほとんどのコンパイラではエラー
     f1(E{});  // OK rvalueはconstリファレンスにバインド可
     f2(E{});  // OK rvalueはrvalueリファレンス
 
-    E const& a0 = E{"4"};  // NG rvalueを引数以外のconstリファレンスに代入
-    E&&      a1 = E{"5"};  // NG rvalueを引数以外のrvalueリファレンスに代入
+    E const& e0 = E{"4"};  // NG rvalueを引数以外のconstリファレンスに代入
+    E&&      e1 = E{"5"};  // NG rvalueを引数以外のrvalueリファレンスに代入
     // @@@ sample end
 }
 }  // namespace ObjectLifetimeSample

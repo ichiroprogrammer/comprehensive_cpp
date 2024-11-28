@@ -696,11 +696,10 @@ ___
   もしくはrvalueリファレンス(T&&)を使用する(「[型とインスタンス|rvalue](---)」参照)。
 
 ```cpp
-    // @@@ example/programming_convention/class_ut.cpp #5:2 begin
+    // @@@ example/programming_convention/class_ut.cpp #5:2 begin -1
 ```
-```cpp
-    // @@@ example/programming_convention/class_ut.cpp #5:3 begin -1
-```
+
+* [danglingリファレンス](---)、 [danglingポインタ](---)に気を付ける。
 
 
 ## 非メンバ関数/メンバ関数
