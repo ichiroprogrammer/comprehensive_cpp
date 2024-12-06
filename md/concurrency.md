@@ -186,7 +186,7 @@ ModelからDispatcherへ委譲されるラムダ式を管理するための基�
     // @@@ example/ref_async_r6/lib.h #1:0 begin
 ```
 
-TwoPhaseTaskIFから派生する以下のような具象クラスTwoPhaseTask\<PRE, POST>を定義する。
+TwoPhaseTaskIFから派生する以下のような具象クラス`TwoPhaseTask<PRE, POST>`を定義する。
 
 ```cpp
     // @@@ example/ref_async_r6/lib.h #3:0 begin
@@ -255,11 +255,11 @@ TwoPhaseTaskPtrのキュー管理機構は、
 
 |  型                           | インスタンス                  | 役割                         |
 |:------------------------------|:------------------------------|:-----------------------------|
-| std::queue\<TwoPhaseTaskPtr>  | Dispatcher::two_phase_tasks\_ | TwoPhaseTaskPtrキュー        |
+| `std::queue<TwoPhaseTaskPtr>` | Dispatcher::two_phase_tasks\_ | TwoPhaseTaskPtrキュー        |
 | std::condition_variable       | Dispatcher::pre_task_done\_   | イベント待ち、イベント通知   |
 | std::mutex                    | Dispatcher::mutex\_           | TwoPhaseTaskPtrキューの排他  |
-| std::unique_lock\<std::mutex> | 関数ローカル                  | イベント待ち解除時の排他     |
-| std::lock_guard\<std::mutex>  | 関数ローカル                  | mutex\_のRAII                |
+| `std::unique_lock<std::mutex>`| 関数ローカル                  | イベント待ち解除時の排他     |
+| `std::lock_guard<std::mutex>` | 関数ローカル                  | mutex\_のRAII                |
 
 なお、std::condition_variableを用いたイベント待ちに、
 
@@ -301,7 +301,7 @@ TwoPhaseTaskPtrキュー管理機構は以下のようにしてTwoPhaseTaskPtr�
    「Dispatcher::two_phase_tasks\_の先頭TwoPhaseTaskPtrオブジェクトの非同期処理が完了」
    していれば、Dispatcher::pop_task()のイベント待ち状態は解除される。
 4. Dispatcher::pop_task()のイベント待ち解除時に発生するクリティカルセクションは、
-   unique_lock\<mutex>によって保護される(push_task()との競合があり得る)。
+   `std::unique_lock<mutex>`によって保護される(push_task()との競合があり得る)。
 5. このクリティカルセクションの中で、
    Dispatcher::two_phase_tasks\_からTwoPhaseTaskPtrオブジェクトがポップされることで、
    そのTwoPhaseTaskPtrオブジェクトはキューの管理対象外となる
@@ -355,7 +355,7 @@ TwoPhaseTaskPtrキュー管理機構は以下のようにしてTwoPhaseTaskPtr�
 * 排他制御1を使用し、スピンロックを実装できる(「[固定長メモリプール](---)」参照)。
 
 * 排他制御2を使用する場合、[RAII(scoped guard)](---)を使用する。
-    * lock()/unlock()を直接ソースコードに書かない。代わりに std::lock_guard\<std::mutex>を使用する。
+    * lock()/unlock()を直接ソースコードに書かない。代わりに`std::lock_guard<std::mutex>`を使用する。
 
 * 排他制御3を使用する場合、アーキテクチャに大きな影響を与えるため、
   それが必要になるのであれば、できるだけ早期に対応する。

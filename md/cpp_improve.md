@@ -84,7 +84,7 @@ ___
 ### stdの変更、追加
 #### stdコンテナ
 コンテナ全般が[moveセマンティクス](---)に対応したため、
-テンプレートのパラメータTが、コピー構築可能(is_copy_constructible\<T\>== true)な型だけでなく、
+テンプレートのパラメータTが、コピー構築可能(`is_copy_constructible<T> == true`)な型だけでなく、
 ムーブ構築(is_move_constructible)のみ可能な型も受け付けるられるようになった。
 push_back()やinsert()等の要素追加のためのメンバ関数が、
 新たな要素のコピーだけでなく、emplace() 、emplace_back() 、emplace_front()のような名称のメンバ関数は、
@@ -150,7 +150,7 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |std::exchange()                                   |二つの値を入れ替える。「[Copy-And-Swap](---)」参照        |
 |[std::integer_sequence](---)                      |コンパイル時整数シーケンス                                |
 |[std::get()のオーバーロード](---)を追加           |タプルを型の集合と見なし、型を指定して対応する値を取得する|
-|\<type_traits>                                    |xxx_t、xxx_vなどのエイリアステンプレート、定数テンプレート|
+|`<type_traits>`                                   |xxx_t、xxx_vなどのエイリアステンプレート、定数テンプレート|
 |[std::string型リテラル](---)                      |                                                          |
 |[ユーザー定義リテラル|std::chronoのリテラル](---) |                                                          |
 |[ユーザー定義リテラル|std::complexリテラル](---)  |                                                          |

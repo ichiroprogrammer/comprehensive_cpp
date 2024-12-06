@@ -38,6 +38,7 @@
 
 ## 改訂履歴
 * V20.0x
+    * std::weak_ptrの解説を追加
     * pmrの解説を追加
     * templateメタプログラミング
         * 浮動小数点IsEqual

@@ -435,7 +435,7 @@ void h() noexcept
 
     void f0(E&) noexcept;
     void f1(E const&) noexcept;
-    void f2(E&&) noexcept;
+    void f2(E &&) noexcept;
 
     // f0(E{});  NG ほとんどのコンパイラではエラー
     f1(E{});  // OK rvalueはconstリファレンスにバインド可
