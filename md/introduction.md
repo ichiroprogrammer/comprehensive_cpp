@@ -37,7 +37,13 @@
 「守」が終了し、「破」へと進むことができると考えられる。
 
 ## 改訂履歴
-* V20.0x
+* V20.02
+    * プログラミング規約
+        * 関数の戻り値型にstd::optionalを追加
+        * unionの代わりのstd::variantを追加
+    * std::weak_ptrの解説を追加
+    * std::pmrの解説を追加
+
     * std::weak_ptrの解説を追加
     * pmrの解説を追加
     * templateメタプログラミング

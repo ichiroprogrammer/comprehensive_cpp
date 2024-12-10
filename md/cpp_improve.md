@@ -83,7 +83,7 @@ ___
 
 ### stdの変更、追加
 #### stdコンテナ
-コンテナ全般が[moveセマンティクス](---)に対応したため、
+[コンテナ](---)全般が[moveセマンティクス](---)に対応したため、
 テンプレートのパラメータTが、コピー構築可能(`is_copy_constructible<T> == true`)な型だけでなく、
 ムーブ構築(is_move_constructible)のみ可能な型も受け付けるられるようになった。
 push_back()やinsert()等の要素追加のためのメンバ関数が、
@@ -98,31 +98,6 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |[std::unordered_map](---)       |同一キーの要素を複数格納しない、格納順が規定されていない連想配列の実装であるである。|
 |[std::unordered_set](---)       |同一キーの要素を複数格納できず、格納順が規定されていないコンテナである。            |
 |[std::type_index](---)          |型情報型を連想コンテナのキーとして使用するためのクラス。                            |
-
-#### C++11/stdコンテナの使用例
-##### std::forward_list
-
-```cpp
-    // @@@ example/cpp_improve/cpp11_ut.cpp #0:0 begin -1
-```
-
-##### std::unordered_map
-
-```cpp
-    // @@@ example/cpp_improve/cpp11_ut.cpp #0:1 begin -1
-```
-
-##### std::unordered_set
-
-```cpp
-    // @@@ example/cpp_improve/cpp11_ut.cpp #0:2 begin -1
-```
-
-##### std::type_index
-
-```cpp
-    // @@@ example/cpp_improve/cpp11_ut.cpp #0:3 begin -1
-```
 
 ## C++14の主な新規機能
 

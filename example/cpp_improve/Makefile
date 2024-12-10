@@ -1,5 +1,5 @@
 SRCS:=\
-   cpp11_ut.cpp cpp14_ut.cpp cpp17_ut.cpp cpp20_ut.cpp
+   cpp14_ut.cpp cpp17_ut.cpp cpp20_ut.cpp
 
 OBJDIR:=
 SHARED:=../../deep/
