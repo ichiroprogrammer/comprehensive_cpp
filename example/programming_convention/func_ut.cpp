@@ -98,9 +98,9 @@ namespace ConstractorSample {
 
 class Base {
 public:
-    Base(std::ostream& os) : os_{os} { os_ << __func__ << "-" << Name() << " -> "; }
+    Base(std::ostream& os) : os_{os} { os_ << Name() << "::" << __func__ << " -> "; }
 
-    virtual ~Base() { os_ << __func__ << "-" << Name(); }
+    virtual ~Base() { os_ << Name() << "::" << __func__; }
 
     virtual std::string_view Name() const { return "Base"; }
 
@@ -110,9 +110,9 @@ protected:
 
 class Derived : public Base {
 public:
-    Derived(std::ostream& os) : Base{os} { os_ << __func__ << "-" << Name() << " -> "; }
+    Derived(std::ostream& os) : Base{os} { os_ << Name() << "::" << __func__ << " -> "; }
 
-    virtual ~Derived() { os_ << __func__ << "-" << Name() << " -> "; }
+    virtual ~Derived() { os_ << Name() << "::" << __func__ << " -> "; }
 
     virtual std::string_view Name() const override { return "Derived"; }
 };
@@ -129,11 +129,12 @@ TEST(ProgrammingConvention, call_virtual_in_constructor)
         auto d = Derived{oss};
     }
 
-    ASSERT_EQ("Base-Base -> Derived-Derived -> ~Derived-Derived -> ~Base-Base", oss.str());
+    ASSERT_EQ("Base::Base -> Derived::Derived -> Derived::~Derived -> Base::~Base", oss.str());
     // つまり、
-    //          Base::Base()とBase::~Base()からは、Base::Name()が
-    //          Derived::Derived()とDerived::~Derived()からは、Derived::Name()
-    // が呼び出される。
+    // * Base::Base()でのName()の呼び出しは、Derived::Name()ではなくBase::Name()が呼ばれる。
+    // * Base::~Base()でのName()の呼び出しは、Derived::Name()ではなくDerived::Name()が呼ばれる。
+    // * Derived::~Derived()でのName()の呼び出しは、Derived::Name()ではなくDerived::Name()が呼ばれる。
+    // * Base::~Base()でのName()の呼び出しは、Derived::Name()ではなくBase::Name()が呼ばれる。
     // @@@ sample end
 }
 }  // namespace
