@@ -1195,6 +1195,7 @@ ___
     // @@@ example/programming_convention/func_ut.cpp #10:1 begin
 ```
 
+* [exception-unfriendly](---)な関数はエクセプションを発生させないようにする。
 * エクセプションをthrowする場合、独自定義したオブジェクトを使用しない。
   代わりにstd::exceptionか、これから派生したクラスを使用する。
   また、throwされたオブジェクトのwhat()から、throwされたファイル位置が特定できるようにする
