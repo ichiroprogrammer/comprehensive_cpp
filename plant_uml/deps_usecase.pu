@@ -1,0 +1,19 @@
+@startuml
+scale max 730 width
+rectangle "app" as app
+rectangle "dependency" as dependency
+rectangle "file_utils" as file_utils
+rectangle "lib" as lib
+rectangle "logging" as logging
+
+app "1" -[#green]-> dependency
+app "4" -[#green]-> file_utils
+app "3" -[#green]-> lib
+app "1" -[#green]-> logging
+dependency "24" -[#green]-> file_utils
+dependency "4" -[#green]-> lib
+file_utils "1" -[#green]-> lib
+file_utils "1" -[#green]-> logging
+logging "3" -[#green]-> lib
+
+@enduml

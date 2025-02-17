@@ -1,0 +1,26 @@
+@startuml
+
+scale max 730 width
+rectangle "app1" as ut_data___app1 {
+    rectangle "mod1" as ut_data___app1___mod1
+    rectangle "mod2" as ut_data___app1___mod2 {
+        rectangle "mod2_1" as ut_data___app1___mod2___mod2_1
+        rectangle "mod2_2" as ut_data___app1___mod2___mod2_2
+    }
+}
+rectangle "app2" as ut_data___app2
+
+ut_data___app1 "6" <-[#red]-> "1" ut_data___app1___mod1
+ut_data___app1 "3" <-[#red]-> "1" ut_data___app1___mod2___mod2_1
+ut_data___app1 "3" <-[#red]-> "2" ut_data___app1___mod2___mod2_2
+ut_data___app2 "3" -[#green]-> ut_data___app1
+ut_data___app1___mod1 "1" -[#green]-> ut_data___app1___mod2
+ut_data___app1___mod1 "1" <-[#red]-> "2" ut_data___app1___mod2___mod2_1
+ut_data___app1___mod1 "1" <-[#red]-> "4" ut_data___app1___mod2___mod2_2
+ut_data___app2 "4" -[#green]-> ut_data___app1___mod1
+ut_data___app1___mod2___mod2_1 "1" <-[#red]-> "2" ut_data___app1___mod2___mod2_2
+ut_data___app2 "2" -[#green]-> ut_data___app1___mod2___mod2_1
+ut_data___app2 "2" -[#green]-> ut_data___app1___mod2___mod2_2
+
+@enduml
+

@@ -229,6 +229,7 @@ depsのコマンドオプションを以下に示す。
 * [ユースケース-パッケージ間の依存関係をplant umlで表す](---)
 * [ユースケース-ソースコード間の依存関係をplant umlで表す](---)
 * [ユースケース-パッケージでないディレクトリをそれとみなさない](---)
+* [ユースケース-depsを用いてdepsの依存関係を調べる](---)
 
 におけるdepsの使い方や出力等を示す。
 
@@ -458,6 +459,10 @@ OUT-FILEを適切に編集し、他のCMDの入力(--in IN-FILE)に使用する�
 このアウトプットを[plant umlオンラインジェネレータ](http://www.plantuml.com/plantuml/)
 のテキストボックスに貼り付ければpngファイルが得られ、視覚的に依存関係を把握できる。
 
+実際に上記plantumlのファイルをレンダリングしたpngファイルの描画を以下に示す。
+
+![deps_pkg](plant_uml/deps_ut_data.png)
+
 ### ユースケース-ソースコード間の依存関係をplant umlで表す
 
 ソースコードをパッケージとみなすオプション(-sもしくは--src_as_pkg)を付加して、
@@ -493,6 +498,74 @@ dependencyに直接属するように扱うべきであるが、
     --exclude ".*/h/?.*"
 ```
 
+### ユースケース-depsを用いてdepsの依存関係を調べる
+
+depsを用いてdepsの依存関係を調べてみよう。
+
+まずは下記のコマンドで依存関係を調べる。
+
+```
+    > cd comprehensive_cpp/example/deps     # comprehensive_cppはTOP_DIR
+    > ./g++/deps p2p -R --out p2p.txt .
+    > ./g++/deps a2pu  --in p2p.txt --out deps.pu
+```
+
+上記のほとんどデフォルトのパラメータでは以下のようなパケージ図となるため、役に立たない。
+原因はテスト用のコードと、各ディレクトリの配下の「h、src、ut」がパケージとみなされるためである。
+
+![deps_pkg](plant_uml/deps_default.png)
+
+この問題を回避するため、パッケージを定義する必要がある。
+パッケージの定義のためにはまず以下のようなコマンドを実行し、p.txtを生成し、
+それを修正するのが良い。
+
+```
+    > ./g++/deps p -R --out p.txt .
+```
+
+```
+    > cat p.txt
+    #dir
+    app/src
+    app/ut
+
+    ... 省略
+
+    ut_data/app1/mod1
+    ut_data/app1/mod2
+    ut_data/app1/mod2/mod2_1
+    ut_data/app1/mod2/mod2_2
+    ut_data/app2
+```
+
+上記のようなp.txtを下記のように修正する。
+
+```
+    > cat p.txt
+    #dir
+    app
+    dependency
+    file_utils
+    lib
+    logging
+```
+
+このパッケージの定義ファイルを使用し以下のコマンドを実行することで、
+deps.puを生成しする。
+
+```
+    > ./g++/deps p2p  --in p.txt --out p2p.txt .    # 最後の引数はディレクトリ(忘れがち)
+    > ./g++/deps a2pu  --in p2p.txt --out deps.pu
+```
+deps.puをレンダリングすることで以下のイメージを得ることができる。
+
+![deps_usecase](plant_uml/deps_usecase.png)
+
+なお、plant_umlのレンダリングには適切な環境設定が必要であるが下記の実行が便利である。
+
+```
+    > <TOP_DIR>/md_gen/export/sh/pu2png.sh deps.pu
+```
 
 ## makeによる依存関係の維持
 ビルドツールにmake、コンパイラにg++やclang++を使うのであれば、

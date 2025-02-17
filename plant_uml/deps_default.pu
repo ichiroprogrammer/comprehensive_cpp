@@ -1,0 +1,83 @@
+@startuml
+scale max 730 width
+rectangle "src" as app___src
+rectangle "ut" as app___ut
+rectangle "dependency" as dependency___h___dependency
+rectangle "src" as dependency___src
+rectangle "ut" as dependency___ut
+rectangle "file_utils" as file_utils___h___file_utils
+rectangle "src" as file_utils___src
+rectangle "ut" as file_utils___ut
+rectangle "a" as it_data___fake___a {
+    rectangle "e" as it_data___fake___a___e
+}
+rectangle "b" as it_data___fake___b {
+    rectangle "e" as it_data___fake___b___e
+}
+rectangle "c" as it_data___fake___c {
+    rectangle "e" as it_data___fake___c___e
+}
+rectangle "d" as it_data___fake___d {
+    rectangle "e" as it_data___fake___d___e
+}
+rectangle "e" as it_data___fake___e {
+    rectangle "e" as it_data___fake___e___e
+}
+rectangle "lib" as lib___h___lib
+rectangle "ut" as lib___ut
+rectangle "logging" as logging___h___logging
+rectangle "src" as logging___src
+rectangle "ut" as logging___ut
+rectangle "app1" as ut_data___app1 {
+    rectangle "mod1" as ut_data___app1___mod1
+    rectangle "mod2" as ut_data___app1___mod2 {
+        rectangle "mod2_1" as ut_data___app1___mod2___mod2_1
+        rectangle "mod2_2" as ut_data___app1___mod2___mod2_2
+    }
+}
+rectangle "app2" as ut_data___app2
+
+app___ut "1" -[#green]-> app___src
+app___src "1" -[#green]-> dependency___h___dependency
+app___src "3" -[#green]-> file_utils___h___file_utils
+app___src "2" -[#green]-> lib___h___lib
+app___src "1" -[#green]-> logging___h___logging
+app___ut "1" -[#green]-> file_utils___h___file_utils
+app___ut "1" -[#green]-> lib___h___lib
+dependency___src "1" -[#green]-> dependency___h___dependency
+dependency___ut "1" -[#green]-> dependency___h___dependency
+dependency___h___dependency "1" -[#green]-> file_utils___h___file_utils
+dependency___ut "15" -[#green]-> dependency___src
+dependency___src "13" -[#green]-> file_utils___h___file_utils
+dependency___src "4" -[#green]-> lib___h___lib
+dependency___ut "10" -[#green]-> file_utils___h___file_utils
+file_utils___src "3" -[#green]-> file_utils___h___file_utils
+file_utils___ut "6" -[#green]-> file_utils___h___file_utils
+file_utils___ut "1" -[#green]-> lib___h___lib
+file_utils___ut "1" -[#green]-> logging___h___logging
+it_data___fake___a "1" -[#green]-> it_data___fake___b___e
+it_data___fake___a "1" -[#green]-> it_data___fake___d___e
+it_data___fake___c "1" -[#green]-> it_data___fake___a___e
+it_data___fake___b "1" -[#green]-> it_data___fake___c___e
+it_data___fake___c "1" -[#green]-> it_data___fake___c___e
+it_data___fake___d "1" -[#green]-> it_data___fake___e___e
+it_data___fake___e "1" -[#green]-> it_data___fake___d___e
+lib___ut "1" -[#green]-> lib___h___lib
+logging___h___logging "1" -[#green]-> lib___h___lib
+logging___src "1" -[#green]-> lib___h___lib
+logging___ut "1" -[#green]-> lib___h___lib
+logging___src "1" -[#green]-> logging___h___logging
+logging___ut "1" -[#green]-> logging___h___logging
+ut_data___app1 "6" <-[#red]-> "1" ut_data___app1___mod1
+ut_data___app1 "3" <-[#red]-> "1" ut_data___app1___mod2___mod2_1
+ut_data___app1 "3" <-[#red]-> "2" ut_data___app1___mod2___mod2_2
+ut_data___app2 "3" -[#green]-> ut_data___app1
+ut_data___app1___mod1 "1" -[#green]-> ut_data___app1___mod2
+ut_data___app1___mod1 "1" <-[#red]-> "2" ut_data___app1___mod2___mod2_1
+ut_data___app1___mod1 "1" <-[#red]-> "4" ut_data___app1___mod2___mod2_2
+ut_data___app2 "4" -[#green]-> ut_data___app1___mod1
+ut_data___app1___mod2___mod2_1 "1" <-[#red]-> "2" ut_data___app1___mod2___mod2_2
+ut_data___app2 "2" -[#green]-> ut_data___app1___mod2___mod2_1
+ut_data___app2 "2" -[#green]-> ut_data___app1___mod2___mod2_2
+
+@enduml
