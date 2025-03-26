@@ -658,7 +658,7 @@ TEST(ProgrammingConvention, class_init)
     auto                     vec3_s = std::vector<std::string>{10};  // OK vec1_sと同じ
 
     // vec1_i、vec2_i、vec1_sの初期化は似ているが、結果は全く異なる。
-    // vec1_iは、vector(initializer_list<>)を呼び出す。
+    // vec1_iは、vector(std::initializer_list<>)を呼び出す。
     // vec2_iは、vector(int)を呼び出す。
     // vec1_sは、vector(int)を呼び出す。
 
