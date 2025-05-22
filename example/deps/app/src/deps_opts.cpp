@@ -23,14 +23,14 @@ std::string DepsOpts::Help()
     ss << "         help : show help message." << std::endl;
     ss << "         h    : same as help(-h, --help)." << std::endl;
     ss << std::endl;
-    ss << "   opptions:" << std::endl;
+    ss << "   options:" << std::endl;
     ss << "         --in IN     : use IN to execute CMD." << std::endl;
     ss << "         --out OUT   : CMD outputs to OUT." << std::endl;
     ss << "         --recursive : search dir as package from DIRS or IN contents." << std::endl;
     ss << "         -R          : same as --recursive." << std::endl;
     ss << "         --src_as_pkg: every src is as a package." << std::endl;
     ss << "         -s          : same as --src_as_pkg." << std::endl;
-    ss << "         --log LOG   : loggin to LOG(if LOG is \"-\", using STDOUT)." << std::endl;
+    ss << "         --log LOG   : logging to LOG(if LOG is \"-\", using STDOUT)." << std::endl;
     ss << "         --exclude PTN : exclude dirs which matchs to PTN(JS regex)." << std::endl;
     ss << "         -e PTN      : same as --exclude." << std::endl;
     ss << std::endl;
