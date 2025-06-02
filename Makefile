@@ -7,7 +7,7 @@ TITLE=Comprehensive Knowledge of C++($(VERSION))
 
 MD_GEN:=./md_gen/export/py
 
-VPATH=./md:deep/md/
+VPATH=./md:deep/md/:deps/md
 
 MDS:=introduction.md \
      software_practice.md programming_convention.md code_analysis.md \
