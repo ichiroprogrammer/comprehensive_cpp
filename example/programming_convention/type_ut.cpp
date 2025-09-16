@@ -350,9 +350,8 @@ void f() noexcept
     IGNORE_UNUSED_VAR(a, b, c);
 }
 
-int g([[maybe_unused]] long a) noexcept { return 0; }
-
-int g([[maybe_unused]] int* a) noexcept { return 1; }
+int16_t g([[maybe_unused]] long a) noexcept { return 0; }
+int8_t  g([[maybe_unused]] int* a) noexcept { return 1; }
 
 TEST(ProgrammingConvention, call_with_null)
 {
@@ -361,16 +360,15 @@ TEST(ProgrammingConvention, call_with_null)
 
     // @@@ sample begin 8:1
 
-    extern int g(long a) noexcept;
-    extern int g(int* a) noexcept;
+    extern int16_t g(long a) noexcept;
+    extern int8_t  g(int* a) noexcept;
 
     // NULLを使ったことで、わかりづらいバグが発生する例
-    g(NULL);  // NG NULLはポインタではないため、この呼び出しはg(long)を呼び出す
-    static_assert(std::is_same_v<long, decltype(NULL)>);
+    g(NULL);  // NG NULLの型はポインタではなく、longであるため、この呼び出しはg(long)を呼び出す
+    static_assert(std::is_same_v<int16_t, decltype(g(NULL))>);
 
     g(nullptr);  // OK 意図通り、g(int*)を呼び出す。
-    static_assert(std::is_same_v<std::nullptr_t, decltype(nullptr)>);
-
+    static_assert(std::is_same_v<int8_t, decltype(g(nullptr))>);
     // @@@ sample end
 
     ASSERT_EQ(0, g(NULL));
