@@ -341,8 +341,9 @@ public:
 // 定義になってしまった。この手のミスは、自分で気づくのは難しい
 class Derived_0 : public Base {
 public:
-    virtual ~Derived_0();               // NG overrideが必要
-    virtual void f(uint32_t) noexcept;  // NG Derived_0:fはBase:fのオーバーライドではない
+    virtual ~Derived_0();       // NG overrideが必要
+    void f(uint32_t) noexcept;  // NG Derived_0:fはBase:fのオーバーライドではない
+                                //    virtualとoverrideやfinalがない
     virtual void g() noexcept override;  // OK
 };
 
@@ -350,10 +351,15 @@ class Derived_1 : public Base {
 public:
     // NG 下記が必要
     // virtual ~Derived_1() override;
+
+// clang-format off
 #if 0   // @@@ delete
     virtual void f(uint32_t) override;  // OK overrideと書いたことで、
-                                        //    コンパイルできないため、タイポに気づく
+                                        //    コンパイルエラーになりタイポに気づく
+    virtual void f(uint32_t) final;     // OK finalと書いたことで、
+                                        //    コンパイルエラーになりタイポに気づく
 #endif  // @@@ delete
+    // clang-format on
 };
 
 class Derived_2 : public Base {

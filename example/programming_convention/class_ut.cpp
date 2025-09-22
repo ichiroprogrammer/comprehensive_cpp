@@ -190,6 +190,7 @@ TEST(ProgrammingConvention, derived_non_virtual_destructor_Opt)
     ASSERT_TRUE(a_destructed);  // OK A::~A()が呼ばれたため問題ないが、、、
 
     {
+        a_destructed = false;
         std::unique_ptr<BaseNG> d{std::make_unique<DerivedNG>(a_destructed)};
         ASSERT_FALSE(a_destructed);
     }
@@ -228,6 +229,7 @@ TEST(ProgrammingConvention, derived_virtual_destructor)
     ASSERT_TRUE(a_destructed);  // OK A::~A()が呼ばれたため問題ない
 
     {
+        a_destructed = false;
         std::unique_ptr<BaseOK> d{std::make_unique<DerivedOK>(a_destructed)};
         ASSERT_FALSE(a_destructed);
     }
