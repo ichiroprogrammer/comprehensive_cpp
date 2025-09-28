@@ -846,7 +846,7 @@ STLの関数は引数オブジェクトをコピーすることがあるため�
 ```
 
 下記のように文字列リテラルから変換されたされたstd::stringオブジェクトである
-[expressionと値カテゴリ|rvalue](---)を引数に取ることができる。
+[expression|rvalue](---)を引数に取ることができる。
 
 ```cpp
     // @@@ example/etc/debug.cpp #1:1 begin -1
