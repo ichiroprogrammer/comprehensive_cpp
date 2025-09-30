@@ -120,7 +120,7 @@ gitには以下のような基本的なコマンドに加えて、
 depsの開発においては、単体テスト、統合テストは下記のようなdeps/build.shによって行われる。
 
 ```sh
-    // @@@ example/deps/build.sh #0:0 begin
+    // @@@ deps/example/deps/build.sh #0:0 begin
 ```
 
 depsが、
@@ -220,7 +220,7 @@ TATとはターンアラウンドタイムの略語であり、一度の試行�
 [deps](---)に関しても、以下のシェルスクリプトにより自動統合テストを実現している。
 
 ```sh
-    // @@@ example/deps/it.sh #0:0 begin
+    // @@@ deps/example/deps/it.sh #0:0 begin
 ```
 
 上記でも使ったunix系のコマンドは、
@@ -257,19 +257,19 @@ TATとはターンアラウンドタイムの略語であり、一度の試行�
   (「[ログ取得ライブラリの開発](---)」、「[ログ取得ライブラリの開発2](---)」参照)
 
 ```cpp
-    // @@@ example/deps/logging/h/logging/logger.h #0:0 begin
+    // @@@ deps/example/deps/logging/h/logging/logger.h #0:0 begin
 ```
 
 * オブジェクトを文字列変換するため関数
 
 ```cpp
-    // @@@ example/deps/app/src/deps_opts.h #0:0 begin
+    // @@@ deps/example/deps/app/src/deps_opts.h #0:0 begin
 ```
 
 * ログの取得方法
 
 ```cpp
-    // @@@ example/deps/app/src/main.cpp #0:0 begin
+    // @@@ deps/example/deps/app/src/main.cpp #0:0 begin
 ```
 
 によりログを取得している。これにより以下のような内容のログファイルが取得できる。
@@ -415,7 +415,7 @@ jtagデバッガがブレークポイントを設定する方法は2つある。
 統合テスト時にsanitizerによる動的解析を行っている。
 
 ```Makefile
-    // @@@ example/deps/Makefile #1:0 begin
+    // @@@ deps/example/deps/Makefile #1:0 begin
 ```
 
 ## 難しいバグの対処

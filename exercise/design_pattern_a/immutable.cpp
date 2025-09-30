@@ -29,13 +29,11 @@ private:
     uint32_t const              max_number_;
     std::vector<uint32_t> const prime_numbers_{};
 
-    static uint32_t              next_prime_num(uint32_t           curr_prime_num,
-                                                std::vector<bool>& is_num_prime) noexcept;
+    static uint32_t              next_prime_num(uint32_t curr_prime_num, std::vector<bool>& is_num_prime) noexcept;
     static std::vector<uint32_t> get_prime_numbers(uint32_t max_number);
 };
 
-uint32_t PrimeNumbers::next_prime_num(uint32_t           curr_prime_num,
-                                      std::vector<bool>& is_num_prime) noexcept
+uint32_t PrimeNumbers::next_prime_num(uint32_t curr_prime_num, std::vector<bool>& is_num_prime) noexcept
 {
     for (auto i = 2 * curr_prime_num; i < is_num_prime.size(); i += curr_prime_num) {
         is_num_prime[i] = false;  // 次の倍数は素数ではない
@@ -70,8 +68,7 @@ std::vector<uint32_t> PrimeNumbers::get_prime_numbers(uint32_t max_number)
     return result;
 }
 
-PrimeNumbers::PrimeNumbers(uint32_t max_number)
-    : max_number_{max_number}, prime_numbers_{get_prime_numbers(max_number)}
+PrimeNumbers::PrimeNumbers(uint32_t max_number) : max_number_{max_number}, prime_numbers_{get_prime_numbers(max_number)}
 {
 }
 

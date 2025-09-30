@@ -32,10 +32,7 @@ public:
     XxxDataFormatterIF(XxxDataFormatterIF const&)            = delete;
     XxxDataFormatterIF& operator=(XxxDataFormatterIF const&) = delete;
 
-    std::string ToString(XxxData const& xxx_data) const
-    {
-        return header() + body(xxx_data) + footer();
-    }
+    std::string ToString(XxxData const& xxx_data) const { return header() + body(xxx_data) + footer(); }
 
     std::string ToString(std::vector<XxxData> const& xxx_datas) const
     {
@@ -62,8 +59,7 @@ public:
 private:
     virtual std::string const& header() const override
     {
-        static auto const header
-            = std::string{"<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<XxxDataFormatterXml>\n"};
+        static auto const header = std::string{"<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<XxxDataFormatterXml>\n"};
 
         return header;
     }

@@ -4,5 +4,4 @@
 #include <thread>
 #include <vector>
 
-extern std::optional<int> dispatch(std::thread& thd, std::vector<std::string>& strings,
-                                   std::string const& command);
+extern std::optional<int> dispatch(std::thread& thd, std::vector<std::string>& strings, std::string const& command);

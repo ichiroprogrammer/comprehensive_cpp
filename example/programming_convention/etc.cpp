@@ -38,8 +38,7 @@ namespace PragmaSample {
 // @@@ sample begin 1:0
 
 #if defined(__clang__)
-#define SUPPRESS_WARN_CLANG_UNUSED_PRIVATE_FIELD \
-    _Pragma("clang diagnostic ignored \"-Wunused-private-field\"")
+#define SUPPRESS_WARN_CLANG_UNUSED_PRIVATE_FIELD _Pragma("clang diagnostic ignored \"-Wunused-private-field\"")
 #else
 #define SUPPRESS_WARN_CLANG_UNUSED_PRIVATE_FIELD
 #endif

@@ -23,10 +23,7 @@ public:
     XxxDataFormatterIF(XxxDataFormatterIF const&)            = delete;
     XxxDataFormatterIF& operator=(XxxDataFormatterIF const&) = delete;
 
-    std::string ToString(XxxData const& xxx_data) const
-    {
-        return header() + body(xxx_data) + footer();
-    }
+    std::string ToString(XxxData const& xxx_data) const { return header() + body(xxx_data) + footer(); }
 
     std::string ToString(std::vector<XxxData> const& xxx_datas) const
     {

@@ -21,8 +21,7 @@ public:
             return files_;
         }
 
-        auto stream
-            = std::unique_ptr<FILE, decltype(&fclose)>{popen("ls ../ut_data/*.cpp", "r"), fclose};
+        auto stream = std::unique_ptr<FILE, decltype(&fclose)>{popen("ls ../ut_data/*.cpp", "r"), fclose};
 
         if (stream.get() == NULL) {
             throw std::exception{};
@@ -75,8 +74,7 @@ TEST(DesignPatternQ, DI)
 {
     auto        files = CppFiles{};
     auto const& act   = files.FileList();
-    auto        exp   = std::vector<std::string>{"../ut_data/a.cpp", "../ut_data/abc.cpp",
-                                                 "../ut_data/efghij.cpp"};
+    auto        exp   = std::vector<std::string>{"../ut_data/a.cpp", "../ut_data/abc.cpp", "../ut_data/efghij.cpp"};
 
     ASSERT_EQ(exp, act);
 }

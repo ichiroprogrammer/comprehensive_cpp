@@ -31,10 +31,7 @@ public:
     using ScoreOne_t = std::vector<std::pair<std::string, int32_t>>;
 
     void                        AddScore(ScoreOne_t const& one_test_score);
-    std::vector<int32_t> const& GetScore(std::string const& name) const
-    {
-        return test_score_row_.at(name);
-    }
+    std::vector<int32_t> const& GetScore(std::string const& name) const { return test_score_row_.at(name); }
 
     void LoadCSV(std::string const& filename);
 

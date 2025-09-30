@@ -195,7 +195,7 @@ ___
 参考のために、サンプルソースコードに適用している.clang-formatを例示する。
 
 ```
-    // @@@ .clang-format #0:0 begin
+    // @@@ example/.clang-format #0:0 begin
 ```
 
 

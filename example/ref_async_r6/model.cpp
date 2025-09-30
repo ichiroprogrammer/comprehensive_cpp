@@ -6,12 +6,11 @@
 
 void Model::ConvertStoreAsync(std::string&& input)
 {
-    TwoPhaseTaskPtr task
-        = MakeTwoPhaseTaskPtr([str = std::move(input)] { return do_heavy_algorithm(str); },
-                              [this](auto&& str) {
-                                  strings_.emplace_back(std::move(str));
-                                  notify();
-                              });
+    TwoPhaseTaskPtr task = MakeTwoPhaseTaskPtr([str = std::move(input)] { return do_heavy_algorithm(str); },
+                                               [this](auto&& str) {
+                                                   strings_.emplace_back(std::move(str));
+                                                   notify();
+                                               });
 
     Dispatcher::Inst().Invoke(std::move(task));
 }

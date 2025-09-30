@@ -66,15 +66,13 @@ TEST(RefAsyncR6_Opt, surrogate_task2)
     dispatcher.Invoke(std::move(st));
 
     auto result2 = std::string{};
-    auto st2
-        = MakeTwoPhaseTaskPtr([] { return do_heavy_algorithm("haha"); },
-                              [&result2](std::string&& t) noexcept { result2 = std::move(t); });
+    auto st2     = MakeTwoPhaseTaskPtr([] { return do_heavy_algorithm("haha"); },
+                                   [&result2](std::string&& t) noexcept { result2 = std::move(t); });
     dispatcher.Invoke(std::move(st2));
 
     auto result3 = std::string{};
-    auto st3
-        = MakeTwoPhaseTaskPtr([] { return do_heavy_algorithm("hehe"); },
-                              [&result3](std::string&& t) noexcept { result3 = std::move(t); });
+    auto st3     = MakeTwoPhaseTaskPtr([] { return do_heavy_algorithm("hehe"); },
+                                   [&result3](std::string&& t) noexcept { result3 = std::move(t); });
     dispatcher.Invoke(std::move(st3));
 
     auto fu = std::async(std::launch::async, [&dispatcher] { dispatcher.ExecUntilStop(); });

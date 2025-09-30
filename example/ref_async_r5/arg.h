@@ -16,12 +16,7 @@ std::optional<opt_result> getopt(int argc, char* const* argv);
 class IOStreamSelector {
 public:
     IOStreamSelector(std::string ifile, std::string ofile)
-        : ifile_{std::move(ifile)},
-          ifs_{},
-          is_{nullptr},
-          ofile_{std::move(ofile)},
-          ofs_{},
-          os_{nullptr}
+        : ifile_{std::move(ifile)}, ifs_{}, is_{nullptr}, ofile_{std::move(ofile)}, ofs_{}, os_{nullptr}
     {
     }
 

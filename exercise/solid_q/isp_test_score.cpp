@@ -17,8 +17,7 @@ std::pair<std::string, std::vector<int32_t>> parse_line(std::string const& line)
     auto       score   = std::vector<int32_t>{};
 
     auto end = std::sregex_token_iterator{};
-    for (auto it = std::sregex_token_iterator{line.begin(), line.end(), csv_sep, -1}; it != end;
-         ++it) {
+    for (auto it = std::sregex_token_iterator{line.begin(), line.end(), csv_sep, -1}; it != end; ++it) {
         if (name.length() == 0) {
             name = *it;
         }
@@ -163,10 +162,9 @@ TestScoreAverage::TestScoreAverage(std::string const& filename) : average_{get_a
 
 uint32_t TestScoreAverage::GetAverage(std::string const& name) const
 {
-    auto pos = std::find_if(average_.cbegin(), average_.cend(),
-                            [&name](std::pair<std::string, int32_t> const& pair) noexcept {
-                                return name == pair.first;
-                            });
+    auto pos
+        = std::find_if(average_.cbegin(), average_.cend(),
+                       [&name](std::pair<std::string, int32_t> const& pair) noexcept { return name == pair.first; });
 
     if (pos == average_.cend()) {
         throw std::out_of_range{"no member"};
@@ -182,10 +180,9 @@ std::vector<std::string> const& TestScoreAverage::DescendingOrder() const
     }
 
     auto ave = average_;
-    std::sort(ave.begin(), ave.end(),
-              [](std::pair<std::string, int32_t> const& lhs, auto const& rhs) noexcept {
-                  return lhs.second > rhs.second;
-              });
+    std::sort(ave.begin(), ave.end(), [](std::pair<std::string, int32_t> const& lhs, auto const& rhs) noexcept {
+        return lhs.second > rhs.second;
+    });
 
     for (auto& pair : ave) {
         desending_order_.emplace_back(std::move(pair.first));

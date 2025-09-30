@@ -18,8 +18,7 @@ namespace {
 std::string gen_expect(std::vector<std::string> const& strs)
 {
     auto cr = std::vector<std::string>{strs.size()};
-    std::transform(strs.begin(), strs.end(), cr.begin(),
-                   [](std::string const& s) { return s + '\n'; });
+    std::transform(strs.begin(), strs.end(), cr.begin(), [](std::string const& s) { return s + '\n'; });
 
     auto pattern = std::vector<std::string>{};
     std::partial_sum(cr.begin(), cr.end(), std::back_inserter(pattern));

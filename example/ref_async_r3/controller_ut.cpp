@@ -9,9 +9,9 @@ namespace {
 
 TEST(RefAsyncR3, Controller)
 {
-    auto model = Model{};
+    auto model      = Model{};
     auto controller = Controller{model};  // オブジェクト生成程度の単体テストしかできない
-    IGNORE_UNUSED_VAR(controller);  // @@@ delete
+    IGNORE_UNUSED_VAR(controller);        // @@@ delete
 }
 // @@@ sample end
 }  // namespace

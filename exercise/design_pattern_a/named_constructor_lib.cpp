@@ -13,8 +13,7 @@ public:
 private:
     virtual std::string const& header() const override
     {
-        static auto const header
-            = std::string{"<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<XxxDataFormatterXml>\n"};
+        static auto const header = std::string{"<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<XxxDataFormatterXml>\n"};
 
         return header;
     }
@@ -60,8 +59,8 @@ private:
 
     virtual std::string body(XxxData const& xxx_data) const override
     {
-        return std::to_string(xxx_data.a) + ", " + std::to_string(xxx_data.b) + ", "
-               + std::to_string(xxx_data.b) + "\n";
+        return std::to_string(xxx_data.a) + ", " + std::to_string(xxx_data.b) + ", " + std::to_string(xxx_data.b)
+               + "\n";
     }
 };
 
@@ -100,9 +99,8 @@ private:
 
     static std::string border()
     {
-        static auto const border_str = std::string{"+"} + std::string(colomun_, '-') + "|"
-                                       + std::string(colomun_, '-') + "|"
-                                       + std::string(colomun_, '-') + "+\n";
+        static auto const border_str = std::string{"+"} + std::string(colomun_, '-') + "|" + std::string(colomun_, '-')
+                                       + "|" + std::string(colomun_, '-') + "+\n";
 
         return border_str;
     }

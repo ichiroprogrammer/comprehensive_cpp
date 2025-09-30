@@ -22,10 +22,7 @@ TEST(ProgrammingConvention, float_comp_0)
 // @@@ sample begin 0:1
 
 /// @brief float比較用関数
-bool is_equal_f(float lhs, float rhs) noexcept
-{
-    return std::abs(lhs - rhs) <= std::numeric_limits<float>::epsilon();
-}
+bool is_equal_f(float lhs, float rhs) noexcept { return std::abs(lhs - rhs) <= std::numeric_limits<float>::epsilon(); }
 // @@@ sample end
 
 TEST(ProgrammingConvention, float_comp_1)

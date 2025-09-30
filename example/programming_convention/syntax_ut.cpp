@@ -235,9 +235,8 @@ std::vector<std::string>::const_iterator n_greater_5(std::vector<std::string> co
     // @@@ sample begin 5:0
 
     // ラムダ式はワンライナーが基本
-    auto itr = std::find_if(strs.begin(), strs.end(), [](auto const& n) noexcept {
-        return (n.at(0) == 'n') && (n.size() > 5);
-    });
+    auto itr = std::find_if(strs.begin(), strs.end(),
+                            [](auto const& n) noexcept { return (n.at(0) == 'n') && (n.size() > 5); });
     // @@@ sample end
 
     return itr;
@@ -275,9 +274,7 @@ public:
 
 #elif __cplusplus == 202002L
         std::copy_if(strs_.cbegin(), strs_.cend(), std::back_inserter(ret),
-                     [&strs = strs_, length = length](auto const& str) noexcept {
-                         return (strs.size() < length);
-                     });
+                     [&strs = strs_, length = length](auto const& str) noexcept { return (strs.size() < length); });
 #else
         static_assert(false, "C++ version not supported!");
 #endif

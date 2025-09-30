@@ -107,8 +107,7 @@ TEST(DesignPatternQ, Visitor)
     ASSERT_EQ("../ut_data/lib", dir.Pathname());
     ASSERT_EQ("../ut_data/lib/", dir.ToStringNormal());
     ASSERT_EQ("../ut_data/lib/", dir.ToStringWithChar());
-    ASSERT_EQ("../ut_data/lib ../ut_data/lib/lib.cpp ../ut_data/lib/lib.h",
-              dir.ToStringWithChildren());
+    ASSERT_EQ("../ut_data/lib ../ut_data/lib/lib.cpp ../ut_data/lib/lib.h", dir.ToStringWithChildren());
 
     auto const other = OtherEntity{"symbolic_link"};
 

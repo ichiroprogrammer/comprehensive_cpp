@@ -53,14 +53,10 @@ TEST_F(SolidLSP_A, TestScore_AddScore)
     LoadCSV(test_score_org_, ts);
 
     auto const one_score = TestScore::ScoreOne_t{
-        TestScore::ScoreOne_t::value_type("堂林", 50),
-        TestScore::ScoreOne_t::value_type("広輔", 40),
-        TestScore::ScoreOne_t::value_type("會澤", 70),
-        TestScore::ScoreOne_t::value_type("松山", 1),
-        TestScore::ScoreOne_t::value_type("菊池", -1),
-        TestScore::ScoreOne_t::value_type("鈴木", 5),
-        TestScore::ScoreOne_t::value_type("田中", 100),
-        TestScore::ScoreOne_t::value_type("西川", 90),
+        TestScore::ScoreOne_t::value_type("堂林", 50),  TestScore::ScoreOne_t::value_type("広輔", 40),
+        TestScore::ScoreOne_t::value_type("會澤", 70),  TestScore::ScoreOne_t::value_type("松山", 1),
+        TestScore::ScoreOne_t::value_type("菊池", -1),  TestScore::ScoreOne_t::value_type("鈴木", 5),
+        TestScore::ScoreOne_t::value_type("田中", 100), TestScore::ScoreOne_t::value_type("西川", 90),
     };
 
     ts.AddScore(one_score);
@@ -142,12 +138,9 @@ TEST_F(SolidLSP_A, TestScore_Average)
     LoadCSV(test_score_org_, ts);
 
     auto const exp = TestScore::ScoreOne_t{
-        TestScore::ScoreOne_t::value_type("堂林", 65),
-        TestScore::ScoreOne_t::value_type("広輔", 26),
-        TestScore::ScoreOne_t::value_type("會澤", 53),
-        TestScore::ScoreOne_t::value_type("松山", 73),
-        TestScore::ScoreOne_t::value_type("菊池", 50),
-        TestScore::ScoreOne_t::value_type("鈴木", 60),
+        TestScore::ScoreOne_t::value_type("堂林", 65), TestScore::ScoreOne_t::value_type("広輔", 26),
+        TestScore::ScoreOne_t::value_type("會澤", 53), TestScore::ScoreOne_t::value_type("松山", 73),
+        TestScore::ScoreOne_t::value_type("菊池", 50), TestScore::ScoreOne_t::value_type("鈴木", 60),
     };
     auto act = Average(ts);
 
@@ -181,14 +174,10 @@ TEST_F(SolidLSP_A, TestScoreForce_LoadCSV)
     ASSERT_TRUE(std::equal(ts_f.begin(), ts_f.end(), exp.begin()));
 
     auto const one_score = TestScore::ScoreOne_t{
-        TestScore::ScoreOne_t::value_type("堂林", 50),
-        TestScore::ScoreOne_t::value_type("広輔", 40),
-        TestScore::ScoreOne_t::value_type("會澤", 70),
-        TestScore::ScoreOne_t::value_type("松山", 1),
-        TestScore::ScoreOne_t::value_type("菊池", -1),
-        TestScore::ScoreOne_t::value_type("鈴木", 5),
-        TestScore::ScoreOne_t::value_type("田中", 100),
-        TestScore::ScoreOne_t::value_type("西川", 90),
+        TestScore::ScoreOne_t::value_type("堂林", 50),  TestScore::ScoreOne_t::value_type("広輔", 40),
+        TestScore::ScoreOne_t::value_type("會澤", 70),  TestScore::ScoreOne_t::value_type("松山", 1),
+        TestScore::ScoreOne_t::value_type("菊池", -1),  TestScore::ScoreOne_t::value_type("鈴木", 5),
+        TestScore::ScoreOne_t::value_type("田中", 100), TestScore::ScoreOne_t::value_type("西川", 90),
     };
 }
 
@@ -199,8 +188,7 @@ std::pair<std::string, std::vector<int32_t>> parse_line(std::string const& line)
     auto       score   = std::vector<int32_t>{};
 
     auto end = std::sregex_token_iterator{};
-    for (auto it = std::sregex_token_iterator{line.begin(), line.end(), csv_sep, -1}; it != end;
-         ++it) {
+    for (auto it = std::sregex_token_iterator{line.begin(), line.end(), csv_sep, -1}; it != end; ++it) {
         if (name.length() == 0) {
             name = *it;
         }
@@ -216,8 +204,7 @@ std::pair<std::string, std::vector<int32_t>> parse_line(std::string const& line)
 template <typename TEST_SCORE>
 TEST_SCORE LoadCSV(std::string const& filename)
 {
-    static_assert(
-        std::is_same_v<TEST_SCORE, TestScore> || std::is_same_v<TEST_SCORE, TestScoreForceFixed>);
+    static_assert(std::is_same_v<TEST_SCORE, TestScore> || std::is_same_v<TEST_SCORE, TestScoreForceFixed>);
 
     auto data = std::ifstream{filename};
 

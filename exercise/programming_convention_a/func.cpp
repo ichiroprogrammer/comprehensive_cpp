@@ -100,10 +100,7 @@ public:
 
 class DelConstructor {
 public:
-    explicit DelConstructor(std::string const& str)
-        : str0_{str + "0"}, str1_{str + "1"}, str2_{str + "2"}
-    {
-    }
+    explicit DelConstructor(std::string const& str) : str0_{str + "0"}, str1_{str + "1"}, str2_{str + "2"} {}
 
     explicit DelConstructor(int32_t num) : DelConstructor{std::to_string(num) + "_"} {}
 
@@ -212,9 +209,7 @@ class IntegerHolder2 {
 public:
     explicit IntegerHolder2(int32_t i) : integer_{std::make_unique<Integer>(i)} {}
 
-    IntegerHolder2(IntegerHolder2 const& rhs) : integer_{std::make_unique<Integer>(*rhs.integer_)}
-    {
-    }
+    IntegerHolder2(IntegerHolder2 const& rhs) : integer_{std::make_unique<Integer>(*rhs.integer_)} {}
 
     IntegerHolder2(IntegerHolder2&& rhs) noexcept : integer_{std::move(rhs.integer_)} {}
 

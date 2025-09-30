@@ -11,12 +11,11 @@ std::vector<std::string> find_files(std::string const& path)
     auto files = std::vector<std::string>{};
 
     namespace fs = std::filesystem;
-    std::for_each(fs::recursive_directory_iterator{path}, fs::recursive_directory_iterator{},
-                  [&](fs::path const& p) {
-                      if (fs::is_regular_file(p)) {
-                          files.emplace_back(p.generic_string());
-                      }
-                  });
+    std::for_each(fs::recursive_directory_iterator{path}, fs::recursive_directory_iterator{}, [&](fs::path const& p) {
+        if (fs::is_regular_file(p)) {
+            files.emplace_back(p.generic_string());
+        }
+    });
 
     return files;
 }

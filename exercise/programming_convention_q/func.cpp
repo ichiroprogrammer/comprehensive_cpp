@@ -89,9 +89,7 @@ public:
     DelConstructor(std::string const& str) : str0_{str + "0"}, str1_{str + "1"}, str2_{str + "2"} {}
 
     DelConstructor(int32_t num)
-        : str0_{std::to_string(num) + "_0"},
-          str1_{std::to_string(num) + "_1"},
-          str2_{std::to_string(num) + "_2"}
+        : str0_{std::to_string(num) + "_0"}, str1_{std::to_string(num) + "_1"}, str2_{std::to_string(num) + "_2"}
     {
     }
 

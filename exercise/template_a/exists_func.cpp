@@ -65,8 +65,7 @@ template <typename T>
 constexpr bool exists_end_v{exists_end<T>::value};
 
 template <typename T>
-struct is_range
-    : std::conditional_t<exists_begin_v<T> && exists_end_v<T>, std::true_type, std::false_type> {
+struct is_range : std::conditional_t<exists_begin_v<T> && exists_end_v<T>, std::true_type, std::false_type> {
 };
 
 template <typename T>

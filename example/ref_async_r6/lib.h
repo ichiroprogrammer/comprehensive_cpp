@@ -105,10 +105,7 @@ public:
     // POSTは、bool post(T)のような関数型でなければならない。
     static_assert(std::is_same_v<bool, decltype(std::declval<POST>()(Result()))>);
 
-    TwoPhaseTask(PRE pre_task, POST post_task)
-        : pre_task_{pre_task}, post_task_{post_task}, result_{}
-    {
-    }
+    TwoPhaseTask(PRE pre_task, POST post_task) : pre_task_{pre_task}, post_task_{post_task}, result_{} {}
 
     virtual ~TwoPhaseTask() override = default;
 

@@ -7,10 +7,7 @@ namespace Solid_DIP_A {
 // 演習コードと同一であるため省略
 // @@@ ignore begin
 
-void TestScoreClient::LoadAsync(std::string&& filename)
-{
-    loader_.LoadCSV_Async(std::move(filename), *this);
-}
+void TestScoreClient::LoadAsync(std::string&& filename) { loader_.LoadCSV_Async(std::move(filename), *this); }
 
 void TestScoreClient::Done()
 {

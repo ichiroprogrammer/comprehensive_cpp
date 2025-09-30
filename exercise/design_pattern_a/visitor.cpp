@@ -99,10 +99,7 @@ class ToStringWithChar : public Visitor {
 private:
     virtual std::string visit(File const& file) const override { return file.Pathname(); }
     virtual std::string visit(Dir const& dir) const override { return dir.Pathname() + '/'; }
-    virtual std::string visit(OtherEntity const& other) const override
-    {
-        return other.Pathname() + '+';
-    }
+    virtual std::string visit(OtherEntity const& other) const override { return other.Pathname() + '+'; }
 };
 
 class ToStringWithChildren : public Visitor {
@@ -153,8 +150,7 @@ TEST(DesignPatternA, Visitor)
     ASSERT_EQ("../ut_data/lib", dir.Pathname());
     ASSERT_EQ("../ut_data/lib/", dir.ToString(ts_normal));
     ASSERT_EQ("../ut_data/lib/", dir.ToString(ts_char));
-    ASSERT_EQ("../ut_data/lib ../ut_data/lib/lib.cpp ../ut_data/lib/lib.h",
-              dir.ToString(ts_children));
+    ASSERT_EQ("../ut_data/lib ../ut_data/lib/lib.cpp ../ut_data/lib/lib.h", dir.ToString(ts_children));
 
     auto const other = OtherEntity{"symbolic_link"};
 

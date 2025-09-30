@@ -47,14 +47,10 @@ TEST_F(SolidDIP_Q, TestScore_AddScore)
     TestScore ts = LoadCSV(test_score_org_);
 
     auto const one_score = TestScore::ScoreOne_t{
-        TestScore::ScoreOne_t::value_type("堂林", 50),
-        TestScore::ScoreOne_t::value_type("広輔", 40),
-        TestScore::ScoreOne_t::value_type("會澤", 70),
-        TestScore::ScoreOne_t::value_type("松山", 1),
-        TestScore::ScoreOne_t::value_type("菊池", -1),
-        TestScore::ScoreOne_t::value_type("鈴木", 5),
-        TestScore::ScoreOne_t::value_type("田中", 100),
-        TestScore::ScoreOne_t::value_type("西川", 90),
+        TestScore::ScoreOne_t::value_type("堂林", 50),  TestScore::ScoreOne_t::value_type("広輔", 40),
+        TestScore::ScoreOne_t::value_type("會澤", 70),  TestScore::ScoreOne_t::value_type("松山", 1),
+        TestScore::ScoreOne_t::value_type("菊池", -1),  TestScore::ScoreOne_t::value_type("鈴木", 5),
+        TestScore::ScoreOne_t::value_type("田中", 100), TestScore::ScoreOne_t::value_type("西川", 90),
     };
 
     ts.AddScore(one_score);
@@ -133,12 +129,9 @@ TEST_F(SolidDIP_Q, TestScore_Average)
     TestScore ts = LoadCSV(test_score_org_);
 
     auto const exp = TestScore::ScoreOne_t{
-        TestScore::ScoreOne_t::value_type("堂林", 65),
-        TestScore::ScoreOne_t::value_type("広輔", 26),
-        TestScore::ScoreOne_t::value_type("會澤", 53),
-        TestScore::ScoreOne_t::value_type("松山", 73),
-        TestScore::ScoreOne_t::value_type("菊池", 50),
-        TestScore::ScoreOne_t::value_type("鈴木", 60),
+        TestScore::ScoreOne_t::value_type("堂林", 65), TestScore::ScoreOne_t::value_type("広輔", 26),
+        TestScore::ScoreOne_t::value_type("會澤", 53), TestScore::ScoreOne_t::value_type("松山", 73),
+        TestScore::ScoreOne_t::value_type("菊池", 50), TestScore::ScoreOne_t::value_type("鈴木", 60),
     };
     auto act = Average(ts);
 

@@ -37,8 +37,7 @@ std::optional<opt_result> getopt(int argc, char* const* argv)
 
 namespace {
 template <typename FSTREAM, typename IOSTREAM>
-bool select_iostream(std::string const& filename, FSTREAM& fs, IOSTREAM& cin_cout,
-                     IOSTREAM*& output)
+bool select_iostream(std::string const& filename, FSTREAM& fs, IOSTREAM& cin_cout, IOSTREAM*& output)
 {
     output = &cin_cout;
 

@@ -31,13 +31,11 @@ private:
     bool                  cached_{false};
     std::vector<uint32_t> prime_numbers_{};
 
-    static uint32_t              next_prime_num(uint32_t           curr_prime_num,
-                                                std::vector<bool>& is_num_prime) noexcept;
+    static uint32_t              next_prime_num(uint32_t curr_prime_num, std::vector<bool>& is_num_prime) noexcept;
     static std::vector<uint32_t> get_prime_numbers(uint32_t max_number);
 };
 
-uint32_t PrimeNumbers::next_prime_num(uint32_t           curr_prime_num,
-                                      std::vector<bool>& is_num_prime) noexcept
+uint32_t PrimeNumbers::next_prime_num(uint32_t curr_prime_num, std::vector<bool>& is_num_prime) noexcept
 {
     for (auto i = 2 * curr_prime_num; i < is_num_prime.size(); i += curr_prime_num) {
         is_num_prime[i] = false;  // 次の倍数は素数ではない
@@ -95,11 +93,9 @@ TEST(DesignPatternQ, Immutable)
     ASSERT_EQ((std::vector<uint32_t>{2, 3}), pm.GeneratePrimeNumbers());
 
     pm.SetMaxNumber(30);
-    ASSERT_EQ((std::vector<uint32_t>{2, 3, 5, 7, 11, 13, 17, 19, 23, 29}),
-              pm.GeneratePrimeNumbers());
+    ASSERT_EQ((std::vector<uint32_t>{2, 3, 5, 7, 11, 13, 17, 19, 23, 29}), pm.GeneratePrimeNumbers());
 
-    ASSERT_EQ((std::vector<uint32_t>{2, 3, 5, 7, 11, 13, 17, 19, 23, 29}),
-              pm.GeneratePrimeNumbers());
+    ASSERT_EQ((std::vector<uint32_t>{2, 3, 5, 7, 11, 13, 17, 19, 23, 29}), pm.GeneratePrimeNumbers());
 
     pm.SetMaxNumber(3);
     ASSERT_EQ((std::vector<uint32_t>{2, 3}), pm.GeneratePrimeNumbers());

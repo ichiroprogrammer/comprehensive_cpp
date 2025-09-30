@@ -4,10 +4,7 @@ namespace Solid_DIP_Q {
 
 // @@@ sample begin 0:0
 
-void TestScoreClient::LoadAsync(std::string&& filename)
-{
-    loader_.LoadCSV_Async(std::move(filename), *this);
-}
+void TestScoreClient::LoadAsync(std::string&& filename) { loader_.LoadCSV_Async(std::move(filename), *this); }
 
 void TestScoreClient::Done()
 {

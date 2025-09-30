@@ -13,8 +13,7 @@ struct SafeArray : std::array<T, N> {
     using std::array<T, N>::array;  // 継承コンストラクタ
 
     template <typename... ARGS>  // コンストラクタを定義
-    SafeArray(ARGS... args) noexcept(std::is_nothrow_constructible_v<T, ARGS...>)
-        : base_type{args...}
+    SafeArray(ARGS... args) noexcept(std::is_nothrow_constructible_v<T, ARGS...>) : base_type{args...}
     {
     }
 

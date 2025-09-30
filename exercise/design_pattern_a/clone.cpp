@@ -28,8 +28,7 @@ private:
 
 class Derived final : public Base {
 public:
-    explicit Derived(std::string name1 = "", std::string name2 = "")
-        : Base{std::move(name1)}, name2_{std::move(name2)}
+    explicit Derived(std::string name1 = "", std::string name2 = "") : Base{std::move(name1)}, name2_{std::move(name2)}
     {
     }
     virtual ~Derived() override = default;
@@ -37,10 +36,7 @@ public:
 
     virtual std::unique_ptr<Base> Clone() const override { return CloneOwn(); }
 
-    std::unique_ptr<Derived> CloneOwn() const
-    {
-        return std::make_unique<Derived>(Base::GetName(), name2_);
-    }
+    std::unique_ptr<Derived> CloneOwn() const { return std::make_unique<Derived>(Base::GetName(), name2_); }
 
 private:
     std::string name2_;

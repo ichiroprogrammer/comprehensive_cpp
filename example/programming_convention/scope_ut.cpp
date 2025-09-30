@@ -54,9 +54,9 @@ TEST(ProgrammingConvention, using_import)
     {
         // @@@ sample begin 1:0
 
-        using std::string;  // NG この関数内でのstd::stringの使用箇所が少ないのであれば、
-                            //    using宣言ではなく、名前修飾する
-        auto s_0 = string{"str"};       // NG
+        using std::string;         // NG この関数内でのstd::stringの使用箇所が少ないのであれば、
+                                   //    using宣言ではなく、名前修飾する
+        auto s_0 = string{"str"};  // NG
         auto s_1 = std::string{"str"};  // OK
 
         // 大量のstd::stringリテラルを使用する場合
@@ -237,8 +237,8 @@ namespace NamenameAliasSample {
 
 // @@@ sample begin 3:0
 
-std::vector<std::string> find_files_recursively(
-    std::string const& path, std::function<bool(std::filesystem::path const&)> condition)
+std::vector<std::string> find_files_recursively(std::string const&                                path,
+                                                std::function<bool(std::filesystem::path const&)> condition)
 {
     namespace fs = std::filesystem;  // OK 長い名前を短く
 

@@ -40,7 +40,7 @@ TEST(TemplateMetaProgrammingA, scoped_guard)
     }
     {
         auto demangled = abi::__cxa_demangle(typeid(std::vector<int>).name(), 0, 0, nullptr);
-        auto gs = scoped_guard{[demangled]() noexcept { free(demangled); }};  // C++17からの記法
+        auto gs        = scoped_guard{[demangled]() noexcept { free(demangled); }};  // C++17からの記法
 
         ASSERT_STREQ("std::vector<int, std::allocator<int> >", demangled);
     }
@@ -56,7 +56,7 @@ TEST(TemplateMetaProgrammingA, scoped_guard)
     }
     {
         auto stream = popen("ls " __FILE__, "r");
-        auto gs = scoped_guard{[stream]() noexcept { fclose(stream); }};  // C++17からの記法
+        auto gs     = scoped_guard{[stream]() noexcept { fclose(stream); }};  // C++17からの記法
 
         char buff[256]{};
         fgets(buff, sizeof(buff) - 1, stream);

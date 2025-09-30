@@ -18,10 +18,7 @@ public:
     XxxDataFormatterIF(XxxDataFormatterIF const&)            = delete;
     XxxDataFormatterIF& operator=(XxxDataFormatterIF const&) = delete;
 
-    std::string ToString(XxxData const& xxx_data) const
-    {
-        return header() + body(xxx_data) + footer();
-    }
+    std::string ToString(XxxData const& xxx_data) const { return header() + body(xxx_data) + footer(); }
 
     std::string ToString(std::vector<XxxData> const& xxx_datas) const
     {
@@ -58,6 +55,6 @@ private:
 enum class XxxDataFormatterType { Xml, Csv };
 
 std::unique_ptr<XxxDataFormatterIF const> XxxDataFormatterFactory(XxxDataFormatterType type);
-XxxDataFormatterIF const& XxxDataFormatterFactory2(XxxDataFormatterType type) noexcept;
+XxxDataFormatterIF const&                 XxxDataFormatterFactory2(XxxDataFormatterType type) noexcept;
 // @@@ sample end
 }  // namespace DesignPatternA_Factory

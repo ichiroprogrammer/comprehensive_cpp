@@ -24,8 +24,7 @@ private:
 
 class Derived final : public Base {
 public:
-    explicit Derived(std::string name1 = "", std::string name2 = "")
-        : Base{std::move(name1)}, name2_{std::move(name2)}
+    explicit Derived(std::string name1 = "", std::string name2 = "") : Base{std::move(name1)}, name2_{std::move(name2)}
     {
     }
     virtual ~Derived() override = default;

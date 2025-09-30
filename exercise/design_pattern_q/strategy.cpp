@@ -26,8 +26,7 @@ std::vector<std::string> find_files(std::string const& path, FindCondition condi
     auto files = std::vector<fs::path>{};
 
     // recursive_directory_iteratorはファイルシステム依存するため、その依存を排除する他の処理
-    std::copy(fs::recursive_directory_iterator{path}, fs::recursive_directory_iterator{},
-              std::back_inserter(files));
+    std::copy(fs::recursive_directory_iterator{path}, fs::recursive_directory_iterator{}, std::back_inserter(files));
 
     std::sort(files.begin(), files.end());
 
@@ -77,10 +76,10 @@ TEST(DesignPatternQ, Strategy)
     };
 
     {
-        auto exp = sort(std::vector<std::string>{
-            "../ut_data/a.cpp", "../ut_data/a.h", "../ut_data/abc.cpp", "../ut_data/abc.h",
-            "../ut_data/d/a.d", "../ut_data/efghij.cpp", "../ut_data/efghij.h",
-            "../ut_data/lib/lib.cpp", "../ut_data/lib/lib.h", "../ut_data/o/a.o"});
+        auto exp = sort(std::vector<std::string>{"../ut_data/a.cpp", "../ut_data/a.h", "../ut_data/abc.cpp",
+                                                 "../ut_data/abc.h", "../ut_data/d/a.d", "../ut_data/efghij.cpp",
+                                                 "../ut_data/efghij.h", "../ut_data/lib/lib.cpp",
+                                                 "../ut_data/lib/lib.h", "../ut_data/o/a.o"});
         auto act = find_files("../ut_data", FindCondition::File);
 
         ASSERT_EQ(exp, act);
@@ -92,9 +91,8 @@ TEST(DesignPatternQ, Strategy)
         ASSERT_EQ(exp, act);
     }
     {
-        auto exp
-            = sort(std::vector<std::string>{"../ut_data/a.cpp", "../ut_data/abc.cpp",
-                                            "../ut_data/efghij.cpp", "../ut_data/lib/lib.cpp"});
+        auto exp = sort(std::vector<std::string>{"../ut_data/a.cpp", "../ut_data/abc.cpp", "../ut_data/efghij.cpp",
+                                                 "../ut_data/lib/lib.cpp"});
         auto act = find_files("../ut_data", FindCondition::FileCpp);
 
         ASSERT_EQ(exp, act);

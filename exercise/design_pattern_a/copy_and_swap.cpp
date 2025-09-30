@@ -20,8 +20,7 @@ public:
 
     CopyAndSwap(CopyAndSwap const& rhs) : name0_{rhs.name0_}, name1_{rhs.name1_} {}
 
-    CopyAndSwap(CopyAndSwap&& rhs) noexcept
-        : name0_{std::exchange(rhs.name0_, nullptr)}, name1_{std::move(rhs.name1_)}
+    CopyAndSwap(CopyAndSwap&& rhs) noexcept : name0_{std::exchange(rhs.name0_, nullptr)}, name1_{std::move(rhs.name1_)}
     {
     }
 
@@ -71,8 +70,7 @@ private:
 
 #if defined(__clang__)  // clangコンパイルでの警告抑止
 #define SUPPRESS_WARN_CLANG_BEGIN _Pragma("clang diagnostic push")
-#define SUPPRESS_WARN_CLANG_SELF_ASSIGN_OVERLOADED \
-    _Pragma("clang diagnostic ignored \"-Wself-assign-overloaded\"")
+#define SUPPRESS_WARN_CLANG_SELF_ASSIGN_OVERLOADED _Pragma("clang diagnostic ignored \"-Wself-assign-overloaded\"")
 #define SUPPRESS_WARN_CLANG_SELF_MOVE _Pragma("clang diagnostic ignored \"-Wself-move\"")
 #define SUPPRESS_WARN_CLANG_END _Pragma("clang diagnostic pop")
 #else

@@ -270,7 +270,7 @@ TEST(ProgrammingConvention, func_constructor)
     w0 = w1;         // これには問題ない
     w1 = Widget{3};  // これにも問題ない
 
-    Widget{2} = w0;  // NG lvalue修飾無しのcopy代入演算子であるため、コンパイルできる
+    Widget{2} = w0;         // NG lvalue修飾無しのcopy代入演算子であるため、コンパイルできる
     Widget{3} = Widget{4};  // NG lvalue修飾無しのmove代入演算子であるため、コンパイルできる
     // @@@ sample end
 
@@ -341,9 +341,9 @@ public:
 // 定義になってしまった。この手のミスは、自分で気づくのは難しい
 class Derived_0 : public Base {
 public:
-    virtual ~Derived_0();       // NG overrideが必要
-    void f(uint32_t) noexcept;  // NG Derived_0:fはBase:fのオーバーライドではない
-                                //    virtualとoverrideやfinalがない
+    virtual ~Derived_0();                // NG overrideが必要
+    void f(uint32_t) noexcept;           // NG Derived_0:fはBase:fのオーバーライドではない
+                                         //    virtualとoverrideやfinalがない
     virtual void g() noexcept override;  // OK
 };
 
@@ -366,7 +366,7 @@ class Derived_2 : public Base {
 public:
     virtual ~Derived_2() override;                    // OK Derived_2はfinalではない
     virtual void f(int32_t) noexcept override final;  // NG overrideは不要
-    virtual void g() noexcept final;  // OK これ以上オーバーライドしない
+    virtual void g() noexcept final;                  // OK これ以上オーバーライドしない
 };
 // @@@ sample end
 
@@ -604,17 +604,13 @@ void f()
 
 class Integer {
 public:
-    Integer(int32_t integer) noexcept
-        : integer_{integer} {}  // int32_tの暗黙の型変換が必要なのでexplicitしない
+    Integer(int32_t integer) noexcept : integer_{integer} {}  // int32_tの暗黙の型変換が必要なのでexplicitしない
 
     // copyコンストラクタ、copy代入演算子の定義
     Integer(Integer const&)            = default;
     Integer& operator=(Integer const&) = default;
 
-    friend bool operator==(Integer lhs, Integer rhs) noexcept
-    {
-        return lhs.integer_ == rhs.integer_;
-    }
+    friend bool operator==(Integer lhs, Integer rhs) noexcept { return lhs.integer_ == rhs.integer_; }
 
     Integer& operator+=(Integer rhs) noexcept
     {
@@ -869,8 +865,7 @@ std::vector<std::string> f_ref_2(Base const (&array)[2])  // OK 配列へのリ�
     auto ret = std::vector<std::string>{array_length(array)};
 
     // arrayの型はポインタではなく、リファレンスなのでstd::endが使える
-    std::transform(array, std::end(array), ret.begin(),
-                   [](Base const& b) noexcept { return b.Name0(); });
+    std::transform(array, std::end(array), ret.begin(), [](Base const& b) noexcept { return b.Name0(); });
 
     return ret;
 }
@@ -895,13 +890,12 @@ std::vector<std::string> g_ref(T const (&array)[N])  // OK 配列へのリファ
     return ret;
 }
 
-template <typename T, size_t N>  // std::arrayの第2パラメータの型はsize_t
+template <typename T, size_t N>                                // std::arrayの第2パラメータの型はsize_t
 std::vector<std::string> h_ref(std::array<T, N> const& array)  // OK std::arrayへのリファレンス
 {
     auto ret = std::vector<std::string>{N};
 
-    std::transform(std::begin(array), std::end(array), ret.begin(),
-                   [](auto& b) noexcept { return b.Name0(); });
+    std::transform(std::begin(array), std::end(array), ret.begin(), [](auto& b) noexcept { return b.Name0(); });
 
     return ret;
 }
@@ -917,8 +911,7 @@ std::vector<std::string> g_ptr(T const (*array)[N])  // OK
 
     auto ret = std::vector<std::string>{N};
 
-    std::transform(*array, std::end(*array), ret.begin(),
-                   [](auto& b) noexcept { return b.Name0(); });
+    std::transform(*array, std::end(*array), ret.begin(), [](auto& b) noexcept { return b.Name0(); });
 
     return ret;
 }
@@ -1486,12 +1479,12 @@ int32_t f1() noexcept
     // @@@ ignore end
 }
 
-#if __cplusplus < 201703L  // 以下のコードはC++14以前ではコンパイルできるが、
-                           // C++17以降ではコンパイルエラー
-#ifndef __clang__          // @@@ delete
+#if __cplusplus < 201703L            // 以下のコードはC++14以前ではコンパイルできるが、
+                                     // C++17以降ではコンパイルエラー
+#ifndef __clang__                    // @@@ delete
 int32_t (*f_ptr0)() noexcept = &f0;  // NG f_ptr0()はnoexceptだが、
                                      //    f0はエクセプションを発生させる可能性がある。
-#endif  // @@@ delete
+#endif                               // @@@ delete
 #endif
 int32_t (*f_ptr1)() noexcept = &f1;  // OK
 int32_t (*f_ptr2)()          = &f0;  // OK
@@ -1514,12 +1507,12 @@ public:
     }
 };
 
-#if __cplusplus < 201703L  // 以下のコードはC++14以前ではコンパイルできるが、
-                           // C++17以降ではコンパイルエラー
-#ifndef __clang__          // @@@ delete
+#if __cplusplus < 201703L                   // 以下のコードはC++14以前ではコンパイルできるが、
+                                            // C++17以降ではコンパイルエラー
+#ifndef __clang__                           // @@@ delete
 int32_t (A::*mf_ptr0)() noexcept = &A::f0;  // NG mf_ptr0()はnoexceptだが、
                                             //    f0はエクセプションを発生させる可能性がある。
-#endif  // @@@ delete
+#endif                                      // @@@ delete
 #endif
 int32_t (A::*mf_ptr1)() noexcept = &A::f1;  // OK
 int32_t (A::*mf_ptr2)()          = &A::f0;  // OK

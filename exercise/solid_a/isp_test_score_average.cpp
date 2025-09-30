@@ -35,10 +35,9 @@ TestScoreAverage::~TestScoreAverage() = default;  // これはヘッダには書
 
 uint32_t TestScoreAverage::GetAverage(std::string const& name) const
 {
-    auto pos = std::find_if(data_->average.cbegin(), data_->average.cend(),
-                            [&name](std::pair<std::string, int32_t> const& pair) noexcept {
-                                return name == pair.first;
-                            });
+    auto pos
+        = std::find_if(data_->average.cbegin(), data_->average.cend(),
+                       [&name](std::pair<std::string, int32_t> const& pair) noexcept { return name == pair.first; });
 
     if (pos == data_->average.cend()) {
         throw std::out_of_range{"no member"};
@@ -54,10 +53,9 @@ std::vector<std::string> const& TestScoreAverage::DescendingOrder() const
     }
 
     auto ave = data_->average;
-    std::sort(ave.begin(), ave.end(),
-              [](std::pair<std::string, int32_t> const& lhs, auto const& rhs) noexcept {
-                  return lhs.second > rhs.second;
-              });
+    std::sort(ave.begin(), ave.end(), [](std::pair<std::string, int32_t> const& lhs, auto const& rhs) noexcept {
+        return lhs.second > rhs.second;
+    });
 
     for (auto& pair : ave) {
         data_->desending_order.emplace_back(std::move(pair.first));

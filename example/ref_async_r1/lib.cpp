@@ -6,8 +6,7 @@
 // @@@ sample begin 0:0
 
 namespace {
-void convert_store_async(std::thread& thd, std::vector<std::string>& strings,
-                         std::string const& input)
+void convert_store_async(std::thread& thd, std::vector<std::string>& strings, std::string const& input)
 {
     thd.join();
 
@@ -21,8 +20,7 @@ void convert_store_async(std::thread& thd, std::vector<std::string>& strings,
 }
 }  // namespace
 
-std::optional<int> dispatch(std::thread& thd, std::vector<std::string>& strings,
-                            std::string const& command)
+std::optional<int> dispatch(std::thread& thd, std::vector<std::string>& strings, std::string const& command)
 {
     switch (command[0]) {
     case '+':

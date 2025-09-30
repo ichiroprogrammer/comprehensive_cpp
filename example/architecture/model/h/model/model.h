@@ -38,7 +38,7 @@ public:
     void Attach(std::unique_ptr<Observer>&& observer);
 
 private:
-    std::thread       worker_;  // 非同期処理を実現するためのワーカスレッド
+    std::thread       worker_;            // 非同期処理を実現するためのワーカスレッド
     std::atomic<bool> busy_ = false;      // ExecAsyncを受け付けるか否か
     std::atomic<bool> stop_ = false;      // worker_functionの終了変数
     void              worker_function();  // スレッドのメイン関数。msg_cv_でウエイト

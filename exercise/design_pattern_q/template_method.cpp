@@ -58,8 +58,8 @@ public:
 
     std::string ToString(XxxData const& xxx_data) const
     {
-        auto body = std::string{std::to_string(xxx_data.a) + ", " + std::to_string(xxx_data.b)
-                                + ", " + std::to_string(xxx_data.b) + "\n"};
+        auto body = std::string{std::to_string(xxx_data.a) + ", " + std::to_string(xxx_data.b) + ", "
+                                + std::to_string(xxx_data.b) + "\n"};
 
         return header_ + body;
     }

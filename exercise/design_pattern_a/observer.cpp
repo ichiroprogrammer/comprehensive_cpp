@@ -51,10 +51,7 @@ public:
     ~Model() { wait_future(); }
 
     // Detachできない仕様にする。その代わりにobserverの廃棄もModelに任せることができる。
-    void Attach(std::unique_ptr<ObserverIF> observer)
-    {
-        observers_.emplace_back(std::move(observer));
-    }
+    void Attach(std::unique_ptr<ObserverIF> observer) { observers_.emplace_back(std::move(observer)); }
 
     void DoSomething()
     {

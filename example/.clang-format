@@ -47,7 +47,7 @@ BraceWrapping:
     AfterExternBlock: false
     BeforeCatch: true
     BeforeElse: true
-ColumnLimit: 100
+ColumnLimit: 120
 
 # space
 DerivePointerAlignment: false

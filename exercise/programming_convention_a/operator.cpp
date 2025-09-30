@@ -24,10 +24,8 @@ TEST(ProgrammingConventionOperatorA, OoOperator)
 class DeleteProblem {
 public:
     DeleteProblem(char const* str0 = nullptr, char const* str1 = nullptr)
-        : str0_{(str0 == nullptr) ? std::unique_ptr<std::string>{}
-                                  : std::make_unique<std::string>(str0)},
-          str1_{(str1 == nullptr) ? std::unique_ptr<std::string>{}
-                                  : std::make_unique<std::string>(str1)}
+        : str0_{(str0 == nullptr) ? std::unique_ptr<std::string>{} : std::make_unique<std::string>(str0)},
+          str1_{(str1 == nullptr) ? std::unique_ptr<std::string>{} : std::make_unique<std::string>(str1)}
     {
     }
 

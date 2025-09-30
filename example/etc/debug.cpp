@@ -235,10 +235,7 @@ TEST(Debug, thread_lambda_lvalue_copy_capture)
 namespace NG {
 // @@@ sample begin 1:8
 
-void thread_entry(std::string const& str, std::string& str_out)
-{
-    str_out = do_heavy_algorithm(str);
-}
+void thread_entry(std::string const& str, std::string& str_out) { str_out = do_heavy_algorithm(str); }
 
 std::thread gen_thread_func(std::string const& str, std::string& str_out)  // str_outに結果出力
 {

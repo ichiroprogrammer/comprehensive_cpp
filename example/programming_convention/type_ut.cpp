@@ -11,8 +11,7 @@ namespace {
 template <typename DST, typename SRC>
 DST narrow_cast(SRC v)
 {
-    static_assert(std::is_integral_v<DST> && std::is_integral_v<DST>,
-                  "DST, SRC shoud be integral-type.");
+    static_assert(std::is_integral_v<DST> && std::is_integral_v<DST>, "DST, SRC shoud be integral-type.");
     auto r = static_cast<DST>(v);
 
     assert((r < 0) == (v < 0));        // 符号が変わっていないことの確認
@@ -310,7 +309,7 @@ namespace TypeAliasNewSample {
 using uint            = unsigned int;       // OK
 using void_func_int32 = void (*)(int32_t);  // OK
 
-template <class T>  // templateで型エイリアスを作ることもできる。
+template <class T>                      // templateで型エイリアスを作ることもできる。
 using Dict = std::map<std::string, T>;  // OK
 // @@@ sample end
 
@@ -490,11 +489,11 @@ void g0() noexcept
 {
     // @@@ sample begin 9:2
 
-    auto a = 1;       // OK aの型はint
-    auto b(1);        // 別の規制でNG ()より{}を優先的に使うべき
-    auto c{1};        // OK cの型はint
-    auto d = {1};     // NG dの型はstd::initializer_list<int>
-    auto e = {1, 2};  // NG eの型はstd::initializer_list<int>
+    auto a = 1;                                 // OK aの型はint
+    auto b(1);                                  // 別の規制でNG ()より{}を優先的に使うべき
+    auto c{1};                                  // OK cの型はint
+    auto d = {1};                               // NG dの型はstd::initializer_list<int>
+    auto e = {1, 2};                            // NG eの型はstd::initializer_list<int>
     auto f = std::initializer_list<int>{1, 2};  // OK
 
     static_assert(std::is_same_v<decltype(a), int>, "type not same");
@@ -582,7 +581,7 @@ void f() noexcept
     int32_t& r1 = a0;    // OK
     int32_t& r2{a0};     // OK 一様初期化
     int32_t& r3 = {a0};  // NG 代入演算子を伴う一様初期化
-    auto&    r4 = a0;  // OK AAAの場合は一様初期を使わなくても問題ないが、&の付け忘れに気を付ける
+    auto& r4 = a0;  // OK AAAの場合は一様初期を使わなくても問題ないが、&の付け忘れに気を付ける
 
     int32_t* p0(&a0);     // NG
     int32_t* p1 = &a0;    // OK
@@ -612,12 +611,12 @@ TEST(ProgrammingConvention, class_init)
         char const* str;
     };
 
-    Struct s0{1, "1"};           // OK 代入演算子を伴わない一様初期化
-    Struct s1 = {2, "2"};        // NG 代入演算子による一様初期化
-    Struct s2{};                 // OK s2.aは0、s2.strはnullptrに初期化される。
-    Struct s3;                   // NG s3は未初期化
-    auto   s4 = Struct{1, "1"};  // OK AAAスタイル
-    auto   s5 = Struct{};        // OK AAAスタイル
+    Struct s0{1, "1"};                          // OK 代入演算子を伴わない一様初期化
+    Struct s1 = {2, "2"};                       // NG 代入演算子による一様初期化
+    Struct s2{};                                // OK s2.aは0、s2.strはnullptrに初期化される。
+    Struct s3;                                  // NG s3は未初期化
+    auto   s4 = Struct{1, "1"};                 // OK AAAスタイル
+    auto   s5 = Struct{};                       // OK AAAスタイル
     IGNORE_UNUSED_VAR(s0, s1, s2, s3, s4, s5);  // @@@ delete
 
     // クラスの初期化
@@ -628,11 +627,11 @@ TEST(ProgrammingConvention, class_init)
     // このような場合、重複を避けるため、変数宣言の型はautoが良い
 
     // std::string、std::string_viewの初期化
-    std::string str0{"222"};     // OK
-    std::string str1 = {"222"};  // NG = は不要
-    std::string str2("222");     // NG {}で初期化できない時のみ、()を使う。
-    std::string str3(3, '2');    // OK {}では初期化できない。str3 == "222"
-    std::string str4 = "222";    // OK 例外的に認める
+    std::string str0{"222"};                // OK
+    std::string str1 = {"222"};             // NG = は不要
+    std::string str2("222");                // NG {}で初期化できない時のみ、()を使う。
+    std::string str3(3, '2');               // OK {}では初期化できない。str3 == "222"
+    std::string str4 = "222";               // OK 例外的に認める
     auto        str5 = std::string{"222"};  // OK AAAスタイル
 
     std::string_view sv0 = "222";                    // OK 例外的に認める
@@ -646,13 +645,13 @@ TEST(ProgrammingConvention, class_init)
     ASSERT_EQ(str4, sv1);                            // @@@ delete
 
     // {}、()による初期化の違い
-    std::vector<int32_t> vec0_i{1, 2, 3};  // OK vec0_i.size() == 3 && vec0_i[0] == 1 ...
-    std::vector<int32_t> vec1_i{10};       // OK vec1_i.size() == 1 && vec1_i[0] == 10
-    std::vector<int32_t> vec2_i(10);       // OK vec1_i.size() == 10
+    std::vector<int32_t> vec0_i{1, 2, 3};                // OK vec0_i.size() == 3 && vec0_i[0] == 1 ...
+    std::vector<int32_t> vec1_i{10};                     // OK vec1_i.size() == 1 && vec1_i[0] == 10
+    std::vector<int32_t> vec2_i(10);                     // OK vec1_i.size() == 10
     auto                 vec3_i = std::vector{1, 2, 3};  // OK vec0_iと同じ
 
-    std::vector<std::string> vec1_s{10};  // OK vec1_s.size() == 10
-    std::vector<std::string> vec2_s(10);  // NG vec2_s.size() == 10  {}を優先するべき
+    std::vector<std::string> vec1_s{10};                             // OK vec1_s.size() == 10
+    std::vector<std::string> vec2_s(10);                             // NG vec2_s.size() == 10  {}を優先するべき
     auto                     vec3_s = std::vector<std::string>{10};  // OK vec1_sと同じ
 
     // vec1_i、vec2_i、vec1_sの初期化は似ているが、結果は全く異なる。

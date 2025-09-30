@@ -23,7 +23,7 @@ public:
     {
         auto cmd      = std::string{"ls "} + GetArgs();
         auto to_close = [](FILE* f) { fclose(f); };
-        auto stream = std::unique_ptr<FILE, decltype(to_close)>{popen(cmd.c_str(), "r"), to_close};
+        auto stream   = std::unique_ptr<FILE, decltype(to_close)>{popen(cmd.c_str(), "r"), to_close};
 
         auto files = std::string{};
         char buff[256];

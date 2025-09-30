@@ -26,10 +26,7 @@ std::string Accumlate(std::vector<std::string> strings) noexcept
     return ret;
 }
 
-TEST(ProgrammingConventionSyntaxQ, RangeFor)
-{
-    ASSERT_EQ("abcd", Accumlate(std::vector<std::string>{"a", "b", "cd"}));
-}
+TEST(ProgrammingConventionSyntaxQ, RangeFor) { ASSERT_EQ("abcd", Accumlate(std::vector<std::string>{"a", "b", "cd"})); }
 // @@@ sample end
 
 // @@@ sample begin 1:0

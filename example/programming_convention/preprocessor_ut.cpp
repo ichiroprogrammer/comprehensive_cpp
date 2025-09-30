@@ -185,8 +185,7 @@ void ShippingDoSomething(ShippingData const& region_data)
         // 何らかの処理
     }
     else {
-        static_assert(shipping_region == ShippingRegions::Japan
-                      || shipping_region == ShippingRegions::US
+        static_assert(shipping_region == ShippingRegions::Japan || shipping_region == ShippingRegions::US
                       || shipping_region == ShippingRegions::EU);
     }
 }
@@ -216,8 +215,7 @@ ShippingData const& gen_shipping_data()
         return region_data;
     }
     else {
-        static_assert(sr == ShippingRegions::Japan || sr == ShippingRegions::US
-                      || sr == ShippingRegions::EU);
+        static_assert(sr == ShippingRegions::Japan || sr == ShippingRegions::US || sr == ShippingRegions::EU);
     }
 }
 

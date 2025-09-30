@@ -17,8 +17,7 @@ std::pair<std::string, std::vector<int32_t>> parse_line(std::string const& line)
     auto       score   = std::vector<int32_t>{};
 
     auto end = std::sregex_token_iterator{};
-    for (auto it = std::sregex_token_iterator{line.begin(), line.end(), csv_sep, -1}; it != end;
-         ++it) {
+    for (auto it = std::sregex_token_iterator{line.begin(), line.end(), csv_sep, -1}; it != end; ++it) {
         if (name.length() == 0) {
             name = *it;
         }
