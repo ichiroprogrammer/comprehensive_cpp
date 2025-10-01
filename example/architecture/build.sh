@@ -21,6 +21,7 @@ function help(){
     echo "    -g    : build by g++ only"
     echo "    -i    : execute IT"
     echo "    -j N  : make -j N for sample build [default:0]"
+    echo "    -S    : not exec SAN_BUILD"
     echo "    -h    : show this message"
     echo "    -x    : set -x"
 
@@ -34,13 +35,14 @@ CLANG_BUILD=true
 SCAN_BUILD=true
 SAN_BUILD=true
 
-while getopts ":aCcdeghij:x" flag; do
+while getopts ":aSCcdeghij:x" flag; do
     case $flag in 
     a) CLEAN=true; CHECK_ENCODING=true ;;
     c) CLEAN=true ;; 
     d) DRY_RUN=true ;; 
     e) CHECK_ENCODING=true ;; 
     g) CLANG_BUILD=false; SCAN_BUILD=false; SAN_BUILD=false ;;
+    S) SAN_BUILD=false;;
     i) ;; 
     j) PARALLEL="$OPTARG" ;; 
     h) help 0 ;; 
@@ -86,7 +88,11 @@ function build_by() {
     [ -d $build_dir ] || mkdir -p $build_dir
     cd $build_dir > /dev/null
 
-    local cmake_opt="-DUSE_SANITIZERS=ON"
+    local cmake_opt=
+    if $SAN_BUILD; then
+        local cmake_opt="-DUSE_SANITIZERS=ON"
+    fi
+
     if [[ "$compiler" == "g++" ]]; then
         local cmake_opt="$cmake_opt -DCMAKE_CXX_COMPILER=$compiler"
     fi
