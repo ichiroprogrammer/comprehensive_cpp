@@ -1,5 +1,5 @@
 add_library(view STATIC src/view.cpp)
-target_include_directories(view PRIVATE src ../view/h ${DEPS_DIR}/logging/h ${DEPS_DIR}/lib/h)
+target_include_directories(view PRIVATE src ../view/h ${CMAKE_SOURCE_DIR}/logging/h ${CMAKE_SOURCE_DIR}/lib/h)
 target_include_directories(view PUBLIC ../view/h ../model/h)
 
 # Unit test

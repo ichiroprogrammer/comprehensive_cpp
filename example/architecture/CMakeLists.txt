@@ -11,7 +11,7 @@ enable_testing()
 set(GTEST_DIR "../../googletest")
 include_directories("${GTEST_DIR}/googletest/include")
 add_subdirectory(${GTEST_DIR} ${CMAKE_BINARY_DIR}/googletest EXCLUDE_FROM_ALL)
-set(DEPS_DIR ../../deps)
+set(DEPS_DIR ../)
 
 # Add subdirectories
 add_subdirectory(controller)
@@ -19,8 +19,8 @@ add_subdirectory(model)
 add_subdirectory(view)
 
 # Add deps subdirectories
-add_subdirectory(${CMAKE_SOURCE_DIR}/../deps/lib ${CMAKE_BINARY_DIR}/deps_lib)
-add_subdirectory(${CMAKE_SOURCE_DIR}/../deps/logging ${CMAKE_BINARY_DIR}/deps_logging)
+add_subdirectory(${CMAKE_SOURCE_DIR}/lib ${CMAKE_BINARY_DIR}/deps_lib)
+add_subdirectory(${CMAKE_SOURCE_DIR}/logging ${CMAKE_BINARY_DIR}/deps_logging)
 
 # Create the executable
 add_executable(app app/main.cpp)
