@@ -11,7 +11,6 @@ enable_testing()
 set(GTEST_DIR "../../googletest")
 include_directories("${GTEST_DIR}/googletest/include")
 add_subdirectory(${GTEST_DIR} ${CMAKE_BINARY_DIR}/googletest EXCLUDE_FROM_ALL)
-set(DEPS_DIR ../)
 
 # Add subdirectories
 add_subdirectory(controller)
