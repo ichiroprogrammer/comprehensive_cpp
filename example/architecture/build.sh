@@ -21,7 +21,7 @@ function help(){
     echo "    -g    : build by g++ only"
     echo "    -i    : execute IT"
     echo "    -j N  : make -j N for sample build [default:0]"
-    echo "    -S    : not exec SAN_BUILD"
+    echo "    -S    : not exec SAN_BUILD/SCAN_BUILD"
     echo "    -h    : show this message"
     echo "    -x    : set -x"
 
@@ -42,7 +42,7 @@ while getopts ":aSCcdeghij:x" flag; do
     d) DRY_RUN=true ;; 
     e) CHECK_ENCODING=true ;; 
     g) CLANG_BUILD=false; SCAN_BUILD=false; SAN_BUILD=false ;;
-    S) SAN_BUILD=false;;
+    S) SCAN_BUILD=false; SAN_BUILD=false ;;
     i) ;; 
     j) PARALLEL="$OPTARG" ;; 
     h) help 0 ;; 
@@ -114,6 +114,8 @@ function build_by() {
 
 cmd_launcher build_by "g++"
 
-$CLANG_BUILD && cmd_launcher build_by "clang++"
+if $CLANG_BUILD ; then
+    cmd_launcher build_by "clang++"
+fi
 
 
