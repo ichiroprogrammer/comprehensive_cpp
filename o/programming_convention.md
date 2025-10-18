@@ -609,7 +609,7 @@ ___
   従って、unionの定義を外部パッケージに公開(「[パッケージの実装と公開](programming_convention.md#SS_3_7_1)」参照)しない。
 
 * 上記以外でunionのような機能が必要な場合、
-  [std::variant](term_explanation.md#SS_19_9_4)(「[std::variantとジェネリックラムダ](template_meta_programming.md#SS_13_7_2_2)」参照)を使用する
+  [std::variant](term_explanation.md#SS_19_9_7)(「[std::variantとジェネリックラムダ](template_meta_programming.md#SS_13_7_2_2)」参照)を使用する
   (std::anyはunionの代替えにはならないので、このような場合には使用しない)。
 
 ### 配列 <a id="SS_3_1_7"></a>
@@ -1748,8 +1748,8 @@ ___
     * C言語から呼び出される関数
     * アセンブラ関数
 
-* .cppファイルから、そのファイルの外部で定義された関数を呼び出す場合、
-  その.cppファイル内での局所的な関数宣言をしない
+* .cppファイルから、そのファイルの外部で定義された関数を呼び出す場合、その.cppファイル内での局所的な関数宣言をしない。
+  つまり、.cppファイルローカルなetern関数宣言を行ってはならない
   (関数が宣言、定義されているヘッダファイルをインクルードする)。
 * コンパイル時に戻り値が確定する関数は[constexpr関数](term_explanation.md#SS_19_4_2)として宣言する。
 
@@ -2943,7 +2943,7 @@ ___
 * 戻り値を比較的大きなオブジェクトにする場合、パフォーマンスに注意する
   (「[関数の戻り値オブジェクト](programming_convention.md#SS_3_9_3)」参照)。
 
-* 関数が複数の値を返す場合、[std::optional](term_explanation.md#SS_19_9_3)、std::pair、std::tupple、
+* 関数が複数の値を返す場合、[std::optional](term_explanation.md#SS_19_9_6)、std::pair、std::tupple、
   構造体オブジェクトを戻り値にして返す。パフォーマンスに著しい悪影響がない限り、
   リファレンス引数で戻り値を返さない(「[関数の戻り値オブジェクト](programming_convention.md#SS_3_9_3)」参照)。
 
@@ -3869,7 +3869,7 @@ ___
 #### new <a id="SS_3_5_6_1"></a>
 * オブジェクトのダイナミックな生成には、特別な理由がない限りnewを使用せず、
   `std::make_unique<>`や`std::make_shared<>`を使用する。
-  また、特別な理由でnewした場合、そのポインタは[スマートポインタ](term_explanation.md#SS_19_9_1)で管理する。
+  また、特別な理由でnewした場合、そのポインタは[スマートポインタ](term_explanation.md#SS_19_9_4)で管理する。
 * `std::shared_ptr<>`でダイナミックに生成したオブジェクトを管理する場合、
   [オブジェクトの循環所有](term_explanation.md#SS_19_5_7_3)が発生しないように気を付ける(適切に[std::weak_ptr](term_explanation.md#SS_19_5_7_4)を使う)。
 * new(nothrow)、プレースメントnewは使用しない。

@@ -106,8 +106,14 @@ ___
 
 
 ### stdの変更、追加 <a id="SS_18_1_6"></a>
-#### stdコンテナ <a id="SS_18_1_6_1"></a>
-[コンテナ](term_explanation.md#SS_19_9_2)全般が[moveセマンティクス](term_explanation.md#SS_19_18_3)に対応したため、
+#### ユーティリティ <a id="SS_18_1_6_1"></a>
+|機能                |説明                                 |
+|:-------------------|:------------------------------------|
+|[std::move](term_explanation.md#SS_19_9_1_1)    |[moveセマンティクス](term_explanation.md#SS_19_18_3)の利用      |
+|[std::forward](term_explanation.md#SS_19_9_1_2) |[perfect forwarding](term_explanation.md#SS_19_15_5)の実装、利用|
+
+#### stdコンテナ <a id="SS_18_1_6_2"></a>
+[コンテナ](term_explanation.md#SS_19_9_5)全般が[moveセマンティクス](term_explanation.md#SS_19_18_3)に対応したため、
 テンプレートのパラメータTが、コピー構築可能(`is_copy_constructible<T> == true`)な型だけでなく、
 ムーブ構築(is_move_constructible)のみ可能な型も受け付けるられるようになった。
 push_back()やinsert()等の要素追加のためのメンバ関数が、
@@ -118,10 +124,21 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |機能                            |説明                                                                                |
 |:-------------------------------|:-----------------------------------------------------------------------------------|
 |std::array                      |このコンテナは固定長配列クラスを表す「[配列](programming_convention.md#SS_3_1_7)」参照)。         |
-|[std::forward_list](term_explanation.md#SS_19_9_2_1_1)        |このは単方向リンクリストの実装である。                                              |
-|[std::unordered_map](term_explanation.md#SS_19_9_2_3_2)       |同一キーの要素を複数格納しない、格納順が規定されていない連想配列の実装であるである。|
-|[std::unordered_set](term_explanation.md#SS_19_9_2_3_1)       |同一キーの要素を複数格納できず、格納順が規定されていないコンテナである。            |
-|[std::type_index](term_explanation.md#SS_19_9_2_3_3)          |型情報型を連想コンテナのキーとして使用するためのクラス。                            |
+|[std::forward_list](term_explanation.md#SS_19_9_5_1_1)        |このは単方向リンクリストの実装である。                                              |
+|[std::unordered_map](term_explanation.md#SS_19_9_5_3_2)       |同一キーの要素を複数格納しない、格納順が規定されていない連想配列の実装であるである。|
+|[std::unordered_set](term_explanation.md#SS_19_9_5_3_1)       |同一キーの要素を複数格納できず、格納順が規定されていないコンテナである。            |
+|[std::type_index](term_explanation.md#SS_19_9_5_3_3)          |型情報型を連想コンテナのキーとして使用するためのクラス。                            |
+
+#### 並列処理 <a id="SS_18_1_6_3"></a>
+|機能                          | 説明                                                    |
+|:----------------------------:|:--------------------------------------------------------|
+| [std::thread](term_explanation.md#SS_19_9_2_1)           | スレッドの生成                                          |
+| [std::atomic](term_explanation.md#SS_19_9_2_3)           | 単純なオブジェクトのアトミック処理                      |
+| [std::mutex](term_explanation.md#SS_19_9_2_2)            | スレッド間の競合の回避                                  |
+| [std::lock_guard](term_explanation.md#SS_19_9_3_1)       | ミューテックスのロック/アンロックを管理するためクラス   |
+| [std::unique_lock](term_explanation.md#SS_19_9_3_2)      | ミューテックスのロック/アンロックを管理するためクラス   |
+| [std::scoped_lock](term_explanation.md#SS_19_9_3_3)      | ミューテックスのロック/アンロックを管理するためクラス   |
+
 
 ## C++14の主な新規機能 <a id="SS_18_2"></a>
 
@@ -222,8 +239,8 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |[範囲for文のイテレータ型の不一致の許可](cpp_improve.md#SS_18_3_1_3) |std::istream_iteratorとstd::istreamに利用                                                          |
 |[ラムダ式での\*thisのコピーキャプチャ](cpp_improve.md#SS_18_3_1_4)  |キャプチャリストに\*this を指定することで、\*thisをコピーキャプチャする                            |
 |[constexprラムダ](term_explanation.md#SS_19_4_7)             |ラムダ式の関数オブジェクトのconstexpr指定を可能に                                                  |
-|[std::optional](term_explanation.md#SS_19_9_3)                         |関数の戻り値の無効表現を行うためのクラステンプレート                                               |
-|[std::variant](term_explanation.md#SS_19_9_4)                          |型安全なunion機能を提供するクラステンプレート                                                      |
+|[std::optional](term_explanation.md#SS_19_9_6)                         |関数の戻り値の無効表現を行うためのクラステンプレート                                               |
+|[std::variant](term_explanation.md#SS_19_9_7)                          |型安全なunion機能を提供するクラステンプレート                                                      |
 
 
 #### 単一要素の波カッコ初期化を非配列とする <a id="SS_18_3_1_1"></a>
