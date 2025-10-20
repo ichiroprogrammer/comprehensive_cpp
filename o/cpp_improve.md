@@ -76,8 +76,8 @@ ___
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
 |テンプレート引数の指定に>>の許可    |vector<list<int>> のような記述の許可。「[テンプレートメタプログラミング](template_meta_programming.md#SS_13)」参照       |
 |[extern template](programming_convention.md#SS_3_9_6)              |テンプレートのインスタンス化の抑止                                                         |
-|[エイリアステンプレート](term_explanation.md#SS_19_11_9)       |エイリアスをテンプレート化できる                                                           |
-|[パラメータパック](template_meta_programming.md#SS_13_1_3)             |任意の数のテンプレートパラメータを受け取れるようにする                                     |
+|[エイリアステンプレート](term_explanation.md#SS_19_11_10)       |エイリアスをテンプレート化できる                                                           |
+|[パラメータパック](term_explanation.md#SS_19_11_3)             |任意の数のテンプレートパラメータを受け取れるようにする                                     |
 |テンプレートパラメータ型の制限の緩和|ローカル型と無名型を、テンプレート引数として使用することを許可                             |
 |任意の式による[SFINAE](term_explanation.md#SS_19_11_1)         |特定の式が[ill-formed](term_explanation.md#SS_19_19_5)か否かで、その関数をオーバーロード解決に含めるかどうかを決定する|
 |テンプレートのエクスポート機能      |削除                                                                                       |
@@ -148,9 +148,9 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |[関数の戻り値型auto](term_explanation.md#SS_19_12_6)                           |戻り値の型を後置する関羽鵜テンプレート/関数定義とラムダ式の戻り値型にautoに      |
 |[decltype(auto)](term_explanation.md#SS_19_12_3)                               |decltypeの規則による変数の[型推論](term_explanation.md#SS_19_12)                                 |
 |[ラムダ式](term_explanation.md#SS_19_8_3)の初期化キャプチャ          |キャプチャに代入構文を導入し、一つの変数に複数のキャプチャ方法を指定可能にする   |
-|[ジェネリックラムダ](term_explanation.md#SS_19_11_4)                           |ラムダ式のパラメータを auto にすることで、ジェネリックな関数呼び出しに           |
-|[変数テンプレート](term_explanation.md#SS_19_11_8)            |変数定義時のテンプレート指定を可能に                                             |
-|constexpr関数内での条件分岐とループの文を許可       |[constexpr if文](term_explanation.md#SS_19_11_10)                                                            |
+|[ジェネリックラムダ](term_explanation.md#SS_19_11_5)                           |ラムダ式のパラメータを auto にすることで、ジェネリックな関数呼び出しに           |
+|[変数テンプレート](term_explanation.md#SS_19_11_9)            |変数定義時のテンプレート指定を可能に                                             |
+|constexpr関数内での条件分岐とループの文を許可       |[constexpr if文](term_explanation.md#SS_19_11_11)                                                            |
 |structの[NSDMI](term_explanation.md#SS_19_5_6_1)の対応                          |                                                                                 |
 |structのネストする初期化における波カッコ省略を許可  |一様初期化と初期化子リストを組み合わせた際、二重に波カッコが不要に               |
 |[[deprecated]]属性                                  |「[属性構文](term_explanation.md#SS_19_7_1)」参照                                                          |
@@ -235,7 +235,7 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |[newのアライメント指定](cpp_improve.md#SS_18_3_1_2)                 |                                                                                                   |
 |[初期化付きif/switch文](term_explanation.md#SS_19_7_5)                 |if文とswitch文の条件式と初期化を分離する構文                                                       |
 |[[fallthrough]]属性                          |「[属性構文](term_explanation.md#SS_19_7_1)」参照                                                                            |
-|[constexpr if文](term_explanation.md#SS_19_11_10)                        |if constexpr(cond) とすることで、その if 文はコンパイル時に処理                                    |
+|[constexpr if文](term_explanation.md#SS_19_11_11)                        |if constexpr(cond) とすることで、その if 文はコンパイル時に処理                                    |
 |[範囲for文のイテレータ型の不一致の許可](cpp_improve.md#SS_18_3_1_3) |std::istream_iteratorとstd::istreamに利用                                                          |
 |[ラムダ式での\*thisのコピーキャプチャ](cpp_improve.md#SS_18_3_1_4)  |キャプチャリストに\*this を指定することで、\*thisをコピーキャプチャする                            |
 |[constexprラムダ](term_explanation.md#SS_19_4_7)             |ラムダ式の関数オブジェクトのconstexpr指定を可能に                                                  |
@@ -467,7 +467,7 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |機能                                                   |説明                                                                            |
 |:------------------------------------------------------|:-------------------------------------------------------------------------------|
 |[コンセプト](term_explanation.md#SS_19_11_2)                                      |キーワードconcept、requiresの導入。テンプレートパラメータの制約。               |
-|[autoパラメータによる関数テンプレートの簡易定義](term_explanation.md#SS_19_11_11)  |[ジェネリックラムダ](term_explanation.md#SS_19_11_4)と同様に関数パラメータをの型をautoにできる。           |
+|[autoパラメータによる関数テンプレートの簡易定義](term_explanation.md#SS_19_11_12)  |[ジェネリックラムダ](term_explanation.md#SS_19_11_5)と同様に関数パラメータをの型をautoにできる。           |
 |[型の文脈でtypenameの省略を許可](cpp_improve.md#SS_18_4_4_1)                  |型しか現れない文脈では、typenameの省略を可能に                                  |
 |[非型テンプレートパラメータとしてクラス型を許可](cpp_improve.md#SS_18_4_4_2)  |                                                                                |
 |ADLのバグ修正                                          |[関数テンプレートに明示的に型指定した場合にADLで見つからない問題を修正](cpp_improve.md#SS_18_4_4_3)    |

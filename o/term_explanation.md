@@ -189,15 +189,16 @@ __この章の構成__
 &emsp;&emsp; [template強化機能](term_explanation.md#SS_19_11)  
 &emsp;&emsp;&emsp; [SFINAE](term_explanation.md#SS_19_11_1)  
 &emsp;&emsp;&emsp; [コンセプト](term_explanation.md#SS_19_11_2)  
-&emsp;&emsp;&emsp; [畳み込み式](term_explanation.md#SS_19_11_3)  
-&emsp;&emsp;&emsp; [ジェネリックラムダ](term_explanation.md#SS_19_11_4)  
-&emsp;&emsp;&emsp; [クラステンプレートのテンプレート引数の型推論](term_explanation.md#SS_19_11_5)  
-&emsp;&emsp;&emsp; [テンプレートの型推論ガイド](term_explanation.md#SS_19_11_6)  
-&emsp;&emsp;&emsp; [CTAD(Class Template Argument Deduction)](term_explanation.md#SS_19_11_7)  
-&emsp;&emsp;&emsp; [変数テンプレート](term_explanation.md#SS_19_11_8)  
-&emsp;&emsp;&emsp; [エイリアステンプレート](term_explanation.md#SS_19_11_9)  
-&emsp;&emsp;&emsp; [constexpr if文](term_explanation.md#SS_19_11_10)  
-&emsp;&emsp;&emsp; [autoパラメータによる関数テンプレートの簡易定義](term_explanation.md#SS_19_11_11)  
+&emsp;&emsp;&emsp; [パラメータパック](term_explanation.md#SS_19_11_3)  
+&emsp;&emsp;&emsp; [畳み込み式](term_explanation.md#SS_19_11_4)  
+&emsp;&emsp;&emsp; [ジェネリックラムダ](term_explanation.md#SS_19_11_5)  
+&emsp;&emsp;&emsp; [クラステンプレートのテンプレート引数の型推論](term_explanation.md#SS_19_11_6)  
+&emsp;&emsp;&emsp; [テンプレートの型推論ガイド](term_explanation.md#SS_19_11_7)  
+&emsp;&emsp;&emsp; [CTAD(Class Template Argument Deduction)](term_explanation.md#SS_19_11_8)  
+&emsp;&emsp;&emsp; [変数テンプレート](term_explanation.md#SS_19_11_9)  
+&emsp;&emsp;&emsp; [エイリアステンプレート](term_explanation.md#SS_19_11_10)  
+&emsp;&emsp;&emsp; [constexpr if文](term_explanation.md#SS_19_11_11)  
+&emsp;&emsp;&emsp; [autoパラメータによる関数テンプレートの簡易定義](term_explanation.md#SS_19_11_12)  
 
 &emsp;&emsp; [型推論](term_explanation.md#SS_19_12)  
 &emsp;&emsp;&emsp; [AAAスタイル](term_explanation.md#SS_19_12_1)  
@@ -1924,7 +1925,7 @@ C++11以前で定数を定義する方法は、
     static_assert(templ.value == 5);
 ```
 
-constexpr定数がif文のオカレンスになる場合、[constexpr if文](term_explanation.md#SS_19_11_10)することで、
+constexpr定数がif文のオカレンスになる場合、[constexpr if文](term_explanation.md#SS_19_11_11)することで、
 [ill-formed](term_explanation.md#SS_19_19_5)を使用した場合分けが可能になる。
 
 
@@ -5001,7 +5002,7 @@ C++20から導入されたco_await、co_return、TaskとC++17以前の機能の�
 * キャプチャとは、ラムダ式外部の変数をラムダ式内にコピーかリファレンスとして定義する機能。
 * ラムダ式からキャプチャできるのは、ラムダ式から可視である自動変数と仮引数(thisを含む)。
 * [constexprラムダ](term_explanation.md#SS_19_4_7)とはクロージャ型の[constexprインスタンス](term_explanation.md#SS_19_4_5)。
-* [ジェネリックラムダ](term_explanation.md#SS_19_11_4)とは、C++11のラムダ式を拡張して、
+* [ジェネリックラムダ](term_explanation.md#SS_19_11_5)とは、C++11のラムダ式を拡張して、
   パラメータにautoを使用(型推測)できるようにした機能。
 
 ```cpp
@@ -7471,7 +7472,49 @@ C++20から導入された「コンセプト(concepts)」は、
 
 ```
 
-### 畳み込み式 <a id="SS_19_11_3"></a>
+### パラメータパック <a id="SS_19_11_3"></a>
+パラメータパック(parameter pack)は、可変長テンプレート引数を表現するためにC++11で導入されたシンタックスである。
+テンプレートの定義時に、任意個数のテンプレート引数または関数引数をまとめて受け取ることができる。
+
+パラメータパックのシンタックスは以下のようなものである。
+
+* `typename... Args` - テンプレートパラメータパック
+* `Args... args` - 関数パラメータパック
+* `args...` - パック展開（pack expansion）
+* `sizeof...(args)` - パック内の要素数を取得
+
+パラメータパックを使用した関数テンプレートは以下のように定義する。
+
+```cpp
+    //  example/term_explanation/template_ut.cpp 70
+
+    void print(std::ostream& os) { os << std::endl; }
+
+    template <typename HEAD, typename... TAIL>
+    int print(std::ostream& os, HEAD head, TAIL... tail)
+    {
+        os << head;
+        print(os, tail...);  // 残りの引数を再帰的に処理
+
+        return 1 + sizeof...(tail);  // headの1個 + tailの個数 = 全パラメータ数
+                                     // sizeof...(tail)はパック内の要素数
+    }
+```
+
+以下の単体テストは上記の関数の使い方を示している。
+
+```cpp
+    //  example/term_explanation/template_ut.cpp 87
+
+    std::stringstream os;
+
+    auto parameter_pack_count = print(os, 1, "-", "c_str-", std::string{"std::string"});
+
+    ASSERT_EQ("1-c_str-std::string\n", os.str());
+    ASSERT_EQ(4, parameter_pack_count);
+```
+
+### 畳み込み式 <a id="SS_19_11_4"></a>
 畳み式(fold expression)とは、C++17から導入された新機能であり、
 可変引数テンプレートのパラメータパックに対して二項演算を累積的に行うためのものである。
 
@@ -7635,7 +7678,7 @@ C++20から導入された「コンセプト(concepts)」は、
     static_assert(is_same_some_of<std::string, std::string, int>::value);
 ```
 
-### ジェネリックラムダ <a id="SS_19_11_4"></a>
+### ジェネリックラムダ <a id="SS_19_11_5"></a>
 ジェネリックラムダとは、C++11のラムダ式のパラメータの型にautoを指定できるようにした機能で、
 C++14で導入された。
 
@@ -7695,7 +7738,7 @@ C++14で導入された。
     }
 ```
 
-### クラステンプレートのテンプレート引数の型推論 <a id="SS_19_11_5"></a>
+### クラステンプレートのテンプレート引数の型推論 <a id="SS_19_11_6"></a>
 C++17から、
 「コンストラクタに渡される値によって、クラステンプレートのテンプレート引数を推論する」
 機能が導入された。
@@ -7703,7 +7746,7 @@ C++17から、
 この機能がないC++14までは以下のように記述する必要があった。
 
 ```cpp
-    //  example/term_explanation/template_ut.cpp 13
+    //  example/term_explanation/template_ut.cpp 14
 
     auto a = std::vector<int>{1, 2, 3};
 
@@ -7713,21 +7756,21 @@ C++17から、
 これに対して、この機能により、以下のようにシンプルに記述できるようになった。
 
 ```cpp
-    //  example/term_explanation/template_ut.cpp 24
+    //  example/term_explanation/template_ut.cpp 25
 
     auto a = std::vector{1, 2, 3};
 
     static_assert(std::is_same_v<decltype(a), std::vector<int>>);  // テンプレート引数がintと推論
 ```
 
-### テンプレートの型推論ガイド <a id="SS_19_11_6"></a>
-テンプレートの型推論ガイド([CTAD(Class Template Argument Deduction)](term_explanation.md#SS_19_11_7))は、
+### テンプレートの型推論ガイド <a id="SS_19_11_7"></a>
+テンプレートの型推論ガイド([CTAD(Class Template Argument Deduction)](term_explanation.md#SS_19_11_8))は、
 C++17で導入された機能である。この機能により、
 クラステンプレートのインスタンス化時にテンプレート引数を明示的に指定せず、
 引数から自動的に型を推論できるようになる。型推論ガイドを使用することで、
 コードの可読性と簡潔性が向上する。
 
-型推論ガイドがない場合、[クラステンプレートのテンプレート引数の型推論](term_explanation.md#SS_19_11_5)は限定的であり、
+型推論ガイドがない場合、[クラステンプレートのテンプレート引数の型推論](term_explanation.md#SS_19_11_6)は限定的であり、
 明示的にテンプレート引数を指定する必要がある場合が多い。
 一方、型推論ガイドを使用することで、
 コンストラクタの引数からテンプレート引数を自動的に決定することが可能になる。
@@ -7785,14 +7828,14 @@ C++17で導入された機能である。この機能により、
     // S    s4 = 1.0;  // S<double>のコンストラクタがexplicitであるため
 ```
 
-### CTAD(Class Template Argument Deduction) <a id="SS_19_11_7"></a>
-CTAD(Class Template Argument Deduction)とは、[テンプレートの型推論ガイド](term_explanation.md#SS_19_11_6)のことである。
+### CTAD(Class Template Argument Deduction) <a id="SS_19_11_8"></a>
+CTAD(Class Template Argument Deduction)とは、[テンプレートの型推論ガイド](term_explanation.md#SS_19_11_7)のことである。
 
-### 変数テンプレート <a id="SS_19_11_8"></a>
+### 変数テンプレート <a id="SS_19_11_9"></a>
 変数テンプレートとは、下記のコード示したような機能である。
 
 ```cpp
-    //  example/term_explanation/template_ut.cpp 32
+    //  example/term_explanation/template_ut.cpp 33
 
     template <typename T>
     struct is_void {
@@ -7820,12 +7863,12 @@ CTAD(Class Template Argument Deduction)とは、[テンプレートの型推論�
 「定数テンプレート」ではなく変数テンプレートである。
 
 
-### エイリアステンプレート <a id="SS_19_11_9"></a>
+### エイリアステンプレート <a id="SS_19_11_10"></a>
 エイリアステンプレート(alias templates)とはC++11から導入され、
 下記のコード例で示したようにテンプレートによって型の別名を定義する機能である。
 
 ```cpp
-    //  example/term_explanation/template_ut.cpp 56
+    //  example/term_explanation/template_ut.cpp 57
 
     using IntVector = std::vector<int>;  // std::vector<int> のエイリアスを定義
 
@@ -7835,7 +7878,7 @@ CTAD(Class Template Argument Deduction)とは、[テンプレートの型推論�
     static_assert(std::is_same_v<IntVector, Vec<int>>);  // Vec<int> == std::vector<int>
 ```
 
-### constexpr if文 <a id="SS_19_11_10"></a>
+### constexpr if文 <a id="SS_19_11_11"></a>
 C++17で導入された[constexpr if文](https://cpprefjp.github.io/lang/cpp17/if_constexpr.html)とは、
 文を条件付きコンパイルすることができるようにするための制御構文である。
 
@@ -7908,7 +7951,7 @@ C++17で導入された[constexpr if文](https://cpprefjp.github.io/lang/cpp17/i
     }
 ```
 
-この構文は[パラメータパック](template_meta_programming.md#SS_13_1_3)の展開においても有用な場合がある。
+この構文は[パラメータパック](term_explanation.md#SS_19_11_3)の展開においても有用な場合がある。
 
 ```cpp
     //  example/term_explanation/constexpr_if_ut.cpp 93
@@ -7954,7 +7997,7 @@ constexpr ifを使用することで、やや単純に記述できる。
     }
 ```
 
-### autoパラメータによる関数テンプレートの簡易定義 <a id="SS_19_11_11"></a>
+### autoパラメータによる関数テンプレートの簡易定義 <a id="SS_19_11_12"></a>
 この機能は、C++20から導入された。
 下記のコードで示すように簡易的に関数テンプレートを定義するための機能である。
 
@@ -8378,7 +8421,7 @@ auto、decltype、decltype(auto)では、以下に示す通りリファレンス
 C++14から導入された機能で、関数の戻り値の型をautoキーワードで宣言することで、
 コンパイラがreturn文から自動的に型を推論してくれる機能である。
 これにより、複雑な型の戻り値を持つ関数でも、より簡潔に記述できるようになる
-(「[autoパラメータによる関数テンプレートの簡易定義](term_explanation.md#SS_19_11_11)」を参照)。
+(「[autoパラメータによる関数テンプレートの簡易定義](term_explanation.md#SS_19_11_12)」を参照)。
 
 ```cpp
     //  example/term_explanation/decltype_ut.cpp 114
@@ -9065,7 +9108,8 @@ rvalueリファレンスは、
 * C++11で導入されたシンタックスであり、任意の型Tに対して、`T&&`で宣言される。
 * 「テンポラリオブジェクト([rvalue](term_explanation.md#SS_19_14_1_2))」をバインドできるリファレンス。
 * C++11の[moveセマンティクス](term_explanation.md#SS_19_18_3)と[perfect forwarding](term_explanation.md#SS_19_15_5)を実現するために導入された。
-* **注意** rvalueリファレンス型の変数は、その型が`T&&`であっても、値カテゴリは[lvalue](term_explanation.md#SS_19_14_1_1)である。
+* **注意1** 型が`T&&`である変数の値カテゴリは[lvalue](term_explanation.md#SS_19_14_1_1)である。
+* **注意2** 型が`T&&`である変数は、`T&`でバインドできる。
 
 ```cpp
     //  example/term_explanation/rvalue_lvalue_ut.cpp 87
@@ -9074,16 +9118,18 @@ rvalueリファレンスは、
     int const& a_ref0 = a;        // const lvalueリファレンスはlvalueをバインドできる
     int const& a_ref1 = int{99};  // const lvalueリファレンスはrvalueもバインドできる
     int&& a_ref2 = int{99};       // rvalueリファレンスはテンポラリオブジェクトをバインドできる
-
-    ASSERT_EQ(a_ref1, 99);
-    ASSERT_EQ(a_ref2, 99);
+    int& a_ref3 = a_ref2;         // rvalueリファレンス型の変数は、lvalueリファレンスでバインドできる
+    /*
+    int&& a_ref4 = a_ref2;       以下のメッセージでコンパイルエラー
+                                 cannot bind rvalue reference of type ‘int&&’ to lvalue of type ‘int’ 
+                                 rvalueリファレンス型の変数(lvalue)は、rvalueリファレンスでバインドできない */
 ```
 
 このようなリファレンスのバインドの可否はオーバーロードにも影響を与える。
 
 
 ```cpp
-    //  example/term_explanation/rvalue_lvalue_ut.cpp 104
+    //  example/term_explanation/rvalue_lvalue_ut.cpp 118
 
     int f(int&)       { return 1; } // f-1
     int f(int const&) { return 2; } // f-2
@@ -9091,7 +9137,7 @@ rvalueリファレンスは、
 ```
 
 ```cpp
-    //  example/term_explanation/rvalue_lvalue_ut.cpp 115
+    //  example/term_explanation/rvalue_lvalue_ut.cpp 129
 
     int       a = 0;
     int const b = 0;
@@ -9111,7 +9157,7 @@ rvalueリファレンスは、
 上記コードの最後の部分の抜粋である以下のコードについては、少々解説が必要だろう。
 
 ```cpp
-    //  example/term_explanation/rvalue_lvalue_ut.cpp 127
+    //  example/term_explanation/rvalue_lvalue_ut.cpp 141
 
     int&& ref_ref = int{};
 
@@ -9127,13 +9173,13 @@ rvalueリファレンス型の仮引数（`T&&`）を持つ関数は、ムーブ
 [moveセマンティクス](term_explanation.md#SS_19_18_3)や[perfect forwarding](term_explanation.md#SS_19_15_5)を正しく実装/使用するために極めて重要である。
 
 ```cpp
-    //  example/term_explanation/rvalue_lvalue_ut.cpp 136
+    //  example/term_explanation/rvalue_lvalue_ut.cpp 150
 
     int g(int&& a) { return f(a); }            // g-1    仮引数aはlvalue -> f-1が呼ばれる
     int g(int& a) { return f(std::move(a)); }  // g-2    std::moveでrvalueに変換 -> f-3が呼ばれる
 ```
 ```cpp
-    //  example/term_explanation/rvalue_lvalue_ut.cpp 144
+    //  example/term_explanation/rvalue_lvalue_ut.cpp 158
 
     ASSERT_EQ(1, g(int{}));  // int{}はrvalue -> g-1が呼ばれ、内部でf-1が呼ばれる
 
@@ -9269,7 +9315,7 @@ forwardingリファレンスは一見rvalueリファレンスのように見え�
     g(std::vector<std::string>{"rvalue"});  // 引数はrvalue
 ```
 
-下記のコードは[ジェネリックラムダ](term_explanation.md#SS_19_11_4)の引数をforwardingリファレンスにした例である。
+下記のコードは[ジェネリックラムダ](term_explanation.md#SS_19_11_5)の引数をforwardingリファレンスにした例である。
 
 ```cpp
     //  example/term_explanation/universal_ref_ut.cpp 47

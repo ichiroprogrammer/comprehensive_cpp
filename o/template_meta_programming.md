@@ -72,7 +72,7 @@ __この章の構成__
 &emsp;&emsp; [ログ取得ライブラリの開発](template_meta_programming.md#SS_13_1)  
 &emsp;&emsp;&emsp; [要件](template_meta_programming.md#SS_13_1_1)  
 &emsp;&emsp;&emsp; [ログ取得ライブラリのインターフェース](template_meta_programming.md#SS_13_1_2)  
-&emsp;&emsp;&emsp; [パラメータパック](template_meta_programming.md#SS_13_1_3)  
+&emsp;&emsp;&emsp; [パラメータパックを使用したテクニック](template_meta_programming.md#SS_13_1_3)  
 &emsp;&emsp;&emsp; [Loggerの実装](template_meta_programming.md#SS_13_1_4)  
 &emsp;&emsp;&emsp; [ユーザ定義型とそのoperator\<\<のname lookup](template_meta_programming.md#SS_13_1_5)  
 &emsp;&emsp;&emsp; [Ints_tのログ登録](template_meta_programming.md#SS_13_1_6)  
@@ -192,11 +192,10 @@ C言語プログラミングばかりをやりすぎて、
 「人は一昨日も行ったことを昨日も行ったという理由で、今日もそれを行う」
 という諺を思い出すと気持ちは分からなくもないが、 
 C++ではprintf(...)のような危険な可変長引数を取る関数を作ってはならない。
-パラメータパックを使って実装するべきである。
+[パラメータパック](term_explanation.md#SS_19_11_3)を使って実装するべきである。
 
-### パラメータパック <a id="SS_13_1_3"></a>
-C++11で導入されたパラメータパックはやや複雑なシンタックスを持つため、
-まずは単純な例から説明する。
+### パラメータパックを使用したテクニック <a id="SS_13_1_3"></a>
+[パラメータパック](term_explanation.md#SS_19_11_3)を使用するには独特なテクニックが必要となるため、まずは単純な例から説明する。
 
 次のような単体テストをパスする関数テンプレートsumをパラメータパックで実装することを考える。
 
@@ -2658,7 +2657,7 @@ is_same_sfinae_sは定数テンプレートであり、same_asはコンセプト
 IsSameSomeOfはこれまでの例とは少々異なり、
 
 * 第1パラメータが第2パラメータ以降で指定された型のどれかと一致する
-  SameAsSomeOfという名前の[コンセプト](term_explanation.md#SS_19_11_2)を[畳み込み式](term_explanation.md#SS_19_11_3)を使用し定義する
+  SameAsSomeOfという名前の[コンセプト](term_explanation.md#SS_19_11_2)を[畳み込み式](term_explanation.md#SS_19_11_4)を使用し定義する
 * SameAsSomeOfで制約したテンプレートパラメータをstd::bool_constantからIsSameSomeOfを派生させる
 
 のような特徴のを持つ。
@@ -2725,7 +2724,7 @@ Usが複数だった場合、[畳み込み式](--)を使用し上記の処理を
 
 #### OneOf <a id="SS_13_3_3_9"></a>
 OneOfは、[IsSameSomeOf](template_meta_programming.md#SS_13_3_3_8)同様の機能を持つコンセプトである。
-OneOfの実装にはシンプルに記述するための[畳み込み式](term_explanation.md#SS_19_11_3)を使用した。
+OneOfの実装にはシンプルに記述するための[畳み込み式](term_explanation.md#SS_19_11_4)を使用した。
 
 ```cpp
     //  h/nstd_concepts.h 52
@@ -5911,7 +5910,7 @@ std::vector\<std::string>へのオブジェクトの挿入は、文字列リテ�
 ```
 
 上記のgen_vectorはリカーシブコールを使って実装したが、
-[畳み込み式](term_explanation.md#SS_19_11_3)を使用した下記の実装の方がより明確である。
+[畳み込み式](term_explanation.md#SS_19_11_4)を使用した下記の実装の方がより明確である。
 
 ```cpp
     //  example/template_cpp17/universal_ref_ut.cpp 209
@@ -6071,7 +6070,7 @@ C++14からは下記のコードで示した通り引数にautoが使えるよ�
     ASSERT_EQ("0/1/2, 3/2/1, 6/5/4, 9/8/7", oss.str());
 ```
 
-この記法は[ジェネリックラムダ](term_explanation.md#SS_19_11_4)と呼ばれる。
+この記法は[ジェネリックラムダ](term_explanation.md#SS_19_11_5)と呼ばれる。
 この機能により関数の中で関数テンプレートと同等のものが定義できるようになった。
 
 #### ジェネリックラムダの内部構造 <a id="SS_13_7_2_1"></a>
@@ -7826,7 +7825,7 @@ C++17からサポートされた「クラステンプレートのテンプレー
   (「[関数型マクロ](programming_convention.md#SS_3_6_1)」参照)
   。
 
-* 可変長引数を持つ関数の実装には[パラメータパック](template_meta_programming.md#SS_13_1_3)を使う。
+* 可変長引数を持つ関数の実装には[パラメータパック](term_explanation.md#SS_19_11_3)を使う。
 
 * 処理速度や関数のリターンの型に影響する場合があるため、
   パラメータパックの処理の順番に気を付ける(「[前から演算するパラメータパック](template_meta_programming.md#SS_13_1_3_2)」参照)。

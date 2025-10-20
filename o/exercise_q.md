@@ -5546,7 +5546,7 @@ ___
     }
 ```
 
-* 参照 [パラメータパック](template_meta_programming.md#SS_13_1_3)
+* 参照 [パラメータパック](term_explanation.md#SS_19_11_3)
 * [解答例-パラメータパック](exercise_a.md#SS_21_11_1)
 
 
