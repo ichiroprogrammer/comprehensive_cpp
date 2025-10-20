@@ -5546,7 +5546,7 @@ ___
     }
 ```
 
-* 参照 [パラメータパック](term_explanation.md#SS_19_11_3)
+* 参照 [パラメータパック](term_explanation.md#SS_19_11_4)
 * [解答例-パラメータパック](exercise_a.md#SS_21_11_1)
 
 
@@ -5704,7 +5704,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_void_f](template_meta_programming.md#SS_13_3_2_1)
+* 参照 [is_void_f](template_meta_programming.md#SS_13_3_1_1)
 * [解答例-SFINAEを利用しない関数テンプレートの特殊化によるis_void](exercise_a.md#SS_21_11_5)
 
 
@@ -5734,7 +5734,7 @@ ___
 ```cpp
 ```
 
-* 参照 [is_void_s](template_meta_programming.md#SS_13_3_2_2)
+* 参照 [is_void_s](template_meta_programming.md#SS_13_3_1_2)
 * [解答例-SFINAEを利用しないクラステンプレートの特殊化によるis_void](exercise_a.md#SS_21_11_6)
 
 
@@ -5765,7 +5765,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_void_sfinae_f](template_meta_programming.md#SS_13_3_2_3)
+* 参照 [is_void_sfinae_f](template_meta_programming.md#SS_13_3_1_3)
 * [解答例-SFINAEを利用した関数テンプレートの特殊化によるis_void](exercise_a.md#SS_21_11_7)
 
 
@@ -5797,7 +5797,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_void_sfinae_s](template_meta_programming.md#SS_13_3_2_4)
+* 参照 [is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)
 * [解答例-SFINAEを利用したクラステンプレートの特殊化によるis_void](exercise_a.md#SS_21_11_8)
 
 
@@ -5819,7 +5819,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_same_templ](template_meta_programming.md#SS_13_3_3_7)
+* 参照 [is_same_templ](template_meta_programming.md#SS_13_3_2_7)
 * [解答例-テンプレートテンプレートパラメータ](exercise_a.md#SS_21_11_9)
 
 
@@ -5851,7 +5851,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [IsSameSomeOf](template_meta_programming.md#SS_13_3_3_8)
+* 参照 [IsSameSomeOf](template_meta_programming.md#SS_13_3_2_8)
 * [解答例-テンプレートパラメータを可変長にしたstd::is_same](exercise_a.md#SS_21_11_10)
 
 
@@ -5875,7 +5875,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [関数の存在の診断](template_meta_programming.md#SS_13_3_5)
+* 参照 [関数の存在の診断](template_meta_programming.md#SS_13_3_4)
 * [解答例-メンバ関数の存在の診断](exercise_a.md#SS_21_11_11)
 
 
@@ -5905,7 +5905,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [関数の存在の診断](template_meta_programming.md#SS_13_3_5)
+* 参照 [関数の存在の診断](template_meta_programming.md#SS_13_3_4)
 * [解答例-範囲for文のオペランドになれるかどうかの診断](exercise_a.md#SS_21_11_12)
 
 
@@ -5931,7 +5931,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [関数の存在の診断](template_meta_programming.md#SS_13_3_5)
+* 参照 [関数の存在の診断](template_meta_programming.md#SS_13_3_4)
 * [解答例-配列の長さの取り出し](exercise_a.md#SS_21_11_13)
 
 
@@ -5959,7 +5959,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [ValueTypeの実装](template_meta_programming.md#SS_13_3_5_15)
+* 参照 [ValueTypeの実装](template_meta_programming.md#SS_13_3_4_15)
 * [解答例-配列の次元の取り出し](exercise_a.md#SS_21_11_14)
 
 

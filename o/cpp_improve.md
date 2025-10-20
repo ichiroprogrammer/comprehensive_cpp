@@ -76,8 +76,8 @@ ___
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
 |テンプレート引数の指定に>>の許可    |vector<list<int>> のような記述の許可。「[テンプレートメタプログラミング](template_meta_programming.md#SS_13)」参照       |
 |[extern template](programming_convention.md#SS_3_9_6)              |テンプレートのインスタンス化の抑止                                                         |
-|[エイリアステンプレート](term_explanation.md#SS_19_11_10)       |エイリアスをテンプレート化できる                                                           |
-|[パラメータパック](term_explanation.md#SS_19_11_3)             |任意の数のテンプレートパラメータを受け取れるようにする                                     |
+|[エイリアステンプレート](term_explanation.md#SS_19_11_11)       |エイリアスをテンプレート化できる                                                           |
+|[パラメータパック](term_explanation.md#SS_19_11_4)             |任意の数のテンプレートパラメータを受け取れるようにする                                     |
 |テンプレートパラメータ型の制限の緩和|ローカル型と無名型を、テンプレート引数として使用することを許可                             |
 |任意の式による[SFINAE](term_explanation.md#SS_19_11_1)         |特定の式が[ill-formed](term_explanation.md#SS_19_19_5)か否かで、その関数をオーバーロード解決に含めるかどうかを決定する|
 |テンプレートのエクスポート機能      |削除                                                                                       |
@@ -113,7 +113,7 @@ ___
 |[std::forward](term_explanation.md#SS_19_9_1_2) |[perfect forwarding](term_explanation.md#SS_19_15_5)の実装、利用|
 
 #### stdコンテナ <a id="SS_18_1_6_2"></a>
-[コンテナ](term_explanation.md#SS_19_9_5)全般が[moveセマンティクス](term_explanation.md#SS_19_18_3)に対応したため、
+[コンテナ](term_explanation.md#SS_19_9_6)全般が[moveセマンティクス](term_explanation.md#SS_19_18_3)に対応したため、
 テンプレートのパラメータTが、コピー構築可能(`is_copy_constructible<T> == true`)な型だけでなく、
 ムーブ構築(is_move_constructible)のみ可能な型も受け付けるられるようになった。
 push_back()やinsert()等の要素追加のためのメンバ関数が、
@@ -124,20 +124,20 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |機能                            |説明                                                                                |
 |:-------------------------------|:-----------------------------------------------------------------------------------|
 |std::array                      |このコンテナは固定長配列クラスを表す「[配列](programming_convention.md#SS_3_1_7)」参照)。         |
-|[std::forward_list](term_explanation.md#SS_19_9_5_1_1)        |このは単方向リンクリストの実装である。                                              |
-|[std::unordered_map](term_explanation.md#SS_19_9_5_3_2)       |同一キーの要素を複数格納しない、格納順が規定されていない連想配列の実装であるである。|
-|[std::unordered_set](term_explanation.md#SS_19_9_5_3_1)       |同一キーの要素を複数格納できず、格納順が規定されていないコンテナである。            |
-|[std::type_index](term_explanation.md#SS_19_9_5_3_3)          |型情報型を連想コンテナのキーとして使用するためのクラス。                            |
+|[std::forward_list](term_explanation.md#SS_19_9_6_1_1)        |このは単方向リンクリストの実装である。                                              |
+|[std::unordered_map](term_explanation.md#SS_19_9_6_3_2)       |同一キーの要素を複数格納しない、格納順が規定されていない連想配列の実装であるである。|
+|[std::unordered_set](term_explanation.md#SS_19_9_6_3_1)       |同一キーの要素を複数格納できず、格納順が規定されていないコンテナである。            |
+|[std::type_index](term_explanation.md#SS_19_9_6_3_3)          |型情報型を連想コンテナのキーとして使用するためのクラス。                            |
 
 #### 並列処理 <a id="SS_18_1_6_3"></a>
 |機能                          | 説明                                                    |
 |:----------------------------:|:--------------------------------------------------------|
-| [std::thread](term_explanation.md#SS_19_9_2_1)           | スレッドの生成                                          |
-| [std::atomic](term_explanation.md#SS_19_9_2_3)           | 単純なオブジェクトのアトミック処理                      |
-| [std::mutex](term_explanation.md#SS_19_9_2_2)            | スレッド間の競合の回避                                  |
-| [std::lock_guard](term_explanation.md#SS_19_9_3_1)       | ミューテックスのロック/アンロックを管理するためクラス   |
-| [std::unique_lock](term_explanation.md#SS_19_9_3_2)      | ミューテックスのロック/アンロックを管理するためクラス   |
-| [std::scoped_lock](term_explanation.md#SS_19_9_3_3)      | ミューテックスのロック/アンロックを管理するためクラス   |
+| [std::thread](term_explanation.md#SS_19_9_3_1)           | スレッドの生成                                          |
+| [std::atomic](term_explanation.md#SS_19_9_3_3)           | 単純なオブジェクトのアトミック処理                      |
+| [std::mutex](term_explanation.md#SS_19_9_3_2)            | スレッド間の競合の回避                                  |
+| [std::lock_guard](term_explanation.md#SS_19_9_4_1)       | ミューテックスのロック/アンロックを管理するためクラス   |
+| [std::unique_lock](term_explanation.md#SS_19_9_4_2)      | ミューテックスのロック/アンロックを管理するためクラス   |
+| [std::scoped_lock](term_explanation.md#SS_19_9_4_3)      | ミューテックスのロック/アンロックを管理するためクラス   |
 
 
 ## C++14の主な新規機能 <a id="SS_18_2"></a>
@@ -148,9 +148,9 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |[関数の戻り値型auto](term_explanation.md#SS_19_12_6)                           |戻り値の型を後置する関羽鵜テンプレート/関数定義とラムダ式の戻り値型にautoに      |
 |[decltype(auto)](term_explanation.md#SS_19_12_3)                               |decltypeの規則による変数の[型推論](term_explanation.md#SS_19_12)                                 |
 |[ラムダ式](term_explanation.md#SS_19_8_3)の初期化キャプチャ          |キャプチャに代入構文を導入し、一つの変数に複数のキャプチャ方法を指定可能にする   |
-|[ジェネリックラムダ](term_explanation.md#SS_19_11_5)                           |ラムダ式のパラメータを auto にすることで、ジェネリックな関数呼び出しに           |
-|[変数テンプレート](term_explanation.md#SS_19_11_9)            |変数定義時のテンプレート指定を可能に                                             |
-|constexpr関数内での条件分岐とループの文を許可       |[constexpr if文](term_explanation.md#SS_19_11_11)                                                            |
+|[ジェネリックラムダ](term_explanation.md#SS_19_11_6)                           |ラムダ式のパラメータを auto にすることで、ジェネリックな関数呼び出しに           |
+|[変数テンプレート](term_explanation.md#SS_19_11_10)            |変数定義時のテンプレート指定を可能に                                             |
+|constexpr関数内での条件分岐とループの文を許可       |[constexpr if文](term_explanation.md#SS_19_11_12)                                                            |
 |structの[NSDMI](term_explanation.md#SS_19_5_6_1)の対応                          |                                                                                 |
 |structのネストする初期化における波カッコ省略を許可  |一様初期化と初期化子リストを組み合わせた際、二重に波カッコが不要に               |
 |[[deprecated]]属性                                  |「[属性構文](term_explanation.md#SS_19_7_1)」参照                                                          |
@@ -235,12 +235,12 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |[newのアライメント指定](cpp_improve.md#SS_18_3_1_2)                 |                                                                                                   |
 |[初期化付きif/switch文](term_explanation.md#SS_19_7_5)                 |if文とswitch文の条件式と初期化を分離する構文                                                       |
 |[[fallthrough]]属性                          |「[属性構文](term_explanation.md#SS_19_7_1)」参照                                                                            |
-|[constexpr if文](term_explanation.md#SS_19_11_11)                        |if constexpr(cond) とすることで、その if 文はコンパイル時に処理                                    |
+|[constexpr if文](term_explanation.md#SS_19_11_12)                        |if constexpr(cond) とすることで、その if 文はコンパイル時に処理                                    |
 |[範囲for文のイテレータ型の不一致の許可](cpp_improve.md#SS_18_3_1_3) |std::istream_iteratorとstd::istreamに利用                                                          |
 |[ラムダ式での\*thisのコピーキャプチャ](cpp_improve.md#SS_18_3_1_4)  |キャプチャリストに\*this を指定することで、\*thisをコピーキャプチャする                            |
 |[constexprラムダ](term_explanation.md#SS_19_4_7)             |ラムダ式の関数オブジェクトのconstexpr指定を可能に                                                  |
-|[std::optional](term_explanation.md#SS_19_9_6)                         |関数の戻り値の無効表現を行うためのクラステンプレート                                               |
-|[std::variant](term_explanation.md#SS_19_9_7)                          |型安全なunion機能を提供するクラステンプレート                                                      |
+|[std::optional](term_explanation.md#SS_19_9_7)                         |関数の戻り値の無効表現を行うためのクラステンプレート                                               |
+|[std::variant](term_explanation.md#SS_19_9_8)                          |型安全なunion機能を提供するクラステンプレート                                                      |
 
 
 #### 単一要素の波カッコ初期化を非配列とする <a id="SS_18_3_1_1"></a>
@@ -466,8 +466,8 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 
 |機能                                                   |説明                                                                            |
 |:------------------------------------------------------|:-------------------------------------------------------------------------------|
-|[コンセプト](term_explanation.md#SS_19_11_2)                                      |キーワードconcept、requiresの導入。テンプレートパラメータの制約。               |
-|[autoパラメータによる関数テンプレートの簡易定義](term_explanation.md#SS_19_11_12)  |[ジェネリックラムダ](term_explanation.md#SS_19_11_5)と同様に関数パラメータをの型をautoにできる。           |
+|[コンセプト](term_explanation.md#SS_19_11_3)                                      |キーワードconcept、requiresの導入。テンプレートパラメータの制約。               |
+|[autoパラメータによる関数テンプレートの簡易定義](term_explanation.md#SS_19_11_13)  |[ジェネリックラムダ](term_explanation.md#SS_19_11_6)と同様に関数パラメータをの型をautoにできる。           |
 |[型の文脈でtypenameの省略を許可](cpp_improve.md#SS_18_4_4_1)                  |型しか現れない文脈では、typenameの省略を可能に                                  |
 |[非型テンプレートパラメータとしてクラス型を許可](cpp_improve.md#SS_18_4_4_2)  |                                                                                |
 |ADLのバグ修正                                          |[関数テンプレートに明示的に型指定した場合にADLで見つからない問題を修正](cpp_improve.md#SS_18_4_4_3)    |

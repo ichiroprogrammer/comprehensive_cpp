@@ -40,9 +40,9 @@ C言語のqsort()のように強引なキャストを使い、この増加をあ
 ログ取得ライブラリやSTLを応用したNstdライブラリの実装を通して、
 これらのテクニックや、使用上の注意点について解説する。
 
-c++20から導入された[コンセプト](term_explanation.md#SS_19_11_2)によりジェネリックプログラミングは、
+c++20から導入された[コンセプト](term_explanation.md#SS_19_11_3)によりジェネリックプログラミングは、
 開発容易性、可読性、保守性が大きく向上しため、この章のコード例には、
-[コンセプト](term_explanation.md#SS_19_11_2)(`concept`, `requires`)を多用した。
+[コンセプト](term_explanation.md#SS_19_11_3)(`concept`, `requires`)を多用した。
 
 が、この副作用として、
 c++17までしか使えない読者の参考にならないコードが増えてしまうことを避けるため、
@@ -84,11 +84,10 @@ __この章の構成__
 &emsp;&emsp;&emsp; [初期化子リストの副作用](template_meta_programming.md#SS_13_2_4)  
 
 &emsp;&emsp; [メタ関数のテクニック](template_meta_programming.md#SS_13_3)  
-&emsp;&emsp;&emsp; [STLのtype_traits](template_meta_programming.md#SS_13_3_1)  
-&emsp;&emsp;&emsp; [is_void_xxxの実装](template_meta_programming.md#SS_13_3_2)  
-&emsp;&emsp;&emsp; [is_same_xxxの実装](template_meta_programming.md#SS_13_3_3)  
-&emsp;&emsp;&emsp; [AreConvertibleXxxの実装](template_meta_programming.md#SS_13_3_4)  
-&emsp;&emsp;&emsp; [関数の存在の診断](template_meta_programming.md#SS_13_3_5)  
+&emsp;&emsp;&emsp; [is_void_xxxの実装](template_meta_programming.md#SS_13_3_1)  
+&emsp;&emsp;&emsp; [is_same_xxxの実装](template_meta_programming.md#SS_13_3_2)  
+&emsp;&emsp;&emsp; [AreConvertibleXxxの実装](template_meta_programming.md#SS_13_3_3)  
+&emsp;&emsp;&emsp; [関数の存在の診断](template_meta_programming.md#SS_13_3_4)  
 
 &emsp;&emsp; [Nstdライブラリの開発2](template_meta_programming.md#SS_13_4)  
 &emsp;&emsp;&emsp; [SafeArray2の開発](template_meta_programming.md#SS_13_4_1)  
@@ -192,10 +191,10 @@ C言語プログラミングばかりをやりすぎて、
 「人は一昨日も行ったことを昨日も行ったという理由で、今日もそれを行う」
 という諺を思い出すと気持ちは分からなくもないが、 
 C++ではprintf(...)のような危険な可変長引数を取る関数を作ってはならない。
-[パラメータパック](term_explanation.md#SS_19_11_3)を使って実装するべきである。
+[パラメータパック](term_explanation.md#SS_19_11_4)を使って実装するべきである。
 
 ### パラメータパックを使用したテクニック <a id="SS_13_1_3"></a>
-[パラメータパック](term_explanation.md#SS_19_11_3)を使用するには独特なテクニックが必要となるため、まずは単純な例から説明する。
+[パラメータパック](term_explanation.md#SS_19_11_4)を使用するには独特なテクニックが必要となるため、まずは単純な例から説明する。
 
 次のような単体テストをパスする関数テンプレートsumをパラメータパックで実装することを考える。
 
@@ -347,7 +346,7 @@ sum(3)は1つ目のsumにマッチするため、最終的には下記のよう�
 C言語での可変長引数関数では不可能だった引数の型チェックができるようになったため、
 C言語でのランタイムエラーがコンパイルエラーにできるようになった。
 
-なお、上記コードで使用した[std::is_same](template_meta_programming.md#SS_13_3_1_3)は、
+なお、上記コードで使用した[std::is_same](term_explanation.md#SS_19_9_2_4)は、
 与えられた2つのテンプレートパラメータが同じ型であった場合、
 valueをtrueで初期化するクラステンプレートであり、 type_traitsで定義されている
 (後ほど使用するstd::is_same_vはstd::is_same<>::valueと等価な定数テンプレート)。
@@ -1532,283 +1531,19 @@ SafeArray2のコードは、
 その後SafeArray2を見ていくことにする。
 
 ## メタ関数のテクニック <a id="SS_13_3"></a>
-本章で扱うメタ関数とは、型、定数、クラステンプレート等からなるテンプレート引数から、
-型、エイリアス、定数等を宣言、定義するようなクラステンプレート、関数テンプレート、
-定数テンプレート、エイリアステンプレートを指す
-(本章ではこれらをまとめて単にテンプレート呼ぶことがある)。
+本節では、[type_traits](term_explanation.md#SS_19_9_2)の[メタ関数](term_explanation.md#SS_19_11_2)の実装等で広く使われいる下記のようなテクニックを
+
+- [std::is_void](term_explanation.md#SS_19_9_2_7)と同等のメタ関数を[is_void_xxxの実装](template_meta_programming.md#SS_13_3_1)
+- [std::is_same](term_explanation.md#SS_19_9_2_4)と同等のメタ関数を[is_same_xxxの実装](template_meta_programming.md#SS_13_3_2)
+- std::is_convertibleと同等のメタ関数を[AreConvertibleXxxの実装](template_meta_programming.md#SS_13_3_3)
+
+で紹介する。
+
 
 [演習-エイリアステンプレート](exercise_q.md#SS_20_11_2)  
 
-### STLのtype_traits <a id="SS_13_3_1"></a>
-メタ関数ライブラリの代表的実装例はSTLの
-[type_traits](https://cpprefjp.github.io/reference/type_traits.html)である。
 
-ここでは、よく使ういくつかのtype_traitsテンプレートの使用例や解説を示す。
-
-
-#### std::true_type/std::false_type <a id="SS_13_3_1_1"></a>
-std::true_type/std::false_typeは真/偽を返すSTLメタ関数群の戻り型となる型エイリアスであるため、
-最も使われるテンプレートの一つである。
-
-これらは、下記で確かめられる通り、後述する[std::integral_constant](template_meta_programming.md#SS_13_3_1_2)を使い定義されている。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 13
-
-    // std::is_same_vの2パラメータが同一であれば、std::is_same_v<> == true
-    static_assert(std::is_same_v<std::integral_constant<bool, true>, std::true_type>);
-    static_assert(std::is_same_v<std::integral_constant<bool, false>, std::false_type>);
-```
-
-それぞれの型が持つvalue定数は、下記のように定義されている。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 20
-
-    static_assert(std::true_type::value, "must be true");
-    static_assert(!std::false_type::value, "must be false");
-```
-
-これらが何の役に立つのか直ちに理解することは難しいが、
-true/falseのメタ関数版と考えれば、追々理解できるだろう。
-
-以下に簡単な使用例を示す。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 29
-
-    // 引数の型がintに変換できるかどうかを判定する関数
-    // decltypeの中でのみ使用されるため、定義は不要
-    constexpr std::true_type  IsCovertibleToInt(int);  // intに変換できる型はこちら
-    constexpr std::false_type IsCovertibleToInt(...);  // それ以外はこちら
-```
-
-上記の単体テストは下記のようになる。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 40
-
-    static_assert(decltype(IsCovertibleToInt(1))::value);
-    static_assert(decltype(IsCovertibleToInt(1u))::value);
-    static_assert(!decltype(IsCovertibleToInt(""))::value);  // ポインタはintに変換不可
-
-    struct ConvertibleToInt {
-        operator int();
-    };
-
-    struct NotConvertibleToInt {};
-
-    static_assert(decltype(IsCovertibleToInt(ConvertibleToInt{}))::value);
-    static_assert(!decltype(IsCovertibleToInt(NotConvertibleToInt{}))::value);
-
-    // なお、IsCovertibleToInt()やConvertibleToInt::operator int()は実際に呼び出されるわけでは
-    // ないため、定義は必要なく宣言のみがあれば良い。
-```
-
-IsCovertibleToIntの呼び出しをdecltypeのオペランドにすることで、
-std::true_typeかstd::false_typeを受け取ることができる。
-
-#### std::integral_constant <a id="SS_13_3_1_2"></a>
-std::integral_constantは
-「テンプレートパラメータとして与えられた型とその定数から新たな型を定義する」
-クラステンプレートである。
-
-以下に簡単な使用例を示す。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 62
-
-    using int3 = std::integral_constant<int, 3>;
-
-    // std::is_same_vの2パラメータが同一であれば、std::is_same_v<> == true
-    static_assert(std::is_same_v<int, int3::value_type>);
-    static_assert(std::is_same_v<std::integral_constant<int, 3>, int3::type>);
-    static_assert(int3::value == 3);
-
-    using bool_true = std::integral_constant<bool, true>;
-
-    static_assert(std::is_same_v<bool, bool_true::value_type>);
-    static_assert(std::is_same_v<std::integral_constant<bool, true>, bool_true::type>);
-    static_assert(bool_true::value == true);
-```
-
-また、すでに示したようにstd::true_type/std::false_typeを実装するためのクラステンプレートでもある。
-
-#### std::is_same <a id="SS_13_3_1_3"></a>
-
-すでに上記の例でも使用したが、std::is_sameは2つのテンプレートパラメータが
-
-* 同じ型である場合、std::true_type
-* 違う型である場合、std::false_type
-
-から派生した型となる。
-
-以下に簡単な使用例を示す。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 99
-
-    static_assert(std::is_same<int, int>::value);
-    static_assert(std::is_same<int, int32_t>::value);   // 64ビットg++/clang++
-    static_assert(!std::is_same<int, int64_t>::value);  // 64ビットg++/clang++
-    static_assert(std::is_same<std::string, std::basic_string<char>>::value);
-    static_assert(std::is_same<typename std::vector<int>::reference, int&>::value);
-```
-
-また、 C++17で導入されたstd::is_same_vは、定数テンプレートを使用し、
-下記のように定義されている。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 90
-
-    template <typename T, typename U>
-    constexpr bool is_same_v{std::is_same<T, U>::value};
-```
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 108
-
-    static_assert(is_same_v<int, int>);
-    static_assert(is_same_v<int, int32_t>);   // 64ビットg++/clang++
-    static_assert(!is_same_v<int, int64_t>);  // 64ビットg++/clang++
-    static_assert(is_same_v<std::string, std::basic_string<char>>);
-    static_assert(is_same_v<typename std::vector<int>::reference, int&>);
-```
-
-このような簡潔な記述の一般形式は、
-
-```
-   T::value  -> T_v
-   T::type   -> T_t
-```
-
-のように定義されている(このドキュメントのほとんど場所では、簡潔な形式を用いる)。
-
-第1テンプレートパラメータが第2テンプレートパラメータの基底クラスかどうかを判断する
-std::is_base_ofを使うことで下記のようにstd::is_sameの基底クラス確認することもできる。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 117
-
-    static_assert(std::is_base_of_v<std::true_type, std::is_same<int, int>>);
-    static_assert(std::is_base_of_v<std::false_type, std::is_same<int, char>>);
-```
-
-
-#### std::enable_if <a id="SS_13_3_1_4"></a>
-std::enable_ifは、bool値である第1テンプレートパラメータが
-
-* trueである場合、型である第2テンプレートパラメータをメンバ型typeとして宣言する。
-* falseである場合、メンバ型typeを持たない。
-
-下記のコードはクラステンプレートの特殊化を用いたstd::enable_ifの実装例である。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 124
-
-    template <bool T_F, typename T = void>
-    struct enable_if;
-
-    template <typename T>
-    struct enable_if<true, T> {
-        using type = T;
-    };
-
-    template <typename T>
-    struct enable_if<false, T> {  // メンバエイリアスtypeを持たない
-    };
-
-    template <bool COND, typename T = void>
-    using enable_if_t = typename enable_if<COND, T>::type;
-```
-
-std::enable_ifの使用例を下記に示す。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 148
-
-    static_assert(std::is_same_v<void, std::enable_if_t<true>>);
-    static_assert(std::is_same_v<int, std::enable_if_t<true, int>>);
-```
-
-実装例から明らかなように
-
-* std::enable_if\<true>::typeは[well-formed](term_explanation.md#SS_19_19_6)
-* std::enable_if\<false>::typeは[ill-formed](term_explanation.md#SS_19_19_5)
-
-となるため、下記のコードはコンパイルできない。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 155
-
-    // 下記はill-formedとなるため、コンパイルできない。
-    static_assert(std::is_same_v<void, std::enable_if_t<false>>);
-    static_assert(std::is_same_v<int, std::enable_if_t<false, int>>);
-```
-
-std::enable_ifのこの特性と後述する[SFINAE](term_explanation.md#SS_19_11_1)により、
-様々な静的ディスパッチを行うことができる。
-
-
-#### std::conditional <a id="SS_13_3_1_5"></a>
-
-std::conditionalは、bool値である第1テンプレートパラメータが
-
-* trueである場合、第2テンプレートパラメータ
-* falseである場合、第3テンプレートパラメータ
-
-をメンバ型typeとして宣言する。
-
-下記のコードはクラステンプレートの特殊化を用いたstd::conditionalの実装例である。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 164
-
-    template <bool T_F, typename, typename>
-    struct conditional;
-
-    template <typename T, typename U>
-    struct conditional<true, T, U> {
-        using type = T;
-    };
-
-    template <typename T, typename U>
-    struct conditional<false, T, U> {
-        using type = U;
-    };
-
-    template <bool COND, typename T, typename U>
-    using conditional_t = typename conditional<COND, T, U>::type;
-```
-
-std::conditionalの使用例を下記に示す。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 189
-
-    static_assert(std::is_same_v<int, std::conditional_t<true, int, char>>);
-    static_assert(std::is_same_v<char, std::conditional_t<false, int, char>>);
-```
-
-#### std::is_void <a id="SS_13_3_1_6"></a>
-std::is_voidはテンプレートパラメータの型が
-
-* voidである場合、std::true_type
-* voidでない場合、std::false_type
-
-から派生した型となる。
-
-以下に簡単な使用例を示す。
-
-```cpp
-    //  example/template_cpp17/type_traits_ut.cpp 82
-
-    static_assert(std::is_void<void>::value);
-    static_assert(!std::is_void<int>::value);
-    static_assert(!std::is_void<std::string>::value);
-```
-
-### is_void_xxxの実装 <a id="SS_13_3_2"></a>
+### is_void_xxxの実装 <a id="SS_13_3_1"></a>
 ここではstd::is_voidに似た以下のような仕様を持ついくつかのテンプレートis_void_xxxの実装を考える。
 
 |テンプレートパラメータ|戻り値            |
@@ -1820,13 +1555,13 @@ std::is_voidはテンプレートパラメータの型が
 
 |is_void_xxx                  |実装方法                                               |
 |-----------------------------|-------------------------------------------------------|
-|[is_void_f](template_meta_programming.md#SS_13_3_2_1)             |関数テンプレートの特殊化                               |
-|[is_void_s](template_meta_programming.md#SS_13_3_2_2)             |クラステンプレートの特殊化                             |
-|[is_void_sfinae_f](template_meta_programming.md#SS_13_3_2_3)      |FINAEと関数テンプレートのオーバーロード                |
-|[is_void_sfinae_s](template_meta_programming.md#SS_13_3_2_4)      |FINAEとクラステンプレートの特殊化                      |
-|[is_void_concept_s](template_meta_programming.md#SS_13_3_2_5)     |コンセプトとクラステンプレートの特殊化                 |
-|[is_void_ena_s](template_meta_programming.md#SS_13_3_2_6)         |std::enable_ifによるSFINAEとクラステンプレートの特殊化 |
-|[is_void_cond_s](template_meta_programming.md#SS_13_3_2_7)        |std::conditionalと関数テンプレートの特殊化             |
+|[is_void_f](template_meta_programming.md#SS_13_3_1_1)             |関数テンプレートの特殊化                               |
+|[is_void_s](template_meta_programming.md#SS_13_3_1_2)             |クラステンプレートの特殊化                             |
+|[is_void_sfinae_f](template_meta_programming.md#SS_13_3_1_3)      |FINAEと関数テンプレートのオーバーロード                |
+|[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)      |FINAEとクラステンプレートの特殊化                      |
+|[is_void_concept_s](template_meta_programming.md#SS_13_3_1_5)     |コンセプトとクラステンプレートの特殊化                 |
+|[is_void_ena_s](template_meta_programming.md#SS_13_3_1_6)         |std::enable_ifによるSFINAEとクラステンプレートの特殊化 |
+|[is_void_cond_s](template_meta_programming.md#SS_13_3_1_7)        |std::conditionalと関数テンプレートの特殊化             |
 
 なお、実装例をシンプルに保つため、
 理解の妨げとなり得る下記のような正確性(例外条件の対応)等のためのコードを最低限に留めた。
@@ -1839,7 +1574,7 @@ std::is_voidはテンプレートパラメータの型が
 というここでの目的を見失わないための措置である。
 
 
-#### is_void_f <a id="SS_13_3_2_1"></a>
+#### is_void_f <a id="SS_13_3_1_1"></a>
 関数テンプレートの特殊化を使用したis_void_fの実装は以下のようになる。
 
 ```cpp
@@ -1881,7 +1616,7 @@ std::is_voidはテンプレートパラメータの型が
 
 [演習-SFINAEを利用しない関数テンプレートの特殊化によるis_void](exercise_q.md#SS_20_11_5)
 
-#### is_void_s <a id="SS_13_3_2_2"></a>
+#### is_void_s <a id="SS_13_3_1_2"></a>
 クラステンプレートの特殊化を使用したis_void_sの実装は以下のようになる。
 
 ```cpp
@@ -1913,7 +1648,7 @@ is_void_fと同様に単純なので解説は不要だろう。これらの単�
 
 [演習-SFINAEを利用しないクラステンプレートの特殊化によるis_void](exercise_q.md#SS_20_11_6)
 
-#### is_void_sfinae_f <a id="SS_13_3_2_3"></a>
+#### is_void_sfinae_f <a id="SS_13_3_1_3"></a>
 [SFINAE](term_explanation.md#SS_19_11_1)を使用した関数テンプレートis_void_sfinae_fの実装は以下のようになる。
 
 ```cpp
@@ -2039,7 +1774,7 @@ is_void_sfinae_fは下記のように実装することも可能である。こ�
 
 [演習-SFINAEを利用した関数テンプレートの特殊化によるis_void](exercise_q.md#SS_20_11_7)
 
-#### is_void_sfinae_s <a id="SS_13_3_2_4"></a>
+#### is_void_sfinae_s <a id="SS_13_3_1_4"></a>
 [SFINAE](term_explanation.md#SS_19_11_1)を使用したクラステンプレートis_void_sfinae_sの実装は以下のようになる。
 
 ```cpp
@@ -2140,14 +1875,14 @@ T != voidの場合、 2つ目のis_void_sfinae_sはill-formedになり、name lo
 が「well-formedであった場合に生成される型」が一致することを利用した静的ディスパッチは、
 SFINAEとクラステンプレートの特殊化を組み合わせたメタ関数の典型的な実装パターンである。
 ただし、一般にはill-formedを起こすためにst::enable_ifを使うことが多いため、
-「[is_void_ena_s](template_meta_programming.md#SS_13_3_2_6)の実装」でその例を示す。
+「[is_void_ena_s](template_meta_programming.md#SS_13_3_1_6)の実装」でその例を示す。
 
 [演習-SFINAEを利用したクラステンプレートの特殊化によるis_void](exercise_q.md#SS_20_11_8)
 
-#### is_void_concept_s <a id="SS_13_3_2_5"></a>
-[is_void_sfinae_s](template_meta_programming.md#SS_13_3_2_4)の実装で使用したSFINAEを回避し、
+#### is_void_concept_s <a id="SS_13_3_1_5"></a>
+[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)の実装で使用したSFINAEを回避し、
 コンセプトを使用することで可読性の向上が見込める。
-以下の実装で使用した[same_as](template_meta_programming.md#SS_13_3_3_6)は\<concepts>で定義されているコンセプトと同様のものである。
+以下の実装で使用した[same_as](template_meta_programming.md#SS_13_3_2_6)は\<concepts>で定義されているコンセプトと同様のものである。
 
 ```cpp
     //  example/template/is_void_ut.cpp 193
@@ -2187,7 +1922,7 @@ SFINAEとクラステンプレートの特殊化を組み合わせたメタ関�
     constexpr bool is_void_concept_s_v<T> = true;
 ```
 
-以下に示した通り、[is_void_sfinae_s](template_meta_programming.md#SS_13_3_2_4)の実装で示した定数テンプレートのテストと同様になっている。
+以下に示した通り、[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)の実装で示した定数テンプレートのテストと同様になっている。
 
 ```cpp
     //  example/template/is_void_ut.cpp 232
@@ -2197,8 +1932,8 @@ SFINAEとクラステンプレートの特殊化を組み合わせたメタ関�
     static_assert(is_void_concept_s_v<void>);
 ```
 
-#### is_void_ena_s <a id="SS_13_3_2_6"></a>
-[std::enable_if](template_meta_programming.md#SS_13_3_1_4)による[SFINAE](term_explanation.md#SS_19_11_1)とクラステンプレートの特殊化を使用した
+#### is_void_ena_s <a id="SS_13_3_1_6"></a>
+[std::enable_if](term_explanation.md#SS_19_9_2_5)による[SFINAE](term_explanation.md#SS_19_11_1)とクラステンプレートの特殊化を使用した
 is_void_ena_sの実装は以下のようになる。
 
 ```cpp
@@ -2218,7 +1953,7 @@ is_void_ena_sの実装は以下のようになる。
     constexpr bool is_void_ena_s_v{is_void_ena_s<T>::value};
 ```
 
-この例では、「[is_void_sfinae_s](template_meta_programming.md#SS_13_3_2_4)の実装」の
+この例では、「[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)の実装」の
 
 ```cpp
     //  example/template/is_void_ut.cpp 163
@@ -2237,9 +1972,9 @@ is_void_ena_sの実装は以下のようになる。
 ```
 
 で行っている。
-std::enable_ifの値パラメータis_void_f\<T>()は、「[is_void_f](template_meta_programming.md#SS_13_3_2_1)の実装」で示したものである。
+std::enable_ifの値パラメータis_void_f\<T>()は、「[is_void_f](template_meta_programming.md#SS_13_3_1_1)の実装」で示したものである。
 
-単体テストは、「[is_void_sfinae_s](template_meta_programming.md#SS_13_3_2_4)の実装」で示したものとほぼ同様で、以下のようになる。
+単体テストは、「[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)の実装」で示したものとほぼ同様で、以下のようになる。
 
 ```cpp
     //  example/template/is_void_ut.cpp 264
@@ -2255,8 +1990,8 @@ std::enable_ifの値パラメータis_void_f\<T>()は、「[is_void_f](template_
 ```
 
 
-#### is_void_cond_s <a id="SS_13_3_2_7"></a>
-[std::conditional](template_meta_programming.md#SS_13_3_1_5)と関数テンプレートの特殊化を使用したis_void_cond_sの実装は以下のようになる。
+#### is_void_cond_s <a id="SS_13_3_1_7"></a>
+[std::conditional](term_explanation.md#SS_19_9_2_6)と関数テンプレートの特殊化を使用したis_void_cond_sの実装は以下のようになる。
 
 ```cpp
     //  example/template/is_void_ut.cpp 277
@@ -2268,9 +2003,9 @@ std::enable_ifの値パラメータis_void_f\<T>()は、「[is_void_f](template_
     constexpr bool is_void_cond_s_v{is_void_cond_s<T>::value};
 ```
 
-std::conditionalの値パラメータis_void_f\<T>()は、「[is_void_f](template_meta_programming.md#SS_13_3_2_1)の実装」で示したものである。
-この例では、SFINAEもクラステンプレートの特殊化も使用していないが、
-下記単体テストからわかる通り、「[is_void_sfinae_s](template_meta_programming.md#SS_13_3_2_4)の実装」と同じ機能を備えている。
+std::conditionalの値パラメータis_void_f\<T>()は、「[is_void_f](template_meta_programming.md#SS_13_3_1_1)の実装」で示したものである。
+この例では、[SFINAE](term_explanation.md#SS_19_11_1)もクラステンプレートの特殊化も使用していないが、
+下記単体テストからわかる通り、「[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)の実装」と同じ機能を備えている。
 
 ```cpp
     //  example/template/is_void_ut.cpp 288
@@ -2286,7 +2021,7 @@ std::conditionalの値パラメータis_void_f\<T>()は、「[is_void_f](templat
 ```
 
 
-### is_same_xxxの実装 <a id="SS_13_3_3"></a>
+### is_same_xxxの実装 <a id="SS_13_3_2"></a>
 ここではstd::is_same\<T, U>に似た、
 以下のような仕様を持ついくつかのテンプレートis_same_xxxの実装を考える。
 
@@ -2299,17 +2034,17 @@ std::conditionalの値パラメータis_void_f\<T>()は、「[is_void_f](templat
 
 |is_same_xxx                   |実装方法                                               |
 |------------------------------|-------------------------------------------------------|
-|[is_same_f](template_meta_programming.md#SS_13_3_3_1)              |関数テンプレートのオーバーロード                       |
-|[is_same_v](template_meta_programming.md#SS_13_3_3_2)              |定数テンプレートの特殊化                               |
-|[is_same_s](template_meta_programming.md#SS_13_3_3_3)              |クラステンプレートの特殊化                             |
-|[is_same_sfinae_f](template_meta_programming.md#SS_13_3_3_4)       |SFINAEと関数テンプレート/関数のオーバーロード          |
-|[is_same_sfinae_s](template_meta_programming.md#SS_13_3_3_5)       |SFINAEとクラステンプレートの特殊化                     |
-|[same_as](template_meta_programming.md#SS_13_3_3_6)                |[コンセプト](term_explanation.md#SS_19_11_2)よるis_same_sfinae_sと同一の機能      |
-|[is_same_templ](template_meta_programming.md#SS_13_3_3_7)          |テンプレートテンプレートパラメータ                     |
-|[IsSameSomeOf](template_meta_programming.md#SS_13_3_3_8)           |パラメータパックと再帰                                 |
-|[OneOf](template_meta_programming.md#SS_13_3_3_9)                  |IsSameSomeOfをコンセプトに                             |
+|[is_same_f](template_meta_programming.md#SS_13_3_2_1)              |関数テンプレートのオーバーロード                       |
+|[is_same_v](template_meta_programming.md#SS_13_3_2_2)              |定数テンプレートの特殊化                               |
+|[is_same_s](template_meta_programming.md#SS_13_3_2_3)              |クラステンプレートの特殊化                             |
+|[is_same_sfinae_f](template_meta_programming.md#SS_13_3_2_4)       |SFINAEと関数テンプレート/関数のオーバーロード          |
+|[is_same_sfinae_s](template_meta_programming.md#SS_13_3_2_5)       |SFINAEとクラステンプレートの特殊化                     |
+|[same_as](template_meta_programming.md#SS_13_3_2_6)                |[コンセプト](term_explanation.md#SS_19_11_3)よるis_same_sfinae_sと同一の機能      |
+|[is_same_templ](template_meta_programming.md#SS_13_3_2_7)          |テンプレートテンプレートパラメータ                     |
+|[IsSameSomeOf](template_meta_programming.md#SS_13_3_2_8)           |パラメータパックと再帰                                 |
+|[OneOf](template_meta_programming.md#SS_13_3_2_9)                  |IsSameSomeOfをコンセプトに                             |
 
-#### is_same_f <a id="SS_13_3_3_1"></a>
+#### is_same_f <a id="SS_13_3_2_1"></a>
 関数テンプレートのオーバーロードを用いたis_same_fの実装は以下のようになる。
 
 ```cpp
@@ -2381,7 +2116,7 @@ is_same_f_helper\<T>()のようなテンプレートパラメータを直接使�
     static_assert(is_same_f_v<std::string, std::basic_string<char>>);
 ```
 
-#### is_same_v <a id="SS_13_3_3_2"></a>
+#### is_same_v <a id="SS_13_3_2_2"></a>
 定数テンプレートの特殊化を用いたis_same_vの実装は以下のようになる。
 
 ```cpp
@@ -2406,7 +2141,7 @@ is_same_f_helper\<T>()のようなテンプレートパラメータを直接使�
 ```
 
 
-#### is_same_s <a id="SS_13_3_3_3"></a>
+#### is_same_s <a id="SS_13_3_2_3"></a>
 クラステンプレートの特殊化を用いたis_same_sの実装は以下のようになる。
 
 ```cpp
@@ -2424,7 +2159,7 @@ is_same_f_helper\<T>()のようなテンプレートパラメータを直接使�
     constexpr bool is_same_s_v{is_same_s<T, U>::value};
 ```
 
-「[is_same_v](template_meta_programming.md#SS_13_3_3_2)の実装」と同様に単純であるため、解説は不要だろう。 単体テストは以下のようになる。
+「[is_same_v](template_meta_programming.md#SS_13_3_2_2)の実装」と同様に単純であるため、解説は不要だろう。 単体テストは以下のようになる。
 
 ```cpp
     //  example/template_cpp17/is_same_ut.cpp 97
@@ -2436,7 +2171,7 @@ is_same_f_helper\<T>()のようなテンプレートパラメータを直接使�
 ```
 
 
-#### is_same_sfinae_f <a id="SS_13_3_3_4"></a>
+#### is_same_sfinae_f <a id="SS_13_3_2_4"></a>
 SFINAEと関数テンプレート/関数のオーバーロードを用いたis_same_sfinae_f実装は以下のようになる。
 
 ```cpp
@@ -2489,7 +2224,7 @@ T == Uの場合は、関数テンプレートis_same_sfinae_f_detectorが選択�
     static_assert(is_same_sfinae_f_v<std::string, std::basic_string<char>>);
 ```
 
-#### is_same_sfinae_s <a id="SS_13_3_3_5"></a>
+#### is_same_sfinae_s <a id="SS_13_3_2_5"></a>
 SFINAEとクラステンプレートの特殊化を用いたis_same_sfinae_sの実装は以下のようになる。
 
 ```cpp
@@ -2518,7 +2253,7 @@ SFINAEとクラステンプレートの特殊化を用いたis_same_sfinae_sの�
     constexpr bool is_same_sfinae_s_v{is_same_sfinae_s<T, U>::value};
 ```
 
-「[is_void_sfinae_s](template_meta_programming.md#SS_13_3_2_4)の実装」とほぼ同様であるため、解説は不要だろう。 
+「[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)の実装」とほぼ同様であるため、解説は不要だろう。 
 単体テストは以下のようになる。
 
 ```cpp
@@ -2530,8 +2265,8 @@ SFINAEとクラステンプレートの特殊化を用いたis_same_sfinae_sの�
     static_assert(is_same_sfinae_s_v<std::string, std::basic_string<char>>);
 ```
 
-#### same_as <a id="SS_13_3_3_6"></a>
-[SFINAE](term_explanation.md#SS_19_11_1)による[is_same_sfinae_s](template_meta_programming.md#SS_13_3_3_5)の難解なコードを[コンセプト](term_explanation.md#SS_19_11_2)
+#### same_as <a id="SS_13_3_2_6"></a>
+[SFINAE](term_explanation.md#SS_19_11_1)による[is_same_sfinae_s](template_meta_programming.md#SS_13_3_2_5)の難解なコードを[コンセプト](term_explanation.md#SS_19_11_3)
 よりリファクタリングしたコードを以下に示す。
 
 ```cpp
@@ -2562,7 +2297,7 @@ is_same_sfinae_sは定数テンプレートであり、same_asはコンセプト
     static_assert(same_as<std::string, std::basic_string<char>>);
 ```
 
-「[is_same_s](template_meta_programming.md#SS_13_3_3_3)」で紹介した特殊化のテクニックを下記のように使用することができる。
+「[is_same_s](template_meta_programming.md#SS_13_3_2_3)」で紹介した特殊化のテクニックを下記のように使用することができる。
 
 ```cpp
     //  example/template_cpp17/is_same_ut.cpp 203
@@ -2594,7 +2329,7 @@ is_same_sfinae_sは定数テンプレートであり、same_asはコンセプト
     static_assert(is_same_concept_s<std::string, std::basic_string<char>>::value);
 ```
 
-#### is_same_templ <a id="SS_13_3_3_7"></a>
+#### is_same_templ <a id="SS_13_3_2_7"></a>
 例えば、std::stringとstd::basic_string\<T>が同じもしくは違う型であることを確認するためには、
 すでに示したis_same_sを使用し、
 
@@ -2653,11 +2388,11 @@ is_same_sfinae_sは定数テンプレートであり、same_asはコンセプト
 
 [演習-テンプレートテンプレートパラメータ](exercise_q.md#SS_20_11_9)
 
-#### IsSameSomeOf <a id="SS_13_3_3_8"></a>
+#### IsSameSomeOf <a id="SS_13_3_2_8"></a>
 IsSameSomeOfはこれまでの例とは少々異なり、
 
 * 第1パラメータが第2パラメータ以降で指定された型のどれかと一致する
-  SameAsSomeOfという名前の[コンセプト](term_explanation.md#SS_19_11_2)を[畳み込み式](term_explanation.md#SS_19_11_4)を使用し定義する
+  SameAsSomeOfという名前の[コンセプト](term_explanation.md#SS_19_11_3)を[畳み込み式](term_explanation.md#SS_19_11_5)を使用し定義する
 * SameAsSomeOfで制約したテンプレートパラメータをstd::bool_constantからIsSameSomeOfを派生させる
 
 のような特徴のを持つ。
@@ -2704,7 +2439,7 @@ IsSameSomeOfはこれまでの例とは少々異なり、
 
 IsSameSomeOfは、TがUsのいずれかと一致するかどうかのほとんどの処理をSameAsSomeOfに移譲する。
 
-Usが1つだった場合、SameAsSomeOfは処理をstd::same_as(「[same_as](template_meta_programming.md#SS_13_3_3_6)」参照)に委譲する。
+Usが1つだった場合、SameAsSomeOfは処理をstd::same_as(「[same_as](template_meta_programming.md#SS_13_3_2_6)」参照)に委譲する。
 Usが複数だった場合、[畳み込み式](--)を使用し上記の処理をその数分、繰り返す。
 
 単体テストは以下のようになる。
@@ -2722,9 +2457,9 @@ Usが複数だった場合、[畳み込み式](--)を使用し上記の処理を
 
 [演習-テンプレートパラメータを可変長にしたstd::is_same](exercise_q.md#SS_20_11_10)
 
-#### OneOf <a id="SS_13_3_3_9"></a>
-OneOfは、[IsSameSomeOf](template_meta_programming.md#SS_13_3_3_8)同様の機能を持つコンセプトである。
-OneOfの実装にはシンプルに記述するための[畳み込み式](term_explanation.md#SS_19_11_4)を使用した。
+#### OneOf <a id="SS_13_3_2_9"></a>
+OneOfは、[IsSameSomeOf](template_meta_programming.md#SS_13_3_2_8)同様の機能を持つコンセプトである。
+OneOfの実装にはシンプルに記述するための[畳み込み式](term_explanation.md#SS_19_11_5)を使用した。
 
 ```cpp
     //  h/nstd_concepts.h 52
@@ -2745,7 +2480,7 @@ OneOfの実装にはシンプルに記述するための[畳み込み式](term_e
     static_assert(!Nstd::OneOf<std::string, int, char*>);
 ```
 
-### AreConvertibleXxxの実装 <a id="SS_13_3_4"></a>
+### AreConvertibleXxxの実装 <a id="SS_13_3_3"></a>
 std::is_convertible\<FROM, TO>は、
 
 * 型FROMが型TOに変換できる場合、std::true_typeから派生する
@@ -2762,13 +2497,13 @@ std::is_convertible\<FROM, TO>は、
 
 |AreConvertibleXxx                     |実装方法                                     |
 |--------------------------------------|---------------------------------------------|
-|[AreConvertible](template_meta_programming.md#SS_13_3_4_1)                 |クラステンプレートの特殊化                   |
-|[ConvertibleToAll](template_meta_programming.md#SS_13_3_4_3)               |AreConvertibleをコンセプトへ                 |
-|[AreConvertibleWithoutNarrowConv](template_meta_programming.md#SS_13_3_4_2)|SFINAEとクラステンプレートの特殊化           |
-|[ConvertibleWithoutNarrowing](template_meta_programming.md#SS_13_3_4_4)    |AreConvertibleWithoutNarrowConvをコンセプトへ|
+|[AreConvertible](template_meta_programming.md#SS_13_3_3_1)                 |クラステンプレートの特殊化                   |
+|[ConvertibleToAll](template_meta_programming.md#SS_13_3_3_3)               |AreConvertibleをコンセプトへ                 |
+|[AreConvertibleWithoutNarrowConv](template_meta_programming.md#SS_13_3_3_2)|SFINAEとクラステンプレートの特殊化           |
+|[ConvertibleWithoutNarrowing](template_meta_programming.md#SS_13_3_3_4)    |AreConvertibleWithoutNarrowConvをコンセプトへ|
 
 
-#### AreConvertible <a id="SS_13_3_4_1"></a>
+#### AreConvertible <a id="SS_13_3_3_1"></a>
 AreConvertibleの実装は以下のようになる。
 
 ```cpp
@@ -2801,7 +2536,7 @@ AreConvertibleの実装は以下のようになる。
 ```
 
 
-「[IsSameSomeOf](template_meta_programming.md#SS_13_3_3_8)の実装」のコードパターンとほぼ同様であるため、解説は不要だろうが、
+「[IsSameSomeOf](template_meta_programming.md#SS_13_3_2_8)の実装」のコードパターンとほぼ同様であるため、解説は不要だろうが、
 
 * パラメータパックの都合上、TOとFROMのパラメータの位置がstd::is_convertibleとは逆になる
 * IsSameSomeOfでは条件の一つがtrueであればIsSameSomeOf::valueがtrueとなるが、
@@ -2822,7 +2557,7 @@ AreConvertibleの実装は以下のようになる。
 ```
 
 
-#### AreConvertibleWithoutNarrowConv <a id="SS_13_3_4_2"></a>
+#### AreConvertibleWithoutNarrowConv <a id="SS_13_3_3_2"></a>
 縮小無しの型変換ができるかどうかを判定するAreConvertibleWithoutNarrowConvは、
 AreConvertibleと同じように実装できるが、
 その場合、AreConvertibleに対してstd::is_convertibleが必要になったように、
@@ -2937,7 +2672,7 @@ is_convertible_without_narrow_convを利用したAreConvertibleWithoutNarrowConv
     static_assert(!Nstd::AreConvertibleWithoutNarrowConvV<double, float, int8_t>);
 ```
 
-#### ConvertibleToAll <a id="SS_13_3_4_3"></a>
+#### ConvertibleToAll <a id="SS_13_3_3_3"></a>
 ConvertibleToAllの実装は下記のようになる。
 
 ```cpp
@@ -2972,11 +2707,11 @@ concept ConvertibleToAll = (std::convertible_to<FROMs, TO> && ...);
     static_assert(ConvertibleToAll_Test<bool, int, convert_bool>::value);
 ```
 
-#### ConvertibleWithoutNarrowing <a id="SS_13_3_4_4"></a>
+#### ConvertibleWithoutNarrowing <a id="SS_13_3_3_4"></a>
 ConvertibleWithoutNarrowingは以下のようなコンセプトである。
 
-* [AreConvertibleWithoutNarrowConv](template_meta_programming.md#SS_13_3_4_2)と同様の機能を持つ
-* [ConvertibleToAll](template_meta_programming.md#SS_13_3_4_3)と同様構造を持つ
+* [AreConvertibleWithoutNarrowConv](template_meta_programming.md#SS_13_3_3_2)と同様の機能を持つ
+* [ConvertibleToAll](template_meta_programming.md#SS_13_3_3_3)と同様構造を持つ
 
 実装は以下のようになる。
 
@@ -3005,7 +2740,7 @@ concept ConvertibleWithoutNarrowing = Inner_::all_convertible_without_narrowing<
 単体テストは他の似たコンセプトとほぼ同様になるため省略する。
 
 
-### 関数の存在の診断 <a id="SS_13_3_5"></a>
+### 関数の存在の診断 <a id="SS_13_3_4"></a>
 Nstdライブラリの開発には関数の存在の診断が欠かせない。
 例えば、
 
@@ -3023,39 +2758,39 @@ Nstdライブラリの開発には関数の存在の診断が欠かせない。
 
 |メタ関数名                              |メタ関数の目的                                    |
 |----------------------------------------|--------------------------------------------------|
-|[exists_void_func_sfinae_f](template_meta_programming.md#SS_13_3_5_1)        |メンバ関数void func()を持つかどうかの判断         |
-|[exists_void_func_sfinae_s](template_meta_programming.md#SS_13_3_5_2)        |同上                                              |
-|[exists_void_func_sfinae_s2](template_meta_programming.md#SS_13_3_5_3)       |同上                                              |
-|[exists_void_func_concept](template_meta_programming.md#SS_13_3_5_4)         |同上。コンセプトによるSFINAEの回避                |
+|[exists_void_func_sfinae_f](template_meta_programming.md#SS_13_3_4_1)        |メンバ関数void func()を持つかどうかの判断         |
+|[exists_void_func_sfinae_s](template_meta_programming.md#SS_13_3_4_2)        |同上                                              |
+|[exists_void_func_sfinae_s2](template_meta_programming.md#SS_13_3_4_3)       |同上                                              |
+|[exists_void_func_concept](template_meta_programming.md#SS_13_3_4_4)         |同上。コンセプトによるSFINAEの回避                |
 
 * テンプレートパラメータに範囲for文ができるかどうかの診断について、
   次の表のように実装を示す。
 
 |メタ関数名                            |メタ関数の目的                                                     |
 |--------------------------------------|-------------------------------------------------------------------|
-|[exists_begin/exsits_end](template_meta_programming.md#SS_13_3_5_5)        |SFINAEを使用したstd::begin(T)/std::end(T)が存在するか否かの診断    |
-|[Array](template_meta_programming.md#SS_13_3_5_7)                          |型が配列である制約を行うためのコンセプト                           |
-|[Beginable/Endable](template_meta_programming.md#SS_13_3_5_8)              |[コンセプト](term_explanation.md#SS_19_11_2)を使用したexists_begin/exsits_endを単純化した例   |
-|[IsRange](template_meta_programming.md#SS_13_3_5_6)                        |exists_begin/exsits_endを使し、範囲forのオペランドになれるか?の判断|
-|[Ranged](template_meta_programming.md#SS_13_3_5_9)                         |機能はIsRangeと同一だが、[コンセプト](term_explanation.md#SS_19_11_2)を使用しSFINAEの回避     |
-|[Container](template_meta_programming.md#SS_13_3_5_10)                      |Ranged且つ!Arrayをコンテナと便宜的に決めつける                     |
+|[exists_begin/exsits_end](template_meta_programming.md#SS_13_3_4_5)        |SFINAEを使用したstd::begin(T)/std::end(T)が存在するか否かの診断    |
+|[Array](template_meta_programming.md#SS_13_3_4_7)                          |型が配列である制約を行うためのコンセプト                           |
+|[Beginable/Endable](template_meta_programming.md#SS_13_3_4_8)              |[コンセプト](term_explanation.md#SS_19_11_3)を使用したexists_begin/exsits_endを単純化した例   |
+|[IsRange](template_meta_programming.md#SS_13_3_4_6)                        |exists_begin/exsits_endを使し、範囲forのオペランドになれるか?の判断|
+|[Ranged](template_meta_programming.md#SS_13_3_4_9)                         |機能はIsRangeと同一だが、[コンセプト](term_explanation.md#SS_19_11_3)を使用しSFINAEの回避     |
+|[Container](template_meta_programming.md#SS_13_3_4_10)                      |Ranged且つ!Arrayをコンテナと便宜的に決めつける                     |
 
 * テンプレートパラメータにoperator<<(put toと発音する)ができるかどうかの診断について、
   次の表のように実装を示す。
 
 |メタ関数名                            |メタ関数の目的                                         |
 |--------------------------------------|-------------------------------------------------------|
-|[exists_put_to_as_member](template_meta_programming.md#SS_13_3_5_11)        |std::ostream::operator<<(T)が存在するか否かの診断      |
-|[exists_put_to_as_non_member](template_meta_programming.md#SS_13_3_5_12)    |operator<<(std::ostream&, T)が存在するか否かの診断     |
-|[ExistsPutTo](template_meta_programming.md#SS_13_3_5_13)                    |std::ostream& << Tができるかどうかの診断               |
-|[Printable](template_meta_programming.md#SS_13_3_5_14)                      |std::ostream& << Tができるかどうか制約コンセプト       |
+|[exists_put_to_as_member](template_meta_programming.md#SS_13_3_4_11)        |std::ostream::operator<<(T)が存在するか否かの診断      |
+|[exists_put_to_as_non_member](template_meta_programming.md#SS_13_3_4_12)    |operator<<(std::ostream&, T)が存在するか否かの診断     |
+|[ExistsPutTo](template_meta_programming.md#SS_13_3_4_13)                    |std::ostream& << Tができるかどうかの診断               |
+|[Printable](template_meta_programming.md#SS_13_3_4_14)                      |std::ostream& << Tができるかどうか制約コンセプト       |
 
 * テンプレートパラメータがT[N]やC\<T>の形式である時のTに、
   operator<<が適用できるかの診断については、Tの型を取り出す必要がある。
   そのようなメタ関数ValueTypeの実装を示す。
 
 
-#### exists_void_func_sfinae_f <a id="SS_13_3_5_1"></a>
+#### exists_void_func_sfinae_f <a id="SS_13_3_4_1"></a>
 「テンプレートパラメータである型が、メンバ関数void func()を持つかどうかを診断する」
 exists_void_func_sfinae_f
 のSFINAEと関数テンプレート/関数のオーバーロードを用いた実装は以下のようになる。
@@ -3122,7 +2857,7 @@ decltypeの中での関数呼び出しは、実際には呼び出されず関数
 ```
 
 
-#### exists_void_func_sfinae_s <a id="SS_13_3_5_2"></a>
+#### exists_void_func_sfinae_s <a id="SS_13_3_4_2"></a>
 「テンプレートパラメータである型が、メンバ関数void func()を持つかどうかを診断」する
 exists_void_func_sfinae_s
 のSFINAEとクラステンプレートの特殊化を用いた実装は以下のようになる。
@@ -3161,7 +2896,7 @@ exists_void_func_sfinae_fとほぼ等しいSFINAEを利用したクラステン�
 ```
 
 
-#### exists_void_func_sfinae_s2 <a id="SS_13_3_5_3"></a>
+#### exists_void_func_sfinae_s2 <a id="SS_13_3_4_3"></a>
 exists_void_func_sfinae_sとほぼ同様の仕様を持つexists_void_func_sfinae_s2の
 
 * SFINAE
@@ -3225,13 +2960,13 @@ exists_void_func_sfinae_fと同じテスト用クラスを用いた単体テス�
 
 [演習-メンバ関数の存在の診断](exercise_q.md#SS_20_11_11)
 
-#### exists_void_func_concept <a id="SS_13_3_5_4"></a>
-[exists_void_func_sfinae_s](template_meta_programming.md#SS_13_3_5_2)や[exists_void_func_sfinae_s2](template_meta_programming.md#SS_13_3_5_3)
+#### exists_void_func_concept <a id="SS_13_3_4_4"></a>
+[exists_void_func_sfinae_s](template_meta_programming.md#SS_13_3_4_2)や[exists_void_func_sfinae_s2](template_meta_programming.md#SS_13_3_4_3)
 の実装で見たようなSFINAEによるテンプレートの特殊化は難解なコードを生み出す。
 また、シンタックスエラー時、ほぼ理解できない大量のコンパイラのメッセージを生成する。
 このため、このようなテクニックはきわめて有用である一方で、開発に多くの時間を消費する、
 保守員を選んでしまう、といった問題があった。
-以下に示すように、C++20から導入された[コンセプト](term_explanation.md#SS_19_11_2)はこのような問題の軽減につながる。
+以下に示すように、C++20から導入された[コンセプト](term_explanation.md#SS_19_11_3)はこのような問題の軽減につながる。
 
 ```cpp
     //  example/template_cpp17/exists_func_ut.cpp 138
@@ -3269,10 +3004,10 @@ exists_void_func_sfinae_fと同じテスト用クラスを用いた単体テス�
     static_assert(!exists_void_func_concept<decltype(Z{})>);  // Z::funcは呼び出せない
 ```
 
-#### exists_begin/exsits_end <a id="SS_13_3_5_5"></a>
+#### exists_begin/exsits_end <a id="SS_13_3_4_5"></a>
 「テンプレートパラメータTに対して、
 std::begin(T)が存在するか否かの診断」をするexists_beginの実装は、
-「[exists_void_func_sfinae_s](template_meta_programming.md#SS_13_3_5_2)」
+「[exists_void_func_sfinae_s](template_meta_programming.md#SS_13_3_4_2)」
 で用いたパターンのメンバ関数を非メンバ関数に置き換えて使えば以下のようになる。
 
 ```cpp
@@ -3410,7 +3145,7 @@ decltype内で使用できるlvalueのT型オブジェクトを生成できれ�
     static_assert(exists_end_v<int[3]>);
 ```
 
-#### IsRange <a id="SS_13_3_5_6"></a>
+#### IsRange <a id="SS_13_3_4_6"></a>
 [範囲for文](https://cpprefjp.github.io/lang/cpp11/range_based_for.html)
 文の":"の後ろにT型オブジェクトが指定できる要件は、
 
@@ -3449,7 +3184,7 @@ IsRangeの実装は以下のようになる。
 
 [演習-範囲for文のオペランドになれるかどうかの診断](exercise_q.md#SS_20_11_12)
 
-#### Array <a id="SS_13_3_5_7"></a>
+#### Array <a id="SS_13_3_4_7"></a>
 
 以降の節で使用するため、テンプレートパラメータが配列である制約を下記のように宣言する。
 
@@ -3472,8 +3207,8 @@ IsRangeの実装は以下のようになる。
     static_assert(!Array<decltype(ptr)>);
 ```
 
-#### Beginable/Endable <a id="SS_13_3_5_8"></a>
-コンセプトを使用し、[exists_begin/exsits_end](template_meta_programming.md#SS_13_3_5_5)をリファクタリングした例を以下に示す。
+#### Beginable/Endable <a id="SS_13_3_4_8"></a>
+コンセプトを使用し、[exists_begin/exsits_end](template_meta_programming.md#SS_13_3_4_5)をリファクタリングした例を以下に示す。
 
 ```cpp
     //  h/nstd_concepts.h 15
@@ -3505,7 +3240,7 @@ IsRangeの実装は以下のようになる。
 ```
 
 
-#### Ranged <a id="SS_13_3_5_9"></a>
+#### Ranged <a id="SS_13_3_4_9"></a>
 IsRangeと同一の機能を持つコンセプトRangedを以下のように定義する。
 
 ```cpp
@@ -3526,10 +3261,10 @@ IsRangeと同一の機能を持つコンセプトRangedを以下のように定�
     static_assert(Ranged<int[3]>);
 ```
 
-すでにみたようにRangedは[exists_begin/exsits_end](template_meta_programming.md#SS_13_3_5_5)の醜いコードを使用しないことで、
+すでにみたようにRangedは[exists_begin/exsits_end](template_meta_programming.md#SS_13_3_4_5)の醜いコードを使用しないことで、
 Rangedの可読性はIsRangedに比べ格段に改善している。
 
-#### Container <a id="SS_13_3_5_10"></a>
+#### Container <a id="SS_13_3_4_10"></a>
 与えられた型をコンテナに制約するためのコンセプトを下記のように便宜的に宣言する。
 
 ```cpp
@@ -3561,7 +3296,7 @@ Rangedの可読性はIsRangedに比べ格段に改善している。
 
 ```
 
-#### exists_put_to_as_member <a id="SS_13_3_5_11"></a>
+#### exists_put_to_as_member <a id="SS_13_3_4_11"></a>
 std::ostreamのメンバ関数operator<<の戻り型はstd::ostream&であるため、
 exists_put_to_as_memberの実装は以下のようになる("<<"は英語で"put to"と発音する)。
 
@@ -3581,7 +3316,7 @@ exists_put_to_as_memberの実装は以下のようになる("<<"は英語で"put
     constexpr bool exists_put_to_as_member_v{exists_put_to_as_member<T>::value};
 ```
 
-「[exists_void_func_sfinae_f](template_meta_programming.md#SS_13_3_5_1)の実装」と同様のパターンを使用したので解説は不要だろう。
+「[exists_void_func_sfinae_f](template_meta_programming.md#SS_13_3_4_1)の実装」と同様のパターンを使用したので解説は不要だろう。
 
 単体テストは以下のようになる。
 
@@ -3631,7 +3366,7 @@ exists_put_to_as_memberの実装は以下のようになる("<<"は英語で"put
 が定義されているため、配列がポインタに変換されてこのメンバ関数にバインドした結果である。
 
 
-#### exists_put_to_as_non_member <a id="SS_13_3_5_12"></a>
+#### exists_put_to_as_non_member <a id="SS_13_3_4_12"></a>
 exists_put_to_as_non_memberの実装は以下のようになる。
 
 ```cpp
@@ -3650,11 +3385,11 @@ exists_put_to_as_non_memberの実装は以下のようになる。
     constexpr bool exists_put_to_as_non_member_v{exists_put_to_as_non_member<T>::value};
 ```
 
-「[exists_begin/exsits_end](template_meta_programming.md#SS_13_3_5_5)や[exists_put_to_as_member](template_meta_programming.md#SS_13_3_5_11)の実装」
+「[exists_begin/exsits_end](template_meta_programming.md#SS_13_3_4_5)や[exists_put_to_as_member](template_meta_programming.md#SS_13_3_4_11)の実装」
 で使用したパターンを混合しただけなので解説や単体テストは省略する。
 
 
-#### ExistsPutTo <a id="SS_13_3_5_13"></a>
+#### ExistsPutTo <a id="SS_13_3_4_13"></a>
 テンプレートパラメータT、T型オブジェクトtに対して、
 std::ostream << tができるかどうかを判断するExistsPutToの実装は以下のようになる。
 
@@ -3671,7 +3406,7 @@ std::ostream << tができるかどうかを判断するExistsPutToの実装は�
     constexpr bool ExistsPutToV{ExistsPutTo<T>::value};
 ```
 
-「[IsRange](template_meta_programming.md#SS_13_3_5_6)の実装」に影響されて、一旦このように実装したが、先に書いた通り、
+「[IsRange](template_meta_programming.md#SS_13_3_4_6)の実装」に影響されて、一旦このように実装したが、先に書いた通り、
 そもそものExistsPutToの役割はstd::ostream << tができるかどうかの診断であることを思い出せば、
 下記のように、もっとシンプルに実装できることに気づくだろう。
 
@@ -3707,10 +3442,10 @@ std::ostream << tができるかどうかを判断するExistsPutToの実装は�
     static_assert(Nstd::ExistsPutToV<test_class_not_exits_put_to[3]>);
 ```
 
-#### Printable <a id="SS_13_3_5_14"></a>
+#### Printable <a id="SS_13_3_4_14"></a>
 これまでのパターンに従ってPrintableを以下のように作る。
 
-* [SFINAE](term_explanation.md#SS_19_11_1)を利用した[ExistsPutTo](template_meta_programming.md#SS_13_3_5_13)は複雑で醜いため、リファクタリングする。
+* [SFINAE](term_explanation.md#SS_19_11_1)を利用した[ExistsPutTo](template_meta_programming.md#SS_13_3_4_13)は複雑で醜いため、リファクタリングする。
 * リファクタリングに合わせてコンセプト化し、それらしい名称にする。
 
 ```cpp
@@ -3743,9 +3478,9 @@ std::ostream << tができるかどうかを判断するExistsPutToの実装は�
     static_assert(Printable<Y>);
 ```
 
-これ以降は、[ExistsPutTo](template_meta_programming.md#SS_13_3_5_13)ではなくPrintableを使用する。
+これ以降は、[ExistsPutTo](template_meta_programming.md#SS_13_3_4_13)ではなくPrintableを使用する。
 
-#### ValueTypeの実装 <a id="SS_13_3_5_15"></a>
+#### ValueTypeの実装 <a id="SS_13_3_4_15"></a>
 下記で示す通り、
 
 ```cpp
@@ -3987,7 +3722,7 @@ Value::type_n\<>のリカーシブ展開を頭の中で行うことは難しい�
 ```
 
 準備は整ったので上記のValueTypeに下記のようなコンテナ用特殊化を追加する。
-この特殊化のテンプレートパラメータの制約にはすでに開発したコンセプト[Container](template_meta_programming.md#SS_13_3_5_10)を使用する。
+この特殊化のテンプレートパラメータの制約にはすでに開発したコンセプト[Container](template_meta_programming.md#SS_13_3_4_10)を使用する。
 
 ```cpp
     //  example/template/value_type_ut.cpp 261
@@ -4199,7 +3934,7 @@ SafeArray2の要件をまとめると、
 関数のシグネチャの差異よるオーバーロードは使えない。
 とすれば、テンプレートパラメータの型の差異によるオーバーロードを使うしか方法がない。
 縮小型変換が起こるか否かの場合分けは、
-コンセプト[ConvertibleWithoutNarrowing](template_meta_programming.md#SS_13_3_4_4)を使用したSFINAEで実現させることができる。
+コンセプト[ConvertibleWithoutNarrowing](template_meta_programming.md#SS_13_3_3_4)を使用したSFINAEで実現させることができる。
 という風な思考の変遷により以下のコードにたどり着く。
 
 
@@ -4333,7 +4068,7 @@ private:
 かなりの違和感があるだろうが、
 引数や戻り値に制限の多いコンストラクタテンプレートでSFINAEを起こすためには、
 このような記述が必要になる。
-一方で[コンセプト](term_explanation.md#SS_19_11_2)を使用したC++20スタイルのSFINAEの可読性の高さを実感できただろう。
+一方で[コンセプト](term_explanation.md#SS_19_11_3)を使用したC++20スタイルのSFINAEの可読性の高さを実感できただろう。
 
 なお、2つ目のコンストラクタテンプレートの中で使用した下記のコードは、
 パラメータパックで与えられた全引数をそれぞれにT型オブジェクトに変換するための記法である。
@@ -4365,7 +4100,7 @@ std::stringは、実際にはstd::basic_string\<char>のエイリアスである
 Nstd::SafeStringの基底クラスはstd::basic_string\<char>であることがわかる。
 この形式は、std::vector\<T>と同形であるため、
 Nstd::SafeVectorとNstd::SafeStringの共通コードはテンプレートテンプレートパラメータ
-(「[is_same_templ](template_meta_programming.md#SS_13_3_3_7)」参照)を使用し下記のように書ける。
+(「[is_same_templ](template_meta_programming.md#SS_13_3_2_7)」参照)を使用し下記のように書ける。
 
 
 ```cpp
@@ -4458,7 +4193,7 @@ Nstd::SafeIndexにNstd::SafeArrayの実装が取り込めれば、リファク�
 理由は、パラメータパックにはそのすべてに型を指定するか、そのすべてに値を指定しなければならず、
 上記のコードのような型と値の混在が許されていないからである。
 
-値を型に変換する[std::integral_constant](template_meta_programming.md#SS_13_3_1_2)を使用し、この問題を解決できる。
+値を型に変換する[std::integral_constant](term_explanation.md#SS_19_9_2_1)を使用し、この問題を解決できる。
 std::arrayから派生した下記のStdArrayLikeは、std::integral_constant::valueから値を取り出し、
 基底クラスstd::arrayの第2テンプレートパラメータとする。
 この仕組みにより、StdArrayLikeは、
@@ -4657,7 +4392,7 @@ Nstd::SafeIndexのテンプレートテンプレートパラメータとして�
 この原因は、Nstd::SafeStringオブジェクトに対して、std::operator<<が使用されなかったからである。
 
 「[メタ関数のテクニック](template_meta_programming.md#SS_13_3)」で紹介したSFINAEによりこの問題を回避できるが、
-ここでも、すでにみてきた[コンセプト](term_explanation.md#SS_19_11_2)による制約によりこの問題に対処する。
+ここでも、すでにみてきた[コンセプト](term_explanation.md#SS_19_11_3)による制約によりこの問題に対処する。
 
 ```cpp
     //  example/template_cpp17/safe_index_put_to_ut.cpp 98
@@ -5910,7 +5645,7 @@ std::vector\<std::string>へのオブジェクトの挿入は、文字列リテ�
 ```
 
 上記のgen_vectorはリカーシブコールを使って実装したが、
-[畳み込み式](term_explanation.md#SS_19_11_4)を使用した下記の実装の方がより明確である。
+[畳み込み式](term_explanation.md#SS_19_11_5)を使用した下記の実装の方がより明確である。
 
 ```cpp
     //  example/template_cpp17/universal_ref_ut.cpp 209
@@ -6070,7 +5805,7 @@ C++14からは下記のコードで示した通り引数にautoが使えるよ�
     ASSERT_EQ("0/1/2, 3/2/1, 6/5/4, 9/8/7", oss.str());
 ```
 
-この記法は[ジェネリックラムダ](term_explanation.md#SS_19_11_5)と呼ばれる。
+この記法は[ジェネリックラムダ](term_explanation.md#SS_19_11_6)と呼ばれる。
 この機能により関数の中で関数テンプレートと同等のものが定義できるようになった。
 
 #### ジェネリックラムダの内部構造 <a id="SS_13_7_2_1"></a>
@@ -6549,7 +6284,7 @@ lookupによるバグの混入を起こしてしまうことがある。
 
 といった方法の他にも、「[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_13_4_4)」で示した
 
-* [std::enable_if](template_meta_programming.md#SS_13_3_1_4)や[コンセプト](term_explanation.md#SS_19_11_2)等を使用してテンプレートに適用できる型を制約する
+* [std::enable_if](term_explanation.md#SS_19_9_2_5)や[コンセプト](term_explanation.md#SS_19_11_3)等を使用してテンプレートに適用できる型を制約する
 
 ことも考えられる。
 ベストな方法は状況に大きく依存するため一概には決められない。
@@ -7825,7 +7560,7 @@ C++17からサポートされた「クラステンプレートのテンプレー
   (「[関数型マクロ](programming_convention.md#SS_3_6_1)」参照)
   。
 
-* 可変長引数を持つ関数の実装には[パラメータパック](term_explanation.md#SS_19_11_3)を使う。
+* 可変長引数を持つ関数の実装には[パラメータパック](term_explanation.md#SS_19_11_4)を使う。
 
 * 処理速度や関数のリターンの型に影響する場合があるため、
   パラメータパックの処理の順番に気を付ける(「[前から演算するパラメータパック](template_meta_programming.md#SS_13_1_3_2)」参照)。
@@ -7836,7 +7571,7 @@ C++17からサポートされた「クラステンプレートのテンプレー
 * テンプレートのインターフェースではないが、実装の都合上ヘッダファイルに記述する定義は、
   "namespace Inner\_"を使用し、非公開であることを明示する。
   また、"namespace Inner\_"で宣言、定義されている宣言、定義は単体テストを除き、
-  外部から参照しない(「[is_void_sfinae_f](template_meta_programming.md#SS_13_3_2_3)の実装」参照)。
+  外部から参照しない(「[is_void_sfinae_f](template_meta_programming.md#SS_13_3_1_3)の実装」参照)。
 
 * [forwardingリファレンス](term_explanation.md#SS_19_15_3)の実際の型がlvalueリファレンスであるならば、
   constなlvalueリファレンスとして扱う
@@ -7901,7 +7636,7 @@ C++17からサポートされた「クラステンプレートのテンプレー
 
 * 意図しないテンプレートパラメータによるインスタンス化の防止や、
   コンパイルエラーを解読しやすくするために、適切にstatic_assert使うことは重要であるが、
-  static_assertによるテンプレートパラメータの制約よりも、[コンセプト](term_explanation.md#SS_19_11_2)による制約を優先する。
+  static_assertによるテンプレートパラメータの制約よりも、[コンセプト](term_explanation.md#SS_19_11_3)による制約を優先する。
 
 * ランタイム時の処理を削減する、static_assertを適切に用いる等の目的のために、
   関数テンプレートには適切にconstexprを付けて宣言する
