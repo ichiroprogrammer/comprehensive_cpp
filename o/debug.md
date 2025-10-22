@@ -1088,7 +1088,7 @@ STLの関数は引数オブジェクトをコピーすることがあるため�
 ```
 
 下記のように文字列リテラルから変換されたされたstd::stringオブジェクトである
-[rvalue](cpp_standard.md#SS_19_6_1_2)を引数に取ることができる。
+[rvalue](cpp_standard.md#SS_19_7_1_2)を引数に取ることができる。
 
 ```cpp
     //  example/etc/debug.cpp 96

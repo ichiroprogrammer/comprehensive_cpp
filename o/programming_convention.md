@@ -228,7 +228,7 @@ ___
     ASSERT_DEATH(i8 = narrow_cast<int8_t>(-129), "");      // 危険なint32_t -> int8_t
 ```
 
-* [演習-汎整数型の選択](exercise_q.md#SS_22_1_1)
+* [演習-汎整数型の選択](exercise_q.md#SS_24_1_1)
 
 #### char型 <a id="SS_3_1_1_2"></a>
 * charはascii文字の保持のみに使用する。
@@ -237,7 +237,7 @@ ___
   8ビット整数には、int8\_tまたは、uint8\_tを使用する。
     * バイトストリームを表現する場合、int8_t\*、int8_t[]、uint8_t\*、uint8_t[]のいずれかを使う。
 
-* [演習-汎整数型の演算](exercise_q.md#SS_22_1_2)
+* [演習-汎整数型の演算](exercise_q.md#SS_24_1_2)
 
 #### std::byte型 <a id="SS_3_1_1_3"></a>
 * intよりもビット幅の小さい組み込み型の演算の結果は[汎整数型拡張](cpp_standard.md#SS_19_1_8)によりint型になるため、
@@ -421,7 +421,7 @@ ___
 * 扱うダイナミックレンジに収まる限り、安易に浮動小数点を使わず、
   代わりに[固定小数点クラス](template_meta_programming.md#SS_13_5_2)や[有理数クラス](template_meta_programming.md#SS_13_5_4)を使用する。
 
-* [演習-浮動小数点型](exercise_q.md#SS_22_1_3)
+* [演習-浮動小数点型](exercise_q.md#SS_24_1_3)
 
 ### enum <a id="SS_3_1_2"></a>
 * C++の強力な型システムや、コンパイラの静的解析機能(switchでのcase抜け)を効果的に使用するために、
@@ -524,11 +524,11 @@ ___
   「[BitmaskType](design_pattern.md#SS_9_2)」を使用する場合を除き、enumへのキャストをしない。
 * クラスのstatic constの整数定数の代わりにenumを使うことは、
   C++言語仕様やコンパイラの機能が不十分だった頃のテクニックであり、もはや不要である。
-  代わりにstatic constexprインスタンス(「[constexpr関数](cpp_standard.md#SS_19_4_3)」参照)を使用する。
+  代わりにstatic constexprインスタンス(「[constexpr関数](cpp_standard.md#SS_19_5_3)」参照)を使用する。
   こうすることで定数の型を明示できる。
 
-* [演習-定数列挙](exercise_q.md#SS_22_1_4)
-* [演習-enum](exercise_q.md#SS_22_1_5)
+* [演習-定数列挙](exercise_q.md#SS_24_1_4)
+* [演習-enum](exercise_q.md#SS_24_1_5)
 
 ### bit field <a id="SS_3_1_3"></a>
 * ハードウエアレジスタにアクセスをする目的でのみ使用する。
@@ -538,15 +538,15 @@ ___
 * 「[クラスとインスタンス](programming_convention.md#SS_3_2)」を参照せよ。
 
 ### struct <a id="SS_3_1_5"></a>
-* メンバ変数を持つ構造体は、[POD](cpp_standard.md#SS_19_3_5)としてのみ使用する。
+* メンバ変数を持つ構造体は、[POD](cpp_standard.md#SS_19_4_5)としてのみ使用する。
 * メンバ変数を持つ構造体を基底クラスとした継承をしない。
   従ってそのような構造体は常にfinalであるが、finalの明示はしない。
 * メンバ変数(static constやstatic constexprメンバは定数とする)を持たない構造体は、
   templateや非スコープドenumのスコーピング
-  (「[enum](programming_convention.md#SS_3_1_2)」や「[enum](cpp_standard.md#SS_19_2_1)」参照)等に使用しても良い。
+  (「[enum](programming_convention.md#SS_3_1_2)」や「[enum](cpp_standard.md#SS_19_3_1)」参照)等に使用しても良い。
 * コンストラクタ以外のメンバ関数を定義しない。
-    * [ディープコピー](term_explanation.md#SS_21_2_4_2)(「[コンストラクタ](programming_convention.md#SS_3_3_2_2)」参照)が必要な型は、structでなくclassで表す。
-    * デフォルトコンストラクタを除く[特殊メンバ関数](term_explanation.md#SS_21_1_1)に対して、
+    * [ディープコピー](cpp_semantics.md#SS_23_8_2)(「[コンストラクタ](programming_convention.md#SS_3_3_2_2)」参照)が必要な型は、structでなくclassで表す。
+    * デフォルトコンストラクタを除く[特殊メンバ関数](cpp_standard.md#SS_19_6_1)に対して、
       = defaultの明示をしない。
 
 ```cpp
@@ -609,12 +609,12 @@ ___
   従って、unionの定義を外部パッケージに公開(「[パッケージの実装と公開](programming_convention.md#SS_3_7_1)」参照)しない。
 
 * 上記以外でunionのような機能が必要な場合、
-  [std::variant](cpp_standard.md#SS_19_13_8)(「[std::variantとジェネリックラムダ](template_meta_programming.md#SS_13_7_2_2)」参照)を使用する
+  [std::variant](cpp_standard.md#SS_19_14_8)(「[std::variantとジェネリックラムダ](template_meta_programming.md#SS_13_7_2_2)」参照)を使用する
   (std::anyはunionの代替えにはならないので、このような場合には使用しない)。
 
 ### 配列 <a id="SS_3_1_7"></a>
 * 列型オブジェクトは以下で述べるような問題や、
-  [AAAスタイル](cpp_standard.md#SS_19_10_14)で生成できない等の様々な問題を起こしやすいため、
+  [AAAスタイル](cpp_standard.md#SS_19_11_14)で生成できない等の様々な問題を起こしやすいため、
   使用を可避できない場合を除き使用しない。代わりに`std::array`を使う。
 * new[]を使用しない。new[]で生成した配列オブジェクトはdelete[]で解放しなければならない。
   これは発見困難なバグの発生源になりやすい。
@@ -638,9 +638,9 @@ ___
     #endif
 ```
 
-* 配列の全要素にアクセスするような繰り返し処理には[範囲for文](cpp_standard.md#SS_19_8_3)を使用する。
+* 配列の全要素にアクセスするような繰り返し処理には[範囲for文](cpp_standard.md#SS_19_9_3)を使用する。
 
-* [演習-配列の範囲for文](exercise_q.md#SS_22_1_6)
+* [演習-配列の範囲for文](exercise_q.md#SS_24_1_6)
 
 ### 型エイリアス <a id="SS_3_1_8"></a>
 * Cとシェアされる型エイリアスを除き、typedefではなくusingを使用する。
@@ -682,17 +682,17 @@ ___
     static_assert(std::is_same_v<decltype(*pint32_1_c), int32_t const&>);
 ```
 
-* [演習-エイリアス](exercise_q.md#SS_22_1_7)
+* [演習-エイリアス](exercise_q.md#SS_24_1_7)
 
 ### const/constexprインスタンス <a id="SS_3_1_9"></a>
 * インスタンス、インスタンスへのポインタ、インスタンスへのリファレンス等に対して、
-    * [constexpr定数](cpp_standard.md#SS_19_4_2)をパラメータにした場合、コンパイル時に定数として評価できる関数は、
-      [constexpr関数](cpp_standard.md#SS_19_4_3)として宣言する。
-    * コンパイル時に必ず定数として評価したい[constexpr関数](cpp_standard.md#SS_19_4_3)には、
-      [consteval](cpp_standard.md#SS_19_4_6)を使用する。
-    * constexprにはできないが、const(「[constインスタンス](cpp_standard.md#SS_19_3_12)」にはできるインスタンスは、
+    * [constexpr定数](cpp_standard.md#SS_19_5_2)をパラメータにした場合、コンパイル時に定数として評価できる関数は、
+      [constexpr関数](cpp_standard.md#SS_19_5_3)として宣言する。
+    * コンパイル時に必ず定数として評価したい[constexpr関数](cpp_standard.md#SS_19_5_3)には、
+      [consteval](cpp_standard.md#SS_19_5_6)を使用する。
+    * constexprにはできないが、const(「[constインスタンス](cpp_standard.md#SS_19_4_12)」にはできるインスタンスは、
       constとして定義する。関数の仮引数になっているリファレンスやポインタをconstにすることは特に重要である
-    * 文字列リテラルのアドレスを非constポインタ型変数に代入しない(「[リテラル](term_explanation.md#SS_21_3)」参照)。
+    * 文字列リテラルのアドレスを非constポインタ型変数に代入しない(「[リテラル](cpp_standard.md#SS_19_2)」参照)。
     * イテレータにおいても、可能な場合は、イテレータをconstするか、const_iteratorを使う。
 
 ```cpp
@@ -756,8 +756,8 @@ ___
     char const* const e = abc;  // OK
 ```
 
-* [演習-constの意味](exercise_q.md#SS_22_1_8)
-* [演習-const/constexpr](exercise_q.md#SS_22_1_9)
+* [演習-constの意味](exercise_q.md#SS_24_1_8)
+* [演習-const/constexpr](exercise_q.md#SS_24_1_9)
 
 ### リテラル <a id="SS_3_1_10"></a>
 * ヌルポインタを表すポインタリテラルとして、nullptrを使用する(0やNULLを使用しない)。
@@ -784,7 +784,7 @@ ___
 ```
 
 * 文字列リテラル("xxx")はconstオブジェクトとして扱う
-  (「[const/constexprインスタンス](programming_convention.md#SS_3_1_9)」、「[std::string型リテラル](term_explanation.md#SS_21_3_6_2)」参照)。
+  (「[const/constexprインスタンス](programming_convention.md#SS_3_1_9)」、「[std::string型リテラル](cpp_standard.md#SS_19_2_6_2)」参照)。
 * 長い[汎整数型](cpp_standard.md#SS_19_1_4)リテラルを使用する場合は、適切に区切りを入れる(C++14)。
 * ビットマスク等2進数を使用した方が直感的な場合には2進数リテラルを使用する(C++14)。
 
@@ -820,7 +820,7 @@ ___
 
 #### 生文字列リテラル <a id="SS_3_1_10_1"></a>
 * 正規表現を表す文字列リテラルを使用する場合、文字列内のエスケープシーケンスをエスケープするのでなく、
-  には[生文字列リテラル](term_explanation.md#SS_21_3_1)を使用する。これにより正規表現の可読性が向上する。
+  には[生文字列リテラル](cpp_standard.md#SS_19_2_1)を使用する。これにより正規表現の可読性が向上する。
 
 ```cpp
     //  example/programming_convention/raw_literal_ut.cpp 9
@@ -853,12 +853,12 @@ ___
     ASSERT_EQ("/path/to/resource", path);
 ```
 
-* [演習-危険なconst_cast](exercise_q.md#SS_22_1_10)
-* [演習-リテラル](exercise_q.md#SS_22_1_11)
+* [演習-危険なconst_cast](exercise_q.md#SS_24_1_10)
+* [演習-リテラル](exercise_q.md#SS_24_1_11)
 
 ### 型推論 <a id="SS_3_1_11"></a>
 #### auto <a id="SS_3_1_11_1"></a>
-* [AAAスタイル](cpp_standard.md#SS_19_10_14)に従い適切にautoを使用する。
+* [AAAスタイル](cpp_standard.md#SS_19_11_14)に従い適切にautoを使用する。
 
 ```cpp
     //  example/programming_convention/type_ut.cpp 419
@@ -936,7 +936,7 @@ ___
     static_assert(std::is_same_v<decltype(f), std::initializer_list<int>>, "type not same");
 ```
 
-* auto、[decltype](cpp_standard.md#SS_19_10_16), decltype(auto)の微妙な違いに気を付ける。
+* auto、[decltype](cpp_standard.md#SS_19_11_16), decltype(auto)の微妙な違いに気を付ける。
 
 ```cpp
     //  example/programming_convention/type_ut.cpp 512
@@ -981,15 +981,15 @@ ___
     }
 ```
 
-* 通常の関数の定義に「[autoパラメータによる関数テンプレートの簡易定義](cpp_standard.md#SS_19_10_13)」の使用を避ける。
-  [autoパラメータによる関数テンプレートの簡易定義](cpp_standard.md#SS_19_10_13)を使ったインライン関数は柔軟すぎる。
+* 通常の関数の定義に「[autoパラメータによる関数テンプレートの簡易定義](cpp_standard.md#SS_19_11_13)」の使用を避ける。
+  [autoパラメータによる関数テンプレートの簡易定義](cpp_standard.md#SS_19_11_13)を使ったインライン関数は柔軟すぎる。
 
-* [演習-適切なautoの使い方](exercise_q.md#SS_22_1_12)
+* [演習-適切なautoの使い方](exercise_q.md#SS_24_1_12)
 
 ### インスタンスの初期化 <a id="SS_3_1_12"></a>
-* 関数内のオブジェクトは、出来る限り[AAAスタイル](cpp_standard.md#SS_19_10_14)を用いて宣言し、同時に初期化する。
-* [算術型](cpp_standard.md#SS_19_1_3)の宣言に[AAAスタイル](cpp_standard.md#SS_19_10_14)が使えない場合、
-  「代入演算子を伴わない[一様初期化](cpp_standard.md#SS_19_5_2)」を使用する。
+* 関数内のオブジェクトは、出来る限り[AAAスタイル](cpp_standard.md#SS_19_11_14)を用いて宣言し、同時に初期化する。
+* [算術型](cpp_standard.md#SS_19_1_3)の宣言に[AAAスタイル](cpp_standard.md#SS_19_11_14)が使えない場合、
+  「代入演算子を伴わない[一様初期化](cpp_standard.md#SS_19_6_6)」を使用する。
   「代入演算子を伴う一様初期化」、「()、=による初期化」を使用しない。
 
 ```cpp
@@ -1003,8 +1003,8 @@ ___
     auto    a5 = int32_t{0};  // OK AAA且つ一様初期
 ```
 
-* リファレンスやポインタの宣言に[AAAスタイル](cpp_standard.md#SS_19_10_14)が使えない場合、
-  「代入演算子を伴わない[一様初期化](cpp_standard.md#SS_19_5_2)」か「=による初期化」を使用する。
+* リファレンスやポインタの宣言に[AAAスタイル](cpp_standard.md#SS_19_11_14)が使えない場合、
+  「代入演算子を伴わない[一様初期化](cpp_standard.md#SS_19_6_6)」か「=による初期化」を使用する。
   「代入演算子を伴う一様初期化」、「()による初期化」を使用しない。
 
 ```cpp
@@ -1024,8 +1024,8 @@ ___
     auto*    p5 = &a0;    // OK AAAの場合は一様初期を使わなくても問題ない
 ```
 
-* 構造体やクラス型オブジェクトの宣言に[AAAスタイル](cpp_standard.md#SS_19_10_14)が使えない場合、
-    * 「代入演算子を伴わない[一様初期化](cpp_standard.md#SS_19_5_2)」を使用する。
+* 構造体やクラス型オブジェクトの宣言に[AAAスタイル](cpp_standard.md#SS_19_11_14)が使えない場合、
+    * 「代入演算子を伴わない[一様初期化](cpp_standard.md#SS_19_6_6)」を使用する。
     * 上記では意図したコンストラクタが呼び出せない場合にのみ「()による初期化」を使用する。
   ただし、std::string、std::string_viewに関しては「 = "xxx"」を使用しても良い。
 
@@ -1087,7 +1087,7 @@ ___
     ASSERT_EQ(10, vec3_s.size());
 ```
 
-* decltypeによるオブジェクトの宣言は、[AAAスタイル](cpp_standard.md#SS_19_10_14)と同様に行う。
+* decltypeによるオブジェクトの宣言は、[AAAスタイル](cpp_standard.md#SS_19_11_14)と同様に行う。
 
 ```cpp
     //  example/programming_convention/type_ut.cpp 674
@@ -1106,7 +1106,7 @@ ___
     static_assert(std::is_same_v<decltype(f), int&>);
 ```
 
-* 配列の宣言には、「代入演算子を伴わない[一様初期化](cpp_standard.md#SS_19_5_2)」を使用する。
+* 配列の宣言には、「代入演算子を伴わない[一様初期化](cpp_standard.md#SS_19_6_6)」を使用する。
   char[]に関しては、「代入演算子を伴わない一様初期化」か「 = "xxx"」を使用する。
 
 ```cpp
@@ -1124,7 +1124,7 @@ ___
     char c_str4[] = "12";              // OK
 ```
 
-* 宣言時にポインタ変数の初期値が決まらない場合、nullptrで初期化する(「[リテラル](term_explanation.md#SS_21_3)」参照)。
+* 宣言時にポインタ変数の初期値が決まらない場合、nullptrで初期化する(「[リテラル](cpp_standard.md#SS_19_2)」参照)。
 
 ```cpp
     //  example/programming_convention/type_ut.cpp 720
@@ -1177,13 +1177,13 @@ ___
 ```
 
 
-* [演習-インスタンスの初期化](exercise_q.md#SS_22_1_15)
-* [演習-vector初期化](exercise_q.md#SS_22_1_14)
-* [演習-ポインタの初期化](exercise_q.md#SS_22_1_13)
+* [演習-インスタンスの初期化](exercise_q.md#SS_24_1_15)
+* [演習-vector初期化](exercise_q.md#SS_24_1_14)
+* [演習-ポインタの初期化](exercise_q.md#SS_24_1_13)
 
 
 ### rvalue <a id="SS_3_1_13"></a>
-* 関数の仮引数以外のリファレンスで[rvalue](cpp_standard.md#SS_19_6_1_2)をバインドしない
+* 関数の仮引数以外のリファレンスで[rvalue](cpp_standard.md#SS_19_7_1_2)をバインドしない
   (「[オブジェクトのライフタイム](programming_convention.md#SS_3_2_10)」参照)。
 * rvalueの内部ハンドルを使用しない(「[std::string_viewの使用制限](programming_convention.md#SS_3_10_1_4)」参照)。
 
@@ -1234,8 +1234,8 @@ ___
   [凝集度](cpp_jargon.md#SS_20_1_4)が高くなるように設計する。
 * [LCOMの評価基準](cpp_jargon.md#SS_20_1_4_2)に従い、凝集度を判断し、凝集度が著しく低いクラスを作らないようにする。
 
-* [演習-凝集度の意味](exercise_q.md#SS_22_2_1)
-* [演習-凝集度の向上](exercise_q.md#SS_22_2_2)
+* [演習-凝集度の意味](exercise_q.md#SS_24_2_1)
+* [演習-凝集度の向上](exercise_q.md#SS_24_2_2)
 
 
 ### アクセスレベルと隠蔽化 <a id="SS_3_2_3"></a>
@@ -1355,7 +1355,7 @@ ___
 
 ### 継承/派生 <a id="SS_3_2_4"></a>
 * 派生は最大2回程度までに留める。やむを得ず階層が深くなる場合、
-  コードの静的解析等を使用し派生関係を明確にする(「[ポリモーフィックなクラス](cpp_standard.md#SS_19_3_8)」参照)。
+  コードの静的解析等を使用し派生関係を明確にする(「[ポリモーフィックなクラス](cpp_standard.md#SS_19_4_8)」参照)。
 * 実装の継承よりも、包含、委譲を優先的に使用する。やむを得ず実装の継承を行う場合は、
   private継承を使用する。 実装の継承をしたクラスがfinalでないならば、protected継承を使用する
   ([CRTP(curiously recurring template pattern)](design_pattern.md#SS_9_22)等は例外的に認められる)。
@@ -1481,10 +1481,10 @@ ___
 #### 多重継承 <a id="SS_3_2_4_2"></a>
 * 多重継承が不可避でない限り、多重継承は使用しない。
     * 多重継承が必要な場合、その継承の基底クラスは1つを除き、
-      他の基底クラスは[インターフェースクラス](cpp_standard.md#SS_19_3_11)にしなければならない。
+      他の基底クラスは[インターフェースクラス](cpp_standard.md#SS_19_4_11)にしなければならない。
 * 多重継承を使用する場合、複数個の基底クラスのうち、一つを除きメンバ変数を持ってはならない。
 * 多重継承を使用する場合、継承階層内に同じ基底クラスが複数回出てきてはならない
-  ([ダイヤモンド継承](cpp_standard.md#SS_19_11_10)をしない)。
+  ([ダイヤモンド継承](cpp_standard.md#SS_19_12_10)をしない)。
 * やむを得ずダイヤモンド継承をせざるを得ない場合、
   継承階層内に複数回出現する基底クラスにはvirtual継承を行う。
 * virtual継承を行ったクラスのコンストラクタからは、
@@ -1494,17 +1494,17 @@ ___
 ### 非静的なメンバ変数 <a id="SS_3_2_5"></a>
 * すべての非静的なメンバ変数は、コンストラクタ終了時までに明示的に初期化する。
 * 多くのコンパイラや静的解析ツールはインスペクタは、
-  [NSDMI](cpp_standard.md#SS_19_5_6)、[初期化子リストでの初期化](cpp_standard.md#SS_19_5_7)による初期化の漏れについては容易に発見、
+  [NSDMI](cpp_standard.md#SS_19_6_7_1)、[初期化子リストでの初期化](cpp_standard.md#SS_19_6_7_2)による初期化の漏れについては容易に発見、
   指摘できることが多い。
-* constメンバ変数は、[NSDMI](cpp_standard.md#SS_19_5_6)、
-  [初期化子リストでの初期化](cpp_standard.md#SS_19_5_7)でなければ初期化できないため、それ以外に方法がない場合を除き、
-  [コンストラクタ内での非静的なメンバ変数の初期値の代入](cpp_standard.md#SS_19_5_8)の使用を避ける。
+* constメンバ変数は、[NSDMI](cpp_standard.md#SS_19_6_7_1)、
+  [初期化子リストでの初期化](cpp_standard.md#SS_19_6_7_2)でなければ初期化できないため、それ以外に方法がない場合を除き、
+  [コンストラクタ内での非静的なメンバ変数の初期値の代入](cpp_standard.md#SS_19_6_7_3)の使用を避ける。
 * 非静的なメンバ変数はクラス内で定義された順序に従い初期化されるため、
-  [初期化子リストでの初期化](cpp_standard.md#SS_19_5_7)の順序を定義順序と同じにすることで可読性を向上させる。
+  [初期化子リストでの初期化](cpp_standard.md#SS_19_6_7_2)の順序を定義順序と同じにすることで可読性を向上させる。
 * クラスがただ一つのコンストラクタを持つ場合、
-  [NSDMI](cpp_standard.md#SS_19_5_6)と[初期化子リストでの初期化](cpp_standard.md#SS_19_5_7)を混在させない。
-  従って、[初期化子リストでの初期化](cpp_standard.md#SS_19_5_7)を必要とするメンバ変数が一つでもある場合は、
-  すべての変数の初期化を[初期化子リストでの初期化](cpp_standard.md#SS_19_5_7)で行う。
+  [NSDMI](cpp_standard.md#SS_19_6_7_1)と[初期化子リストでの初期化](cpp_standard.md#SS_19_6_7_2)を混在させない。
+  従って、[初期化子リストでの初期化](cpp_standard.md#SS_19_6_7_2)を必要とするメンバ変数が一つでもある場合は、
+  すべての変数の初期化を[初期化子リストでの初期化](cpp_standard.md#SS_19_6_7_2)で行う。
 
 ```cpp
     //  example/programming_convention/class_ut.cpp 259
@@ -1548,9 +1548,9 @@ ___
 ```
 
 * クラスが複数のコンストラクタを持つ場合、
-  すべてのメンバ変数に対して[NSDMI](cpp_standard.md#SS_19_5_6)を行い(デフォルト値の設定)、
+  すべてのメンバ変数に対して[NSDMI](cpp_standard.md#SS_19_6_7_1)を行い(デフォルト値の設定)、
   デフォルト値とは異なる初期値を持つ変数に対してのみ、
-  コンストラクタ毎に[初期化子リストでの初期化](cpp_standard.md#SS_19_5_7)を行う。
+  コンストラクタ毎に[初期化子リストでの初期化](cpp_standard.md#SS_19_6_7_2)を行う。
 
 ```cpp
     //  example/programming_convention/class_ut.cpp 299
@@ -1569,9 +1569,9 @@ ___
     };
 ```
 
-* [演習-メンバ変数の初期化方法の選択](exercise_q.md#SS_22_2_3)
-* [演習-メンバの型](exercise_q.md#SS_22_2_4)
-* [演習-メンバ変数の初期化](exercise_q.md#SS_22_2_5)
+* [演習-メンバ変数の初期化方法の選択](exercise_q.md#SS_24_2_3)
+* [演習-メンバの型](exercise_q.md#SS_24_2_4)
+* [演習-メンバ変数の初期化](exercise_q.md#SS_24_2_5)
 
 ### 静的なメンバ変数/定数の初期化 <a id="SS_3_2_6"></a>
 * 静的な(且つconstexprでない)メンバ変数は、ヘッダファイルで宣言し、.cppで定義、初期化する。
@@ -1645,18 +1645,18 @@ ___
 ```
 
 ### スライシング <a id="SS_3_2_8"></a>
-* オブジェクトの[スライシング](term_explanation.md#SS_21_2_4_3)には以下のいずれかで対処する。
+* オブジェクトの[スライシング](cpp_semantics.md#SS_23_8_3)には以下のいずれかで対処する。
     * [Clone(仮想コンストラクタ)](design_pattern.md#SS_9_8)を使用する。
     * copy代入演算子を= deleteする。
 
-* [スライシング](term_explanation.md#SS_21_2_4_3)と類似の問題が起こるため、
+* [スライシング](cpp_semantics.md#SS_23_8_3)と類似の問題が起こるため、
   オブジェクトの配列をそのオブジェクトの基底クラスへのポインタに代入しない。
 
-* [演習-スライシング](exercise_q.md#SS_22_2_6)
+* [演習-スライシング](exercise_q.md#SS_24_2_6)
 
 ### オブジェクトの所有権 <a id="SS_3_2_9"></a>
 * オブジェクトaの所有権
-  (「[オブジェクトの所有権](term_explanation.md#SS_21_2_2)」参照)を持つオブジェクトもしくは関数は、
+  (「[オブジェクトの所有権](cpp_semantics.md#SS_23_1)」参照)を持つオブジェクトもしくは関数は、
   オブジェクトaの解放責務を持つ。
 * オブジェクトaの所有権を持たないオブジェクトは、
   オブジェクトaのハンドルをメンバ変数で保持することを出来る限り避ける
@@ -1668,19 +1668,19 @@ ___
     * オブジェクトbはオブジェクトaの解放責務を持つ(`std::unique_ptr<A>`による自動解放)。
     * オブジェクトaの所有権を保持していないオブジェクトは、オブジェクトaを解放してはならない。
     * オブジェクトaの所有権を別のオブジェクトxへ移動させる場合、
-      `std::unique_ptr<A>`とstd::move()を使用する(「[オブジェクトの排他所有](term_explanation.md#SS_21_2_2_1)」参照)。
+      `std::unique_ptr<A>`とstd::move()を使用する(「[オブジェクトの排他所有](cpp_semantics.md#SS_23_1_1)」参照)。
     * このようなaに複数の所有者b0、b1が存在する場合、`std::shared_ptr<A>`を使用してaを管理する。
       従って、b0、
-      b1は`std::shared_ptr<A>`型のメンバを持つことになる(「[オブジェクトの共有所有](term_explanation.md#SS_21_2_2_2)」参照)。
+      b1は`std::shared_ptr<A>`型のメンバを持つことになる(「[オブジェクトの共有所有](cpp_semantics.md#SS_23_1_2)」参照)。
     * オブジェクトbが`std::shared_ptr<A>`でオブジェクトaを、
       オブジェクトaが`std::shared_ptr<B>`でオブジェクトbを所有する場合、
-      [オブジェクトの循環所有](term_explanation.md#SS_21_2_2_3)よるメモリリークが発生するため、
-      [std::weak_ptr](term_explanation.md#SS_21_2_2_4)を適切に使用する。
+      [オブジェクトの循環所有](cpp_semantics.md#SS_23_1_3)よるメモリリークが発生するため、
+      [std::weak_ptr](cpp_standard.md#SS_19_14_5_3)を適切に使用する。
 
-* [演習-オブジェクトの所有権](exercise_q.md#SS_22_2_7)
+* [演習-オブジェクトの所有権](exercise_q.md#SS_24_2_7)
 
 ### オブジェクトのライフタイム <a id="SS_3_2_10"></a>
-* [オブジェクトのライフタイム](term_explanation.md#SS_21_2_3)開始前、
+* [オブジェクトのライフタイム](cpp_standard.md#SS_19_6_8)開始前、
   もしくは終了後のオブジェクトにアクセスしない。
 
 ```cpp
@@ -1718,7 +1718,7 @@ ___
 * スタック上のオブジェクトのハンドルをその関数外部へ開示しない
   (そのハンドルは、ライフタイムが終了したオブジェクトを指している)。
 * thread_localオブジェクトは、ログやデバッグ用途のみで使用する。
-* [rvalue](cpp_standard.md#SS_19_6_1_2)はライフタイム終了間際のオブジェクトであるため、
+* [rvalue](cpp_standard.md#SS_19_7_1_2)はライフタイム終了間際のオブジェクトであるため、
   関数の仮引数以外のリファレンスでrvalueをバインドしない
   (特にリファレンス型のメンバ変数でrvalueをバインドしないことは重要である)。
   rvalueをリファレンス型の引数で受け取る場合はconstリファレンス、
@@ -1739,7 +1739,7 @@ ___
     E&&      e1 = E{"5"};  // NG rvalueを引数以外のrvalueリファレンスに代入
 ```
 
-* [danglingリファレンス](cpp_standard.md#SS_19_7_7)、 [danglingポインタ](cpp_standard.md#SS_19_7_8)に気を付ける。
+* [danglingリファレンス](cpp_standard.md#SS_19_8_7)、 [danglingポインタ](cpp_standard.md#SS_19_8_8)に気を付ける。
 
 
 ## 非メンバ関数/メンバ関数 <a id="SS_3_3"></a>
@@ -1752,13 +1752,13 @@ ___
 * .cppファイルから、そのファイルの外部で定義された関数を呼び出す場合、その.cppファイル内での局所的な関数宣言をしない。
   つまり、.cppファイルローカルなetern関数宣言を行ってはならない
   (関数が宣言、定義されているヘッダファイルをインクルードする)。
-* コンパイル時に戻り値が確定する関数は[constexpr関数](cpp_standard.md#SS_19_4_3)として宣言する。
+* コンパイル時に戻り値が確定する関数は[constexpr関数](cpp_standard.md#SS_19_5_3)として宣言する。
 
-* [演習-非メンバ関数の宣言](exercise_q.md#SS_22_3_1)
+* [演習-非メンバ関数の宣言](exercise_q.md#SS_24_3_1)
 
 ### メンバ関数 <a id="SS_3_3_2"></a>
 * 可能な場合(メンバに直接アクセスしない場合)、メンバ関数をstaticにする。
-* コンパイル時に戻り値が確定するメンバ関数は[constexpr関数](cpp_standard.md#SS_19_4_3)と宣言する。
+* コンパイル時に戻り値が確定するメンバ関数は[constexpr関数](cpp_standard.md#SS_19_5_3)と宣言する。
 * オブジェクトの状態を変えないメンバ関数は、constと宣言する。
     * getter(下記の例ではGetString)はconstと宣言する。
     * 下記のSetPtrのような関数はconstにしない。
@@ -1827,10 +1827,10 @@ ___
 ```
 
 * 非静的メンバのハンドルを返すメンバ関数を持つオブジェクトが
-  [rvalue](cpp_standard.md#SS_19_6_1_2)である場合、
+  [rvalue](cpp_standard.md#SS_19_7_1_2)である場合、
   そのオブジェクトからその関数を呼び出した戻り値(メンバへのハンドル)を変数で保持しない
-  (そのハンドルは[danglingリファレンス](cpp_standard.md#SS_19_7_7)/[danglingポインタ](cpp_standard.md#SS_19_7_8)になっている)。
-  そういった使用方法が必要ならばlvalue修飾、[rvalue修飾](cpp_standard.md#SS_19_7_9_1)を用いたオーバーロード関数を定義する。
+  (そのハンドルは[danglingリファレンス](cpp_standard.md#SS_19_8_7)/[danglingポインタ](cpp_standard.md#SS_19_8_8)になっている)。
+  そういった使用方法が必要ならばlvalue修飾、[rvalue修飾](cpp_standard.md#SS_19_8_9_1)を用いたオーバーロード関数を定義する。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 84
@@ -1840,10 +1840,10 @@ ___
     std::cout << s << std::endl;  // この時点ではsは解放されている。
 ```
 
-* [演習-メンバ関数の修飾](exercise_q.md#SS_22_3_2)
+* [演習-メンバ関数の修飾](exercise_q.md#SS_24_3_2)
 
 #### 特殊メンバ関数 <a id="SS_3_3_2_1"></a>
-* [特殊メンバ関数](term_explanation.md#SS_21_1_1)
+* [特殊メンバ関数](cpp_standard.md#SS_19_6_1)
     * デフォルトコンストラクタ
     * copyコンストラクタ
     * copy代入演算子(operator =)
@@ -1885,15 +1885,15 @@ ___
   move代入演算子では機能が不十分であることが予測されるため、
   これらを使用しない(「[Copy-And-Swap](design_pattern.md#SS_9_6)」参照)。
 
-* [演習-特殊メンバ関数の削除](exercise_q.md#SS_22_3_3)
+* [演習-特殊メンバ関数の削除](exercise_q.md#SS_24_3_3)
 
 #### コンストラクタ <a id="SS_3_3_2_2"></a>
 * クラスが複数の初期化方法を提供する場合でも、
   デフォルト引数を使用し、できる限りコンストラクタを一つに集約する。
-* 一つのコンストラクタに集約できない場合、[委譲コンストラクタ](cpp_standard.md#SS_19_5_5)等により処理の重複を防ぐ。
+* 一つのコンストラクタに集約できない場合、[委譲コンストラクタ](cpp_standard.md#SS_19_6_1_3)等により処理の重複を防ぐ。
   [非静的なメンバ変数](programming_convention.md#SS_3_2_5)処理の重複を避けることは特に重要である。
 * オブジェクトの初期化が完了するまでは派生クラスの仮想関数呼び出し等の
-  [RTTI](programming_convention.md#SS_3_5_9)機能を使うことはできないため(「[ポリモーフィックなクラス](cpp_standard.md#SS_19_3_8)」参照)、
+  [RTTI](programming_convention.md#SS_3_5_9)機能を使うことはできないため(「[ポリモーフィックなクラス](cpp_standard.md#SS_19_4_8)」参照)、
   コンストラクタの中でRTTI機能を使わない(デストラクタでも同様)。
   以下のコードはコンストラクタ内で仮想関数呼び出しを行ったため、想定通りの動作にならない例である。
 
@@ -1942,19 +1942,19 @@ ___
 * コンストラクタのボディの使用してのメンバ変数の初期化はバグにつながりやすいため、
   この方法を避ける(「[非静的なメンバ変数](programming_convention.md#SS_3_2_5)」参照)。
 * クラスが解放責務を持つポインタ型メンバ変数を持つならば、copyコンストラクタ、
-  copy代入演算子に対して以下のいずれかを行い、[シャローコピー](term_explanation.md#SS_21_2_4_1)が行われないようにする
+  copy代入演算子に対して以下のいずれかを行い、[シャローコピー](cpp_semantics.md#SS_23_8_1)が行われないようにする
   (このルールはファイルディスクリプタ等のリソース管理をするクラス全般に当てはまる)。
-    * [ディープコピー](term_explanation.md#SS_21_2_4_2)をさせる。
-    * = deleteする(「[特殊メンバ関数](term_explanation.md#SS_21_1_1)」参照)。
+    * [ディープコピー](cpp_semantics.md#SS_23_8_2)をさせる。
+    * = deleteする(「[特殊メンバ関数](cpp_standard.md#SS_19_6_1)」参照)。
 
   またこの場合、moveコンストラクタ、move代入演算子の定義を検討する(「[Copy-And-Swap](design_pattern.md#SS_9_6)」参照)。
 
-* 非explicitなコンストラクタによる[暗黙の型変換](term_explanation.md#SS_21_4_1)
+* 非explicitなコンストラクタによる[暗黙の型変換](cpp_standard.md#SS_19_6_2_2)
   が不要なクラスのコンストラクタに関しては、下記の目的のためにexplicitと宣言する。
 
-    * 仮引数一つのコンストラクタに関しては、[暗黙の型変換抑止](term_explanation.md#SS_21_4_2)する。
+    * 仮引数一つのコンストラクタに関しては、[暗黙の型変換抑止](cpp_standard.md#SS_19_6_2_3)する。
     * 仮引数二つ以上のコンストラクタに関しては、
-      代入演算子での[一様初期化](cpp_standard.md#SS_19_5_2)ができないようにする。  
+      代入演算子での[一様初期化](cpp_standard.md#SS_19_6_6)ができないようにする。  
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 147
@@ -2019,20 +2019,20 @@ ___
 ```
 
 * 派生クラスが基底クラスの全コンストラクタを必要とする場合、
-  [継承コンストラクタ](cpp_standard.md#SS_19_5_4)を使用する。
+  [継承コンストラクタ](cpp_standard.md#SS_19_6_1_2)を使用する。
 
 * デフォルト引数はインターフェース関数の呼び出しを簡略化する目的で使用するべきであるため、
   private関数にデフォルト引数を持たせない。
 
-* [演習-委譲コンストラクタ](exercise_q.md#SS_22_3_4)
+* [演習-委譲コンストラクタ](exercise_q.md#SS_24_3_4)
 
 #### copyコンストラクタ、copy代入演算子 <a id="SS_3_3_2_3"></a>
-* copyコンストラクタ、copy代入演算子は[copyセマンティクス](term_explanation.md#SS_21_5_2)に従わせる。
+* copyコンストラクタ、copy代入演算子は[copyセマンティクス](cpp_semantics.md#SS_23_3)に従わせる。
 * copyコンストラクタ、copy代入演算子の引数はconstリファレンスにする。
-* [RVO(Return Value Optimization)](cpp_standard.md#SS_19_15_1)により、
+* [RVO(Return Value Optimization)](cpp_standard.md#SS_19_16_1)により、
   copyコンストラクタの呼び出しは省略されることがあるため、
   copyコンストラクタ、copy代入演算子はコピー以外のことをしない。
-* copy代入演算子は[lvalue修飾](cpp_standard.md#SS_19_7_9_2)をする。
+* copy代入演算子は[lvalue修飾](cpp_standard.md#SS_19_8_9_2)をする。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 236
@@ -2094,10 +2094,10 @@ ___
     // Widget{3} = Widget{4};   lvalue修飾の効果でコンパイルエラー
 ```
 
-* [演習-copyコンストラクタ](exercise_q.md#SS_22_3_5)
+* [演習-copyコンストラクタ](exercise_q.md#SS_24_3_5)
 
 #### moveコンストラクタ、move代入演算子 <a id="SS_3_3_2_4"></a>
-* moveコンストラクタ、move代入演算子は[moveセマンティクス](term_explanation.md#SS_21_5_3)に従わせる。
+* moveコンストラクタ、move代入演算子は[moveセマンティクス](cpp_semantics.md#SS_23_4)に従わせる。
 * moveコンストラクタ、move代入演算子はnoexceptをつけて宣言し、エクセプションを発生させない。
   noexceptでないmoveコンストラクタ、
   move代入演算子を持つクラスをSTLコンテナのtemplate引数として使用した場合、
@@ -2105,10 +2105,10 @@ ___
 * move代入演算子はlvalue修飾(「[copyコンストラクタ、copy代入演算子](programming_convention.md#SS_3_3_2_3)」参照)をする。
 
 
-* [演習-moveコンストラクタ](exercise_q.md#SS_22_3_6)  
+* [演習-moveコンストラクタ](exercise_q.md#SS_24_3_6)  
 
 #### 初期化子リストコンストラクタ <a id="SS_3_3_2_5"></a>
-* [初期化子リストコンストラクタ](cpp_standard.md#SS_19_5_3)は、コンテナクラスの初期化のためのみに定義する。
+* [初期化子リストコンストラクタ](cpp_standard.md#SS_19_6_1_1)は、コンテナクラスの初期化のためのみに定義する。
 * 初期化子リストコンストラクタと同じ仮引数を取り得るコンストラクタを定義しない。
 
 #### デストラクタ <a id="SS_3_3_2_6"></a>
@@ -2116,7 +2116,7 @@ ___
 * デストラクタはnoexceptであり、throwするとプログラムが終了するため、デストラクタでthrowしない。
 
 #### オーバーライド <a id="SS_3_3_2_7"></a>
-* [オーバーライドとオーバーロードの違い](term_explanation.md#SS_21_1_2)に注意する。
+* [オーバーライドとオーバーロードの違い](cpp_jargon.md#SS_20_3_1)に注意する。
 * オーバーライドしたメンバ関数には、オーバーライドされたメンバ関数の機能の意味を踏襲させる。
 * オーバーライドする/される一連の仮想関数(デストラクタを含む)について、
     * 全ての宣言にはvirtualを付ける。
@@ -2201,7 +2201,7 @@ ___
   上の条項の示した一連のオーバーライド関数のデフォルト引数の一致について考慮の必要がなくなり、
   且つこのクラスのユーザはデフォルト引数が使用できるようになる。
 
-* [演習-オーバーライド関数の修飾](exercise_q.md#SS_22_3_8)  
+* [演習-オーバーライド関数の修飾](exercise_q.md#SS_24_3_8)  
 
 ### 非メンバ関数/メンバ関数共通 <a id="SS_3_3_3"></a>
 
@@ -2221,15 +2221,15 @@ ___
     私自身は、もっと小さい平均 7 行程度を理想としている。 
 ```
 
-* [演習-関数分割](exercise_q.md#SS_22_3_7)  
+* [演習-関数分割](exercise_q.md#SS_24_3_7)  
 
 #### オーバーロード <a id="SS_3_3_3_3"></a>
-* [オーバーライドとオーバーロードの違い](term_explanation.md#SS_21_1_2)に注意する。
+* [オーバーライドとオーバーロードの違い](cpp_jargon.md#SS_20_3_1)に注意する。
 * オーバーロードされた関数は実行目的を同じにする。
   異なる目的のためには異なる名前の関数を用意する。
 * [オーバーライド](programming_convention.md#SS_3_3_2_7)を除き、基底クラスのメンバ関数と同じ名前を持つメンバ関数を派生クラスで宣言、
   定義しない。
-  これに反すると[name-hiding](cpp_standard.md#SS_19_11_9)のため、基底クラスのメンバ関数の可視範囲を縮小させてしまう。
+  これに反すると[name-hiding](cpp_standard.md#SS_19_12_9)のため、基底クラスのメンバ関数の可視範囲を縮小させてしまう。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 414
@@ -2366,8 +2366,8 @@ ___
     f3(ui32);
 ```
 
-* [演習-オーバーライド/オーバーロード](exercise_q.md#SS_22_3_9)  
-* [演習-オーバーロードによる誤用防止](exercise_q.md#SS_22_3_10)  
+* [演習-オーバーライド/オーバーロード](exercise_q.md#SS_24_3_9)  
+* [演習-オーバーロードによる誤用防止](exercise_q.md#SS_24_3_10)  
 
 #### 演算子オーバーロード <a id="SS_3_3_3_4"></a>
 * 演算子をオーバーロードする場合、
@@ -2459,11 +2459,11 @@ ___
 ```
 
 * 比較演算子のオーバーロードする場合、
-    * C++20であれば、[<=>演算子](term_explanation.md#SS_21_3_8_3)を定義する。
+    * C++20であれば、[<=>演算子](cpp_standard.md#SS_19_6_4_1)を定義する。
     * C++17以下であれば、`operator==`と`operator<`の2つの演算子がを定義し、
-      [std::rel_ops](term_explanation.md#SS_21_3_8_1)を使用する。
+      [std::rel_ops](cpp_standard.md#SS_19_14_9_1)を使用する。
 
-* [ユーザ定義リテラル演算子](term_explanation.md#SS_21_3_6_1)のサフィックスには、
+* [ユーザ定義リテラル演算子](cpp_standard.md#SS_19_2_6_1)のサフィックスには、
   アンダーバーから始まる3文字以上の文字列を使用する。
 
 ```cpp
@@ -2502,12 +2502,12 @@ ___
 ```
 
 #### 実引数/仮引数 <a id="SS_3_3_3_5"></a>
-* 仮引数(「[実引数/仮引数](cpp_standard.md#SS_19_14_7)」参照)の数は、4個程度を上限とする。
+* 仮引数(「[実引数/仮引数](cpp_standard.md#SS_19_15_7)」参照)の数は、4個程度を上限とする。
   引数が多くなりすぎる場合、その関数の引数用の構造体を定義し、それを使用して関数を呼び出す。
-  この場合、[指示付き初期化](cpp_standard.md#SS_19_9_4)を使用する。
+  この場合、[指示付き初期化](cpp_standard.md#SS_19_10_4)を使用する。
 
 * 仮引数を関数の戻り値として利用しない場合
-  (且つ仮引数が関数テンプレートの[ユニバーサルリファレンス](cpp_standard.md#SS_19_7_4)でない場合)、
+  (且つ仮引数が関数テンプレートの[ユニバーサルリファレンス](cpp_standard.md#SS_19_8_4)でない場合)、
     * 基本型やその型のエイリアス、enumは値渡しにする。
     * それ以外のオブジェクトはconstリファレンス渡しにする
       (「[const/constexprインスタンス](programming_convention.md#SS_3_1_9)」参照)。
@@ -2545,10 +2545,10 @@ ___
     * 「関数が、仮引数がnullptrである場合の処理を行う」場合、ポインタ渡しにする。
     * 「関数が、仮引数がnullptrでないことを前提している」場合、リファレンス渡しにする。
 
-* [ユニバーサルリファレンス](cpp_standard.md#SS_19_7_4)を仮引数とする関数テンプレートでは、仮引数は非constにする。
+* [ユニバーサルリファレンス](cpp_standard.md#SS_19_8_4)を仮引数とする関数テンプレートでは、仮引数は非constにする。
 
 * 継承の都合等で、使用しないにもかかわらず定義しなければならない仮引数には名前を付けない。
-  仮引数が使用されていない警告の抑止のために[属性構文](cpp_standard.md#SS_19_8_1)を使わない。
+  仮引数が使用されていない警告の抑止のために[属性構文](cpp_standard.md#SS_19_9_1)を使わない。
   
 * 関数f()の仮引数が2つ以上であり、f()に渡す引数をそれぞれに生成する関数があった場合、
   引数を生成する関数の戻り値を直接f()に渡さない。
@@ -2620,7 +2620,7 @@ ___
 
 * 実引数として使用される配列がポインタ型へ暗黙に変換されることを前提に、
   仮引数をポインタ型にしない。また、仮引数を一見、配列に見えるポインタ型にしない
-  (「[スライシング](term_explanation.md#SS_21_2_4_3)」で述べたように、
+  (「[スライシング](cpp_semantics.md#SS_23_8_3)」で述べたように、
   特に基底クラスを配列にすることは危険である)。
   代わりに配列へのリファレンスもしくはstd::arrayを使用する。 
 
@@ -2835,7 +2835,7 @@ ___
     }
 ```
 
-* [演習-仮引数の修飾](exercise_q.md#SS_22_3_11)  
+* [演習-仮引数の修飾](exercise_q.md#SS_24_3_11)  
 
 #### 自動変数 <a id="SS_3_3_3_6"></a>
 * 一つの文で複数の変数の宣言をしない。
@@ -2922,9 +2922,9 @@ ___
 #### 戻り値型 <a id="SS_3_3_3_7"></a>
 * メモリアロケータ以外の関数の戻り値をvoid\*にしない。
 * 避けがたい理由なしに以下のシンタックスを使用しない。
-    * [戻り値型を後置する関数宣言](cpp_standard.md#SS_19_10_19)
-    * [関数の戻り値型auto](cpp_standard.md#SS_19_10_20)
-    * [後置戻り値型auto](cpp_standard.md#SS_19_10_21)
+    * [戻り値型を後置する関数宣言](cpp_standard.md#SS_19_11_19)
+    * [関数の戻り値型auto](cpp_standard.md#SS_19_11_20)
+    * [後置戻り値型auto](cpp_standard.md#SS_19_11_21)
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 1135
@@ -2944,7 +2944,7 @@ ___
 * 戻り値を比較的大きなオブジェクトにする場合、パフォーマンスに注意する
   (「[関数の戻り値オブジェクト](programming_convention.md#SS_3_9_3)」参照)。
 
-* 関数が複数の値を返す場合、[std::optional](cpp_standard.md#SS_19_13_7)、std::pair、std::tupple、
+* 関数が複数の値を返す場合、[std::optional](cpp_standard.md#SS_19_14_7)、std::pair、std::tupple、
   構造体オブジェクトを戻り値にして返す。パフォーマンスに著しい悪影響がない限り、
   リファレンス引数で戻り値を返さない(「[関数の戻り値オブジェクト](programming_convention.md#SS_3_9_3)」参照)。
 
@@ -3103,12 +3103,12 @@ ___
 
 
 #### constexpr関数 <a id="SS_3_3_3_8"></a>
-* 引数が[constexpr](cpp_standard.md#SS_19_4_1)の場合、コンパイル時に評価が確定する関数テンプレートもしくはinline関数は、
-  [constexpr関数](cpp_standard.md#SS_19_4_3)として宣言する。
-* [constexpr関数](cpp_standard.md#SS_19_4_3)がコンパイル時に評価される必要がある場合、
-  [constexpr](cpp_standard.md#SS_19_4_1)の代わりに[consteval](cpp_standard.md#SS_19_4_6)を使用する。
+* 引数が[constexpr](cpp_standard.md#SS_19_5_1)の場合、コンパイル時に評価が確定する関数テンプレートもしくはinline関数は、
+  [constexpr関数](cpp_standard.md#SS_19_5_3)として宣言する。
+* [constexpr関数](cpp_standard.md#SS_19_5_3)がコンパイル時に評価される必要がある場合、
+  [constexpr](cpp_standard.md#SS_19_5_1)の代わりに[consteval](cpp_standard.md#SS_19_5_6)を使用する。
 
-* [演習-constexpr関数](exercise_q.md#SS_22_3_12)  
+* [演習-constexpr関数](exercise_q.md#SS_24_3_12)  
 
 #### リエントラント性 <a id="SS_3_3_3_9"></a>
 * 関数、メンバ関数はなるべくリエントラントに実装する。
@@ -3131,18 +3131,18 @@ ___
 ```
 
 #### エクセプション処理 <a id="SS_3_3_3_10"></a>
-* 関数はそれが不可避でない限り、[no-fail保証](cpp_standard.md#SS_19_12_1)をする。
-  [no-fail保証](cpp_standard.md#SS_19_12_1)関数は[noexcept](cpp_standard.md#SS_19_12_4)を使用してそのことを明示する。
-* throwをせざるを得ない場合、最低でも[基本的な安全性の保証](cpp_standard.md#SS_19_12_3)をする。
+* 関数はそれが不可避でない限り、[no-fail保証](cpp_standard.md#SS_19_13_1)をする。
+  [no-fail保証](cpp_standard.md#SS_19_13_1)関数は[noexcept](cpp_standard.md#SS_19_13_4)を使用してそのことを明示する。
+* throwをせざるを得ない場合、最低でも[基本的な安全性の保証](cpp_standard.md#SS_19_13_3)をする。
 * STLコンテナ(std::string, std::vector等)が発生させるエクセプションはtry-catchせず
   (catchしてデバッグ情報を保存するような場合を除く)、
   プログラムをクラッシュさせる。try-catchしてもできることはない。
-* 特別な理由がない限り、コンストラクタ呼び出しは[noexcept](cpp_standard.md#SS_19_12_4)と宣言する。
+* 特別な理由がない限り、コンストラクタ呼び出しは[noexcept](cpp_standard.md#SS_19_13_4)と宣言する。
   ネットワーク接続等、簡単にエラーすることをコンストラクタ内で行わない。
 * [オープン・クローズドの原則(OCP)](solid.md#SS_8_2)、[リスコフの置換原則(LSP)](solid.md#SS_8_3)に違反する場合が多いため、
   「throwキーワードによるエクセプション仕様」を使用しない(C++17で廃止)。
-* エクセプションをthrowしないことが確定している関数は、[noexcept](cpp_standard.md#SS_19_12_4)と宣言する。
-  move代入演算子を[noexcept](cpp_standard.md#SS_19_12_4)と宣言することは特に重要である。
+* エクセプションをthrowしないことが確定している関数は、[noexcept](cpp_standard.md#SS_19_13_4)と宣言する。
+  move代入演算子を[noexcept](cpp_standard.md#SS_19_13_4)と宣言することは特に重要である。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 1383
@@ -3161,7 +3161,7 @@ ___
 ```
 
 * try-catchが不可避である場合、以下の理由によりconstリファレンスで受け取る。
-    * 実態で受け取るとオブジェクトの[スライシング](term_explanation.md#SS_21_2_4_3)が起こる場合がある。
+    * 実態で受け取るとオブジェクトの[スライシング](cpp_semantics.md#SS_23_8_3)が起こる場合がある。
     * 受け取ったエクセプションオブジェクトを書き換えるべきではない。
 
 * エクセプションによるリソースリークを避けるため[RAII(scoped guard)](design_pattern.md#SS_9_10)でリソースを管理する。
@@ -3220,7 +3220,7 @@ ___
     }
 ```
 
-* [exception-unfriendly](cpp_standard.md#SS_19_12_5)な関数はエクセプションを発生させないようにする。
+* [exception-unfriendly](cpp_standard.md#SS_19_13_5)な関数はエクセプションを発生させないようにする。
 * エクセプションをthrowする場合、独自定義したオブジェクトを使用しない。
   代わりにstd::exceptionか、これから派生したクラスを使用する。
   また、throwされたオブジェクトのwhat()から、throwされたファイル位置が特定できるようにする
@@ -3228,7 +3228,7 @@ ___
 
 
 * noexceptと宣言された関数へのポインタへ、noexceptでない関数のポインタを代入しない
-  (C++17では[ill-formed](cpp_standard.md#SS_19_14_1)になる)。
+  (C++17では[ill-formed](cpp_standard.md#SS_19_15_1)になる)。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 1466
@@ -3276,7 +3276,7 @@ ___
 
 ```
 
-* [演習-エクセプションの型](exercise_q.md#SS_22_3_13)  
+* [演習-エクセプションの型](exercise_q.md#SS_24_3_13)  
 
 #### ビジーループ <a id="SS_3_3_3_11"></a>
 * 待ち合わせにビジーループを使わない。イベントドリブンにする。
@@ -3366,7 +3366,7 @@ ___
 ### switch文 <a id="SS_3_4_2"></a>
 * caseラベル、defaultラベルに関連付けられた一連の文はできだけフォールスルーさせない。
   実装がシンプルになる等の理由からフォールスルーさせる場合、
-  [属性構文](cpp_standard.md#SS_19_8_1)を使用しそれが意図的であることを明示するため以下のような記述する。
+  [属性構文](cpp_standard.md#SS_19_9_1)を使用しそれが意図的であることを明示するため以下のような記述する。
 
 ```cpp
     // fallthrough          // C++14以前
@@ -3404,7 +3404,7 @@ ___
 ```
 
 * switch文のオペランド変数を生成する場合、
-  できるだけ[初期化付きswitch文](cpp_standard.md#SS_19_8_5_4)を使用し、その変数のスコープを最小に留める。
+  できるだけ[初期化付きswitch文](cpp_standard.md#SS_19_9_5_4)を使用し、その変数のスコープを最小に留める。
 
 ### if文 <a id="SS_3_4_3"></a>
 * if-else-ifと連続する場合は、else文で終了させる。
@@ -3449,20 +3449,20 @@ ___
 ```
 
 * 条件が2つ以上且つ、switchで表現できる条件文には、ifではなくswitchを使用する。
-* ifの条件式が、コンパイル時に定まるのであれば、[constexpr if文](cpp_standard.md#SS_19_10_12)を使用する。
+* ifの条件式が、コンパイル時に定まるのであれば、[constexpr if文](cpp_standard.md#SS_19_11_12)を使用する。
 
 * if文のオペランド変数を生成する場合、
-  できるだけ[初期化付きif文](cpp_standard.md#SS_19_8_5_3)を使用し、その変数のスコープを最小に留める。
+  できるだけ[初期化付きif文](cpp_standard.md#SS_19_9_5_3)を使用し、その変数のスコープを最小に留める。
 
 ### while文 <a id="SS_3_4_4"></a>
-* while文には、[初期化付きif文](cpp_standard.md#SS_19_8_5_3)/[初期化付きswitch文](cpp_standard.md#SS_19_8_5_4)のような構文は存在しないが、
+* while文には、[初期化付きif文](cpp_standard.md#SS_19_9_5_3)/[初期化付きswitch文](cpp_standard.md#SS_19_9_5_4)のような構文は存在しないが、
   while文のオペランド変数を生成するする場合、
-  [初期化付きfor文(従来のfor文)](cpp_standard.md#SS_19_8_5_1)を使用し、その変数のスコープを最小に留める。
+  [初期化付きfor文(従来のfor文)](cpp_standard.md#SS_19_9_5_1)を使用し、その変数のスコープを最小に留める。
 
 ### 範囲for文 <a id="SS_3_4_5"></a>
 * 配列やコンテナの全要素にアクセスするような繰り返し処理には、
   [off-by-oneエラー](https://ja.wikipedia.org/wiki/Off-by-one%E3%82%A8%E3%83%A9%E3%83%BC)
-  が避けられ、従来よりもシンプルに記述できる[範囲for文](cpp_standard.md#SS_19_8_3)を使用する。
+  が避けられ、従来よりもシンプルに記述できる[範囲for文](cpp_standard.md#SS_19_9_3)を使用する。
 
 ```cpp
     //  example/programming_convention/syntax_ut.cpp 155
@@ -3493,10 +3493,10 @@ ___
 ```
 
 * 独自のコンテナクラスを定義する場合、STLコンテナと同様の要件を満たすbegin()、end()や、
-  cbegin()、cend()も定義し、そのコンテナに[範囲for文](cpp_standard.md#SS_19_8_3)を適用できるようにする
+  cbegin()、cend()も定義し、そのコンテナに[範囲for文](cpp_standard.md#SS_19_9_3)を適用できるようにする
   (「[デバッグ用イテレータ](dynamic_memory_allocation.md#SS_14_2_4)」参照)。
 
-* [演習-コンテナの範囲for文](exercise_q.md#SS_22_4_1)  
+* [演習-コンテナの範囲for文](exercise_q.md#SS_24_4_1)  
 
 ### 制御文のネスト <a id="SS_3_4_6"></a>
 * breakとの関係がわかりづらい、ブロックが巨大になる等の問題があるため、
@@ -3543,7 +3543,7 @@ ___
 * 二重以上のループを抜ける目的でgotoを使用する場合、gotoのジャンプ先ラベルはそのループの直後に置く。
 
 ### ラムダ式 <a id="SS_3_4_9"></a>
-* [ラムダ式](cpp_standard.md#SS_19_9_3)を複雑にしない。
+* [ラムダ式](cpp_standard.md#SS_19_10_3)を複雑にしない。
     * できるだけワンライナーにする。
     * 必ず10行以下にする。
 
@@ -3654,7 +3654,7 @@ ___
 ```
 
 * C++17以降では、 コンパイル時に戻り値が確定するラムダ式の呼び出し式は定数にできるため、
-  そのようなラムダ式は[constexprラムダ](cpp_standard.md#SS_19_4_8)として宣言する。
+  そのようなラムダ式は[constexprラムダ](cpp_standard.md#SS_19_5_8)として宣言する。
 
 ```cpp
     //  example/programming_convention/syntax_ut.cpp 368
@@ -3698,8 +3698,8 @@ ___
     static_assert(square5(2)() == 4);  // C++17以降、square5(2)はリテラル
 ```
 
-* [演習-ラムダ式](exercise_q.md#SS_22_4_2)  
-* [演習-ラムダ式のキャプチャ](exercise_q.md#SS_22_4_3)  
+* [演習-ラムダ式](exercise_q.md#SS_24_4_2)  
+* [演習-ラムダ式のキャプチャ](exercise_q.md#SS_24_4_3)  
 
 ### マクロの中の文 <a id="SS_3_4_10"></a>
 * マクロの中に文がある場合、do-while(0)イデオムを使用する(「[関数型マクロ](programming_convention.md#SS_3_6_1)」参照)。
@@ -3725,7 +3725,7 @@ ___
 ## 演算子 <a id="SS_3_5"></a>
 
 ### 優先順位 <a id="SS_3_5_1"></a>
-* 規格上で[演算子のオペランドの評価順位](cpp_standard.md#SS_19_14_12)が決まっていても、一見優先順位が分かりづらい式では、
+* 規格上で[演算子のオペランドの評価順位](cpp_standard.md#SS_19_15_12)が決まっていても、一見優先順位が分かりづらい式では、
   順序を明示するために丸括弧を使う。
 
 ```cpp
@@ -3776,7 +3776,7 @@ ___
 ```
 
 ### 代入演算 <a id="SS_3_5_2"></a>
-* [単純代入](cpp_standard.md#SS_19_14_8)のみからなる文を除き、1つの文で複数の代入を行わない。
+* [単純代入](cpp_standard.md#SS_19_15_8)のみからなる文を除き、1つの文で複数の代入を行わない。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 87
@@ -3864,15 +3864,15 @@ ___
     }
 ```
 
-* [演習-条件演算子](exercise_q.md#SS_22_5_1)  
+* [演習-条件演算子](exercise_q.md#SS_24_5_1)  
 
 ### メモリアロケーション <a id="SS_3_5_6"></a>
 #### new <a id="SS_3_5_6_1"></a>
 * オブジェクトのダイナミックな生成には、特別な理由がない限りnewを使用せず、
   `std::make_unique<>`や`std::make_shared<>`を使用する。
-  また、特別な理由でnewした場合、そのポインタは[スマートポインタ](cpp_standard.md#SS_19_13_5)で管理する。
+  また、特別な理由でnewした場合、そのポインタは[スマートポインタ](cpp_standard.md#SS_19_14_5)で管理する。
 * `std::shared_ptr<>`でダイナミックに生成したオブジェクトを管理する場合、
-  [オブジェクトの循環所有](term_explanation.md#SS_21_2_2_3)が発生しないように気を付ける(適切に[std::weak_ptr](term_explanation.md#SS_21_2_2_4)を使う)。
+  [オブジェクトの循環所有](cpp_semantics.md#SS_23_1_3)が発生しないように気を付ける(適切に[std::weak_ptr](cpp_standard.md#SS_19_14_5_3)を使う)。
 * new(nothrow)、プレースメントnewは使用しない。
 * 配列型オブジェクトのダイナミックな生成を避け、
   代わりにstd::arrayをダイナミックに生成するか、std::vectorを使用する。
@@ -3885,7 +3885,7 @@ ___
 * newを禁止したいクラスには、privateなoperator new()を宣言する(定義は不要)か、= deleteする。
 
 #### delete <a id="SS_3_5_6_2"></a>
-* [不完全型](cpp_standard.md#SS_19_3_6)のオブジェクトへのポインタをdeleteしない。
+* [不完全型](cpp_standard.md#SS_19_4_6)のオブジェクトへのポインタをdeleteしない。
   特に「[Pimpl](design_pattern.md#SS_9_3)」を使用する場合には注意が必要である。
 
 ```cpp
@@ -3946,7 +3946,7 @@ ___
     delete ptr;  // OK ptrがnullptrでも問題ない
 ```
 
-* [演習-delete](exercise_q.md#SS_22_5_2)  
+* [演習-delete](exercise_q.md#SS_24_5_2)  
 
 #### メモリ制約が強いシステムでの::operator new <a id="SS_3_5_6_3"></a>
 * [注意]このルールは以下のようなソフトウェアを対象とする。  
@@ -4050,7 +4050,7 @@ ___
     }
 ```
 
-* [演習-sizeof](exercise_q.md#SS_22_5_3)  
+* [演習-sizeof](exercise_q.md#SS_24_5_3)  
 
 ### ポインタ間の演算 <a id="SS_3_5_8"></a>
 * 同一オブジェクト(配列等)の要素を指さないポインタ間の除算や比較をしない。
@@ -4076,9 +4076,9 @@ ___
 
 ### RTTI <a id="SS_3_5_9"></a>
 * [注意] [RAII(scoped guard)](design_pattern.md#SS_9_10)との混乱に気を付ける。
-* [Run-time Type Information](cpp_standard.md#SS_19_3_10)を使用したラインタイム時の型による場合分けは、
+* [Run-time Type Information](cpp_standard.md#SS_19_4_10)を使用したラインタイム時の型による場合分けは、
   それ以外に解決方法がない場合や、実装が大幅にシンプルになる場合を除き行わない
-  (「[等価性のセマンティクス](term_explanation.md#SS_21_5_1)」参照)。
+  (「[等価性のセマンティクス](cpp_semantics.md#SS_23_2)」参照)。
     * 単体テストやロギングのでtypeidの使用は問題ない。
     * 派生クラスの型によって異なる動作にしたい場合には、仮想関数を使うか、
       [Visitor](design_pattern.md#SS_9_21)パターン等により実現できる。
@@ -4165,7 +4165,7 @@ ___
 * コンストラクタやデストラクタ内でRTTIの機能を使わない
   (「[コンストラクタ](programming_convention.md#SS_3_3_2_2)」、「[デストラクタ](programming_convention.md#SS_3_3_2_6)」参照)
 
-* [演習-dynamic_castの削除](exercise_q.md#SS_22_5_4)  
+* [演習-dynamic_castの削除](exercise_q.md#SS_24_5_4)  
 
 ### キャスト、暗黙の型変換 <a id="SS_3_5_10"></a>
 * キャストが必要な式等は、設計レベルの問題を内包していることがほとんどであるため、設計を見直す。
@@ -4240,7 +4240,7 @@ ___
   (「[実引数/仮引数](programming_convention.md#SS_3_3_3_5)」、
   「[sizeof](programming_convention.md#SS_3_5_7)」、「[関数型マクロ](programming_convention.md#SS_3_6_1)」参照)。
 
-* [演習-キャスト](exercise_q.md#SS_22_5_5)  
+* [演習-キャスト](exercise_q.md#SS_24_5_5)  
 
 ## プリプロセッサ命令 <a id="SS_3_6"></a>
 * `#include`を除き、プリプロセッサ命令を使用しない。
@@ -4713,13 +4713,13 @@ ___
     * 単一関数のみで使用する変数は、その関数内で定義する。
     * 自動変数は、使用直前に定義する。
 
-* このドキュメント執筆時のコンパイラ/ビルダのC++20での[モジュール](cpp_standard.md#SS_19_9_2)のサポート状況が
+* このドキュメント執筆時のコンパイラ/ビルダのC++20での[モジュール](cpp_standard.md#SS_19_10_2)のサポート状況が
   万全ではないため、
     * モジュールを定義するためのmoduleを使用しない。
     * モジュール外に公開する識別子を定義するexport使用しない。
     * exportされた識別子を使用するためにimportを使用しない。
 
-* [name-hiding](cpp_standard.md#SS_19_11_9)を起こすとコードの可読性が著しく低下するため、
+* [name-hiding](cpp_standard.md#SS_19_12_9)を起こすとコードの可読性が著しく低下するため、
   スコープが重複する「名前のない名前空間内」(例えば、ブロックとそれを内包するブロック)
   にある「同一名を持つ識別子」を宣言、定義しない。
 
@@ -4797,8 +4797,8 @@ ___
 ```
 
 ### using宣言/usingディレクティブ <a id="SS_3_8_3"></a>
-* 識別子のインポートのための[using宣言](cpp_standard.md#SS_19_11_14)は下記のような場合のみに使用する
-  (「[継承コンストラクタ](cpp_standard.md#SS_19_5_4)」、「[オーバーライドとオーバーロードの違い](term_explanation.md#SS_21_1_2)」参照)。
+* 識別子のインポートのための[using宣言](cpp_standard.md#SS_19_12_14)は下記のような場合のみに使用する
+  (「[継承コンストラクタ](cpp_standard.md#SS_19_6_1_2)」、「[オーバーライドとオーバーロードの違い](cpp_jargon.md#SS_20_3_1)」参照)。
 
 ```cpp
     //  example/programming_convention/scope_ut.cpp 55
@@ -4827,7 +4827,7 @@ ___
     };
 ```
 
-* 下記のような場合を除き、[usingディレクティブ](cpp_standard.md#SS_19_11_15)は使用しない。
+* 下記のような場合を除き、[usingディレクティブ](cpp_standard.md#SS_19_12_15)は使用しない。
   使用する場合でもその効果をブロックスコープ内のみに留める。
 
 ```cpp
@@ -4924,11 +4924,11 @@ ___
     ASSERT_EQ(2, Shipping::EU::DoSomething());
 ```
 
-* [演習-usingディレクティブ](exercise_q.md#SS_22_6_1)  
+* [演習-usingディレクティブ](exercise_q.md#SS_24_6_1)  
 
 ### ADLと名前空間による修飾の省略 <a id="SS_3_8_4"></a>
 * 名前空間の修飾を省略した識別子のアクセスには、
-  下記のような副作用があるため、[ADL](cpp_standard.md#SS_19_11_5)を使用する目的以外で使用しない
+  下記のような副作用があるため、[ADL](cpp_standard.md#SS_19_12_5)を使用する目的以外で使用しない
   (「[識別子の命名](naming_practice.md#SS_6_2)」を順守することで、識別子の偶然の一致を避けることも必要)。
 
 ```cpp
@@ -5121,11 +5121,11 @@ ___
 ### 関数の戻り値オブジェクト <a id="SS_3_9_3"></a>
 * 基本型やenum、`std::unique_ptr<>`、
   `std::optional<>`等のサイズの小さいクラス以外のオブジェクトを関数の戻り値にしない。
-* [注意] ローカルオブジェクトに対して[RVO(Return Value Optimization)](cpp_standard.md#SS_19_15_1)が有効であれば、
+* [注意] ローカルオブジェクトに対して[RVO(Return Value Optimization)](cpp_standard.md#SS_19_16_1)が有効であれば、
   そのオブジェクトを戻り値にしても良い。
 * [注意] stdのコンテナは、RVOが有効でなくてもmoveが行われるため、関数の戻り値として使用しても良い。
 * [注意] std::stringについては、RVOに加えて、
-  [SSO(Small String Optimization)](cpp_standard.md#SS_19_15_2)が使用されていることが多い。
+  [SSO(Small String Optimization)](cpp_standard.md#SS_19_16_2)が使用されていることが多い。
   そのようなコンパイラを使用している場合、std::stringは小さいオブジェクトとして扱って良い。
 
 ```cpp
@@ -5163,10 +5163,10 @@ ___
 ```
 
 ### move処理 <a id="SS_3_9_4"></a>
-* [ディープコピー](term_explanation.md#SS_21_2_4_2)の実装を持つクラスへのcopy代入の多くがrvalueから行われるのであれば、
+* [ディープコピー](cpp_semantics.md#SS_23_8_2)の実装を持つクラスへのcopy代入の多くがrvalueから行われるのであれば、
   moveコンストラクタや、move代入演算子も実装する。
 * 関数の戻り値にローカルオブジェクトを使用する場合、
-  [RVO(Return Value Optimization)](cpp_standard.md#SS_19_15_1)の阻害になるため、そのオブジェクトをstd::moveしない。
+  [RVO(Return Value Optimization)](cpp_standard.md#SS_19_16_1)の阻害になるため、そのオブジェクトをstd::moveしない。
 
 ```cpp
     //  example/programming_convention/runtime_ut.cpp 150
@@ -5326,14 +5326,14 @@ ___
   * [C++17の機能変更](https://cpprefjp.github.io/lang/cpp17.html)
   に詳細が書かれている。
 
-* [g++](cpp_jargon.md#SS_20_3_1)/[clang++](cpp_jargon.md#SS_20_3_2)等の優れたコンパイラを適切なオプションで使用することで、
+* [g++](cpp_jargon.md#SS_20_4_1)/[clang++](cpp_jargon.md#SS_20_4_2)等の優れたコンパイラを適切なオプションで使用することで、
   非推奨の機能、関数、クラスの使用を防ぐ。
 
 #### スマートポインタの使用制限 <a id="SS_3_10_1_1"></a>
 * std::auto_ptrを使用しない(C++17で廃止)。
-* ダイナミックに生成した[オブジェクトの排他所有](term_explanation.md#SS_21_2_2_1)を行う場合、`std::unique_ptr<>`を使用する。
-* ダイナミックに生成した[オブジェクトの共有所有](term_explanation.md#SS_21_2_2_2)を行う場合、`std::shared_ptr<>`を使用する。
-* `std::shared_ptr<>`を使用する場合、[オブジェクトの循環所有](term_explanation.md#SS_21_2_2_3)が発生しないように気を付ける。
+* ダイナミックに生成した[オブジェクトの排他所有](cpp_semantics.md#SS_23_1_1)を行う場合、`std::unique_ptr<>`を使用する。
+* ダイナミックに生成した[オブジェクトの共有所有](cpp_semantics.md#SS_23_1_2)を行う場合、`std::shared_ptr<>`を使用する。
+* `std::shared_ptr<>`を使用する場合、[オブジェクトの循環所有](cpp_semantics.md#SS_23_1_3)が発生しないように気を付ける。
 
 #### 配列系コンテナクラスの使用制限 <a id="SS_3_10_1_2"></a>
 * 配列系のコンテナを使用する場合、コンパイル時に要素数の上限が
@@ -5665,8 +5665,8 @@ ___
 
 * static\_assert、assert両方が使える場合には、static\_assertを優先して使用する。
 
-* [演習-アサーションの選択](exercise_q.md#SS_22_7_1)  
-* [演習-assert/static_assert](exercise_q.md#SS_22_7_2)  
+* [演習-アサーションの選択](exercise_q.md#SS_24_7_1)  
+* [演習-assert/static_assert](exercise_q.md#SS_24_7_2)  
 
 ### アセンブラ <a id="SS_3_11_2"></a>
 * アセンブラ関数は、.asm等で定義し、ヘッダファイルでCの関数として宣言する。
@@ -5749,7 +5749,7 @@ ___
     * if, else, for, while, do後には{}を使う([複合文](programming_convention.md#SS_3_4_1))。
     * switchでのフォールスルーをしない([switch文](programming_convention.md#SS_3_4_2))。
     * switchにはdefaultラベルを入れる([switch文](programming_convention.md#SS_3_4_2))。
-    * 範囲for文を積極的に使う([範囲for文](cpp_standard.md#SS_19_8_3))。
+    * 範囲for文を積極的に使う([範囲for文](cpp_standard.md#SS_19_9_3))。
     * gotoを使用しない([goto文](programming_convention.md#SS_3_4_8))。
 * オブジェクトのダイナミックな生成には`std::make_unique<>`や`std::make_shared<>`を使用する
   ([メモリアロケーション](programming_convention.md#SS_3_5_6))。

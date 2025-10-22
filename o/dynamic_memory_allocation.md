@@ -51,7 +51,7 @@ ___
 ## malloc/freeの問題点 <a id="SS_14_1"></a>
 UNIX系のOSでの典型的なmalloc/freeの実装例の一部を以下に示す
 (この実装は長いため、
-全体は巻末の「[example/dynamic_memory_allocation/malloc_ut.cpp](sample_code.md#SS_26_2_35)」に掲載する)。
+全体は巻末の「[example/dynamic_memory_allocation/malloc_ut.cpp](sample_code.md#SS_28_2_35)」に掲載する)。
 
 ```cpp
     //  example/dynamic_memory_allocation/malloc_ut.cpp 19
@@ -272,7 +272,7 @@ malloc/freeにリアルタイム性がない原因は、
 
 そのため、固定長のメモリプールは、
 
-* 複数個のメモリプールを統合的に扱う[インターフェースクラス](cpp_standard.md#SS_19_3_11)MPool
+* 複数個のメモリプールを統合的に扱う[インターフェースクラス](cpp_standard.md#SS_19_4_11)MPool
 * MPoolを基底クラスとし、固定長メモリブロックを管理するクラステンプレートMPoolFixed
 
 によって実装することにする。
@@ -607,7 +607,7 @@ MPoolから派生したクラスが、
 
 静的オブジェクトを含まないアプリケーションでは、
 上記のコードのsetupで行っているmpool_tableの初期化は
-[一様初期化](cpp_standard.md#SS_19_5_2)で行った方が良いが、
+[一様初期化](cpp_standard.md#SS_19_6_6)で行った方が良いが、
 例で用いたアプリケーションにはnewを行う静的オブジェクトが存在するため
 (google testは静的オブジェクトを利用する)、
 setupで行っているような方法以外では、
@@ -1047,7 +1047,7 @@ STLコンテナはこういった状況に備えて、ユーザ定義のアロ�
 
 ### 可変長メモリプール <a id="SS_14_4_2"></a>
 可変長メモリプールを生成するMPoolVariableの実装は下記のようになる
-(全体は巻末の「[example/dynamic_memory_allocation/mpool_variable.h](sample_code.md#SS_26_2_36)」に掲載する)。
+(全体は巻末の「[example/dynamic_memory_allocation/mpool_variable.h](sample_code.md#SS_28_2_36)」に掲載する)。
 
 ```cpp
     //  example/dynamic_memory_allocation/mpool_variable.h 59
@@ -1341,7 +1341,7 @@ newをオーバーロードしたクラスをstd::shared_ptrで管理する場�
 リアルタイム性が不要な処理であるため使用しているSTLコンテナにすら、
 既存のエクセプション処理機構を使わせたく無くなるものである。
 
-コンパイラに[g++](cpp_jargon.md#SS_20_3_1)や[clang++](cpp_jargon.md#SS_20_3_2)を使っている場合、
+コンパイラに[g++](cpp_jargon.md#SS_20_4_1)や[clang++](cpp_jargon.md#SS_20_4_2)を使っている場合、
 下記関数を置き換えることでそういった要望を叶えることができる。
 
 |関数                                           |機能                            |
@@ -1447,7 +1447,7 @@ std::pmrの主要なコンポーネントは以下の通りである。
 ### std::pmr::memory_resource <a id="SS_14_5_1"></a>
 std::pmr::memory_resourceは、
 ユーザー定義のメモリリソースをカスタマイズし、
-[std::pmr::polymorphic_allocator](dynamic_memory_allocation.md#SS_14_5_2)を通じて利用可能にする[インターフェースクラス](cpp_standard.md#SS_19_3_11)である。
+[std::pmr::polymorphic_allocator](dynamic_memory_allocation.md#SS_14_5_2)を通じて利用可能にする[インターフェースクラス](cpp_standard.md#SS_19_4_11)である。
 
 [可変長メモリプール](dynamic_memory_allocation.md#SS_14_4_2)の実装で示したコードとほぼ同様の、
 std::pmr::memory_resourceから派生した具象クラスの実装を以下に示す。

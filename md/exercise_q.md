@@ -147,7 +147,7 @@ ___
     // @@@ exercise/programming_convention_q/type.cpp #7:0 begin
 ```
 
-* 参照 [用語解説|リテラル](---)
+* 参照 [C++標準|リテラル](---)
 
 * [解答例-リテラル](---)
 
