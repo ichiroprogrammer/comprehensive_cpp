@@ -1,19 +1,19 @@
 <!-- ./md/exercise_a.md -->
-# 解答 <a id="SS_21"></a>
+# 解答 <a id="SS_23"></a>
 
 __この章の構成__
 
-&emsp;&emsp; [プログラミング規約(型)](exercise_a.md#SS_21_1)  
-&emsp;&emsp; [プログラミング規約(クラス)](exercise_a.md#SS_21_2)  
-&emsp;&emsp; [プログラミング規約(関数)](exercise_a.md#SS_21_3)  
-&emsp;&emsp; [プログラミング規約(構文)](exercise_a.md#SS_21_4)  
-&emsp;&emsp; [プログラミング規約(演算子)](exercise_a.md#SS_21_5)  
-&emsp;&emsp; [プログラミング規約(スコープ)](exercise_a.md#SS_21_6)  
-&emsp;&emsp; [プログラミング規約(その他)](exercise_a.md#SS_21_7)  
-&emsp;&emsp; [SOLID](exercise_a.md#SS_21_8)  
-&emsp;&emsp; [デザインパターン](exercise_a.md#SS_21_9)  
-&emsp;&emsp; [開発プロセスとインフラ(全般)](exercise_a.md#SS_21_10)  
-&emsp;&emsp; [テンプレートメタプログラミング](exercise_a.md#SS_21_11)  
+&emsp;&emsp; [プログラミング規約(型)](exercise_a.md#SS_23_1)  
+&emsp;&emsp; [プログラミング規約(クラス)](exercise_a.md#SS_23_2)  
+&emsp;&emsp; [プログラミング規約(関数)](exercise_a.md#SS_23_3)  
+&emsp;&emsp; [プログラミング規約(構文)](exercise_a.md#SS_23_4)  
+&emsp;&emsp; [プログラミング規約(演算子)](exercise_a.md#SS_23_5)  
+&emsp;&emsp; [プログラミング規約(スコープ)](exercise_a.md#SS_23_6)  
+&emsp;&emsp; [プログラミング規約(その他)](exercise_a.md#SS_23_7)  
+&emsp;&emsp; [SOLID](exercise_a.md#SS_23_8)  
+&emsp;&emsp; [デザインパターン](exercise_a.md#SS_23_9)  
+&emsp;&emsp; [開発プロセスとインフラ(全般)](exercise_a.md#SS_23_10)  
+&emsp;&emsp; [テンプレートメタプログラミング](exercise_a.md#SS_23_11)  
   
   
   
@@ -21,9 +21,9 @@ __この章の構成__
 
 ___
 
-## プログラミング規約(型) <a id="SS_21_1"></a>
+## プログラミング規約(型) <a id="SS_23_1"></a>
 
-### 解答-汎整数型の選択 <a id="SS_21_1_1"></a>
+### 解答-汎整数型の選択 <a id="SS_23_1_1"></a>
 * 選択肢3
 * 参照 [算術型](programming_convention.md#SS_3_1_1)
 * 解説  
@@ -34,10 +34,10 @@ ___
   その前提を避けるべきと考えるのであれば、int32_tの代わりにint、
   uint32_tの代わりにunsigned intを使用すればよい。
 
-* [演習-汎整数型の選択](exercise_q.md#SS_20_1_1)へ戻る。
+* [演習-汎整数型の選択](exercise_q.md#SS_22_1_1)へ戻る。
 
 
-### 解答例-汎整数型の演算 <a id="SS_21_1_2"></a>
+### 解答例-汎整数型の演算 <a id="SS_23_1_2"></a>
 ```cpp
     //  exercise/programming_convention_a/type.cpp 14
     TEST(ProgrammingConventionTypeA, GeneralInteger)
@@ -53,10 +53,10 @@ ___
     }
 ```
 
-* [演習-汎整数型の演算](exercise_q.md#SS_20_1_2)へ戻る。
+* [演習-汎整数型の演算](exercise_q.md#SS_22_1_2)へ戻る。
 
 
-### 解答例-浮動小数点型 <a id="SS_21_1_3"></a>
+### 解答例-浮動小数点型 <a id="SS_23_1_3"></a>
 ```cpp
     //  exercise/programming_convention_a/type.cpp 28
     double f(double a) noexcept { return 1 / a; }
@@ -85,16 +85,16 @@ ___
     }
 ```
 
-* [演習-浮動小数点型](exercise_q.md#SS_20_1_3)へ戻る。
+* [演習-浮動小数点型](exercise_q.md#SS_22_1_3)へ戻る。
 
 
-### 解答-定数列挙 <a id="SS_21_1_4"></a>
+### 解答-定数列挙 <a id="SS_23_1_4"></a>
 * 選択肢4
-* 参照 [enum](term_explanation.md#SS_19_2)
-* [演習-定数列挙](exercise_q.md#SS_20_1_4)へ戻る。
+* 参照 [enum](cpp_standard.md#SS_19_2_1)
+* [演習-定数列挙](exercise_q.md#SS_22_1_4)へ戻る。
 
 
-### 解答例-enum <a id="SS_21_1_5"></a>
+### 解答例-enum <a id="SS_23_1_5"></a>
 ```cpp
     //  exercise/programming_convention_a/type.cpp 55
     // [A]
@@ -125,10 +125,10 @@ ___
     }
 ```
 
-* [演習-enum](exercise_q.md#SS_20_1_5)へ戻る。
+* [演習-enum](exercise_q.md#SS_22_1_5)へ戻る。
 
 
-### 解答例-配列の範囲for文 <a id="SS_21_1_6"></a>
+### 解答例-配列の範囲for文 <a id="SS_23_1_6"></a>
 ```cpp
     //  exercise/programming_convention_a/type.cpp 84
     int32_t array_value() noexcept
@@ -154,10 +154,10 @@ ___
     }
 ```
 
-* [演習-配列の範囲for文](exercise_q.md#SS_20_1_6)へ戻る。
+* [演習-配列の範囲for文](exercise_q.md#SS_22_1_6)へ戻る。
 
 
-### 解答例-エイリアス <a id="SS_21_1_7"></a>
+### 解答例-エイリアス <a id="SS_23_1_7"></a>
 ```cpp
     //  exercise/programming_convention_a/type.cpp 108
     // [A]
@@ -180,16 +180,16 @@ ___
     }
 ```
 
-* [演習-エイリアス](exercise_q.md#SS_20_1_7)へ戻る。
+* [演習-エイリアス](exercise_q.md#SS_22_1_7)へ戻る。
 
 
-### 解答-constの意味 <a id="SS_21_1_8"></a>
+### 解答-constの意味 <a id="SS_23_1_8"></a>
 * 選択肢1
 * 参照 [const/constexprインスタンス](programming_convention.md#SS_3_1_9)
-* [演習-constの意味](exercise_q.md#SS_20_1_8)へ戻る。
+* [演習-constの意味](exercise_q.md#SS_22_1_8)へ戻る。
 
 
-### 解答例-const/constexpr <a id="SS_21_1_9"></a>
+### 解答例-const/constexpr <a id="SS_23_1_9"></a>
 ```cpp
     //  exercise/programming_convention_a/type.cpp 129
     // [A]
@@ -228,10 +228,10 @@ ___
     }
 ```
 
-* [演習-const/constexpr](exercise_q.md#SS_20_1_9)へ戻る。
+* [演習-const/constexpr](exercise_q.md#SS_22_1_9)へ戻る。
 
 
-### 解答例-危険なconst_cast <a id="SS_21_1_10"></a>
+### 解答例-危険なconst_cast <a id="SS_23_1_10"></a>
 ```cpp
     //  exercise/programming_convention_a/type.cpp 166
     // [A]
@@ -250,10 +250,10 @@ ___
     }
 ```
 
-* [演習-危険なconst_cast](exercise_q.md#SS_20_1_10)へ戻る。
+* [演習-危険なconst_cast](exercise_q.md#SS_22_1_10)へ戻る。
 
 
-### 解答例-リテラル <a id="SS_21_1_11"></a>
+### 解答例-リテラル <a id="SS_23_1_11"></a>
 ```cpp
     //  exercise/programming_convention_a/type.cpp 186
     int32_t literal_test(int64_t) noexcept { return 0; }
@@ -277,28 +277,28 @@ ___
     }
 ```
 
-* [演習-リテラル](exercise_q.md#SS_20_1_11)へ戻る。
+* [演習-リテラル](exercise_q.md#SS_22_1_11)へ戻る。
 
 
-### 解答-適切なautoの使い方 <a id="SS_21_1_12"></a>
+### 解答-適切なautoの使い方 <a id="SS_23_1_12"></a>
 * 選択肢4
-* 参照 [auto](programming_convention.md#SS_3_1_11_1)
-* [演習-適切なautoの使い方](exercise_q.md#SS_20_1_12)へ戻る。
+* 参照 [auto](cpp_standard.md#SS_19_10_15)
+* [演習-適切なautoの使い方](exercise_q.md#SS_22_1_12)へ戻る。
 
 
-### 解答-ポインタの初期化 <a id="SS_21_1_13"></a>
+### 解答-ポインタの初期化 <a id="SS_23_1_13"></a>
 * 選択肢3
-* 参照 [リテラル](term_explanation.md#SS_19_6)
-* [演習-ポインタの初期化](exercise_q.md#SS_20_1_13)へ戻る。
+* 参照 [リテラル](term_explanation.md#SS_21_3)
+* [演習-ポインタの初期化](exercise_q.md#SS_22_1_13)へ戻る。
 
 
-### 解答-vector初期化 <a id="SS_21_1_14"></a>
+### 解答-vector初期化 <a id="SS_23_1_14"></a>
 * 選択肢1
 * 参照 [インスタンスの初期化](programming_convention.md#SS_3_1_12)
-* [演習-vector初期化](exercise_q.md#SS_20_1_14)へ戻る。
+* [演習-vector初期化](exercise_q.md#SS_22_1_14)へ戻る。
 
 
-### 解答例-インスタンスの初期化 <a id="SS_21_1_15"></a>
+### 解答例-インスタンスの初期化 <a id="SS_23_1_15"></a>
 ```cpp
     //  exercise/programming_convention_a/type.cpp 209
     TEST(ProgrammingConventionTypeA, Initialization)
@@ -336,18 +336,18 @@ ___
     }
 ```
 
-* [演習-インスタンスの初期化](exercise_q.md#SS_20_1_15)へ戻る。
+* [演習-インスタンスの初期化](exercise_q.md#SS_22_1_15)へ戻る。
 
 
-## プログラミング規約(クラス) <a id="SS_21_2"></a>
+## プログラミング規約(クラス) <a id="SS_23_2"></a>
 
-### 解答-凝集度の意味 <a id="SS_21_2_1"></a>
+### 解答-凝集度の意味 <a id="SS_23_2_1"></a>
 * 選択肢4
 * 参照 [凝集度](programming_convention.md#SS_3_2_2_3)
-* [演習-凝集度の意味](exercise_q.md#SS_20_2_1)へ戻る。
+* [演習-凝集度の意味](exercise_q.md#SS_22_2_1)へ戻る。
 
 
-### 解答例-凝集度の向上 <a id="SS_21_2_2"></a>
+### 解答例-凝集度の向上 <a id="SS_23_2_2"></a>
 ```cpp
     //  exercise/programming_convention_a/class.cpp 7
     // [A]
@@ -388,25 +388,25 @@ ___
     }
 ```
 
-* [演習-凝集度の向上](exercise_q.md#SS_20_2_2)へ戻る。
+* [演習-凝集度の向上](exercise_q.md#SS_22_2_2)へ戻る。
 
 
-### 解答-メンバ変数の初期化方法の選択 <a id="SS_21_2_3"></a>
+### 解答-メンバ変数の初期化方法の選択 <a id="SS_23_2_3"></a>
 * 選択肢2
 * 参照 [非静的なメンバ変数](programming_convention.md#SS_3_2_5)
-* [演習-メンバ変数の初期化方法の選択](exercise_q.md#SS_20_2_3)へ戻る。
+* [演習-メンバ変数の初期化方法の選択](exercise_q.md#SS_22_2_3)へ戻る。
 
 
-### 解答-メンバの型 <a id="SS_21_2_4"></a>
+### 解答-メンバの型 <a id="SS_23_2_4"></a>
 * 選択肢3
 * 参照 [インスタンスの初期化](programming_convention.md#SS_3_1_12)
 * 解説  
   関数の宣言と、クラスのデフォルトコンストラクタ呼び出しによるオブジェクトの生成は、
   プログラマを混乱させることがあるので注意が必要である。
-* [演習-メンバの型](exercise_q.md#SS_20_2_4)へ戻る。
+* [演習-メンバの型](exercise_q.md#SS_22_2_4)へ戻る。
 
 
-### 解答例-メンバ変数の初期化 <a id="SS_21_2_5"></a>
+### 解答例-メンバ変数の初期化 <a id="SS_23_2_5"></a>
 ```cpp
     //  exercise/programming_convention_a/class.cpp 46
     // [A]
@@ -451,10 +451,10 @@ ___
     }
 ```
 
-* [演習-メンバ変数の初期化](exercise_q.md#SS_20_2_5)へ戻る。
+* [演習-メンバ変数の初期化](exercise_q.md#SS_22_2_5)へ戻る。
 
 
-### 解答例-スライシング <a id="SS_21_2_6"></a>
+### 解答例-スライシング <a id="SS_23_2_6"></a>
 ```cpp
     //  exercise/programming_convention_a/class.cpp 89
     // [A]
@@ -513,10 +513,10 @@ ___
     }
 ```
 
-* [演習-スライシング](exercise_q.md#SS_20_2_6)へ戻る。
+* [演習-スライシング](exercise_q.md#SS_22_2_6)へ戻る。
 
 
-### 解答例-オブジェクトの所有権 <a id="SS_21_2_7"></a>
+### 解答例-オブジェクトの所有権 <a id="SS_23_2_7"></a>
 ```cpp
     //  exercise/programming_convention_a/class.cpp 146
     class A {
@@ -595,11 +595,11 @@ ___
     }
 ```
 
-* [演習-オブジェクトの所有権](exercise_q.md#SS_20_2_7)へ戻る。
+* [演習-オブジェクトの所有権](exercise_q.md#SS_22_2_7)へ戻る。
 
 
-## プログラミング規約(関数) <a id="SS_21_3"></a>
-### 解答例-非メンバ関数の宣言 <a id="SS_21_3_1"></a>
+## プログラミング規約(関数) <a id="SS_23_3"></a>
+### 解答例-非メンバ関数の宣言 <a id="SS_23_3_1"></a>
 ```cpp
     //  exercise/programming_convention_a/func.cpp 11
     TEST(ProgrammingConventionFuncA, NonMemberFunc)
@@ -615,10 +615,10 @@ ___
     }
 ```
 
-* [演習-非メンバ関数の宣言](exercise_q.md#SS_20_3_1)へ戻る。
+* [演習-非メンバ関数の宣言](exercise_q.md#SS_22_3_1)へ戻る。
 
 
-### 解答例-メンバ関数の修飾 <a id="SS_21_3_2"></a>
+### 解答例-メンバ関数の修飾 <a id="SS_23_3_2"></a>
 ```cpp
     //  exercise/programming_convention_a/func.cpp 25
     // [A]
@@ -676,10 +676,10 @@ ___
     }
 ```
 
-* [演習-メンバ関数の修飾](exercise_q.md#SS_20_3_2)へ戻る。
+* [演習-メンバ関数の修飾](exercise_q.md#SS_22_3_2)へ戻る。
 
 
-### 解答例-特殊メンバ関数の削除 <a id="SS_21_3_3"></a>
+### 解答例-特殊メンバ関数の削除 <a id="SS_23_3_3"></a>
 ```cpp
     //  exercise/programming_convention_a/func.cpp 81
     // [A]
@@ -697,10 +697,10 @@ ___
     };
 ```
 
-* [演習-特殊メンバ関数の削除](exercise_q.md#SS_20_3_3)へ戻る。
+* [演習-特殊メンバ関数の削除](exercise_q.md#SS_22_3_3)へ戻る。
 
 
-### 解答例-委譲コンストラクタ <a id="SS_21_3_4"></a>
+### 解答例-委譲コンストラクタ <a id="SS_23_3_4"></a>
 ```cpp
     //  exercise/programming_convention_a/func.cpp 97
     // [A]
@@ -741,10 +741,10 @@ ___
     }
 ```
 
-* [演習-委譲コンストラクタ](exercise_q.md#SS_20_3_4)へ戻る。
+* [演習-委譲コンストラクタ](exercise_q.md#SS_22_3_4)へ戻る。
 
 
-### 解答例-copyコンストラクタ <a id="SS_21_3_5"></a>
+### 解答例-copyコンストラクタ <a id="SS_23_3_5"></a>
 ```cpp
     //  exercise/programming_convention_a/func.cpp 136
     // [A]
@@ -813,10 +813,10 @@ ___
     }
 ```
 
-* [演習-copyコンストラクタ](exercise_q.md#SS_20_3_5)へ戻る。
+* [演習-copyコンストラクタ](exercise_q.md#SS_22_3_5)へ戻る。
 
 
-### 解答例-moveコンストラクタ <a id="SS_21_3_6"></a>
+### 解答例-moveコンストラクタ <a id="SS_23_3_6"></a>
 ```cpp
     //  exercise/programming_convention_a/func.cpp 203
     // [A]
@@ -882,10 +882,10 @@ ___
     #endif
 ```
 
-* [演習-moveコンストラクタ](exercise_q.md#SS_20_3_6)へ戻る。
+* [演習-moveコンストラクタ](exercise_q.md#SS_22_3_6)へ戻る。
 
 
-### 解答例-関数分割 <a id="SS_21_3_7"></a>
+### 解答例-関数分割 <a id="SS_23_3_7"></a>
 ```cpp
     //  exercise/programming_convention_a/func.cpp 267
     // [A]
@@ -940,16 +940,16 @@ ___
     }
 ```
 
-* [演習-関数分割](exercise_q.md#SS_20_3_7)へ戻る。
+* [演習-関数分割](exercise_q.md#SS_22_3_7)へ戻る。
 
 
-### 解答-オーバーライド関数の修飾 <a id="SS_21_3_8"></a>
+### 解答-オーバーライド関数の修飾 <a id="SS_23_3_8"></a>
 * 選択肢2
 * 参照 [オーバーライド](programming_convention.md#SS_3_3_2_7)
-* [演習-オーバーライド関数の修飾](exercise_q.md#SS_20_3_8)へ戻る。
+* [演習-オーバーライド関数の修飾](exercise_q.md#SS_22_3_8)へ戻る。
 
 
-### 解答例-オーバーライド/オーバーロード <a id="SS_21_3_9"></a>
+### 解答例-オーバーライド/オーバーロード <a id="SS_23_3_9"></a>
 ```cpp
     //  exercise/programming_convention_a/func.cpp 320
     // [A]
@@ -987,10 +987,10 @@ ___
     }
 ```
 
-* [演習-オーバーライド/オーバーロード](exercise_q.md#SS_20_3_9)へ戻る。
+* [演習-オーバーライド/オーバーロード](exercise_q.md#SS_22_3_9)へ戻る。
 
 
-### 解答例-オーバーロードによる誤用防止 <a id="SS_21_3_10"></a>
+### 解答例-オーバーロードによる誤用防止 <a id="SS_23_3_10"></a>
 ```cpp
     //  exercise/programming_convention_a/func.cpp 356
     // [A]
@@ -1008,10 +1008,10 @@ ___
     }
 ```
 
-* [演習-オーバーロードによる誤用防止](exercise_q.md#SS_20_3_10)へ戻る。
+* [演習-オーバーロードによる誤用防止](exercise_q.md#SS_22_3_10)へ戻る。
 
 
-### 解答例-仮引数の修飾 <a id="SS_21_3_11"></a>
+### 解答例-仮引数の修飾 <a id="SS_23_3_11"></a>
 ```cpp
     //  exercise/programming_convention_a/func.cpp 372
     // [A]
@@ -1047,10 +1047,10 @@ ___
     }
 ```
 
-* [演習-仮引数の修飾](exercise_q.md#SS_20_3_11)へ戻る。
+* [演習-仮引数の修飾](exercise_q.md#SS_22_3_11)へ戻る。
 
 
-### 解答例-constexpr関数 <a id="SS_21_3_12"></a>
+### 解答例-constexpr関数 <a id="SS_23_3_12"></a>
 ```cpp
     //  exercise/programming_convention_a/func.cpp 406
     // [A]
@@ -1074,10 +1074,10 @@ ___
     }
 ```
 
-* [演習-constexpr関数](exercise_q.md#SS_20_3_12)へ戻る。
+* [演習-constexpr関数](exercise_q.md#SS_22_3_12)へ戻る。
 
 
-### 解答-エクセプションの型 <a id="SS_21_3_13"></a>
+### 解答-エクセプションの型 <a id="SS_23_3_13"></a>
 * 選択肢2
 * 参照 [エクセプション処理](programming_convention.md#SS_3_3_3_10)
 * 解説  
@@ -1085,12 +1085,12 @@ ___
     * エクセプションでthrowされるオブジェクトのポインタがnullptrになることはない。
     * throwされたオブジェクトのスライスは当然避けるべきである。
     * throwされたオブジェクトを直接修正すべきでない。
-* [演習-エクセプションの型](exercise_q.md#SS_20_3_13)へ戻る。
+* [演習-エクセプションの型](exercise_q.md#SS_22_3_13)へ戻る。
 
 
-## プログラミング規約(構文) <a id="SS_21_4"></a>
+## プログラミング規約(構文) <a id="SS_23_4"></a>
 
-### 解答例-コンテナの範囲for文 <a id="SS_21_4_1"></a>
+### 解答例-コンテナの範囲for文 <a id="SS_23_4_1"></a>
 ```cpp
     //  exercise/programming_convention_a/syntax.cpp 8
     // [A]
@@ -1146,10 +1146,10 @@ ___
     }
 ```
 
-* [演習-コンテナの範囲for文](exercise_q.md#SS_20_4_1)へ戻る。
+* [演習-コンテナの範囲for文](exercise_q.md#SS_22_4_1)へ戻る。
 
 
-### 解答例-ラムダ式 <a id="SS_21_4_2"></a>
+### 解答例-ラムダ式 <a id="SS_23_4_2"></a>
 ```cpp
     //  exercise/programming_convention_a/syntax.cpp 62
     // [A]
@@ -1167,10 +1167,10 @@ ___
     }
 ```
 
-* [演習-ラムダ式](exercise_q.md#SS_20_4_2)へ戻る。
+* [演習-ラムダ式](exercise_q.md#SS_22_4_2)へ戻る。
 
 
-### 解答例-ラムダ式のキャプチャ <a id="SS_21_4_3"></a>
+### 解答例-ラムダ式のキャプチャ <a id="SS_23_4_3"></a>
 ```cpp
     //  exercise/programming_convention_a/syntax.cpp 78
     // [A]
@@ -1202,12 +1202,12 @@ ___
     }
 ```
 
-* [演習-ラムダ式のキャプチャ](exercise_q.md#SS_20_4_3)へ戻る。
+* [演習-ラムダ式のキャプチャ](exercise_q.md#SS_22_4_3)へ戻る。
 
 
-## プログラミング規約(演算子) <a id="SS_21_5"></a>
+## プログラミング規約(演算子) <a id="SS_23_5"></a>
 
-### 解答例-条件演算子 <a id="SS_21_5_1"></a>
+### 解答例-条件演算子 <a id="SS_23_5_1"></a>
 ```cpp
     //  exercise/programming_convention_a/operator.cpp 8
     // [A]
@@ -1221,9 +1221,9 @@ ___
     }
 ```
 
-* [演習-条件演算子](exercise_q.md#SS_20_5_1)へ戻る。
+* [演習-条件演算子](exercise_q.md#SS_22_5_1)へ戻る。
 
-### 解答例-delete <a id="SS_21_5_2"></a>
+### 解答例-delete <a id="SS_23_5_2"></a>
 ```cpp
     //  exercise/programming_convention_a/operator.cpp 20
     // [A]
@@ -1271,9 +1271,9 @@ ___
     }
 ```
 
-* [演習-delete](exercise_q.md#SS_20_5_2)へ戻る。
+* [演習-delete](exercise_q.md#SS_22_5_2)へ戻る。
 
-### 解答例-sizeof <a id="SS_21_5_3"></a>
+### 解答例-sizeof <a id="SS_23_5_3"></a>
 ```cpp
     //  exercise/programming_convention_a/operator.cpp 69
     // [A]
@@ -1300,10 +1300,10 @@ ___
     }
 ```
 
-* [演習-sizeof](exercise_q.md#SS_20_5_3)へ戻る。
+* [演習-sizeof](exercise_q.md#SS_22_5_3)へ戻る。
 
 
-### 解答例-dynamic_castの削除 <a id="SS_21_5_4"></a>
+### 解答例-dynamic_castの削除 <a id="SS_23_5_4"></a>
 ```cpp
     //  exercise/programming_convention_a/operator.cpp 95
     // [A]
@@ -1340,35 +1340,35 @@ ___
     }
 ```
 
-* [演習-dynamic_castの削除](exercise_q.md#SS_20_5_4)へ戻る。
+* [演習-dynamic_castの削除](exercise_q.md#SS_22_5_4)へ戻る。
 
 
-### 解答-キャスト <a id="SS_21_5_5"></a>
+### 解答-キャスト <a id="SS_23_5_5"></a>
 * 選択肢3  
 * 参照 [キャスト、暗黙の型変換](programming_convention.md#SS_3_5_10)
 * 解説  
   reinterpret_castも避けるべきであるが、組み込みソフト等でのハードウエアアドレスの記述等には、
   使わざるを得ない。
-* [演習-キャスト](exercise_q.md#SS_20_5_5)へ戻る。
+* [演習-キャスト](exercise_q.md#SS_22_5_5)へ戻る。
 
 
-## プログラミング規約(スコープ) <a id="SS_21_6"></a>
+## プログラミング規約(スコープ) <a id="SS_23_6"></a>
 
-### 解答-usingディレクティブ <a id="SS_21_6_1"></a>
+### 解答-usingディレクティブ <a id="SS_23_6_1"></a>
 * 選択肢1
 * 参照 [using宣言/usingディレクティブ](programming_convention.md#SS_3_8_3)
-* [演習-usingディレクティブ](exercise_q.md#SS_20_6_1)へ戻る。
+* [演習-usingディレクティブ](exercise_q.md#SS_22_6_1)へ戻る。
 
 
-## プログラミング規約(その他) <a id="SS_21_7"></a>
+## プログラミング規約(その他) <a id="SS_23_7"></a>
 
-### 解答-アサーションの選択 <a id="SS_21_7_1"></a>
+### 解答-アサーションの選択 <a id="SS_23_7_1"></a>
 * 選択肢1
 * 参照 [assertion](programming_convention.md#SS_3_11_1)
-* [演習-アサーションの選択](exercise_q.md#SS_20_7_1)へ戻る。
+* [演習-アサーションの選択](exercise_q.md#SS_22_7_1)へ戻る。
 
 
-### 解答例-assert/static_assert <a id="SS_21_7_2"></a>
+### 解答例-assert/static_assert <a id="SS_23_7_2"></a>
 ```cpp
     //  exercise/programming_convention_a/etc.cpp 10
     // [A]
@@ -1404,11 +1404,11 @@ ___
     }
 ```
 
-* [演習-assert/static_assert](exercise_q.md#SS_20_7_2)へ戻る。
+* [演習-assert/static_assert](exercise_q.md#SS_22_7_2)へ戻る。
 
 
-## SOLID <a id="SS_21_8"></a>
-### 解答例-SRP <a id="SS_21_8_1"></a>
+## SOLID <a id="SS_23_8"></a>
+### 解答例-SRP <a id="SS_23_8_1"></a>
 ```cpp
     //  exercise/solid_a/srp_test_score.h 8
     // [A]
@@ -1581,10 +1581,10 @@ ___
     }  // namespace
 ```
 
-* [演習-SRP](exercise_q.md#SS_20_8_1)へ戻る。
+* [演習-SRP](exercise_q.md#SS_22_8_1)へ戻る。
 
 
-### 解答例-OCP <a id="SS_21_8_2"></a>
+### 解答例-OCP <a id="SS_23_8_2"></a>
 ```cpp
     //  exercise/solid_a/ocp_test_score.h 8
     // [A]
@@ -1773,10 +1773,10 @@ ___
     }  // namespace
 ```
 
-* [演習-OCP](exercise_q.md#SS_20_8_2)へ戻る。
+* [演習-OCP](exercise_q.md#SS_22_8_2)へ戻る。
 
 
-### 解答例-LSP <a id="SS_21_8_3"></a>
+### 解答例-LSP <a id="SS_23_8_3"></a>
 ```cpp
     //  exercise/solid_a/lsp_test_score.h 8
     // [A]
@@ -1984,10 +1984,10 @@ ___
     }  // namespace
 ```
 
-* [演習-LSP](exercise_q.md#SS_20_8_3)へ戻る。
+* [演習-LSP](exercise_q.md#SS_22_8_3)へ戻る。
 
 
-### 解答例-ISP <a id="SS_21_8_4"></a>
+### 解答例-ISP <a id="SS_23_8_4"></a>
 ```cpp
     //  exercise/solid_a/isp_test_score_average.h 8
     // [A]
@@ -2133,10 +2133,10 @@ ___
 
 ```
 
-* [演習-ISP](exercise_q.md#SS_20_8_4)へ戻る。
+* [演習-ISP](exercise_q.md#SS_22_8_4)へ戻る。
 
 
-### 解答例-DIP <a id="SS_21_8_5"></a>
+### 解答例-DIP <a id="SS_23_8_5"></a>
 ```cpp
     //  exercise/solid_a/dip_test_score.h 9
     // [A]
@@ -2255,10 +2255,10 @@ ___
 
 ```
 
-* [演習-DIP](exercise_q.md#SS_20_8_5)へ戻る。
+* [演習-DIP](exercise_q.md#SS_22_8_5)へ戻る。
 
 
-### 解答-SOLIDの定義 <a id="SS_21_8_6"></a>
+### 解答-SOLIDの定義 <a id="SS_23_8_6"></a>
 * 選択肢対応
     * SRP - 1
     * OCP - 2
@@ -2267,11 +2267,11 @@ ___
     * DIP - 5
 
 * 参照 [SOLID](solid.md#SS_8)
-* [演習-SOLIDの定義](exercise_q.md#SS_20_8_6)へ戻る。
+* [演習-SOLIDの定義](exercise_q.md#SS_22_8_6)へ戻る。
 
 
-## デザインパターン <a id="SS_21_9"></a>
-### 解答例-ガード節 <a id="SS_21_9_1"></a>
+## デザインパターン <a id="SS_23_9"></a>
+### 解答例-ガード節 <a id="SS_23_9_1"></a>
 ```cpp
     //  exercise/design_pattern_a/guard.cpp 7
     // [A]
@@ -2338,10 +2338,10 @@ ___
     }
 ```
 
-* [演習-ガード節](exercise_q.md#SS_20_9_1)へ戻る。
+* [演習-ガード節](exercise_q.md#SS_22_9_1)へ戻る。
 
 
-### 解答例-BitmaskType <a id="SS_21_9_2"></a>
+### 解答例-BitmaskType <a id="SS_23_9_2"></a>
 ```cpp
     //  exercise/design_pattern_a/enum_bitmask.cpp 5
     // [A]
@@ -2422,10 +2422,10 @@ ___
     }
 ```
 
-* [演習-BitmaskType](exercise_q.md#SS_20_9_2)へ戻る。
+* [演習-BitmaskType](exercise_q.md#SS_22_9_2)へ戻る。
 
 
-### 解答例-Pimpl <a id="SS_21_9_3"></a>
+### 解答例-Pimpl <a id="SS_23_9_3"></a>
 ```cpp
     //  exercise/design_pattern_a/pimpl.cpp 5
     // [A] 下記クラスCollectionの宣言はクラスWidgetの宣言に依存している。
@@ -2488,16 +2488,16 @@ ___
     size_t      Collection::Count() const noexcept { return pimpl_->Count(); }
 ```
 
-* [演習-Pimpl](exercise_q.md#SS_20_9_3)へ戻る。
+* [演習-Pimpl](exercise_q.md#SS_22_9_3)へ戻る。
 
 
-### 解答-Accessorの副作用 <a id="SS_21_9_4"></a>
+### 解答-Accessorの副作用 <a id="SS_23_9_4"></a>
 * 選択肢1
 * 参照 [Accessor](design_pattern.md#SS_9_5)
-* [演習-Accessorの副作用](exercise_q.md#SS_20_9_4)へ戻る。
+* [演習-Accessorの副作用](exercise_q.md#SS_22_9_4)へ戻る。
 
 
-### 解答例-Accessor <a id="SS_21_9_5"></a>
+### 解答例-Accessor <a id="SS_23_9_5"></a>
 ```cpp
     //  exercise/design_pattern_a/accessor.cpp 5
     // [A]
@@ -2630,10 +2630,10 @@ ___
     }
 ```
 
-* [演習-Accessor](exercise_q.md#SS_20_9_5)へ戻る。
+* [演習-Accessor](exercise_q.md#SS_22_9_5)へ戻る。
 
 
-### 解答例-Copy-And-Swap <a id="SS_21_9_6"></a>
+### 解答例-Copy-And-Swap <a id="SS_23_9_6"></a>
 ```cpp
     //  exercise/design_pattern_a/copy_and_swap.cpp 5
     // [A]
@@ -2804,10 +2804,10 @@ ___
     }
 ```
 
-* [演習-Copy-And-Swap](exercise_q.md#SS_20_9_6)へ戻る。
+* [演習-Copy-And-Swap](exercise_q.md#SS_22_9_6)へ戻る。
 
 
-### 解答例-Immutable <a id="SS_21_9_7"></a>
+### 解答例-Immutable <a id="SS_23_9_7"></a>
 ```cpp
     //  exercise/design_pattern_a/immutable.cpp 5
     // [A]
@@ -2904,10 +2904,10 @@ ___
     }
 ```
 
-* [演習-Immutable](exercise_q.md#SS_20_9_7)へ戻る。
+* [演習-Immutable](exercise_q.md#SS_22_9_7)へ戻る。
 
 
-### 解答例-Clone <a id="SS_21_9_8"></a>
+### 解答例-Clone <a id="SS_23_9_8"></a>
 ```cpp
     //  exercise/design_pattern_a/clone.cpp 7
     // [A]
@@ -2965,10 +2965,10 @@ ___
     }
 ```
 
-* [演習-Clone](exercise_q.md#SS_20_9_8)へ戻る。
+* [演習-Clone](exercise_q.md#SS_22_9_8)へ戻る。
 
 
-### 解答例-NVI <a id="SS_21_9_9"></a>
+### 解答例-NVI <a id="SS_23_9_9"></a>
 ```cpp
     //  exercise/design_pattern_a/nvi.cpp 7
     // [A]
@@ -3075,16 +3075,16 @@ ___
     }
 ```
 
-* [演習-NVI](exercise_q.md#SS_20_9_9)へ戻る。
+* [演習-NVI](exercise_q.md#SS_22_9_9)へ戻る。
 
 
-### 解答-RAIIの効果 <a id="SS_21_9_10"></a>
+### 解答-RAIIの効果 <a id="SS_23_9_10"></a>
 * 選択肢1
 * 参照 [RAII(scoped guard)](design_pattern.md#SS_9_10)
-* [演習-RAIIの効果](exercise_q.md#SS_20_9_10)へ戻る。
+* [演習-RAIIの効果](exercise_q.md#SS_22_9_10)へ戻る。
 
 
-### 解答例-RAII <a id="SS_21_9_11"></a>
+### 解答例-RAII <a id="SS_23_9_11"></a>
 ```cpp
     //  exercise/design_pattern_a/raii.cpp 5
     // [A]
@@ -3137,10 +3137,10 @@ ___
     }
 ```
 
-* [演習-RAII](exercise_q.md#SS_20_9_11)へ戻る。
+* [演習-RAII](exercise_q.md#SS_22_9_11)へ戻る。
 
 
-### 解答例-Future <a id="SS_21_9_12"></a>
+### 解答例-Future <a id="SS_23_9_12"></a>
 ```cpp
     //  exercise/design_pattern_a/future.cpp 24
     // [A]
@@ -3171,10 +3171,10 @@ ___
     }
 ```
 
-* [演習-Future](exercise_q.md#SS_20_9_12)へ戻る。
+* [演習-Future](exercise_q.md#SS_22_9_12)へ戻る。
 
 
-### 解答例-DI <a id="SS_21_9_13"></a>
+### 解答例-DI <a id="SS_23_9_13"></a>
 ```cpp
     //  exercise/design_pattern_a/di.cpp 10
     // [A]
@@ -3270,10 +3270,10 @@ ___
     }
 ```
 
-* [演習-DI](exercise_q.md#SS_20_9_13)へ戻る。
+* [演習-DI](exercise_q.md#SS_22_9_13)へ戻る。
 
 
-### 解答例-Singleton <a id="SS_21_9_14"></a>
+### 解答例-Singleton <a id="SS_23_9_14"></a>
 ```cpp
     //  exercise/design_pattern_a/singleton.cpp 5
     // [A]
@@ -3366,10 +3366,10 @@ ___
     }
 ```
 
-* [演習-Singleton](exercise_q.md#SS_20_9_14)へ戻る。
+* [演習-Singleton](exercise_q.md#SS_22_9_14)へ戻る。
 
 
-### 解答例-State <a id="SS_21_9_15"></a>
+### 解答例-State <a id="SS_23_9_15"></a>
 ```cpp
     //  exercise/design_pattern_a/state.cpp 5
     // [A]
@@ -3462,10 +3462,10 @@ ___
     }
 ```
 
-* [演習-State](exercise_q.md#SS_20_9_15)へ戻る。
+* [演習-State](exercise_q.md#SS_22_9_15)へ戻る。
 
 
-### 解答例-Null Object <a id="SS_21_9_16"></a>
+### 解答例-Null Object <a id="SS_23_9_16"></a>
 ```cpp
     //  exercise/design_pattern_a/null_object.cpp 38
     // [A]
@@ -3562,10 +3562,10 @@ ___
     }
 ```
 
-* [演習-Null Object](exercise_q.md#SS_20_9_16)へ戻る。
+* [演習-Null Object](exercise_q.md#SS_22_9_16)へ戻る。
 
 
-### 解答例-Templateメソッド <a id="SS_21_9_17"></a>
+### 解答例-Templateメソッド <a id="SS_23_9_17"></a>
 ```cpp
     //  exercise/design_pattern_a/template_method.cpp 5
     // [A]
@@ -3727,10 +3727,10 @@ ___
     }
 ```
 
-* [演習-Templateメソッド](exercise_q.md#SS_20_9_17)へ戻る。
+* [演習-Templateメソッド](exercise_q.md#SS_22_9_17)へ戻る。
 
 
-### 解答例-Factory <a id="SS_21_9_18"></a>
+### 解答例-Factory <a id="SS_23_9_18"></a>
 ```cpp
     //  exercise/design_pattern_a/factory_lib.h 40
     // [A]
@@ -3848,10 +3848,10 @@ ___
     }
 ```
 
-* [演習-Factory](exercise_q.md#SS_20_9_18)へ戻る。
+* [演習-Factory](exercise_q.md#SS_22_9_18)へ戻る。
 
 
-### 解答例-Named Constructor <a id="SS_21_9_19"></a>
+### 解答例-Named Constructor <a id="SS_23_9_19"></a>
 ```cpp
     //  exercise/design_pattern_a/named_constructor_lib.h 14
     // [A]
@@ -3973,10 +3973,10 @@ ___
     }
 ```
 
-* [演習-Named Constructor](exercise_q.md#SS_20_9_19)へ戻る。
+* [演習-Named Constructor](exercise_q.md#SS_22_9_19)へ戻る。
 
 
-### 解答例-Proxy <a id="SS_21_9_20"></a>
+### 解答例-Proxy <a id="SS_23_9_20"></a>
 ```cpp
     //  exercise/design_pattern_a/proxy.cpp 8
     // [A]
@@ -4177,10 +4177,10 @@ ___
     }
 ```
 
-* [演習-Proxy](exercise_q.md#SS_20_9_20)へ戻る。
+* [演習-Proxy](exercise_q.md#SS_22_9_20)へ戻る。
 
 
-### 解答例-Strategy <a id="SS_21_9_21"></a>
+### 解答例-Strategy <a id="SS_23_9_21"></a>
 ```cpp
     //  exercise/design_pattern_a/strategy.cpp 12
     // [A]
@@ -4250,10 +4250,10 @@ ___
     }
 ```
 
-* [演習-Strategy](exercise_q.md#SS_20_9_21)へ戻る。
+* [演習-Strategy](exercise_q.md#SS_22_9_21)へ戻る。
 
 
-### 解答例-Visitor <a id="SS_21_9_22"></a>
+### 解答例-Visitor <a id="SS_23_9_22"></a>
 ```cpp
     //  exercise/design_pattern_a/visitor.cpp 9
     // [A]
@@ -4410,10 +4410,10 @@ ___
     }
 ```
 
-* [演習-Visitor](exercise_q.md#SS_20_9_22)へ戻る。
+* [演習-Visitor](exercise_q.md#SS_22_9_22)へ戻る。
 
 
-### 解答例-CRTP <a id="SS_21_9_23"></a>
+### 解答例-CRTP <a id="SS_23_9_23"></a>
 ```cpp
     //  exercise/design_pattern_a/crtp.cpp 9
     // [A]
@@ -4565,10 +4565,10 @@ ___
     }
 ```
 
-* [演習-CRTP](exercise_q.md#SS_20_9_23)へ戻る。
+* [演習-CRTP](exercise_q.md#SS_22_9_23)へ戻る。
 
 
-### 解答例-Observer <a id="SS_21_9_24"></a>
+### 解答例-Observer <a id="SS_23_9_24"></a>
 ```cpp
     //  exercise/design_pattern_a/observer.cpp 9
     // [A]
@@ -4711,40 +4711,40 @@ ___
     }
 ```
 
-* [演習-Observer](exercise_q.md#SS_20_9_24)へ戻る。
+* [演習-Observer](exercise_q.md#SS_22_9_24)へ戻る。
 
 
-### 解答-デザインパターン選択1 <a id="SS_21_9_25"></a>
+### 解答-デザインパターン選択1 <a id="SS_23_9_25"></a>
 * 選択肢2
 * 参照 [State](design_pattern.md#SS_9_14)
-* [演習-デザインパターン選択1](exercise_q.md#SS_20_9_25)へ戻る。
+* [演習-デザインパターン選択1](exercise_q.md#SS_22_9_25)へ戻る。
 
 
-### 解答-デザインパターン選択2 <a id="SS_21_9_26"></a>
+### 解答-デザインパターン選択2 <a id="SS_23_9_26"></a>
 * 選択肢4
 * 参照 [Null Object](design_pattern.md#SS_9_15)
-* [演習-デザインパターン選択2](exercise_q.md#SS_20_9_26)へ戻る。
+* [演習-デザインパターン選択2](exercise_q.md#SS_22_9_26)へ戻る。
 
 
-### 解答-デザインパターン選択3 <a id="SS_21_9_27"></a>
+### 解答-デザインパターン選択3 <a id="SS_23_9_27"></a>
 * 選択肢3
 * 参照 [Observer](design_pattern.md#SS_9_23)
-* [演習-デザインパターン選択3](exercise_q.md#SS_20_9_27)へ戻る。
+* [演習-デザインパターン選択3](exercise_q.md#SS_22_9_27)へ戻る。
 
 
-## 開発プロセスとインフラ(全般) <a id="SS_21_10"></a>
+## 開発プロセスとインフラ(全般) <a id="SS_23_10"></a>
 
-### 解答-プロセス分類 <a id="SS_21_10_1"></a>
+### 解答-プロセス分類 <a id="SS_23_10_1"></a>
 * 選択肢対応
     * A - 1
     * B - 2
     * C - 3
 
 * 参照 [プロセス](process_and_infra.md#SS_11_1)
-* [演習-プロセス分類](exercise_q.md#SS_20_10_1)へ戻る。
+* [演習-プロセス分類](exercise_q.md#SS_22_10_1)へ戻る。
 
 
-### 解答-V字モデル <a id="SS_21_10_2"></a>
+### 解答-V字モデル <a id="SS_23_10_2"></a>
 * 選択肢対応
     * フェーズA - 4
     * フェーズB - 2
@@ -4752,51 +4752,51 @@ ___
     * フェーズD - 1
 
 * 参照 [ウォーターフォールモデル、V字モデル](process_and_infra.md#SS_11_1_1)
-* [演習-V字モデル](exercise_q.md#SS_20_10_2)へ戻る。
+* [演習-V字モデル](exercise_q.md#SS_22_10_2)へ戻る。
 
 
-### 解答-アジャイル <a id="SS_21_10_3"></a>
+### 解答-アジャイル <a id="SS_23_10_3"></a>
 * 選択肢2
 * 参照 [アジャイル系プロセス](process_and_infra.md#SS_11_1_2)
-* [演習-アジャイル](exercise_q.md#SS_20_10_3)へ戻る。
+* [演習-アジャイル](exercise_q.md#SS_22_10_3)へ戻る。
 
 
-### 解答-自動化 <a id="SS_21_10_4"></a>
+### 解答-自動化 <a id="SS_23_10_4"></a>
 * 選択肢対応
     * A - 1
     * B - 4
     * C - 5
 
 * 参照 [自動単体テスト](process_and_infra.md#SS_11_2_1)
-* [演習-自動化](exercise_q.md#SS_20_10_4)へ戻る。
+* [演習-自動化](exercise_q.md#SS_22_10_4)へ戻る。
 
 
-### 解答-単体テスト <a id="SS_21_10_5"></a>
+### 解答-単体テスト <a id="SS_23_10_5"></a>
 * 選択肢4
 * 参照 [自動単体テスト](process_and_infra.md#SS_11_2_1)
-* [演習-単体テスト](exercise_q.md#SS_20_10_5)へ戻る。
+* [演習-単体テスト](exercise_q.md#SS_22_10_5)へ戻る。
 
 
-### 解答-リファクタリングに付随する活動 <a id="SS_21_10_6"></a>
+### 解答-リファクタリングに付随する活動 <a id="SS_23_10_6"></a>
 * 選択肢2
 * 参照 [リファクタリング](process_and_infra.md#SS_11_2_2)
-* [演習-リファクタリングに付随する活動](exercise_q.md#SS_20_10_6)へ戻る。
+* [演習-リファクタリングに付随する活動](exercise_q.md#SS_22_10_6)へ戻る。
 
 
-### 解答-リファクタリング対象コード <a id="SS_21_10_7"></a>
+### 解答-リファクタリング対象コード <a id="SS_23_10_7"></a>
 * 選択肢3
 * 参照 [リファクタリング](process_and_infra.md#SS_11_2_2)
-* [演習-リファクタリング対象コード](exercise_q.md#SS_20_10_7)へ戻る。
+* [演習-リファクタリング対象コード](exercise_q.md#SS_22_10_7)へ戻る。
 
 
-### 解答-CI <a id="SS_21_10_8"></a>
+### 解答-CI <a id="SS_23_10_8"></a>
 * 選択肢2, 4
 * 参照 [CI(継続的インテグレーション)](process_and_infra.md#SS_11_2_5)
-* [演習-CI](exercise_q.md#SS_20_10_8)へ戻る。
+* [演習-CI](exercise_q.md#SS_22_10_8)へ戻る。
 
 
-## テンプレートメタプログラミング <a id="SS_21_11"></a>
-### 解答例-パラメータパック <a id="SS_21_11_1"></a>
+## テンプレートメタプログラミング <a id="SS_23_11"></a>
+### 解答例-パラメータパック <a id="SS_23_11_1"></a>
 ```cpp
     //  exercise/template_a/parameter_pack.cpp 7
     // [A]
@@ -4858,10 +4858,10 @@ ___
     }
 ```
 
-* [演習-パラメータパック](exercise_q.md#SS_20_11_1)へ戻る。
+* [演習-パラメータパック](exercise_q.md#SS_22_11_1)へ戻る。
 
 
-### 解答例-エイリアステンプレート <a id="SS_21_11_2"></a>
+### 解答例-エイリアステンプレート <a id="SS_23_11_2"></a>
 ```cpp
     //  exercise/template_a/template_alias.cpp 5
     // [A]
@@ -4904,10 +4904,10 @@ ___
     }
 ```
 
-* [演習-エイリアステンプレート](exercise_q.md#SS_20_11_2)へ戻る。
+* [演習-エイリアステンプレート](exercise_q.md#SS_22_11_2)へ戻る。
 
 
-### 解答例-名前空間による修飾不要な`operator<<` <a id="SS_21_11_3"></a>
+### 解答例-名前空間による修飾不要な`operator<<` <a id="SS_23_11_3"></a>
 ```cpp
     //  exercise/template_a/put_to.cpp 3
     // [A]
@@ -4951,10 +4951,10 @@ ___
     }  // namespace
 ```
 
-* [演習-名前空間による修飾不要な`operator<<`](exercise_q.md#SS_20_11_3)へ戻る。
+* [演習-名前空間による修飾不要な`operator<<`](exercise_q.md#SS_22_11_3)へ戻る。
 
 
-### 解答例-std::arrayの継承 <a id="SS_21_11_4"></a>
+### 解答例-std::arrayの継承 <a id="SS_23_11_4"></a>
 ```cpp
     //  exercise/template_a/safe_array.cpp 5
     // [A]
@@ -5001,10 +5001,10 @@ ___
     }  // namespace
 ```
 
-* [演習-std::arrayの継承](exercise_q.md#SS_20_11_4)へ戻る。
+* [演習-std::arrayの継承](exercise_q.md#SS_22_11_4)へ戻る。
 
 
-### 解答例-SFINAEを利用しない関数テンプレートの特殊化によるis_void <a id="SS_21_11_5"></a>
+### 解答例-SFINAEを利用しない関数テンプレートの特殊化によるis_void <a id="SS_23_11_5"></a>
 ```cpp
     //  exercise/template_a/is_void.cpp 3
     // [A]
@@ -5046,10 +5046,10 @@ ___
     }  // namespace
 ```
 
-* [演習-SFINAEを利用しない関数テンプレートの特殊化によるis_void](exercise_q.md#SS_20_11_5)へ戻る。
+* [演習-SFINAEを利用しない関数テンプレートの特殊化によるis_void](exercise_q.md#SS_22_11_5)へ戻る。
 
 
-### 解答例-SFINAEを利用しないクラステンプレートの特殊化によるis_void <a id="SS_21_11_6"></a>
+### 解答例-SFINAEを利用しないクラステンプレートの特殊化によるis_void <a id="SS_23_11_6"></a>
 ```cpp
     //  exercise/template_a/is_void.cpp 43
     // [A]
@@ -5083,10 +5083,10 @@ ___
     }  // namespace
 ```
 
-* [演習-SFINAEを利用しないクラステンプレートの特殊化によるis_void](exercise_q.md#SS_20_11_6)へ戻る。
+* [演習-SFINAEを利用しないクラステンプレートの特殊化によるis_void](exercise_q.md#SS_22_11_6)へ戻る。
 
 
-### 解答例-SFINAEを利用した関数テンプレートの特殊化によるis_void <a id="SS_21_11_7"></a>
+### 解答例-SFINAEを利用した関数テンプレートの特殊化によるis_void <a id="SS_23_11_7"></a>
 ```cpp
     //  exercise/template_a/is_void.cpp 75
     // [A]
@@ -5136,10 +5136,10 @@ ___
     }  // namespace
 ```
 
-* [演習-SFINAEを利用した関数テンプレートの特殊化によるis_void](exercise_q.md#SS_20_11_7)へ戻る。
+* [演習-SFINAEを利用した関数テンプレートの特殊化によるis_void](exercise_q.md#SS_22_11_7)へ戻る。
 
 
-### 解答例-SFINAEを利用したクラステンプレートの特殊化によるis_void <a id="SS_21_11_8"></a>
+### 解答例-SFINAEを利用したクラステンプレートの特殊化によるis_void <a id="SS_23_11_8"></a>
 ```cpp
     //  exercise/template_a/is_void.cpp 123
     // [A]
@@ -5182,10 +5182,10 @@ ___
     }  // namespace
 ```
 
-* [演習-SFINAEを利用したクラステンプレートの特殊化によるis_void](exercise_q.md#SS_20_11_8)へ戻る。
+* [演習-SFINAEを利用したクラステンプレートの特殊化によるis_void](exercise_q.md#SS_22_11_8)へ戻る。
 
 
-### 解答例-テンプレートテンプレートパラメータ <a id="SS_21_11_9"></a>
+### 解答例-テンプレートテンプレートパラメータ <a id="SS_23_11_9"></a>
 ```cpp
     //  exercise/template_a/template_template.cpp 5
     // [A]
@@ -5213,10 +5213,10 @@ ___
     }  // namespace
 ```
 
-* [演習-テンプレートテンプレートパラメータ](exercise_q.md#SS_20_11_9)へ戻る。
+* [演習-テンプレートテンプレートパラメータ](exercise_q.md#SS_22_11_9)へ戻る。
 
 
-### 解答例-テンプレートパラメータを可変長にしたstd::is_same <a id="SS_21_11_10"></a>
+### 解答例-テンプレートパラメータを可変長にしたstd::is_same <a id="SS_23_11_10"></a>
 ```cpp
     //  exercise/template_a/is_same.cpp 3
     // [A]
@@ -5254,10 +5254,10 @@ ___
     }  // namespace
 ```
 
-* [演習-テンプレートパラメータを可変長にしたstd::is_same](exercise_q.md#SS_20_11_10)へ戻る。
+* [演習-テンプレートパラメータを可変長にしたstd::is_same](exercise_q.md#SS_22_11_10)へ戻る。
 
 
-### 解答例-メンバ関数の存在の診断 <a id="SS_21_11_11"></a>
+### 解答例-メンバ関数の存在の診断 <a id="SS_23_11_11"></a>
 ```cpp
     //  exercise/template_a/exists_func.cpp 5
     // [A]
@@ -5285,10 +5285,10 @@ ___
     }  // namespace
 ```
 
-* [演習-メンバ関数の存在の診断](exercise_q.md#SS_20_11_11)へ戻る。
+* [演習-メンバ関数の存在の診断](exercise_q.md#SS_22_11_11)へ戻る。
 
 
-### 解答例-範囲for文のオペランドになれるかどうかの診断 <a id="SS_21_11_12"></a>
+### 解答例-範囲for文のオペランドになれるかどうかの診断 <a id="SS_23_11_12"></a>
 ```cpp
     //  exercise/template_a/exists_func.cpp 31
     // [A]
@@ -5345,10 +5345,10 @@ ___
     }  // namespace
 ```
 
-* [演習-範囲for文のオペランドになれるかどうかの診断](exercise_q.md#SS_20_11_12)へ戻る。
+* [演習-範囲for文のオペランドになれるかどうかの診断](exercise_q.md#SS_22_11_12)へ戻る。
 
 
-### 解答例-配列の長さの取り出し <a id="SS_21_11_13"></a>
+### 解答例-配列の長さの取り出し <a id="SS_23_11_13"></a>
 ```cpp
     //  exercise/template_a/array_op.cpp 3
     // [A]
@@ -5373,10 +5373,10 @@ ___
     }  // namespace
 ```
 
-* [演習-配列の長さの取り出し](exercise_q.md#SS_20_11_13)へ戻る。
+* [演習-配列の長さの取り出し](exercise_q.md#SS_22_11_13)へ戻る。
 
 
-### 解答例-配列の次元の取り出し <a id="SS_21_11_14"></a>
+### 解答例-配列の次元の取り出し <a id="SS_23_11_14"></a>
 ```cpp
     //  exercise/template_a/array_op.cpp 26
     // [A]
@@ -5405,10 +5405,10 @@ ___
     }  // namespace
 ```
 
-* [演習-配列の次元の取り出し](exercise_q.md#SS_20_11_14)へ戻る。
+* [演習-配列の次元の取り出し](exercise_q.md#SS_22_11_14)へ戻る。
 
 
-### 解答例-関数型のテンプレートパラメータを持つクラステンプレート <a id="SS_21_11_15"></a>
+### 解答例-関数型のテンプレートパラメータを持つクラステンプレート <a id="SS_23_11_15"></a>
 ```cpp
     //  exercise/template_a/scoped_guard.cpp 8
     // [A]
@@ -5472,6 +5472,6 @@ ___
     }  // namespace
 ```
 
-* [演習-関数型のテンプレートパラメータを持つクラステンプレート](exercise_q.md#SS_20_11_15)へ戻る。
+* [演習-関数型のテンプレートパラメータを持つクラステンプレート](exercise_q.md#SS_22_11_15)へ戻る。
 
 

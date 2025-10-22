@@ -200,25 +200,25 @@ vim/neovimの設定について興味がなければ、「[費用](dev_tools.md#
 筆者の場合は、クラウド上のgitでvim_configリポジトリとして管理している。
 
 以下、順を追ってvim_configリポジトリとして管理しているファイルについて簡単に説明する。
-詳細については「[vim](sample_code.md#SS_24_1)」を参照してほしい。
+詳細については「[vim](sample_code.md#SS_26_1)」を参照してほしい。
 
 #### ドキュメント <a id="SS_16_4_1_2"></a>
 |ファイル                              |機能                              |
 |:-------------------------------------|:---------------------------------|
-|[vim_config/README.md](sample_code.md#SS_24_1_1)         |リポジトリの説明、インストール手順|
-|[vim_config/nvim/cheatsheet.md](sample_code.md#SS_24_1_12)|自分用ヘルプやtodo                |
+|[vim_config/README.md](sample_code.md#SS_26_1_1)         |リポジトリの説明、インストール手順|
+|[vim_config/nvim/cheatsheet.md](sample_code.md#SS_26_1_12)|自分用ヘルプやtodo                |
 
 
 #### 初期化 <a id="SS_16_4_1_3"></a>
 |ファイル                            |機能                |
 |:-----------------------------------|:-------------------|
-|[vim_config/nvim/init.vim](sample_code.md#SS_24_1_16)   |nvim初期化          |
-|[vim_config/nvim/org.vim](sample_code.md#SS_24_1_17)    |基本設定            |
-|[vim_config/nvim/package.vim](sample_code.md#SS_24_1_18)|外部パッケージ初期化|
-|[vim_config/vim/gvimrc](sample_code.md#SS_24_1_36)      |gvim初期化          |
-|[vim_config/vim/vimrc](sample_code.md#SS_24_1_37)       |vim初期化           |
-|[vim_config/vim.sh](sample_code.md#SS_24_1_35)          |エイリアス等の設定  |
-|[vim_config/inputrc](sample_code.md#SS_24_1_2)         |gdb設定             |
+|[vim_config/nvim/init.vim](sample_code.md#SS_26_1_16)   |nvim初期化          |
+|[vim_config/nvim/org.vim](sample_code.md#SS_26_1_17)    |基本設定            |
+|[vim_config/nvim/package.vim](sample_code.md#SS_26_1_18)|外部パッケージ初期化|
+|[vim_config/vim/gvimrc](sample_code.md#SS_26_1_36)      |gvim初期化          |
+|[vim_config/vim/vimrc](sample_code.md#SS_26_1_37)       |vim初期化           |
+|[vim_config/vim.sh](sample_code.md#SS_26_1_35)          |エイリアス等の設定  |
+|[vim_config/inputrc](sample_code.md#SS_26_1_2)         |gdb設定             |
 
 
 #### 独自スクリプト <a id="SS_16_4_1_4"></a>
@@ -226,55 +226,55 @@ vim/neovimの設定について興味がなければ、「[費用](dev_tools.md#
 
 |ファイル                                       |機能                            |
 |:----------------------------------------------|:-------------------------------|
-|[vim_config/nvim/autoload/next_file.vim](sample_code.md#SS_24_1_9)|xxx.cpp xxx.h xxx_ut.cpp切り替え|
-|[vim_config/nvim/plugin/next_file.vim](sample_code.md#SS_24_1_29)  |同上                            |
-|[vim_config/nvim/plugin/ctags_ext.vim](sample_code.md#SS_24_1_22)  |ctags作成                       |
-|[vim_config/nvim/plugin/dev_env.vim](sample_code.md#SS_24_1_23)    |開発用画面設定                  |
-|[vim_config/nvim/autoload/termdbg.vim](sample_code.md#SS_24_1_11)  |gdb連動                         |
-|[vim_config/nvim/plugin/termdbg.vim](sample_code.md#SS_24_1_33)    |同上                            |
+|[vim_config/nvim/autoload/next_file.vim](sample_code.md#SS_26_1_9)|xxx.cpp xxx.h xxx_ut.cpp切り替え|
+|[vim_config/nvim/plugin/next_file.vim](sample_code.md#SS_26_1_29)  |同上                            |
+|[vim_config/nvim/plugin/ctags_ext.vim](sample_code.md#SS_26_1_22)  |ctags作成                       |
+|[vim_config/nvim/plugin/dev_env.vim](sample_code.md#SS_26_1_23)    |開発用画面設定                  |
+|[vim_config/nvim/autoload/termdbg.vim](sample_code.md#SS_26_1_11)  |gdb連動                         |
+|[vim_config/nvim/plugin/termdbg.vim](sample_code.md#SS_26_1_33)    |同上                            |
 
 
 ##### bash起動 <a id="SS_16_4_1_4_2"></a>
 
 |ファイル                                  |機能         |
 |:-----------------------------------------|:------------|
-|[vim_config/nvim/autoload/term.vim](sample_code.md#SS_24_1_10)|:terminal設定|
-|[vim_config/nvim/plugin/term.vim](sample_code.md#SS_24_1_32)  |同上         |
+|[vim_config/nvim/autoload/term.vim](sample_code.md#SS_26_1_10)|:terminal設定|
+|[vim_config/nvim/plugin/term.vim](sample_code.md#SS_26_1_32)  |同上         |
 
 ##### git連動 <a id="SS_16_4_1_4_3"></a>
 
 |ファイル                                         |機能                   |
 |:------------------------------------------------|:----------------------|
-|[vim_config/nvim/autoload/git_diff.vim](sample_code.md#SS_24_1_5)   |git diffをvimdiffで表示|
-|[vim_config/nvim/plugin/git_diff.vim](sample_code.md#SS_24_1_24)     |同上                   |
-|[vim_config/nvim/autoload/git_session.vim](sample_code.md#SS_24_1_6)|mksessionやpath設定    |
-|[vim_config/nvim/plugin/git_session.vim](sample_code.md#SS_24_1_25)  |同上                   |
+|[vim_config/nvim/autoload/git_diff.vim](sample_code.md#SS_26_1_5)   |git diffをvimdiffで表示|
+|[vim_config/nvim/plugin/git_diff.vim](sample_code.md#SS_26_1_24)     |同上                   |
+|[vim_config/nvim/autoload/git_session.vim](sample_code.md#SS_26_1_6)|mksessionやpath設定    |
+|[vim_config/nvim/plugin/git_session.vim](sample_code.md#SS_26_1_25)  |同上                   |
 
 ##### ファイルタイプ設定 <a id="SS_16_4_1_4_4"></a>
 
 |ファイル                                    |機能                        |
 |:-------------------------------------------|:---------------------------|
-|[vim_config/nvim/ftplugin/c.vim](sample_code.md#SS_24_1_13)     |c/c++ファイルのインデント等 |
-|[vim_config/nvim/ftplugin/python.vim](sample_code.md#SS_24_1_14)|pythonファイルのインデント等|
-|[vim_config/nvim/ftplugin/ruby.vim](sample_code.md#SS_24_1_15)  |rubyファイルのインデント等  |
+|[vim_config/nvim/ftplugin/c.vim](sample_code.md#SS_26_1_13)     |c/c++ファイルのインデント等 |
+|[vim_config/nvim/ftplugin/python.vim](sample_code.md#SS_26_1_14)|pythonファイルのインデント等|
+|[vim_config/nvim/ftplugin/ruby.vim](sample_code.md#SS_26_1_15)  |rubyファイルのインデント等  |
 
 ##### その他 <a id="SS_16_4_1_4_5"></a>
 
 |ファイル                                             |機能                      |
 |:----------------------------------------------------|:-------------------------|
-|[vim_config/nvim/autoload/buffers.vim](sample_code.md#SS_24_1_3)        |バッファエクスプロー      |
-|[vim_config/nvim/plugin/buffers.vim](sample_code.md#SS_24_1_19)          |同上                      |
-|[vim_config/nvim/autoload/grep.vim](sample_code.md#SS_24_1_7)           |grep                      |
-|[vim_config/nvim/plugin/grep.vim](sample_code.md#SS_24_1_26)             |同上                      |
-|[vim_config/nvim/autoload/cd.vim](sample_code.md#SS_24_1_4)             |カレントディレクトリの変更|
-|[vim_config/nvim/plugin/cd.vim](sample_code.md#SS_24_1_20)               |同上                      |
-|[vim_config/nvim/autoload/multi_hl.vim](sample_code.md#SS_24_1_8)       |マルチハイライト          |
-|[vim_config/nvim/plugin/multi_hl.vim](sample_code.md#SS_24_1_28)         |同上                      |
-|[vim_config/nvim/plugin/clear_undo.vim](sample_code.md#SS_24_1_21)       |undo履歴クリア            |
-|[vim_config/nvim/plugin/keybind.vim](sample_code.md#SS_24_1_27)          |キーバインドの設定        |
-|[vim_config/nvim/plugin/scratch.vim](sample_code.md#SS_24_1_31)          |スクラッチウインド        |
-|[vim_config/nvim/plugin/path_set.vim](sample_code.md#SS_24_1_30)         |pathの追加                |
-|[vim_config/nvim/rplugin/python3/next_file.py](sample_code.md#SS_24_1_34)|pythonでのプラグイン例    |
+|[vim_config/nvim/autoload/buffers.vim](sample_code.md#SS_26_1_3)        |バッファエクスプロー      |
+|[vim_config/nvim/plugin/buffers.vim](sample_code.md#SS_26_1_19)          |同上                      |
+|[vim_config/nvim/autoload/grep.vim](sample_code.md#SS_26_1_7)           |grep                      |
+|[vim_config/nvim/plugin/grep.vim](sample_code.md#SS_26_1_26)             |同上                      |
+|[vim_config/nvim/autoload/cd.vim](sample_code.md#SS_26_1_4)             |カレントディレクトリの変更|
+|[vim_config/nvim/plugin/cd.vim](sample_code.md#SS_26_1_20)               |同上                      |
+|[vim_config/nvim/autoload/multi_hl.vim](sample_code.md#SS_26_1_8)       |マルチハイライト          |
+|[vim_config/nvim/plugin/multi_hl.vim](sample_code.md#SS_26_1_28)         |同上                      |
+|[vim_config/nvim/plugin/clear_undo.vim](sample_code.md#SS_26_1_21)       |undo履歴クリア            |
+|[vim_config/nvim/plugin/keybind.vim](sample_code.md#SS_26_1_27)          |キーバインドの設定        |
+|[vim_config/nvim/plugin/scratch.vim](sample_code.md#SS_26_1_31)          |スクラッチウインド        |
+|[vim_config/nvim/plugin/path_set.vim](sample_code.md#SS_26_1_30)         |pathの追加                |
+|[vim_config/nvim/rplugin/python3/next_file.py](sample_code.md#SS_26_1_34)|pythonでのプラグイン例    |
 
 #### 外部パッケージ <a id="SS_16_4_1_5"></a>
 

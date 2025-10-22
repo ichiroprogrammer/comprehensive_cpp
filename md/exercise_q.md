@@ -78,7 +78,7 @@ ___
     // @@@ exercise/programming_convention_q/type.cpp #2:0 begin
 ```
 
-* 参照 [用語解説|enum](---)
+* 参照 [列挙型とバイト表現|enum](---)
 * [解答例-enum](---)
 
 
@@ -421,7 +421,7 @@ ___
     // @@@ exercise/programming_convention_q/func.cpp #10:0 begin
 ```
 
-* 参照 [constexpr|constexpr関数](---)
+* 参照 [定数式とコンパイル時評価|constexpr関数](---)
 * [解答例-constexpr関数](---)
 
 
@@ -448,7 +448,7 @@ ___
     // @@@ exercise/programming_convention_q/syntax.cpp #0:0 begin
 ```
 
-* 参照 [用語解説|構文|範囲for文](---)
+* 参照 [構文と制御構造|範囲for文](---)
 * [解答例-コンテナの範囲for文](---)
 
 

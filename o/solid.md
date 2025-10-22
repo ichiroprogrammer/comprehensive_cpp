@@ -117,7 +117,7 @@ Output()に分離したコード実装例を下記する。
     ASSERT_EQ("haha\nhihi\nhuhu\n", act.str());
 ```
 
-[演習-SRP](exercise_q.md#SS_20_8_1)  
+[演習-SRP](exercise_q.md#SS_22_8_1)  
 
 ## オープン・クローズドの原則(OCP) <a id="SS_8_2"></a>
 オープン・クローズドの原則(OCP, Open-Closed Principle)とは、
@@ -256,7 +256,7 @@ Transaction Methodの追加に対して強固な構造になったと言える)�
 ここでは、この原則に沿う実装方法としてポリモーフィズムを使うパターンを紹介したが、
 [Pimpl](design_pattern.md#SS_9_3)のようにラッピングを使用するパターンも有用である。
 
-[演習-OCP](exercise_q.md#SS_20_8_2)  
+[演習-OCP](exercise_q.md#SS_22_8_2)  
 
 ## リスコフの置換原則(LSP) <a id="SS_8_3"></a>
 リスコフの置換原則(LSP, Liskov Substitution Principle)とは、
@@ -398,7 +398,7 @@ Rectangleの全派生クラスに依存した、変更に弱い関数となる�
 ```
 
 このSetX()は、Rectangleからの派生クラスに依存していないため、良い解法に見える。
-ところが実際にはオブジェクトの[スライシング](term_explanation.md#SS_19_5_9_3)という別の問題を引き起こす。  
+ところが実際にはオブジェクトの[スライシング](term_explanation.md#SS_21_2_4_3)という別の問題を引き起こす。  
 
 例示した問題は結局のところデザインの誤りが原因であり、それを修正しない限り、
 問題の回避は容易ではない。
@@ -420,7 +420,7 @@ C++11から非推奨になり、C++17では規格から削除された。
 の説明の通り、これを使用し場合、OCPに違反する可能性が高いからである。
 従って、原則に従うのみでなく、その他の原則とのバランスも考慮する必要がある。
 
-[演習-LSP](exercise_q.md#SS_20_8_3)  
+[演習-LSP](exercise_q.md#SS_22_8_3)  
 
 ## インターフェース分離の原則(ISP) <a id="SS_8_4"></a>
 インターフェース分離の原則 (ISP, Interface Segregation Principle)とは、
@@ -447,7 +447,7 @@ ClientWからはStreamReadWriter::Write()のみが使用されている。
 逆に分割されたものを統合することは容易である。このことを考慮すれば、
 このような逡巡に解を与えることは簡単である。言うまでもないが、「まずは分割」が原則である。
 
-[演習-ISP](exercise_q.md#SS_20_8_4)  
+[演習-ISP](exercise_q.md#SS_22_8_4)  
 
 ## 依存関係逆転の原則(DIP) <a id="SS_8_5"></a>
 依存関係逆転の原則 (DIP, Dependency Inversion Principle)とは、
@@ -732,13 +732,13 @@ ServerNG::Serverのコード修正は非常に困難になることが予想さ�
 ServerNGとClientNGの双方向依存関係は、ClientOKからServerOKへの単方向依存関係へと改善され、
 サーバに影響を与えることなく、クライアントの機能変更やバリエーション追加を行うことが可能となった。
 
-[演習-DIP](exercise_q.md#SS_20_8_5)  
+[演習-DIP](exercise_q.md#SS_22_8_5)  
 
 ## まとめ <a id="SS_8_6"></a>
 以上で述べたように、SOLIDはオブジェクト指向(OOD/OOP)プログラミングにおいて極めて重要な原則である。
 この逸脱はソースコードを劣化させ、ソフトウェアの品質低下や開発費増大に直結するため、
 厳守することが求められる。
 
-[演習-SOLIDの定義](exercise_q.md#SS_20_8_6)  
+[演習-SOLIDの定義](exercise_q.md#SS_22_8_6)  
 
 

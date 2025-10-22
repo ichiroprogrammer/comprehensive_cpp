@@ -5,7 +5,7 @@
 11以降のC++は、下記するような言語拡張、
 STLの大幅な機能追加等により、この問題の軽減に成功している。
 
-* [ラムダ式](term_explanation.md#SS_19_8_3)
+* [ラムダ式](cpp_standard.md#SS_19_9_3)
 * std::futre、std::async、std::promiseによる[Future](design_pattern.md#SS_9_11)パターンのサポート
 * std::unique_lock、std::condition_variableによるイベント通知
 * ロック機構のRAIIのサポート(「[RAII(scoped guard)](design_pattern.md#SS_9_10)」参照)
@@ -528,7 +528,7 @@ TwoPhaseTaskPtrのキュー管理機構は、
     std::condition_variable::wait(lock)
 ```
 
-を使用する場合、「[Spurious Wakeup](term_explanation.md#SS_19_21_5)」への対処が必要になるが、
+を使用する場合、「[Spurious Wakeup](cpp_jargon.md#SS_20_1_5)」への対処が必要になるが、
 
 ```cpp
     std::condition_variable::wait(lock, 関数オブジェクト)
