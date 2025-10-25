@@ -4,7 +4,7 @@
 11以降のC++は、下記するような言語拡張、
 STLの大幅な機能追加等により、この問題の軽減に成功している。
 
-* [言語機能|ラムダ式](---)
+* [言語拡張機能|ラムダ式](---)
 * std::futre、std::async、std::promiseによる[Future](---)パターンのサポート
 * std::unique_lock、std::condition_variableによるイベント通知
 * ロック機構のRAIIのサポート(「[RAII(scoped guard)](---)」参照)

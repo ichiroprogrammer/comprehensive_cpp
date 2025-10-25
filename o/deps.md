@@ -454,53 +454,53 @@ deps.puをレンダリングすることで以下のイメージを得ること�
 ## ディレクトリ、ファイル構成 <a id="SS_17_2"></a>
 
 * app:main.cppを含むパッケージ
-    * [example/deps/CMakeLists.txt](sample_code.md#SS_24_3_1) **---** メインのCMakeLists.txt
-    * [example/deps/app/src/main.cpp](sample_code.md#SS_24_2_3) **---** depsのmain関数を含むファイル
-    * [example/deps/app/src/deps_opts.cpp](sample_code.md#SS_24_2_1) **---** depsのオプション処理
-    * [example/deps/app/src/deps_opts.h](sample_code.md#SS_24_2_2)
-    * [example/deps/app/ut/deps_opts_ut.cpp](sample_code.md#SS_24_2_4) **---** appパッケージの単体テスト
+    * [example/deps/CMakeLists.txt](sample_code.md#SS_28_3_1) **---** メインのCMakeLists.txt
+    * [example/deps/app/src/main.cpp](sample_code.md#SS_28_2_3) **---** depsのmain関数を含むファイル
+    * [example/deps/app/src/deps_opts.cpp](sample_code.md#SS_28_2_1) **---** depsのオプション処理
+    * [example/deps/app/src/deps_opts.h](sample_code.md#SS_28_2_2)
+    * [example/deps/app/ut/deps_opts_ut.cpp](sample_code.md#SS_28_2_4) **---** appパッケージの単体テスト
 
 * dependency:依存関係を導き出すアルゴリズムライブラリdependency.a用のパッケージ
-    * [example/deps/dependency/CMakeLists.txt](sample_code.md#SS_24_3_2) **---** dependencyのCMakeLists.txt
-    * [example/deps/dependency/src/arch_pkg.cpp](sample_code.md#SS_24_2_6) **---** パッケージの依存関係の導出
-    * [example/deps/dependency/src/arch_pkg.h](sample_code.md#SS_24_2_7) **---** arch_pkg.cppの非公開ヘッダ
-    * [example/deps/dependency/src/cpp_deps.cpp](sample_code.md#SS_24_2_8) **---** ファイル間依存関係の依存関係の導出
-    * [example/deps/dependency/src/cpp_deps.h](sample_code.md#SS_24_2_9) **---** cpp_deps.cppの非公開ヘッダ
-    * [example/deps/dependency/src/cpp_dir.cpp](sample_code.md#SS_24_2_10) **---** C++ファイルを含むディレクトリ抽出
-    * [example/deps/dependency/src/cpp_dir.h](sample_code.md#SS_24_2_11) **---** cpp_dir.cppの非公開ヘッダ
-    * [example/deps/dependency/src/cpp_src.cpp](sample_code.md#SS_24_2_12) **---** C++ファイルの抽出
-    * [example/deps/dependency/src/cpp_src.h](sample_code.md#SS_24_2_13) **---** cpp_src.cppの非公開ヘッダ
-    * [example/deps/dependency/h/dependency/deps_scenario.h](sample_code.md#SS_24_2_5) **---** 依存関係表示のシナリオの公開ヘッダ
-    * [example/deps/dependency/src/deps_scenario.cpp](sample_code.md#SS_24_2_14) **---** 依存関係表示のユースケースシナリオ
-    * [example/deps/dependency/src/load_store_format.cpp](sample_code.md#SS_24_2_15) **---** deps生成ファイルのロード/ストア
-    * [example/deps/dependency/src/load_store_format.h](sample_code.md#SS_24_2_16) **---** load_store_format.cppの非公開ヘッダ
-    * [example/deps/dependency/ut/arch_pkg_ut.cpp](sample_code.md#SS_24_2_17) **---** arch_pkg.cppの単体テスト
-    * [example/deps/dependency/ut/cpp_deps_ut.cpp](sample_code.md#SS_24_2_18) **---** cpp_deps.cppの単体テスト
-    * [example/deps/dependency/ut/cpp_dir_ut.cpp](sample_code.md#SS_24_2_19) **---** cpp_dir.cppの単体テスト
-    * [example/deps/dependency/ut/cpp_src_ut.cpp](sample_code.md#SS_24_2_20) **---** cpp_src.cppの単体テスト
-    * [example/deps/dependency/ut/deps_scenario_ut.cpp](sample_code.md#SS_24_2_21) **---** deps_scenario.cppの単体テスト
-    * [example/deps/dependency/ut/load_store_format_ut.cpp](sample_code.md#SS_24_2_22) **---** load_store_format.cppの単体テスト
+    * [example/deps/dependency/CMakeLists.txt](sample_code.md#SS_28_3_2) **---** dependencyのCMakeLists.txt
+    * [example/deps/dependency/src/arch_pkg.cpp](sample_code.md#SS_28_2_6) **---** パッケージの依存関係の導出
+    * [example/deps/dependency/src/arch_pkg.h](sample_code.md#SS_28_2_7) **---** arch_pkg.cppの非公開ヘッダ
+    * [example/deps/dependency/src/cpp_deps.cpp](sample_code.md#SS_28_2_8) **---** ファイル間依存関係の依存関係の導出
+    * [example/deps/dependency/src/cpp_deps.h](sample_code.md#SS_28_2_9) **---** cpp_deps.cppの非公開ヘッダ
+    * [example/deps/dependency/src/cpp_dir.cpp](sample_code.md#SS_28_2_10) **---** C++ファイルを含むディレクトリ抽出
+    * [example/deps/dependency/src/cpp_dir.h](sample_code.md#SS_28_2_11) **---** cpp_dir.cppの非公開ヘッダ
+    * [example/deps/dependency/src/cpp_src.cpp](sample_code.md#SS_28_2_12) **---** C++ファイルの抽出
+    * [example/deps/dependency/src/cpp_src.h](sample_code.md#SS_28_2_13) **---** cpp_src.cppの非公開ヘッダ
+    * [example/deps/dependency/h/dependency/deps_scenario.h](sample_code.md#SS_28_2_5) **---** 依存関係表示のシナリオの公開ヘッダ
+    * [example/deps/dependency/src/deps_scenario.cpp](sample_code.md#SS_28_2_14) **---** 依存関係表示のユースケースシナリオ
+    * [example/deps/dependency/src/load_store_format.cpp](sample_code.md#SS_28_2_15) **---** deps生成ファイルのロード/ストア
+    * [example/deps/dependency/src/load_store_format.h](sample_code.md#SS_28_2_16) **---** load_store_format.cppの非公開ヘッダ
+    * [example/deps/dependency/ut/arch_pkg_ut.cpp](sample_code.md#SS_28_2_17) **---** arch_pkg.cppの単体テスト
+    * [example/deps/dependency/ut/cpp_deps_ut.cpp](sample_code.md#SS_28_2_18) **---** cpp_deps.cppの単体テスト
+    * [example/deps/dependency/ut/cpp_dir_ut.cpp](sample_code.md#SS_28_2_19) **---** cpp_dir.cppの単体テスト
+    * [example/deps/dependency/ut/cpp_src_ut.cpp](sample_code.md#SS_28_2_20) **---** cpp_src.cppの単体テスト
+    * [example/deps/dependency/ut/deps_scenario_ut.cpp](sample_code.md#SS_28_2_21) **---** deps_scenario.cppの単体テスト
+    * [example/deps/dependency/ut/load_store_format_ut.cpp](sample_code.md#SS_28_2_22) **---** load_store_format.cppの単体テスト
 
 *  file_utils:file_utils.a用のディレクトリ
-    * [example/deps/file_utils/CMakeLists.txt](sample_code.md#SS_24_3_3) **---** file_utilsのCMakeLists.txt
-    * [example/deps/file_utils/h/file_utils/load_store.h](sample_code.md#SS_24_2_23) **---** ファイルのロード/ストア
-    * [example/deps/file_utils/h/file_utils/load_store_row.h](sample_code.md#SS_24_2_24) **---** load_store_row.cppのヘッダ
-    * [example/deps/file_utils/h/file_utils/path_utils.h](sample_code.md#SS_24_2_25) **---** path_utils.cppのヘッダ
-    * [example/deps/file_utils/src/load_store_row.cpp](sample_code.md#SS_24_2_26) **---** ファイルのロード/ストア
-    * [example/deps/file_utils/src/path_utils.cpp](sample_code.md#SS_24_2_27) **---** ファイル操作
-    * [example/deps/file_utils/ut/load_store_row_ut.cpp](sample_code.md#SS_24_2_28) **---** load_store_row.cppの単体テスト
-    * [example/deps/file_utils/ut/path_utils_ut.cpp](sample_code.md#SS_24_2_29) **---** path_utils.cppの単体テスト 
+    * [example/deps/file_utils/CMakeLists.txt](sample_code.md#SS_28_3_3) **---** file_utilsのCMakeLists.txt
+    * [example/deps/file_utils/h/file_utils/load_store.h](sample_code.md#SS_28_2_23) **---** ファイルのロード/ストア
+    * [example/deps/file_utils/h/file_utils/load_store_row.h](sample_code.md#SS_28_2_24) **---** load_store_row.cppのヘッダ
+    * [example/deps/file_utils/h/file_utils/path_utils.h](sample_code.md#SS_28_2_25) **---** path_utils.cppのヘッダ
+    * [example/deps/file_utils/src/load_store_row.cpp](sample_code.md#SS_28_2_26) **---** ファイルのロード/ストア
+    * [example/deps/file_utils/src/path_utils.cpp](sample_code.md#SS_28_2_27) **---** ファイル操作
+    * [example/deps/file_utils/ut/load_store_row_ut.cpp](sample_code.md#SS_28_2_28) **---** load_store_row.cppの単体テスト
+    * [example/deps/file_utils/ut/path_utils_ut.cpp](sample_code.md#SS_28_2_29) **---** path_utils.cppの単体テスト 
 
 *  lib:全域からアクセス可能なテンプレートライブラリ
-    * [example/deps/lib/CMakeLists.txt](sample_code.md#SS_24_3_4) **---** libのCMakeLists.txt
-    * [example/deps/lib/h/lib/nstd.h](sample_code.md#SS_24_2_30) **---** テンプレートライブラリ
-    * [example/deps/lib/ut/nstd_ut.cpp](sample_code.md#SS_24_2_31) **---** nstd.hの単体テスト
+    * [example/deps/lib/CMakeLists.txt](sample_code.md#SS_28_3_4) **---** libのCMakeLists.txt
+    * [example/deps/lib/h/lib/nstd.h](sample_code.md#SS_28_2_30) **---** テンプレートライブラリ
+    * [example/deps/lib/ut/nstd_ut.cpp](sample_code.md#SS_28_2_31) **---** nstd.hの単体テスト
 
 *  logging:logging.a用のディレクトリ
-    * [example/deps/logging/CMakeLists.txt](sample_code.md#SS_24_3_5) **---** loggingのCMakeLists.txt
-    * [example/deps/logging/h/logging/logger.h](sample_code.md#SS_24_2_32) **---** logger.cppのヘッダ
-    * [example/deps/logging/src/logger.cpp](sample_code.md#SS_24_2_33) **---** ログの取得
-    * [example/deps/logging/ut/logger_ut.cpp](sample_code.md#SS_24_2_34) **---** logger.cppの単体テスト
+    * [example/deps/logging/CMakeLists.txt](sample_code.md#SS_28_3_5) **---** loggingのCMakeLists.txt
+    * [example/deps/logging/h/logging/logger.h](sample_code.md#SS_28_2_32) **---** logger.cppのヘッダ
+    * [example/deps/logging/src/logger.cpp](sample_code.md#SS_28_2_33) **---** ログの取得
+    * [example/deps/logging/ut/logger_ut.cpp](sample_code.md#SS_28_2_34) **---** logger.cppの単体テスト
                                                              
                                                              
 下記のをファイルツリーは上記を表す。

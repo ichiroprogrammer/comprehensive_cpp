@@ -40,35 +40,35 @@ ___
 
 |機能                                                          |説明                                                                        |
 |:-------------------------------------------------------------|:---------------------------------------------------------------------------|
-|[型推論](term_explanation.md#SS_19_12)(auto)                                  |変数や、式の型の推論                                                        |
-|[decltype](term_explanation.md#SS_19_12_2)                                               |式の型を取得                                                                |
-|[範囲for文](term_explanation.md#SS_19_7_3)                                |インデックス変数なしのfor文                                                 |
-|[初期化子リストコンストラクタ](term_explanation.md#SS_19_5_3)        |vector<int> v = {1, 2, 3}; など。                                           |
-|[一様初期化](term_explanation.md#SS_19_5_2)                                          　 |コンストラクタの呼び出しを、波カッコで行う。|vector<int> v{1, 2, 3};        |
-|[rvalue](term_explanation.md#SS_19_14_1_2)/[moveセマンティクス](term_explanation.md#SS_19_18_3)            |[オブジェクトの所有権](term_explanation.md#SS_19_5_7)の移転、高速化。              |
-|[rvalueリファレンス](term_explanation.md#SS_19_15_2)                                     |テンポラリオブジェクトをバインドできる`T&&`形式のリファレンス               |
-|[ラムダ式](term_explanation.md#SS_19_8_3)                                      |関数オブジェクトをその場に書く                                              |
-|[noexcept](term_explanation.md#SS_19_17_4)                                               |関数の例外指定、例外を投げる可能性のある式かbool値を返す演算子              |
-|[constexpr](term_explanation.md#SS_19_4)                                              |定数式やconstexpr関数の定義                                                 |
-|nullptr                                                       |ヌルポインタを表すポインタ[リテラル](term_explanation.md#SS_19_6)                          |
+|型推論([auto](cpp_standard.md#SS_19_11_15))                      |変数や、式の型の推論                                                        |
+|[decltype](cpp_standard.md#SS_19_11_16)                                               |式の型を取得                                                                |
+|[範囲for文](cpp_standard.md#SS_19_9_3)                               |インデックス変数なしのfor文                                                 |
+|[初期化子リストコンストラクタ](cpp_standard.md#SS_19_6_1_1)            |`vector<int>` v = {1, 2, 3}; など。                                         |
+|[一様初期化](cpp_standard.md#SS_19_6_6)                                          　 |コンストラクタの呼び出しを、波カッコで行う。|vector<int> v{1, 2, 3};        |
+|[rvalue](cpp_standard.md#SS_19_7_1_2)/[moveセマンティクス](cpp_semantics.md#SS_21_4)            |[オブジェクトの所有権](cpp_semantics.md#SS_21_1)の移転、高速化。               |
+|[rvalueリファレンス](cpp_standard.md#SS_19_8_2)                                     |テンポラリオブジェクトをバインドできる`T&&`形式のリファレンス               |
+|[ラムダ式](cpp_standard.md#SS_19_10_3)                                  |関数オブジェクトをその場に書く                                              |
+|[noexcept](cpp_standard.md#SS_19_13_4)                                               |関数の例外指定、例外を投げる可能性のある式かbool値を返す演算子              |
+|[constexpr](cpp_standard.md#SS_19_5_1)                                              |定数式やconstexpr関数の定義                                                 |
+|nullptr                                                       |ヌルポインタを表すポインタ[リテラル](cpp_standard.md#SS_19_2)                           |
 |インライン名前空間                                            |ネストした名前空間に透過的にアクセスする。「[名前空間](programming_convention.md#SS_3_8_2)」参照  |
-|[ユーザー定義リテラル](term_explanation.md#SS_19_6_6)                                   |ユーザにより定義されたリテラル。標準ライブラリでは\_sや\_svなど             |
+|[ユーザー定義リテラル](cpp_standard.md#SS_19_2_6)                                   |ユーザにより定義されたリテラル。標準ライブラリでは\_sや\_svなど             |
 
 
 ### 型に対する機能 <a id="SS_18_1_2"></a>
 
-|機能                                                          |説明                                                                      |
-|:-------------------------------------------------------------|:-------------------------------------------------------------------------|
-|[特殊メンバ関数](term_explanation.md#SS_19_3_1)のdefault/delete 宣言|自動定義される特殊関数の制御                                                 |
-|[委譲コンストラクタ](term_explanation.md#SS_19_5_5)                                    |コンストラクタから他のコンストラクタに処理を委譲する                       |
-|[NSDMI](term_explanation.md#SS_19_5_6_1)                                                 |非staticメンバ変数の宣言と同時に初期値指定する                             |
-|[継承コンストラクタ](term_explanation.md#SS_19_5_4)                                    |基底クラスのコンストラクタの継承                                           |
-|virtual関数のoverride/final宣言                              |「[オーバーライド](programming_convention.md#SS_3_3_2_7)」参照                                              |
-|変換演算子のオーバーロードの[explicit](term_explanation.md#SS_19_13)宣言              |「 [演算子オーバーロード](programming_convention.md#SS_3_3_3_4)」参照                                       |
-|friend 宣言の対象を拡張                                      |テンプレートパラメータ、エイリアスfriend 宣言できるように                  |
-|メンバ関数の[rvalue修飾](term_explanation.md#SS_19_16_1)/[lvalue修飾](term_explanation.md#SS_19_16_2)              |オブジェクトのと値カテゴリでの呼び出し可能であることの指定                 |
-|[スコープドenum](term_explanation.md#SS_19_2_2)                          |スコープを持ち、型付の強いenum。                                           |
-|unionの保持できるオブジェクトの拡張                          |unionでクラスオブジェクトをもつことを許可                                  |
+|機能                                                               |説明                                                          |
+|:------------------------------------------------------------------|:-------------------------------------------------------------|
+|[特殊メンバ関数](cpp_standard.md#SS_19_6_1)のdefault/delete 宣言|自動定義される特殊関数の制御                                  |
+|[委譲コンストラクタ](cpp_standard.md#SS_19_6_1_3)                                          |コンストラクタから他のコンストラクタに処理を委譲する          |
+|[NSDMI](cpp_standard.md#SS_19_6_7_1)                                                       |非staticメンバ変数の宣言と同時に初期値指定する                |
+|[継承コンストラクタ](cpp_standard.md#SS_19_6_1_2)                                          |基底クラスのコンストラクタの継承                              |
+|virtual関数のoverride/final宣言                                    |「[オーバーライド](programming_convention.md#SS_3_3_2_7)」参照                                 |
+|変換演算子のオーバーロードの[explicit](cpp_standard.md#SS_19_6_2_1)宣言                    |「 [演算子オーバーロード](programming_convention.md#SS_3_3_3_4)」参照                          |
+|friend 宣言の対象を拡張                                            |テンプレートパラメータ、エイリアスfriend 宣言できるように     |
+|メンバ関数の[rvalue修飾](cpp_standard.md#SS_19_8_9_1)/[lvalue修飾](cpp_standard.md#SS_19_8_9_2)                    |オブジェクトのと値カテゴリでの呼び出し可能であることの指定    |
+|[スコープドenum](cpp_standard.md#SS_19_3_3)                           |スコープを持ち、型付の強いenum                                |
+|unionの保持できるオブジェクトの拡張                                |unionでクラスオブジェクトをもつことを許可                     |
 
 ### テンプレートに対する機能 <a id="SS_18_1_3"></a>
 
@@ -76,10 +76,10 @@ ___
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
 |テンプレート引数の指定に>>の許可    |vector<list<int>> のような記述の許可。「[テンプレートメタプログラミング](template_meta_programming.md#SS_13)」参照       |
 |[extern template](programming_convention.md#SS_3_9_6)              |テンプレートのインスタンス化の抑止                                                         |
-|[エイリアステンプレート](term_explanation.md#SS_19_11_11)       |エイリアスをテンプレート化できる                                                           |
-|[パラメータパック](term_explanation.md#SS_19_11_4)             |任意の数のテンプレートパラメータを受け取れるようにする                                     |
+|[エイリアステンプレート](cpp_standard.md#SS_19_11_11)       |エイリアスをテンプレート化できる                                                           |
+|[パラメータパック](cpp_standard.md#SS_19_11_4)             |任意の数のテンプレートパラメータを受け取れるようにする                                     |
 |テンプレートパラメータ型の制限の緩和|ローカル型と無名型を、テンプレート引数として使用することを許可                             |
-|任意の式による[SFINAE](term_explanation.md#SS_19_11_1)         |特定の式が[ill-formed](term_explanation.md#SS_19_19_5)か否かで、その関数をオーバーロード解決に含めるかどうかを決定する|
+|任意の式による[SFINAE](cpp_standard.md#SS_19_11_1)         |特定の式が[ill-formed](cpp_standard.md#SS_19_15_1)か否かで、その関数をオーバーロード解決に含めるかどうかを決定する|
 |テンプレートのエクスポート機能      |削除                                                                                       |
 
 
@@ -97,10 +97,10 @@ ___
 |:-----------------------------------------|:--------------------------------------------------------------------------------|
 |戻り値の型を後置する関数宣言構文          |「[戻り値型](programming_convention.md#SS_3_3_3_7)」参照                                                          |
 |コンパイル時アサート                      |コンパイル時に条件式が真であることをassertする。「[assertion](programming_convention.md#SS_3_11_1)」参照         |
-|[生文字列リテラル](term_explanation.md#SS_19_6_1) |文字列リテラルにRプレフィックスを付けることで、エスケープシーケンスを無視する。  |
+|[生文字列リテラル](cpp_standard.md#SS_19_2_1)  |文字列リテラルにRプレフィックスを付けることで、エスケープシーケンスを無視する。  |
 |char16_tとchar32_t                        |UTF-16とUTF-32の文字型                                                           |
 |UTF-8文字列リテラル                       |char の文字列をUTF-8エンコーディングするプレフィックス                           |
-|[属性構文](term_explanation.md#SS_19_7_1)                           |[[attr]]構文による属性指定。[[noreturn]]など。「[return文](programming_convention.md#SS_3_4_7)」参照            |
+|[属性構文](cpp_standard.md#SS_19_9_1)                           |[[attr]]構文による属性指定。[[noreturn]]など。「[return文](programming_convention.md#SS_3_4_7)」参照            |
 |alignas                                   |アライメントを指定する。「[固定長メモリプール](dynamic_memory_allocation.md#SS_14_2_1)」参照                        |
 |alignof                                   |アライメントを取得する。「[固定長メモリプール](dynamic_memory_allocation.md#SS_14_2_1)」参照                        |
 
@@ -109,54 +109,54 @@ ___
 #### ユーティリティ <a id="SS_18_1_6_1"></a>
 |機能                |説明                                 |
 |:-------------------|:------------------------------------|
-|[std::move](term_explanation.md#SS_19_9_1_1)    |[moveセマンティクス](term_explanation.md#SS_19_18_3)の利用      |
-|[std::forward](term_explanation.md#SS_19_9_1_2) |[perfect forwarding](term_explanation.md#SS_19_15_5)の実装、利用|
+|[std::move](cpp_standard.md#SS_19_14_1_1)    |[moveセマンティクス](cpp_semantics.md#SS_21_4)の利用      |
+|[std::forward](cpp_standard.md#SS_19_14_1_2) |[perfect forwarding](cpp_standard.md#SS_19_8_5)の実装、利用|
 
 #### stdコンテナ <a id="SS_18_1_6_2"></a>
-[コンテナ](term_explanation.md#SS_19_9_6)全般が[moveセマンティクス](term_explanation.md#SS_19_18_3)に対応したため、
+[コンテナ](cpp_standard.md#SS_19_14_6)全般が[moveセマンティクス](cpp_semantics.md#SS_21_4)に対応したため、
 テンプレートのパラメータTが、コピー構築可能(`is_copy_constructible<T> == true`)な型だけでなく、
 ムーブ構築(is_move_constructible)のみ可能な型も受け付けるられるようになった。
 push_back()やinsert()等の要素追加のためのメンバ関数が、
 新たな要素のコピーだけでなく、emplace() 、emplace_back() 、emplace_front()のような名称のメンバ関数は、
-[rvalue](term_explanation.md#SS_19_14_1_2)オブジェクトも受け取れて、
+[rvalue](cpp_standard.md#SS_19_7_1_2)オブジェクトも受け取れて、
 move挿入ができるようになった(「[その他のテンプレートテクニック](template_meta_programming.md#SS_13_7)」参照)。
 
 |機能                            |説明                                                                                |
 |:-------------------------------|:-----------------------------------------------------------------------------------|
 |std::array                      |このコンテナは固定長配列クラスを表す「[配列](programming_convention.md#SS_3_1_7)」参照)。         |
-|[std::forward_list](term_explanation.md#SS_19_9_6_1_1)        |このは単方向リンクリストの実装である。                                              |
-|[std::unordered_map](term_explanation.md#SS_19_9_6_3_2)       |同一キーの要素を複数格納しない、格納順が規定されていない連想配列の実装であるである。|
-|[std::unordered_set](term_explanation.md#SS_19_9_6_3_1)       |同一キーの要素を複数格納できず、格納順が規定されていないコンテナである。            |
-|[std::type_index](term_explanation.md#SS_19_9_6_3_3)          |型情報型を連想コンテナのキーとして使用するためのクラス。                            |
+|[std::forward_list](cpp_standard.md#SS_19_14_6_1_1)        |このは単方向リンクリストの実装である。                                              |
+|[std::unordered_map](cpp_standard.md#SS_19_14_6_3_2)       |同一キーの要素を複数格納しない、格納順が規定されていない連想配列の実装であるである。|
+|[std::unordered_set](cpp_standard.md#SS_19_14_6_3_1)       |同一キーの要素を複数格納できず、格納順が規定されていないコンテナである。            |
+|[std::type_index](cpp_standard.md#SS_19_14_6_3_3)          |型情報型を連想コンテナのキーとして使用するためのクラス。                            |
 
 #### 並列処理 <a id="SS_18_1_6_3"></a>
 |機能                          | 説明                                                    |
 |:----------------------------:|:--------------------------------------------------------|
-| [std::thread](term_explanation.md#SS_19_9_3_1)           | スレッドの生成                                          |
-| [std::atomic](term_explanation.md#SS_19_9_3_3)           | 単純なオブジェクトのアトミック処理                      |
-| [std::mutex](term_explanation.md#SS_19_9_3_2)            | スレッド間の競合の回避                                  |
-| [std::lock_guard](term_explanation.md#SS_19_9_4_1)       | ミューテックスのロック/アンロックを管理するためクラス   |
-| [std::unique_lock](term_explanation.md#SS_19_9_4_2)      | ミューテックスのロック/アンロックを管理するためクラス   |
-| [std::scoped_lock](term_explanation.md#SS_19_9_4_3)      | ミューテックスのロック/アンロックを管理するためクラス   |
+| [std::thread](cpp_standard.md#SS_19_14_3_1)           | スレッドの生成                                          |
+| [std::atomic](cpp_standard.md#SS_19_14_3_3)           | 単純なオブジェクトのアトミック処理                      |
+| [std::mutex](cpp_standard.md#SS_19_14_3_2)            | スレッド間の競合の回避                                  |
+| [std::lock_guard](cpp_standard.md#SS_19_14_4_1)       | ミューテックスのロック/アンロックを管理するためクラス   |
+| [std::unique_lock](cpp_standard.md#SS_19_14_4_2)      | ミューテックスのロック/アンロックを管理するためクラス   |
+| [std::scoped_lock](cpp_standard.md#SS_19_14_4_3)      | ミューテックスのロック/アンロックを管理するためクラス   |
 
 
 ## C++14の主な新規機能 <a id="SS_18_2"></a>
 
-|機能                                                |説明                                                                             |
-|:---------------------------------------------------|:--------------------------------------------------------------------------------|
-|[2進数リテラル](term_explanation.md#SS_19_6_2)                                |2進数を表す0bもしくは0Bプレフィックスを付けた数値リテラルの記述を可能に          |
-|[関数の戻り値型auto](term_explanation.md#SS_19_12_6)                           |戻り値の型を後置する関羽鵜テンプレート/関数定義とラムダ式の戻り値型にautoに      |
-|[decltype(auto)](term_explanation.md#SS_19_12_3)                               |decltypeの規則による変数の[型推論](term_explanation.md#SS_19_12)                                 |
-|[ラムダ式](term_explanation.md#SS_19_8_3)の初期化キャプチャ          |キャプチャに代入構文を導入し、一つの変数に複数のキャプチャ方法を指定可能にする   |
-|[ジェネリックラムダ](term_explanation.md#SS_19_11_6)                           |ラムダ式のパラメータを auto にすることで、ジェネリックな関数呼び出しに           |
-|[変数テンプレート](term_explanation.md#SS_19_11_10)            |変数定義時のテンプレート指定を可能に                                             |
-|constexpr関数内での条件分岐とループの文を許可       |[constexpr if文](term_explanation.md#SS_19_11_12)                                                            |
-|structの[NSDMI](term_explanation.md#SS_19_5_6_1)の対応                          |                                                                                 |
-|structのネストする初期化における波カッコ省略を許可  |一様初期化と初期化子リストを組み合わせた際、二重に波カッコが不要に               |
-|[[deprecated]]属性                                  |「[属性構文](term_explanation.md#SS_19_7_1)」参照                                                          |
-|[数値リテラル](term_explanation.md#SS_19_6_3)の桁区切り文字                   |シングルクォーテーションで数値リテラルを桁区切りする                             |
-|サイズ付きデアロケーション                          |[グローバルnew/deleteのオーバーロードの実装](dynamic_memory_allocation.md#SS_14_2_2)                                |
-|[heap allocation elision](term_explanation.md#SS_19_19_15)                      |動的メモリ確保の省略(heap allocation elision)の許可                              |
+|機能                                                  |説明                                                                             |
+|:-----------------------------------------------------|:--------------------------------------------------------------------------------|
+|[2進数リテラル](cpp_standard.md#SS_19_2_2)                                  |2進数を表す0bもしくは0Bプレフィックスを付けた数値リテラルの記述を可能に          |
+|[関数の戻り値型auto](cpp_standard.md#SS_19_11_20)                             |戻り値の型を後置する関羽鵜テンプレート/関数定義とラムダ式の戻り値型にautoに      |
+|[decltype(auto)](cpp_standard.md#SS_19_11_17)                                 |decltypeの規則による変数の型推論                                                 |
+|[ラムダ式](cpp_standard.md#SS_19_10_3)の初期化キャプチャ        |キャプチャに代入構文を導入し、一つの変数に複数のキャプチャ方法を指定可能にする   |
+|[ジェネリックラムダ](cpp_standard.md#SS_19_11_6)                             |ラムダ式のパラメータを auto にすることで、ジェネリックな関数呼び出しに           |
+|[変数テンプレート](cpp_standard.md#SS_19_11_10)          |変数定義時のテンプレート指定を可能に                                             |
+|constexpr関数内での条件分岐とループの文を許可         |[constexpr if文](cpp_standard.md#SS_19_11_12)                                                            |
+|structの[NSDMI](cpp_standard.md#SS_19_6_7_1)の対応                            |                                                                                 |
+|structのネストする初期化における波カッコ省略を許可    |一様初期化と初期化子リストを組み合わせた際、二重に波カッコが不要に               |
+|[[deprecated]]属性                                    |「[属性構文](cpp_standard.md#SS_19_9_1)」参照                                                          |
+|[数値リテラル](cpp_standard.md#SS_19_2_3)の桁区切り文字                     |シングルクォーテーションで数値リテラルを桁区切りする                             |
+|サイズ付きデアロケーション                            |[グローバルnew/deleteのオーバーロードの実装](dynamic_memory_allocation.md#SS_14_2_2)                                |
+|[heap allocation elision](cpp_standard.md#SS_19_16_3)                        |動的メモリ確保の省略(heap allocation elision)の許可                              |
 
 ### stdの変更、追加 <a id="SS_18_2_1"></a>
 
@@ -167,9 +167,9 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |[std::integer_sequence](cpp_improve.md#SS_18_2_1_1_1)                      |コンパイル時整数シーケンス                                |
 |[std::get()のオーバーロード](cpp_improve.md#SS_18_2_1_1_2)を追加           |タプルを型の集合と見なし、型を指定して対応する値を取得する|
 |`<type_traits>`                                   |xxx_t、xxx_vなどのエイリアステンプレート、定数テンプレート|
-|[std::string型リテラル](term_explanation.md#SS_19_6_6_2)                      |                                                          |
-|[std::chronoのリテラル](term_explanation.md#SS_19_6_6_3) |                                                          |
-|[std::complexリテラル](term_explanation.md#SS_19_6_6_4)  |                                                          |
+|[std::string型リテラル](cpp_standard.md#SS_19_2_6_2)                      |                                                          |
+|[std::chronoのリテラル](cpp_standard.md#SS_19_2_6_3) |                                                          |
+|[std::complexリテラル](cpp_standard.md#SS_19_2_6_4)  |                                                          |
 
 #### C++14/stdの追加使用例 <a id="SS_18_2_1_1"></a>
 ##### std::integer_sequence <a id="SS_18_2_1_1_1"></a>
@@ -221,26 +221,26 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 ## C++17の主な新規機能 <a id="SS_18_3"></a>
 ### 新機能、規制緩和 <a id="SS_18_3_1"></a>
 
-|機能                                         |説明                                                                                               |
-|:--------------------------------------------|:--------------------------------------------------------------------------------------------------|
-|[16進浮動小数点数リテラル](term_explanation.md#SS_19_6_5)              |16進数表記で浮動小数点数リテラルを記述できるようにする                                             |
-|インライン変数                               |inline 指定をすることで翻訳単位を跨いでひとつのオブジェクトになる変数を定義する                    |
-|構造化束縛                                   |「[戻り値型](programming_convention.md#SS_3_3_3_7)」参照                                                                            |
-|[単一要素の波カッコ初期化を非配列とする](cpp_improve.md#SS_18_3_1_1)|リストによる直接初期化の型推論の規則が変更された                                                   |
-|[[maybe_unused]]属性                         |「[属性構文](term_explanation.md#SS_19_7_1)」参照                                                                            | 
-|[[nodiscard]]属性                            |「[属性構文](term_explanation.md#SS_19_7_1)」、[グローバルnew/deleteのオーバーロードの実装](dynamic_memory_allocation.md#SS_14_2_2)」参照                       |
-|[RVO(Return Value Optimization)](term_explanation.md#SS_19_19_13)        |右辺値を変数の初期化のために使用する場合、コピーもムーブも省略することを保証                       |
-|[演算子のオペランドの評価順位](term_explanation.md#SS_19_19_2)          |C++14まで未規定であった部分式の評価順序を規定                                                      |
-|enum class変数の初期値のルール変更           |「[スコープドenum](term_explanation.md#SS_19_2_2)」、 「[underlying type](term_explanation.md#SS_19_2_3)」参照                                         |
-|[newのアライメント指定](cpp_improve.md#SS_18_3_1_2)                 |                                                                                                   |
-|[初期化付きif/switch文](term_explanation.md#SS_19_7_5)                 |if文とswitch文の条件式と初期化を分離する構文                                                       |
-|[[fallthrough]]属性                          |「[属性構文](term_explanation.md#SS_19_7_1)」参照                                                                            |
-|[constexpr if文](term_explanation.md#SS_19_11_12)                        |if constexpr(cond) とすることで、その if 文はコンパイル時に処理                                    |
-|[範囲for文のイテレータ型の不一致の許可](cpp_improve.md#SS_18_3_1_3) |std::istream_iteratorとstd::istreamに利用                                                          |
-|[ラムダ式での\*thisのコピーキャプチャ](cpp_improve.md#SS_18_3_1_4)  |キャプチャリストに\*this を指定することで、\*thisをコピーキャプチャする                            |
-|[constexprラムダ](term_explanation.md#SS_19_4_7)             |ラムダ式の関数オブジェクトのconstexpr指定を可能に                                                  |
-|[std::optional](term_explanation.md#SS_19_9_7)                         |関数の戻り値の無効表現を行うためのクラステンプレート                                               |
-|[std::variant](term_explanation.md#SS_19_9_8)                          |型安全なunion機能を提供するクラステンプレート                                                      |
+|機能                                            |説明                                                                             |
+|:-----------------------------------------------|:--------------------------------------------------------------------------------|
+|[16進浮動小数点数リテラル](cpp_standard.md#SS_19_2_5)                 |16進数表記で浮動小数点数リテラルを記述できるようにする                           |
+|インライン変数                                  |inline 指定をすることで翻訳単位を跨いでひとつのオブジェクトになる変数を定義する  |
+|構造化束縛                                      |「[戻り値型](programming_convention.md#SS_3_3_3_7)」参照                                                          |
+|[単一要素の波カッコ初期化を非配列とする](cpp_improve.md#SS_18_3_1_1)   |リストによる直接初期化の型推論の規則が変更された                                 |
+|[[maybe_unused]]属性                            |「[属性構文](cpp_standard.md#SS_19_9_1)」参照                                                          | 
+|[[nodiscard]]属性                               |「[属性構文](cpp_standard.md#SS_19_9_1)」、[グローバルnew/deleteのオーバーロードの実装](dynamic_memory_allocation.md#SS_14_2_2)」参照     |
+|[RVO(Return Value Optimization)](cpp_standard.md#SS_19_16_1)           |右辺値を変数の初期化のために使用する場合、コピーもムーブも省略することを保証     |
+|[演算子のオペランドの評価順位](cpp_standard.md#SS_19_15_12)             |C++14まで未規定であった部分式の評価順序を規定                                    |
+|enum class変数の初期値のルール変更              |「[スコープドenum](cpp_standard.md#SS_19_3_3)」、 「[underlying type](cpp_standard.md#SS_19_3_4)」参照                       |
+|[newのアライメント指定](cpp_improve.md#SS_18_3_1_2)                    |                                                                                 |
+|[初期化付きif/switch文](cpp_standard.md#SS_19_9_5)                    |if文とswitch文の条件式と初期化を分離する構文                                     |
+|[[fallthrough]]属性                             |「[属性構文](cpp_standard.md#SS_19_9_1)」参照                                                          |
+|[constexpr if文](cpp_standard.md#SS_19_11_12)                           |if constexpr(cond) とすることで、その if 文はコンパイル時に処理                  |
+|[範囲for文のイテレータ型の不一致の許可](cpp_improve.md#SS_18_3_1_3)    |std::istream_iteratorとstd::istreamに利用                                        |
+|[ラムダ式での\*thisのコピーキャプチャ](cpp_improve.md#SS_18_3_1_4)     |キャプチャリストに\*this を指定することで、\*thisをコピーキャプチャする          |
+|[constexprラムダ](cpp_standard.md#SS_19_5_8) |ラムダ式の関数オブジェクトのconstexpr指定を可能に                                |
+|[std::optional](cpp_standard.md#SS_19_14_7)                            |関数の戻り値の無効表現を行うためのクラステンプレート                             |
+|[std::variant](cpp_standard.md#SS_19_14_8)                             |型安全なunion機能を提供するクラステンプレート                                    |
 
 
 #### 単一要素の波カッコ初期化を非配列とする <a id="SS_18_3_1_1"></a>
@@ -359,13 +359,13 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 
 |機能                                           |説明                                                                                                |
 |:----------------------------------------------|:---------------------------------------------------------------------------------------------------|
-|[三方比較演算子](term_explanation.md#SS_19_6_8_4)                          |`<=>`/`==`による比較演算子の自動定義                                                                |
+|[三方比較演算子](cpp_standard.md#SS_19_6_4_2)                          |`<=>`/`==`による比較演算子の自動定義                                                                |
 |ビットフィールドのメンバ変数初期化             |ビットフィールドメンバ変数のデフォルト値を設定する構文を追加                                        |
-|[explicit(COND)](term_explanation.md#SS_19_13_4)                          |explicit(true/false) のように explicit にboolパラメータを指定できるようにする                       |
-|const修飾されたメンバポインタの制限を修正      |`.*`演算子での[lvalue](term_explanation.md#SS_19_14_1_1)のconstメンバ関数呼び出しを許可                                          |
+|[explicit(COND)](cpp_standard.md#SS_19_6_2_4)                          |explicit(true/false) のように explicit にboolパラメータを指定できるようにする                       |
+|const修飾されたメンバポインタの制限を修正      |`.*`演算子での[lvalue](cpp_standard.md#SS_19_7_1_1)のconstメンバ関数呼び出しを許可                                          |
 |デフォルトコピーコンストラクタの規約のバグ修正 |デフォルトのコピーコンストラクタと引数が非constなコンストラクタが衝突する問題を修正                 |
 |特殊化のアクセスチェック                       |                                                                                                    |
-|[[no_unique_address]]属性追加                  |空の型のオブジェクトをほかのオブジェクトと共有する最適化を許可。「[属性構文](term_explanation.md#SS_19_7_1)」参照             |
+|[[no_unique_address]]属性追加                  |空の型のオブジェクトをほかのオブジェクトと共有する最適化を許可。「[属性構文](cpp_standard.md#SS_19_9_1)」参照             |
 |[friend指定された関数内から構造化束縛](cpp_improve.md#SS_18_4_2_1)    |構造化束縛でのメンバ変数へアクセスルールの変更                                                      |
 |[構造化束縛カスタマイゼーションルール変更](cpp_improve.md#SS_18_4_2_2)|構造化束縛がカスタマイゼーションポイントを見つけるルールを緩和                                      |
 |関数の戻り値型の抽象型のチェック               |関数の宣言段階では、パラメータや戻り値型が抽象型かどうかをチェックしない                            |
@@ -466,8 +466,8 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 
 |機能                                                   |説明                                                                            |
 |:------------------------------------------------------|:-------------------------------------------------------------------------------|
-|[コンセプト](term_explanation.md#SS_19_11_3)                                      |キーワードconcept、requiresの導入。テンプレートパラメータの制約。               |
-|[autoパラメータによる関数テンプレートの簡易定義](term_explanation.md#SS_19_11_13)  |[ジェネリックラムダ](term_explanation.md#SS_19_11_6)と同様に関数パラメータをの型をautoにできる。           |
+|[コンセプト](cpp_standard.md#SS_19_11_3)                                      |キーワードconcept、requiresの導入。テンプレートパラメータの制約。               |
+|[autoパラメータによる関数テンプレートの簡易定義](cpp_standard.md#SS_19_11_13)  |[ジェネリックラムダ](cpp_standard.md#SS_19_11_6)と同様に関数パラメータをの型をautoにできる。           |
 |[型の文脈でtypenameの省略を許可](cpp_improve.md#SS_18_4_4_1)                  |型しか現れない文脈では、typenameの省略を可能に                                  |
 |[非型テンプレートパラメータとしてクラス型を許可](cpp_improve.md#SS_18_4_4_2)  |                                                                                |
 |ADLのバグ修正                                          |[関数テンプレートに明示的に型指定した場合にADLで見つからない問題を修正](cpp_improve.md#SS_18_4_4_3)    |
