@@ -38,6 +38,12 @@
 「守」が終了し、「破」へと進むことができると考えられる。
 
 ## 改訂履歴 <a id="SS_1_3"></a>
+* V20.11
+    * 用語説明の分割と再構成
+        * C++標準
+        * C++セマンティクス
+        * C++慣用語
+
 * V20.10
     * moveセマンティクスの説明の改善
     * lvalueリファレンスの説明の改善
@@ -197,8 +203,8 @@ ___
 - [deps](deps.md#SS_17)
 - [C++の進化と主な変更点](cpp_improve.md#SS_18)
 - [C++標準](cpp_standard.md#SS_19)
-- [C++セマンティクス](cpp_semantics.md#SS_23)
-- [C++慣用語](cpp_jargon.md#SS_20)
+- [C++セマンティクス](cpp_semantics.md#SS_21)
+- [C++慣用語](cpp_idiom.md#SS_20)
 - [演習](exercise_q.md#SS_24)
 - [解答](exercise_a.md#SS_25)
 - [参考文献](bibliography.md#SS_26)

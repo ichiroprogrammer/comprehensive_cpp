@@ -45,12 +45,12 @@ ___
 |[範囲for文](cpp_standard.md#SS_19_9_3)                               |インデックス変数なしのfor文                                                 |
 |[初期化子リストコンストラクタ](cpp_standard.md#SS_19_6_1_1)            |`vector<int>` v = {1, 2, 3}; など。                                         |
 |[一様初期化](cpp_standard.md#SS_19_6_6)                                          　 |コンストラクタの呼び出しを、波カッコで行う。|vector<int> v{1, 2, 3};        |
-|[rvalue](cpp_standard.md#SS_19_7_1_2)/[moveセマンティクス](cpp_semantics.md#SS_23_4)            |[オブジェクトの所有権](cpp_semantics.md#SS_23_1)の移転、高速化。               |
+|[rvalue](cpp_standard.md#SS_19_7_1_2)/[moveセマンティクス](cpp_semantics.md#SS_21_4)            |[オブジェクトの所有権](cpp_semantics.md#SS_21_1)の移転、高速化。               |
 |[rvalueリファレンス](cpp_standard.md#SS_19_8_2)                                     |テンポラリオブジェクトをバインドできる`T&&`形式のリファレンス               |
 |[ラムダ式](cpp_standard.md#SS_19_10_3)                                  |関数オブジェクトをその場に書く                                              |
 |[noexcept](cpp_standard.md#SS_19_13_4)                                               |関数の例外指定、例外を投げる可能性のある式かbool値を返す演算子              |
 |[constexpr](cpp_standard.md#SS_19_5_1)                                              |定数式やconstexpr関数の定義                                                 |
-|nullptr                                                       |ヌルポインタを表すポインタ[リテラル](cpp_standard.md#SS_19_2)                          |
+|nullptr                                                       |ヌルポインタを表すポインタ[リテラル](cpp_standard.md#SS_19_2)                           |
 |インライン名前空間                                            |ネストした名前空間に透過的にアクセスする。「[名前空間](programming_convention.md#SS_3_8_2)」参照  |
 |[ユーザー定義リテラル](cpp_standard.md#SS_19_2_6)                                   |ユーザにより定義されたリテラル。標準ライブラリでは\_sや\_svなど             |
 
@@ -109,11 +109,11 @@ ___
 #### ユーティリティ <a id="SS_18_1_6_1"></a>
 |機能                |説明                                 |
 |:-------------------|:------------------------------------|
-|[std::move](cpp_standard.md#SS_19_14_1_1)    |[moveセマンティクス](cpp_semantics.md#SS_23_4)の利用      |
+|[std::move](cpp_standard.md#SS_19_14_1_1)    |[moveセマンティクス](cpp_semantics.md#SS_21_4)の利用      |
 |[std::forward](cpp_standard.md#SS_19_14_1_2) |[perfect forwarding](cpp_standard.md#SS_19_8_5)の実装、利用|
 
 #### stdコンテナ <a id="SS_18_1_6_2"></a>
-[コンテナ](cpp_standard.md#SS_19_14_6)全般が[moveセマンティクス](cpp_semantics.md#SS_23_4)に対応したため、
+[コンテナ](cpp_standard.md#SS_19_14_6)全般が[moveセマンティクス](cpp_semantics.md#SS_21_4)に対応したため、
 テンプレートのパラメータTが、コピー構築可能(`is_copy_constructible<T> == true`)な型だけでなく、
 ムーブ構築(is_move_constructible)のみ可能な型も受け付けるられるようになった。
 push_back()やinsert()等の要素追加のためのメンバ関数が、
