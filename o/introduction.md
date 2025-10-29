@@ -32,7 +32,7 @@
 
 ## 本ドキュメントの次に <a id="SS_1_2"></a>
 本ドキュメントを読み、理解したプログラマの次のステップのために、
-巻末に「[参考文献](bibliography.md#SS_26)」を設けた。
+巻末に「[参考文献](bibliography.md#SS_24)」を設けた。
 
 それらを読破し、合理的理由でこれらに倣い、もしくは批判できるようになることで、
 「守」が終了し、「破」へと進むことができると考えられる。
@@ -202,13 +202,13 @@ ___
 - [開発ツール](dev_tools.md#SS_16)
 - [deps](deps.md#SS_17)
 - [C++の進化と主な変更点](cpp_improve.md#SS_18)
-- [C++標準](cpp_standard.md#SS_19)
-- [C++セマンティクス](cpp_semantics.md#SS_21)
-- [C++慣用語](cpp_idiom.md#SS_20)
-- [演習](exercise_q.md#SS_24)
-- [解答](exercise_a.md#SS_25)
-- [参考文献](bibliography.md#SS_26)
-- [あとがき](afterword.md#SS_27)
-- [Sample Code](sample_code.md#SS_28)
+- [C++コア言語仕様](core_lang_spec.md#SS_19)
+- [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_20)
+- [C++慣用語句](cpp_idioms.md#SS_21)
+- [演習](exercise_q.md#SS_22)
+- [解答](exercise_a.md#SS_23)
+- [参考文献](bibliography.md#SS_24)
+- [あとがき](afterword.md#SS_25)
+- [Sample Code](sample_code.md#SS_26)
 
 

@@ -1626,7 +1626,7 @@ CI項目には前述した
 に加えて、
 
 * ソースコードの静的解析(「[コード解析](code_analysis.md#SS_4)」参照)
-* 各種メトリクスの計測([サイクロマティック複雑度](cpp_idiom.md#SS_20_1_3)、[凝集度の欠如](cpp_idiom.md#SS_20_1_4_1)等)
+* 各種メトリクスの計測([サイクロマティック複雑度](cpp_idioms.md#SS_21_8_3)、[凝集度の欠如](cpp_idioms.md#SS_21_8_4_1)等)
 * リリースパッケージの作成
 
 等がある。
@@ -1653,7 +1653,7 @@ CIの環境として、
 
 * CIサーバとしてJenkins
 * Jenkinsのジョブ記述にbash
-* コンパイラに[g++](cpp_idiom.md#SS_20_4_1)
+* コンパイラに[g++](cpp_idioms.md#SS_21_9_1)
 * ビルドツールにmake
 
 を使用すると前提とする。この場合、
@@ -1719,13 +1719,13 @@ CIの環境として、
 
 こういったことをマネージャ、リーダはよく理解するべきだろう。
 
-[演習-プロセス分類](exercise_q.md#SS_24_10_1)  
-[演習-V字モデル](exercise_q.md#SS_24_10_2)  
-[演習-アジャイル](exercise_q.md#SS_24_10_3)  
-[演習-自動化](exercise_q.md#SS_24_10_4)  
-[演習-単体テスト](exercise_q.md#SS_24_10_5)  
-[演習-リファクタリングに付随する活動](exercise_q.md#SS_24_10_6)  
-[演習-リファクタリング対象コード](exercise_q.md#SS_24_10_7)  
-[演習-CI](exercise_q.md#SS_24_10_8)  
+[演習-プロセス分類](exercise_q.md#SS_22_10_1)  
+[演習-V字モデル](exercise_q.md#SS_22_10_2)  
+[演習-アジャイル](exercise_q.md#SS_22_10_3)  
+[演習-自動化](exercise_q.md#SS_22_10_4)  
+[演習-単体テスト](exercise_q.md#SS_22_10_5)  
+[演習-リファクタリングに付随する活動](exercise_q.md#SS_22_10_6)  
+[演習-リファクタリング対象コード](exercise_q.md#SS_22_10_7)  
+[演習-CI](exercise_q.md#SS_22_10_8)  
 
 
