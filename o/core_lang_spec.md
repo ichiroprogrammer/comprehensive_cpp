@@ -1999,7 +1999,7 @@ consteval関数の呼び出しは、その結果が定数式でなければコ�
 constinitはC++20から導入されたキーワードであり、
 静的記憶域期間（static、namespaceスコープ）またはthread_local変数が、
 コンパイル時に初期化されることを保証するために使用される。
-これにより、[Static Initialization Order Fiasco(静的初期化順序問題)](cpp_idioms.md#SS_21_8_8)を回避できる。
+これにより、[Static Initialization Order Fiasco(静的初期化順序問題)](cpp_idioms.md#SS_21_8_9)を回避できる。
 
 このキーワードを付与すると、初期化が動的である場合にはコンパイルエラーとなる。
 ただし、constexprと異なり、変数自体がconstになるわけではないため、再代入は可能である。
@@ -3701,7 +3701,7 @@ C++11からはエラーとならず、TRRはT&となる。
 [rvalue修飾](core_lang_spec.md#SS_19_8_7_1)と[lvalue修飾](core_lang_spec.md#SS_19_8_7_2)とを併せて、リファレンス修飾と呼ぶ。
 
 #### rvalue修飾 <a id="SS_19_8_7_1"></a>
-下記GetString0()のような関数が返すオブジェクトの内部メンバに対する[ハンドル](cpp_idioms.md#SS_21_8_3)は、
+下記GetString0()のような関数が返すオブジェクトの内部メンバに対する[ハンドル](cpp_idioms.md#SS_21_8_4)は、
 オブジェクトのライフタイム終了後にもアクセスすることができるため、
 そのハンドルを通じて、
 ライフタイム終了後のオブジェクトのメンバオブジェクトにもアクセスできてしまう。
@@ -6413,12 +6413,12 @@ name-hidingとは
     //  example/core_lang_spec/name_hiding.cpp 4
 
     struct Base {
-        void f() noexcept {}
+        void f() {}
     };
 
     struct Derived : Base {
         // void f(int) { f(); }     // f()では、Baseのf()をname lookupできないため、
-        void f(int) noexcept { Base::f(); }  // Base::でf()を修飾した
+        void f(int) { Base::f(); }  // Base::でf()を修飾した
     };
 ```
 
@@ -6449,8 +6449,8 @@ Base::fがその後方にあるDerived::f(int)によりname-hidingされたた�
     //  example/core_lang_spec/name_hiding.cpp 34
 
     struct Derived : Base {
-        using Base::f;  // using宣言によりDerivedにBase::fを導入
-        void f(int) noexcept { Base::f(); }
+        using Base::f;        // using宣言によりDerivedにBase::fを導入
+        void f(int) { f(); }  // using Base::fの効果でfの名前修飾が不要になった
     };
 ```
 ```cpp
@@ -6466,12 +6466,12 @@ Base::fがその後方にあるDerived::f(int)によりname-hidingされたた�
     //  example/core_lang_spec/name_hiding.cpp 54
 
     // global名前空間
-    void f() noexcept {}
+    void f() {}
 
     namespace NS_A {
-    void f(int) noexcept {}
+    void f(int) {}
 
-    void g() noexcept
+    void g()
     {
     #if 0
         f();  // NS_A::fによりname-hidingされたため、コンパイルできない
@@ -6486,13 +6486,13 @@ Base::fがその後方にあるDerived::f(int)によりname-hidingされたた�
     //  example/core_lang_spec/name_hiding.cpp 70
 
     namespace NS_A_fixed_0 {
-    void g() noexcept
+    void g()
     {
         // グローバルなfの呼び出し
         f();  // NS_A::fは後方に移動されたためコンパイルできる
     }
 
-    void f(int) noexcept {}
+    void f(int) {}
     }  // namespace NS_A_fixed_0
 ```
 
@@ -6502,9 +6502,9 @@ Base::fがその後方にあるDerived::f(int)によりname-hidingされたた�
     //  example/core_lang_spec/name_hiding.cpp 82
 
     namespace NS_A_fixed_1 {
-    void f(int) noexcept {}
+    void f(int) {}
 
-    void g() noexcept
+    void g()
     {
         using ::f;
 
@@ -6520,9 +6520,9 @@ Base::fがその後方にあるDerived::f(int)によりname-hidingされたた�
     //  example/core_lang_spec/name_hiding.cpp 96
 
     namespace NS_A_fixed_2 {
-    void f(int) noexcept {}
+    void f(int) {}
 
-    void g() noexcept
+    void g()
     {
         // グローバルなfの呼び出し
         ::f();  // ::で修飾すればコンパイルできる
@@ -6544,18 +6544,18 @@ Base::fがその後方にあるDerived::f(int)によりname-hidingされたた�
     namespace NS_B {
     struct S_in_B {};
 
-    void f(S_in_B) noexcept {}
-    void f(int) noexcept {}
+    void f(S_in_B) {}
+    void f(int) {}
 
     namespace NS_B_Inner {
-    void g() noexcept
+    void g()
     {
         f(int{});  // コンパイルでき、NS_B::f(int)が呼ばれる
     }
 
-    void f() noexcept {}
+    void f() {}
 
-    void h() noexcept
+    void h()
     {
         // f(int{});     // コンパイルできない
         NS_B::f(int{});  // 名前空間で修飾することでコンパイルできる
