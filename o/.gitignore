@@ -7,10 +7,9 @@
 !coding_style.md
 !comment.md
 !concurrency.md
-!cpp_idiom.md
+!core_lang_spec.md
+!cpp_idioms.md
 !cpp_improve.md
-!cpp_semantics.md
-!cpp_standard.md
 !debug.md
 !deps.md
 !design_pattern.md
@@ -25,5 +24,6 @@
 !sample_code.md
 !software_practice.md
 !solid.md
+!stdlib_and_concepts.md
 !template_meta_programming.md
-!term_explanation.md
+

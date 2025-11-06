@@ -7,7 +7,7 @@ TITLE=Comprehensive Knowledge of C++($(VERSION))
 
 MD_GEN:=./md_gen/export/py
 
-VPATH=./md:deep/md/:deps/md
+VPATH=./md:deep/md/:deps/md:essential/md
 
 MDS:=introduction.md \
      software_practice.md programming_convention.md code_analysis.md \
@@ -20,4 +20,4 @@ MDS:=introduction.md \
 
 INDEX_OPT:=--exclude $(addsuffix :1,$(MDS) sample_code.md)
 
-include deep/make/md.mk
+include essential/make/md.mk

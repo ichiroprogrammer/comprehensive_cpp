@@ -10,3 +10,6 @@
 [submodule "deps"]
 	path = deps
 	url = git@github.com:ichiroprogrammer/deps.git
+[submodule "essential"]
+	path = essential
+	url = git@github.com:ichiroprogrammer/essential_cpp.git
