@@ -6864,29 +6864,29 @@
          22 
          23 struct header_t {
          24     header_t* next;
-         25     size_t    n_nuits;  // header_tが何個あるか
+         25     size_t    n_units;  // header_tが何個あるか
          26 };
          27 
          28 header_t*        header{nullptr};
          29 SpinLock         spin_lock{};
          30 constexpr size_t unit_size{sizeof(header_t)};
          31 
-         32 inline bool sprit(header_t* header, size_t n_nuits, header_t*& next) noexcept
+         32 inline bool sprit(header_t* header, size_t n_units, header_t*& next) noexcept
          33 {
          34     // @@@ ignore begin
-         35     assert(n_nuits > 1);  // ヘッダとバッファなので最低でも2
+         35     assert(n_units > 1);  // ヘッダとバッファなので最低でも2
          36 
          37     next = nullptr;
          38 
-         39     if (header->n_nuits == n_nuits || header->n_nuits == n_nuits + 1) {
+         39     if (header->n_units == n_units || header->n_units == n_units + 1) {
          40         next = header->next;
          41         return true;
          42     }
-         43     else if (header->n_nuits > n_nuits) {
-         44         next            = header + n_nuits;
-         45         next->n_nuits   = header->n_nuits - n_nuits;
+         43     else if (header->n_units > n_units) {
+         44         next            = header + n_units;
+         45         next->n_units   = header->n_units - n_units;
          46         next->next      = header->next;
-         47         header->n_nuits = n_nuits;
+         47         header->n_units = n_units;
          48         return true;
          49     }
          50 
@@ -6897,8 +6897,8 @@
          55 inline void concat(header_t* front, header_t* rear) noexcept
          56 {
          57     // @@@ ignore begin
-         58     if (front + front->n_nuits == rear) {  // 1枚のメモリになる
-         59         front->n_nuits += rear->n_nuits;
+         58     if (front + front->n_units == rear) {  // 1枚のメモリになる
+         59         front->n_units += rear->n_units;
          60         front->next = rear->next;
          61     }
          62     else {
@@ -6915,14 +6915,14 @@
          73 {
          74     // @@@ ignore begin
          75     // size分のメモリとヘッダ
-         76     auto n_nuits = (Roundup(unit_size, size) / unit_size) + 1;
+         76     auto n_units = (Roundup(unit_size, size) / unit_size) + 1;
          77     auto lock    = std::lock_guard{spin_lock};
          78 
          79     auto curr = header;
          80     for (header_t* prev = nullptr; curr != nullptr; prev = curr, curr = curr->next) {
          81         header_t* next;
          82 
-         83         if (!sprit(curr, n_nuits, next)) {
+         83         if (!sprit(curr, n_units, next)) {
          84             continue;
          85         }
          86 
@@ -6993,7 +6993,7 @@
         151         auto const add_size = Roundup(unit_size, 1024 * 1024 + size);  // 1MB追加
         152 
         153         header_t* add = static_cast<header_t*>(sbrk(add_size));
-        154         add->n_nuits  = add_size / unit_size;
+        154         add->n_units  = add_size / unit_size;
         155         free(++add);
         156         mem = malloc_inner(size);
         157     }
@@ -7015,13 +7015,13 @@
         173 
         174         void* ints[8]{};
         175 
-        176         constexpr auto n_nuits = Roundup(unit_size, unit_size + sizeof(int)) / unit_size;
+        176         constexpr auto n_units = Roundup(unit_size, unit_size + sizeof(int)) / unit_size;
         177 
         178         for (auto& i : ints) {
         179             i = malloc(sizeof(int));
         180 
         181             header_t* h = set_back(i);
-        182             ASSERT_EQ(h->n_nuits, n_nuits);
+        182             ASSERT_EQ(h->n_units, n_units);
         183         }
         184 
         185         for (auto& i : ints) {
@@ -7070,23 +7070,23 @@
          12 
          13 struct header_t {
          14     header_t* next;
-         15     size_t    n_nuits;  // header_tが何個あるか
+         15     size_t    n_units;  // header_tが何個あるか
          16 };
          17 
          18 constexpr auto unit_size = sizeof(header_t);
          19 
-         20 inline std::optional<header_t*> sprit(header_t* header, size_t n_nuits) noexcept
+         20 inline std::optional<header_t*> sprit(header_t* header, size_t n_units) noexcept
          21 {
-         22     assert(n_nuits > 1);  // ヘッダとバッファなので最低でも2
+         22     assert(n_units > 1);  // ヘッダとバッファなので最低でも2
          23 
-         24     if (header->n_nuits == n_nuits || header->n_nuits == n_nuits + 1) {
+         24     if (header->n_units == n_units || header->n_units == n_units + 1) {
          25         return header->next;
          26     }
-         27     else if (header->n_nuits > n_nuits) {
-         28         auto next       = header + n_nuits;
-         29         next->n_nuits   = header->n_nuits - n_nuits;
+         27     else if (header->n_units > n_units) {
+         28         auto next       = header + n_units;
+         29         next->n_units   = header->n_units - n_units;
          30         next->next      = header->next;
-         31         header->n_nuits = n_nuits;
+         31         header->n_units = n_units;
          32         return next;
          33     }
          34 
@@ -7095,8 +7095,8 @@
          37 
          38 inline void concat(header_t* front, header_t* rear) noexcept
          39 {
-         40     if (front + front->n_nuits == rear) {  // 1枚のメモリになる
-         41         front->n_nuits += rear->n_nuits;
+         40     if (front + front->n_units == rear) {  // 1枚のメモリになる
+         41         front->n_units += rear->n_units;
          42         front->next = rear->next;
          43     }
          44     else {
@@ -7110,7 +7110,7 @@
          52 
          53 template <uint32_t MEM_SIZE>
          54 struct buffer_t {
-         55     alignas(alignof(std::max_align_t)) uint8_t buffer[Roundup(sizeof(header_t), MEM_SIZE)];
+         55     alignas(std::max_align_t) uint8_t buffer[Roundup(sizeof(header_t), MEM_SIZE)];
          56 };
          57 }  // namespace Inner_
          58 
@@ -7124,7 +7124,7 @@
          66     MPoolVariable() noexcept : MPool{MEM_SIZE}
          67     {
          68         header_->next    = nullptr;
-         69         header_->n_nuits = sizeof(buff_) / Inner_::unit_size;
+         69         header_->n_units = sizeof(buff_) / Inner_::unit_size;
          70     }
          71     // @@@ sample end
          72     // @@@ sample begin 0:2
@@ -7180,14 +7180,14 @@
         122     {
         123         // @@@ ignore begin
         124         // size分のメモリとヘッダ
-        125         auto n_nuits = (Roundup(Inner_::unit_size, size) / Inner_::unit_size) + 1;
+        125         auto n_units = (Roundup(Inner_::unit_size, size) / Inner_::unit_size) + 1;
         126 
         127         auto lock = std::lock_guard{spin_lock_};
         128 
         129         auto curr = header_;
         130 
         131         for (header_t* prev{nullptr}; curr != nullptr; prev = curr, curr = curr->next) {
-        132             auto opt_next = std::optional<header_t*>{sprit(curr, n_nuits)};
+        132             auto opt_next = std::optional<header_t*>{sprit(curr, n_units)};
         133 
         134             if (!opt_next) {
         135                 continue;
@@ -7204,7 +7204,7 @@
         146         }
         147 
         148         if (curr != nullptr) {
-        149             unit_count_ -= curr->n_nuits;
+        149             unit_count_ -= curr->n_units;
         150             unit_count_min_ = std::min(unit_count_, unit_count_min_);
         151             ++curr;
         152         }
@@ -7222,7 +7222,7 @@
         164 
         165         auto lock = std::lock_guard{spin_lock_};
         166 
-        167         unit_count_ += to_free->n_nuits;
+        167         unit_count_ += to_free->n_units;
         168         unit_count_min_ = std::min(unit_count_, unit_count_min_);
         169 
         170         if (header_ == nullptr) {

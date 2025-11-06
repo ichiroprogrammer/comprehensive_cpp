@@ -62,7 +62,7 @@ __この章の構成__
   
   
 
-[このドキュメントの構成](introduction.md#SS_1_7)に戻る。  
+[インデックス](introduction.md#SS_1_5)に戻る。  
 
 ___
 
@@ -470,7 +470,7 @@ TATとはターンアラウンドタイムの略語であり、一度の試行�
     * リアルタイムOSのリソースの表示
     * スレッドの状態の表示や[スタック消費量の計測](debug.md#SS_15_6_2_2)
     * [メモリ保護機能](debug.md#SS_15_6_2_1)のON/OFF
-    * グローバルなnew/deleteの使用状況(「[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_2)」参照)
+    * グローバルなnew/deleteの使用状況(「[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)」参照)
 
 レジスタダンプは、CPU例外場所の特定やコールスタックの構築には欠かせない機能であるが、
 使用しているCPUやコンパイラの仕様を理解しなければ実装できない。

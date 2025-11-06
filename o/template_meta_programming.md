@@ -116,7 +116,7 @@ __この章の構成__
   
   
 
-[このドキュメントの構成](introduction.md#SS_1_7)に戻る。  
+[インデックス](introduction.md#SS_1_5)に戻る。  
 ___
 
 ## ログ取得ライブラリの開発 <a id="SS_13_1"></a>
@@ -2462,7 +2462,7 @@ OneOfは、[IsSameSomeOf](template_meta_programming.md#SS_13_3_2_8)同様の機�
 OneOfの実装にはシンプルに記述するための[畳み込み式](core_lang_spec.md#SS_19_11_5)を使用した。
 
 ```cpp
-    //  h/nstd_concepts.h 52
+    //  essential/h/nstd_concepts.h 52
 
     template <typename T, typename... Us>
     concept OneOf = (std::same_as<T, Us> || ...);
@@ -2676,7 +2676,7 @@ is_convertible_without_narrow_convを利用したAreConvertibleWithoutNarrowConv
 ConvertibleToAllの実装は下記のようになる。
 
 ```cpp
-    //  h/nstd_concepts.h 57
+    //  essential/h/nstd_concepts.h 57
 
 // 複数の型 FROMs がすべて TO に変換可能かどうかを制約するコンセプト
 template <typename TO, typename... FROMs>
@@ -2716,7 +2716,7 @@ ConvertibleWithoutNarrowingは以下のようなコンセプトである。
 実装は以下のようになる。
 
 ```cpp
-    //  h/nstd_concepts.h 63
+    //  essential/h/nstd_concepts.h 63
 
 namespace Inner_ {
 
@@ -3189,7 +3189,7 @@ IsRangeの実装は以下のようになる。
 以降の節で使用するため、テンプレートパラメータが配列である制約を下記のように宣言する。
 
 ```cpp
-    //  h/nstd_concepts.h 9
+    //  essential/h/nstd_concepts.h 9
 
     template <typename T>
     concept Array = std::is_array_v<T>;
@@ -3211,7 +3211,7 @@ IsRangeの実装は以下のようになる。
 コンセプトを使用し、[exists_begin/exsits_end](template_meta_programming.md#SS_13_3_4_5)をリファクタリングした例を以下に示す。
 
 ```cpp
-    //  h/nstd_concepts.h 15
+    //  essential/h/nstd_concepts.h 15
 
     template <typename T>
     concept Beginable = Array<T> || requires(T& t)
@@ -3244,7 +3244,7 @@ IsRangeの実装は以下のようになる。
 IsRangeと同一の機能を持つコンセプトRangedを以下のように定義する。
 
 ```cpp
-    //  h/nstd_concepts.h 33
+    //  essential/h/nstd_concepts.h 33
 
     template <typename T>
     concept Ranged = Beginable<T> && Endable<T>;
@@ -3268,7 +3268,7 @@ Rangedの可読性はIsRangedに比べ格段に改善している。
 与えられた型をコンテナに制約するためのコンセプトを下記のように便宜的に宣言する。
 
 ```cpp
-    //  h/nstd_concepts.h 33
+    //  essential/h/nstd_concepts.h 33
 
     template <typename T>
     concept Ranged = Beginable<T> && Endable<T>;
@@ -3449,7 +3449,7 @@ std::ostream << tができるかどうかを判断するExistsPutToの実装は�
 * リファクタリングに合わせてコンセプト化し、それらしい名称にする。
 
 ```cpp
-    //  h/nstd_concepts.h 42
+    //  essential/h/nstd_concepts.h 42
 
     template <typename T>
     concept Printable = requires(T t, std::ostream& os)
@@ -6512,7 +6512,7 @@ App内でusing XYを宣言したことで、これまで通りApp::XYが使え�
 以下に示すNstd::Type2Strは、「[Nstdライブラリの開発](template_meta_programming.md#SS_13_2)」等で実際に使用したそのような関数である。
 
 ```cpp
-    //  h/nstd_type2str.h 9
+    //  essential/h/nstd_type2str.h 9
 
     namespace Nstd {
     namespace Inner_ {
@@ -7241,7 +7241,7 @@ std::unique_ptrは、
 で初期化することでメモリの解放を行っている。
 
 ```cpp
-    //  h/nstd_type2str.h 18
+    //  essential/h/nstd_type2str.h 18
 
     auto demangled
         = std::unique_ptr<char, decltype(&std::free)>{abi::__cxa_demangle(to_demagle, 0, 0, &status), &std::free};
@@ -7349,7 +7349,7 @@ std::unique_ptrの第2パラメータに関数型オブジェクトの型(std::f
 やや意外だが、このようなテンプレートパラメータに特別な記法はなく、以下のようにすれば良い。
 
 ```cpp
-    //  h/scoped_guard.h 7
+    //  essential/h/scoped_guard.h 7
 
     /// @brief RAIIのためのクラス。コンストラクタ引数の関数オブジェクトをデストラクタから呼び出す
     ///
@@ -7378,7 +7378,7 @@ std::unique_ptrの第2パラメータに関数型オブジェクトの型(std::f
 上記コードの抜粋である下記は、テンプレートパラメータを関数型に制約するためのものである。
 
 ```cpp
-    //  h/scoped_guard.h 7
+    //  essential/h/scoped_guard.h 7
 
     /// @brief RAIIのためのクラス。コンストラクタ引数の関数オブジェクトをデストラクタから呼び出す
     ///
@@ -7490,7 +7490,7 @@ C++17からサポートされた「クラステンプレートのテンプレー
 これを回避するためには下記のような関数テンプレートを用意すればよい。
 
 ```cpp
-    //  h/scoped_guard.h 38
+    //  essential/h/scoped_guard.h 38
 
     template <typename F>
     ScopedGuard<F> MakeScopedGuard(F&& f) noexcept

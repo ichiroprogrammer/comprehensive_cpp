@@ -31,7 +31,7 @@ __この章の構成__
   
   
 
-[このドキュメントの構成](introduction.md#SS_1_7)に戻る。  
+[インデックス](introduction.md#SS_1_5)に戻る。  
 
 ___
 
@@ -113,7 +113,7 @@ ___
 |[std::forward](stdlib_and_concepts.md#SS_20_1_2) |[perfect forwarding](core_lang_spec.md#SS_19_8_5)の実装、利用|
 
 #### stdコンテナ <a id="SS_18_1_6_2"></a>
-[コンテナ](stdlib_and_concepts.md#SS_20_6)全般が[moveセマンティクス](cpp_idioms.md#SS_21_3_3)に対応したため、
+[コンテナ](stdlib_and_concepts.md#SS_20_7)全般が[moveセマンティクス](cpp_idioms.md#SS_21_3_3)に対応したため、
 テンプレートのパラメータTが、コピー構築可能(`is_copy_constructible<T> == true`)な型だけでなく、
 ムーブ構築(is_move_constructible)のみ可能な型も受け付けるられるようになった。
 push_back()やinsert()等の要素追加のためのメンバ関数が、
@@ -124,10 +124,10 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |機能                            |説明                                                                                |
 |:-------------------------------|:-----------------------------------------------------------------------------------|
 |std::array                      |このコンテナは固定長配列クラスを表す「[配列](programming_convention.md#SS_3_1_7)」参照)。         |
-|[std::forward_list](stdlib_and_concepts.md#SS_20_6_1_1)        |このは単方向リンクリストの実装である。                                              |
-|[std::unordered_map](stdlib_and_concepts.md#SS_20_6_3_2)       |同一キーの要素を複数格納しない、格納順が規定されていない連想配列の実装であるである。|
-|[std::unordered_set](stdlib_and_concepts.md#SS_20_6_3_1)       |同一キーの要素を複数格納できず、格納順が規定されていないコンテナである。            |
-|[std::type_index](stdlib_and_concepts.md#SS_20_6_3_3)          |型情報型を連想コンテナのキーとして使用するためのクラス。                            |
+|[std::forward_list](stdlib_and_concepts.md#SS_20_7_1_1)        |このは単方向リンクリストの実装である。                                              |
+|[std::unordered_map](stdlib_and_concepts.md#SS_20_7_3_2)       |同一キーの要素を複数格納しない、格納順が規定されていない連想配列の実装であるである。|
+|[std::unordered_set](stdlib_and_concepts.md#SS_20_7_3_1)       |同一キーの要素を複数格納できず、格納順が規定されていないコンテナである。            |
+|[std::type_index](stdlib_and_concepts.md#SS_20_7_3_3)          |型情報型を連想コンテナのキーとして使用するためのクラス。                            |
 
 #### 並列処理 <a id="SS_18_1_6_3"></a>
 |機能                          | 説明                                                    |
@@ -155,8 +155,8 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |structのネストする初期化における波カッコ省略を許可    |一様初期化と初期化子リストを組み合わせた際、二重に波カッコが不要に               |
 |[[deprecated]]属性                                    |「[属性構文](core_lang_spec.md#SS_19_9_1)」参照                                                          |
 |[数値リテラル](core_lang_spec.md#SS_19_2_3)の桁区切り文字                     |シングルクォーテーションで数値リテラルを桁区切りする                             |
-|サイズ付きデアロケーション                            |[グローバルnew/deleteのオーバーロードの実装](dynamic_memory_allocation.md#SS_14_2_2)                                |
-|[heap allocation elision](stdlib_and_concepts.md#SS_20_10_2)                        |動的メモリ確保の省略(heap allocation elision)の許可                              |
+|サイズ付きデアロケーション                            |[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)                                      |
+|[heap allocation elision](stdlib_and_concepts.md#SS_20_11_2)                        |動的メモリ確保の省略(heap allocation elision)の許可                              |
 
 ### stdの変更、追加 <a id="SS_18_2_1"></a>
 
@@ -228,7 +228,7 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |構造化束縛                                      |「[戻り値型](programming_convention.md#SS_3_3_3_7)」参照                                                          |
 |[単一要素の波カッコ初期化を非配列とする](cpp_improve.md#SS_18_3_1_1)   |リストによる直接初期化の型推論の規則が変更された                                 |
 |[[maybe_unused]]属性                            |「[属性構文](core_lang_spec.md#SS_19_9_1)」参照                                                          | 
-|[[nodiscard]]属性                               |「[属性構文](core_lang_spec.md#SS_19_9_1)」、[グローバルnew/deleteのオーバーロードの実装](dynamic_memory_allocation.md#SS_14_2_2)」参照     |
+|[[nodiscard]]属性                               |「[属性構文](core_lang_spec.md#SS_19_9_1)」、[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)」参照           |
 |[RVO(Return Value Optimization)](core_lang_spec.md#SS_19_15_1)           |右辺値を変数の初期化のために使用する場合、コピーもムーブも省略することを保証     |
 |[演算子のオペランドの評価順位](core_lang_spec.md#SS_19_14_12)             |C++14まで未規定であった部分式の評価順序を規定                                    |
 |enum class変数の初期値のルール変更              |「[スコープドenum](core_lang_spec.md#SS_19_3_3)」、 「[underlying type](core_lang_spec.md#SS_19_3_4)」参照                       |
@@ -239,8 +239,8 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |[範囲for文のイテレータ型の不一致の許可](cpp_improve.md#SS_18_3_1_3)    |std::istream_iteratorとstd::istreamに利用                                        |
 |[ラムダ式での\*thisのコピーキャプチャ](cpp_improve.md#SS_18_3_1_4)     |キャプチャリストに\*this を指定することで、\*thisをコピーキャプチャする          |
 |[constexprラムダ](core_lang_spec.md#SS_19_5_9) |ラムダ式の関数オブジェクトのconstexpr指定を可能に                                |
-|[std::optional](stdlib_and_concepts.md#SS_20_7)                            |関数の戻り値の無効表現を行うためのクラステンプレート                             |
-|[std::variant](stdlib_and_concepts.md#SS_20_8)                             |型安全なunion機能を提供するクラステンプレート                                    |
+|[std::optional](stdlib_and_concepts.md#SS_20_8)                            |関数の戻り値の無効表現を行うためのクラステンプレート                             |
+|[std::variant](stdlib_and_concepts.md#SS_20_9)                             |型安全なunion機能を提供するクラステンプレート                                    |
 
 
 #### 単一要素の波カッコ初期化を非配列とする <a id="SS_18_3_1_1"></a>

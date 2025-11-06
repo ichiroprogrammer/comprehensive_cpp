@@ -10,7 +10,7 @@
     * 簡潔に記述されている。
     * 記述スタイルが統一されている(「[コーディングスタイル](coding_style.md#SS_5)」参照)。
     * ファイルや識別子の名前に規則性があり、適切に命名されている
-      (「[Name and Conquer](software_practice.md#SS_2_5)」、「[命名規則](naming_practice.md#SS_6)」参照)。 
+      (「[Name and Conquer](software_practice.md#SS_2_6)」、「[命名規則](naming_practice.md#SS_6)」参照)。 
     * コメントの記法が統一されており、内容が適切である(「[コメント](comment.md#SS_7)」参照)。 
 * 保守、テスト、移植等が容易である。
 * 型安全性が配慮されている。
@@ -174,7 +174,7 @@ __この章の構成__
   
   
 
-[このドキュメントの構成](introduction.md#SS_1_7)に戻る。  
+[インデックス](introduction.md#SS_1_5)に戻る。  
 
 ___
 
@@ -609,7 +609,7 @@ ___
   従って、unionの定義を外部パッケージに公開(「[パッケージの実装と公開](programming_convention.md#SS_3_7_1)」参照)しない。
 
 * 上記以外でunionのような機能が必要な場合、
-  [std::variant](stdlib_and_concepts.md#SS_20_8)(「[std::variantとジェネリックラムダ](template_meta_programming.md#SS_13_7_2_2)」参照)を使用する
+  [std::variant](stdlib_and_concepts.md#SS_20_9)(「[std::variantとジェネリックラムダ](template_meta_programming.md#SS_13_7_2_2)」参照)を使用する
   (std::anyはunionの代替えにはならないので、このような場合には使用しない)。
 
 ### 配列 <a id="SS_3_1_7"></a>
@@ -1231,8 +1231,8 @@ ___
 #### 凝集度 <a id="SS_3_2_2_3"></a>
 * 単なるデータホルダー(アプリケーションの設定データを保持するようなクラス等)や、
   ほとんどの振る舞いを他のクラスに委譲するようなクラスを除き、
-  [凝集度](cpp_idioms.md#SS_21_8_4)が高くなるように設計する。
-* [LCOMの評価基準](cpp_idioms.md#SS_21_8_4_2)に従い、凝集度を判断し、凝集度が著しく低いクラスを作らないようにする。
+  [凝集度](cpp_idioms.md#SS_21_8_6)が高くなるように設計する。
+* [LCOMの評価基準](cpp_idioms.md#SS_21_8_6_2)に従い、凝集度を判断し、凝集度が著しく低いクラスを作らないようにする。
 
 * [演習-凝集度の意味](exercise_q.md#SS_22_2_1)
 * [演習-凝集度の向上](exercise_q.md#SS_22_2_2)
@@ -2206,7 +2206,7 @@ ___
 ### 非メンバ関数/メンバ関数共通 <a id="SS_3_3_3"></a>
 
 #### サイクロマティック複雑度 <a id="SS_3_3_3_1"></a>
-* [サイクロマティック複雑度](cpp_idioms.md#SS_21_8_3)は15以下が好ましい。
+* [サイクロマティック複雑度](cpp_idioms.md#SS_21_8_5)は15以下が好ましい。
 * 特別な理由がない限り、サイクロマティック複雑度は20以下にする。
 
 #### 行数 <a id="SS_3_3_3_2"></a>
@@ -2461,7 +2461,7 @@ ___
 * 比較演算子のオーバーロードする場合、
     * C++20であれば、[<=>演算子](core_lang_spec.md#SS_19_6_4_1)を定義する。
     * C++17以下であれば、`operator==`と`operator<`の2つの演算子がを定義し、
-      [std::rel_ops](stdlib_and_concepts.md#SS_20_9_1)を使用する。
+      [std::rel_ops](stdlib_and_concepts.md#SS_20_10_1)を使用する。
 
 * [ユーザ定義リテラル演算子](core_lang_spec.md#SS_19_2_6_1)のサフィックスには、
   アンダーバーから始まる3文字以上の文字列を使用する。
@@ -2944,7 +2944,7 @@ ___
 * 戻り値を比較的大きなオブジェクトにする場合、パフォーマンスに注意する
   (「[関数の戻り値オブジェクト](programming_convention.md#SS_3_9_3)」参照)。
 
-* 関数が複数の値を返す場合、[std::optional](stdlib_and_concepts.md#SS_20_7)、std::pair、std::tupple、
+* 関数が複数の値を返す場合、[std::optional](stdlib_and_concepts.md#SS_20_8)、std::pair、std::tupple、
   構造体オブジェクトを戻り値にして返す。パフォーマンスに著しい悪影響がない限り、
   リファレンス引数で戻り値を返さない(「[関数の戻り値オブジェクト](programming_convention.md#SS_3_9_3)」参照)。
 
@@ -3493,8 +3493,7 @@ ___
 ```
 
 * 独自のコンテナクラスを定義する場合、STLコンテナと同様の要件を満たすbegin()、end()や、
-  cbegin()、cend()も定義し、そのコンテナに[範囲for文](core_lang_spec.md#SS_19_9_3)を適用できるようにする
-  (「[デバッグ用イテレータ](dynamic_memory_allocation.md#SS_14_2_4)」参照)。
+  cbegin()、cend()も定義し、そのコンテナに[範囲for文](core_lang_spec.md#SS_19_9_3)を適用できるようにする。
 
 * [演習-コンテナの範囲for文](exercise_q.md#SS_22_4_1)  
 
@@ -3822,7 +3821,7 @@ ___
 * [注意] ビット演算にはstd::bitsetや[BitmaskType](design_pattern.md#SS_9_2)を使用することもできる。
 
 ### 論理演算 <a id="SS_3_5_4"></a>
-* &&や||の論理演算子の右オペランドで[副作用](cpp_idioms.md#SS_21_8_7)のある処理をしない。
+* &&や||の論理演算子の右オペランドで[副作用](cpp_idioms.md#SS_21_8_9)のある処理をしない。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 138
@@ -3960,14 +3959,14 @@ ___
 
 * デフォルトのグローバルnewを使用しない。
     * リアルタイム性に制約のあるシステムでは、
-      「[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_2)」で述べたようなnewを実装する。
+      「[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)」で述べたようなnewを実装する。
     * メモリ制限が強いシステムでは、ダイナミックなオブジェクト生成を避け、
-      やむを得ない場合、「[クラスnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_3)」
+      やむを得ない場合、「[クラスnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_3)」
       で述べたようなクラス毎のnewを実装する。
 
 * エクセプションの送出にダイナミックなメモリアロケーションを使用している場合
   (多くのコンパイラはmalloc/newを用いてエクセプション送出を行っている)、
-  エクセプションの送出をしない(「[エクセプション処理機構の変更](dynamic_memory_allocation.md#SS_14_4_4)」参照)。
+  エクセプションの送出をしない(「[エクセプション処理機構の変更](dynamic_memory_allocation.md#SS_14_3_2)」参照)。
 
 
 ### sizeof <a id="SS_3_5_7"></a>
@@ -3987,7 +3986,7 @@ ___
     auto s_2 = sizeof(*b);       // OK *bのサイズをs_2に代入したい場合
 ```
 
-* 上記例を除き、sizeof演算子のオペランドは一見[副作用](cpp_idioms.md#SS_21_8_7)を持っているような式を含んではならない。
+* 上記例を除き、sizeof演算子のオペランドは一見[副作用](cpp_idioms.md#SS_21_8_9)を持っているような式を含んではならない。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 284
@@ -5125,7 +5124,7 @@ ___
   そのオブジェクトを戻り値にしても良い。
 * [注意] stdのコンテナは、RVOが有効でなくてもmoveが行われるため、関数の戻り値として使用しても良い。
 * [注意] std::stringについては、RVOに加えて、
-  [SSO(Small String Optimization)](stdlib_and_concepts.md#SS_20_10_1)が使用されていることが多い。
+  [SSO(Small String Optimization)](stdlib_and_concepts.md#SS_20_11_1)が使用されていることが多い。
   そのようなコンパイラを使用している場合、std::stringは小さいオブジェクトとして扱って良い。
 
 ```cpp
@@ -5638,7 +5637,7 @@ ___
 * 論理的にありえない状態(特に論理的に到達しないはずの条件文への到達)を検出するために、
   assert()を使用する(「[switch文](programming_convention.md#SS_3_4_2)」、「[if文](programming_convention.md#SS_3_4_3)」参照)。
 * assert()はコンパイルオプションにより無効化されることがあるため、
-  assert()の引数に[副作用](cpp_idioms.md#SS_21_8_7)のある式を入れない。
+  assert()の引数に[副作用](cpp_idioms.md#SS_21_8_9)のある式を入れない。
 * ランタイムでなく、コンパイル時に判断できる論理矛盾や使用制限には、static\_assertを使用する。
 
 ```cpp

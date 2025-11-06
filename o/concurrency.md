@@ -36,7 +36,7 @@ __この章の構成__
   
   
 
-[このドキュメントの構成](introduction.md#SS_1_7)に戻る。  
+[インデックス](introduction.md#SS_1_5)に戻る。  
 
 ___
 
@@ -528,7 +528,7 @@ TwoPhaseTaskPtrのキュー管理機構は、
     std::condition_variable::wait(lock)
 ```
 
-を使用する場合、「[Spurious Wakeup](cpp_idioms.md#SS_21_8_5)」への対処が必要になるが、
+を使用する場合、「[Spurious Wakeup](cpp_idioms.md#SS_21_8_7)」への対処が必要になるが、
 
 ```cpp
     std::condition_variable::wait(lock, 関数オブジェクト)
