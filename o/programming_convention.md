@@ -4948,24 +4948,23 @@ ___
     {
         return "in NS_1";
     }
-
-    TEST(ProgrammingConvention, adl)
-    {
-        // in NS_1
-        // 下記関数fの探索名前空間には、
-        //  * 第1引数の名前空間がNS_0であるため、ADLにより、
-        //  * この関数の宣言がNS_1で行われているため、
-        // NS_0、NS_1が含まれる。
-        // これにより、下記fの候補は、NS_0::f、NS_1::fになるが、第2引数1がint32_t型であるため、
-        // 下記は、NS_0::fの呼び出しになる。
-
-        ASSERT_EQ("in NS_0", f(NS_0::X(), 1));  // NS_0::fが呼ばれる。
-
-        ASSERT_EQ("in NS_1", NS_1::f(NS_0::X(), 1));  // NS_1::fの呼び出しには名前修飾が必要
-    }
-    }  // namespace NS_1
+    }  // namespace NS_1 namespace NamenameADL
 ```
+```cpp
+    //  example/programming_convention/scope_ut.cpp 222
 
+    // 関数fの探索名前空間には、
+    //  * 第1引数の名前空間がNS_0であるため、ADLにより、
+    //  * この関数の宣言がNS_1で行われているため、
+    // NS_0、NS_1が含まれる。
+    // これにより、下記fの候補は、NS_0::f、NS_1::fになるが、第2引数1がint32_t型であるため、
+    // 名前修飾なしでのfの呼び出しは、NS_0::fが選択される。
+
+    using namespace NS_1;   // この宣言があるにもかかわらず、f(NS_0::X(), 1)のNS_0::fではない
+
+    ASSERT_EQ("in NS_0", f(NS_0::X(), 1));  // NS_0::fが呼ばれる。
+    ASSERT_EQ("in NS_1", NS_1::f(NS_0::X(), 1));  // NS_1::fの呼び出しには名前修飾が必要
+```
 
 ### 名前空間のエイリアス <a id="SS_3_8_5"></a>
 * ネストされた長い名前空間を短く簡潔に書くための名前空間エイリアスは、
@@ -4973,7 +4972,7 @@ ___
 * 名前空間のエイリアスを[using宣言/usingディレクティブ](programming_convention.md#SS_3_8_3)で使用しない。
 
 ```cpp
-    //  example/programming_convention/scope_ut.cpp 238
+    //  example/programming_convention/scope_ut.cpp 241
 
     std::vector<std::string> find_files_recursively(std::string const&                                path,
                                                     std::function<bool(std::filesystem::path const&)> condition)
@@ -5063,15 +5062,22 @@ ___
 
     auto a_post = A{};
     auto post   = MeasurePerformance(count, [&a_post] {
-        a_post++;  // NG 効率が悪い。
+        a_post++;  // NG 効率が悪い
     });
 
     auto a_pre = A{};
     auto pre   = MeasurePerformance(count, [&a_pre] {
-        ++a_pre;  // OK 上記に比べると効率が良い。
+        ++a_pre;  // OK 上記に比べると効率が良い
     });
 
-    ASSERT_GT(post, pre);  // 前置++の処理は後置++より効率が良い。
+    ASSERT_GT(post, pre);  // 前置++の処理は後置++より効率が良い
+
+    std::cout << "pre :" << pre.count() << " msec" << std::endl;
+    std::cout << "post:" << post.count() << " msec" << std::endl;
+
+    // 私の環境では以下のような出力が得られた
+    // pre :24 msec
+    // post:37 msec
 ```
 
 * ソースコードの統一性のため、このオーバーヘッドがない基本型についても、同じルールを適用する。
@@ -5081,7 +5087,7 @@ ___
   operator Xではなく、operator X=を使う。
 
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 68
+    //  example/programming_convention/runtime_ut.cpp 72
 
     class A {
     public:
@@ -5103,7 +5109,7 @@ ___
 
 ```
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 99
+    //  example/programming_convention/runtime_ut.cpp 103
 
     auto a = A{1};
     auto b = A{2};
@@ -5128,7 +5134,7 @@ ___
   そのようなコンパイラを使用している場合、std::stringは小さいオブジェクトとして扱って良い。
 
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 115
+    //  example/programming_convention/runtime_ut.cpp 119
 
     struct HugeClass {
         int32_t a{0};
@@ -5168,7 +5174,7 @@ ___
   [RVO(Return Value Optimization)](core_lang_spec.md#SS_19_15_1)の阻害になるため、そのオブジェクトをstd::moveしない。
 
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 150
+    //  example/programming_convention/runtime_ut.cpp 154
 
     std::string MakeString(int a, int b)
     {
@@ -5200,7 +5206,7 @@ ___
   以下に示す通り、このような仮引数の型をstd::string const&にすることが最適であるとは限らない。
 
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 187
+    //  example/programming_convention/runtime_ut.cpp 191
     // テスト０用関数
 
     void f0(std::string const& str) { /* strを使用した何らかの処理 */ }
@@ -5208,7 +5214,7 @@ ___
     void f2(std::string_view str)   { /* strを使用した何らかの処理 */ }
 ```
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 200
+    //  example/programming_convention/runtime_ut.cpp 204
     // テスト０―０
 
     auto str     = std::string{__func__};
@@ -5225,7 +5231,7 @@ ___
     // std::string const&か、std::string_viewとするのが効率的である。
 ```
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 224
+    //  example/programming_convention/runtime_ut.cpp 228
     // テスト０―１
 
     auto f0_msec = MeasurePerformance(10000000, [] { f0(__func__); });
@@ -5248,7 +5254,7 @@ ___
     // std::string_viewを選択すべきだろう。
 ```
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 253
+    //  example/programming_convention/runtime_ut.cpp 257
     // テスト１用クラス
 
     class A0 {
@@ -5276,7 +5282,7 @@ ___
     };
 ```
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 308
+    //  example/programming_convention/runtime_ut.cpp 312
     // テスト１―１
 
     auto a0_msec = MeasurePerformance(10000000, [] { A0 a{__func__}; });

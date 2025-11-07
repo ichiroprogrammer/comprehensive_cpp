@@ -201,7 +201,7 @@ move挿入ができるようになった(「[その他のテンプレートテ�
     // @@@ example/cpp_improve/cpp17_ut.cpp #1:0 begin
 ```
 ```cpp
-    // @@@ example/cpp_improve/cpp17_ut.cpp #1:1 begin
+    // @@@ example/cpp_improve/cpp17_ut.cpp #1:1 begin -1
 ```
 
 #### 範囲for文のイテレータ型の不一致の許可

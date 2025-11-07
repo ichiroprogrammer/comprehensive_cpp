@@ -3,7 +3,7 @@
 SRCS:=code_analysis.cpp
 
 OBJDIR:=
-SHARED:=../../deep/
+SHARED:=../../essential/
 include $(SHARED)make/env.mk
 include $(SHARED)make/example.mk
 include $(SHARED)make/gtest.mk

@@ -44,19 +44,23 @@ TEST(ProgrammingConvention, inc_pre_post)
 
     auto a_post = A{};
     auto post   = MeasurePerformance(count, [&a_post] {
-        a_post++;  // NG 効率が悪い。
+        a_post++;  // NG 効率が悪い
     });
 
     auto a_pre = A{};
     auto pre   = MeasurePerformance(count, [&a_pre] {
-        ++a_pre;  // OK 上記に比べると効率が良い。
+        ++a_pre;  // OK 上記に比べると効率が良い
     });
 
-    ASSERT_GT(post, pre);  // 前置++の処理は後置++より効率が良い。
-    // @@@ sample end
+    ASSERT_GT(post, pre);  // 前置++の処理は後置++より効率が良い
 
-    std::cout << "pre :" << pre.count() << std::endl;
-    std::cout << "post:" << post.count() << std::endl;
+    std::cout << "pre :" << pre.count() << " msec" << std::endl;
+    std::cout << "post:" << post.count() << " msec" << std::endl;
+
+    // 私の環境では以下のような出力が得られた
+    // pre :24 msec
+    // post:37 msec
+    // @@@ sample end
 
     ASSERT_EQ(count, a_post);
     ASSERT_EQ(count, a_pre);

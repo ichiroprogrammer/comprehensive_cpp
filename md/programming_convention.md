@@ -1855,7 +1855,9 @@ ___
 ```cpp
     // @@@ example/programming_convention/scope_ut.cpp #2:0 begin
 ```
-
+```cpp
+    // @@@ example/programming_convention/scope_ut.cpp #2:1 begin -1
+```
 
 ### 名前空間のエイリアス
 * ネストされた長い名前空間を短く簡潔に書くための名前空間エイリアスは、

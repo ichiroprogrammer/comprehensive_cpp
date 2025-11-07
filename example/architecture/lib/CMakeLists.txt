@@ -13,7 +13,7 @@ if(NOT TARGET gtest)
     message(FATAL_ERROR "gtest target not found. Make sure googletest is added at the top level CMakeLists.txt")
 endif()
 
-target_include_directories(lib_ut_exe PRIVATE h ../../h/ ../../../deep/h)
+target_include_directories(lib_ut_exe PRIVATE h ../../h/ ../../../essential/h)
 target_link_libraries(lib_ut_exe gtest gtest_main)
 
 enable_testing()

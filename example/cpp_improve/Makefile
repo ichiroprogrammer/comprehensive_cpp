@@ -2,7 +2,7 @@ SRCS:=\
    cpp14_ut.cpp cpp17_ut.cpp cpp20_ut.cpp
 
 OBJDIR:=
-SHARED:=../../deep/
+SHARED:=../../essential/
 include $(SHARED)make/env.mk
 include $(SHARED)make/example.mk
 include $(SHARED)make/gtest.mk

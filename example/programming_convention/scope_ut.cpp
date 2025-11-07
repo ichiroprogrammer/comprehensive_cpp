@@ -214,24 +214,27 @@ std::string f(NS_0::X, uint32_t)  // 第2引数uint32_t
 {
     return "in NS_1";
 }
+}  // namespace NS_1 namespace NamenameADL
+// @@@ sample end
 
 TEST(ProgrammingConvention, adl)
 {
-    // in NS_1
-    // 下記関数fの探索名前空間には、
+    // @@@ sample begin 2:1
+
+    // 関数fの探索名前空間には、
     //  * 第1引数の名前空間がNS_0であるため、ADLにより、
     //  * この関数の宣言がNS_1で行われているため、
     // NS_0、NS_1が含まれる。
     // これにより、下記fの候補は、NS_0::f、NS_1::fになるが、第2引数1がint32_t型であるため、
-    // 下記は、NS_0::fの呼び出しになる。
+    // 名前修飾なしでのfの呼び出しは、NS_0::fが選択される。
+
+    using namespace NS_1;   // この宣言があるにもかかわらず、f(NS_0::X(), 1)のNS_0::fではない
 
     ASSERT_EQ("in NS_0", f(NS_0::X(), 1));  // NS_0::fが呼ばれる。
-
     ASSERT_EQ("in NS_1", NS_1::f(NS_0::X(), 1));  // NS_1::fの呼び出しには名前修飾が必要
-}
-}  // namespace NS_1
 // @@@ sample end
-}  // namespace NamenameADL
+}
+}
 
 namespace NamenameAliasSample {
 

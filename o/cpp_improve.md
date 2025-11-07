@@ -275,11 +275,11 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 ```cpp
     //  example/cpp_improve/cpp17_ut.cpp 44
 
-        AlignedStruct* ptr = new AlignedStruct;
+    AlignedStruct* ptr = new AlignedStruct;
 
-        ASSERT_EQ(reinterpret_cast<std::uintptr_t>(ptr) % 64, 0);  // アライメントの確認
+    ASSERT_EQ(reinterpret_cast<std::uintptr_t>(ptr) % 64, 0);  // アライメントの確認
 
-        delete ptr;
+    delete ptr;
 ```
 
 #### 範囲for文のイテレータ型の不一致の許可 <a id="SS_18_3_1_3"></a>

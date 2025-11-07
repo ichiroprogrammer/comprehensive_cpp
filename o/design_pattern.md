@@ -1316,7 +1316,7 @@ RAIIに従わないとメモリリークを防ぐことは困難である。
     // とするため、生成と解放が同じだけ行われれば外部の変数の値は0となる
     class A {
     public:
-        A(uint32_t& couner) noexcept : counter_{++couner} {}
+        A(uint32_t& counter) noexcept : counter_{++counter} {}
         ~A() { --counter_; }
 
     private:

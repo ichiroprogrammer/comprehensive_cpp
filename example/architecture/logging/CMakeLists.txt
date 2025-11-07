@@ -15,7 +15,7 @@ target_include_directories(logging PUBLIC h ../lib/h)
 
 add_executable(logging_ut_exe ut/logger_ut.cpp)
 
-target_include_directories(logging_ut_exe PRIVATE ../../../deep/h ../lib/h)
+target_include_directories(logging_ut_exe PRIVATE ../../../essential/h ../lib/h)
 target_link_libraries(logging_ut_exe logging gtest gtest_main)
 
 enable_testing()
