@@ -417,21 +417,21 @@ ___
 
 ## プログラミング規約(クラス) <a id="SS_22_2"></a>
 
-### 演習-凝集度の意味 <a id="SS_22_2_1"></a>
+### 演習-凝集性の意味 <a id="SS_22_2_1"></a>
 * 問題  
-  クラスの凝集度とはLack of Cohesion in Methodsというメトリクスで計測される。
-  この凝集度やメトリクスの説明として正しくないものを選べ。
+  クラスの凝集性とはLack of Cohesion in Methodsというメトリクスで計測される。
+  この凝集性やメトリクスの説明として正しくないものを選べ。
 
 * 選択肢  
-    1. クラスは凝集度を高くするように設計すべきである。
-    2. このメトリクス値が1に近ければ凝集度は低く、この値が0に近ければ凝集度は高い。
-    3. メンバ変数やメンバ関数が多くなれば、凝集度は低くなりやすい。
-    4. setterやgetterを使用することで、凝集度を高く保つことができる。
+    1. クラスは凝集性を高くするように設計すべきである。
+    2. このメトリクス値が1に近ければ凝集性は低く、この値が0に近ければ凝集性は高い。
+    3. メンバ変数やメンバ関数が多くなれば、凝集性は低くなりやすい。
+    4. setterやgetterを使用することで、凝集性を高く保つことができる。
 
-* [解答-凝集度の意味](exercise_a.md#SS_23_2_1)
+* [解答-凝集性の意味](exercise_a.md#SS_23_2_1)
 
 
-### 演習-凝集度の向上 <a id="SS_22_2_2"></a>
+### 演習-凝集性の向上 <a id="SS_22_2_2"></a>
 * 問題
 ```cpp
     //  exercise/programming_convention_q/class.cpp 7
@@ -478,8 +478,8 @@ ___
     }
 ```
 
-* 参照 [凝集度](programming_convention.md#SS_3_2_2_3)
-* [解答例-凝集度の向上](exercise_a.md#SS_23_2_2)
+* 参照 [凝集性](programming_convention.md#SS_3_2_2_3)
+* [解答例-凝集性の向上](exercise_a.md#SS_23_2_2)
 
 
 ### 演習-メンバ変数の初期化方法の選択 <a id="SS_22_2_3"></a>
@@ -579,7 +579,7 @@ ___
     }
 ```
 
-* 参照 [非静的なメンバ変数](programming_convention.md#SS_3_2_5)
+* 参照 [非静的なメンバ変数](programming_convention.md#SS_3_2_5_2)
 * [解答例-メンバ変数の初期化](exercise_a.md#SS_23_2_5)
 
 
@@ -631,7 +631,7 @@ ___
     }
 ```
 
-* 参照 [スライシング](programming_convention.md#SS_3_2_8)
+* 参照 [スライシング](cpp_idioms.md#SS_21_7_3)
 * [解答例-スライシング](exercise_a.md#SS_23_2_6)
 
 ### 演習-オブジェクトの所有権 <a id="SS_22_2_7"></a>
@@ -715,7 +715,7 @@ ___
     }
 ```
 
-* 参照 [オブジェクトの所有権](programming_convention.md#SS_3_2_9)
+* 参照 [オブジェクトの所有権](cpp_idioms.md#SS_21_2)
 * [解答例-オブジェクトの所有権](exercise_a.md#SS_23_2_7)
 
 
@@ -735,7 +735,7 @@ ___
     }
 ```
 
-* 参照 [非メンバ関数](programming_convention.md#SS_3_3_1)
+* 参照 [非メンバ関数](programming_convention.md#SS_3_3_11)
 * [解答例-非メンバ関数の宣言](exercise_a.md#SS_23_3_1)
 
 
@@ -800,7 +800,7 @@ ___
     }
 ```
 
-* 参照 [メンバ関数](programming_convention.md#SS_3_3_2)
+* 参照 [メンバ関数](programming_convention.md#SS_3_2_4)
 * [解答例-メンバ関数の修飾](exercise_a.md#SS_23_3_2)
 
 
@@ -814,7 +814,7 @@ ___
     class AutoGen {};
 ```
 
-* 参照 [特殊メンバ関数](programming_convention.md#SS_3_3_2_1)
+* 参照 [特殊メンバ関数](programming_convention.md#SS_3_2_4_1)
 * [解答例-特殊メンバ関数の削除](exercise_a.md#SS_23_3_3)
 
 
@@ -864,7 +864,7 @@ ___
     }
 ```
 
-* 参照 [コンストラクタ](programming_convention.md#SS_3_3_2_2)
+* 参照 [コンストラクタ](programming_convention.md#SS_3_2_4_2)
 * [解答例-委譲コンストラクタ](exercise_a.md#SS_23_3_4)
 
 
@@ -930,7 +930,7 @@ ___
     #endif
 ```
 
-* 参照 [コンストラクタ](programming_convention.md#SS_3_3_2_2)
+* 参照 [コンストラクタ](programming_convention.md#SS_3_2_4_2)
 * [解答例-copyコンストラクタ](exercise_a.md#SS_23_3_5)
 
 
@@ -943,7 +943,7 @@ ___
     // クラスIntegerHolder2を作成し、単体テストを行え。
 ```
 
-* 参照 [moveコンストラクタ、move代入演算子](programming_convention.md#SS_3_3_2_4)
+* 参照 [moveコンストラクタ、move代入演算子](programming_convention.md#SS_3_2_4_4)
 * [解答例-moveコンストラクタ](exercise_a.md#SS_23_3_6)
 
 
@@ -991,7 +991,7 @@ ___
     }
 ```
 
-* 参照 [行数](programming_convention.md#SS_3_3_3_2)
+* 参照 [関数構造のクライテリア](programming_convention.md#SS_3_3_1)
 * [解答例-関数分割](exercise_a.md#SS_23_3_7)
 
 
@@ -1051,7 +1051,7 @@ ___
     }
 ```
 
-* 参照 [オーバーライド](programming_convention.md#SS_3_3_2_7)
+* 参照 [オーバーライド](programming_convention.md#SS_3_2_4_7)
 * [解答例-オーバーライド/オーバーロード](exercise_a.md#SS_23_3_9)
 
 
@@ -1071,7 +1071,7 @@ ___
     }
 ```
 
-* 参照 [オーバーロード](programming_convention.md#SS_3_3_3_3)
+* 参照 [オーバーロード](programming_convention.md#SS_3_3_2)
 * [解答例-オーバーロードによる誤用防止](exercise_a.md#SS_23_3_10)
 
 
@@ -1107,7 +1107,7 @@ ___
     }
 ```
 
-* 参照 [実引数/仮引数](programming_convention.md#SS_3_3_3_5)
+* 参照 [実引数/仮引数](programming_convention.md#SS_3_3_4)
 * [解答例-仮引数の修飾](exercise_a.md#SS_23_3_11)
 
 

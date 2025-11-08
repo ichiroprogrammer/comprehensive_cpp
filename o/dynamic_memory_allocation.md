@@ -1,6 +1,6 @@
 <!-- deep/md/dynamic_memory_allocation.md -->
 # ダイナミックメモリアロケーション <a id="SS_14"></a>
-本章で扱うダイナミックメモリアロケーション([ヒープ](cpp_idioms.md#SS_21_8_1)の使用)とは、new/delete、malloc/free
+本章で扱うダイナミックメモリアロケーション([ヒープ](cpp_idioms.md#SS_21_9_1)の使用)とは、new/delete、malloc/free
 によるメモリ確保/解放のことである。
 
 malloc/freeは、
@@ -36,7 +36,7 @@ __この章の構成__
 &emsp;&emsp;&emsp; [クラスnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_3)  
 &emsp;&emsp;&emsp; [new/deleteのオーバーロードのまとめ](dynamic_memory_allocation.md#SS_14_4_4)  
 
-&emsp;&emsp; [STLコンテナ用アロケータ](dynamic_memory_allocation.md#SS_14_5)  
+&emsp;&emsp; [標準ライブラリのコンテナ用アロケータ](dynamic_memory_allocation.md#SS_14_5)  
 &emsp;&emsp;&emsp; [デバッグ用イテレータ](dynamic_memory_allocation.md#SS_14_5_1)  
   
   
@@ -136,7 +136,7 @@ UNIX系のOSでの典型的なmalloc/freeの実装例の一部を以下に示す
 ```
 
 上記で示したようにmalloc/freeで使用されるメモリはHeader_t型のheaderで管理され、
-このアクセスの競合は[スピンロック](cpp_idioms.md#SS_21_8_3)(SpinLock)によって回避される。
+このアクセスの競合は[スピンロック](cpp_idioms.md#SS_21_9_3)(SpinLock)によって回避される。
 headerが管理するメモリ用域からのメモリの切り出しはmalloc_innerによって行われるが、
 下のフラグメントの説明でも示す通り、
 headerで管理されたメモリは長さの上限が単純には決まらないリスト構造になるため、
@@ -174,7 +174,7 @@ sbrkは
 によるメモリ確保のトリガーとなる。
 これはOSのファイルシステムの動作を含む処理であるため、やはりリアルタイム性の保証は困難である。
 
-[フリースタンディング環境](cpp_idioms.md#SS_21_8_5)では、sbrkのようなシステムコールは存在しないため、
+[フリースタンディング環境](cpp_idioms.md#SS_21_9_5)では、sbrkのようなシステムコールは存在しないため、
 アプリケーションの未使用領域や静的に確保した領域を上記コードで示したようなリスト構造で管理し、
 mallocで使用することになる。
 このような環境では、sbrkによるリアルタイム性の阻害は発生しないものの、
@@ -419,7 +419,7 @@ MPoolFixedに限らずメモリアロケータが返すメモリは、
 MPoolFixed::alloc/MPoolFixed::freeを見ればわかる通り、malloc/freeの実装に比べ格段にシンプルであり、
 これによりリアルタイム性の保障は容易である。
 
-なお、この実装ではmalloc/freeと同様に使用制限の少ない[スピンロック](cpp_idioms.md#SS_21_8_3)(SpinLock)を使用したが、
+なお、この実装ではmalloc/freeと同様に使用制限の少ない[スピンロック](cpp_idioms.md#SS_21_9_3)(SpinLock)を使用したが、
 このロックは、ラウンドロビンでスケジューリングされるスレッドの競合を防ぐためのものであり、
 固定プライオリティでのスケジューリングが前提となるような組み込みソフトで使用した場合、
 デッドロックを引き起こす可能性がある。
@@ -727,7 +727,7 @@ MPoolから派生したクラスが、
 リアルタイム性が不要な処理であるため使用しているstdコンテナにすら、
 既存のエクセプション処理機構を使わせたく無くなるものである。
 
-コンパイラに[g++](cpp_idioms.md#SS_21_9_1)や[clang++](cpp_idioms.md#SS_21_9_2)を使っている場合、
+コンパイラに[g++](cpp_idioms.md#SS_21_10_1)や[clang++](cpp_idioms.md#SS_21_10_2)を使っている場合、
 下記関数を置き換えることでそういった要望を叶えることができる。
 
 |関数                                           |機能                            |
@@ -806,7 +806,7 @@ MPoolから派生したクラスが、
 すでに述べたが、残念なことに、この方法はC++の標準外であるため、
 これを適用できるコンパイラは限られている。
 しかし、多くのコンパイラはこれと同様の拡張方法を備えているため、
-安易にエクセプションやSTLコンテナを使用禁止することなく、安全に使用する方法を探るべきだろう。
+安易にエクセプションや標準ライブラリのコンテナを使用禁止することなく、安全に使用する方法を探るべきだろう。
 
 
 ## new/deleteのオーバーロード <a id="SS_14_4"></a>
@@ -1248,7 +1248,7 @@ OpNewを使うプロジェクトには導入するべきだろう。
 [デバッグ用イテレータ](dynamic_memory_allocation.md#SS_14_5_1)の実装例が参考になるだろう。
 
 
-## STLコンテナ用アロケータ <a id="SS_14_5"></a>
+## 標準ライブラリのコンテナ用アロケータ <a id="SS_14_5"></a>
 アロケータの定義例を以下に示す。
 
 ```cpp
@@ -1296,14 +1296,17 @@ OpNewを使うプロジェクトには導入するべきだろう。
     }
 ```
 
-アロケータのパブリックなメンバやoperator ==、operator !=は、STLに従い定義している
-([STL allocator](https://cpprefjp.github.io/reference/memory/allocator.html)参照)。
+アロケータのパブリックなメンバやoperator ==、operator !=は、標準ライブラリに従い定義している
+([標準ライブラリのallocator](https://cpprefjp.github.io/reference/memory/allocator.html)参照)。
 
 上記コードからわかるようにメモリの実際のアロケーションには、
 これまでと同様にMPoolから派生したクラスを使用するが、
 リアルタイム性は不要であるためメモリ効率が悪いMPoolFixedは使わない。
 代わりに、可変長メモリを扱うためメモリ効率がよいMPoolVariabl
 (「[可変長メモリプール](dynamic_memory_allocation.md#SS_14_2_2)」参照)を使う。
+
+C++14の環境で標準ライブラリのアロケータを置き換える場合は、上記のような方法で実現できるが、
+C++17以降では、[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_20_6_2)を使用するべきである。
 
 ### デバッグ用イテレータ <a id="SS_14_5_1"></a>
 [可変長メモリプール](dynamic_memory_allocation.md#SS_14_2_2)を使用すると、

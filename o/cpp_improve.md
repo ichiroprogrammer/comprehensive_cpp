@@ -63,8 +63,8 @@ ___
 |[委譲コンストラクタ](core_lang_spec.md#SS_19_6_1_3)                                          |コンストラクタから他のコンストラクタに処理を委譲する          |
 |[NSDMI](core_lang_spec.md#SS_19_6_7_1)                                                       |非staticメンバ変数の宣言と同時に初期値指定する                |
 |[継承コンストラクタ](core_lang_spec.md#SS_19_6_1_2)                                          |基底クラスのコンストラクタの継承                              |
-|virtual関数のoverride/final宣言                                    |「[オーバーライド](programming_convention.md#SS_3_3_2_7)」参照                                 |
-|変換演算子のオーバーロードの[explicit](core_lang_spec.md#SS_19_6_2_1)宣言                    |「 [演算子オーバーロード](programming_convention.md#SS_3_3_3_4)」参照                          |
+|virtual関数のoverride/final宣言                                    |「[オーバーライド](programming_convention.md#SS_3_2_4_7)」参照                                 |
+|変換演算子のオーバーロードの[explicit](core_lang_spec.md#SS_19_6_2_1)宣言                    |「 [演算子オーバーロード](programming_convention.md#SS_3_3_3)」参照                          |
 |friend 宣言の対象を拡張                                            |テンプレートパラメータ、エイリアスfriend 宣言できるように     |
 |メンバ関数の[rvalue修飾](core_lang_spec.md#SS_19_8_7_1)/[lvalue修飾](core_lang_spec.md#SS_19_8_7_2)                    |オブジェクトのと値カテゴリでの呼び出し可能であることの指定    |
 |[スコープドenum](core_lang_spec.md#SS_19_3_3)                           |スコープを持ち、型付の強いenum                                |
@@ -95,7 +95,7 @@ ___
 
 | 機能                                             |説明                                                                             |
 |:-------------------------------------------------|:--------------------------------------------------------------------------------|
-| 戻り値の型を後置する関数宣言構文                 |「[戻り値型](programming_convention.md#SS_3_3_3_7)」参照                                                          |
+| 戻り値の型を後置する関数宣言構文                 |「[戻り値型](programming_convention.md#SS_3_3_6)」参照                                                          |
 | コンパイル時アサート                             |コンパイル時に条件式が真であることをassertする。「[assertion](programming_convention.md#SS_3_11_1)」参照         |
 | [生文字列リテラル](core_lang_spec.md#SS_19_2_1) |文字列リテラルにRプレフィックスを付けることで、エスケープシーケンスを無視する。  |
 | char16_tとchar32_t                               |UTF-16とUTF-32の文字型                                                           |
@@ -225,7 +225,7 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |:-----------------------------------------------|:--------------------------------------------------------------------------------|
 |[16進浮動小数点数リテラル](core_lang_spec.md#SS_19_2_5)                 |16進数表記で浮動小数点数リテラルを記述できるようにする                           |
 |インライン変数                                  |inline 指定をすることで翻訳単位を跨いでひとつのオブジェクトになる変数を定義する  |
-|構造化束縛                                      |「[戻り値型](programming_convention.md#SS_3_3_3_7)」参照                                                          |
+|構造化束縛                                      |「[戻り値型](programming_convention.md#SS_3_3_6)」参照                                                          |
 |[単一要素の波カッコ初期化を非配列とする](cpp_improve.md#SS_18_3_1_1)   |リストによる直接初期化の型推論の規則が変更された                                 |
 |[[maybe_unused]]属性                            |「[属性構文](core_lang_spec.md#SS_19_9_1)」参照                                                          | 
 |[[nodiscard]]属性                               |「[属性構文](core_lang_spec.md#SS_19_9_1)」、[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)」参照           |

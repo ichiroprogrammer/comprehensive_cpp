@@ -341,13 +341,13 @@ ___
 
 ## プログラミング規約(クラス) <a id="SS_23_2"></a>
 
-### 解答-凝集度の意味 <a id="SS_23_2_1"></a>
+### 解答-凝集性の意味 <a id="SS_23_2_1"></a>
 * 選択肢4
-* 参照 [凝集度](programming_convention.md#SS_3_2_2_3)
-* [演習-凝集度の意味](exercise_q.md#SS_22_2_1)へ戻る。
+* 参照 [凝集性](programming_convention.md#SS_3_2_2_3)
+* [演習-凝集性の意味](exercise_q.md#SS_22_2_1)へ戻る。
 
 
-### 解答例-凝集度の向上 <a id="SS_23_2_2"></a>
+### 解答例-凝集性の向上 <a id="SS_23_2_2"></a>
 ```cpp
     //  exercise/programming_convention_a/class.cpp 7
     // [A]
@@ -388,12 +388,12 @@ ___
     }
 ```
 
-* [演習-凝集度の向上](exercise_q.md#SS_22_2_2)へ戻る。
+* [演習-凝集性の向上](exercise_q.md#SS_22_2_2)へ戻る。
 
 
 ### 解答-メンバ変数の初期化方法の選択 <a id="SS_23_2_3"></a>
 * 選択肢2
-* 参照 [非静的なメンバ変数](programming_convention.md#SS_3_2_5)
+* 参照 [非静的なメンバ変数](programming_convention.md#SS_3_2_5_2)
 * [演習-メンバ変数の初期化方法の選択](exercise_q.md#SS_22_2_3)へ戻る。
 
 
@@ -945,7 +945,7 @@ ___
 
 ### 解答-オーバーライド関数の修飾 <a id="SS_23_3_8"></a>
 * 選択肢2
-* 参照 [オーバーライド](programming_convention.md#SS_3_3_2_7)
+* 参照 [オーバーライド](programming_convention.md#SS_3_2_4_7)
 * [演習-オーバーライド関数の修飾](exercise_q.md#SS_22_3_8)へ戻る。
 
 
@@ -1079,7 +1079,7 @@ ___
 
 ### 解答-エクセプションの型 <a id="SS_23_3_13"></a>
 * 選択肢2
-* 参照 [エクセプション処理](programming_convention.md#SS_3_3_3_10)
+* 参照 [エクセプション処理](programming_convention.md#SS_3_3_9)
 * 解説  
   下記3つを統合して考えれば、必然的に「選択肢2」であることがわかる。
     * エクセプションでthrowされるオブジェクトのポインタがnullptrになることはない。

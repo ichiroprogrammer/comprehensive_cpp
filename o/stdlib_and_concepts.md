@@ -165,7 +165,7 @@ std::integral_constantは「テンプレートパラメータとして与えら�
 
 
 ### std::true_type <a id="SS_20_2_2"></a>
-`std::true_type`(と`std::false_type`)は真/偽を返すSTL[メタ関数](core_lang_spec.md#SS_19_11_2)群の戻り型となる型エイリアスであるため、
+`std::true_type`(と`std::false_type`)は真/偽を返す標準ライブラリの[メタ関数](core_lang_spec.md#SS_19_11_2)群の戻り型となる型エイリアスであるため、
 最も使われるテンプレートの一つである。
 
 これらは、下記で確かめられる通り、後述する[std::integral_constant](stdlib_and_concepts.md#SS_20_2_1)を使い定義されている。
@@ -464,7 +464,7 @@ mutex は、スレッド間で使用する共有リソースを排他制御す�
 
 
 以下のコード例では、メンバ変数のインクリメントがスレッド間の競合を引き起こす(こういったコード領域を
-[クリティカルセクション](cpp_idioms.md#SS_21_8_2)と呼ぶ)が、std::mutexによりこの問題を回避している。
+[クリティカルセクション](cpp_idioms.md#SS_21_9_2)と呼ぶ)が、std::mutexによりこの問題を回避している。
 
 ```cpp
     //  example/stdlib_and__concepts/thread_ut.cpp 48
@@ -730,9 +730,9 @@ std::unique_lockやstd::lock_guardによりmutexを使用する。
     ASSERT_EQ(push_count_max, pop_count);
 ```
 
-一般に条件変数には、[Spurious Wakeup](cpp_idioms.md#SS_21_8_8)という問題があり、std::condition_variableも同様である。
+一般に条件変数には、[Spurious Wakeup](cpp_idioms.md#SS_21_9_8)という問題があり、std::condition_variableも同様である。
 
-上記の抜粋である下記のコード例では[Spurious Wakeup](cpp_idioms.md#SS_21_8_8)の対策が行われていないため、
+上記の抜粋である下記のコード例では[Spurious Wakeup](cpp_idioms.md#SS_21_9_8)の対策が行われていないため、
 意図通り動作しない可能性がある。
 
 ```cpp
@@ -1079,11 +1079,34 @@ Xと修正版Yの単体テストによりメモリーリークが修正された
 Polymorphic Memory Resource(pmr)は、
 動的メモリ管理の柔軟性と効率性を向上させるための、C++17から導入された仕組みである。
 
+[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_20_6_2)はC++17で導入された標準ライブラリのクラスで、
+C++のメモリリソース管理を抽象化するための機能を提供する。
+
+例えば、std::vectorは以下のように宣言されていた。
+
+```cpp
+namespace std {
+  template <class T, class Allocator = allocator<T>>
+  class vector;
+}
+```
+
+C++17では以下のエイリアスが追加された。
+
+```cpp
+namespace std::pmr {
+  template <class T>
+  using vector = std::vector<T, polymorphic_allocator<T>>;
+}
+```
+
+他のコンテナに関してもほぼ同様のエイリアスが追加された。
+
 C++17で導入されたstd::pmr名前空間は、カスタマイズ可能なメモリ管理を提供し、
-特にSTLコンテナと連携して効率化を図るための統一フレームワークを提供する。
+特に標準ライブラリのコンテナと連携して効率化を図るための統一フレームワークを提供する。
 std::pmrは、
 カスタマイズ可能なメモリ管理を標準ライブラリのデータ構造に統合するための統一的なフレームワークであり、
-特にSTLコンテナと連携して、動的メモリ管理を効率化することができる。
+特に標準ライブラリのコンテナと連携して、動的メモリ管理を効率化することができる。
 
 std::pmrは以下のようなメモリ管理のカスタマイズを可能にする。
 
