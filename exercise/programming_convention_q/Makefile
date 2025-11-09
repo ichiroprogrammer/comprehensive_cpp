@@ -9,7 +9,7 @@ SUPPRESS_WARN=-Wno-effc++ -Wno-unused-variable -Wno-delete-incomplete -Wno-unuse
 # @@@ sample end
 
 OBJDIR:=
-SHARED:=../../deep/
+SHARED:=../../essential/
 include $(SHARED)make/env.mk
 include $(SHARED)make/example.mk
 include $(SHARED)make/gtest.mk

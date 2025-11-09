@@ -59,7 +59,7 @@ __この章の構成__
   
   
 
-[インデックス](introduction.md#SS_1_5)に戻る。  
+[インデックス](introduction.md#SS_1_4)に戻る。  
 ___
 
 ## ガード節 <a id="SS_9_1"></a>

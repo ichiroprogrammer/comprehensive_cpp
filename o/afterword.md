@@ -11,7 +11,7 @@
 
 ___
 
-[インデックス](introduction.md#SS_1_5)に戻る。  
+[インデックス](introduction.md#SS_1_4)に戻る。  
 
 ## インフラ <a id="SS_25_1"></a>
 

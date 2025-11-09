@@ -38,7 +38,7 @@
     * [Inside-Outの原則](software_practice.md#SS_2_11)
     * [SOLID](software_practice.md#SS_2_12)
 
-[インデックス](introduction.md#SS_1_5)に戻る。  
+[インデックス](introduction.md#SS_1_4)に戻る。  
 
 ___
 

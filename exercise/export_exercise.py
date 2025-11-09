@@ -65,7 +65,7 @@ def _main():
     os.chdir(working_dir)
 
     sample_code_dir = "exercise"
-    src_dirs = [sample_code_dir, "deep/build", "deep/h", "deep/make", "googletest"]
+    src_dirs = [sample_code_dir, "essential/build", "essential/h", "essential/make", "googletest"]
 
     dst_dir = os.path.join(get_args(), "exercise.git")
     copy_directories(src_dirs, dst_dir)

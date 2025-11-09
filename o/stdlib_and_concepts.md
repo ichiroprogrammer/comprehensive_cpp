@@ -70,7 +70,7 @@ __この章の構成__
   
   
 
-[インデックス](introduction.md#SS_1_5)に戻る。  
+[インデックス](introduction.md#SS_1_4)に戻る。  
 
 ___
 
@@ -464,7 +464,7 @@ mutex は、スレッド間で使用する共有リソースを排他制御す�
 
 
 以下のコード例では、メンバ変数のインクリメントがスレッド間の競合を引き起こす(こういったコード領域を
-[クリティカルセクション](cpp_idioms.md#SS_21_9_2)と呼ぶ)が、std::mutexによりこの問題を回避している。
+[クリティカルセクション](cpp_idioms.md#SS_21_9_4)と呼ぶ)が、std::mutexによりこの問題を回避している。
 
 ```cpp
     //  example/stdlib_and__concepts/thread_ut.cpp 48
@@ -730,9 +730,9 @@ std::unique_lockやstd::lock_guardによりmutexを使用する。
     ASSERT_EQ(push_count_max, pop_count);
 ```
 
-一般に条件変数には、[Spurious Wakeup](cpp_idioms.md#SS_21_9_8)という問題があり、std::condition_variableも同様である。
+一般に条件変数には、[Spurious Wakeup](cpp_idioms.md#SS_21_9_10)という問題があり、std::condition_variableも同様である。
 
-上記の抜粋である下記のコード例では[Spurious Wakeup](cpp_idioms.md#SS_21_9_8)の対策が行われていないため、
+上記の抜粋である下記のコード例では[Spurious Wakeup](cpp_idioms.md#SS_21_9_10)の対策が行われていないため、
 意図通り動作しない可能性がある。
 
 ```cpp

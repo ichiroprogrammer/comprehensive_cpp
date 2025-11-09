@@ -94,7 +94,7 @@ __この章の構成__
 &emsp;&emsp;&emsp; [自動変数](programming_convention.md#SS_3_3_5)  
 &emsp;&emsp;&emsp; [戻り値型](programming_convention.md#SS_3_3_6)  
 &emsp;&emsp;&emsp; [constexpr関数](programming_convention.md#SS_3_3_7)  
-&emsp;&emsp;&emsp; [リエントラント性](programming_convention.md#SS_3_3_8)  
+&emsp;&emsp;&emsp; [スレッドセーフ性](programming_convention.md#SS_3_3_8)  
 &emsp;&emsp;&emsp; [エクセプション処理](programming_convention.md#SS_3_3_9)  
 &emsp;&emsp;&emsp; [ビジーループ](programming_convention.md#SS_3_3_10)  
 &emsp;&emsp;&emsp; [非メンバ関数](programming_convention.md#SS_3_3_11)  
@@ -176,7 +176,7 @@ __この章の構成__
   
   
 
-[インデックス](introduction.md#SS_1_5)に戻る。  
+[インデックス](introduction.md#SS_1_4)に戻る。  
 
 ___
 
@@ -735,7 +735,7 @@ ___
     }
 ```
 
-* constは、意味が変わらない範囲で出来るだけ右側に書く。
+* constは[west-const](cpp_idioms.md#SS_21_6_3)に従って記述する。
 
 ```cpp
     //  example/programming_convention/type_const_ut.cpp 52
@@ -1233,7 +1233,7 @@ ___
 #### 凝集性 <a id="SS_3_2_2_3"></a>
 * 単なるデータホルダー(アプリケーションの設定データを保持するようなクラス等)や、
   ほとんどの振る舞いを他のクラスに委譲するようなクラスを除き、
-  [凝集性](cpp_idioms.md#SS_21_9_7)が高くなるように設計する。
+  [凝集性](cpp_idioms.md#SS_21_9_9)が高くなるように設計する。
 * [クラス凝集性のクライテリア](cpp_idioms.md#SS_21_5_3)に従い、凝集性を判断し、凝集性が著しく低いクラスを作らないようにする。
 
 * [演習-凝集性の意味](exercise_q.md#SS_22_2_1)
@@ -1363,7 +1363,7 @@ ___
     * 下記のSetPtrのような関数はconstにしない。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 21
+    //  example/programming_convention/member_func_ut.cpp 21
 
     class A {
     public:
@@ -1410,7 +1410,7 @@ ___
       そのハンドル経由でクラスの状態を変更できるため、その関数をconstにしない。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 64
+    //  example/programming_convention/member_func_ut.cpp 64
 
     class B {
     public:
@@ -1425,14 +1425,14 @@ ___
     };
 ```
 
-* 非静的メンバのハンドルを返すメンバ関数を持つオブジェクトが
+* 非静的メンバの[ハンドル](cpp_idioms.md#SS_21_9_6)を返すメンバ関数を持つオブジェクトが
   [rvalue](core_lang_spec.md#SS_19_7_1_2)である場合、
   そのオブジェクトからその関数を呼び出した戻り値(メンバへのハンドル)を変数で保持しない
   (そのハンドルは[danglingリファレンス](cpp_idioms.md#SS_21_8_2)/[danglingポインタ](cpp_idioms.md#SS_21_8_3)になっている)。
   そういった使用方法が必要ならばlvalue修飾、[rvalue修飾](core_lang_spec.md#SS_19_8_7_1)を用いたオーバーロード関数を定義する。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 84
+    //  example/programming_convention/member_func_ut.cpp 84
 
     char const* s = std::string{"hehe"}.c_str();  // std::string{"hehe"}はrvalue
 
@@ -1497,7 +1497,7 @@ ___
   以下のコードはコンストラクタ内で仮想関数呼び出しを行ったため、想定通りの動作にならない例である。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 97
+    //  example/programming_convention/member_func_ut.cpp 97
 
     class Base {
     public:
@@ -1521,7 +1521,7 @@ ___
     };
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 124
+    //  example/programming_convention/member_func_ut.cpp 124
 
     auto oss = std::ostringstream{};
 
@@ -1556,7 +1556,7 @@ ___
       代入演算子での[一様初期化](core_lang_spec.md#SS_19_6_6)ができないようにする。  
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 147
+    //  example/programming_convention/member_func_ut.cpp 147
 
     class A0 {
     public:
@@ -1592,7 +1592,7 @@ ___
     void f_A3(A3) noexcept {}
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 201
+    //  example/programming_convention/member_func_ut.cpp 200
 
     A0 a0 = 1;           // NG 1からA0への暗黙の型変換。
                          //    このような変換はセマンティクス的不整合につながる場合がある
@@ -1634,7 +1634,7 @@ ___
 * copy代入演算子は[lvalue修飾](core_lang_spec.md#SS_19_8_7_2)をする。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 236
+    //  example/programming_convention/member_func_ut.cpp 233
 
     class Widget {
     public:
@@ -1653,7 +1653,7 @@ ___
     };
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 265
+    //  example/programming_convention/member_func_ut.cpp 262
 
     Widget w0{1};
     Widget w1{2};
@@ -1665,7 +1665,7 @@ ___
     Widget{3} = Widget{4};  // NG lvalue修飾無しのmove代入演算子であるため、コンパイルできる
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 284
+    //  example/programming_convention/member_func_ut.cpp 281
 
     class Widget {  // 上記の修正
     public:
@@ -1684,7 +1684,7 @@ ___
     };
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 313
+    //  example/programming_convention/member_func_ut.cpp 310
 
     Widget w0{1};
     Widget w1{2};
@@ -1723,7 +1723,7 @@ ___
     * 一連の仮想関数の最後のものの宣言には、overrideを付けず、finalを付ける。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 331
+    //  example/programming_convention/member_func_ut.cpp 327
 
     class Base {
     public:
@@ -1766,7 +1766,7 @@ ___
   そのオーバーライド関数にもデフォルト引数を持たせない。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 376
+    //  example/programming_convention/member_func_ut.cpp 372
 
     class Base {
     public:
@@ -1784,7 +1784,7 @@ ___
 ```
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 400
+    //  example/programming_convention/member_func_ut.cpp 396
 
     auto  d = Derived{};
     Base& b{d};
@@ -2115,7 +2115,7 @@ ___
   (「[オブジェクトの所有権](cpp_idioms.md#SS_21_2)」参照)を持つオブジェクトもしくは関数は、
   オブジェクトaの解放責務を持つ。
 * オブジェクトaの所有権を持たないオブジェクトは、
-  オブジェクトaのハンドルをメンバ変数で保持することを出来る限り避ける
+  オブジェクトaの[ハンドル](cpp_idioms.md#SS_21_9_6)をメンバ変数で保持することを出来る限り避ける
   ([Observer](design_pattern.md#SS_9_23)パターン等、このルール順守が困難な場合は多い)。
 * クラスAのオブジェクトaが、オブジェクトbにダイナミックに生成されたとすると、  
     * オブジェクトaのポインタは`std::unique_ptr<A>`(「[RAII(scoped guard)](design_pattern.md#SS_9_10)」参照)で保持する。
@@ -2201,8 +2201,8 @@ ___
 ## 関数 <a id="SS_3_3"></a>
 ### 関数構造のクライテリア <a id="SS_3_3_1"></a>
 * 関数の規模・複雑度に関しては、
-    * [サイクロマティック複雑度のクライテリア](cpp_idioms.md#SS_21_4_1)に従う。
-* [関数の行数のクライテリア](cpp_idioms.md#SS_21_4_2)に従い、
+    * [サイクロマティック複雑度のクライテリア](cpp_idioms.md#SS_21_4_2)に従う。
+* [関数の行数のクライテリア](cpp_idioms.md#SS_21_4_3)に従い、
     * 7 行程度を理想とする。
     * 40行以下に留める。
 
@@ -2218,7 +2218,7 @@ ___
   これに反すると[name-hiding](core_lang_spec.md#SS_19_12_9)のため、基底クラスのメンバ関数の可視範囲を縮小させてしまう。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 414
+    //  example/programming_convention/func_ut.cpp 21
 
     // NGな例
     class Base {
@@ -2270,13 +2270,13 @@ ___
 * 仮引数の型が互いに暗黙に変換できるオーバーロード関数の定義、使用には気を付ける。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 471
+    //  example/programming_convention/func_ut.cpp 78
 
     int32_t f(int32_t) { return 0; }
     int32_t f(int16_t) { return 1; }
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 479
+    //  example/programming_convention/func_ut.cpp 86
 
     auto i16 = int16_t{1};
 
@@ -2287,7 +2287,7 @@ ___
 * 暗黙の型変換による関数の使用範囲の拡張を防ぐには、オーバーロード関数を= deleteする。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 491
+    //  example/programming_convention/func_ut.cpp 98
 
     // 実引数がdoubleを認めないパターン
     int32_t f0(double) = delete;
@@ -2327,7 +2327,7 @@ ___
     }
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 533
+    //  example/programming_convention/func_ut.cpp 140
 
     char     c{'c'};
     int8_t   i8{1};
@@ -2364,7 +2364,7 @@ ___
 * boolへの型変換オペレータは、explicit付きで定義する。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 564
+    //  example/programming_convention/func_ut.cpp 171
 
     class A0 {
     public:
@@ -2409,7 +2409,7 @@ ___
       (その際、コードクローンを作りがちなので注意する(「[Copy-And-Swap](design_pattern.md#SS_9_6)」参照))。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 603
+    //  example/programming_convention/func_ut.cpp 210
 
     class Integer {
     public:
@@ -2453,7 +2453,7 @@ ___
   アンダーバーから始まる3文字以上の文字列を使用する。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 641
+    //  example/programming_convention/func_ut.cpp 248
 
     constexpr int32_t one_km{1000};
 
@@ -2479,7 +2479,7 @@ ___
     }
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 669
+    //  example/programming_convention/func_ut.cpp 276
 
     auto km = int32_t{3_kilo_meter};  // ユーザ定義リテラル演算子の利用
     auto m  = int32_t{3000_meter};    // ユーザ定義リテラル演算子の利用
@@ -2492,46 +2492,13 @@ ___
   引数が多くなりすぎる場合、その関数の引数用の構造体を定義し、それを使用して関数を呼び出す。
   この場合、[指示付き初期化](core_lang_spec.md#SS_19_10_4)を使用する。
 
-* 仮引数を関数の戻り値として利用しない場合
-  (且つ仮引数が関数テンプレートの[ユニバーサルリファレンス](core_lang_spec.md#SS_19_8_4)でない場合)、
-    * 基本型やその型のエイリアス、enumは値渡しにする。
-    * それ以外のオブジェクトはconstリファレンス渡しにする
-      (「[const/constexprインスタンス](programming_convention.md#SS_3_1_9)」参照)。
-      ただし、数バイトの小さいオブジェクトは値渡ししても良い。
-    * 「引数がnullptrである場合の処理をその関数が行う」場合、constポインタ渡しにする。
-
-```cpp
-    //  example/programming_convention/func_ut.cpp 687
-
-    void f(int32_t a, enum EnumArg b, NotSmall const& c, Small d, NotSmall const* e) noexcept
-    {
-        // a : 基本型
-        // b : enum
-        // c : サイズが小さくないオブジェクトで、nullptrでないことが前提
-        // d : サイズ小さいオブジェクト
-        // e : サイズが小さくないオブジェクトを指すが、nullptrである場合も処理の対象
-
-        if (e == nullptr) {
-            // ...
-        }
-        else {
-            // ...
-        }
-
-        // ...
-    }
-```
-
-* [注意] 仮引数をconstリファレンス渡しやconstポインタ渡しにすることで、
-    * 値渡しに比べて、ランタイムでの処理が速くなる。
-    * リファレンスやポインタ経由で引数に使用されたオブジェクトが変更されるのを防ぐ
-      (値渡しであれば引数に使用されたオブジェクトが変更されることはない)。
+* 「[関数設計のガイドライン](cpp_idioms.md#SS_21_4)」の「[関数の仮引数の型](cpp_idioms.md#SS_21_4_1)」に従う。
 
 * 仮引数を関数の戻り値として利用する場合、
     * 「関数が、仮引数がnullptrである場合の処理を行う」場合、ポインタ渡しにする。
     * 「関数が、仮引数がnullptrでないことを前提している」場合、リファレンス渡しにする。
 
-* [ユニバーサルリファレンス](core_lang_spec.md#SS_19_8_4)を仮引数とする関数テンプレートでは、仮引数は非constにする。
+* [forwardingリファレンス](core_lang_spec.md#SS_19_8_3)を仮引数とする関数テンプレートでは、仮引数は非constにする。
 
 * 継承の都合等で、使用しないにもかかわらず定義しなければならない仮引数には名前を付けない。
   仮引数が使用されていない警告の抑止のために[属性構文](core_lang_spec.md#SS_19_9_1)を使わない。
@@ -2540,7 +2507,7 @@ ___
   引数を生成する関数の戻り値を直接f()に渡さない。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 711
+    //  example/programming_convention/func_arg_type_ut.cpp 22
 
     class A {
     public:
@@ -2570,7 +2537,7 @@ ___
 * 二項演算子の仮引数名は、左側をlhs、右側をrhsにする。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 744
+    //  example/programming_convention/func_arg_type_ut.cpp 55
 
     class B {
     public:
@@ -2589,7 +2556,7 @@ ___
   Cからリンクされる場合に限り、関数の()の中にはvoidと書く。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 760
+    //  example/programming_convention/func_arg_type_ut.cpp 71
 
     class C {
     public:
@@ -2611,7 +2578,7 @@ ___
   代わりに配列へのリファレンスもしくはstd::arrayを使用する。 
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 783
+    //  example/programming_convention/func_arg_type_ut.cpp 94
 
     class Base {
     public:
@@ -2655,7 +2622,7 @@ ___
     }
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 838
+    //  example/programming_convention/func_arg_type_ut.cpp 149
 
     Base    b[]{"0", "0"};
     Derived d[]{{"0", "1"}, {"2", "3"}};
@@ -2673,7 +2640,7 @@ ___
 ```
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 858
+    //  example/programming_convention/func_arg_type_ut.cpp 169
 
     // ポインタではなく、配列へのリファレンスを使用することで、
     // 上記のようなバグを避けることができる
@@ -2735,7 +2702,8 @@ ___
     }
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 924
+    //  example/programming_convention/func_arg_type_ut.cpp 235
+
     Base    b[]{"0", "0"};
     Derived d[]{{"0", "1"}, {"2", "3"}};
     auto    d2 = std::array<Derived, 2>{Derived{"0", "1"}, Derived{"2", "3"}};
@@ -2766,13 +2734,13 @@ ___
   関数の処理が初期化オブジェクトの現在の状態に依存してしまう。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 945
+    //  example/programming_convention/func_arg_type_ut.cpp 257
 
     int32_t default_arg{0};
     int32_t get_default_arg(int32_t a = default_arg) noexcept { return a; }
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 954
+    //  example/programming_convention/func_arg_type_ut.cpp 265
 
     ASSERT_EQ(0, get_default_arg());  // default_arg == 0
 
@@ -2781,14 +2749,14 @@ ___
     ASSERT_EQ(2, get_default_arg());  // default_arg == 2
 ```
 
-* `std::unique_ptr<T>` const&を引数とする関数は、
+* `std::unique_ptr<T> const&`を引数とする関数は、
   その引数が指すオブジェクトが保持しているT型オブジェクトを書き換えることができるため、
   そのような記述をしない。
   関数がそのT型オブジェクトを書き換える必要があるのであれば引数をT&とする。
   書き換える必要がないのであれば引数をT const&とする。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 966
+    //  example/programming_convention/func_arg_type_ut.cpp 278
 
     void f0(std::unique_ptr<std::string> const& str)  // NG *strは書き換え可能
     {
@@ -2810,15 +2778,15 @@ ___
         str = "it can NOT be changed";
     #endif
     }
+```
+```cpp
+    //  example/programming_convention/func_arg_type_ut.cpp 305
 
-    void g()
-    {
-        auto s = std::make_unique<std::string>("hehe");
+    auto s = std::make_unique<std::string>("hehe");
 
-        f0(s);   // sは変更されないが、sが保持しているstd::stringオブジェクトは変更できる
-        f1(*s);  // sは変更されないが、sが保持しているstd::stringオブジェクトは変更できる
-        f2(*s);  // sも、sが指しているstd::stringオブジェクトも変更されない
-    }
+    f0(s);   // sは変更されないが、sが保持しているstd::stringオブジェクトは変更できる
+    f1(*s);  // sは変更されないが、sが保持しているstd::stringオブジェクトは変更できる
+    f2(*s);  // sも、sが指しているstd::stringオブジェクトも変更されない
 ```
 
 * [演習-仮引数の修飾](exercise_q.md#SS_22_3_11)  
@@ -2829,7 +2797,7 @@ ___
 * 自動変数は、定義と同時に初期化する。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 1032
+    //  example/programming_convention/func_ut.cpp 317
 
     int32_t a, b;  // NG 一度に2つの変数定義
     int32_t index;
@@ -2913,7 +2881,7 @@ ___
     * [後置戻り値型auto](core_lang_spec.md#SS_19_11_19)
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 1135
+    //  example/programming_convention/func_return_ut.cpp 22
 
     auto f(int32_t a, int32_t b) noexcept -> decltype(a + b)  // NG
     {
@@ -2935,76 +2903,81 @@ ___
   リファレンス引数で戻り値を返さない(「[関数の戻り値オブジェクト](programming_convention.md#SS_3_9_3)」参照)。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 1148
+    //  example/programming_convention/func_return_ut.cpp 38
 
-    void g0(int32_t a, int32_t b, int32_t& quotient, int32_t& remainder)  // NG
+    // NG 関数の戻り値が不明確
+    void f(int32_t a, int32_t b, int32_t& quotient, int32_t& remainder)
     {
         quotient  = a / b;
         remainder = a % b;
     }
 
-    int32_t g1(int32_t a, int32_t b, int32_t& remainder)  // NG
+    // NG 関数の戻り値が不明確
+    int32_t f(int32_t a, int32_t b, int32_t& remainder)
     {
         remainder = a % b;
         return a / b;
     }
 
-    std::pair<int32_t, int32_t> g_pair(int32_t a, int32_t b)  // OK
-    {
-        return {a / b, a % b};
-    }
+    // 場合によりNG  f_pairがprivate関数やファイル内関数であり、広域に使われないのであれば問題ない
+    std::pair<int32_t, int32_t> f_pair(int32_t a, int32_t b) { return {a / b, a % b}; }
+
+    // 場合によりNG  f_tupleがprivate関数やファイル内関数であり、広域に使われないのであれば問題ない
+    //               f_tupleが広域に使われない場合でも、tupleの型引数の数が3個を大きく超える場合に可読性が劣化する
+    std::tuple<int32_t, int32_t> f_tuple(int32_t a, int32_t b) { return {a / b, a % b}; }
 
     struct Result {
         int32_t quotient;
         int32_t remainder;
     };
 
-    Result g_struct(int32_t a, int32_t b)  // OK
+    Result f_struct(int32_t a, int32_t b)  // OK
     {
         return {a / b, a % b};
     }
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 1181
+    //  example/programming_convention/func_return_ut.cpp 75
 
-    {
-        int32_t quotient;
-        int32_t remainder;
-        g0(7, 3, quotient, remainder);  // NG quotient、remainderが戻り値かどうかわかりづらい
-        ASSERT_EQ(2, quotient);
-        ASSERT_EQ(1, remainder);
-    }
-    {
-        int32_t remainder;
-        int32_t quotient{g1(7, 3, remainder)};  // NG remainderが戻り値かどうかわかりづらい
-        ASSERT_EQ(2, quotient);
-        ASSERT_EQ(1, remainder);
-    }
-    {
-        auto ret = g_pair(7, 3);  // OK
-        ASSERT_EQ(2, ret.first);
-        ASSERT_EQ(1, ret.second);
-    }
-    {
-        auto [quotient, remainder] = g_struct(7, 3);  // OK C++17 構造化束縛
-        ASSERT_EQ(2, quotient);
-        ASSERT_EQ(1, remainder);
-    }
-    {
-        auto ret = g_struct(7, 3);  // OK
-        ASSERT_EQ(2, ret.quotient);
-        ASSERT_EQ(1, ret.remainder);
-    }
+    int32_t quotient0;
+    int32_t remainder0;
+    f(7, 3, quotient0, remainder0);             // NG quotient0、remainder0が戻り値かどうかわかりづらい
+    ASSERT_EQ(2, quotient0);
+    ASSERT_EQ(1, remainder0);
+
+    int32_t remainder1;
+    int32_t quotient1 = f(7, 3, remainder1);    // NG remainder1が戻り値かどうかわかりづらい
+    ASSERT_EQ(2, quotient1);
+    ASSERT_EQ(1, remainder1);
+
+    auto ret0 = f_pair(7, 3);                   // 場合によりNG
+    ASSERT_EQ(2, ret0.first);                   // ret0.firstが何を表しているかどうかわかりづらい
+    ASSERT_EQ(1, ret0.second);                  // ret0.secondが何を表しているかどうかわかりづらい
+
+    auto ret1 = f_tuple(7, 3);                  // 場合によりNG
+    ASSERT_EQ(2, std::get<0>(ret1));            // std::get<0>(ret1)が何を表しているかどうかわかりづらい
+    ASSERT_EQ(1, std::get<1>(ret1));            // std::get<1>(ret1)が何を表しているかどうかわかりづらい
+
+    auto [quotient2, remainder2] = f_struct(7, 3); // OK C++17 構造化束縛の使いすぎには注意
+    ASSERT_EQ(2, quotient2);
+    ASSERT_EQ(1, remainder2);
+
+    auto ret2 = f_struct(7, 3);                 // OK
+    ASSERT_EQ(2, ret2.quotient);
+    ASSERT_EQ(1, ret2.remainder);
 ```
 
 * 処理の成否をbool等で通知し、成功時の戻り値をリファレンス引数で戻す関数や、
   処理の成功時の値と、失敗時の外れ値を戻り値で返す関数を作らない。
-  代わりにC++17で導入されたstd::optionalを使用する。
+  代わりにC++17で導入された[std::optional](stdlib_and_concepts.md#SS_20_8)を使用する。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 1239
+    //  example/programming_convention/func_return_ut.cpp 108
 
-    bool h0(int32_t a, int32_t b, int32_t& remainder)  // NG
+    namespace {
+
+    // NG 関数の戻り値が不明確
+    bool f(int32_t a, int32_t b, int32_t& remainder)
     {
         if (b == 0) {
             return false;
@@ -3015,7 +2988,8 @@ ___
         return true;
     }
 
-    int32_t h1(uint32_t a, uint32_t b)  // NG 余りが-1になる場合(外れ値)、エラー通知
+    // NG 余りが-1になる場合(外れ値)、エラー通知
+    int32_t f(uint32_t a, uint32_t b)
     {
         if (b == 0) {
             return -1;
@@ -3024,7 +2998,8 @@ ___
         return a % b;
     }
 
-    std::pair<bool, int32_t> h_pair(int32_t a, int32_t b)  // NG
+    // NG ret.firstがエラーを表していることが不明確
+    std::pair<bool, int32_t> f_pair(int32_t a, int32_t b)
     {
         if (b == 0) {
             return {false, 0};
@@ -3033,12 +3008,13 @@ ___
         return {true, a % b};
     }
 
-    struct Result2 {
+    struct Result {
         bool    is_success;
         int32_t remainder;
     };
 
-    Result2 h_struct(int32_t a, int32_t b)  // NG
+    // NG 悪くはないが、エラー時でもResult::remainderにアクセスできる
+    Result f_struct(int32_t a, int32_t b)
     {
         if (b == 0) {
             return {false, 0};
@@ -3047,7 +3023,7 @@ ___
         return {true, a % b};
     }
 
-    std::optional<int32_t> h_optional(int32_t a, int32_t b)  // OK
+    std::optional<int32_t> f_optional(int32_t a, int32_t b)  // OK
     {
         if (b == 0) {
             return std::nullopt;
@@ -3057,34 +3033,28 @@ ___
     }
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 1296
+    //  example/programming_convention/func_return_ut.cpp 171
 
-    {
-        int32_t remainder;
+    int32_t remainder0;
 
-        auto result = h0(7, 0, remainder);
-        ASSERT_FALSE(result);  // エラー時にremainderが有効か否かわからない
-    }
-    {
-        auto remainder = h1(7, 0);
-        ASSERT_EQ(-1, remainder);  // エラー通知がわかりづらい
-    }
-    {
-        auto [result, remainder] = h_pair(7, 0);
-        ASSERT_FALSE(result);  // エラー時にremainderが有効か否かわからない
-    }
-    {
-        auto [result, remainder] = h_struct(7, 0);
-        ASSERT_FALSE(result);  // エラー時にremainderが有効か否かわからない
-    }
-    {
-        auto result = h_optional(7, 0);
-        ASSERT_FALSE(result);
+    auto result0 = f(7, 0, remainder0);             // NG エラー時にremainder0が有効か否かわからない
+    ASSERT_FALSE(result0);
 
-        result = h_optional(7, 4);
-        ASSERT_TRUE(result);
-        ASSERT_EQ(3, *result);  // 成功時の値取り出し
-    }
+    auto remainder1 = f(7, 0);                      // NG エラー通知がわかりづらい
+    ASSERT_EQ(-1, remainder1);
+
+    auto ret = f_pair(7, 0);                        // NG ret.firstがエラーを表していることが不明確
+    ASSERT_FALSE(ret.first);
+
+    auto [result2, remainder2] = f_struct(7, 0);    // エラー時にremainder2が有効か否かわからない
+    ASSERT_FALSE(result2);
+
+    auto result1 = f_optional(7, 0);                // OK
+    ASSERT_FALSE(result1);                          // エラーの判定  値は取り出すための*result1はエクセプション
+
+    result1 = f_optional(7, 4);                     // OK
+    ASSERT_TRUE(result1);                           // 成功の判定
+    ASSERT_EQ(3, *result1);                         // 成功時の値取り出し
 ```
 
 
@@ -3096,21 +3066,21 @@ ___
 
 * [演習-constexpr関数](exercise_q.md#SS_22_3_12)  
 
-### リエントラント性 <a id="SS_3_3_8"></a>
-* 関数、メンバ関数はなるべくリエントラントに実装する。
-* 複数のスレッドから呼び出される関数は必ずリエントラントにする。
+### スレッドセーフ性 <a id="SS_3_3_8"></a>
+* 関数、メンバ関数はなるべく[スレッドセーフ](cpp_idioms.md#SS_21_9_2)に実装する。
+* 複数のスレッドから呼び出される関数は必ずスレッドセーフにする。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 1352
+    //  example/programming_convention/func_ut.cpp 419
 
     int32_t var{0};
 
-    int32_t f() noexcept  // リエントラントでない関数f()
+    int32_t f() noexcept  // スレッドセーフでない関数f()
     {
         return ++var;
     }
 
-    int32_t f(int32_t& i) noexcept  // リエントラントな関数f()
+    int32_t f(int32_t& i) noexcept  // スレッドセーフな関数f()
     {
         return ++i;
     }
@@ -3131,7 +3101,7 @@ ___
   move代入演算子を[noexcept](core_lang_spec.md#SS_19_13_4)と宣言することは特に重要である。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 1383
+    //  example/programming_convention/func_ut.cpp 450
 
     int32_t f() noexcept;  // OK fはno-fail保証
 
@@ -3157,7 +3127,7 @@ ___
   また、catch(...)は一番最後に書く(関数tryブロックの場合も同様にする)。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 1403
+    //  example/programming_convention/func_ut.cpp 470
 
     struct ExceptionA : std::exception {};
     struct ExceptionB : ExceptionA {};
@@ -3217,7 +3187,7 @@ ___
   (C++17では[ill-formed](core_lang_spec.md#SS_19_14_1)になる)。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 1466
+    //  example/programming_convention/func_ut.cpp 533
 
     int32_t f0()  // noexceptではないため、エクセプションを発生させることがある。
     {
@@ -3268,7 +3238,7 @@ ___
 * 待ち合わせにビジーループを使わない。イベントドリブンにする。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 1528
+    //  example/programming_convention/func_ut.cpp 595
 
     // NG イベントドリブンにするべき
     void wait_busily() noexcept
@@ -3819,7 +3789,7 @@ ___
 * [注意] ビット演算にはstd::bitsetや[BitmaskType](design_pattern.md#SS_9_2)を使用することもできる。
 
 ### 論理演算 <a id="SS_3_5_4"></a>
-* &&や||の論理演算子の右オペランドで[副作用](cpp_idioms.md#SS_21_9_10)のある処理をしない。
+* &&や||の論理演算子の右オペランドで[副作用](cpp_idioms.md#SS_21_9_12)のある処理をしない。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 138
@@ -3984,7 +3954,7 @@ ___
     auto s_2 = sizeof(*b);       // OK *bのサイズをs_2に代入したい場合
 ```
 
-* 上記例を除き、sizeof演算子のオペランドは一見[副作用](cpp_idioms.md#SS_21_9_10)を持っているような式を含んではならない。
+* 上記例を除き、sizeof演算子のオペランドは一見[副作用](cpp_idioms.md#SS_21_9_12)を持っているような式を含んではならない。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 284
@@ -4946,7 +4916,7 @@ ___
     {
         return "in NS_1";
     }
-    }  // namespace NS_1 namespace NamenameADL
+    }  // namespace NS_1
 ```
 ```cpp
     //  example/programming_convention/scope_ut.cpp 222
@@ -4958,9 +4928,9 @@ ___
     // これにより、下記fの候補は、NS_0::f、NS_1::fになるが、第2引数1がint32_t型であるため、
     // 名前修飾なしでのfの呼び出しは、NS_0::fが選択される。
 
-    using namespace NS_1;   // この宣言があるにもかかわらず、f(NS_0::X(), 1)のNS_0::fではない
+    using namespace NS_1;  // この宣言があるにもかかわらず、f(NS_0::X(), 1)のNS_0::fではない
 
-    ASSERT_EQ("in NS_0", f(NS_0::X(), 1));  // NS_0::fが呼ばれる。
+    ASSERT_EQ("in NS_0", f(NS_0::X(), 1));        // NS_0::fが呼ばれる。
     ASSERT_EQ("in NS_1", NS_1::f(NS_0::X(), 1));  // NS_1::fの呼び出しには名前修飾が必要
 ```
 
@@ -5571,7 +5541,7 @@ ___
 ```
     asctime(), ctime(), getgrgid(), getgrnam(), getlogin(), getpwuid(), getpwnam(), gmtime(),
     localtime(), ttyname(), 
-    ctermid(), tmpnam() (引数がNULLのとき、非リエントラントになる)
+    ctermid(), tmpnam() (引数がNULLのとき、非[リエントラント](cpp_idioms.md#SS_21_9_3)になる)
 ```
 
 ##### 標準外関数等 <a id="SS_3_10_2_2_6"></a>
@@ -5579,7 +5549,7 @@ ___
 
 ##### 扱いが難しい関数 <a id="SS_3_10_2_2_7"></a>
 * signalの扱いは極めて難しく、安定動作をさせるのは困難である。
-  「シグナルのリエントラント問題を解決でき、使用できる関数に制限がない」という利点があるため、
+  「シグナルの[リエントラント](cpp_idioms.md#SS_21_9_3)問題を解決でき、使用できる関数に制限がない」という利点があるため、
    signal()の代わりに、 signalfd() を使用する。 
 * 排他的にファイルをオープンできないため、tmpfile()を使用しない。代わりにmkstemp()を使用する。
 
@@ -5641,7 +5611,7 @@ ___
 * 論理的にありえない状態(特に論理的に到達しないはずの条件文への到達)を検出するために、
   assert()を使用する(「[switch文](programming_convention.md#SS_3_4_2)」、「[if文](programming_convention.md#SS_3_4_3)」参照)。
 * assert()はコンパイルオプションにより無効化されることがあるため、
-  assert()の引数に[副作用](cpp_idioms.md#SS_21_9_10)のある式を入れない。
+  assert()の引数に[副作用](cpp_idioms.md#SS_21_9_12)のある式を入れない。
 * ランタイムでなく、コンパイル時に判断できる論理矛盾や使用制限には、static\_assertを使用する。
 
 ```cpp
@@ -5744,7 +5714,7 @@ ___
 * クラスのメンバ変数はコンストラクタ終了時までに初期化する([非静的なメンバ変数](programming_convention.md#SS_3_2_5_2))。
 * friendは使用しない([アクセスレベルと隠蔽化](programming_convention.md#SS_3_2_3))。
 * 派生は最大2回([継承/派生](programming_convention.md#SS_3_2_6))。
-* 関数は小さくする([サイクロマティック複雑度のクライテリア](cpp_idioms.md#SS_21_4_1))。
+* 関数は小さくする([サイクロマティック複雑度のクライテリア](cpp_idioms.md#SS_21_4_2))。
 * 関数の仮引数は最大4個([実引数/仮引数](programming_convention.md#SS_3_3_4))。
 * グローバルなインスタンスは使わない([スコープ](programming_convention.md#SS_3_8))。
 * throw, try-catchは控えめに使用する([エクセプション処理](programming_convention.md#SS_3_3_9))。

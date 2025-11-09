@@ -297,7 +297,7 @@ ___
     // @@@ example/programming_convention/type_const_ut.cpp #0:0 begin
 ```
 
-* constは、意味が変わらない範囲で出来るだけ右側に書く。
+* constは[west-const](---)に従って記述する。
 
 ```cpp
     // @@@ example/programming_convention/type_const_ut.cpp #0:1 begin
@@ -548,7 +548,7 @@ ___
     * 下記のSetPtrのような関数はconstにしない。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #0:0 begin
+    // @@@ example/programming_convention/member_func_ut.cpp #0:0 begin
 ```
 
 * クラス内部のハンドル（ポインタやリファレンス）を戻り値に使用しない。
@@ -557,17 +557,17 @@ ___
       そのハンドル経由でクラスの状態を変更できるため、その関数をconstにしない。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #0:1 begin
+    // @@@ example/programming_convention/member_func_ut.cpp #0:1 begin
 ```
 
-* 非静的メンバのハンドルを返すメンバ関数を持つオブジェクトが
+* 非静的メンバの[ハンドル](---)を返すメンバ関数を持つオブジェクトが
   [expression|rvalue](---)である場合、
   そのオブジェクトからその関数を呼び出した戻り値(メンバへのハンドル)を変数で保持しない
   (そのハンドルは[danglingリファレンス](---)/[danglingポインタ](---)になっている)。
   そういった使用方法が必要ならばlvalue修飾、[rvalue修飾](---)を用いたオーバーロード関数を定義する。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #0:2 begin -1
+    // @@@ example/programming_convention/member_func_ut.cpp #0:2 begin -1
 ```
 
 * [演習-メンバ関数の修飾](---)
@@ -615,10 +615,10 @@ ___
   以下のコードはコンストラクタ内で仮想関数呼び出しを行ったため、想定通りの動作にならない例である。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #1:1 begin
+    // @@@ example/programming_convention/member_func_ut.cpp #1:0 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #1:2 begin -1
+    // @@@ example/programming_convention/member_func_ut.cpp #1:1 begin -1
 ```
 
 * コンストラクタからのエクセプションを発生をできるだけ避ける([エクセプション処理](---))。
@@ -640,10 +640,10 @@ ___
       代入演算子での[一様初期化](---)ができないようにする。  
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #1:3 begin
+    // @@@ example/programming_convention/member_func_ut.cpp #1:2 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #1:4 begin -1
+    // @@@ example/programming_convention/member_func_ut.cpp #1:3 begin -1
 ```
 
 * 派生クラスが基底クラスの全コンストラクタを必要とする場合、
@@ -663,16 +663,16 @@ ___
 * copy代入演算子は[lvalue修飾](---)をする。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #2:0 begin
+    // @@@ example/programming_convention/member_func_ut.cpp #2:0 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #2:1 begin -1
+    // @@@ example/programming_convention/member_func_ut.cpp #2:1 begin -1
 ```
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #2:2 begin
+    // @@@ example/programming_convention/member_func_ut.cpp #2:2 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #2:3 begin -1
+    // @@@ example/programming_convention/member_func_ut.cpp #2:3 begin -1
 ```
 
 * [演習-copyコンストラクタ](---)
@@ -705,7 +705,7 @@ ___
     * 一連の仮想関数の最後のものの宣言には、overrideを付けず、finalを付ける。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #3:0 begin
+    // @@@ example/programming_convention/member_func_ut.cpp #3:0 begin
 ```
 
 * オーバーライド元の関数とそのオーバーライド関数のデフォルト引数の値は一致させる。
@@ -713,11 +713,11 @@ ___
   そのオーバーライド関数にもデフォルト引数を持たせない。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #3:2 begin
+    // @@@ example/programming_convention/member_func_ut.cpp #3:2 begin
 ```
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #3:3 begin -1
+    // @@@ example/programming_convention/member_func_ut.cpp #3:3 begin -1
 ```
 
 * privateやprotectedなオーバーライド関数にはデフォルト引数を持たさない
@@ -860,7 +860,7 @@ ___
   (「[C++慣用語句|オブジェクトの所有権](---)」参照)を持つオブジェクトもしくは関数は、
   オブジェクトaの解放責務を持つ。
 * オブジェクトaの所有権を持たないオブジェクトは、
-  オブジェクトaのハンドルをメンバ変数で保持することを出来る限り避ける
+  オブジェクトaの[ハンドル](---)をメンバ変数で保持することを出来る限り避ける
   ([Observer](---)パターン等、このルール順守が困難な場合は多い)。
 * クラスAのオブジェクトaが、オブジェクトbにダイナミックに生成されたとすると、  
     * オブジェクトaのポインタは`std::unique_ptr<A>`(「[RAII(scoped guard)](---)」参照)で保持する。
@@ -932,25 +932,25 @@ ___
   これに反すると[name-hiding](---)のため、基底クラスのメンバ関数の可視範囲を縮小させてしまう。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #4:0 begin
+    // @@@ example/programming_convention/func_ut.cpp #0:0 begin
 ```
 
 * 仮引数の型が互いに暗黙に変換できるオーバーロード関数の定義、使用には気を付ける。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #4:1 begin
+    // @@@ example/programming_convention/func_ut.cpp #0:1 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #4:2 begin -1
+    // @@@ example/programming_convention/func_ut.cpp #0:2 begin -1
 ```
 
 * 暗黙の型変換による関数の使用範囲の拡張を防ぐには、オーバーロード関数を= deleteする。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #4:3 begin
+    // @@@ example/programming_convention/func_ut.cpp #0:3 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #4:4 begin -1
+    // @@@ example/programming_convention/func_ut.cpp #0:4 begin -1
 ```
 
 * [演習-オーバーライド/オーバーロード](---)  
@@ -965,7 +965,7 @@ ___
 * boolへの型変換オペレータは、explicit付きで定義する。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #5:0 begin
+    // @@@ example/programming_convention/func_ut.cpp #1:0 begin
 ```
 
 * 演算子をオーバーロードする場合、それが自然に使えるようにする。
@@ -975,7 +975,7 @@ ___
       (その際、コードクローンを作りがちなので注意する(「[Copy-And-Swap](---)」参照))。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #5:1 begin
+    // @@@ example/programming_convention/func_ut.cpp #1:1 begin
 ```
 
 * 比較演算子のオーバーロードする場合、
@@ -987,10 +987,10 @@ ___
   アンダーバーから始まる3文字以上の文字列を使用する。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #5:2 begin
+    // @@@ example/programming_convention/func_ut.cpp #1:2 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #5:3 begin -1
+    // @@@ example/programming_convention/func_ut.cpp #1:3 begin -1
 ```
 
 ### 実引数/仮引数
@@ -998,28 +998,13 @@ ___
   引数が多くなりすぎる場合、その関数の引数用の構造体を定義し、それを使用して関数を呼び出す。
   この場合、[指示付き初期化](---)を使用する。
 
-* 仮引数を関数の戻り値として利用しない場合
-  (且つ仮引数が関数テンプレートの[ユニバーサルリファレンス](---)でない場合)、
-    * 基本型やその型のエイリアス、enumは値渡しにする。
-    * それ以外のオブジェクトはconstリファレンス渡しにする
-      (「[const/constexprインスタンス](---)」参照)。
-      ただし、数バイトの小さいオブジェクトは値渡ししても良い。
-    * 「引数がnullptrである場合の処理をその関数が行う」場合、constポインタ渡しにする。
-
-```cpp
-    // @@@ example/programming_convention/func_ut.cpp #6:0 begin
-```
-
-* [注意] 仮引数をconstリファレンス渡しやconstポインタ渡しにすることで、
-    * 値渡しに比べて、ランタイムでの処理が速くなる。
-    * リファレンスやポインタ経由で引数に使用されたオブジェクトが変更されるのを防ぐ
-      (値渡しであれば引数に使用されたオブジェクトが変更されることはない)。
+* 「[関数設計のガイドライン](---)」の「[関数の仮引数の型](---)」に従う。
 
 * 仮引数を関数の戻り値として利用する場合、
     * 「関数が、仮引数がnullptrである場合の処理を行う」場合、ポインタ渡しにする。
     * 「関数が、仮引数がnullptrでないことを前提している」場合、リファレンス渡しにする。
 
-* [ユニバーサルリファレンス](---)を仮引数とする関数テンプレートでは、仮引数は非constにする。
+* [forwardingリファレンス](---)を仮引数とする関数テンプレートでは、仮引数は非constにする。
 
 * 継承の都合等で、使用しないにもかかわらず定義しなければならない仮引数には名前を付けない。
   仮引数が使用されていない警告の抑止のために[属性構文](---)を使わない。
@@ -1028,7 +1013,7 @@ ___
   引数を生成する関数の戻り値を直接f()に渡さない。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #6:1 begin
+    // @@@ example/programming_convention/func_arg_type_ut.cpp #0:1 begin
 ```
 
 * copyコンストラクタ、copy代入演算子、moveコンストラクタ、
@@ -1036,7 +1021,7 @@ ___
 * 二項演算子の仮引数名は、左側をlhs、右側をrhsにする。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #6:2 begin
+    // @@@ example/programming_convention/func_arg_type_ut.cpp #0:2 begin
 ```
 
 * 仮引数の意味を明示するために、関数宣言の仮引数の名前は省略しない。
@@ -1044,7 +1029,7 @@ ___
   Cからリンクされる場合に限り、関数の()の中にはvoidと書く。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #6:3 begin
+    // @@@ example/programming_convention/func_arg_type_ut.cpp #0:3 begin
 ```
 
 * 実引数として使用される配列がポインタ型へ暗黙に変換されることを前提に、
@@ -1054,17 +1039,17 @@ ___
   代わりに配列へのリファレンスもしくはstd::arrayを使用する。 
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #6:4 begin
+    // @@@ example/programming_convention/func_arg_type_ut.cpp #1:0 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #6:5 begin -1
+    // @@@ example/programming_convention/func_arg_type_ut.cpp #1:1 begin -1
 ```
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #6:6 begin
+    // @@@ example/programming_convention/func_arg_type_ut.cpp #1:2 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #6:7 begin -1
+    // @@@ example/programming_convention/func_arg_type_ut.cpp #1:3 begin -1
 ```
 
 * デフォルト引数は関数のプロトタイプ宣言もしくはクラス宣言内のメンバ関数宣言のみに記述する
@@ -1078,20 +1063,23 @@ ___
   関数の処理が初期化オブジェクトの現在の状態に依存してしまう。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #6:8 begin
+    // @@@ example/programming_convention/func_arg_type_ut.cpp #2:0 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #6:9 begin -1
+    // @@@ example/programming_convention/func_arg_type_ut.cpp #2:1 begin -1
 ```
 
-* `std::unique_ptr<T>` const&を引数とする関数は、
+* `std::unique_ptr<T> const&`を引数とする関数は、
   その引数が指すオブジェクトが保持しているT型オブジェクトを書き換えることができるため、
   そのような記述をしない。
   関数がそのT型オブジェクトを書き換える必要があるのであれば引数をT&とする。
   書き換える必要がないのであれば引数をT const&とする。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #6:10 begin
+    // @@@ example/programming_convention/func_arg_type_ut.cpp #3:0 begin
+```
+```cpp
+    // @@@ example/programming_convention/func_arg_type_ut.cpp #3:1 begin -1
 ```
 
 * [演習-仮引数の修飾](---)  
@@ -1102,7 +1090,7 @@ ___
 * 自動変数は、定義と同時に初期化する。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #7:0 begin -1
+    // @@@ example/programming_convention/func_ut.cpp #2:0 begin -1
 ```
 
 ### 戻り値型
@@ -1113,7 +1101,7 @@ ___
     * [後置戻り値型auto](---)
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #8:0 begin
+    // @@@ example/programming_convention/func_return_ut.cpp #0:0 begin
 ```
 
 * 戻り値を比較的大きなオブジェクトにする場合、パフォーマンスに注意する
@@ -1124,21 +1112,21 @@ ___
   リファレンス引数で戻り値を返さない(「[関数の戻り値オブジェクト](---)」参照)。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #8:1 begin
+    // @@@ example/programming_convention/func_return_ut.cpp #1:0 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #8:2 begin -1
+    // @@@ example/programming_convention/func_return_ut.cpp #1:1 begin -1
 ```
 
 * 処理の成否をbool等で通知し、成功時の戻り値をリファレンス引数で戻す関数や、
   処理の成功時の値と、失敗時の外れ値を戻り値で返す関数を作らない。
-  代わりにC++17で導入されたstd::optionalを使用する。
+  代わりにC++17で導入された[std::optional](---)を使用する。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #8:3 begin
+    // @@@ example/programming_convention/func_return_ut.cpp #2:0 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #8:4 begin -1
+    // @@@ example/programming_convention/func_return_ut.cpp #2:1 begin -1
 ```
 
 
@@ -1150,12 +1138,12 @@ ___
 
 * [演習-constexpr関数](---)  
 
-### リエントラント性
-* 関数、メンバ関数はなるべくリエントラントに実装する。
-* 複数のスレッドから呼び出される関数は必ずリエントラントにする。
+### スレッドセーフ性
+* 関数、メンバ関数はなるべく[スレッドセーフ](---)に実装する。
+* 複数のスレッドから呼び出される関数は必ずスレッドセーフにする。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #9:0 begin
+    // @@@ example/programming_convention/func_ut.cpp #3:0 begin
 ```
 
 ### エクセプション処理
@@ -1173,7 +1161,7 @@ ___
   move代入演算子を[noexcept](---)と宣言することは特に重要である。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #10:0 begin
+    // @@@ example/programming_convention/func_ut.cpp #4:0 begin
 ```
 
 * try-catchが不可避である場合、以下の理由によりconstリファレンスで受け取る。
@@ -1187,7 +1175,7 @@ ___
   また、catch(...)は一番最後に書く(関数tryブロックの場合も同様にする)。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #10:1 begin
+    // @@@ example/programming_convention/func_ut.cpp #4:1 begin
 ```
 
 * [exception-unfriendly](---)な関数はエクセプションを発生させないようにする。
@@ -1201,7 +1189,7 @@ ___
   (C++17では[ill-formed](---)になる)。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #10:2 begin
+    // @@@ example/programming_convention/func_ut.cpp #4:2 begin
 ```
 
 * [演習-エクセプションの型](---)  
@@ -1210,7 +1198,7 @@ ___
 * 待ち合わせにビジーループを使わない。イベントドリブンにする。
 
 ```cpp
-    // @@@ example/programming_convention/func_ut.cpp #11:0 begin
+    // @@@ example/programming_convention/func_ut.cpp #5:0 begin
 ```
 
 * [注意] C++11からイベント通知のためにstd::condition_variable
@@ -2156,7 +2144,7 @@ ___
 ```
     asctime(), ctime(), getgrgid(), getgrnam(), getlogin(), getpwuid(), getpwnam(), gmtime(),
     localtime(), ttyname(), 
-    ctermid(), tmpnam() (引数がNULLのとき、非リエントラントになる)
+    ctermid(), tmpnam() (引数がNULLのとき、非[リエントラント](---)になる)
 ```
 
 ##### 標準外関数等
@@ -2164,7 +2152,7 @@ ___
 
 ##### 扱いが難しい関数
 * signalの扱いは極めて難しく、安定動作をさせるのは困難である。
-  「シグナルのリエントラント問題を解決でき、使用できる関数に制限がない」という利点があるため、
+  「シグナルの[リエントラント](---)問題を解決でき、使用できる関数に制限がない」という利点があるため、
    signal()の代わりに、 signalfd() を使用する。 
 * 排他的にファイルをオープンできないため、tmpfile()を使用しない。代わりにmkstemp()を使用する。
 
