@@ -25,6 +25,7 @@ __この章の構成__
 &emsp;&emsp;&emsp; [std::thread](stdlib_and_concepts.md#SS_20_3_1)  
 &emsp;&emsp;&emsp; [std::mutex](stdlib_and_concepts.md#SS_20_3_2)  
 &emsp;&emsp;&emsp; [std::atomic](stdlib_and_concepts.md#SS_20_3_3)  
+&emsp;&emsp;&emsp; [std::condition_variable](stdlib_and_concepts.md#SS_20_3_4)  
 
 &emsp;&emsp; [ロック所有ラッパー](stdlib_and_concepts.md#SS_20_4)  
 &emsp;&emsp;&emsp; [std::lock_guard](stdlib_and_concepts.md#SS_20_4_1)  
@@ -552,6 +553,45 @@ atomicクラステンプレートは、型Tをアトミック操作するため�
                 // デストラクトされると、std::terminateが呼ばれる
 
     ASSERT_EQ(c.count_, expected);
+```
+
+### std::condition_variable <a id="SS_20_3_4"></a>
+condition_variable は、特定のイベントが発生するまでスレッドの待ち合わせを行うためのクラスである。
+最も単純な使用例を以下に示す(「[Spurious Wakeup](cpp_idioms.md#SS_21_9_10)」参照)。
+```cpp
+    //  example/stdlib_and__concepts/thread_ut.cpp 135
+
+    std::mutex              mutex;
+    std::condition_variable cond_var;
+    bool                    event_occured = false;
+
+    void notify()  // 通知を行うスレッドが呼び出す関数
+    {
+        auto lock = std::lock_guard{mutex};
+
+        event_occured = true;
+
+        cond_var.notify_all();  // wait()で待ち状態のすべてのスレッドを起こす
+    }
+
+    void wait()
+    {
+        auto lock = std::unique_lock{mutex};
+
+        // notifyされるのを待つ。
+        cond_var.wait(lock, []() noexcept { return event_occured; });  // Spurious Wakeup対策
+    }
+```
+```cpp
+    //  example/stdlib_and__concepts/thread_ut.cpp 162
+
+    std::thread t1{[]() { wait(); /* 通知待ち */ }};
+    std::thread t2{[]() { wait(); /* 通知待ち */ }};
+
+    notify();  // 通知待ちのスレッドに通知
+
+    t1.join();
+    t2.join();
 ```
 
 ## ロック所有ラッパー <a id="SS_20_4"></a>

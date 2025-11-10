@@ -1,7 +1,3 @@
-#include <sys/select.h>
-#include <sys/socket.h>
-#include <unistd.h>
-
 #include <algorithm>
 #include <array>
 #include <concepts>
@@ -600,32 +596,12 @@ void wait_busily() noexcept
     while (1) {
         sleep(1);
         if (xxx_flag) {
-            // @@@ ignore begin
-            // @@@ ignore end
             break;
         }
     }
-
-    // @@@ ignore begin
-    // @@@ ignore end
-}
-
-// OK selectでイベント発生を待つ。
-void wait_event(fd_set const& rfds, uint32_t wait_sec) noexcept
-{
-    while (1) {
-        auto rfds2 = rfds;
-        auto tv    = timeval{wait_sec, 0};
-
-        auto retval = select(1, &rfds2, 0, 0, &tv);
-
-        // @@@ ignore begin
-        IGNORE_UNUSED_VAR(retval);
-        // @@@ ignore end
-    }
-
     // @@@ ignore begin
     // @@@ ignore end
 }
 // @@@ sample end
+
 }  // namespace BusyLoopSample

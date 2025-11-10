@@ -27,7 +27,7 @@ __この章の構成__
 &emsp;&emsp;&emsp; [CopyAssignable要件](cpp_idioms.md#SS_21_3_5)  
 
 &emsp;&emsp; [関数設計のガイドライン](cpp_idioms.md#SS_21_4)  
-&emsp;&emsp;&emsp; [関数の仮引数の型](cpp_idioms.md#SS_21_4_1)  
+&emsp;&emsp;&emsp; [関数の引数と戻り値の型](cpp_idioms.md#SS_21_4_1)  
 &emsp;&emsp;&emsp; [サイクロマティック複雑度のクライテリア](cpp_idioms.md#SS_21_4_2)  
 &emsp;&emsp;&emsp; [関数の行数のクライテリア](cpp_idioms.md#SS_21_4_3)  
 
@@ -1639,8 +1639,8 @@ CopyAssignable要件は、C++において型がcopy代入をサポートする�
    コンパイラがデフォルトの実装(「[特殊メンバ関数](core_lang_spec.md#SS_19_6_1)」参照)を生成する。
 
 ## 関数設計のガイドライン <a id="SS_21_4"></a>
-### 関数の仮引数の型 <a id="SS_21_4_1"></a>
-仮引数の型に関するガイドラインを以下の表で表す。
+### 関数の引数と戻り値の型 <a id="SS_21_4_1"></a>
+関数の引数型および戻り値型に関するガイドラインを以下の表で表す。
 
 <table>
   <tr bgcolor="#cccccc">

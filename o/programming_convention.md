@@ -120,7 +120,7 @@ __この章の構成__
 &emsp;&emsp;&emsp; [メモリアロケーション](programming_convention.md#SS_3_5_6)  
 &emsp;&emsp;&emsp;&emsp; [new](programming_convention.md#SS_3_5_6_1)  
 &emsp;&emsp;&emsp;&emsp; [delete](programming_convention.md#SS_3_5_6_2)  
-&emsp;&emsp;&emsp;&emsp; [メモリ制約が強いシステムでの::operator new](programming_convention.md#SS_3_5_6_3)  
+&emsp;&emsp;&emsp;&emsp; [ダイナミックメモリアロケーションの制約が強いシステム](programming_convention.md#SS_3_5_6_3)  
 
 &emsp;&emsp;&emsp; [sizeof](programming_convention.md#SS_3_5_7)  
 &emsp;&emsp;&emsp; [ポインタ間の演算](programming_convention.md#SS_3_5_8)  
@@ -2218,7 +2218,7 @@ ___
   これに反すると[name-hiding](core_lang_spec.md#SS_19_12_9)のため、基底クラスのメンバ関数の可視範囲を縮小させてしまう。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 21
+    //  example/programming_convention/func_ut.cpp 17
 
     // NGな例
     class Base {
@@ -2270,13 +2270,13 @@ ___
 * 仮引数の型が互いに暗黙に変換できるオーバーロード関数の定義、使用には気を付ける。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 78
+    //  example/programming_convention/func_ut.cpp 74
 
     int32_t f(int32_t) { return 0; }
     int32_t f(int16_t) { return 1; }
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 86
+    //  example/programming_convention/func_ut.cpp 82
 
     auto i16 = int16_t{1};
 
@@ -2287,7 +2287,7 @@ ___
 * 暗黙の型変換による関数の使用範囲の拡張を防ぐには、オーバーロード関数を= deleteする。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 98
+    //  example/programming_convention/func_ut.cpp 94
 
     // 実引数がdoubleを認めないパターン
     int32_t f0(double) = delete;
@@ -2327,7 +2327,7 @@ ___
     }
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 140
+    //  example/programming_convention/func_ut.cpp 136
 
     char     c{'c'};
     int8_t   i8{1};
@@ -2364,7 +2364,7 @@ ___
 * boolへの型変換オペレータは、explicit付きで定義する。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 171
+    //  example/programming_convention/func_ut.cpp 167
 
     class A0 {
     public:
@@ -2409,7 +2409,7 @@ ___
       (その際、コードクローンを作りがちなので注意する(「[Copy-And-Swap](design_pattern.md#SS_9_6)」参照))。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 210
+    //  example/programming_convention/func_ut.cpp 206
 
     class Integer {
     public:
@@ -2453,7 +2453,7 @@ ___
   アンダーバーから始まる3文字以上の文字列を使用する。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 248
+    //  example/programming_convention/func_ut.cpp 244
 
     constexpr int32_t one_km{1000};
 
@@ -2479,7 +2479,7 @@ ___
     }
 ```
 ```cpp
-    //  example/programming_convention/func_ut.cpp 276
+    //  example/programming_convention/func_ut.cpp 272
 
     auto km = int32_t{3_kilo_meter};  // ユーザ定義リテラル演算子の利用
     auto m  = int32_t{3000_meter};    // ユーザ定義リテラル演算子の利用
@@ -2492,7 +2492,7 @@ ___
   引数が多くなりすぎる場合、その関数の引数用の構造体を定義し、それを使用して関数を呼び出す。
   この場合、[指示付き初期化](core_lang_spec.md#SS_19_10_4)を使用する。
 
-* 「[関数設計のガイドライン](cpp_idioms.md#SS_21_4)」の「[関数の仮引数の型](cpp_idioms.md#SS_21_4_1)」に従う。
+* 「[関数設計のガイドライン](cpp_idioms.md#SS_21_4)」の「[関数の引数と戻り値の型](cpp_idioms.md#SS_21_4_1)」に従う。
 
 * 仮引数を関数の戻り値として利用する場合、
     * 「関数が、仮引数がnullptrである場合の処理を行う」場合、ポインタ渡しにする。
@@ -2797,7 +2797,7 @@ ___
 * 自動変数は、定義と同時に初期化する。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 317
+    //  example/programming_convention/func_ut.cpp 313
 
     int32_t a, b;  // NG 一度に2つの変数定義
     int32_t index;
@@ -2895,8 +2895,7 @@ ___
     }
 ```
 
-* 戻り値を比較的大きなオブジェクトにする場合、パフォーマンスに注意する
-  (「[関数の戻り値オブジェクト](programming_convention.md#SS_3_9_3)」参照)。
+* 戻り値型は「[関数の引数と戻り値の型](cpp_idioms.md#SS_21_4_1)」に従う。
 
 * 関数が複数の値を返す場合、[std::optional](stdlib_and_concepts.md#SS_20_8)、std::pair、std::tupple、
   構造体オブジェクトを戻り値にして返す。パフォーマンスに著しい悪影響がない限り、
@@ -3071,7 +3070,7 @@ ___
 * 複数のスレッドから呼び出される関数は必ずスレッドセーフにする。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 419
+    //  example/programming_convention/func_ut.cpp 415
 
     int32_t var{0};
 
@@ -3101,7 +3100,7 @@ ___
   move代入演算子を[noexcept](core_lang_spec.md#SS_19_13_4)と宣言することは特に重要である。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 450
+    //  example/programming_convention/func_ut.cpp 446
 
     int32_t f() noexcept;  // OK fはno-fail保証
 
@@ -3127,7 +3126,7 @@ ___
   また、catch(...)は一番最後に書く(関数tryブロックの場合も同様にする)。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 470
+    //  example/programming_convention/func_ut.cpp 466
 
     struct ExceptionA : std::exception {};
     struct ExceptionB : ExceptionA {};
@@ -3187,7 +3186,7 @@ ___
   (C++17では[ill-formed](core_lang_spec.md#SS_19_14_1)になる)。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 533
+    //  example/programming_convention/func_ut.cpp 529
 
     int32_t f0()  // noexceptではないため、エクセプションを発生させることがある。
     {
@@ -3235,10 +3234,10 @@ ___
 * [演習-エクセプションの型](exercise_q.md#SS_22_3_13)  
 
 ### ビジーループ <a id="SS_3_3_10"></a>
-* 待ち合わせにビジーループを使わない。イベントドリブンにする。
+* ビジーループを使わない。[std::condition_variable](stdlib_and_concepts.md#SS_20_3_4)を使用してイベントドリブンにする。
 
 ```cpp
-    //  example/programming_convention/func_ut.cpp 595
+    //  example/programming_convention/func_ut.cpp 591
 
     // NG イベントドリブンにするべき
     void wait_busily() noexcept
@@ -3246,32 +3245,12 @@ ___
         while (1) {
             sleep(1);
             if (xxx_flag) {
-                // ...
                 break;
             }
         }
-
-        // ...
-    }
-
-    // OK selectでイベント発生を待つ。
-    void wait_event(fd_set const& rfds, uint32_t wait_sec) noexcept
-    {
-        while (1) {
-            auto rfds2 = rfds;
-            auto tv    = timeval{wait_sec, 0};
-
-            auto retval = select(1, &rfds2, 0, 0, &tv);
-
-            // ...
-        }
-
         // ...
     }
 ```
-
-* [注意] C++11からイベント通知のためにstd::condition_variable
-  (「[並行処理](concurrency.md#SS_12)」参照)が導入された。
 
 ### 非メンバ関数 <a id="SS_3_3_11"></a>
 * 下記のような関数を除き、グローバル名前空間に非メンバ関数を定義しない。
@@ -3724,7 +3703,7 @@ ___
     auto e2 = (a ? b : (c = d));  // OK 上記NG式と同じ意味
 ```
 
-* [注意] 複合代入式と、それと等価に見える式での演算順序の違いに気を付ける。
+* 複合代入式とそれと等価に見える式での演算順序の違いに気を付ける。
 
 ```cpp
     //  example/programming_convention/operator_ut.cpp 60
@@ -3783,10 +3762,8 @@ ___
 ```
 
 ### ビット演算 <a id="SS_3_5_3"></a>
-* オーバーフロー、アンダーフローしたときの符号の扱い方が未定義であるため、
-  signed変数へのビット演算を使用しない。
-  (「2の階乗での除算は、ビット演算に置き換えることで実行速度が速くなる」というのは都市伝説である)。
-* [注意] ビット演算にはstd::bitsetや[BitmaskType](design_pattern.md#SS_9_2)を使用することもできる。
+* 「[ビットシフトにおける未定義動作](core_lang_spec.md#SS_19_1_5_1)」を回避することは困難であるため、
+  特別な理由がない限り、 可読性と安全性を優先して、ビット演算にはstd::bitsetや[BitmaskType](design_pattern.md#SS_9_2)を使用する。
 
 ### 論理演算 <a id="SS_3_5_4"></a>
 * &&や||の論理演算子の右オペランドで[副作用](cpp_idioms.md#SS_21_9_12)のある処理をしない。
@@ -3840,14 +3817,12 @@ ___
   また、特別な理由でnewした場合、そのポインタは[スマートポインタ](stdlib_and_concepts.md#SS_20_5)で管理する。
 * `std::shared_ptr<>`でダイナミックに生成したオブジェクトを管理する場合、
   [オブジェクトの循環所有](cpp_idioms.md#SS_21_2_3)が発生しないように気を付ける(適切に[std::weak_ptr](stdlib_and_concepts.md#SS_20_5_3)を使う)。
-* new(nothrow)、プレースメントnewは使用しない。
-* 配列型オブジェクトのダイナミックな生成を避け、
-  代わりにstd::arrayをダイナミックに生成するか、std::vectorを使用する。
-* newの戻り値がnullptrであることはない、
-  もしくはnewがnullptrを返してきた場合、リカバリーすることはできないため、
-  new演算子の返り値をnullptrと比較しない。
-    * operator newを独自に実装した場合でも、newはnullptrを返してはならない。
-      メモリが不足した場合、assert(false)させるかstd::bad_allocをthrowする。
+* [プレースメントnew](core_lang_spec.md#SS_19_6_9)を使用しない。
+* `new T[N]`を使用しない。代わりにstd::arrayをダイナミックに生成するか、std::vectorを使用する。
+* [new (std::nothrow)](core_lang_spec.md#SS_19_6_10)を使わない限り、
+  newの戻り値がnullptrであることはないため、new演算子の返り値をnullptrと比較しない。
+* [new/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4)する場合、newはnullptrを返さないようにする。
+  メモリ不足した場合、ソフト全体をエラー終了させる。
 * スタック上で生成しても差し支えないオブジェクトをダイナミックに生成しない。
 * newを禁止したいクラスには、privateなoperator new()を宣言する(定義は不要)か、= deleteする。
 
@@ -3915,26 +3890,25 @@ ___
 
 * [演習-delete](exercise_q.md#SS_22_5_2)  
 
-#### メモリ制約が強いシステムでの::operator new <a id="SS_3_5_6_3"></a>
-* [注意]このルールは以下のようなソフトウェアを対象とする。  
-    * 使用できるメモリが少なく、且つほとんど再起動されない。
-    * メモリリークの可能性を否定できない3rdパーティライブラリを使っている。
-    * MISRA/AUTOSAR C++等のヒープの使用制限が強い規約を守る必要がある
-      (ヒープを使った場合の最長処理時間の決定が難しいためリアルタイム性に問題がある)。
+#### ダイナミックメモリアロケーションの制約が強いシステム <a id="SS_3_5_6_3"></a>
+このルールは以下のようなやや特殊なソフトウェアを対象とする。  
 
-  このようなソフトウェア開発においてはこのルールは重要であるが、
-  逆にそのような制限のないソフトウェア開発においては不要である。
+* 使用できるメモリが少なく、且つほとんど再起動されない。
+* メモリリークの可能性を否定できない3rdパーティライブラリを使っている。
+* MISRA/AUTOSAR C++等のヒープの使用制限が強い制約(リアルタイム性の遵守)を守る必要がある
+  (「[malloc/freeの問題点](dynamic_memory_allocation.md#SS_14_1)」参照)。
+
+
+以上のようなシステム開発においては、  
 
 * デフォルトのグローバルnewを使用しない。
     * リアルタイム性に制約のあるシステムでは、
       「[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)」で述べたようなnewを実装する。
     * メモリ制限が強いシステムでは、ダイナミックなオブジェクト生成を避け、
-      やむを得ない場合、「[クラスnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_3)」
-      で述べたようなクラス毎のnewを実装する。
-
-* エクセプションの送出にダイナミックなメモリアロケーションを使用している場合
-  (多くのコンパイラはmalloc/newを用いてエクセプション送出を行っている)、
-  エクセプションの送出をしない(「[エクセプション処理機構の変更](dynamic_memory_allocation.md#SS_14_3_2)」参照)。
+      やむを得ない場合、「[クラスnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_3)」で述べたようなクラス毎のnewを実装する。
+* malloc/newを用いてエクセプション送出を行っているツールチェーンを使用している場合、
+ 「[エクセプション処理機構の変更](dynamic_memory_allocation.md#SS_14_3_2)」で述べたような方法でリアルタイム制を確保するか、
+  エクセプションを使用しない。
 
 
 ### sizeof <a id="SS_3_5_7"></a>
@@ -4042,7 +4016,6 @@ ___
 ```
 
 ### RTTI <a id="SS_3_5_9"></a>
-* [注意] [RAII(scoped guard)](design_pattern.md#SS_9_10)との混乱に気を付ける。
 * [Run-time Type Information](core_lang_spec.md#SS_19_4_10)を使用したラインタイム時の型による場合分けは、
   それ以外に解決方法がない場合や、実装が大幅にシンプルになる場合を除き行わない
   (「[等価性のセマンティクス](cpp_idioms.md#SS_21_3_1)」参照)。
@@ -4982,7 +4955,7 @@ ___
     3. コピーされたオブジェクトを返す。
 
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 14
+    //  example/programming_convention/runtime_ut.cpp 11
 
     class A {
     public:
@@ -5024,7 +4997,7 @@ ___
     }
 ```
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 41
+    //  example/programming_convention/runtime_ut.cpp 37
 
     constexpr auto count = 10000000U;
 
@@ -5055,7 +5028,7 @@ ___
   operator Xではなく、operator X=を使う。
 
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 72
+    //  example/programming_convention/runtime_ut.cpp 70
 
     class A {
     public:
@@ -5077,7 +5050,7 @@ ___
 
 ```
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 103
+    //  example/programming_convention/runtime_ut.cpp 101
 
     auto a = A{1};
     auto b = A{2};
@@ -5092,48 +5065,8 @@ ___
 * ソースコードの統一性のため、このオーバーヘッドがない基本型についても、同じルー ルを適用する。
 
 ### 関数の戻り値オブジェクト <a id="SS_3_9_3"></a>
-* 基本型やenum、`std::unique_ptr<>`、
-  `std::optional<>`等のサイズの小さいクラス以外のオブジェクトを関数の戻り値にしない。
-* [注意] ローカルオブジェクトに対して[RVO(Return Value Optimization)](core_lang_spec.md#SS_19_15_1)が有効であれば、
-  そのオブジェクトを戻り値にしても良い。
-* [注意] stdのコンテナは、RVOが有効でなくてもmoveが行われるため、関数の戻り値として使用しても良い。
-* [注意] std::stringについては、RVOに加えて、
-  [SSO(Small String Optimization)](stdlib_and_concepts.md#SS_20_11_1)が使用されていることが多い。
-  そのようなコンパイラを使用している場合、std::stringは小さいオブジェクトとして扱って良い。
+* 戻り値型は「[関数の引数と戻り値の型](cpp_idioms.md#SS_21_4_1)」に従う。
 
-```cpp
-    //  example/programming_convention/runtime_ut.cpp 119
-
-    struct HugeClass {
-        int32_t a{0};
-        int32_t array[100000]{};
-    };
-
-    HugeClass f() noexcept  // NG 巨大なオブジェクトのリターン
-    {
-        auto obj = HugeClass{};
-
-        // ...
-
-        return obj;  // RVOが使えない場合パフォーマンス問題を引き起こす可能性がある。
-    }
-
-    class A {
-    public:
-        // RVO、SSOをサポートしているコンパイラを使用している場合、下記の2つのGetNameの
-        // パフォーマンスに大差はない(ほとんどのC++コンパイラはRVO、SSOをサポートしている)。
-        // 使い勝手は、std::string GetName()の方が良い。
-        static std::string GetName()  // OK この程度なら問題はない
-        {
-            return "sample";
-        }
-
-        static void GetName(std::string& s)  // OK
-        {
-            s = "sample";
-        }
-    };
-```
 
 ### move処理 <a id="SS_3_9_4"></a>
 * [ディープコピー](cpp_idioms.md#SS_21_7_2)の実装を持つクラスへのcopy代入の多くがrvalueから行われるのであれば、
@@ -5142,7 +5075,7 @@ ___
   [RVO(Return Value Optimization)](core_lang_spec.md#SS_19_15_1)の阻害になるため、そのオブジェクトをstd::moveしない。
 
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 154
+    //  example/programming_convention/runtime_ut.cpp 119
 
     std::string MakeString(int a, int b)
     {
@@ -5174,7 +5107,7 @@ ___
   以下に示す通り、このような仮引数の型をstd::string const&にすることが最適であるとは限らない。
 
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 191
+    //  example/programming_convention/runtime_ut.cpp 156
     // テスト０用関数
 
     void f0(std::string const& str) { /* strを使用した何らかの処理 */ }
@@ -5182,7 +5115,7 @@ ___
     void f2(std::string_view str)   { /* strを使用した何らかの処理 */ }
 ```
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 204
+    //  example/programming_convention/runtime_ut.cpp 169
     // テスト０―０
 
     auto str     = std::string{__func__};
@@ -5199,7 +5132,7 @@ ___
     // std::string const&か、std::string_viewとするのが効率的である。
 ```
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 228
+    //  example/programming_convention/runtime_ut.cpp 193
     // テスト０―１
 
     auto f0_msec = MeasurePerformance(10000000, [] { f0(__func__); });
@@ -5222,7 +5155,7 @@ ___
     // std::string_viewを選択すべきだろう。
 ```
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 257
+    //  example/programming_convention/runtime_ut.cpp 222
     // テスト１用クラス
 
     class A0 {
@@ -5250,7 +5183,24 @@ ___
     };
 ```
 ```cpp
-    //  example/programming_convention/runtime_ut.cpp 312
+    //  example/programming_convention/runtime_ut.cpp 253
+    // テスト１―０
+
+    auto str     = std::string{__func__};
+    auto a0_msec = MeasurePerformance(10000000, [&str] { A0 a{str}; });
+    auto a1_msec = MeasurePerformance(10000000, [&str] { A1 a{str}; });
+    auto a2_msec = MeasurePerformance(10000000, [&str] { A2 a{str}; });
+
+    // このドキュメントを開発しているPCでは上記の結果は以下の様になる。
+    // A0 :258 msec
+    // A1 :314 msec
+    // A2 :683 msec
+    // つまり、A0 < A1 < A2であり、A0とA1は大差がなく、A2は極めて非効率である。
+    // 従って、stringオブジェクトを関数に渡す場合の引数の型は、
+    // std::string const&か、std::stringとするのが効率的である。
+```
+```cpp
+    //  example/programming_convention/runtime_ut.cpp 277
     // テスト１―１
 
     auto a0_msec = MeasurePerformance(10000000, [] { A0 a{__func__}; });

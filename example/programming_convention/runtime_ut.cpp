@@ -8,9 +8,6 @@
 
 namespace OperatorIncExample {
 
-SUPPRESS_WARN_CLANG_BEGIN;
-SUPPRESS_WARN_CLANG_UNUSED_PRIVATE_FIELD;
-
 // @@@ sample begin 0:0
 
 class A {
@@ -35,7 +32,6 @@ private:
 };
 // @@@ sample end
 
-namespace {
 TEST(ProgrammingConvention, inc_pre_post)
 {
     // @@@ sample begin 0:1
@@ -65,10 +61,12 @@ TEST(ProgrammingConvention, inc_pre_post)
     ASSERT_EQ(count, a_post);
     ASSERT_EQ(count, a_pre);
 }
-}  // namespace
 }  // namespace OperatorIncExample
 
 namespace OperatorPlusExample {
+SUPPRESS_WARN_CLANG_BEGIN;
+SUPPRESS_WARN_CLANG_UNUSED_PRIVATE_FIELD;
+
 // @@@ sample begin 1:0
 
 class A {
@@ -116,42 +114,9 @@ TEST(ProgrammingConvention, op_plus)
 
 namespace ReturnObjectSample {
 
-// @@@ sample begin 2:0
-
-struct HugeClass {
-    int32_t a{0};
-    int32_t array[100000]{};
-};
-
-HugeClass f() noexcept  // NG 巨大なオブジェクトのリターン
-{
-    auto obj = HugeClass{};
-
-    // @@@ ignore begin
-    // @@@ ignore end
-
-    return obj;  // RVOが使えない場合パフォーマンス問題を引き起こす可能性がある。
-}
-
-class A {
-public:
-    // RVO、SSOをサポートしているコンパイラを使用している場合、下記の2つのGetNameの
-    // パフォーマンスに大差はない(ほとんどのC++コンパイラはRVO、SSOをサポートしている)。
-    // 使い勝手は、std::string GetName()の方が良い。
-    static std::string GetName()  // OK この程度なら問題はない
-    {
-        return "sample";
-    }
-
-    static void GetName(std::string& s)  // OK
-    {
-        s = "sample";
-    }
-};
-// @@@ sample end
 SUPPRESS_WARN_CLANG_END;
 
-// @@@ sample begin 3:0
+// @@@ sample begin 2:0
 
 std::string MakeString(int a, int b)
 {
@@ -188,7 +153,7 @@ namespace String_StringRef_StringView {
 SUPPRESS_WARN_BEGIN;
 SUPPRESS_WARN_UNUSED_PARAM;
 // clang-format off
-// @@@ sample begin 4:0
+// @@@ sample begin 3:0
 // テスト０用関数
 
 void f0(std::string const& str) { /* strを使用した何らかの処理 */ }
@@ -201,7 +166,7 @@ SUPPRESS_WARN_END;
 namespace {
 TEST(ProgrammingConvention, string_string_ref_string_view_0)
 {
-    // @@@ sample begin 4:1
+    // @@@ sample begin 3:1
     // テスト０―０
 
     auto str     = std::string{__func__};
@@ -225,7 +190,7 @@ TEST(ProgrammingConvention, string_string_ref_string_view_0)
 
 TEST(ProgrammingConvention, string_string_ref_string_view_1)
 {
-    // @@@ sample begin 4:2
+    // @@@ sample begin 3:2
     // テスト０―１
 
     auto f0_msec = MeasurePerformance(10000000, [] { f0(__func__); });
@@ -254,7 +219,7 @@ TEST(ProgrammingConvention, string_string_ref_string_view_1)
 }
 }  // namespace
 
-// @@@ sample begin 4:3
+// @@@ sample begin 3:3
 // テスト１用クラス
 
 class A0 {
@@ -285,7 +250,7 @@ private:
 namespace {
 TEST(ProgrammingConvention, string_string_ref_string_view_2)
 {
-    // @@@ sample begin 4:4
+    // @@@ sample begin 3:4
     // テスト１―０
 
     auto str     = std::string{__func__};
@@ -309,7 +274,7 @@ TEST(ProgrammingConvention, string_string_ref_string_view_2)
 
 TEST(ProgrammingConvention, string_string_ref_string_view_3)
 {
-    // @@@ sample begin 4:4
+    // @@@ sample begin 3:5
     // テスト１―１
 
     auto a0_msec = MeasurePerformance(10000000, [] { A0 a{__func__}; });

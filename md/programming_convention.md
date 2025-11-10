@@ -998,7 +998,7 @@ ___
   引数が多くなりすぎる場合、その関数の引数用の構造体を定義し、それを使用して関数を呼び出す。
   この場合、[指示付き初期化](---)を使用する。
 
-* 「[関数設計のガイドライン](---)」の「[関数の仮引数の型](---)」に従う。
+* 「[関数設計のガイドライン](---)」の「[関数の引数と戻り値の型](---)」に従う。
 
 * 仮引数を関数の戻り値として利用する場合、
     * 「関数が、仮引数がnullptrである場合の処理を行う」場合、ポインタ渡しにする。
@@ -1104,8 +1104,7 @@ ___
     // @@@ example/programming_convention/func_return_ut.cpp #0:0 begin
 ```
 
-* 戻り値を比較的大きなオブジェクトにする場合、パフォーマンスに注意する
-  (「[関数の戻り値オブジェクト](---)」参照)。
+* 戻り値型は「[関数の引数と戻り値の型](---)」に従う。
 
 * 関数が複数の値を返す場合、[std::optional](---)、std::pair、std::tupple、
   構造体オブジェクトを戻り値にして返す。パフォーマンスに著しい悪影響がない限り、
@@ -1195,14 +1194,11 @@ ___
 * [演習-エクセプションの型](---)  
 
 ### ビジーループ
-* 待ち合わせにビジーループを使わない。イベントドリブンにする。
+* ビジーループを使わない。[std::condition_variable](---)を使用してイベントドリブンにする。
 
 ```cpp
     // @@@ example/programming_convention/func_ut.cpp #5:0 begin
 ```
-
-* [注意] C++11からイベント通知のためにstd::condition_variable
-  (「[並行処理](---)」参照)が導入された。
 
 ### 非メンバ関数
 * 下記のような関数を除き、グローバル名前空間に非メンバ関数を定義しない。
@@ -1379,7 +1375,7 @@ ___
     // @@@ example/programming_convention/operator_ut.cpp #0:0 begin -1
 ```
 
-* [注意] 複合代入式と、それと等価に見える式での演算順序の違いに気を付ける。
+* 複合代入式とそれと等価に見える式での演算順序の違いに気を付ける。
 
 ```cpp
     // @@@ example/programming_convention/operator_ut.cpp #1:0 begin -1
@@ -1399,10 +1395,8 @@ ___
 ```
 
 ### ビット演算
-* オーバーフロー、アンダーフローしたときの符号の扱い方が未定義であるため、
-  signed変数へのビット演算を使用しない。
-  (「2の階乗での除算は、ビット演算に置き換えることで実行速度が速くなる」というのは都市伝説である)。
-* [注意] ビット演算にはstd::bitsetや[BitmaskType](---)を使用することもできる。
+* 「[ビットシフトにおける未定義動作](---)」を回避することは困難であるため、
+  特別な理由がない限り、 可読性と安全性を優先して、ビット演算にはstd::bitsetや[BitmaskType](---)を使用する。
 
 ### 論理演算
 * &&や||の論理演算子の右オペランドで[副作用](---)のある処理をしない。
@@ -1428,14 +1422,12 @@ ___
   また、特別な理由でnewした場合、そのポインタは[スマートポインタ](---)で管理する。
 * `std::shared_ptr<>`でダイナミックに生成したオブジェクトを管理する場合、
   [オブジェクトの循環所有](---)が発生しないように気を付ける(適切に[std::weak_ptr](---)を使う)。
-* new(nothrow)、プレースメントnewは使用しない。
-* 配列型オブジェクトのダイナミックな生成を避け、
-  代わりにstd::arrayをダイナミックに生成するか、std::vectorを使用する。
-* newの戻り値がnullptrであることはない、
-  もしくはnewがnullptrを返してきた場合、リカバリーすることはできないため、
-  new演算子の返り値をnullptrと比較しない。
-    * operator newを独自に実装した場合でも、newはnullptrを返してはならない。
-      メモリが不足した場合、assert(false)させるかstd::bad_allocをthrowする。
+* [プレースメントnew](---)を使用しない。
+* `new T[N]`を使用しない。代わりにstd::arrayをダイナミックに生成するか、std::vectorを使用する。
+* [new (std::nothrow)](---)を使わない限り、
+  newの戻り値がnullptrであることはないため、new演算子の返り値をnullptrと比較しない。
+* [new/deleteのオーバーロード](---)する場合、newはnullptrを返さないようにする。
+  メモリ不足した場合、ソフト全体をエラー終了させる。
 * スタック上で生成しても差し支えないオブジェクトをダイナミックに生成しない。
 * newを禁止したいクラスには、privateなoperator new()を宣言する(定義は不要)か、= deleteする。
 
@@ -1461,26 +1453,25 @@ ___
 
 * [演習-delete](---)  
 
-#### メモリ制約が強いシステムでの::operator new
-* [注意]このルールは以下のようなソフトウェアを対象とする。  
-    * 使用できるメモリが少なく、且つほとんど再起動されない。
-    * メモリリークの可能性を否定できない3rdパーティライブラリを使っている。
-    * MISRA/AUTOSAR C++等のヒープの使用制限が強い規約を守る必要がある
-      (ヒープを使った場合の最長処理時間の決定が難しいためリアルタイム性に問題がある)。
+#### ダイナミックメモリアロケーションの制約が強いシステム
+このルールは以下のようなやや特殊なソフトウェアを対象とする。  
 
-  このようなソフトウェア開発においてはこのルールは重要であるが、
-  逆にそのような制限のないソフトウェア開発においては不要である。
+* 使用できるメモリが少なく、且つほとんど再起動されない。
+* メモリリークの可能性を否定できない3rdパーティライブラリを使っている。
+* MISRA/AUTOSAR C++等のヒープの使用制限が強い制約(リアルタイム性の遵守)を守る必要がある
+  (「[malloc/freeの問題点](---)」参照)。
+
+
+以上のようなシステム開発においては、  
 
 * デフォルトのグローバルnewを使用しない。
     * リアルタイム性に制約のあるシステムでは、
       「[グローバルnew/deleteのオーバーロード](---)」で述べたようなnewを実装する。
     * メモリ制限が強いシステムでは、ダイナミックなオブジェクト生成を避け、
-      やむを得ない場合、「[クラスnew/deleteのオーバーロード](---)」
-      で述べたようなクラス毎のnewを実装する。
-
-* エクセプションの送出にダイナミックなメモリアロケーションを使用している場合
-  (多くのコンパイラはmalloc/newを用いてエクセプション送出を行っている)、
-  エクセプションの送出をしない(「[エクセプション処理機構の変更](---)」参照)。
+      やむを得ない場合、「[クラスnew/deleteのオーバーロード](---)」で述べたようなクラス毎のnewを実装する。
+* malloc/newを用いてエクセプション送出を行っているツールチェーンを使用している場合、
+ 「[エクセプション処理機構の変更](---)」で述べたような方法でリアルタイム制を確保するか、
+  エクセプションを使用しない。
 
 
 ### sizeof
@@ -1525,7 +1516,6 @@ ___
 ```
 
 ### RTTI
-* [注意] [RAII(scoped guard)](---)との混乱に気を付ける。
 * [Run-time Type Information](---)を使用したラインタイム時の型による場合分けは、
   それ以外に解決方法がない場合や、実装が大幅にシンプルになる場合を除き行わない
   (「[等価性のセマンティクス](---)」参照)。
@@ -1891,18 +1881,8 @@ ___
 * ソースコードの統一性のため、このオーバーヘッドがない基本型についても、同じルー ルを適用する。
 
 ### 関数の戻り値オブジェクト
-* 基本型やenum、`std::unique_ptr<>`、
-  `std::optional<>`等のサイズの小さいクラス以外のオブジェクトを関数の戻り値にしない。
-* [注意] ローカルオブジェクトに対して[RVO(Return Value Optimization)](---)が有効であれば、
-  そのオブジェクトを戻り値にしても良い。
-* [注意] stdのコンテナは、RVOが有効でなくてもmoveが行われるため、関数の戻り値として使用しても良い。
-* [注意] std::stringについては、RVOに加えて、
-  [SSO(Small String Optimization)](---)が使用されていることが多い。
-  そのようなコンパイラを使用している場合、std::stringは小さいオブジェクトとして扱って良い。
+* 戻り値型は「[関数の引数と戻り値の型](---)」に従う。
 
-```cpp
-    // @@@ example/programming_convention/runtime_ut.cpp #2:0 begin
-```
 
 ### move処理
 * [ディープコピー](---)の実装を持つクラスへのcopy代入の多くがrvalueから行われるのであれば、
@@ -1911,7 +1891,7 @@ ___
   [RVO(Return Value Optimization)](---)の阻害になるため、そのオブジェクトをstd::moveしない。
 
 ```cpp
-    // @@@ example/programming_convention/runtime_ut.cpp #3:0 begin
+    // @@@ example/programming_convention/runtime_ut.cpp #2:0 begin
 ```
 
 ### std::string vs std::string const& vs std::string_view
@@ -1919,19 +1899,22 @@ ___
   以下に示す通り、このような仮引数の型をstd::string const&にすることが最適であるとは限らない。
 
 ```cpp
-    // @@@ example/programming_convention/runtime_ut.cpp #4:0 begin
+    // @@@ example/programming_convention/runtime_ut.cpp #3:0 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/runtime_ut.cpp #4:1 begin -1
+    // @@@ example/programming_convention/runtime_ut.cpp #3:1 begin -1
 ```
 ```cpp
-    // @@@ example/programming_convention/runtime_ut.cpp #4:2 begin -1
+    // @@@ example/programming_convention/runtime_ut.cpp #3:2 begin -1
 ```
 ```cpp
-    // @@@ example/programming_convention/runtime_ut.cpp #4:3 begin
+    // @@@ example/programming_convention/runtime_ut.cpp #3:3 begin
 ```
 ```cpp
-    // @@@ example/programming_convention/runtime_ut.cpp #4:4 begin -1
+    // @@@ example/programming_convention/runtime_ut.cpp #3:4 begin -1
+```
+```cpp
+    // @@@ example/programming_convention/runtime_ut.cpp #3:5 begin -1
 ```
 
 ### extern template
