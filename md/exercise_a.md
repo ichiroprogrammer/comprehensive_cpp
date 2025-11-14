@@ -479,7 +479,7 @@ ___
 * [演習-SOLIDの定義](---)へ戻る。
 
 
-## デザインパターン
+## イデオム・デザインパターン
 ### 解答例-ガード節
 ```cpp
     // @@@ exercise/design_pattern_a/guard.cpp #0:0 begin

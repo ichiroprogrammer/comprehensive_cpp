@@ -12,11 +12,11 @@ VPATH=./md:deep/md/:deps/md:essential/md
 MDS:=introduction.md \
      software_practice.md programming_convention.md code_analysis.md \
      coding_style.md naming_practice.md \
-     comment.md solid.md design_pattern.md \
+     comment.md solid.md \
      architecture.md process_and_infra.md concurrency.md template_meta_programming.md \
      dynamic_memory_allocation.md debug.md dev_tools.md deps.md cpp_improve.md \
      core_lang_spec.md stdlib_and_concepts.md cpp_idioms.md \
-     exercise_q.md exercise_a.md bibliography.md afterword.md
+     exercise_q.md exercise_a.md bibliography.md afterword.md  appendix.md
 
 INDEX_OPT:=--exclude $(addsuffix :1,$(MDS) sample_code.md)
 
