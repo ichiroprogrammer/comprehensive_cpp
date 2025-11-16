@@ -631,7 +631,7 @@ ___
     }
 ```
 
-* 参照 [スライシング](cpp_idioms.md#SS_21_7_3)
+* 参照 [スライシング](cpp_idioms.md#SS_21_9_3)
 * [解答例-スライシング](exercise_a.md#SS_23_2_6)
 
 ### 演習-オブジェクトの所有権 <a id="SS_22_2_7"></a>
@@ -715,7 +715,7 @@ ___
     }
 ```
 
-* 参照 [オブジェクトの所有権](cpp_idioms.md#SS_21_2)
+* 参照 [オブジェクトの所有権](cpp_idioms.md#SS_21_4)
 * [解答例-オブジェクトの所有権](exercise_a.md#SS_23_2_7)
 
 
@@ -3402,7 +3402,7 @@ ___
     }
 ```
 
-* 参照 [ガード節](design_pattern.md#SS_9_1)
+* 参照 [ガード節(Early Return)](cpp_idioms.md#SS_21_1_1)
 * [解答例-ガード節](exercise_a.md#SS_23_9_1)
 
 
@@ -3460,7 +3460,7 @@ ___
     }
 ```
 
-* 参照 [BitmaskType](design_pattern.md#SS_9_2)
+* 参照 [BitmaskType](cpp_idioms.md#SS_21_2_3)
 * [解答例-BitmaskType](exercise_a.md#SS_23_9_2)
 
 
@@ -3511,7 +3511,7 @@ ___
 
 ```
 
-* 参照 [Pimpl](design_pattern.md#SS_9_3)
+* 参照 [Pimpl](cpp_idioms.md#SS_21_2_1)
 * [解答例-Pimpl](exercise_a.md#SS_23_9_3)
 
 
@@ -3630,7 +3630,7 @@ ___
     }
 ```
 
-* 参照 [Accessor](design_pattern.md#SS_9_5)
+* 参照 [Accessor](cpp_idioms.md#SS_21_1_5)
 * [解答例-Accessor](exercise_a.md#SS_23_9_5)
 
 
@@ -3704,7 +3704,7 @@ ___
     }
 ```
 
-* 参照 [Copy-And-Swap](design_pattern.md#SS_9_6)
+* 参照 [Copy-And-Swap](cpp_idioms.md#SS_21_1_3)
 * [解答例-Copy-And-Swap](exercise_a.md#SS_23_9_6)
 
 
@@ -3819,7 +3819,7 @@ ___
     }
 ```
 
-* 参照 [Immutable](design_pattern.md#SS_9_7)
+* 参照 [Immutable](cpp_idioms.md#SS_21_1_6)
 * [解答例-Immutable](exercise_a.md#SS_23_9_7)
 
 
@@ -3878,7 +3878,7 @@ ___
     }
 ```
 
-* 参照 [Clone(仮想コンストラクタ)](design_pattern.md#SS_9_8)
+* 参照 [Clone(仮想コンストラクタ)](design_pattern.md#SS_9_1_3)
 * [解答例-Clone](exercise_a.md#SS_23_9_8)
 
 
@@ -3993,7 +3993,7 @@ ___
     }
 ```
 
-* 参照 [NVI(non virtual interface)](design_pattern.md#SS_9_9)
+* 参照 [NVI(non virtual interface)](cpp_idioms.md#SS_21_1_7)
 * [解答例-NVI](exercise_a.md#SS_23_9_9)
 
 
@@ -4066,7 +4066,7 @@ ___
     }
 ```
 
-* 参照 [RAII(scoped guard)](design_pattern.md#SS_9_10)
+* 参照 [RAII(scoped guard)](cpp_idioms.md#SS_21_1_2)
 * [解答例-RAII](exercise_a.md#SS_23_9_11)
 
 
@@ -4102,7 +4102,7 @@ ___
     }
 ```
 
-* 参照 [Future](design_pattern.md#SS_9_11)
+* 参照 [Future](cpp_idioms.md#SS_21_2_4)
 * [解答例-Future](exercise_a.md#SS_23_9_12)
 
 
@@ -4182,7 +4182,7 @@ ___
     }
 ```
 
-* 参照 [DI(dependency injection)](design_pattern.md#SS_9_12)
+* 参照 [DI(dependency injection)](design_pattern.md#SS_9_3_1)
 * [解答例-DI](exercise_a.md#SS_23_9_13)
 
 
@@ -4259,7 +4259,7 @@ ___
     }
 ```
 
-* 参照 [Singleton](design_pattern.md#SS_9_13)
+* 参照 [Singleton](design_pattern.md#SS_9_1_1)
 * [解答例-Singleton](exercise_a.md#SS_23_9_14)
 
 
@@ -4348,7 +4348,7 @@ ___
     }
 ```
 
-* 参照 [State](design_pattern.md#SS_9_14)
+* 参照 [State](design_pattern.md#SS_9_2_3)
 * [解答例-State](exercise_a.md#SS_23_9_15)
 
 
@@ -4429,7 +4429,7 @@ ___
     }
 ```
 
-* 参照 [Null Object](design_pattern.md#SS_9_15)
+* 参照 [Null Object](cpp_idioms.md#SS_21_2_5)
 * [解答例-Null Object](exercise_a.md#SS_23_9_16)
 
 
@@ -4566,7 +4566,7 @@ ___
     }
 ```
 
-* 参照 [Templateメソッド](design_pattern.md#SS_9_16)
+* 参照 [Templateメソッド](design_pattern.md#SS_9_2_1)
 * [解答例-Templateメソッド](exercise_a.md#SS_23_9_17)
 
 
@@ -4714,7 +4714,7 @@ ___
     }
 ```
 
-* 参照 [Factory](design_pattern.md#SS_9_17)
+* 参照 [Factory](design_pattern.md#SS_9_1_4)
 * [解答例-Factory](exercise_a.md#SS_23_9_18)
 
 
@@ -4827,7 +4827,7 @@ ___
     }
 ```
 
-* 参照 [Named Constructor](design_pattern.md#SS_9_18)
+* 参照 [Named Constructor](design_pattern.md#SS_9_1_2)
 * [解答例-Named Constructor](exercise_a.md#SS_23_9_19)
 
 
@@ -4894,7 +4894,7 @@ ___
     }
 ```
 
-* 参照 [Proxy](design_pattern.md#SS_9_19)
+* 参照 [Proxy](design_pattern.md#SS_9_2_6)
 * [解答例-Proxy](exercise_a.md#SS_23_9_20)
 
 
@@ -4993,7 +4993,7 @@ ___
     }
 ```
 
-* 参照 [Strategy](design_pattern.md#SS_9_20)
+* 参照 [Strategy](design_pattern.md#SS_9_2_2)
 * [解答例-Strategy](exercise_a.md#SS_23_9_21)
 
 
@@ -5112,7 +5112,7 @@ ___
     }
 ```
 
-* 参照 [Visitor](design_pattern.md#SS_9_21)
+* 参照 [Visitor](design_pattern.md#SS_9_2_5)
 * [解答例-Visitor](exercise_a.md#SS_23_9_22)
 
 
@@ -5263,7 +5263,7 @@ ___
     }
 ```
 
-* 参照 [CRTP(curiously recurring template pattern)](design_pattern.md#SS_9_22)
+* 参照 [CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_21_1_4)
 * [解答例-CRTP](exercise_a.md#SS_23_9_23)
 
 
@@ -5348,7 +5348,7 @@ ___
     }
 ```
 
-* 参照 [Observer](design_pattern.md#SS_9_23)
+* 参照 [Observer](design_pattern.md#SS_9_2_4)
 * [解答例-Observer](exercise_a.md#SS_23_9_24)
 
 

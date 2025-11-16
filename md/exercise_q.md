@@ -700,7 +700,7 @@ ___
     // @@@ exercise/design_pattern_q/guard.cpp #0:0 begin
 ```
 
-* 参照 [ガード節](---)
+* 参照 [ガード節(Early Return)](---)
 * [解答例-ガード節](---)
 
 

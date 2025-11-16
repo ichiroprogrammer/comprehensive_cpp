@@ -45,7 +45,7 @@ ___
 
 ### g++の警告機能 <a id="SS_4_1_1"></a>
 本ドキュメントのサンプルコードは、
-以下のような[g++](cpp_idioms.md#SS_21_10_1)/[clang++](cpp_idioms.md#SS_21_10_2)の警告機能を使用してビルドを行っている。
+以下のような[g++](cpp_idioms.md#SS_21_12_1)/[clang++](cpp_idioms.md#SS_21_12_2)の警告機能を使用してビルドを行っている。
 
 ```Makefile
     -Werror -Wall -Wextra -Weffc++
@@ -94,7 +94,7 @@ ___
           |             ~~^~~
 ```
 
-次のコードは、[Pimpl](design_pattern.md#SS_9_3)パターンの誤った実装よってメモリリークを引き起こす
+次のコードは、[Pimpl](cpp_idioms.md#SS_21_2_1)パターンの誤った実装よってメモリリークを引き起こす
 (「[delete](programming_convention.md#SS_3_5_6_2)」参照)。
 
 ```cpp
@@ -247,7 +247,7 @@ scan-buildはclang++をベースにした静的解析ツールであり、
 ```
 
 上記クラスIllegalShallowCopyは、オブジェクトをnewにより生成し、そのポインタをメンバ変数として持つ。
-このようなクラスに対しては[ディープコピー](cpp_idioms.md#SS_21_7_2)を実装するか、
+このようなクラスに対しては[ディープコピー](cpp_idioms.md#SS_21_9_2)を実装するか、
 オブジェクトのコピーを禁止すべきであることは、「[コンストラクタ](programming_convention.md#SS_3_2_4_2)」で述べた通りである。
 
 こういったコードに対して、g++/clang++はその問題を発見できないが、
@@ -262,7 +262,7 @@ scan-buildは下記のように適切な指摘を行うことができる。
 ```
 
 次に示すのは、
-「[RAII(scoped guard)](design_pattern.md#SS_9_10)」に従わなかったために発生した潜在的バグを含んだコードである。
+「[RAII(scoped guard)](cpp_idioms.md#SS_21_1_2)」に従わなかったために発生した潜在的バグを含んだコードである。
 
 ```cpp
     //  example/code_analysis/code_analysis.cpp 138

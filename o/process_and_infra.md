@@ -649,7 +649,7 @@ scoped_guard.hに関しても、以下のように単体テストを追加する
 
 ##### クラスの導入 <a id="SS_11_2_2_3_6"></a>
 このプログラムは非同期処理が必要であるため、
-そういったアプリケーションとの相性が良い[MVC](design_pattern.md#SS_9_24)の導入によるリファクタリングを行う
+そういったアプリケーションとの相性が良い[MVC](design_pattern.md#SS_9_3_2)の導入によるリファクタリングを行う
 (この程度の規模のソフトウェアにMVCを導入する必要はないが、
 その導入を例示するためリファクタリングを行う)。
 
@@ -771,7 +771,7 @@ scoped_guard.hに関しても、以下のように単体テストを追加する
 ##### MVCの導入 <a id="SS_11_2_2_3_8"></a>
 非同期関数であるModel::ConvertStoreAsync()の完了がクラス外から捕捉できないことを一因として、
 上記例のModelへの十分な単体テストができなかった。
-この問題を解決し、単体テストのカバレッジを上げるために「[MVC](design_pattern.md#SS_9_24)」の構造を導入する。
+この問題を解決し、単体テストのカバレッジを上げるために「[MVC](design_pattern.md#SS_9_3_2)」の構造を導入する。
 
 ```cpp
     //  example/ref_async_r3/main.cpp 5
@@ -983,7 +983,7 @@ ConvertStoreAsync()の完了が捕捉できるようになった。
 ```
 
 ##### DIの導入 <a id="SS_11_2_2_3_10"></a>
-[DI(dependency injection)](design_pattern.md#SS_9_12)を導入することで、
+[DI(dependency injection)](design_pattern.md#SS_9_3_1)を導入することで、
 Controller、Viewのstd::coutやstd::cinへの直接の依存を回避する。
 
 下図は、DI導入前後でControllerによる「std::cinからの文字列読み込み」がどのように変更されたかを示す。
@@ -1285,7 +1285,7 @@ Controllerについても、以下のようにstd::cinへの依存を削除す�
     }
 ```
 
-IOStreamSelectorと単体テスト用に導入した「[DI(dependency injection)](design_pattern.md#SS_9_12)」構造により、
+IOStreamSelectorと単体テスト用に導入した「[DI(dependency injection)](design_pattern.md#SS_9_3_1)」構造により、
 std::istream、std::ostreamのインスタンスを選択できるようになった。
 
 IOStreamSelectorは以下のようになる。
@@ -1548,7 +1548,7 @@ pull-requestが承認されれば、ブランチ開発者はfeatrueブランチ�
 * コミットクライテリアをクリアしているか(単体テストや自動統合テストが作られているかどうかの確認)？
 * 設計上の問題点はないか？
     * [SOLID](solid.md#SS_8)等の原則に従っているか？
-    * デザインパターンの使用は適切か([Accessor](design_pattern.md#SS_9_5)や[Singleton](design_pattern.md#SS_9_13)の多用は認められない等)？
+    * デザインパターンの使用は適切か([Accessor](cpp_idioms.md#SS_21_1_5)や[Singleton](design_pattern.md#SS_9_1_1)の多用は認められない等)？
 * [プログラミング規約](programming_convention.md#SS_3)に従っているか？
     * 不要な依存関係はないか？ 依存関係の方向は問題ないか？
     * クラス、関数は大きすぎないか？
@@ -1626,7 +1626,7 @@ CI項目には前述した
 に加えて、
 
 * ソースコードの静的解析(「[コード解析](code_analysis.md#SS_4)」参照)
-* 各種メトリクスの計測([サイクロマティック複雑度](cpp_idioms.md#SS_21_9_8)、[凝集性の欠如](cpp_idioms.md#SS_21_9_9_1)等)
+* 各種メトリクスの計測([サイクロマティック複雑度](cpp_idioms.md#SS_21_11_9)、[凝集性の欠如](cpp_idioms.md#SS_21_11_10_1)等)
 * リリースパッケージの作成
 
 等がある。
@@ -1653,7 +1653,7 @@ CIの環境として、
 
 * CIサーバとしてJenkins
 * Jenkinsのジョブ記述にbash
-* コンパイラに[g++](cpp_idioms.md#SS_21_10_1)
+* コンパイラに[g++](cpp_idioms.md#SS_21_12_1)
 * ビルドツールにmake
 
 を使用すると前提とする。この場合、

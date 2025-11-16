@@ -2493,7 +2493,7 @@ ___
 
 ### 解答-Accessorの副作用 <a id="SS_23_9_4"></a>
 * 選択肢1
-* 参照 [Accessor](design_pattern.md#SS_9_5)
+* 参照 [Accessor](cpp_idioms.md#SS_21_1_5)
 * [演習-Accessorの副作用](exercise_q.md#SS_22_9_4)へ戻る。
 
 
@@ -3080,7 +3080,7 @@ ___
 
 ### 解答-RAIIの効果 <a id="SS_23_9_10"></a>
 * 選択肢1
-* 参照 [RAII(scoped guard)](design_pattern.md#SS_9_10)
+* 参照 [RAII(scoped guard)](cpp_idioms.md#SS_21_1_2)
 * [演習-RAIIの効果](exercise_q.md#SS_22_9_10)へ戻る。
 
 
@@ -4716,19 +4716,19 @@ ___
 
 ### 解答-デザインパターン選択1 <a id="SS_23_9_25"></a>
 * 選択肢2
-* 参照 [State](design_pattern.md#SS_9_14)
+* 参照 [State](design_pattern.md#SS_9_2_3)
 * [演習-デザインパターン選択1](exercise_q.md#SS_22_9_25)へ戻る。
 
 
 ### 解答-デザインパターン選択2 <a id="SS_23_9_26"></a>
 * 選択肢4
-* 参照 [Null Object](design_pattern.md#SS_9_15)
+* 参照 [Null Object](cpp_idioms.md#SS_21_2_5)
 * [演習-デザインパターン選択2](exercise_q.md#SS_22_9_26)へ戻る。
 
 
 ### 解答-デザインパターン選択3 <a id="SS_23_9_27"></a>
 * 選択肢3
-* 参照 [Observer](design_pattern.md#SS_9_23)
+* 参照 [Observer](design_pattern.md#SS_9_2_4)
 * [演習-デザインパターン選択3](exercise_q.md#SS_22_9_27)へ戻る。
 
 

@@ -6,9 +6,9 @@
 STLの大幅な機能追加等により、この問題の軽減に成功している。
 
 * [ラムダ式](core_lang_spec.md#SS_19_10_3)
-* std::futre、std::async、std::promiseによる[Future](design_pattern.md#SS_9_11)パターンのサポート
+* std::futre、std::async、std::promiseによる[Future](cpp_idioms.md#SS_21_2_4)パターンのサポート
 * std::unique_lock、std::condition_variableによるイベント通知
-* ロック機構のRAIIのサポート(「[RAII(scoped guard)](design_pattern.md#SS_9_10)」参照)
+* ロック機構のRAIIのサポート(「[RAII(scoped guard)](cpp_idioms.md#SS_21_1_2)」参照)
 * std::atomic等によるアトミック処理の簡易化
 
 本章では、「[自動統合テスト](process_and_infra.md#SS_11_2_3)」で開発したref_async_r5を改善することによって、
@@ -178,7 +178,7 @@ ref_async_r6では、上記1を選択し、
 「スレッドセーフでない処理(Viewの出力)を特定の単一スレッドで行うことにより、その競合を回避する」
 例を示す。
 
-[MVC](design_pattern.md#SS_9_24)の構造により、Viewの出力は、Modelの状態変更(メンバー変数の変更)
+[MVC](design_pattern.md#SS_9_3_2)の構造により、Viewの出力は、Modelの状態変更(メンバー変数の変更)
 をトリガーとして(通常はそのコンテキスト上で)行われるため、
 Viewの出力が競合するのであれば、その前段のModelのメンバ変数変更も競合する。
 Viewの改善では、この両競合を同時に回避することはできないため、
@@ -451,7 +451,7 @@ DispatcherやTwoPhaseTaskPtrオブジェクトは以上の前提から、以下�
 Dispatcherは、「[TwoPhaseTaskIF(TwoPhaseTaskPtr)](concurrency.md#SS_12_2_1)」で説明した動作に加え、
 以下のような特徴、前提を持つ。
 
-* Dispatcherは、[Singleton](design_pattern.md#SS_9_13)として実装され、
+* Dispatcherは、[Singleton](design_pattern.md#SS_9_1_1)として実装され、
   ref_async_r6のどこからでもそのpublic関数を呼び出すことができる。
 * Dispatcher::ExecUntilStop()は、メインスレッド上でイベント待ちループを形成し、
   Dispatcher::Stop()が呼び出されると、そのループを抜ける。
@@ -528,7 +528,7 @@ TwoPhaseTaskPtrのキュー管理機構は、
     std::condition_variable::wait(lock)
 ```
 
-を使用する場合、「[Spurious Wakeup](cpp_idioms.md#SS_21_9_10)」への対処が必要になるが、
+を使用する場合、「[Spurious Wakeup](cpp_idioms.md#SS_21_11_11)」への対処が必要になるが、
 
 ```cpp
     std::condition_variable::wait(lock, 関数オブジェクト)
@@ -668,14 +668,14 @@ TwoPhaseTaskPtrキュー管理機構は以下のようにしてTwoPhaseTaskPtr�
 
 * 排他制御1を使用し、スピンロックを実装できる(「[固定長メモリプール](dynamic_memory_allocation.md#SS_14_2_1)」参照)。
 
-* 排他制御2を使用する場合、[RAII(scoped guard)](design_pattern.md#SS_9_10)を使用する。
+* 排他制御2を使用する場合、[RAII(scoped guard)](cpp_idioms.md#SS_21_1_2)を使用する。
     * lock()/unlock()を直接ソースコードに書かない。代わりに`std::lock_guard<std::mutex>`を使用する。
 
 * 排他制御3を使用する場合、アーキテクチャに大きな影響を与えるため、
   それが必要になるのであれば、できるだけ早期に対応する。
 
 * より直感的な記述ができるため、std::thread(とstd::promiseやstd::packaged_task)
-  よりstd::asyncを優先して使用する(「[Future](design_pattern.md#SS_9_11)」参照)。
+  よりstd::asyncを優先して使用する(「[Future](cpp_idioms.md#SS_21_2_4)」参照)。
     * std::asyncを使用する場合、第1引数にはstd::launch::asyncを指定する。
     * std::thread、std::asyncから起動されるスレッドのエントリー関数オブジェクトは、
       プログラムが終了手続きに入る前にreturnさせる。

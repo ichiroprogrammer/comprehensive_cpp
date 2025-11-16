@@ -45,7 +45,7 @@ ___
 | [範囲for文](core_lang_spec.md#SS_19_9_3)                         |インデックス変数なしのfor文                                                 |
 | [初期化子リストコンストラクタ](core_lang_spec.md#SS_19_6_1_1)      |`vector<int>` v = {1, 2, 3}; など。                                         |
 | [一様初期化](core_lang_spec.md#SS_19_6_6)                                       |コンストラクタの呼び出しを、波カッコで行う。|vector<int> v{1, 2, 3};        |
-| [rvalue](core_lang_spec.md#SS_19_7_1_2)/[moveセマンティクス](cpp_idioms.md#SS_21_3_3)      |[オブジェクトの所有権](cpp_idioms.md#SS_21_2)の移転、高速化。                     |
+| [rvalue](core_lang_spec.md#SS_19_7_1_2)/[moveセマンティクス](cpp_idioms.md#SS_21_5_3)      |[オブジェクトの所有権](cpp_idioms.md#SS_21_4)の移転、高速化。                     |
 | [rvalueリファレンス](core_lang_spec.md#SS_19_8_2)                               |テンポラリオブジェクトをバインドできる`T&&`形式のリファレンス               |
 | [ラムダ式](core_lang_spec.md#SS_19_10_3)                            |関数オブジェクトをその場に書く                                              |
 | [noexcept](core_lang_spec.md#SS_19_13_4)                                         |関数の例外指定、例外を投げる可能性のある式かbool値を返す演算子              |
@@ -88,7 +88,7 @@ ___
 |機能                                                    |説明                                                                                |
 |:-------------------------------------------------------|:-----------------------------------------------------------------------------------|
 |スレッドローカルストレージ                              |スレッドごとに異なる静的記憶域に保持される変数                                      |
-|ブロックスコープのstatic変数初期化のスレッドセーフ化    |関数ローカルで定義したstatic変数の初期化をスレッドセーフに。「[Singleton](design_pattern.md#SS_9_13)」参照|
+|ブロックスコープのstatic変数初期化のスレッドセーフ化    |関数ローカルで定義したstatic変数の初期化をスレッドセーフに。「[Singleton](design_pattern.md#SS_9_1_1)」参照|
 
 
 ### その他のユーティリティ <a id="SS_18_1_5"></a>
@@ -109,11 +109,11 @@ ___
 #### ユーティリティ <a id="SS_18_1_6_1"></a>
 |機能                |説明                                 |
 |:-------------------|:------------------------------------|
-|[std::move](stdlib_and_concepts.md#SS_20_1_1)    |[moveセマンティクス](cpp_idioms.md#SS_21_3_3)の利用      |
+|[std::move](stdlib_and_concepts.md#SS_20_1_1)    |[moveセマンティクス](cpp_idioms.md#SS_21_5_3)の利用      |
 |[std::forward](stdlib_and_concepts.md#SS_20_1_2) |[perfect forwarding](core_lang_spec.md#SS_19_8_5)の実装、利用|
 
 #### stdコンテナ <a id="SS_18_1_6_2"></a>
-[コンテナ](stdlib_and_concepts.md#SS_20_7)全般が[moveセマンティクス](cpp_idioms.md#SS_21_3_3)に対応したため、
+[コンテナ](stdlib_and_concepts.md#SS_20_7)全般が[moveセマンティクス](cpp_idioms.md#SS_21_5_3)に対応したため、
 テンプレートのパラメータTが、コピー構築可能(`is_copy_constructible<T> == true`)な型だけでなく、
 ムーブ構築(is_move_constructible)のみ可能な型も受け付けるられるようになった。
 push_back()やinsert()等の要素追加のためのメンバ関数が、
@@ -163,7 +163,7 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |機能                                              |説明                                                      |
 |:-------------------------------------------------|:---------------------------------------------------------|
 |std::make_unique<>()                              |「[メモリアロケーション](programming_convention.md#SS_3_5_6)」参照                |
-|std::exchange()                                   |二つの値を入れ替える。「[Copy-And-Swap](design_pattern.md#SS_9_6)」参照        |
+|std::exchange()                                   |二つの値を入れ替える。「[Copy-And-Swap](cpp_idioms.md#SS_21_1_3)」参照        |
 |[std::integer_sequence](cpp_improve.md#SS_18_2_1_1_1)                      |コンパイル時整数シーケンス                                |
 |[std::get()のオーバーロード](cpp_improve.md#SS_18_2_1_1_2)を追加           |タプルを型の集合と見なし、型を指定して対応する値を取得する|
 |`<type_traits>`                                   |xxx_t、xxx_vなどのエイリアステンプレート、定数テンプレート|

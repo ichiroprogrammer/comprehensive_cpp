@@ -172,7 +172,7 @@ ___
 ```
 
 CppLoggerFuncをクラス外の関数として実装した場合、ログ保持のための静的なオブジェクトが必要になる。
-これは避けるべきなので、「[Singleton](design_pattern.md#SS_9_13)」で述べた構造を導入すると、
+これは避けるべきなので、「[Singleton](design_pattern.md#SS_9_1_1)」で述べた構造を導入すると、
 
 ```cpp
     #define LOGGER(...) Logger::Inst().Set(__FILE__, __LINE__, __VA_ARGS__)
@@ -941,8 +941,8 @@ Loggerを宣言しているLoggingの3つである。
     }
 ```
 
-このドキュメントで使用している[g++](cpp_idioms.md#SS_21_10_1)ではこのコードはコンパイルでき、
-動作も問題ないように思われるが、[clang++](cpp_idioms.md#SS_21_10_2)では以下のようなエラーが発生し、コンパイルできない。
+このドキュメントで使用している[g++](cpp_idioms.md#SS_21_12_1)ではこのコードはコンパイルでき、
+動作も問題ないように思われるが、[clang++](cpp_idioms.md#SS_21_12_2)では以下のようなエラーが発生し、コンパイルできない。
 
 ```
     ./logger_0.h:37:21: error: call to function 'operator<<' that is neither 
@@ -975,7 +975,7 @@ clang++は「LOGGERの前にoperator<<を宣言せよ」と言っている。
   という名前空間Appローカルな宣言をグローバル名前空間で行うことによって、
   グローバル名前空間を汚染してしまう
   (このコードは名前空間を正しく使うことに対しての割れ窓
-  (「[割れ窓理論](cpp_idioms.md#SS_21_11_2)」参照)になってしまうかもしれない)。
+  (「[割れ窓理論](cpp_idioms.md#SS_21_13_2)」参照)になってしまうかもしれない)。
 * 例示したコードでのoperator<<(std::ostream& os, App::Ints_t const& ints)の定義は、
   単体テストファイル内にあったが、実際には何らかのヘッダファイル内で定義されることになる。
   その場合、ロガーのヘッダファイルよりも、
@@ -1154,7 +1154,7 @@ App::ToString()によりstd::stringへ変換する必要があり、残念なイ
 
 「[operator\<\<を使わない](template_meta_programming.md#SS_13_1_6_6)」で導入したコードは、短いながらも汎用性が高い。
 このようなコードをローカルなファイルに閉じ込めてしまうと、
-コードクローンや、[車輪の再発明](cpp_idioms.md#SS_21_11_3)による開発効率の低下につながることがある。
+コードクローンや、[車輪の再発明](cpp_idioms.md#SS_21_13_3)による開発効率の低下につながることがある。
 
 通常、プロジェクトの全ファイルから参照可能で且つ、
 プロジェクトの他のパッケージに非依存なパッケージを用意することで、このような問題を回避できる。
@@ -4505,7 +4505,7 @@ Nstd::SafeIndexのテンプレートテンプレートパラメータとして�
 ```
 
 ただし、このようなコードはコンパイラのバグによりコンパイルできないことがある。
-実際、現在使用中の[g++](cpp_idioms.md#SS_21_10_1)ではこのコードはコンパイルできず、
+実際、現在使用中の[g++](cpp_idioms.md#SS_21_12_1)ではこのコードはコンパイルできず、
 上記コードでコメントにも書いた通り、Inner_の中でPrintableを再定義することで、
 そのワークアラウンドを行っている。
 
@@ -6065,7 +6065,7 @@ std::variant、上に示した関数テンプレート、ジェネリックラ�
     ASSERT_EQ('C', ret);
 ```
 
-ここで示した関数テンプレートは、デザインパターン[Visitor](design_pattern.md#SS_9_21)の例であり、
+ここで示した関数テンプレートは、デザインパターン[Visitor](design_pattern.md#SS_9_2_5)の例であり、
 ほぼこれと同様のものがstd::visitとして定義されている。
 
 ```cpp
@@ -6087,7 +6087,7 @@ std::variant、上に示した関数テンプレート、ジェネリックラ�
 ### クラステンプレートと継承の再帰構造 <a id="SS_13_7_3"></a>
 クラステンプレートと継承の再帰構造はCRTPと呼ばれる。
 このコードパターンについては、
-「[CRTP(curiously recurring template pattern)](design_pattern.md#SS_9_22)」で説明している。
+「[CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_21_1_4)」で説明している。
 
 
 ### 意図しないname lookupの防止 <a id="SS_13_7_4"></a>
@@ -6559,7 +6559,7 @@ typeid::name()が返す文字列リテラルは引数の型の文字列表現を
 マングリングされているためヒューマンリーダブルではない。
 それをデマングルするのがabi::\_\_cxa\_demangleであるが、
 残念なことにこの関数は非標準であるため、
-それを使っているNstd::Inner\_::demangleは[g++](cpp_idioms.md#SS_21_10_1)/[clang++](cpp_idioms.md#SS_21_10_2)
+それを使っているNstd::Inner\_::demangleは[g++](cpp_idioms.md#SS_21_12_1)/[clang++](cpp_idioms.md#SS_21_12_2)
 でなければコンパイルできないだろう。
 
 それを除けば、
@@ -7344,7 +7344,7 @@ std::unique_ptrの第2パラメータに関数型オブジェクトの型(std::f
 第1パラメータのポインタを引数に取る関数型であれば指定できる。
 
 このようなテンプレートパラメータを持つクラステンプレートの実装例を示すため、
-「[RAII(scoped guard)](design_pattern.md#SS_9_10)でも示したScopedGuardの実装を下記する。
+「[RAII(scoped guard)](cpp_idioms.md#SS_21_1_2)でも示したScopedGuardの実装を下記する。
 
 やや意外だが、このようなテンプレートパラメータに特別な記法はなく、以下のようにすれば良い。
 

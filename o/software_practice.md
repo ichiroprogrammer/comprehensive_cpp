@@ -389,7 +389,7 @@ YAGNI(You ain't gonna need it)とは、「機能(要件)は実際に必要とな
 ことをやめなければならない。
 
 ## Inside-Outの原則 <a id="SS_2_11"></a>
-この原則は、GUIアプリケーションを「[MVC](design_pattern.md#SS_9_24)」系のアーキテクチャで開発する場合、
+この原則は、GUIアプリケーションを「[MVC](design_pattern.md#SS_9_3_2)」系のアーキテクチャで開発する場合、
 「開発はGUI(View)からではなく、Modelから始めよ」という開発手順への制約である。
 
 （注：「7つの習慣」でも「Inside-Out」という用語が使用されているが、
