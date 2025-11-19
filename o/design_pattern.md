@@ -236,7 +236,7 @@ Named Connstructorは、[Singleton](design_pattern.md#SS_9_1_1)のようなオ�
 [演習-Named Constructor](exercise_q.md#SS_22_9_19)  
 
 ### Clone(仮想コンストラクタ) <a id="SS_9_1_3"></a>
-オブジェクトコピーによる[スライシング](cpp_idioms.md#SS_21_9_3)を回避するためのイデオムである。
+オブジェクトコピーによる[スライシング](cpp_idioms.md#SS_21_10_3)を回避するためのイデオムである。
 
 下記は、オブジェクトコピーによるスライシングを起こしてしまう例である。
 

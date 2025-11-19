@@ -45,7 +45,7 @@ ___
 
 ### g++の警告機能 <a id="SS_4_1_1"></a>
 本ドキュメントのサンプルコードは、
-以下のような[g++](cpp_idioms.md#SS_21_12_1)/[clang++](cpp_idioms.md#SS_21_12_2)の警告機能を使用してビルドを行っている。
+以下のような[g++](cpp_idioms.md#SS_21_13_1)/[clang++](cpp_idioms.md#SS_21_13_2)の警告機能を使用してビルドを行っている。
 
 ```Makefile
     -Werror -Wall -Wextra -Weffc++
@@ -247,7 +247,7 @@ scan-buildはclang++をベースにした静的解析ツールであり、
 ```
 
 上記クラスIllegalShallowCopyは、オブジェクトをnewにより生成し、そのポインタをメンバ変数として持つ。
-このようなクラスに対しては[ディープコピー](cpp_idioms.md#SS_21_9_2)を実装するか、
+このようなクラスに対しては[ディープコピー](cpp_idioms.md#SS_21_10_2)を実装するか、
 オブジェクトのコピーを禁止すべきであることは、「[コンストラクタ](programming_convention.md#SS_3_2_4_2)」で述べた通りである。
 
 こういったコードに対して、g++/clang++はその問題を発見できないが、

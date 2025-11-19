@@ -626,14 +626,14 @@ Null ObjectパターンやRAIIの導入で肥大化したmain関数を改善す�
     }
 ```
 
-scoped_guard.hに関しても、以下のように単体テストを追加する。
-バグが発生しそうにないこのようなクラスに対しても単体テストを行うことは一見無駄なように見えるが、
-単体テストカバレッジの管理、コードクローンの撲滅、
+scoped_guard.hに関しても単体テストを追加するべきである。
+このような単純なクラスに対して単体テストを行うことは一見無駄なように思えるかもしれないが、
+単体テストカバレッジの管理、
 「[割れ窓理論](https://ja.wikipedia.org/wiki/%E5%89%B2%E3%82%8C%E7%AA%93%E7%90%86%E8%AB%96)」
 等の観点から重要である。
 
 ```cpp
-    //  example/programming_convention/scoped_guard_ut.cpp 8
+    //  example/etc/scoped_guard_ut.cpp 8
 
     TEST(ScopedGuard, scoped_guard)
     {
@@ -1626,7 +1626,7 @@ CI項目には前述した
 に加えて、
 
 * ソースコードの静的解析(「[コード解析](code_analysis.md#SS_4)」参照)
-* 各種メトリクスの計測([サイクロマティック複雑度](cpp_idioms.md#SS_21_11_9)、[凝集性の欠如](cpp_idioms.md#SS_21_11_10_1)等)
+* 各種メトリクスの計測([サイクロマティック複雑度](cpp_idioms.md#SS_21_12_9)、[凝集性の欠如](cpp_idioms.md#SS_21_12_10_1)等)
 * リリースパッケージの作成
 
 等がある。
@@ -1653,7 +1653,7 @@ CIの環境として、
 
 * CIサーバとしてJenkins
 * Jenkinsのジョブ記述にbash
-* コンパイラに[g++](cpp_idioms.md#SS_21_12_1)
+* コンパイラに[g++](cpp_idioms.md#SS_21_13_1)
 * ビルドツールにmake
 
 を使用すると前提とする。この場合、

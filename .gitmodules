@@ -13,3 +13,6 @@
 [submodule "essential"]
 	path = essential
 	url = git@github.com:ichiroprogrammer/essential_cpp.git
+[submodule "practical"]
+	path = practical
+	url = git@github.com:ichiroprogrammer/practical_cpp.git

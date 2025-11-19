@@ -379,14 +379,14 @@ Null ObjectパターンやRAIIの導入で肥大化したmain関数を改善す�
     // @@@ example/ref_async_r1/lib_ut.cpp #0:0 begin
 ```
 
-scoped_guard.hに関しても、以下のように単体テストを追加する。
-バグが発生しそうにないこのようなクラスに対しても単体テストを行うことは一見無駄なように見えるが、
-単体テストカバレッジの管理、コードクローンの撲滅、
+scoped_guard.hに関しても単体テストを追加するべきである。
+このような単純なクラスに対して単体テストを行うことは一見無駄なように思えるかもしれないが、
+単体テストカバレッジの管理、
 「[割れ窓理論](https://ja.wikipedia.org/wiki/%E5%89%B2%E3%82%8C%E7%AA%93%E7%90%86%E8%AB%96)」
 等の観点から重要である。
 
 ```cpp
-    // @@@ example/programming_convention/scoped_guard_ut.cpp #0:0 begin
+    // @@@ example/etc/scoped_guard_ut.cpp #0:0 begin
 ```
 
 ##### クラスの導入

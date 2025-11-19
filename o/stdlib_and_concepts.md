@@ -34,10 +34,14 @@ __この章の構成__
 
 &emsp;&emsp; [スマートポインタ](stdlib_and_concepts.md#SS_20_5)  
 &emsp;&emsp;&emsp; [std::unique_ptr](stdlib_and_concepts.md#SS_20_5_1)  
+&emsp;&emsp;&emsp;&emsp; [std::make_unique](stdlib_and_concepts.md#SS_20_5_1_1)  
+
 &emsp;&emsp;&emsp; [std::shared_ptr](stdlib_and_concepts.md#SS_20_5_2)  
-&emsp;&emsp;&emsp; [std::enable_shared_from_this](stdlib_and_concepts.md#SS_20_5_3)  
-&emsp;&emsp;&emsp; [std::weak_ptr](stdlib_and_concepts.md#SS_20_5_4)  
-&emsp;&emsp;&emsp; [std::auto_ptr](stdlib_and_concepts.md#SS_20_5_5)  
+&emsp;&emsp;&emsp;&emsp; [std::make_shared](stdlib_and_concepts.md#SS_20_5_2_1)  
+&emsp;&emsp;&emsp;&emsp; [std::enable_shared_from_this](stdlib_and_concepts.md#SS_20_5_2_2)  
+
+&emsp;&emsp;&emsp; [std::weak_ptr](stdlib_and_concepts.md#SS_20_5_3)  
+&emsp;&emsp;&emsp; [std::auto_ptr](stdlib_and_concepts.md#SS_20_5_4)  
 
 &emsp;&emsp; [Polymorphic Memory Resource(pmr)](stdlib_and_concepts.md#SS_20_6)  
 &emsp;&emsp;&emsp; [std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_6_1)  
@@ -466,7 +470,7 @@ mutex は、スレッド間で使用する共有リソースを排他制御す�
 
 
 以下のコード例では、メンバ変数のインクリメントがスレッド間の競合を引き起こす(こういったコード領域を
-[クリティカルセクション](cpp_idioms.md#SS_21_11_4)と呼ぶ)が、std::mutexによりこの問題を回避している。
+[クリティカルセクション](cpp_idioms.md#SS_21_12_4)と呼ぶ)が、std::mutexによりこの問題を回避している。
 
 ```cpp
     //  example/stdlib_and_concepts/thread_ut.cpp 48
@@ -558,7 +562,7 @@ atomicクラステンプレートは、型Tをアトミック操作するため�
 
 ### std::condition_variable <a id="SS_20_3_4"></a>
 condition_variable は、特定のイベントが発生するまでスレッドの待ち合わせを行うためのクラスである。
-最も単純な使用例を以下に示す(「[Spurious Wakeup](cpp_idioms.md#SS_21_11_11)」参照)。
+最も単純な使用例を以下に示す(「[Spurious Wakeup](cpp_idioms.md#SS_21_12_11)」参照)。
 ```cpp
     //  example/stdlib_and_concepts/thread_ut.cpp 135
 
@@ -771,9 +775,9 @@ std::unique_lockやstd::lock_guardによりmutexを使用する。
     ASSERT_EQ(push_count_max, pop_count);
 ```
 
-一般に条件変数には、[Spurious Wakeup](cpp_idioms.md#SS_21_11_11)という問題があり、std::condition_variableも同様である。
+一般に条件変数には、[Spurious Wakeup](cpp_idioms.md#SS_21_12_11)という問題があり、std::condition_variableも同様である。
 
-上記の抜粋である下記のコード例では[Spurious Wakeup](cpp_idioms.md#SS_21_11_11)の対策が行われていないため、
+上記の抜粋である下記のコード例では[Spurious Wakeup](cpp_idioms.md#SS_21_12_11)の対策が行われていないため、
 意図通り動作しない可能性がある。
 
 ```cpp
@@ -931,10 +935,12 @@ transfer_ng()がデッドロックを引き起こすシナリオは、以下の�
 C++標準ライブラリでは、主に以下の3種類のスマートポインタが提供されている。
 
 * [std::unique_ptr](stdlib_and_concepts.md#SS_20_5_1)
+    - [std::make_unique](stdlib_and_concepts.md#SS_20_5_1_1)
 * [std::shared_ptr](stdlib_and_concepts.md#SS_20_5_2)
-    - [std::enable_shared_from_this](stdlib_and_concepts.md#SS_20_5_3)
-    - [std::weak_ptr](stdlib_and_concepts.md#SS_20_5_4)
-* [std::auto_ptr](stdlib_and_concepts.md#SS_20_5_5)
+    - [std::make_shared](stdlib_and_concepts.md#SS_20_5_2_1)
+    - [std::enable_shared_from_this](stdlib_and_concepts.md#SS_20_5_2_2)
+    - [std::weak_ptr](stdlib_and_concepts.md#SS_20_5_3)
+* [std::auto_ptr](stdlib_and_concepts.md#SS_20_5_4)
 
 ### std::unique_ptr <a id="SS_20_5_1"></a>
 std::unique_ptrは、C++11で導入されたスマートポインタの一種であり、std::shared_ptrとは異なり、
@@ -942,14 +948,26 @@ std::unique_ptrは、C++11で導入されたスマートポインタの一種で
 他のポインタと共有することはできない。ムーブ操作によってのみ所有権を移譲でき、
 スコープを抜けると自動的にリソースが解放されるため、メモリ管理の安全性と効率性が向上する。
 
+#### std::make_unique <a id="SS_20_5_1_1"></a>
+[std::make_unique\<T\>(Args...)](https://cpprefjp.github.io/reference/memory/make_unique.html)は、
+クラスTをダイナミックに生成し、そのポインタを保持するshared_ptrオブジェクトを生成する。
+
+使用例については、「[オブジェクトの排他所有](cpp_idioms.md#SS_21_4_1)」を参照せよ。
+
 ### std::shared_ptr <a id="SS_20_5_2"></a>
 std::shared_ptrは、同じくC++11で導入されたスマートポインタであり、[オブジェクトの共有所有](cpp_idioms.md#SS_21_4_2)を表すために用いられる。
 複数のshared_ptrインスタンスが同じリソースを参照でき、
 内部の参照カウントによって最後の所有者が破棄された時点でリソースが解放される。
-[std::weak_ptr](stdlib_and_concepts.md#SS_20_5_4)は、shared_ptrと連携して使用されるスマートポインタであり、オブジェクトの非所有参照を表す。
+[std::weak_ptr](stdlib_and_concepts.md#SS_20_5_3)は、shared_ptrと連携して使用されるスマートポインタであり、オブジェクトの非所有参照を表す。
 参照カウントには影響せず、循環参照を防ぐために用いられる。weak_ptrから一時的にshared_ptrを取得するにはlock()を使用する。
 
-### std::enable_shared_from_this <a id="SS_20_5_3"></a>
+#### std::make_shared <a id="SS_20_5_2_1"></a>
+[std::make_shared\<T\>(Args...)](https://cpprefjp.github.io/reference/memory/make_shared.html)は、
+クラスTをダイナミックに生成し、そのポインタを保持するshared_ptrオブジェクトを生成する。
+
+使用例については、「[オブジェクトの共有所有](cpp_idioms.md#SS_21_4_2)」を参照せよ。
+
+#### std::enable_shared_from_this <a id="SS_20_5_2_2"></a>
 `std::enable_shared_from_this`は、`shared_ptr`で管理されているオブジェクトが、
 自分自身への`shared_ptr`を安全に取得するための仕組みである。
 
@@ -1026,7 +1044,7 @@ shared_ptrのコンストラクタがenable_shared_from_thisの存在を検出�
 C++17以降では、`weak_from_this()`メソッドも提供されている。これはshared_from_this()と同様の仕組みだが、
 weak_ptrを返すため[オブジェクトの循環所有](cpp_idioms.md#SS_21_4_3)を避けたい場合に有用である。
 
-### std::weak_ptr <a id="SS_20_5_4"></a>
+### std::weak_ptr <a id="SS_20_5_3"></a>
 std::weak_ptrは、スマートポインタの一種である。
 
 std::weak_ptrは参照カウントに影響を与えず、[std::shared_ptr](stdlib_and_concepts.md#SS_20_5_2)とオブジェクトを共有所有するのではなく、
@@ -1189,7 +1207,7 @@ Xと修正版Yの単体テストによりメモリーリークが修正された
 - 必要に応じて`lock()`でオブジェクトにアクセスできる
 - オブジェクトが既に解放されている場合は`lock()`が空の`shared_ptr`を返すため、安全に処理できる
 
-### std::auto_ptr <a id="SS_20_5_5"></a>
+### std::auto_ptr <a id="SS_20_5_4"></a>
 `std::auto_ptr`はC++11以前に導入された初期のスマートポインタであるが、異常な[copyセマンティクス](cpp_idioms.md#SS_21_5_2)を持つため、
 多くの誤用を生み出し、C++11から非推奨とされ、C++17から規格から排除された。
 
