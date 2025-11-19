@@ -30,7 +30,7 @@ TEST_F(ViewTest, Update)
     View               view{};
 
     ViewCore::Inst().SetOStream(out);  // 出力の切り替え
-    const auto* str = "Output string to View";
+    auto const* str = "Output string to View";
 
     view.ShowAsync(str);  // 非同期出力
     view.Sync();          // 出力待ち

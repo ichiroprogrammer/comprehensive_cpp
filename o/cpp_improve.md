@@ -178,7 +178,7 @@ move挿入ができるようになった(「[その他のテンプレートテ�
     //  example/cpp_improve/cpp14_ut.cpp 11
 
     template <typename Tuple, std::size_t... I>
-    std::string tuple2string(const Tuple& t, std::index_sequence<I...>)
+    std::string tuple2string(Tuple const& t, std::index_sequence<I...>)
     {
         std::ostringstream os;
 
@@ -188,7 +188,7 @@ move挿入ができるようになった(「[その他のテンプレートテ�
     }
 
     template <typename... Args>
-    std::string process_tuple(const std::tuple<Args...>& t)
+    std::string process_tuple(std::tuple<Args...> const& t)
     {
         return tuple2string(t, std::index_sequence_for<Args...>{});
     }
@@ -196,7 +196,7 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 ```cpp
     //  example/cpp_improve/cpp14_ut.cpp 32
 
-    std::tuple<int, double, const char*> t(1, 2.5, "test");
+    std::tuple<int, double, char const*> t(1, 2.5, "test");
 
     auto ret = process_tuple(t);  // タプルの要素を出力 (1, 2.5, test)
     ASSERT_EQ("1 2.5 test ", ret);
@@ -288,11 +288,11 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 
     namespace org {
     struct custom_iterator {  // カスタムイテレータの定義
-        const int* ptr;
+        int const* ptr;
 
-        custom_iterator(const int* p) : ptr(p) {}
-        bool             operator!=(const custom_iterator& other) const { return ptr != other.ptr; }
-        const int&       operator*() const { return *ptr; }
+        custom_iterator(int const* p) : ptr(p) {}
+        bool             operator!=(custom_iterator const& other) const { return ptr != other.ptr; }
+        int const&       operator*() const { return *ptr; }
         custom_iterator& operator++()
         {
             ++ptr;
@@ -300,13 +300,13 @@ move挿入ができるようになった(「[その他のテンプレートテ�
         }
     };
 
-    const int* begin(const std::vector<int>& vec)
+    int const* begin(std::vector<int> const& vec)
     {
         return vec.data();  // 通常のポインタを返す
     }
 
     // 配列の終端はカスタムイテレータを返すend関数
-    custom_iterator end(const std::vector<int>& vec)
+    custom_iterator end(std::vector<int> const& vec)
     {
         return custom_iterator(vec.data() + vec.size());  // カスタムイテレータを返す
     }

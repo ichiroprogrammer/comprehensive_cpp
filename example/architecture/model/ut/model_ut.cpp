@@ -18,7 +18,7 @@ TEST(ModelTest, AAA_FistTest)
 
 class TestObserver : public Model::Observer {  // テスト用オブザーバー
 public:
-    void          Update(const Model& model) override { ++update_counter_; }
+    void          Update(Model const& model) override { ++update_counter_; }
     std::uint32_t update_counter_ = 0;
 };
 // @@@ sample end

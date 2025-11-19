@@ -5096,23 +5096,23 @@ FixedPointの単体テストコードを以下に示す。
         T getNumerator() const noexcept { return value_.num; }
         T getDenominator() const noexcept { return value_.deno; }
         /// @brief 2項演算子(四則演算)の定義
-        Rational operator+(const Rational& rhs) const noexcept
+        Rational operator+(Rational const& rhs) const noexcept
         {
             T num  = value_.num * rhs.value_.deno + rhs.value_.num * value_.deno;
             T deno = value_.deno * rhs.value_.deno;
             return Rational{num, deno};
         }
-        Rational operator-(const Rational& rhs) const noexcept
+        Rational operator-(Rational const& rhs) const noexcept
         {
             T num  = value_.num * rhs.value_.deno - rhs.value_.num * value_.deno;
             T deno = value_.deno * rhs.value_.deno;
             return Rational{num, deno};
         }
-        Rational operator*(const Rational& rhs) const noexcept
+        Rational operator*(Rational const& rhs) const noexcept
         {
             return Rational{value_.num * rhs.value_.num, value_.deno * rhs.value_.deno};
         }
-        Rational operator/(const Rational& rhs) const noexcept
+        Rational operator/(Rational const& rhs) const noexcept
         {
             return Rational(value_.num * rhs.value_.deno, value_.deno * rhs.value_.num);
         }
@@ -5163,7 +5163,7 @@ FixedPointの単体テストコードを以下に示す。
         friend bool operator>=(Rational const& lhs, Rational const& rhs) noexcept { return !(lhs < rhs); }
     #endif
         /// @brief put-to演算子の定義
-        friend std::ostream& operator<<(std::ostream& os, const Rational& rhs)
+        friend std::ostream& operator<<(std::ostream& os, Rational const& rhs)
         {
             return (rhs.value_.deno == 1) ? os << rhs.value_.num : os << rhs.value_.num << "/" << rhs.value_.deno;
         }
@@ -5217,7 +5217,7 @@ FixedPointの単体テストコードを以下に示す。
     //  example/template_cpp17/rational_ut.cpp 12
 
     auto       r1    = Rational{1, 2};
-    const auto r1_sv = r1;
+    auto const r1_sv = r1;
     auto       r2    = Rational{1, 3};
 
     ASSERT_GE(r1, r2);
@@ -6781,7 +6781,7 @@ StaticStringはすでに示したテクニックを使い、下記のように�
 ```cpp
     //  example/template_cpp17/nstd_static_string_ut.cpp 12
 
-    const auto fs = StaticString{"abc"};  // C++17からのNの指定は不要
+    auto const fs = StaticString{"abc"};  // C++17からのNの指定は不要
 
     static_assert(sizeof(4) == fs.Size());
     ASSERT_STREQ("abc", fs.String());
@@ -6795,7 +6795,7 @@ StaticStringはすでに示したテクニックを使い、下記のように�
 ```cpp
     //  example/template_cpp17/nstd_static_string_ut.cpp 24
 
-    const auto fs = StaticString<4>{'a', 'b', 'c'};  // C++17でもNの指定は必要
+    auto const fs = StaticString<4>{'a', 'b', 'c'};  // C++17でもNの指定は必要
 
     static_assert(sizeof(4) == fs.Size());
     ASSERT_STREQ("abc", fs.String());

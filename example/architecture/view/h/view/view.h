@@ -24,7 +24,7 @@ public:
     void SetOStream(std::ostream& ostream) { ostream_ = &ostream; }  // テスト用出力切り替え
 
 private:
-    ViewCore(const ViewCore&) = delete;
+    ViewCore(ViewCore const&) = delete;
     ViewCore(ViewCore&&)      = delete;
     ViewCore() : ostream_{&std::cout}, worker_{&ViewCore::worker_function, this} {}
     ~ViewCore();

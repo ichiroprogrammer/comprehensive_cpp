@@ -181,7 +181,7 @@ uint32_t measure_performance(LSDIR const& ls_dir, uint32_t count) noexcept
     auto const start = std::chrono::system_clock::now();
     {
         for (decltype(count) i = 0; i < count; ++i) {
-            volatile auto const list = ls_dir.FileList();
+            auto const volatile list = ls_dir.FileList();
         }
     }
 

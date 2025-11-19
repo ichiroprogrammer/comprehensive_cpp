@@ -363,7 +363,7 @@ Modelクラスに[Pimpl](cpp_idioms.md#SS_21_2_1)を適用することでこの�
 
     class TestObserver : public Model::Observer {  // テスト用オブザーバー
     public:
-        void          Update(const Model& model) override { ++update_counter_; }
+        void          Update(Model const& model) override { ++update_counter_; }
         std::uint32_t update_counter_ = 0;
     };
 ```
@@ -455,7 +455,7 @@ ModelオブジェクトやViewオブジェクトを複数必要とする。
         void SetOStream(std::ostream& ostream) { ostream_ = &ostream; }  // テスト用出力切り替え
 
     private:
-        ViewCore(const ViewCore&) = delete;
+        ViewCore(ViewCore const&) = delete;
         ViewCore(ViewCore&&)      = delete;
         ViewCore() : ostream_{&std::cout}, worker_{&ViewCore::worker_function, this} {}
         ~ViewCore();
@@ -555,7 +555,7 @@ ModelオブジェクトやViewオブジェクトを複数必要とする。
     View               view{};
 
     ViewCore::Inst().SetOStream(out);  // 出力の切り替え
-    const auto* str = "Output string to View";
+    auto const* str = "Output string to View";
 
     view.ShowAsync(str);  // 非同期出力
     view.Sync();          // 出力待ち

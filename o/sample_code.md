@@ -5520,7 +5520,7 @@
          42 
          43     FileUtils::RemoveFile(dirs2srcs_act);
          44 
-         45     const auto dir2srcs_in = FileUtils::Dirs2Srcs_t{
+         45     auto const dir2srcs_in = FileUtils::Dirs2Srcs_t{
          46         {"ut_data",
          47          {"ut_data/app1/a_1_c.c", "ut_data/app1/a_1_c.h", "ut_data/app1/a_1_cpp.cpp", "ut_data/app1/a_1_cpp.h",
          48           "ut_data/app1/a_2_c.C", "ut_data/app1/a_2_c.H", "ut_data/app1/a_2_cpp.cxx", "ut_data/app1/a_2_cpp.hpp",

@@ -599,7 +599,7 @@ CRTPとは、
     class Counter {  // 派生クラスのインスタンスを計測するミックスイン
     public:
         Counter() { ++DerivedClass_Count; }
-        Counter(const Counter&) { ++DerivedClass_Count; }
+        Counter(Counter const&) { ++DerivedClass_Count; }
         ~Counter() { --DerivedClass_Count; }
     };
 
@@ -2250,11 +2250,11 @@ private継承によるis-implemented-in-terms-ofの実装例を以下に示す�
     public:
         // コンストラクタ
         MyString() = default;
-        MyString(const std::string& str) : str_(str) {}
-        MyString(const char* cstr) : str_(cstr) {}
+        MyString(std::string const& str) : str_(str) {}
+        MyString(char const* cstr) : str_(cstr) {}
 
         // 文字列へのアクセス
-        const char* c_str() const { return str_.c_str(); }
+        char const* c_str() const { return str_.c_str(); }
 
         using reference = std::string::reference;
         using size_type = std::string::size_type;
@@ -2267,7 +2267,7 @@ private継承によるis-implemented-in-terms-ofの実装例を以下に示す�
 
         void clear() { str_.clear(); }
 
-        MyString& operator+=(const MyString& rhs)
+        MyString& operator+=(MyString const& rhs)
         {
             str_ += rhs.str_;
             return *this;
@@ -4098,12 +4098,12 @@ east-constとは、`const`修飾子を修飾する型要素の右側(east＝右)
 テンプレート展開や型推論の際に一貫性があり、C++コミュニティではしばしば論理的・直感的と評価されている。
 
 ```cpp
-    //  example/cpp_idioms/east_west_const.cpp 11
+    //  example/cpp_idioms/east_west_const.cpp 12
 
     char              str[] = "hehe";  // 配列strに書き込み可能
-    char const*       str0  = str;  // str0が指すオブジェクトはconstなので、*str0への書き込み不可
-    char* const       str1  = str;  // str1がconstなので、str1への代入不可
-    char const* const str2  = str;  // *str2への書き込み不可、str2への代入不可
+    char const*       str0  = str;     // str0が指すオブジェクトはconstなので、*str0への書き込み不可
+    char* const       str1  = str;     // str1がconstなので、str1への代入不可
+    char const* const str2  = str;     // *str2への書き込み不可、str2への代入不可
 
     auto lamda = [](char const(&str_ref)[5]) {  // str_refは配列へのconstリファレンス
         int ret = 0;
@@ -4118,6 +4118,8 @@ east-constとは、`const`修飾子を修飾する型要素の右側(east＝右)
 このスタイルは 「east constスタイル」 または 「右側const」と呼ばれ、
 typeid のデマングル結果や Itanium C++ ABI でもこの形式が採用されている。
 
+なお、このドキュメントでは、このスタイルを採用している。
+
 ### west-const <a id="SS_21_9_3"></a>
 west-constとは、`const`修飾子を型の左側(west＝左)に置くコーディングスタイルのこと。
 C言語からの伝統的な表記法であり、多くの標準ライブラリや教科書でも依然としてこの書き方が用いられている。
@@ -4125,14 +4127,14 @@ C言語からの伝統的な表記法であり、多くの標準ライブラリ�
 可読性は慣れに依存するが、`const`の位置が一貫しないケース(`T* const`など)では理解しづらくなることもある。
 
 ```cpp
-    //  example/cpp_idioms/east_west_const.cpp 34
+    //  example/cpp_idioms/east_west_const.cpp 37
 
     char              str[] = "hehe";  // 配列strに書き込み可能
-    const char*       str0  = str;  // str0が指すオブジェクトはconstなので、*str0への書き込み不可
-    char* const       str1  = str;  // str1がconstなので、str1への代入不可
-    const char* const str2  = str;  // *str2への書き込み不可、str2への代入不可
+    char const*       str0  = str;     // str0が指すオブジェクトはconstなので、*str0への書き込み不可
+    char* const       str1  = str;     // str1がconstなので、str1への代入不可
+    char const* const str2  = str;     // *str2への書き込み不可、str2への代入不可
 
-    auto lamda = [](const char(&str_ref)[5]) {  // str_refは配列へのconstリファレンス
+    auto lamda = [](char const(&str_ref)[5]) {  // str_refは配列へのconstリファレンス
         int ret = 0;
 
         for (const char& a : str_ref) {  // aはchar constリファレンス

@@ -456,10 +456,10 @@ OSによっては、その区別がないものがあるため、この違いが
     //  example/etc/naming.cpp 175
 
     // 下記例のXXX_YYY_R0は、XXX回路のYYYサブ回路のR0レジスタを表す。
-    volatile auto& XXX_YYY_R0 = *reinterpret_cast<uint32_t*>(0x1300'0000);
-    volatile auto& XXX_YYY_R1 = *reinterpret_cast<uint32_t*>(0x1300'0100);
-    volatile auto& XXX_YYY_Q0 = *reinterpret_cast<uint32_t*>(0x1300'0200);
-    volatile auto& XXX_ZZZ_R0 = *reinterpret_cast<uint32_t*>(0x1400'0200);
+    auto volatile& XXX_YYY_R0 = *reinterpret_cast<uint32_t*>(0x1300'0000);
+    auto volatile& XXX_YYY_R1 = *reinterpret_cast<uint32_t*>(0x1300'0100);
+    auto volatile& XXX_YYY_Q0 = *reinterpret_cast<uint32_t*>(0x1300'0200);
+    auto volatile& XXX_ZZZ_R0 = *reinterpret_cast<uint32_t*>(0x1400'0200);
 ```
 
 ```cpp

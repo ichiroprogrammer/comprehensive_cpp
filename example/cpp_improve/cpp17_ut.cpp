@@ -58,11 +58,11 @@ TEST(cpp17, if_with_vale_define) {}
 
 namespace org {
 struct custom_iterator {  // カスタムイテレータの定義
-    const int* ptr;
+    int const* ptr;
 
-    custom_iterator(const int* p) : ptr(p) {}
-    bool             operator!=(const custom_iterator& other) const { return ptr != other.ptr; }
-    const int&       operator*() const { return *ptr; }
+    custom_iterator(int const* p) : ptr(p) {}
+    bool             operator!=(custom_iterator const& other) const { return ptr != other.ptr; }
+    int const&       operator*() const { return *ptr; }
     custom_iterator& operator++()
     {
         ++ptr;
@@ -70,13 +70,13 @@ struct custom_iterator {  // カスタムイテレータの定義
     }
 };
 
-const int* begin(const std::vector<int>& vec)
+int const* begin(std::vector<int> const& vec)
 {
     return vec.data();  // 通常のポインタを返す
 }
 
 // 配列の終端はカスタムイテレータを返すend関数
-custom_iterator end(const std::vector<int>& vec)
+custom_iterator end(std::vector<int> const& vec)
 {
     return custom_iterator(vec.data() + vec.size());  // カスタムイテレータを返す
 }

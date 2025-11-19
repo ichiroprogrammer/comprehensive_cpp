@@ -551,6 +551,7 @@ ___
     # space
     DerivePointerAlignment: false
     PointerAlignment: Left
+    QualifierAlignment: Right # east-const style
 
 ```
 
