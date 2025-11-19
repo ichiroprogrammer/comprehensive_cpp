@@ -4154,7 +4154,7 @@ ___
         auto const start = std::chrono::system_clock::now();
         {
             for (decltype(count) i = 0; i < count; ++i) {
-                volatile auto const list = ls_dir.FileList();
+                auto const volatile list = ls_dir.FileList();
             }
         }
 
