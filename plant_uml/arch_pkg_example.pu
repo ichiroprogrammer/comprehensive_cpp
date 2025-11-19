@@ -5,7 +5,7 @@ package Model as ModelPkg {
     }
 
     class Observer {
-        Update(const& Model);
+        Update(Model const&);
     }
 }
 
@@ -15,7 +15,7 @@ package Controller as ControllerPkg {
 
 package View as ViewPkg {
     class View {
-        Update(const& Model);
+        Update(Model const&);
     }
 }
 

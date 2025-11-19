@@ -5,7 +5,7 @@ package Model as ModelPkg {
     }
 
     class Observer {
-        Update(const& Model);
+        Update(Model const&);
     }
 
     class TwoPhaseTaskPtr
@@ -13,7 +13,7 @@ package Model as ModelPkg {
 }
 
 class View {
-    Update(const& Model);
+    Update(Model const&);
 }
 
 class Controller
