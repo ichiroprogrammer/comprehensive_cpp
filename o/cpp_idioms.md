@@ -60,6 +60,7 @@ __この章の構成__
 &emsp;&emsp;&emsp; [AAAスタイル](cpp_idioms.md#SS_21_9_1)  
 &emsp;&emsp;&emsp; [east-const](cpp_idioms.md#SS_21_9_2)  
 &emsp;&emsp;&emsp; [west-const](cpp_idioms.md#SS_21_9_3)  
+&emsp;&emsp;&emsp; [Trailing Underscore(末尾アンダースコア)](cpp_idioms.md#SS_21_9_4)  
 
 &emsp;&emsp; [オブジェクトのコピー](cpp_idioms.md#SS_21_10)  
 &emsp;&emsp;&emsp; [シャローコピー](cpp_idioms.md#SS_21_10_1)  
@@ -102,7 +103,7 @@ __この章の構成__
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_4)に戻る。  
+[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
 
 ___
 
@@ -4146,6 +4147,27 @@ C言語からの伝統的な表記法であり、多くの標準ライブラリ�
 
 このスタイルは「west constスタイル」または「左側const」と呼ばれ、
 C言語文化圏での可読性・慣習を重視する場合に採用されることが多い。
+
+### Trailing Underscore(末尾アンダースコア) <a id="SS_21_9_4"></a>
+Trailing underscoreとは、C++においてメンバー変数名の末尾にアンダースコア
+(\_)を付ける命名規約である。例えば、data_、count_、name_ のように記述する。
+
+__採用の背景__  
+この規約が広まった主な理由は以下の通りである：  
+
+* 予約識別子との衝突回避 - 先頭のアンダースコアは標準で予約されている(\_+大文字、\_\_など)ため使用できない
+* 可読性の向上 - プレフィックス方式(m_dataなど)と比べて、自然な語順を保てる
+* コンストラクタでの利便性 - 初期化リストで `data_{data}` のようにパラメータ名と区別しやすい
+
+__主要な採用例__
+
+* Google C++ Style Guide
+* Scott Meyers著「Effective C++」シリーズ
+* 多くのオープンソースプロジェクト
+* このドキュメント
+
+この規約により、メンバー変数とローカル変数を明確に区別でき、コードの保守性が期待できる。
+
 
 ## オブジェクトのコピー <a id="SS_21_10"></a>
 ### シャローコピー <a id="SS_21_10_1"></a>

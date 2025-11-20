@@ -8,7 +8,7 @@ SOLIDとは、オブジェクト指向(OOD/OOP)プログラミングにおいて
 * [インターフェース分離の原則(ISP)](solid.md#SS_8_4)
 * [依存関係逆転の原則(DIP)](solid.md#SS_8_5)
 
-[インデックス](comprehensive_intro.md#SS_1_4)に戻る。  
+[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
 
 ___
 

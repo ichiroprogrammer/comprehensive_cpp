@@ -116,7 +116,7 @@ __この章の構成__
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_4)に戻る。  
+[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
 ___
 
 ## ログ取得ライブラリの開発 <a id="SS_13_1"></a>

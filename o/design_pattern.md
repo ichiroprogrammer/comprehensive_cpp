@@ -61,7 +61,7 @@ __この章の構成__
 - [MVC](design_pattern.md#SS_9_3_2)
 
 
-[インデックス](comprehensive_intro.md#SS_1_4)に戻る。  
+[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
 
 ___
 
