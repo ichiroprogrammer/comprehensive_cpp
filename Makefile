@@ -9,7 +9,7 @@ MD_GEN:=./md_gen/export/py
 
 VPATH=./md:practical/md/::deep/md/:deps/md:essential/md
 
-MDS:=introduction.md \
+MDS:=comprehensive_intro.md \
      software_practice.md programming_convention.md code_analysis.md \
      coding_style.md naming_practice.md \
      comment.md solid.md design_pattern.md \

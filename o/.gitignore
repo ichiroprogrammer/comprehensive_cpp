@@ -6,6 +6,7 @@
 !code_analysis.md
 !coding_style.md
 !comment.md
+!comprehensive_intro.md
 !concurrency.md
 !core_lang_spec.md
 !cpp_idioms.md
@@ -17,7 +18,6 @@
 !dynamic_memory_allocation.md
 !exercise_a.md
 !exercise_q.md
-!introduction.md
 !naming_practice.md
 !process_and_infra.md
 !programming_convention.md
@@ -26,4 +26,3 @@
 !solid.md
 !stdlib_and_concepts.md
 !template_meta_programming.md
-
