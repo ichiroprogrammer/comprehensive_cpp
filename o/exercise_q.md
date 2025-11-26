@@ -1188,7 +1188,7 @@ ___
     TEST(ProgrammingConventionSyntaxQ, RangeFor) { ASSERT_EQ("abcd", Accumlate(std::vector<std::string>{"a", "b", "cd"})); }
 ```
 
-* 参照 [範囲for文](core_lang_spec.md#SS_19_9_3)
+* 参照 [範囲for文](core_lang_spec.md#SS_19_9_2)
 * [解答例-コンテナの範囲for文](exercise_a.md#SS_23_4_1)
 
 

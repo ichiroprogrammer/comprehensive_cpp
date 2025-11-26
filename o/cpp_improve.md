@@ -42,13 +42,13 @@ ___
 |:--------------------------------------------------------|:---------------------------------------------------------------------------|
 | 型推論([auto](core_lang_spec.md#SS_19_11_14))                |変数や、式の型の推論                                                        |
 | [decltype](core_lang_spec.md#SS_19_11_15)                                         |式の型を取得                                                                |
-| [範囲for文](core_lang_spec.md#SS_19_9_3)                         |インデックス変数なしのfor文                                                 |
+| [範囲for文](core_lang_spec.md#SS_19_9_2)                         |インデックス変数なしのfor文                                                 |
 | [初期化子リストコンストラクタ](core_lang_spec.md#SS_19_6_1_1)      |`vector<int>` v = {1, 2, 3}; など。                                         |
 | [一様初期化](core_lang_spec.md#SS_19_6_6)                                       |コンストラクタの呼び出しを、波カッコで行う。|vector<int> v{1, 2, 3};        |
 | [rvalue](core_lang_spec.md#SS_19_7_1_2)/[moveセマンティクス](cpp_idioms.md#SS_21_5_3)      |[オブジェクトの所有権](cpp_idioms.md#SS_21_4)の移転、高速化。                     |
 | [rvalueリファレンス](core_lang_spec.md#SS_19_8_2)                               |テンポラリオブジェクトをバインドできる`T&&`形式のリファレンス               |
 | [ラムダ式](core_lang_spec.md#SS_19_10_3)                            |関数オブジェクトをその場に書く                                              |
-| [noexcept](core_lang_spec.md#SS_19_13_4)                                         |関数の例外指定、例外を投げる可能性のある式かbool値を返す演算子              |
+| [noexcept](core_lang_spec.md#SS_19_13_6)                                         |関数の例外指定、例外を投げる可能性のある式かbool値を返す演算子              |
 | [constexpr](core_lang_spec.md#SS_19_5_1)                                        |定数式やconstexpr関数の定義                                                 |
 | nullptr                                                 |ヌルポインタを表すポインタ[リテラル](core_lang_spec.md#SS_19_2)                   |
 | インライン名前空間                                      |ネストした名前空間に透過的にアクセスする。「[名前空間](programming_convention.md#SS_3_8_2)」参照  |
@@ -113,7 +113,7 @@ ___
 |[std::forward](stdlib_and_concepts.md#SS_20_1_2) |[perfect forwarding](core_lang_spec.md#SS_19_8_5)の実装、利用|
 
 #### stdコンテナ <a id="SS_18_1_6_2"></a>
-[コンテナ](stdlib_and_concepts.md#SS_20_7)全般が[moveセマンティクス](cpp_idioms.md#SS_21_5_3)に対応したため、
+[コンテナ](stdlib_and_concepts.md#SS_20_8)全般が[moveセマンティクス](cpp_idioms.md#SS_21_5_3)に対応したため、
 テンプレートのパラメータTが、コピー構築可能(`is_copy_constructible<T> == true`)な型だけでなく、
 ムーブ構築(is_move_constructible)のみ可能な型も受け付けるられるようになった。
 push_back()やinsert()等の要素追加のためのメンバ関数が、
@@ -124,20 +124,20 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |機能                            |説明                                                                                |
 |:-------------------------------|:-----------------------------------------------------------------------------------|
 |std::array                      |このコンテナは固定長配列クラスを表す「[配列](programming_convention.md#SS_3_1_7)」参照)。         |
-|[std::forward_list](stdlib_and_concepts.md#SS_20_7_1_1)        |このは単方向リンクリストの実装である。                                              |
-|[std::unordered_map](stdlib_and_concepts.md#SS_20_7_3_2)       |同一キーの要素を複数格納しない、格納順が規定されていない連想配列の実装であるである。|
-|[std::unordered_set](stdlib_and_concepts.md#SS_20_7_3_1)       |同一キーの要素を複数格納できず、格納順が規定されていないコンテナである。            |
-|[std::type_index](stdlib_and_concepts.md#SS_20_7_3_3)          |型情報型を連想コンテナのキーとして使用するためのクラス。                            |
+|[std::forward_list](stdlib_and_concepts.md#SS_20_8_1_1)        |このは単方向リンクリストの実装である。                                              |
+|[std::unordered_map](stdlib_and_concepts.md#SS_20_8_3_2)       |同一キーの要素を複数格納しない、格納順が規定されていない連想配列の実装であるである。|
+|[std::unordered_set](stdlib_and_concepts.md#SS_20_8_3_1)       |同一キーの要素を複数格納できず、格納順が規定されていないコンテナである。            |
+|[std::type_index](stdlib_and_concepts.md#SS_20_8_3_3)          |型情報型を連想コンテナのキーとして使用するためのクラス。                            |
 
 #### 並列処理 <a id="SS_18_1_6_3"></a>
 |機能                          | 説明                                                    |
 |:----------------------------:|:--------------------------------------------------------|
-| [std::thread](stdlib_and_concepts.md#SS_20_3_1)           | スレッドの生成                                          |
-| [std::atomic](stdlib_and_concepts.md#SS_20_3_3)           | 単純なオブジェクトのアトミック処理                      |
-| [std::mutex](stdlib_and_concepts.md#SS_20_3_2)            | スレッド間の競合の回避                                  |
-| [std::lock_guard](stdlib_and_concepts.md#SS_20_4_1)       | ミューテックスのロック/アンロックを管理するためクラス   |
-| [std::unique_lock](stdlib_and_concepts.md#SS_20_4_2)      | ミューテックスのロック/アンロックを管理するためクラス   |
-| [std::scoped_lock](stdlib_and_concepts.md#SS_20_4_3)      | ミューテックスのロック/アンロックを管理するためクラス   |
+| [std::thread](stdlib_and_concepts.md#SS_20_4_1)           | スレッドの生成                                          |
+| [std::atomic](stdlib_and_concepts.md#SS_20_4_3)           | 単純なオブジェクトのアトミック処理                      |
+| [std::mutex](stdlib_and_concepts.md#SS_20_4_2)            | スレッド間の競合の回避                                  |
+| [std::lock_guard](stdlib_and_concepts.md#SS_20_5_1)       | ミューテックスのロック/アンロックを管理するためクラス   |
+| [std::unique_lock](stdlib_and_concepts.md#SS_20_5_2)      | ミューテックスのロック/アンロックを管理するためクラス   |
+| [std::scoped_lock](stdlib_and_concepts.md#SS_20_5_3)      | ミューテックスのロック/アンロックを管理するためクラス   |
 
 
 ## C++14の主な新規機能 <a id="SS_18_2"></a>
@@ -156,7 +156,7 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |[[deprecated]]属性                                    |「[属性構文](core_lang_spec.md#SS_19_9_1)」参照                                                          |
 |[数値リテラル](core_lang_spec.md#SS_19_2_3)の桁区切り文字                     |シングルクォーテーションで数値リテラルを桁区切りする                             |
 |サイズ付きデアロケーション                            |[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)                                      |
-|[heap allocation elision](stdlib_and_concepts.md#SS_20_11_2)                        |動的メモリ確保の省略(heap allocation elision)の許可                              |
+|[heap allocation elision](stdlib_and_concepts.md#SS_20_12_2)                        |動的メモリ確保の省略(heap allocation elision)の許可                              |
 
 ### stdの変更、追加 <a id="SS_18_2_1"></a>
 
@@ -233,14 +233,14 @@ move挿入ができるようになった(「[その他のテンプレートテ�
 |[演算子のオペランドの評価順位](core_lang_spec.md#SS_19_14_12)             |C++14まで未規定であった部分式の評価順序を規定                                    |
 |enum class変数の初期値のルール変更              |「[スコープドenum](core_lang_spec.md#SS_19_3_3)」、 「[underlying type](core_lang_spec.md#SS_19_3_4)」参照                       |
 |[newのアライメント指定](cpp_improve.md#SS_18_3_1_2)                    |                                                                                 |
-|[初期化付きif/switch文](core_lang_spec.md#SS_19_9_5)                    |if文とswitch文の条件式と初期化を分離する構文                                     |
+|[初期化付きif/switch文](core_lang_spec.md#SS_19_9_4)                    |if文とswitch文の条件式と初期化を分離する構文                                     |
 |[[fallthrough]]属性                             |「[属性構文](core_lang_spec.md#SS_19_9_1)」参照                                                          |
 |[constexpr if文](core_lang_spec.md#SS_19_11_12)                           |if constexpr(cond) とすることで、その if 文はコンパイル時に処理                  |
 |[範囲for文のイテレータ型の不一致の許可](cpp_improve.md#SS_18_3_1_3)    |std::istream_iteratorとstd::istreamに利用                                        |
 |[ラムダ式での\*thisのコピーキャプチャ](cpp_improve.md#SS_18_3_1_4)     |キャプチャリストに\*this を指定することで、\*thisをコピーキャプチャする          |
 |[constexprラムダ](core_lang_spec.md#SS_19_5_9) |ラムダ式の関数オブジェクトのconstexpr指定を可能に                                |
-|[std::optional](stdlib_and_concepts.md#SS_20_8)                            |関数の戻り値の無効表現を行うためのクラステンプレート                             |
-|[std::variant](stdlib_and_concepts.md#SS_20_9)                             |型安全なunion機能を提供するクラステンプレート                                    |
+|[std::optional](stdlib_and_concepts.md#SS_20_9)                            |関数の戻り値の無効表現を行うためのクラステンプレート                             |
+|[std::variant](stdlib_and_concepts.md#SS_20_10)                             |型安全なunion機能を提供するクラステンプレート                                    |
 
 
 #### 単一要素の波カッコ初期化を非配列とする <a id="SS_18_3_1_1"></a>

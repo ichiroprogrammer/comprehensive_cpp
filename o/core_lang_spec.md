@@ -135,14 +135,13 @@ __この章の構成__
 
 &emsp;&emsp; [構文と制御構造](core_lang_spec.md#SS_19_9)  
 &emsp;&emsp;&emsp; [属性構文](core_lang_spec.md#SS_19_9_1)  
-&emsp;&emsp;&emsp; [関数tryブロック](core_lang_spec.md#SS_19_9_2)  
-&emsp;&emsp;&emsp; [範囲for文](core_lang_spec.md#SS_19_9_3)  
-&emsp;&emsp;&emsp; [構造化束縛](core_lang_spec.md#SS_19_9_4)  
-&emsp;&emsp;&emsp; [初期化付きif/switch文](core_lang_spec.md#SS_19_9_5)  
-&emsp;&emsp;&emsp;&emsp; [初期化付きfor文(従来のfor文)](core_lang_spec.md#SS_19_9_5_1)  
-&emsp;&emsp;&emsp;&emsp; [初期化付きwhile文(従来のwhile文)](core_lang_spec.md#SS_19_9_5_2)  
-&emsp;&emsp;&emsp;&emsp; [初期化付きif文](core_lang_spec.md#SS_19_9_5_3)  
-&emsp;&emsp;&emsp;&emsp; [初期化付きswitch文](core_lang_spec.md#SS_19_9_5_4)  
+&emsp;&emsp;&emsp; [範囲for文](core_lang_spec.md#SS_19_9_2)  
+&emsp;&emsp;&emsp; [構造化束縛](core_lang_spec.md#SS_19_9_3)  
+&emsp;&emsp;&emsp; [初期化付きif/switch文](core_lang_spec.md#SS_19_9_4)  
+&emsp;&emsp;&emsp;&emsp; [初期化付きfor文(従来のfor文)](core_lang_spec.md#SS_19_9_4_1)  
+&emsp;&emsp;&emsp;&emsp; [初期化付きwhile文(従来のwhile文)](core_lang_spec.md#SS_19_9_4_2)  
+&emsp;&emsp;&emsp;&emsp; [初期化付きif文](core_lang_spec.md#SS_19_9_4_3)  
+&emsp;&emsp;&emsp;&emsp; [初期化付きswitch文](core_lang_spec.md#SS_19_9_4_4)  
 
 &emsp;&emsp; [言語拡張機能](core_lang_spec.md#SS_19_10)  
 &emsp;&emsp;&emsp; [コルーチン](core_lang_spec.md#SS_19_10_1)  
@@ -201,12 +200,19 @@ __この章の構成__
 &emsp;&emsp;&emsp; [using宣言](core_lang_spec.md#SS_19_12_14)  
 &emsp;&emsp;&emsp; [usingディレクティブ](core_lang_spec.md#SS_19_12_15)  
 
-&emsp;&emsp; [エクセプション安全性の保証](core_lang_spec.md#SS_19_13)  
-&emsp;&emsp;&emsp; [no-fail保証](core_lang_spec.md#SS_19_13_1)  
-&emsp;&emsp;&emsp; [強い安全性の保証](core_lang_spec.md#SS_19_13_2)  
-&emsp;&emsp;&emsp; [基本的な安全性の保証](core_lang_spec.md#SS_19_13_3)  
-&emsp;&emsp;&emsp; [noexcept](core_lang_spec.md#SS_19_13_4)  
-&emsp;&emsp;&emsp; [exception-unfriendly](core_lang_spec.md#SS_19_13_5)  
+&emsp;&emsp; [エクセプション](core_lang_spec.md#SS_19_13)  
+&emsp;&emsp;&emsp; [try-catch](core_lang_spec.md#SS_19_13_1)  
+&emsp;&emsp;&emsp; [関数tryブロック](core_lang_spec.md#SS_19_13_2)  
+&emsp;&emsp;&emsp; [エクセプションのthrow](core_lang_spec.md#SS_19_13_3)  
+&emsp;&emsp;&emsp; [エクセプションの再throw](core_lang_spec.md#SS_19_13_4)  
+&emsp;&emsp;&emsp; [catch-all](core_lang_spec.md#SS_19_13_5)  
+&emsp;&emsp;&emsp; [noexcept](core_lang_spec.md#SS_19_13_6)  
+&emsp;&emsp;&emsp; [エクセプション安全性の保証](core_lang_spec.md#SS_19_13_7)  
+&emsp;&emsp;&emsp;&emsp; [no-fail保証](core_lang_spec.md#SS_19_13_7_1)  
+&emsp;&emsp;&emsp;&emsp; [強い安全性の保証](core_lang_spec.md#SS_19_13_7_2)  
+&emsp;&emsp;&emsp;&emsp; [基本的な安全性の保証](core_lang_spec.md#SS_19_13_7_3)  
+
+&emsp;&emsp;&emsp; [exception-unfriendly](core_lang_spec.md#SS_19_13_8)  
 
 &emsp;&emsp; [言語仕様の定義要素](core_lang_spec.md#SS_19_14)  
 &emsp;&emsp;&emsp; [ill-formed](core_lang_spec.md#SS_19_14_1)  
@@ -2814,7 +2820,7 @@ C++20以降より、`=default`により==演算子を自動生成させること
 C++20から導入された[<=>演算子](core_lang_spec.md#SS_19_6_4_1)の定義により、すべてが定義される。
 
 #### <=>演算子 <a id="SS_19_6_4_1"></a>
-「[std::tuppleを使用した比較演算子の実装方法](stdlib_and_concepts.md#SS_20_10_2)」
+「[std::tuppleを使用した比較演算子の実装方法](stdlib_and_concepts.md#SS_20_11_2)」
 で示した定型のコードはコンパイラが自動生成するのがC++規格のセオリーである。
 このためC++20から導入されたのが<=>演算子`<=>`である。
 
@@ -3883,26 +3889,7 @@ C++14から導入されたの属性構文は、[[属性名]]の形式で記述�
     }
 ```
 
-### 関数tryブロック <a id="SS_19_9_2"></a>
-関数tryブロックとはtry-catchを本体とした下記のような関数のブロックを指す。
-
-```cpp
-    //  example/core_lang_spec/func_try_block.cpp 8
-
-    void function_try_block()
-    try {  // 関数tryブロック
-        // 何らかの処理
-        // ...
-    }
-    catch (std::length_error const& e) {  // 関数tryブロックのエクセプションハンドラ
-        // ...
-    }
-    catch (std::logic_error const& e) {  // 関数tryブロックのエクセプションハンドラ
-        // ...
-    }
-```
-
-### 範囲for文 <a id="SS_19_9_3"></a>
+### 範囲for文 <a id="SS_19_9_2"></a>
 範囲for文は、
 
 ```cpp
@@ -4002,7 +3989,7 @@ C++17以降は、この規制が緩和されたため、以下のように展開
     ASSERT_EQ("Hello", oss.str());  // 結果は "Hello" になるはず
 ```
 
-### 構造化束縛 <a id="SS_19_9_4"></a>
+### 構造化束縛 <a id="SS_19_9_3"></a>
 構造化束縛はC++17 から導入されたもので、std::tuppleやstd::pair、std::arrayなど、
 構造体のメンバーを個別の変数に分解して簡潔に扱うことをできるようにするための機能である。
 
@@ -4068,7 +4055,7 @@ C++17以降は、この規制が緩和されたため、以下のように展開
     ASSERT_EQ(z, 3);
 ```
 
-### 初期化付きif/switch文 <a id="SS_19_9_5"></a>
+### 初期化付きif/switch文 <a id="SS_19_9_4"></a>
 C++17で、if文とswitc文に初期化を行う構文が導入された。
 これにより、変数をそのスコープ内で初期化し、その変数を条件式の評価に使用できる。
 初期化された変数は、if文やswitch文のスコープ内でのみ有効であり、他のスコープには影響を与えない。
@@ -4077,13 +4064,13 @@ C++17で、if文とswitc文に初期化を行う構文が導入された。
 この類似性が理解しやすいように、本節では、 敢えて以下のコード例で同じ関数、同じクラスを使用し、
 対比できるようにした。
 
-- [初期化付きfor文(従来のfor文)](core_lang_spec.md#SS_19_9_5_1)
-- [初期化付きwhile文(従来のwhile文)](core_lang_spec.md#SS_19_9_5_2)
-- [初期化付きif文](core_lang_spec.md#SS_19_9_5_3)
-- [初期化付きswitch文](core_lang_spec.md#SS_19_9_5_4)
+- [初期化付きfor文(従来のfor文)](core_lang_spec.md#SS_19_9_4_1)
+- [初期化付きwhile文(従来のwhile文)](core_lang_spec.md#SS_19_9_4_2)
+- [初期化付きif文](core_lang_spec.md#SS_19_9_4_3)
+- [初期化付きswitch文](core_lang_spec.md#SS_19_9_4_4)
 
 
-#### 初期化付きfor文(従来のfor文) <a id="SS_19_9_5_1"></a>
+#### 初期化付きfor文(従来のfor文) <a id="SS_19_9_4_1"></a>
 下記の疑似コードは従来のfor文の構造を表す。
 
 ```cpp
@@ -4121,7 +4108,7 @@ C++17で、if文とswitc文に初期化を行う構文が導入された。
     // ...
 ```
 
-#### 初期化付きwhile文(従来のwhile文) <a id="SS_19_9_5_2"></a>
+#### 初期化付きwhile文(従来のwhile文) <a id="SS_19_9_4_2"></a>
 下記の疑似コードこの節で説明しようとしているwhile文の構造を表す(従来からのwhile文)。
 
 ```cpp
@@ -4130,7 +4117,7 @@ C++17で、if文とswitc文に初期化を行う構文が導入された。
     }
 ```
 
-[初期化付きif文](core_lang_spec.md#SS_19_9_5_3)/[初期化付きswitch文](core_lang_spec.md#SS_19_9_5_4)はC++17から導入されたシンタックスであるが、
+[初期化付きif文](core_lang_spec.md#SS_19_9_4_3)/[初期化付きswitch文](core_lang_spec.md#SS_19_9_4_4)はC++17から導入されたシンタックスであるが、
 それと同様のシンタックスはwhileには存在しないが、
 以下のコード例のように従来の記法は広く知られているため、念とため紹介する。
 
@@ -4143,7 +4130,7 @@ C++17で、if文とswitc文に初期化を行う構文が導入された。
     // resultはスコープアウトする
 ```
 
-#### 初期化付きif文 <a id="SS_19_9_5_3"></a>
+#### 初期化付きif文 <a id="SS_19_9_4_3"></a>
 下記の疑似コードこの節で説明しようとしているif文の構造を表す。
 
 ```cpp
@@ -4205,7 +4192,7 @@ C++17で、if文とswitc文に初期化を行う構文が導入された。
     }
 ```
 
-#### 初期化付きswitch文 <a id="SS_19_9_5_4"></a>
+#### 初期化付きswitch文 <a id="SS_19_9_4_4"></a>
 下記の疑似コードはこの節で説明しようとしているswitch文の構造を表す。
 
 ```cpp
@@ -4914,7 +4901,7 @@ C++20から導入されたco_await、co_return、TaskとC++17以前の機能の�
     ASSERT_EQ(circl_1, circl_2);
 ```
 
-下記に示すように、[Polymorphic Memory Resource(pmr)](stdlib_and_concepts.md#SS_20_6)のpool_resourceの初期化には、
+下記に示すように、[Polymorphic Memory Resource(pmr)](stdlib_and_concepts.md#SS_20_7)のpool_resourceの初期化には、
 この機能を使うと可読性の改善が期待できる。
 
 ```cpp
@@ -7150,33 +7137,151 @@ XXXの識別子が使用できる。
 従って、usingディレクティブの使用は避けるべきである。
 
 
-## エクセプション安全性の保証 <a id="SS_19_13"></a>
-関数のエクセプション発生時の安全性の保証には以下の3つのレベルが規定されている。
+## エクセプション <a id="SS_19_13"></a>
+エクセプションは、プログラムの通常の制御フローを中断し、エラー条件や異常な状態を伝達するための機構である。
+C++では、[try-catch](core_lang_spec.md#SS_19_13_1)構文や[エクセプションのthrow](core_lang_spec.md#SS_19_13_3)文使用してエクセプション処理を実現する。
 
-* [no-fail保証](core_lang_spec.md#SS_19_13_1)
-* [強い安全性の保証](core_lang_spec.md#SS_19_13_2)
-* [基本的な安全性の保証](core_lang_spec.md#SS_19_13_3)
+### try-catch <a id="SS_19_13_1"></a>
+try-catch構文は、エクセプション処理の基本的な枠組みを提供する構文である。
+tryブロック内でエクセプションが発生する可能性のあるコードを記述し、
+それに続くcatchブロックでエクセプションの種類ごとに処理を定義する。
 
-### no-fail保証 <a id="SS_19_13_1"></a>
-「no-fail保証」を満たす関数はエクセプションをthrowしない。
-no-failを保証する関数は、
-[noexcept](core_lang_spec.md#SS_19_13_4)を使用してエクセプションを発生させないことを明示できる。
+```cpp
+    //  example/core_lang_spec/exception_ut.cpp 15
 
-標準テンプレートクラスのパラメータとして使用するクラスのメンバ関数には、
-正確にnoexceptの宣言をしないと、
-テンプレートクラスのメンバ関数によってはパフォーマンスを起こしてしまう可能性がある。
+    try {  // tryブロック
 
-### 強い安全性の保証 <a id="SS_19_13_2"></a>
-「強い保証」を満たす関数は、この関数がエクセプションによりスコープから外れた場合でも、
-この関数が呼ばれなかった状態と同じ(プログラムカウンタ以外の状態は同じ)であることを保証する。
-従って、この関数呼び出しは成功したか、完全な無効だったかのどちらかになる。
+        auto a = A(num);  // エクセプションが発生する可能性のあるコード
+        // 何らかの処理
+        // ...
+    }
+    catch (std::logic_error const& e) {
+        // エクセプション処理
+        // ...
+    }
+    catch (std::runtime_error const& e) {
+        /*
+        throw e;  ここでリカバリ処理ができない場合、再throwすることで外部にエラーを伝えることができるが、
+                  以下の記法の方が好ましい */
+        throw;  // ここではエクセプション処理が完了できない場合、再throw
+    }
+```
 
-### 基本的な安全性の保証 <a id="SS_19_13_3"></a>
-「基本的な安全性の保証」を満たす関数は、この関数がエクセプションによりスコープから外れた場合でも、
-メモリ等のリソースリークは起こさず、
-オブジェクトは(変更されたかもしれないが)引き続き使えることを保証する。
+tryブロック内でエクセプションが投げられると、制御はtryブロックを即座に抜け、マッチする最初のcatchブロックに移る。
+エクセプションがcatchされると、その後の処理が続行される。どのcatchブロックにもマッチしない場合、
+エクセプションはさらに外側のtry-catchブロック、または呼び出し元に伝播する。
 
-### noexcept <a id="SS_19_13_4"></a>
+エクセプションのtry-catchは[関数tryブロック](core_lang_spec.md#SS_19_13_2)によっても実装できる。
+
+一般にエクセプションオブジェクトのcatchには上記ののコード例のように`T const&`を使用することが好ましい。
+これにより、エクセプションオブジェクトの[スライシング](cpp_idioms.md#SS_21_10_3)を避けることができる。
+
+### 関数tryブロック <a id="SS_19_13_2"></a>
+関数tryブロックとはtry-catchを本体とした下記のような関数のブロックを指す。
+
+```cpp
+    //  example/core_lang_spec/exception_ut.cpp 40
+
+    void function_try_block(int num)
+    try {  // 関数tryブロック
+
+        auto a = A(num);  // エクセプションが発生する可能性のあるコード
+        // 何らかの処理
+        // ...
+    }
+    catch (std::length_error const& e) {  // 関数tryブロックのエクセプションハンドラ
+        // エクセプション処理
+        // ...
+    }
+    catch (std::logic_error const&) {  // 関数tryブロックのエクセプションハンドラ
+        throw;                         // ここではエクセプション処理が完了できない場合、再throw
+    }
+```
+
+### エクセプションのthrow <a id="SS_19_13_3"></a>
+throwキーワードを使用して、任意の型のオブジェクトをエクセプションとして投げる(throw)ことができるが、
+throwのオペランドには、慣習的に[std::exception](stdlib_and_concepts.md#SS_20_3_1)の派生クラスのインスタンスを用いることが多い。
+
+```cpp
+    //  example/core_lang_spec/exception_ut.cpp 61
+
+    int divide(int a, int b)
+    {
+        if (b == 0) {
+            throw std::invalid_argument("b must be not ZERO");  // 0除算によるエクセプション
+        }
+        return a / b;
+    }
+```
+```cpp
+    //  example/core_lang_spec/exception_ut.cpp 77
+
+    try {  // tryブロック
+
+        auto solution = divide(a, b);
+        // 何らかの処理
+        // ...
+    }
+    catch (std::exception const& e) {
+        // エクセプション処理
+        // ...
+    }
+```
+
+### エクセプションの再throw <a id="SS_19_13_4"></a>
+catchブロック内でエクセプション処理を完了できない場合、エクセプションを上位の呼び出し元に伝播させる必要がある。
+このような場合、オペランドなしのthrow;文を用いることで、catchしたエクセプションオブジェクトをそのまま再送出できる。
+これを再throw（rethrow）と呼ぶ。
+
+```cpp
+    //  example/core_lang_spec/exception_ut.cpp 15
+
+    try {  // tryブロック
+
+        auto a = A(num);  // エクセプションが発生する可能性のあるコード
+        // 何らかの処理
+        // ...
+    }
+    catch (std::logic_error const& e) {
+        // エクセプション処理
+        // ...
+    }
+    catch (std::runtime_error const& e) {
+        /*
+        throw e;  ここでリカバリ処理ができない場合、再throwすることで外部にエラーを伝えることができるが、
+                  以下の記法の方が好ましい */
+        throw;  // ここではエクセプション処理が完了できない場合、再throw
+    }
+```
+
+再throwには`throw;`と`throw e;`の2つの記法があるが、上記のように`throw;`を使用すべきである。
+`throw e;`では、元のエクセプションオブジェクトが[スライシング](cpp_idioms.md#SS_21_10_3)される可能性があるためである。
+`throw;`は元のエクセプションオブジェクトをそのまま保持して再送出する。
+
+### catch-all <a id="SS_19_13_5"></a>
+すべての型のエクセプションを一括して捕捉したい場合、省略記号（...）を用いたcatch-all構文を使用する。
+この構文は、どのcatchブロックにもマッチしなかったエクセプションを捕捉する。
+
+```cpp
+    //  example/core_lang_spec/exception_ut.cpp 92
+
+    try {  // tryブロック
+
+        auto solution = divide(a, b);
+        // 何らかの処理
+        // ...
+    }
+    catch (std::exception const& e) {
+        // エクセプション処理
+        // ...
+    }
+    catch (...) {  // すべてのエクセプションをcatch（catch-all）
+        // エクセプション処理
+        // ...
+    }
+```
+
+### noexcept <a id="SS_19_13_6"></a>
 C++11で導入されたnoexceptキーワードには、以下の2つの意味がある。
 
 * C++03までのthrowキーワードによるエクセプション仕様の代替。
@@ -7191,7 +7296,7 @@ C++11で導入されたnoexceptキーワードには、以下の2つの意味が
 以下に上記のコード例を示す。
 
 ```cpp
-    //  example/core_lang_spec/noexcept_ut.cpp 11
+    //  example/core_lang_spec/exception_ut.cpp 113
 
     std::string f_noexcept() noexcept  // エクセプションを発生させない
     {
@@ -7214,7 +7319,7 @@ C++11で導入されたnoexceptキーワードには、以下の2つの意味が
     }
 ```
 ```cpp
-    //  example/core_lang_spec/noexcept_ut.cpp 37
+    //  example/core_lang_spec/exception_ut.cpp 139
 
     static_assert(noexcept(f_noexcept()));  // エクセプションを発生させる可能性の確認
     static_assert(!noexcept(f_except()));   // エクセプションを発生させない可能性の確認
@@ -7228,7 +7333,7 @@ C++11で導入されたnoexceptキーワードには、以下の2つの意味が
 演算子としてのnoexceptはテンプレートで頻繁に使用されるため、以下にそのような例を示す。
 
 ```cpp
-    //  example/core_lang_spec/noexcept_ut.cpp 50
+    //  example/core_lang_spec/exception_ut.cpp 152
 
     class PossiblyThrow {  // オブジェクト生成でエクセプションの発生可能性あり
     public:
@@ -7243,7 +7348,7 @@ C++11で導入されたnoexceptキーワードには、以下の2つの意味が
     }
 ```
 ```cpp
-    //  example/core_lang_spec/noexcept_ut.cpp 67
+    //  example/core_lang_spec/exception_ut.cpp 169
 
     auto i = int{};
     auto p = PossiblyThrow{};
@@ -7254,7 +7359,34 @@ C++11で導入されたnoexceptキーワードには、以下の2つの意味が
     static_assert(!noexcept(t_f(p)));
 ```
 
-### exception-unfriendly <a id="SS_19_13_5"></a>
+### エクセプション安全性の保証 <a id="SS_19_13_7"></a>
+関数のエクセプション発生時の安全性の保証には以下の3つのレベルが規定されている。
+
+* [no-fail保証](core_lang_spec.md#SS_19_13_7_1)
+* [強い安全性の保証](core_lang_spec.md#SS_19_13_7_2)
+* [基本的な安全性の保証](core_lang_spec.md#SS_19_13_7_3)
+
+#### no-fail保証 <a id="SS_19_13_7_1"></a>
+「no-fail保証」を満たす関数はエクセプションをthrowしない。
+no-failを保証する関数は、
+[noexcept](core_lang_spec.md#SS_19_13_6)を使用してエクセプションを発生させないことを明示できる。
+
+標準テンプレートクラスのパラメータとして使用するクラスのメンバ関数には、
+正確にnoexceptの宣言をしないと、
+テンプレートクラスのメンバ関数によってはパフォーマンスを起こしてしまう可能性がある。
+
+#### 強い安全性の保証 <a id="SS_19_13_7_2"></a>
+「強い保証」を満たす関数は、この関数がエクセプションによりスコープから外れた場合でも、
+この関数が呼ばれなかった状態と同じ(プログラムカウンタ以外の状態は同じ)であることを保証する。
+従って、この関数呼び出しは成功したか、完全な無効だったかのどちらかになる。
+
+#### 基本的な安全性の保証 <a id="SS_19_13_7_3"></a>
+「基本的な安全性の保証」を満たす関数は、この関数がエクセプションによりスコープから外れた場合でも、
+メモリ等のリソースリークは起こさず、
+オブジェクトは(変更されたかもしれないが)引き続き使えることを保証する。
+
+
+### exception-unfriendly <a id="SS_19_13_8"></a>
 以下のような関数  
 
 * 初期化に関連する関数やコンストラクタ

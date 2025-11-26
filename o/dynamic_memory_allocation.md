@@ -1314,7 +1314,7 @@ OpNewを使うプロジェクトには導入するべきだろう。
 (「[可変長メモリプール](dynamic_memory_allocation.md#SS_14_2_2)」参照)を使う。
 
 C++14の環境で標準ライブラリのアロケータを置き換える場合は、上記のような方法で実現できるが、
-C++17以降では、[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_20_6_2)を使用するべきである。
+C++17以降では、[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_20_7_2)を使用するべきである。
 
 ### デバッグ用イテレータ <a id="SS_14_5_1"></a>
 [可変長メモリプール](dynamic_memory_allocation.md#SS_14_2_2)を使用すると、

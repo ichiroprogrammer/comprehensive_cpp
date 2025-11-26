@@ -609,7 +609,7 @@ ___
   従って、unionの定義を外部パッケージに公開(「[パッケージの実装と公開](programming_convention.md#SS_3_7_1)」参照)しない。
 
 * 上記以外でunionのような機能が必要な場合、
-  [std::variant](stdlib_and_concepts.md#SS_20_9)(「[std::variantとジェネリックラムダ](template_meta_programming.md#SS_13_7_2_2)」参照)を使用する
+  [std::variant](stdlib_and_concepts.md#SS_20_10)(「[std::variantとジェネリックラムダ](template_meta_programming.md#SS_13_7_2_2)」参照)を使用する
   (std::anyはunionの代替えにはならないので、このような場合には使用しない)。
 
 ### 配列 <a id="SS_3_1_7"></a>
@@ -638,7 +638,7 @@ ___
     #endif
 ```
 
-* 配列の全要素にアクセスするような繰り返し処理には[範囲for文](core_lang_spec.md#SS_19_9_3)を使用する。
+* 配列の全要素にアクセスするような繰り返し処理には[範囲for文](core_lang_spec.md#SS_19_9_2)を使用する。
 
 * [演習-配列の範囲for文](exercise_q.md#SS_22_1_6)
 
@@ -2129,7 +2129,7 @@ ___
     * オブジェクトbが`std::shared_ptr<A>`でオブジェクトaを、
       オブジェクトaが`std::shared_ptr<B>`でオブジェクトbを所有する場合、
       [オブジェクトの循環所有](cpp_idioms.md#SS_21_4_3)よるメモリリークが発生するため、
-      [std::weak_ptr](stdlib_and_concepts.md#SS_20_5_3)を適切に使用する。
+      [std::weak_ptr](stdlib_and_concepts.md#SS_20_6_3)を適切に使用する。
 
 * [演習-オブジェクトの所有権](exercise_q.md#SS_22_2_7)
 
@@ -2445,7 +2445,7 @@ ___
 * 比較演算子のオーバーロードする場合、
     * C++20であれば、[<=>演算子](core_lang_spec.md#SS_19_6_4_1)を定義する。
     * C++17以下であれば、`operator==`と`operator<`の2つの演算子がを定義し、
-      [std::rel_ops](stdlib_and_concepts.md#SS_20_10_1)を使用する。
+      [std::rel_ops](stdlib_and_concepts.md#SS_20_11_1)を使用する。
 
 * [ユーザ定義リテラル演算子](core_lang_spec.md#SS_19_2_6_1)のサフィックスには、
   アンダーバーから始まる3文字以上の文字列を使用する。
@@ -2895,7 +2895,7 @@ ___
 
 * 戻り値型は「[関数の引数と戻り値の型](cpp_idioms.md#SS_21_6_1)」に従う。
 
-* 関数が複数の値を返す場合、[std::optional](stdlib_and_concepts.md#SS_20_8)、std::pair、std::tupple、
+* 関数が複数の値を返す場合、[std::optional](stdlib_and_concepts.md#SS_20_9)、std::pair、std::tupple、
   構造体オブジェクトを戻り値にして返す。パフォーマンスに著しい悪影響がない限り、
   リファレンス引数で戻り値を返さない(「[関数の戻り値オブジェクト](programming_convention.md#SS_3_9_3)」参照)。
 
@@ -2966,7 +2966,7 @@ ___
 
 * 処理の成否をbool等で通知し、成功時の戻り値をリファレンス引数で戻す関数や、
   処理の成功時の値と、失敗時の外れ値を戻り値で返す関数を作らない。
-  代わりにC++17で導入された[std::optional](stdlib_and_concepts.md#SS_20_8)を使用する。
+  代わりにC++17で導入された[std::optional](stdlib_and_concepts.md#SS_20_9)を使用する。
 
 ```cpp
     //  example/programming_convention/func_return_ut.cpp 108
@@ -3084,18 +3084,18 @@ ___
 ```
 
 ### エクセプション処理 <a id="SS_3_3_9"></a>
-* 関数はそれが不可避でない限り、[no-fail保証](core_lang_spec.md#SS_19_13_1)をする。
-  [no-fail保証](core_lang_spec.md#SS_19_13_1)関数は[noexcept](core_lang_spec.md#SS_19_13_4)を使用してそのことを明示する。
-* throwをせざるを得ない場合、最低でも[基本的な安全性の保証](core_lang_spec.md#SS_19_13_3)をする。
+* 関数はそれが不可避でない限り、[no-fail保証](core_lang_spec.md#SS_19_13_7_1)をする。
+  [no-fail保証](core_lang_spec.md#SS_19_13_7_1)関数は[noexcept](core_lang_spec.md#SS_19_13_6)を使用してそのことを明示する。
+* throwをせざるを得ない場合、最低でも[基本的な安全性の保証](core_lang_spec.md#SS_19_13_7_3)をする。
 * 標準ライブラリのコンテナ(std::string, std::vector等)が発生させるエクセプションはtry-catchせず
   (catchしてデバッグ情報を保存するような場合を除く)、
   プログラムをクラッシュさせる。try-catchしてもできることはない。
-* 特別な理由がない限り、コンストラクタ呼び出しは[noexcept](core_lang_spec.md#SS_19_13_4)と宣言する。
+* 特別な理由がない限り、コンストラクタ呼び出しは[noexcept](core_lang_spec.md#SS_19_13_6)と宣言する。
   ネットワーク接続等、簡単にエラーすることをコンストラクタ内で行わない。
 * [オープン・クローズドの原則(OCP)](solid.md#SS_8_2)、[リスコフの置換原則(LSP)](solid.md#SS_8_3)に違反する場合が多いため、
   「throwキーワードによるエクセプション仕様」を使用しない(C++17で廃止)。
-* エクセプションをthrowしないことが確定している関数は、[noexcept](core_lang_spec.md#SS_19_13_4)と宣言する。
-  move代入演算子を[noexcept](core_lang_spec.md#SS_19_13_4)と宣言することは特に重要である。
+* エクセプションをthrowしないことが確定している関数は、[noexcept](core_lang_spec.md#SS_19_13_6)と宣言する。
+  move代入演算子を[noexcept](core_lang_spec.md#SS_19_13_6)と宣言することは特に重要である。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 446
@@ -3173,7 +3173,7 @@ ___
     }
 ```
 
-* [exception-unfriendly](core_lang_spec.md#SS_19_13_5)な関数はエクセプションを発生させないようにする。
+* [exception-unfriendly](core_lang_spec.md#SS_19_13_8)な関数はエクセプションを発生させないようにする。
 * エクセプションをthrowする場合、独自定義したオブジェクトを使用しない。
   代わりにstd::exceptionか、これから派生したクラスを使用する。
   また、throwされたオブジェクトのwhat()から、throwされたファイル位置が特定できるようにする
@@ -3232,7 +3232,7 @@ ___
 * [演習-エクセプションの型](exercise_q.md#SS_22_3_13)  
 
 ### ビジーループ <a id="SS_3_3_10"></a>
-* ビジーループを使わない。[std::condition_variable](stdlib_and_concepts.md#SS_20_3_4)を使用してイベントドリブンにする。
+* ビジーループを使わない。[std::condition_variable](stdlib_and_concepts.md#SS_20_4_4)を使用してイベントドリブンにする。
 
 ```cpp
     //  example/programming_convention/func_ut.cpp 591
@@ -3349,7 +3349,7 @@ ___
 ```
 
 * switch文のオペランド変数を生成する場合、
-  できるだけ[初期化付きswitch文](core_lang_spec.md#SS_19_9_5_4)を使用し、その変数のスコープを最小に留める。
+  できるだけ[初期化付きswitch文](core_lang_spec.md#SS_19_9_4_4)を使用し、その変数のスコープを最小に留める。
 
 ### if文 <a id="SS_3_4_3"></a>
 * if-else-ifと連続する場合は、else文で終了させる。
@@ -3397,17 +3397,17 @@ ___
 * ifの条件式が、コンパイル時に定まるのであれば、[constexpr if文](core_lang_spec.md#SS_19_11_12)を使用する。
 
 * if文のオペランド変数を生成する場合、
-  できるだけ[初期化付きif文](core_lang_spec.md#SS_19_9_5_3)を使用し、その変数のスコープを最小に留める。
+  できるだけ[初期化付きif文](core_lang_spec.md#SS_19_9_4_3)を使用し、その変数のスコープを最小に留める。
 
 ### while文 <a id="SS_3_4_4"></a>
-* while文には、[初期化付きif文](core_lang_spec.md#SS_19_9_5_3)/[初期化付きswitch文](core_lang_spec.md#SS_19_9_5_4)のような構文は存在しないが、
+* while文には、[初期化付きif文](core_lang_spec.md#SS_19_9_4_3)/[初期化付きswitch文](core_lang_spec.md#SS_19_9_4_4)のような構文は存在しないが、
   while文のオペランド変数を生成するする場合、
-  [初期化付きfor文(従来のfor文)](core_lang_spec.md#SS_19_9_5_1)を使用し、その変数のスコープを最小に留める。
+  [初期化付きfor文(従来のfor文)](core_lang_spec.md#SS_19_9_4_1)を使用し、その変数のスコープを最小に留める。
 
 ### 範囲for文 <a id="SS_3_4_5"></a>
 * 配列やコンテナの全要素にアクセスするような繰り返し処理には、
   [off-by-oneエラー](https://ja.wikipedia.org/wiki/Off-by-one%E3%82%A8%E3%83%A9%E3%83%BC)
-  が避けられ、従来よりもシンプルに記述できる[範囲for文](core_lang_spec.md#SS_19_9_3)を使用する。
+  が避けられ、従来よりもシンプルに記述できる[範囲for文](core_lang_spec.md#SS_19_9_2)を使用する。
 
 ```cpp
     //  example/programming_convention/syntax_ut.cpp 155
@@ -3438,7 +3438,7 @@ ___
 ```
 
 * 独自のコンテナクラスを定義する場合、標準ライブラリのコンテナと同様の要件を満たすbegin()、end()や、
-  cbegin()、cend()も定義し、そのコンテナに[範囲for文](core_lang_spec.md#SS_19_9_3)を適用できるようにする。
+  cbegin()、cend()も定義し、そのコンテナに[範囲for文](core_lang_spec.md#SS_19_9_2)を適用できるようにする。
 
 * [演習-コンテナの範囲for文](exercise_q.md#SS_22_4_1)  
 
@@ -3811,10 +3811,10 @@ ___
 ### メモリアロケーション <a id="SS_3_5_6"></a>
 #### new <a id="SS_3_5_6_1"></a>
 * オブジェクトのダイナミックな生成には、特別な理由がない限りnewを使用せず、
-  [std::make_unique](stdlib_and_concepts.md#SS_20_5_1_1)や[std::make_shared](stdlib_and_concepts.md#SS_20_5_2_1)を使用する。
-  また、特別な理由でnewした場合、そのポインタは[スマートポインタ](stdlib_and_concepts.md#SS_20_5)で管理する。
-* [std::shared_ptr](stdlib_and_concepts.md#SS_20_5_2)でダイナミックに生成したオブジェクトを管理する場合、
-  [オブジェクトの循環所有](cpp_idioms.md#SS_21_4_3)が発生しないように気を付ける(適切に[std::weak_ptr](stdlib_and_concepts.md#SS_20_5_3)を使う)。
+  [std::make_unique](stdlib_and_concepts.md#SS_20_6_1_1)や[std::make_shared](stdlib_and_concepts.md#SS_20_6_2_1)を使用する。
+  また、特別な理由でnewした場合、そのポインタは[スマートポインタ](stdlib_and_concepts.md#SS_20_6)で管理する。
+* [std::shared_ptr](stdlib_and_concepts.md#SS_20_6_2)でダイナミックに生成したオブジェクトを管理する場合、
+  [オブジェクトの循環所有](cpp_idioms.md#SS_21_4_3)が発生しないように気を付ける(適切に[std::weak_ptr](stdlib_and_concepts.md#SS_20_6_3)を使う)。
 * [プレースメントnew](core_lang_spec.md#SS_19_6_9)を使用しない。
 * `new T[N]`を使用しない。代わりにstd::arrayをダイナミックに生成するか、std::vectorを使用する。
 * [new (std::nothrow)](core_lang_spec.md#SS_19_6_10)を使わない限り、
@@ -5647,7 +5647,7 @@ ___
     * if, else, for, while, do後には{}を使う([複合文](programming_convention.md#SS_3_4_1))。
     * switchでのフォールスルーをしない([switch文](programming_convention.md#SS_3_4_2))。
     * switchにはdefaultラベルを入れる([switch文](programming_convention.md#SS_3_4_2))。
-    * 範囲for文を積極的に使う([範囲for文](core_lang_spec.md#SS_19_9_3))。
+    * 範囲for文を積極的に使う([範囲for文](core_lang_spec.md#SS_19_9_2))。
     * gotoを使用しない([goto文](programming_convention.md#SS_3_4_8))。
 * オブジェクトのダイナミックな生成には`std::make_unique<>`や`std::make_shared<>`を使用する
   ([メモリアロケーション](programming_convention.md#SS_3_5_6))。

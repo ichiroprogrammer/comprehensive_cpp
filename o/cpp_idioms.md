@@ -493,7 +493,7 @@ std::lock_guard<>によってunlockを行うことで、同様の効果が得ら
 
 コード内のコメントで示したように、このコードには以下のような問題がある。
 
-* copy代入演算子には、[エクセプション安全性の保証](core_lang_spec.md#SS_19_13)がない。
+* copy代入演算子には、[エクセプション安全性の保証](core_lang_spec.md#SS_19_13_7)がない。
 * 上記4関数は似ているにも関わらず、微妙な違いがあるためコードクローンとなっている。
 
 ここで紹介するCopy-And-Swapはこのような問題を解決するためのイデオムである。
@@ -568,7 +568,7 @@ std::lock_guard<>によってunlockを行うことで、同様の効果が得ら
 また、CopyAndSwap::Swapに関してもstd::vector等が持つswapと同様のものである。
 このイデオムの特徴は、copy代入演算子、
 move代入演算子が各コンストラクタとSwap関数により実装されている所にある。
-これにより[エクセプション安全性の保証](core_lang_spec.md#SS_19_13)を持つ4関数をコードクローンすることなく実装できる。
+これにより[エクセプション安全性の保証](core_lang_spec.md#SS_19_13_7)を持つ4関数をコードクローンすることなく実装できる。
 
 [演習-Copy-And-Swap](exercise_q.md#SS_22_9_6)  
 
@@ -629,7 +629,7 @@ CRTPとは、
     ASSERT_EQ(2, DerivedClass_Count);  // a1のスコープアウトによりインスタンスが減少
 ```
 
-なお、このパターンは、[std::enable_shared_from_this](stdlib_and_concepts.md#SS_20_5_2_2)の使用において前提知識となっている。
+なお、このパターンは、[std::enable_shared_from_this](stdlib_and_concepts.md#SS_20_6_2_2)の使用において前提知識となっている。
 
 ### Accessor <a id="SS_21_1_5"></a>
 publicメンバ変数とそれにアクセスするソースコードは典型的なアンチパターンであるため、
@@ -3374,7 +3374,7 @@ moveセマンティクスとは以下を満たすようなセマンティクス�
      move代入後にはそのリソースはcに移動していることが一般的である(「[rvalue](core_lang_spec.md#SS_19_7_1_2)」参照)
 
 * エクセプション安全性  
-    [no-fail保証](core_lang_spec.md#SS_19_13_1)をする(noexceptと宣言し、エクセプションをthrowしない)
+    [no-fail保証](core_lang_spec.md#SS_19_13_7_1)をする(noexceptと宣言し、エクセプションをthrowしない)
 
 moveセマンティクスは、使用後に破棄されるオブジェクト(主にrvalue)からの代入処理の実行コストを削減するために導入された。
 
@@ -3547,7 +3547,8 @@ CopyAssignable要件は、C++において型がcopy代入をサポートする�
 
 [注] Xは任意の型  
 
-[注] `templat<typename T> f(T&&)`の`T&&`は[forwardingリファレンス](core_lang_spec.md#SS_19_8_3)である。  
+[注]
+`templat<typename T> f(T&&)`の`T&&`は[forwardingリファレンス](core_lang_spec.md#SS_19_8_3)である。  
 
 [注] 以下のような引数型は避けるべきである。  
 
@@ -4601,7 +4602,7 @@ C/C++プログラミングにおける重要なスキルの一つである。
 
 ### スレッドセーフ <a id="SS_21_12_2"></a>
 スレッドセーフとは「複数のスレッドから同時にアクセスされても、
-排他制御などの機構([std::mutex](stdlib_and_concepts.md#SS_20_3_2))により共有データの整合性が保たれ、正しく動作する性質」である。
+排他制御などの機構([std::mutex](stdlib_and_concepts.md#SS_20_4_2))により共有データの整合性が保たれ、正しく動作する性質」である。
 
 ### リエントラント <a id="SS_21_12_3"></a>
 リエントラントとは「実行中に同じ関数が再度呼び出されても、グローバル変数や静的変数に依存せず、
@@ -4613,7 +4614,7 @@ C/C++プログラミングにおける重要なスキルの一つである。
 ### クリティカルセクション <a id="SS_21_12_4"></a>
 複数のスレッドから同時にアクセスされると競合状態を引き起こす可能性があるコード領域をクリティカルセクションと呼ぶ。
 典型的には、共有変数や共有データ構造を読み書きするコード部分がこれに該当する。
-クリティカルセクションは、[std::mutex](stdlib_and_concepts.md#SS_20_3_2)等の排他制御機構によって保護し、
+クリティカルセクションは、[std::mutex](stdlib_and_concepts.md#SS_20_4_2)等の排他制御機構によって保護し、
 一度に一つのスレッドのみが実行できるようにする必要がある。
 
 ### スピンロック <a id="SS_21_12_5"></a>
@@ -4622,7 +4623,7 @@ C/C++プログラミングにおける重要なスキルの一つである。
 スリープを伴わずカーネルを呼び出さないため、短時間の競合では高速に動作するが、
 長時間の待機ではCPUを浪費しやすい。リアルタイム処理や割り込み制御に適する。
 
-C++11では、スピンロックは[std::atomic](stdlib_and_concepts.md#SS_20_3_3)を使用して以下のように定義できる。
+C++11では、スピンロックは[std::atomic](stdlib_and_concepts.md#SS_20_4_3)を使用して以下のように定義できる。
 
 ```cpp
     //  h/spin_lock.h 3
@@ -4646,8 +4647,8 @@ C++11では、スピンロックは[std::atomic](stdlib_and_concepts.md#SS_20_3_
     };
 ```
 
-以下の単体テスト(「[std::mutex](stdlib_and_concepts.md#SS_20_3_2)」の単体テストを参照)
-に示したように[std::scoped_lock](stdlib_and_concepts.md#SS_20_4_3)のテンプレートパラメータとして使用できる。
+以下の単体テスト(「[std::mutex](stdlib_and_concepts.md#SS_20_4_2)」の単体テストを参照)
+に示したように[std::scoped_lock](stdlib_and_concepts.md#SS_20_5_3)のテンプレートパラメータとして使用できる。
 
 ```cpp
     //  example/cpp_idioms/spin_lock_ut.cpp 11
