@@ -13,6 +13,7 @@
 ## 改訂履歴
 * V20.12
     * CRTPの説明強化
+    * 「デバッグ」の章に「組み込みソフト」の節を追加して再構成
     * 「標準ライブラリとプログラミングの概念」に「std::enable_shared_from_this」の説明追加
     * このドキュメントのSOLIDとデザインパターンの章をdeep_cppへ移動
     * C++慣用語句に「Modern CMake project layout」を追加
