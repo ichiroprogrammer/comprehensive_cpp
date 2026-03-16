@@ -225,6 +225,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 |[16進浮動小数点数リテラル](core_lang_spec.md#SS_19_2_5)                 |16進数表記で浮動小数点数リテラルを記述できるようにする                           |
 |インライン変数                                  |inline 指定をすることで翻訳単位を跨いでひとつのオブジェクトになる変数を定義する  |
 |[構造化束縛](core_lang_spec.md#SS_19_9_3)                               |                                                                                 |
+|[CTAD(Class Template Argument Deduction)](core_lang_spec.md#SS_19_11_8)  |コンストラクタの引数からテンプレート引数の型推論する機能                         |
 |[単一要素の波カッコ初期化を非配列とする](cpp_improve.md#SS_18_3_1_1)   |リストによる直接初期化の型推論の規則が変更された                                 |
 |[[maybe_unused]]属性                            |「[属性構文](core_lang_spec.md#SS_19_9_1)」参照                                                          | 
 |[[nodiscard]]属性                               |「[属性構文](core_lang_spec.md#SS_19_9_1)」、[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)」参照           |

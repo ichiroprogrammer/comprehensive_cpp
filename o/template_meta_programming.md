@@ -1075,8 +1075,8 @@ C++11での改善により、実践的なアイデアとして使用できるよ
 
 #### operator\<\<を使わない <a id="SS_13_1_6_6"></a>
 色々なアイデアを試してみたが、これまでの議論ではこれといった解決方法を発見できなかった。
-「[バーニーの祈り](https://ja.wikipedia.org/wiki/%E3%83%8B%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E7%A5%88%E3%82%8A)」
-が言っている通り、時にはどうにもならないことを受け入れることも重要である。
+「[二ーバーの祈り](https://ja.wikipedia.org/wiki/%E3%83%8B%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E7%A5%88%E3%82%8A)」
+に従い、時にはどうにもならないことを受け入れることも重要である。
 LOGGERの中でname lookupできる、エイリアスApp::Ints_tのoperator<<の開発をあきらめ、
 ここでは一旦、下記のような受け入れがたいコードを受け入れることにする。
 
@@ -1248,19 +1248,19 @@ std::vector、std::basic_string、std::array等の配列型コンテナは、
 ```cpp
     //  example/template/safe_vector_ut.cpp 10
 
-namespace Nstd {
+    namespace Nstd {
 
-template <typename T>
-struct SafeVector : std::vector<T> {
-    using std::vector<T>::vector;  // 継承コンストラクタ
+    template <typename T>
+    struct SafeVector : std::vector<T> {
+        using std::vector<T>::vector;  // 継承コンストラクタ
 
-    using base_type = std::vector<T>;
-    using size_type = typename base_type::size_type;
+        using base_type = std::vector<T>;
+        using size_type = typename base_type::size_type;
 
-    typename base_type::reference       operator[](size_type i) { return this->at(i); }
-    typename base_type::const_reference operator[](size_type i) const { return this->at(i); }
-};
-}  // namespace Nstd
+        typename base_type::reference       operator[](size_type i) { return this->at(i); }
+        typename base_type::const_reference operator[](size_type i) const { return this->at(i); }
+    };
+    }  // namespace Nstd
 ```
 
 このコードで行ったことは、
@@ -1312,6 +1312,7 @@ std::basic_stringはstd::vectorとほぼ同様に下記のようになる。
 
 ```cpp
     //  example/template/safe_vector_ut.cpp 62
+
     namespace Nstd {
 
     struct SafeString : std::string {
@@ -1332,7 +1333,7 @@ std::stringはstd::basic_string\<char>のエイリアスであるため、
 この単体テストはSafeVectorの場合と同様に下記のようになる。
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 80
+    //  example/template/safe_vector_ut.cpp 81
 
     {
         auto s = Nstd::SafeString{"0123456789"};
@@ -1353,7 +1354,7 @@ std::arrayでは少々事情が異なるが、
 std::vectorのコードパターンをそのまま適用すると下記のようになる。
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 101
+    //  example/template/safe_vector_ut.cpp 102
 
     namespace Nstd {
 
@@ -1373,7 +1374,7 @@ std::vectorのコードパターンをそのまま適用すると下記のよう
 ただし、この実装には問題がある。
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 122
+    //  example/template/safe_vector_ut.cpp 123
 
     auto sa_not_init = Nstd::SafeArray<int, 3>{};
 
@@ -1384,7 +1385,7 @@ std::vectorのコードパターンをそのまま適用すると下記のよう
 上記コードでは、その問題が露見することはないが、以下のコードはコンパイルできない。
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 132
+    //  example/template/safe_vector_ut.cpp 133
 
     // std::initializer_listを引数とするコンストラクタが未定義
     auto sa_init = Nstd::SafeArray<int, 3>{1, 2, 3};
@@ -1406,7 +1407,7 @@ std::arrayにはデフォルトで自動生成される
 この問題に対処したのが以下のコードである。
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 146
+    //  example/template/safe_vector_ut.cpp 147
 
     namespace Nstd {
 
@@ -1433,7 +1434,7 @@ std::arrayにはデフォルトで自動生成される
 このコンストラクタによりパスするようになった。
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 181
+    //  example/template/safe_vector_ut.cpp 182
     {
         auto sa_init = Nstd::SafeArray<int, 3>{1, 2, 3};
 
@@ -1459,7 +1460,7 @@ std::arrayにはデフォルトで自動生成される
 この効果を生み出した上記を抜粋した下記のコードには解説が必要だろう。
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 155
+    //  example/template/safe_vector_ut.cpp 156
 
     template <typename... ARGS>  // コンストラクタを定義
     SafeArray(ARGS... args) : base_type{args...}
@@ -1487,7 +1488,8 @@ SafeArrayにはメンバ変数が存在しないため、
 上記SafeArrayの初期化子リストコンストラクタは以下のようなコードを許可しない。
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 213
+    //  example/template/safe_vector_ut.cpp 214
+
     {
         auto sa_init = Nstd::SafeArray<int, 3>{1.0, 2, 3};
 
@@ -3917,7 +3919,7 @@ SafeArray2の要件をまとめると、
 となる。この要件を満たすためには、SafeArrayが
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 155
+    //  example/template/safe_vector_ut.cpp 156
 
     template <typename... ARGS>  // コンストラクタを定義
     SafeArray(ARGS... args) : base_type{args...}
@@ -3939,7 +3941,7 @@ SafeArray2の要件をまとめると、
 
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 228
+    //  example/template/safe_vector_ut.cpp 230
 namespace Nstd {
 
 template <typename T, size_t N>
@@ -3990,7 +3992,7 @@ private:
 下記のようなコードでのコンストラクタ呼び出しには、
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 299
+    //  example/template/safe_vector_ut.cpp 301
 
     auto sa_init = Nstd::SafeArray2<int, 3>{1, 2, 3};
 ```
@@ -3998,7 +4000,7 @@ private:
 上記の抜粋である下記のコンストラクタが置換失敗により排除される(SFINAE)。
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 252
+    //  example/template/safe_vector_ut.cpp 254
 
     // 縮小型変換しない場合には、ill-formedになるコンストラクタ
     /* C++17までのSFINAE
@@ -4018,7 +4020,7 @@ private:
 従って、マッチするコンストラクタは
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 237
+    //  example/template/safe_vector_ut.cpp 239
 
     // 縮小型変換した場合には、ill-formedになるコンストラクタ
     /* c++17スタイルのSFINAE
@@ -4037,7 +4039,7 @@ private:
 のみとなり、無事にコンパイルが成功し、下記の単体テストもパスする。
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 299
+    //  example/template/safe_vector_ut.cpp 301
 
     auto sa_init = Nstd::SafeArray2<int, 3>{1, 2, 3};
 
@@ -4053,7 +4055,7 @@ private:
 コンパイルも単体テストもパスする。
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 314
+    //  example/template/safe_vector_ut.cpp 316
     auto const sa_init = Nstd::SafeArray2<int, 3>{10, 20, 30.0};  // 30.0はintに縮小型変換される
 
     ASSERT_TRUE(sa_init.InitWithNarrowing());  // 縮小型変換あり
@@ -4074,7 +4076,7 @@ private:
 パラメータパックで与えられた全引数をそれぞれにT型オブジェクトに変換するための記法である。
 
 ```cpp
-    //  example/template/safe_vector_ut.cpp 264
+    //  example/template/safe_vector_ut.cpp 266
 
     base_type{T(args)...},  // 縮小型変換を抑止するため、T(args)が必要
 ```
