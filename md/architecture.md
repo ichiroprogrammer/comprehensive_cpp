@@ -195,7 +195,7 @@ h/<パケージ名>に配置されたヘッダファイルは、
 ここで例示したアプリケーションは[MVC](---)構造であるため、
 ディレクトリの依存関係は、下記の様になるはずである。
 
-![ディレクトリ](plant_uml/arch_dir_dep.png)
+![ディレクトリ](plant_uml/arch_mvc.png)
 
 循環や相互依存が残ってしまう場合、「[|SOLID](---)」に記載したコードのパターンや
 「[|デザインパターン](---)」が役立つはずである。
@@ -203,7 +203,12 @@ h/<パケージ名>に配置されたヘッダファイルは、
 [#includeで指定するパス名](---)でのルールに従うことで、パケージの依存関係は、
 
 ```cpp
-    // @@@ example/architecture/model/src/model.cpp #0:0 begin
+    #include <iterator>  // stdの使用
+
+    #include "./x.h"             // ローカルヘッダの使用
+    #include "view/view.h"       // view.aの使用
+    #include "model/model.h"     // model.aの使用
+    #include "model/observer.h"  // model.aの使用
 ```
 
 のようにコードに投影されるため、メンテナンス性や可読性が向上する。
