@@ -2431,7 +2431,6 @@ ___
     // [A] 下記クラスCollectionの宣言はクラスWidgetの宣言に依存している。
     // Pimplパターンを使用し、Collectionの宣言がWidgetの宣言に依存しないようにせよ。
 
-    class Widget;
     class Collection {
     public:
         Collection();
