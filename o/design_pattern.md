@@ -24,12 +24,13 @@ __この章の構成__
 [イディオム](cpp_idioms.md#SS_21_1)  
 
 - [ガード節(Early Return)](cpp_idioms.md#SS_21_1_1)
-- [RAII(scoped guard)](cpp_idioms.md#SS_21_1_2)
-- [Copy-And-Swap](cpp_idioms.md#SS_21_1_3)
-- [CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_21_1_4)
-- [Accessor](cpp_idioms.md#SS_21_1_5)
-- [Immutable](cpp_idioms.md#SS_21_1_6)
-- [NVI(non virtual interface)](cpp_idioms.md#SS_21_1_7)
+- [前方宣言ヘッダ(`_fwd.h`)](cpp_idioms.md#SS_21_1_2)
+- [RAII(scoped guard)](cpp_idioms.md#SS_21_1_3)
+- [Copy-And-Swap](cpp_idioms.md#SS_21_1_4)
+- [CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_21_1_5)
+- [Accessor](cpp_idioms.md#SS_21_1_6)
+- [Immutable](cpp_idioms.md#SS_21_1_7)
+- [NVI(non virtual interface)](cpp_idioms.md#SS_21_1_8)
 
 [実装パターン](cpp_idioms.md#SS_21_2)
 
@@ -236,7 +237,7 @@ Named Connstructorは、[Singleton](design_pattern.md#SS_9_1_1)のようなオ�
 [演習-Named Constructor](exercise_q.md#SS_22_9_19)  
 
 ### Clone(仮想コンストラクタ) <a id="SS_9_1_3"></a>
-オブジェクトコピーによる[スライシング](cpp_idioms.md#SS_21_10_3)を回避するためのイデオムである。
+オブジェクトコピーによる[スライシング](cpp_idioms.md#SS_21_12_3)を回避するためのイデオムである。
 
 下記は、オブジェクトコピーによるスライシングを起こしてしまう例である。
 
@@ -2328,7 +2329,7 @@ PrintPathname2のようなFileEntityのインターフェースが増えてし�
 
 はコードクローンだが、thisの型が違うため、
 各Acceptが呼び出すFileEntityVisitor::Visit()も異り、単純に統一することはできない。
-これを改めるためには、「[CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_21_1_4)」が必要になる。
+これを改めるためには、「[CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_21_1_5)」が必要になる。
 
 このパターンを用いて、前記したFileEntityの3つの派生クラスが持つコードクローンを解消した例を以下に示す。
 

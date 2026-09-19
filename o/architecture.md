@@ -35,25 +35,25 @@ ___
 
 __この章の構成__
 
-&emsp;&emsp; [アーキテクチャの定義](architecture.md#SS_10_1)  
-&emsp;&emsp; [アーキテクチャの設計](architecture.md#SS_10_2)  
-&emsp;&emsp;&emsp; [パッケージ図例](architecture.md#SS_10_2_1)  
-&emsp;&emsp;&emsp; [シーケンス図例](architecture.md#SS_10_2_2)  
+[アーキテクチャの定義](architecture.md#SS_10_1)  
+[アーキテクチャの設計](architecture.md#SS_10_2)  
+&emsp;[パッケージ図例](architecture.md#SS_10_2_1)  
+&emsp;[シーケンス図例](architecture.md#SS_10_2_2)  
 
-&emsp;&emsp; [アーキテクチャとファイル構造](architecture.md#SS_10_3)  
-&emsp;&emsp;&emsp; [Modelの非同期処理](architecture.md#SS_10_3_1)  
-&emsp;&emsp;&emsp; [Viewの非同期処理](architecture.md#SS_10_3_2)  
+[アーキテクチャとファイル構造](architecture.md#SS_10_3)  
+&emsp;[Modelの非同期処理](architecture.md#SS_10_3_1)  
+&emsp;[Viewの非同期処理](architecture.md#SS_10_3_2)  
 
-&emsp;&emsp; [アーキテクチャの見直し](architecture.md#SS_10_4)  
-&emsp;&emsp;&emsp; [パッケージが大きくなりすぎる](architecture.md#SS_10_4_1)  
-&emsp;&emsp;&emsp; [当初、想定していない依存関係が必要になる](architecture.md#SS_10_4_2)  
-&emsp;&emsp;&emsp; [コードクローンが避けられない](architecture.md#SS_10_4_3)  
-&emsp;&emsp;&emsp; [当初、想定していない非同期処理が必要になる](architecture.md#SS_10_4_4)  
+[アーキテクチャの見直し](architecture.md#SS_10_4)  
+&emsp;[パッケージが大きくなりすぎる](architecture.md#SS_10_4_1)  
+&emsp;[当初、想定していない依存関係が必要になる](architecture.md#SS_10_4_2)  
+&emsp;[コードクローンが避けられない](architecture.md#SS_10_4_3)  
+&emsp;[当初、想定していない非同期処理が必要になる](architecture.md#SS_10_4_4)  
 
-&emsp;&emsp; [アーキテクチャの再構築](architecture.md#SS_10_5)  
-&emsp;&emsp;&emsp; [アーキテクチャ再構築の準備](architecture.md#SS_10_5_1)  
-&emsp;&emsp;&emsp; [アーキテクチャ再構築のチーム編成](architecture.md#SS_10_5_2)  
-&emsp;&emsp;&emsp; [アーキテクチャ再構築の手順](architecture.md#SS_10_5_3)  
+[アーキテクチャの再構築](architecture.md#SS_10_5)  
+&emsp;[アーキテクチャ再構築の準備](architecture.md#SS_10_5_1)  
+&emsp;[アーキテクチャ再構築のチーム編成](architecture.md#SS_10_5_2)  
+&emsp;[アーキテクチャ再構築の手順](architecture.md#SS_10_5_3)  
   
   
   
@@ -163,8 +163,8 @@ ___
 プロトタイピングで開発したコードやビルドツールの設定を開発の起点にするためには、
 下記のような、もうひと手間が必要である。
 
-* プロトタイプコードが「[パッケージとその構成ファイル](programming_convention.md#SS_3_7)」で述べた規則に沿うように修正する。
-* パッケージをライブラリ(\*.lib、\*.dll、\*.a、\*.so等)としてビルドできるように、
+* プロトタイプコードが「[ソースコードファイルとディレクトリ](programming_convention.md#SS_3_7)」で述べた規則に沿うように修正する。
+* [パッケージ](cpp_idioms.md#SS_21_9_2)をライブラリ(\*.lib、\*.dll、\*.a、\*.so等)としてビルドできるように、
   make等のビルドツールを修正する。
 * パッケージから生成されたライブラリに対する単体テストを作る。
   単体テストは各パッケージごとに実行形式ファイルを生成できるようにビルドツールを修正する。
@@ -221,7 +221,7 @@ h/<パケージ名>に配置されたヘッダファイルは、
 循環や相互依存が残ってしまう場合、「[SOLID](solid.md#SS_8)」に記載したコードのパターンや
 「[デザインパターン](design_pattern.md#SS_9)」が役立つはずである。
 
-[#includeで指定するパス名](programming_convention.md#SS_3_7_7)でのルールに従うことで、パケージの依存関係は、
+[#includeで指定するパス名](programming_convention.md#SS_3_7_6)でのルールに従うことで、パケージの依存関係は、
 
 ```cpp
     #include <iterator>  // stdの使用
@@ -830,8 +830,8 @@ GUIオブジェクト(ボタンやテキストボックス等)を直接操作す
 
 * 「[パッケージ間の依存関係を整理する](architecture.md#SS_10_5_3_2)」フェーズで修正しきれなかった循環依存の修正
 * 巨大なファイルの分割
-* [サイクロマティック複雑度](cpp_idioms.md#SS_21_12_13)の値が高い関数の分割
-* 巨大なクラスや、[凝集性](cpp_idioms.md#SS_21_12_14)の低いクラス分割
+* [サイクロマティック複雑度](cpp_idioms.md#SS_21_14_13)の値が高い関数の分割
+* 巨大なクラスや、[凝集性](cpp_idioms.md#SS_21_14_14)の低いクラス分割
 
 になる。
 依存関係の整理(循環依存や不要インクルード)は、コンパイル時間短縮にも効果があるため、

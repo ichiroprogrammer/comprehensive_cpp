@@ -3,17 +3,17 @@
 
 __この章の構成__
 
-&emsp;&emsp; [プログラミング規約(型)](exercise_a.md#SS_23_1)  
-&emsp;&emsp; [プログラミング規約(クラス)](exercise_a.md#SS_23_2)  
-&emsp;&emsp; [プログラミング規約(関数)](exercise_a.md#SS_23_3)  
-&emsp;&emsp; [プログラミング規約(構文)](exercise_a.md#SS_23_4)  
-&emsp;&emsp; [プログラミング規約(演算子)](exercise_a.md#SS_23_5)  
-&emsp;&emsp; [プログラミング規約(スコープ)](exercise_a.md#SS_23_6)  
-&emsp;&emsp; [プログラミング規約(その他)](exercise_a.md#SS_23_7)  
-&emsp;&emsp; [SOLID](exercise_a.md#SS_23_8)  
-&emsp;&emsp; [デザインパターン](exercise_a.md#SS_23_9)  
-&emsp;&emsp; [開発プロセスとインフラ(全般)](exercise_a.md#SS_23_10)  
-&emsp;&emsp; [テンプレートメタプログラミング](exercise_a.md#SS_23_11)  
+[プログラミング規約(型)](exercise_a.md#SS_23_1)  
+[プログラミング規約(クラス)](exercise_a.md#SS_23_2)  
+[プログラミング規約(関数)](exercise_a.md#SS_23_3)  
+[プログラミング規約(構文)](exercise_a.md#SS_23_4)  
+[プログラミング規約(演算子)](exercise_a.md#SS_23_5)  
+[プログラミング規約(スコープ)](exercise_a.md#SS_23_6)  
+[プログラミング規約(その他)](exercise_a.md#SS_23_7)  
+[SOLID](exercise_a.md#SS_23_8)  
+[デザインパターン](exercise_a.md#SS_23_9)  
+[開発プロセスとインフラ(全般)](exercise_a.md#SS_23_10)  
+[テンプレートメタプログラミング](exercise_a.md#SS_23_11)  
   
   
   
@@ -38,6 +38,7 @@ ___
 
 
 ### 解答例-汎整数型の演算 <a id="SS_23_1_2"></a>
+
 ```cpp
     //  exercise/programming_convention_a/type.cpp 14
     TEST(ProgrammingConventionTypeA, GeneralInteger)
@@ -57,6 +58,7 @@ ___
 
 
 ### 解答例-浮動小数点型 <a id="SS_23_1_3"></a>
+
 ```cpp
     //  exercise/programming_convention_a/type.cpp 28
     double f(double a) noexcept { return 1 / a; }
@@ -95,6 +97,7 @@ ___
 
 
 ### 解答例-enum <a id="SS_23_1_5"></a>
+
 ```cpp
     //  exercise/programming_convention_a/type.cpp 55
     // [A]
@@ -129,6 +132,7 @@ ___
 
 
 ### 解答例-配列の範囲for文 <a id="SS_23_1_6"></a>
+
 ```cpp
     //  exercise/programming_convention_a/type.cpp 84
     int32_t array_value() noexcept
@@ -158,6 +162,7 @@ ___
 
 
 ### 解答例-エイリアス <a id="SS_23_1_7"></a>
+
 ```cpp
     //  exercise/programming_convention_a/type.cpp 108
     // [A]
@@ -190,6 +195,7 @@ ___
 
 
 ### 解答例-const/constexpr <a id="SS_23_1_9"></a>
+
 ```cpp
     //  exercise/programming_convention_a/type.cpp 129
     // [A]
@@ -232,6 +238,7 @@ ___
 
 
 ### 解答例-危険なconst_cast <a id="SS_23_1_10"></a>
+
 ```cpp
     //  exercise/programming_convention_a/type.cpp 166
     // [A]
@@ -254,6 +261,7 @@ ___
 
 
 ### 解答例-リテラル <a id="SS_23_1_11"></a>
+
 ```cpp
     //  exercise/programming_convention_a/type.cpp 186
     int32_t literal_test(int64_t) noexcept { return 0; }
@@ -299,6 +307,7 @@ ___
 
 
 ### 解答例-インスタンスの初期化 <a id="SS_23_1_15"></a>
+
 ```cpp
     //  exercise/programming_convention_a/type.cpp 209
     TEST(ProgrammingConventionTypeA, Initialization)
@@ -348,6 +357,7 @@ ___
 
 
 ### 解答例-凝集性の向上 <a id="SS_23_2_2"></a>
+
 ```cpp
     //  exercise/programming_convention_a/class.cpp 7
     // [A]
@@ -407,6 +417,7 @@ ___
 
 
 ### 解答例-メンバ変数の初期化 <a id="SS_23_2_5"></a>
+
 ```cpp
     //  exercise/programming_convention_a/class.cpp 46
     // [A]
@@ -455,6 +466,7 @@ ___
 
 
 ### 解答例-スライシング <a id="SS_23_2_6"></a>
+
 ```cpp
     //  exercise/programming_convention_a/class.cpp 89
     // [A]
@@ -517,6 +529,7 @@ ___
 
 
 ### 解答例-オブジェクトの所有権 <a id="SS_23_2_7"></a>
+
 ```cpp
     //  exercise/programming_convention_a/class.cpp 146
     class A {
@@ -600,6 +613,7 @@ ___
 
 ## プログラミング規約(関数) <a id="SS_23_3"></a>
 ### 解答例-非メンバ関数の宣言 <a id="SS_23_3_1"></a>
+
 ```cpp
     //  exercise/programming_convention_a/func.cpp 11
     TEST(ProgrammingConventionFuncA, NonMemberFunc)
@@ -619,6 +633,7 @@ ___
 
 
 ### 解答例-メンバ関数の修飾 <a id="SS_23_3_2"></a>
+
 ```cpp
     //  exercise/programming_convention_a/func.cpp 25
     // [A]
@@ -680,6 +695,7 @@ ___
 
 
 ### 解答例-特殊メンバ関数の削除 <a id="SS_23_3_3"></a>
+
 ```cpp
     //  exercise/programming_convention_a/func.cpp 81
     // [A]
@@ -701,6 +717,7 @@ ___
 
 
 ### 解答例-委譲コンストラクタ <a id="SS_23_3_4"></a>
+
 ```cpp
     //  exercise/programming_convention_a/func.cpp 97
     // [A]
@@ -745,6 +762,7 @@ ___
 
 
 ### 解答例-copyコンストラクタ <a id="SS_23_3_5"></a>
+
 ```cpp
     //  exercise/programming_convention_a/func.cpp 136
     // [A]
@@ -817,6 +835,7 @@ ___
 
 
 ### 解答例-moveコンストラクタ <a id="SS_23_3_6"></a>
+
 ```cpp
     //  exercise/programming_convention_a/func.cpp 203
     // [A]
@@ -886,6 +905,7 @@ ___
 
 
 ### 解答例-関数分割 <a id="SS_23_3_7"></a>
+
 ```cpp
     //  exercise/programming_convention_a/func.cpp 267
     // [A]
@@ -950,6 +970,7 @@ ___
 
 
 ### 解答例-オーバーライド/オーバーロード <a id="SS_23_3_9"></a>
+
 ```cpp
     //  exercise/programming_convention_a/func.cpp 320
     // [A]
@@ -991,6 +1012,7 @@ ___
 
 
 ### 解答例-オーバーロードによる誤用防止 <a id="SS_23_3_10"></a>
+
 ```cpp
     //  exercise/programming_convention_a/func.cpp 356
     // [A]
@@ -1012,6 +1034,7 @@ ___
 
 
 ### 解答例-仮引数の修飾 <a id="SS_23_3_11"></a>
+
 ```cpp
     //  exercise/programming_convention_a/func.cpp 372
     // [A]
@@ -1051,6 +1074,7 @@ ___
 
 
 ### 解答例-constexpr関数 <a id="SS_23_3_12"></a>
+
 ```cpp
     //  exercise/programming_convention_a/func.cpp 406
     // [A]
@@ -1091,6 +1115,7 @@ ___
 ## プログラミング規約(構文) <a id="SS_23_4"></a>
 
 ### 解答例-コンテナの範囲for文 <a id="SS_23_4_1"></a>
+
 ```cpp
     //  exercise/programming_convention_a/syntax.cpp 8
     // [A]
@@ -1150,6 +1175,7 @@ ___
 
 
 ### 解答例-ラムダ式 <a id="SS_23_4_2"></a>
+
 ```cpp
     //  exercise/programming_convention_a/syntax.cpp 62
     // [A]
@@ -1171,6 +1197,7 @@ ___
 
 
 ### 解答例-ラムダ式のキャプチャ <a id="SS_23_4_3"></a>
+
 ```cpp
     //  exercise/programming_convention_a/syntax.cpp 78
     // [A]
@@ -1208,6 +1235,7 @@ ___
 ## プログラミング規約(演算子) <a id="SS_23_5"></a>
 
 ### 解答例-条件演算子 <a id="SS_23_5_1"></a>
+
 ```cpp
     //  exercise/programming_convention_a/operator.cpp 8
     // [A]
@@ -1224,6 +1252,7 @@ ___
 * [演習-条件演算子](exercise_q.md#SS_22_5_1)へ戻る。
 
 ### 解答例-delete <a id="SS_23_5_2"></a>
+
 ```cpp
     //  exercise/programming_convention_a/operator.cpp 20
     // [A]
@@ -1274,6 +1303,7 @@ ___
 * [演習-delete](exercise_q.md#SS_22_5_2)へ戻る。
 
 ### 解答例-sizeof <a id="SS_23_5_3"></a>
+
 ```cpp
     //  exercise/programming_convention_a/operator.cpp 69
     // [A]
@@ -1304,6 +1334,7 @@ ___
 
 
 ### 解答例-dynamic_castの削除 <a id="SS_23_5_4"></a>
+
 ```cpp
     //  exercise/programming_convention_a/operator.cpp 95
     // [A]
@@ -1369,6 +1400,7 @@ ___
 
 
 ### 解答例-assert/static_assert <a id="SS_23_7_2"></a>
+
 ```cpp
     //  exercise/programming_convention_a/etc.cpp 10
     // [A]
@@ -1409,6 +1441,7 @@ ___
 
 ## SOLID <a id="SS_23_8"></a>
 ### 解答例-SRP <a id="SS_23_8_1"></a>
+
 ```cpp
     //  exercise/solid_a/srp_test_score.h 8
     // [A]
@@ -1585,6 +1618,7 @@ ___
 
 
 ### 解答例-OCP <a id="SS_23_8_2"></a>
+
 ```cpp
     //  exercise/solid_a/ocp_test_score.h 8
     // [A]
@@ -1777,6 +1811,7 @@ ___
 
 
 ### 解答例-LSP <a id="SS_23_8_3"></a>
+
 ```cpp
     //  exercise/solid_a/lsp_test_score.h 8
     // [A]
@@ -1988,6 +2023,7 @@ ___
 
 
 ### 解答例-ISP <a id="SS_23_8_4"></a>
+
 ```cpp
     //  exercise/solid_a/isp_test_score_average.h 8
     // [A]
@@ -2137,6 +2173,7 @@ ___
 
 
 ### 解答例-DIP <a id="SS_23_8_5"></a>
+
 ```cpp
     //  exercise/solid_a/dip_test_score.h 9
     // [A]
@@ -2272,6 +2309,7 @@ ___
 
 ## デザインパターン <a id="SS_23_9"></a>
 ### 解答例-ガード節 <a id="SS_23_9_1"></a>
+
 ```cpp
     //  exercise/design_pattern_a/guard.cpp 7
     // [A]
@@ -2342,6 +2380,7 @@ ___
 
 
 ### 解答例-BitmaskType <a id="SS_23_9_2"></a>
+
 ```cpp
     //  exercise/design_pattern_a/enum_bitmask.cpp 5
     // [A]
@@ -2426,6 +2465,7 @@ ___
 
 
 ### 解答例-Pimpl <a id="SS_23_9_3"></a>
+
 ```cpp
     //  exercise/design_pattern_a/pimpl.cpp 5
     // [A] 下記クラスCollectionの宣言はクラスWidgetの宣言に依存している。
@@ -2492,11 +2532,12 @@ ___
 
 ### 解答-Accessorの副作用 <a id="SS_23_9_4"></a>
 * 選択肢1
-* 参照 [Accessor](cpp_idioms.md#SS_21_1_5)
+* 参照 [Accessor](cpp_idioms.md#SS_21_1_6)
 * [演習-Accessorの副作用](exercise_q.md#SS_22_9_4)へ戻る。
 
 
 ### 解答例-Accessor <a id="SS_23_9_5"></a>
+
 ```cpp
     //  exercise/design_pattern_a/accessor.cpp 5
     // [A]
@@ -2633,6 +2674,7 @@ ___
 
 
 ### 解答例-Copy-And-Swap <a id="SS_23_9_6"></a>
+
 ```cpp
     //  exercise/design_pattern_a/copy_and_swap.cpp 5
     // [A]
@@ -2807,6 +2849,7 @@ ___
 
 
 ### 解答例-Immutable <a id="SS_23_9_7"></a>
+
 ```cpp
     //  exercise/design_pattern_a/immutable.cpp 5
     // [A]
@@ -2907,6 +2950,7 @@ ___
 
 
 ### 解答例-Clone <a id="SS_23_9_8"></a>
+
 ```cpp
     //  exercise/design_pattern_a/clone.cpp 7
     // [A]
@@ -2968,6 +3012,7 @@ ___
 
 
 ### 解答例-NVI <a id="SS_23_9_9"></a>
+
 ```cpp
     //  exercise/design_pattern_a/nvi.cpp 7
     // [A]
@@ -3079,11 +3124,12 @@ ___
 
 ### 解答-RAIIの効果 <a id="SS_23_9_10"></a>
 * 選択肢1
-* 参照 [RAII(scoped guard)](cpp_idioms.md#SS_21_1_2)
+* 参照 [RAII(scoped guard)](cpp_idioms.md#SS_21_1_3)
 * [演習-RAIIの効果](exercise_q.md#SS_22_9_10)へ戻る。
 
 
 ### 解答例-RAII <a id="SS_23_9_11"></a>
+
 ```cpp
     //  exercise/design_pattern_a/raii.cpp 5
     // [A]
@@ -3140,6 +3186,7 @@ ___
 
 
 ### 解答例-Future <a id="SS_23_9_12"></a>
+
 ```cpp
     //  exercise/design_pattern_a/future.cpp 24
     // [A]
@@ -3174,6 +3221,7 @@ ___
 
 
 ### 解答例-DI <a id="SS_23_9_13"></a>
+
 ```cpp
     //  exercise/design_pattern_a/di.cpp 10
     // [A]
@@ -3273,6 +3321,7 @@ ___
 
 
 ### 解答例-Singleton <a id="SS_23_9_14"></a>
+
 ```cpp
     //  exercise/design_pattern_a/singleton.cpp 5
     // [A]
@@ -3369,6 +3418,7 @@ ___
 
 
 ### 解答例-State <a id="SS_23_9_15"></a>
+
 ```cpp
     //  exercise/design_pattern_a/state.cpp 5
     // [A]
@@ -3465,6 +3515,7 @@ ___
 
 
 ### 解答例-Null Object <a id="SS_23_9_16"></a>
+
 ```cpp
     //  exercise/design_pattern_a/null_object.cpp 38
     // [A]
@@ -3565,6 +3616,7 @@ ___
 
 
 ### 解答例-Templateメソッド <a id="SS_23_9_17"></a>
+
 ```cpp
     //  exercise/design_pattern_a/template_method.cpp 5
     // [A]
@@ -3730,6 +3782,7 @@ ___
 
 
 ### 解答例-Factory <a id="SS_23_9_18"></a>
+
 ```cpp
     //  exercise/design_pattern_a/factory_lib.h 40
     // [A]
@@ -3851,6 +3904,7 @@ ___
 
 
 ### 解答例-Named Constructor <a id="SS_23_9_19"></a>
+
 ```cpp
     //  exercise/design_pattern_a/named_constructor_lib.h 14
     // [A]
@@ -3976,6 +4030,7 @@ ___
 
 
 ### 解答例-Proxy <a id="SS_23_9_20"></a>
+
 ```cpp
     //  exercise/design_pattern_a/proxy.cpp 8
     // [A]
@@ -4180,6 +4235,7 @@ ___
 
 
 ### 解答例-Strategy <a id="SS_23_9_21"></a>
+
 ```cpp
     //  exercise/design_pattern_a/strategy.cpp 12
     // [A]
@@ -4253,6 +4309,7 @@ ___
 
 
 ### 解答例-Visitor <a id="SS_23_9_22"></a>
+
 ```cpp
     //  exercise/design_pattern_a/visitor.cpp 9
     // [A]
@@ -4413,6 +4470,7 @@ ___
 
 
 ### 解答例-CRTP <a id="SS_23_9_23"></a>
+
 ```cpp
     //  exercise/design_pattern_a/crtp.cpp 9
     // [A]
@@ -4568,6 +4626,7 @@ ___
 
 
 ### 解答例-Observer <a id="SS_23_9_24"></a>
+
 ```cpp
     //  exercise/design_pattern_a/observer.cpp 9
     // [A]
@@ -4796,6 +4855,7 @@ ___
 
 ## テンプレートメタプログラミング <a id="SS_23_11"></a>
 ### 解答例-パラメータパック <a id="SS_23_11_1"></a>
+
 ```cpp
     //  exercise/template_a/parameter_pack.cpp 7
     // [A]
@@ -4861,6 +4921,7 @@ ___
 
 
 ### 解答例-エイリアステンプレート <a id="SS_23_11_2"></a>
+
 ```cpp
     //  exercise/template_a/template_alias.cpp 5
     // [A]
@@ -4907,6 +4968,7 @@ ___
 
 
 ### 解答例-名前空間による修飾不要な`operator<<` <a id="SS_23_11_3"></a>
+
 ```cpp
     //  exercise/template_a/put_to.cpp 3
     // [A]
@@ -4954,6 +5016,7 @@ ___
 
 
 ### 解答例-std::arrayの継承 <a id="SS_23_11_4"></a>
+
 ```cpp
     //  exercise/template_a/safe_array.cpp 5
     // [A]
@@ -5004,6 +5067,7 @@ ___
 
 
 ### 解答例-SFINAEを利用しない関数テンプレートの特殊化によるis_void <a id="SS_23_11_5"></a>
+
 ```cpp
     //  exercise/template_a/is_void.cpp 3
     // [A]
@@ -5049,6 +5113,7 @@ ___
 
 
 ### 解答例-SFINAEを利用しないクラステンプレートの特殊化によるis_void <a id="SS_23_11_6"></a>
+
 ```cpp
     //  exercise/template_a/is_void.cpp 43
     // [A]
@@ -5086,6 +5151,7 @@ ___
 
 
 ### 解答例-SFINAEを利用した関数テンプレートの特殊化によるis_void <a id="SS_23_11_7"></a>
+
 ```cpp
     //  exercise/template_a/is_void.cpp 75
     // [A]
@@ -5139,6 +5205,7 @@ ___
 
 
 ### 解答例-SFINAEを利用したクラステンプレートの特殊化によるis_void <a id="SS_23_11_8"></a>
+
 ```cpp
     //  exercise/template_a/is_void.cpp 123
     // [A]
@@ -5185,6 +5252,7 @@ ___
 
 
 ### 解答例-テンプレートテンプレートパラメータ <a id="SS_23_11_9"></a>
+
 ```cpp
     //  exercise/template_a/template_template.cpp 5
     // [A]
@@ -5216,6 +5284,7 @@ ___
 
 
 ### 解答例-テンプレートパラメータを可変長にしたstd::is_same <a id="SS_23_11_10"></a>
+
 ```cpp
     //  exercise/template_a/is_same.cpp 3
     // [A]
@@ -5257,6 +5326,7 @@ ___
 
 
 ### 解答例-メンバ関数の存在の診断 <a id="SS_23_11_11"></a>
+
 ```cpp
     //  exercise/template_a/exists_func.cpp 5
     // [A]
@@ -5288,6 +5358,7 @@ ___
 
 
 ### 解答例-範囲for文のオペランドになれるかどうかの診断 <a id="SS_23_11_12"></a>
+
 ```cpp
     //  exercise/template_a/exists_func.cpp 31
     // [A]
@@ -5348,6 +5419,7 @@ ___
 
 
 ### 解答例-配列の長さの取り出し <a id="SS_23_11_13"></a>
+
 ```cpp
     //  exercise/template_a/array_op.cpp 3
     // [A]
@@ -5376,6 +5448,7 @@ ___
 
 
 ### 解答例-配列の次元の取り出し <a id="SS_23_11_14"></a>
+
 ```cpp
     //  exercise/template_a/array_op.cpp 26
     // [A]
@@ -5408,6 +5481,7 @@ ___
 
 
 ### 解答例-関数型のテンプレートパラメータを持つクラステンプレート <a id="SS_23_11_15"></a>
+
 ```cpp
     //  exercise/template_a/scoped_guard.cpp 8
     // [A]

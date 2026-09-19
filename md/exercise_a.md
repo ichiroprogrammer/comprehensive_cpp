@@ -25,6 +25,7 @@ ___
 
 
 ### 解答例-汎整数型の演算
+
 ```cpp
     // @@@ exercise/programming_convention_a/type.cpp #0:0 begin
 ```
@@ -33,6 +34,7 @@ ___
 
 
 ### 解答例-浮動小数点型
+
 ```cpp
     // @@@ exercise/programming_convention_a/type.cpp #1:0 begin
 ```
@@ -47,6 +49,7 @@ ___
 
 
 ### 解答例-enum
+
 ```cpp
     // @@@ exercise/programming_convention_a/type.cpp #2:0 begin
 ```
@@ -55,6 +58,7 @@ ___
 
 
 ### 解答例-配列の範囲for文
+
 ```cpp
     // @@@ exercise/programming_convention_a/type.cpp #3:0 begin
 ```
@@ -63,6 +67,7 @@ ___
 
 
 ### 解答例-エイリアス
+
 ```cpp
     // @@@ exercise/programming_convention_a/type.cpp #4:0 begin
 ```
@@ -77,6 +82,7 @@ ___
 
 
 ### 解答例-const/constexpr
+
 ```cpp
     // @@@ exercise/programming_convention_a/type.cpp #5:0 begin
 ```
@@ -85,6 +91,7 @@ ___
 
 
 ### 解答例-危険なconst_cast
+
 ```cpp
     // @@@ exercise/programming_convention_a/type.cpp #6:0 begin
 ```
@@ -93,6 +100,7 @@ ___
 
 
 ### 解答例-リテラル
+
 ```cpp
     // @@@ exercise/programming_convention_a/type.cpp #7:0 begin
 ```
@@ -119,6 +127,7 @@ ___
 
 
 ### 解答例-インスタンスの初期化
+
 ```cpp
     // @@@ exercise/programming_convention_a/type.cpp #8:0 begin
 ```
@@ -135,6 +144,7 @@ ___
 
 
 ### 解答例-凝集性の向上
+
 ```cpp
     // @@@ exercise/programming_convention_a/class.cpp #0:0 begin
 ```
@@ -158,6 +168,7 @@ ___
 
 
 ### 解答例-メンバ変数の初期化
+
 ```cpp
     // @@@ exercise/programming_convention_a/class.cpp #1:0 begin
 ```
@@ -166,6 +177,7 @@ ___
 
 
 ### 解答例-スライシング
+
 ```cpp
     // @@@ exercise/programming_convention_a/class.cpp #2:0 begin
 ```
@@ -174,6 +186,7 @@ ___
 
 
 ### 解答例-オブジェクトの所有権
+
 ```cpp
     // @@@ exercise/programming_convention_a/class.cpp #3:0 begin
 ```
@@ -183,6 +196,7 @@ ___
 
 ## プログラミング規約(関数)
 ### 解答例-非メンバ関数の宣言
+
 ```cpp
     // @@@ exercise/programming_convention_a/func.cpp #0:0 begin
 ```
@@ -191,6 +205,7 @@ ___
 
 
 ### 解答例-メンバ関数の修飾
+
 ```cpp
     // @@@ exercise/programming_convention_a/func.cpp #1:0 begin
 ```
@@ -199,6 +214,7 @@ ___
 
 
 ### 解答例-特殊メンバ関数の削除
+
 ```cpp
     // @@@ exercise/programming_convention_a/func.cpp #2:0 begin
 ```
@@ -207,6 +223,7 @@ ___
 
 
 ### 解答例-委譲コンストラクタ
+
 ```cpp
     // @@@ exercise/programming_convention_a/func.cpp #3:0 begin
 ```
@@ -215,6 +232,7 @@ ___
 
 
 ### 解答例-copyコンストラクタ
+
 ```cpp
     // @@@ exercise/programming_convention_a/func.cpp #4:0 begin
 ```
@@ -223,6 +241,7 @@ ___
 
 
 ### 解答例-moveコンストラクタ
+
 ```cpp
     // @@@ exercise/programming_convention_a/func.cpp #5:0 begin
 ```
@@ -231,6 +250,7 @@ ___
 
 
 ### 解答例-関数分割
+
 ```cpp
     // @@@ exercise/programming_convention_a/func.cpp #6:0 begin
 ```
@@ -245,6 +265,7 @@ ___
 
 
 ### 解答例-オーバーライド/オーバーロード
+
 ```cpp
     // @@@ exercise/programming_convention_a/func.cpp #7:0 begin
 ```
@@ -253,6 +274,7 @@ ___
 
 
 ### 解答例-オーバーロードによる誤用防止
+
 ```cpp
     // @@@ exercise/programming_convention_a/func.cpp #8:0 begin
 ```
@@ -261,6 +283,7 @@ ___
 
 
 ### 解答例-仮引数の修飾
+
 ```cpp
     // @@@ exercise/programming_convention_a/func.cpp #9:0 begin
 ```
@@ -269,6 +292,7 @@ ___
 
 
 ### 解答例-constexpr関数
+
 ```cpp
     // @@@ exercise/programming_convention_a/func.cpp #10:0 begin
 ```
@@ -290,6 +314,7 @@ ___
 ## プログラミング規約(構文)
 
 ### 解答例-コンテナの範囲for文
+
 ```cpp
     // @@@ exercise/programming_convention_a/syntax.cpp #0:0 begin
 ```
@@ -298,6 +323,7 @@ ___
 
 
 ### 解答例-ラムダ式
+
 ```cpp
     // @@@ exercise/programming_convention_a/syntax.cpp #1:0 begin
 ```
@@ -306,6 +332,7 @@ ___
 
 
 ### 解答例-ラムダ式のキャプチャ
+
 ```cpp
     // @@@ exercise/programming_convention_a/syntax.cpp #2:0 begin
 ```
@@ -316,6 +343,7 @@ ___
 ## プログラミング規約(演算子)
 
 ### 解答例-条件演算子
+
 ```cpp
     // @@@ exercise/programming_convention_a/operator.cpp #0:0 begin
 ```
@@ -323,6 +351,7 @@ ___
 * [演習-条件演算子](---)へ戻る。
 
 ### 解答例-delete
+
 ```cpp
     // @@@ exercise/programming_convention_a/operator.cpp #1:0 begin
 ```
@@ -330,6 +359,7 @@ ___
 * [演習-delete](---)へ戻る。
 
 ### 解答例-sizeof
+
 ```cpp
     // @@@ exercise/programming_convention_a/operator.cpp #2:0 begin
 ```
@@ -338,6 +368,7 @@ ___
 
 
 ### 解答例-dynamic_castの削除
+
 ```cpp
     // @@@ exercise/programming_convention_a/operator.cpp #3:0 begin
 ```
@@ -371,6 +402,7 @@ ___
 
 
 ### 解答例-assert/static_assert
+
 ```cpp
     // @@@ exercise/programming_convention_a/etc.cpp #0:0 begin
 ```
@@ -380,6 +412,7 @@ ___
 
 ## SOLID
 ### 解答例-SRP
+
 ```cpp
     // @@@ exercise/solid_a/srp_test_score.h #0:0 begin
 ```
@@ -394,6 +427,7 @@ ___
 
 
 ### 解答例-OCP
+
 ```cpp
     // @@@ exercise/solid_a/ocp_test_score.h #0:0 begin
 ```
@@ -408,6 +442,7 @@ ___
 
 
 ### 解答例-LSP
+
 ```cpp
     // @@@ exercise/solid_a/lsp_test_score.h #0:0 begin
 ```
@@ -422,6 +457,7 @@ ___
 
 
 ### 解答例-ISP
+
 ```cpp
     // @@@ exercise/solid_a/isp_test_score_average.h #0:0 begin
 ```
@@ -445,6 +481,7 @@ ___
 
 
 ### 解答例-DIP
+
 ```cpp
     // @@@ exercise/solid_a/dip_test_score.h #0:0 begin
 ```
@@ -481,6 +518,7 @@ ___
 
 ## デザインパターン
 ### 解答例-ガード節
+
 ```cpp
     // @@@ exercise/design_pattern_a/guard.cpp #0:0 begin
 ```
@@ -489,6 +527,7 @@ ___
 
 
 ### 解答例-BitmaskType
+
 ```cpp
     // @@@ exercise/design_pattern_a/enum_bitmask.cpp #0:0 begin
 ```
@@ -497,6 +536,7 @@ ___
 
 
 ### 解答例-Pimpl
+
 ```cpp
     // @@@ exercise/design_pattern_a/pimpl.cpp #0:0 begin
 ```
@@ -511,6 +551,7 @@ ___
 
 
 ### 解答例-Accessor
+
 ```cpp
     // @@@ exercise/design_pattern_a/accessor.cpp #0:0 begin
 ```
@@ -519,6 +560,7 @@ ___
 
 
 ### 解答例-Copy-And-Swap
+
 ```cpp
     // @@@ exercise/design_pattern_a/copy_and_swap.cpp #0:0 begin
 ```
@@ -527,6 +569,7 @@ ___
 
 
 ### 解答例-Immutable
+
 ```cpp
     // @@@ exercise/design_pattern_a/immutable.cpp #0:0 begin
 ```
@@ -535,6 +578,7 @@ ___
 
 
 ### 解答例-Clone
+
 ```cpp
     // @@@ exercise/design_pattern_a/clone.cpp #0:0 begin
 ```
@@ -543,6 +587,7 @@ ___
 
 
 ### 解答例-NVI
+
 ```cpp
     // @@@ exercise/design_pattern_a/nvi.cpp #0:0 begin
 ```
@@ -557,6 +602,7 @@ ___
 
 
 ### 解答例-RAII
+
 ```cpp
     // @@@ exercise/design_pattern_a/raii.cpp #0:0 begin
 ```
@@ -565,6 +611,7 @@ ___
 
 
 ### 解答例-Future
+
 ```cpp
     // @@@ exercise/design_pattern_a/future.cpp #0:0 begin
 ```
@@ -573,6 +620,7 @@ ___
 
 
 ### 解答例-DI
+
 ```cpp
     // @@@ exercise/design_pattern_a/di.cpp #0:0 begin
 ```
@@ -581,6 +629,7 @@ ___
 
 
 ### 解答例-Singleton
+
 ```cpp
     // @@@ exercise/design_pattern_a/singleton.cpp #0:0 begin
 ```
@@ -589,6 +638,7 @@ ___
 
 
 ### 解答例-State
+
 ```cpp
     // @@@ exercise/design_pattern_a/state.cpp #0:0 begin
 ```
@@ -597,6 +647,7 @@ ___
 
 
 ### 解答例-Null Object
+
 ```cpp
     // @@@ exercise/design_pattern_a/null_object.cpp #0:0 begin
 ```
@@ -605,6 +656,7 @@ ___
 
 
 ### 解答例-Templateメソッド
+
 ```cpp
     // @@@ exercise/design_pattern_a/template_method.cpp #0:0 begin
 ```
@@ -613,6 +665,7 @@ ___
 
 
 ### 解答例-Factory
+
 ```cpp
     // @@@ exercise/design_pattern_a/factory_lib.h #0:0 begin
 ```
@@ -627,6 +680,7 @@ ___
 
 
 ### 解答例-Named Constructor
+
 ```cpp
     // @@@ exercise/design_pattern_a/named_constructor_lib.h #0:0 begin
 ```
@@ -641,6 +695,7 @@ ___
 
 
 ### 解答例-Proxy
+
 ```cpp
     // @@@ exercise/design_pattern_a/proxy.cpp #0:0 begin
 ```
@@ -649,6 +704,7 @@ ___
 
 
 ### 解答例-Strategy
+
 ```cpp
     // @@@ exercise/design_pattern_a/strategy.cpp #0:0 begin
 ```
@@ -657,6 +713,7 @@ ___
 
 
 ### 解答例-Visitor
+
 ```cpp
     // @@@ exercise/design_pattern_a/visitor.cpp #0:0 begin
 ```
@@ -665,6 +722,7 @@ ___
 
 
 ### 解答例-CRTP
+
 ```cpp
     // @@@ exercise/design_pattern_a/crtp.cpp #0:0 begin
 ```
@@ -673,6 +731,7 @@ ___
 
 
 ### 解答例-Observer
+
 ```cpp
     // @@@ exercise/design_pattern_a/observer.cpp #0:0 begin
 ```
@@ -763,6 +822,7 @@ ___
 
 ## テンプレートメタプログラミング
 ### 解答例-パラメータパック
+
 ```cpp
     // @@@ exercise/template_a/parameter_pack.cpp #0:0 begin
 ```
@@ -771,6 +831,7 @@ ___
 
 
 ### 解答例-エイリアステンプレート
+
 ```cpp
     // @@@ exercise/template_a/template_alias.cpp #0:0 begin
 ```
@@ -779,6 +840,7 @@ ___
 
 
 ### 解答例-名前空間による修飾不要な`operator<<`
+
 ```cpp
     // @@@ exercise/template_a/put_to.cpp #0:0 begin
 ```
@@ -787,6 +849,7 @@ ___
 
 
 ### 解答例-std::arrayの継承
+
 ```cpp
     // @@@ exercise/template_a/safe_array.cpp #0:0 begin
 ```
@@ -795,6 +858,7 @@ ___
 
 
 ### 解答例-SFINAEを利用しない関数テンプレートの特殊化によるis_void
+
 ```cpp
     // @@@ exercise/template_a/is_void.cpp #0:0 begin
 ```
@@ -803,6 +867,7 @@ ___
 
 
 ### 解答例-SFINAEを利用しないクラステンプレートの特殊化によるis_void
+
 ```cpp
     // @@@ exercise/template_a/is_void.cpp #1:0 begin
 ```
@@ -811,6 +876,7 @@ ___
 
 
 ### 解答例-SFINAEを利用した関数テンプレートの特殊化によるis_void
+
 ```cpp
     // @@@ exercise/template_a/is_void.cpp #2:0 begin
 ```
@@ -819,6 +885,7 @@ ___
 
 
 ### 解答例-SFINAEを利用したクラステンプレートの特殊化によるis_void
+
 ```cpp
     // @@@ exercise/template_a/is_void.cpp #3:0 begin
 ```
@@ -827,6 +894,7 @@ ___
 
 
 ### 解答例-テンプレートテンプレートパラメータ
+
 ```cpp
     // @@@ exercise/template_a/template_template.cpp #0:0 begin
 ```
@@ -835,6 +903,7 @@ ___
 
 
 ### 解答例-テンプレートパラメータを可変長にしたstd::is_same
+
 ```cpp
     // @@@ exercise/template_a/is_same.cpp #0:0 begin
 ```
@@ -843,6 +912,7 @@ ___
 
 
 ### 解答例-メンバ関数の存在の診断
+
 ```cpp
     // @@@ exercise/template_a/exists_func.cpp #0:0 begin
 ```
@@ -851,6 +921,7 @@ ___
 
 
 ### 解答例-範囲for文のオペランドになれるかどうかの診断
+
 ```cpp
     // @@@ exercise/template_a/exists_func.cpp #1:0 begin
 ```
@@ -859,6 +930,7 @@ ___
 
 
 ### 解答例-配列の長さの取り出し
+
 ```cpp
     // @@@ exercise/template_a/array_op.cpp #0:0 begin
 ```
@@ -867,6 +939,7 @@ ___
 
 
 ### 解答例-配列の次元の取り出し
+
 ```cpp
     // @@@ exercise/template_a/array_op.cpp #1:0 begin
 ```
@@ -875,6 +948,7 @@ ___
 
 
 ### 解答例-関数型のテンプレートパラメータを持つクラステンプレート
+
 ```cpp
     // @@@ exercise/template_a/scoped_guard.cpp #0:0 begin
 ```

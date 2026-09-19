@@ -8,7 +8,7 @@ STLの大幅な機能追加等により、この問題の軽減に成功して�
 * [ラムダ式](core_lang_spec.md#SS_19_10_3)
 * std::futre、std::async、std::promiseによる[Future](cpp_idioms.md#SS_21_2_4)パターンのサポート
 * std::unique_lock、std::condition_variableによるイベント通知
-* ロック機構のRAIIのサポート(「[RAII(scoped guard)](cpp_idioms.md#SS_21_1_2)」参照)
+* ロック機構のRAIIのサポート(「[RAII(scoped guard)](cpp_idioms.md#SS_21_1_3)」参照)
 * std::atomic等によるアトミック処理の簡易化
 
 本章では、「[自動統合テスト](process_and_infra.md#SS_11_2_3)」で開発したref_async_r5を改善することによって、
@@ -21,18 +21,18 @@ ___
 
 __この章の構成__
 
-&emsp;&emsp; [ref_async_r5改善プログラムの要件](concurrency.md#SS_12_1)  
-&emsp;&emsp;&emsp; [Controller](concurrency.md#SS_12_1_1)  
-&emsp;&emsp;&emsp; [View](concurrency.md#SS_12_1_2)  
-&emsp;&emsp;&emsp; [Model](concurrency.md#SS_12_1_3)  
+[ref_async_r5改善プログラムの要件](concurrency.md#SS_12_1)  
+&emsp;[Controller](concurrency.md#SS_12_1_1)  
+&emsp;[View](concurrency.md#SS_12_1_2)  
+&emsp;[Model](concurrency.md#SS_12_1_3)  
 
-&emsp;&emsp; [非同期処理とその管理](concurrency.md#SS_12_2)  
-&emsp;&emsp;&emsp; [TwoPhaseTaskIF(TwoPhaseTaskPtr)](concurrency.md#SS_12_2_1)  
-&emsp;&emsp;&emsp; [Dispatcher](concurrency.md#SS_12_2_2)  
-&emsp;&emsp;&emsp; [TwoPhaseTaskPtrキュー管理機構](concurrency.md#SS_12_2_3)  
+[非同期処理とその管理](concurrency.md#SS_12_2)  
+&emsp;[TwoPhaseTaskIF(TwoPhaseTaskPtr)](concurrency.md#SS_12_2_1)  
+&emsp;[Dispatcher](concurrency.md#SS_12_2_2)  
+&emsp;[TwoPhaseTaskPtrキュー管理機構](concurrency.md#SS_12_2_3)  
 
-&emsp;&emsp; [ref_async_r6の構造](concurrency.md#SS_12_3)  
-&emsp;&emsp; [まとめ](concurrency.md#SS_12_4)  
+[ref_async_r6の構造](concurrency.md#SS_12_3)  
+[まとめ](concurrency.md#SS_12_4)  
   
   
 
@@ -528,7 +528,7 @@ TwoPhaseTaskPtrのキュー管理機構は、
     std::condition_variable::wait(lock)
 ```
 
-を使用する場合、「[Spurious Wakeup](cpp_idioms.md#SS_21_12_15)」への対処が必要になるが、
+を使用する場合、「[Spurious Wakeup](cpp_idioms.md#SS_21_14_15)」への対処が必要になるが、
 
 ```cpp
     std::condition_variable::wait(lock, 関数オブジェクト)
@@ -668,7 +668,7 @@ TwoPhaseTaskPtrキュー管理機構は以下のようにしてTwoPhaseTaskPtr�
 
 * 排他制御1を使用し、スピンロックを実装できる(「[固定長メモリプール](dynamic_memory_allocation.md#SS_14_2_1)」参照)。
 
-* 排他制御2を使用する場合、[RAII(scoped guard)](cpp_idioms.md#SS_21_1_2)を使用する。
+* 排他制御2を使用する場合、[RAII(scoped guard)](cpp_idioms.md#SS_21_1_3)を使用する。
     * lock()/unlock()を直接ソースコードに書かない。代わりに`std::lock_guard<std::mutex>`を使用する。
 
 * 排他制御3を使用する場合、アーキテクチャに大きな影響を与えるため、

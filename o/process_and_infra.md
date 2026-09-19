@@ -13,19 +13,19 @@ ___
 
 __この章の構成__
 
-&emsp;&emsp; [プロセス](process_and_infra.md#SS_11_1)  
-&emsp;&emsp;&emsp; [ウォーターフォールモデル、V字モデル](process_and_infra.md#SS_11_1_1)  
-&emsp;&emsp;&emsp; [アジャイル系プロセス](process_and_infra.md#SS_11_1_2)  
-&emsp;&emsp;&emsp; [ウォーターフォール vs アジャイル](process_and_infra.md#SS_11_1_3)  
+[プロセス](process_and_infra.md#SS_11_1)  
+&emsp;[ウォーターフォールモデル、V字モデル](process_and_infra.md#SS_11_1_1)  
+&emsp;[アジャイル系プロセス](process_and_infra.md#SS_11_1_2)  
+&emsp;[ウォーターフォール vs アジャイル](process_and_infra.md#SS_11_1_3)  
 
-&emsp;&emsp; [アジャイル系プロセスのプラクティスとインフラ](process_and_infra.md#SS_11_2)  
-&emsp;&emsp;&emsp; [自動単体テスト](process_and_infra.md#SS_11_2_1)  
-&emsp;&emsp;&emsp; [リファクタリング](process_and_infra.md#SS_11_2_2)  
-&emsp;&emsp;&emsp; [自動統合テスト](process_and_infra.md#SS_11_2_3)  
-&emsp;&emsp;&emsp; [TDD](process_and_infra.md#SS_11_2_4)  
-&emsp;&emsp;&emsp; [CI(継続的インテグレーション)](process_and_infra.md#SS_11_2_5)  
+[アジャイル系プロセスのプラクティスとインフラ](process_and_infra.md#SS_11_2)  
+&emsp;[自動単体テスト](process_and_infra.md#SS_11_2_1)  
+&emsp;[リファクタリング](process_and_infra.md#SS_11_2_2)  
+&emsp;[自動統合テスト](process_and_infra.md#SS_11_2_3)  
+&emsp;[TDD](process_and_infra.md#SS_11_2_4)  
+&emsp;[CI(継続的インテグレーション)](process_and_infra.md#SS_11_2_5)  
 
-&emsp;&emsp; [まとめ](process_and_infra.md#SS_11_3)  
+[まとめ](process_and_infra.md#SS_11_3)  
   
   
 
@@ -241,7 +241,7 @@ ___
 プログラムとその単体テストのパッケージの構造(「[アーキテクチャ](architecture.md#SS_10)」参照)を説明するために、
 以下のような特徴を持つAppliというプログラムを想定する。
 
-* 「[パッケージとその構成ファイル](programming_convention.md#SS_3_7)」で定めたルールに従っている。
+* 「[ソースコードファイルとディレクトリ](programming_convention.md#SS_3_7)」で定めたルールに従っている。
 * 各パッケージはライブラリとして実装され、それらをリンクすることによりAppliが生成される。
 * 下記パッケージ図のような構造を持つ。
 
@@ -1548,7 +1548,7 @@ pull-requestが承認されれば、ブランチ開発者はfeatrueブランチ�
 * コミットクライテリアをクリアしているか(単体テストや自動統合テストが作られているかどうかの確認)？
 * 設計上の問題点はないか？
     * [SOLID](solid.md#SS_8)等の原則に従っているか？
-    * デザインパターンの使用は適切か([Accessor](cpp_idioms.md#SS_21_1_5)や[Singleton](design_pattern.md#SS_9_1_1)の多用は認められない等)？
+    * デザインパターンの使用は適切か([Accessor](cpp_idioms.md#SS_21_1_6)や[Singleton](design_pattern.md#SS_9_1_1)の多用は認められない等)？
 * [プログラミング規約](programming_convention.md#SS_3)に従っているか？
     * 不要な依存関係はないか？ 依存関係の方向は問題ないか？
     * クラス、関数は大きすぎないか？
@@ -1626,7 +1626,7 @@ CI項目には前述した
 に加えて、
 
 * ソースコードの静的解析(「[コード解析](code_analysis.md#SS_4)」参照)
-* 各種メトリクスの計測([サイクロマティック複雑度](cpp_idioms.md#SS_21_12_13)、[凝集性の欠如](cpp_idioms.md#SS_21_12_14_1)等)
+* 各種メトリクスの計測([サイクロマティック複雑度](cpp_idioms.md#SS_21_14_13)、[凝集性の欠如](cpp_idioms.md#SS_21_14_14_1)等)
 * リリースパッケージの作成
 
 等がある。
@@ -1653,7 +1653,7 @@ CIの環境として、
 
 * CIサーバとしてJenkins
 * Jenkinsのジョブ記述にbash
-* コンパイラに[g++](cpp_idioms.md#SS_21_13_1)
+* コンパイラに[g++](cpp_idioms.md#SS_21_15_1)
 * ビルドツールにmake
 
 を使用すると前提とする。この場合、

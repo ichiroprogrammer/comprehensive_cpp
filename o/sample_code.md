@@ -2,6 +2,8 @@
 # Sample Code <a id="SS_26"></a>
 ## vim <a id="SS_26_1"></a>
 ### vim_config/README.md <a id="SS_26_1_1"></a>
+
+
 ```vim
           1 # このリポジトリの目的
           2 wsl-ubuntu vim/nvim、cygwin vim、windows gvim/nvim/nvim-qtの設定方法や設定ファイルを保存する。
@@ -107,6 +109,8 @@
 ```
 
 ### vim_config/inputrc <a id="SS_26_1_2"></a>
+
+
 ```vim
           1 set editing-mode vi
           2 set completion-ignore-case on
@@ -114,6 +118,8 @@
 ```
 
 ### vim_config/nvim/autoload/buffers.vim <a id="SS_26_1_3"></a>
+
+
 ```vim
           1 let s:buffers_buffer = 'Buffers'
           2 
@@ -206,6 +212,8 @@
 ```
 
 ### vim_config/nvim/autoload/cd.vim <a id="SS_26_1_4"></a>
+
+
 ```vim
           1 function! s:is_term()
           2     let bn = bufname("%")
@@ -246,6 +254,8 @@
 ```
 
 ### vim_config/nvim/autoload/git_diff.vim <a id="SS_26_1_5"></a>
+
+
 ```vim
           1 let s:git_diff_buffer = 'GIT DIFF'
           2 let s:git_diff_buffer_cur =''
@@ -497,6 +507,8 @@
 ```
 
 ### vim_config/nvim/autoload/git_session.vim <a id="SS_26_1_6"></a>
+
+
 ```vim
           1 function! s:get_git_top()
           2     let top = system('git rev-parse --show-toplevel')
@@ -567,6 +579,8 @@
 ```
 
 ### vim_config/nvim/autoload/grep.vim <a id="SS_26_1_7"></a>
+
+
 ```vim
           1 function s:grep(target, args_for_dir)
           2     let ignore_case=&ic
@@ -614,6 +628,8 @@
 ```
 
 ### vim_config/nvim/autoload/multi_hl.vim <a id="SS_26_1_8"></a>
+
+
 ```vim
           1 function! multi_hl#add_word(word, row)
           2 
@@ -640,6 +656,8 @@
 ```
 
 ### vim_config/nvim/autoload/next_file.vim <a id="SS_26_1_9"></a>
+
+
 ```vim
           1 " カレントファイルがxxx_yyy_zzz.cppだったとすると、
           2 "   del_num     :0      エクステンションを取ったxxx_yyy_zzzに*を付けてglob
@@ -715,6 +733,8 @@
 ```
 
 ### vim_config/nvim/autoload/term.vim <a id="SS_26_1_10"></a>
+
+
 ```vim
           1 let s:term_num = -1
           2 
@@ -742,6 +762,8 @@
 ```
 
 ### vim_config/nvim/autoload/termdbg.vim <a id="SS_26_1_11"></a>
+
+
 ```vim
           1 ":Run [args]    [args] または以前の引数でプログラムを実行する
           2 ":Arguments     {args}  次の :Run のために引数を設定する
@@ -792,6 +814,8 @@
 ```
 
 ### vim_config/nvim/cheatsheet.md <a id="SS_26_1_12"></a>
+
+
 ```vim
           1 # My CheatSheet
           2 
@@ -946,6 +970,8 @@
 ```
 
 ### vim_config/nvim/ftplugin/c.vim <a id="SS_26_1_13"></a>
+
+
 ```vim
           1 setlocal tabstop=4
           2 setlocal shiftwidth=4
@@ -959,6 +985,8 @@
 ```
 
 ### vim_config/nvim/ftplugin/python.vim <a id="SS_26_1_14"></a>
+
+
 ```vim
           1 setlocal tabstop=4
           2 setlocal shiftwidth=4
@@ -968,6 +996,8 @@
 ```
 
 ### vim_config/nvim/ftplugin/ruby.vim <a id="SS_26_1_15"></a>
+
+
 ```vim
           1 setlocal tabstop=2
           2 setlocal shiftwidth=2
@@ -976,6 +1006,8 @@
 ```
 
 ### vim_config/nvim/init.vim <a id="SS_26_1_16"></a>
+
+
 ```vim
           1 if exists('s:loaded')
           2     finish
@@ -1027,6 +1059,8 @@
 ```
 
 ### vim_config/nvim/org.vim <a id="SS_26_1_17"></a>
+
+
 ```vim
           1 " misc
           2 set hidden
@@ -1080,6 +1114,8 @@
 ```
 
 ### vim_config/nvim/package.vim <a id="SS_26_1_18"></a>
+
+
 ```vim
           1 if &compatible
           2     set nocompatible " Be iMproved
@@ -1154,11 +1190,15 @@
 ```
 
 ### vim_config/nvim/plugin/buffers.vim <a id="SS_26_1_19"></a>
+
+
 ```vim
           1 command! -nargs=0 Buff     call buffers#begin()
 ```
 
 ### vim_config/nvim/plugin/cd.vim <a id="SS_26_1_20"></a>
+
+
 ```vim
           1 command! -nargs=0 Cd    call cd#change_dir()
           2 nmap <C-c>       :Cd<CR>
@@ -1168,6 +1208,8 @@
 ```
 
 ### vim_config/nvim/plugin/clear_undo.vim <a id="SS_26_1_21"></a>
+
+
 ```vim
           1 function! ClearUndo()
           2     let old_undolevels = &undolevels
@@ -1183,6 +1225,8 @@
 ```
 
 ### vim_config/nvim/plugin/ctags_ext.vim <a id="SS_26_1_22"></a>
+
+
 ```vim
           1 function! CTags(...)
           2     if a:0 == 0
@@ -1198,6 +1242,8 @@
 ```
 
 ### vim_config/nvim/plugin/dev_env.vim <a id="SS_26_1_23"></a>
+
+
 ```vim
           1 function! dev_env#setup()
           2     execute ":only"
@@ -1221,6 +1267,8 @@
 ```
 
 ### vim_config/nvim/plugin/git_diff.vim <a id="SS_26_1_24"></a>
+
+
 ```vim
           1 command! -nargs=0 GitDiff       call git_diff#begin(0)
           2 command! -nargs=0 GitDiffResize call git_diff#begin(1)
@@ -1228,6 +1276,8 @@
 ```
 
 ### vim_config/nvim/plugin/git_session.vim <a id="SS_26_1_25"></a>
+
+
 ```vim
           1 command! -nargs=0 SessionBegin  call git_session#begin()
           2 command! -nargs=0 SessionDir    call git_session#dir()
@@ -1237,6 +1287,8 @@
 ```
 
 ### vim_config/nvim/plugin/grep.vim <a id="SS_26_1_26"></a>
+
+
 ```vim
           1 command!  -nargs=? Grep call grep#grep(<f-args>)
           2 command!  -nargs=+ Grepp call grep#grepp(<f-args>)
@@ -1244,6 +1296,8 @@
 ```
 
 ### vim_config/nvim/plugin/keybind.vim <a id="SS_26_1_27"></a>
+
+
 ```vim
           1 "Set up key binding
           2 
@@ -1270,6 +1324,8 @@
 ```
 
 ### vim_config/nvim/plugin/multi_hl.vim <a id="SS_26_1_28"></a>
+
+
 ```vim
           1 command! -nargs=0 MultiHlAdd    call multi_hl#add_word(expand('<cword>'), 0)
           2 command! -nargs=0 MultiHlAddR   call multi_hl#add_word(expand('<cword>'), 1)
@@ -1278,6 +1334,8 @@
 ```
 
 ### vim_config/nvim/plugin/next_file.vim <a id="SS_26_1_29"></a>
+
+
 ```vim
           1 if g:os == 'linux'
           2     nmap <M-q>      :let @q=expand('%')<CR>
@@ -1290,6 +1348,8 @@
 ```
 
 ### vim_config/nvim/plugin/path_set.vim <a id="SS_26_1_30"></a>
+
+
 ```vim
           1 function! path_set#add()
           2     let temp = system('find $(pwd) -type d')
@@ -1313,6 +1373,8 @@
 ```
 
 ### vim_config/nvim/plugin/scratch.vim <a id="SS_26_1_31"></a>
+
+
 ```vim
           1 let s:scratch_buffer = 'Scratch'
           2 
@@ -1332,6 +1394,8 @@
 ```
 
 ### vim_config/nvim/plugin/term.vim <a id="SS_26_1_32"></a>
+
+
 ```vim
           1 if g:os == 'windows'
           2     set shell=C:/cygwin64/bin/bash.exe
@@ -1349,6 +1413,8 @@
 ```
 
 ### vim_config/nvim/plugin/termdbg.vim <a id="SS_26_1_33"></a>
+
+
 ```vim
           1 command! -nargs=1 -complete=file DbgStart   call termdbg#start(<q-args>)
           2 command! -nargs=0 DbgKey     call termdbg#key_map()
@@ -1357,6 +1423,8 @@
 ```
 
 ### vim_config/nvim/rplugin/python3/next_file.py <a id="SS_26_1_34"></a>
+
+
 ```vim
           1 import pynvim
           2 import glob
@@ -1402,6 +1470,8 @@
 ```
 
 ### vim_config/vim.sh <a id="SS_26_1_35"></a>
+
+
 ```vim
           1 function os_name()
           2 {
@@ -1460,6 +1530,8 @@
 ```
 
 ### vim_config/vim/gvimrc <a id="SS_26_1_36"></a>
+
+
 ```vim
           1 "このファイルは$HOME/.gvimrcにコピーするかシンボリックリンクを張る。
           2 
@@ -1471,6 +1543,8 @@
 ```
 
 ### vim_config/vim/vimrc <a id="SS_26_1_37"></a>
+
+
 ```vim
           1 "このファイルは$HOME/.vimrcにコピーするかシンボリックリンクを張る。
           2 
@@ -1479,6 +1553,8 @@
 
 ## C++ <a id="SS_26_2"></a>
 ### example/deps/app/src/deps_opts.cpp <a id="SS_26_2_1"></a>
+
+
 ```cpp
           1 #include <getopt.h>
           2 
@@ -1670,6 +1746,8 @@
 ```
 
 ### example/deps/app/src/deps_opts.h <a id="SS_26_2_2"></a>
+
+
 ```cpp
           1 #pragma once
           2 #include <ostream>
@@ -1732,6 +1810,8 @@
 ```
 
 ### example/deps/app/src/main.cpp <a id="SS_26_2_3"></a>
+
+
 ```cpp
           1 #include <cassert>
           2 #include <fstream>
@@ -1851,6 +1931,8 @@
 ```
 
 ### example/deps/app/ut/deps_opts_ut.cpp <a id="SS_26_2_4"></a>
+
+
 ```cpp
           1 #include "gtest_wrapper.h"
           2 
@@ -2079,6 +2161,8 @@
 ```
 
 ### example/deps/dependency/h/dependency/deps_scenario.h <a id="SS_26_2_5"></a>
+
+
 ```cpp
           1 #pragma once
           2 #include <memory>
@@ -2164,6 +2248,8 @@
 ```
 
 ### example/deps/dependency/src/arch_pkg.cpp <a id="SS_26_2_6"></a>
+
+
 ```cpp
           1 #include <cassert>
           2 #include <sstream>
@@ -2563,6 +2649,8 @@
 ```
 
 ### example/deps/dependency/src/arch_pkg.h <a id="SS_26_2_7"></a>
+
+
 ```cpp
           1 #pragma once
           2 
@@ -2625,6 +2713,8 @@
 ```
 
 ### example/deps/dependency/src/cpp_deps.cpp <a id="SS_26_2_8"></a>
+
+
 ```cpp
           1 #include <algorithm>
           2 #include <cassert>
@@ -2727,6 +2817,8 @@
 ```
 
 ### example/deps/dependency/src/cpp_deps.h <a id="SS_26_2_9"></a>
+
+
 ```cpp
           1 #pragma once
           2 #include <compare>
@@ -2790,6 +2882,8 @@
 ```
 
 ### example/deps/dependency/src/cpp_dir.cpp <a id="SS_26_2_10"></a>
+
+
 ```cpp
           1 #include <cassert>
           2 #include <sstream>
@@ -2866,6 +2960,8 @@
 ```
 
 ### example/deps/dependency/src/cpp_dir.h <a id="SS_26_2_11"></a>
+
+
 ```cpp
           1 #pragma once
           2 #include <iostream>
@@ -2907,6 +3003,8 @@
 ```
 
 ### example/deps/dependency/src/cpp_src.cpp <a id="SS_26_2_12"></a>
+
+
 ```cpp
           1 #include <cassert>
           2 #include <fstream>
@@ -3067,6 +3165,8 @@
 ```
 
 ### example/deps/dependency/src/cpp_src.h <a id="SS_26_2_13"></a>
+
+
 ```cpp
           1 #pragma once
           2 #include <string>
@@ -3107,6 +3207,8 @@
 ```
 
 ### example/deps/dependency/src/deps_scenario.cpp <a id="SS_26_2_14"></a>
+
+
 ```cpp
           1 #include <cassert>
           2 #include <iostream>
@@ -3447,6 +3549,8 @@
 ```
 
 ### example/deps/dependency/src/load_store_format.cpp <a id="SS_26_2_15"></a>
+
+
 ```cpp
           1 #include <cassert>
           2 #include <iostream>
@@ -3706,6 +3810,8 @@
 ```
 
 ### example/deps/dependency/src/load_store_format.h <a id="SS_26_2_16"></a>
+
+
 ```cpp
           1 #pragma once
           2 #include <optional>
@@ -3735,6 +3841,8 @@
 ```
 
 ### example/deps/dependency/ut/arch_pkg_ut.cpp <a id="SS_26_2_17"></a>
+
+
 ```cpp
           1 #include "gtest_wrapper.h"
           2 
@@ -4277,6 +4385,8 @@
 ```
 
 ### example/deps/dependency/ut/cpp_deps_ut.cpp <a id="SS_26_2_18"></a>
+
+
 ```cpp
           1 #include "gtest_wrapper.h"
           2 
@@ -4365,6 +4475,8 @@
 ```
 
 ### example/deps/dependency/ut/cpp_dir_ut.cpp <a id="SS_26_2_19"></a>
+
+
 ```cpp
           1 #include "gtest_wrapper.h"
           2 
@@ -4449,6 +4561,8 @@
 ```
 
 ### example/deps/dependency/ut/cpp_src_ut.cpp <a id="SS_26_2_20"></a>
+
+
 ```cpp
           1 #include "gtest_wrapper.h"
           2 
@@ -4663,6 +4777,8 @@
 ```
 
 ### example/deps/dependency/ut/deps_scenario_ut.cpp <a id="SS_26_2_21"></a>
+
+
 ```cpp
           1 #include <sstream>
           2 
@@ -5475,6 +5591,8 @@
 ```
 
 ### example/deps/dependency/ut/load_store_format_ut.cpp <a id="SS_26_2_22"></a>
+
+
 ```cpp
           1 #include "gtest_wrapper.h"
           2 
@@ -5644,6 +5762,8 @@
 ```
 
 ### example/deps/file_utils/h/file_utils/load_store.h <a id="SS_26_2_23"></a>
+
+
 ```cpp
           1 #pragma once
           2 #include <fstream>
@@ -5679,6 +5799,8 @@
 ```
 
 ### example/deps/file_utils/h/file_utils/load_store_row.h <a id="SS_26_2_24"></a>
+
+
 ```cpp
           1 #pragma once
           2 #include <fstream>
@@ -5694,6 +5816,8 @@
 ```
 
 ### example/deps/file_utils/h/file_utils/path_utils.h <a id="SS_26_2_25"></a>
+
+
 ```cpp
           1 #pragma once
           2 #include <filesystem>
@@ -5736,6 +5860,8 @@
 ```
 
 ### example/deps/file_utils/src/load_store_row.cpp <a id="SS_26_2_26"></a>
+
+
 ```cpp
           1 #include <cassert>
           2 #include <iostream>
@@ -5774,6 +5900,8 @@
 ```
 
 ### example/deps/file_utils/src/path_utils.cpp <a id="SS_26_2_27"></a>
+
+
 ```cpp
           1 #include <algorithm>
           2 #include <sstream>
@@ -5980,6 +6108,8 @@
 ```
 
 ### example/deps/file_utils/ut/load_store_row_ut.cpp <a id="SS_26_2_28"></a>
+
+
 ```cpp
           1 #include "gtest_wrapper.h"
           2 
@@ -6021,6 +6151,8 @@
 ```
 
 ### example/deps/file_utils/ut/path_utils_ut.cpp <a id="SS_26_2_29"></a>
+
+
 ```cpp
           1 #include "gtest_wrapper.h"
           2 
@@ -6328,6 +6460,8 @@
 ```
 
 ### example/deps/lib/h/lib/nstd.h <a id="SS_26_2_30"></a>
+
+
 ```cpp
           1 #pragma once
           2 #include <algorithm>
@@ -6484,6 +6618,8 @@
 ```
 
 ### example/deps/lib/ut/nstd_ut.cpp <a id="SS_26_2_31"></a>
+
+
 ```cpp
           1 #include <filesystem>
           2 #include <list>
@@ -6678,6 +6814,8 @@
 ```
 
 ### example/deps/logging/h/logging/logger.h <a id="SS_26_2_32"></a>
+
+
 ```cpp
           1 #pragma once
           2 
@@ -6753,6 +6891,8 @@
 ```
 
 ### example/deps/logging/src/logger.cpp <a id="SS_26_2_33"></a>
+
+
 ```cpp
           1 #include "logging/logger.h"
           2 
@@ -6814,6 +6954,8 @@
 ```
 
 ### example/deps/logging/ut/logger_ut.cpp <a id="SS_26_2_34"></a>
+
+
 ```cpp
           1 #include <filesystem>
           2 
@@ -6839,6 +6981,8 @@
 ```
 
 ### example/dynamic_memory_allocation/malloc_ut.cpp <a id="SS_26_2_35"></a>
+
+
 ```cpp
           1 #include <sys/unistd.h>
           2 
@@ -7055,6 +7199,8 @@
 ```
 
 ### example/dynamic_memory_allocation/mpool_variable.h <a id="SS_26_2_36"></a>
+
+
 ```cpp
           1 #pragma once
           2 #include <cassert>
@@ -7266,6 +7412,8 @@
 
 ## etc <a id="SS_26_3"></a>
 ### example/deps/CMakeLists.txt <a id="SS_26_3_1"></a>
+
+
 ```
           1 cmake_minimum_required(VERSION 3.10)
           2 
@@ -7310,6 +7458,8 @@
 ```
 
 ### example/deps/dependency/CMakeLists.txt <a id="SS_26_3_2"></a>
+
+
 ```
           1 cmake_minimum_required(VERSION 3.10)
           2 
@@ -7378,6 +7528,8 @@
 ```
 
 ### example/deps/file_utils/CMakeLists.txt <a id="SS_26_3_3"></a>
+
+
 ```
           1 cmake_minimum_required(VERSION 3.10)
           2 
@@ -7422,6 +7574,8 @@
 ```
 
 ### example/deps/lib/CMakeLists.txt <a id="SS_26_3_4"></a>
+
+
 ```
           1 cmake_minimum_required(VERSION 3.10)
           2 
@@ -7438,7 +7592,7 @@
          13     message(FATAL_ERROR "gtest target not found. Make sure googletest is added at the top level CMakeLists.txt")
          14 endif()
          15 
-         16 target_include_directories(lib_ut_exe PRIVATE h ../../h/ ../../../deep/h)
+         16 target_include_directories(lib_ut_exe PRIVATE h ../../h/ ../../../essential/h)
          17 target_link_libraries(lib_ut_exe gtest gtest_main)
          18 
          19 enable_testing()
@@ -7452,6 +7606,8 @@
 ```
 
 ### example/deps/logging/CMakeLists.txt <a id="SS_26_3_5"></a>
+
+
 ```
           1 #logging/CMakeLists.txt
           2 

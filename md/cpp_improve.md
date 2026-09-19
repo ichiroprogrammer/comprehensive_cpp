@@ -205,6 +205,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 ```
 
 #### 範囲for文のイテレータ型の不一致の許可
+
 ```cpp
     // @@@ example/cpp_improve/cpp17_ut.cpp #2:0 begin
 ```
@@ -242,6 +243,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 
 ### 構文の新機能、規制緩和の例
 #### friend指定された関数内から構造化束縛
+
 ```cpp
     // @@@ example/cpp_improve/cpp20_ut.cpp #0:0 begin
 ```
@@ -250,6 +252,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 ```
 
 #### 構造化束縛カスタマイゼーションルール変更
+
 ```cpp
     // @@@ example/cpp_improve/cpp20_ut.cpp #1:0 begin
 ```
@@ -278,6 +281,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 ```
 
 #### 非型テンプレートパラメータとしてクラス型を許可
+
 ```cpp
     // @@@ example/cpp_improve/cpp20_ut.cpp #3:0 begin
 ```
@@ -286,6 +290,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 ```
 
 #### 関数テンプレートに明示的に型指定した場合にADLで見つからない問題を修正
+
 ```cpp
     // @@@ example/cpp_improve/cpp20_ut.cpp #4:0 begin
 ```
@@ -294,6 +299,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 ```
 
 #### エイリアステンプレート経由でのクラステンプレートのテンプレート引数推論
+
 ```cpp
     // @@@ example/cpp_improve/cpp20_ut.cpp #5:0 begin
 ```
@@ -302,6 +308,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 ```
 
 #### structテンプレートのテンプレート引数推論
+
 ```cpp
     // @@@ example/cpp_improve/cpp20_ut.cpp #6:0 begin
 ```

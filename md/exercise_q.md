@@ -40,6 +40,7 @@ ___
 
 ### 演習-汎整数型の演算
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/type.cpp #0:0 begin
 ```
@@ -50,6 +51,7 @@ ___
 
 ### 演習-浮動小数点型
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/type.cpp #1:0 begin
 ```
@@ -74,6 +76,7 @@ ___
 
 ### 演習-enum
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/type.cpp #2:0 begin
 ```
@@ -84,6 +87,7 @@ ___
 
 ### 演習-配列の範囲for文
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/type.cpp #3:0 begin
 ```
@@ -123,6 +127,7 @@ ___
 
 ### 演習-const/constexpr
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/type.cpp #5:0 begin
 ```
@@ -133,6 +138,7 @@ ___
 
 ### 演習-危険なconst_cast
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/type.cpp #6:0 begin
 ```
@@ -143,6 +149,7 @@ ___
 
 ### 演習-リテラル
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/type.cpp #7:0 begin
 ```
@@ -197,6 +204,7 @@ ___
 
 ### 演習-インスタンスの初期化
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/type.cpp #8:0 begin
 ```
@@ -223,6 +231,7 @@ ___
 
 ### 演習-凝集性の向上
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/class.cpp #0:0 begin
 ```
@@ -272,6 +281,7 @@ ___
 
 ### 演習-メンバ変数の初期化
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/class.cpp #1:0 begin
 ```
@@ -282,6 +292,7 @@ ___
 
 ### 演習-スライシング
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/class.cpp #2:0 begin
 ```
@@ -291,6 +302,7 @@ ___
 
 ### 演習-オブジェクトの所有権
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/class.cpp #3:0 begin
 ```
@@ -303,6 +315,7 @@ ___
 
 ### 演習-非メンバ関数の宣言
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/func.cpp #0:0 begin
 ```
@@ -313,6 +326,7 @@ ___
 
 ### 演習-メンバ関数の修飾
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/func.cpp #1:0 begin
 ```
@@ -323,6 +337,7 @@ ___
 
 ### 演習-特殊メンバ関数の削除
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/func.cpp #2:0 begin
 ```
@@ -333,6 +348,7 @@ ___
 
 ### 演習-委譲コンストラクタ
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/func.cpp #3:0 begin
 ```
@@ -343,6 +359,7 @@ ___
 
 ### 演習-copyコンストラクタ
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/func.cpp #4:0 begin
 ```
@@ -353,6 +370,7 @@ ___
 
 ### 演習-moveコンストラクタ
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/func.cpp #5:0 begin
 ```
@@ -363,6 +381,7 @@ ___
 
 ### 演習-関数分割
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/func.cpp #6:0 begin
 ```
@@ -387,6 +406,7 @@ ___
 
 ### 演習-オーバーライド/オーバーロード
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/func.cpp #7:0 begin
 ```
@@ -397,6 +417,7 @@ ___
 
 ### 演習-オーバーロードによる誤用防止
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/func.cpp #8:0 begin
 ```
@@ -407,6 +428,7 @@ ___
 
 ### 演習-仮引数の修飾
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/func.cpp #9:0 begin
 ```
@@ -417,6 +439,7 @@ ___
 
 ### 演習-constexpr関数
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/func.cpp #10:0 begin
 ```
@@ -444,6 +467,7 @@ ___
 
 ### 演習-コンテナの範囲for文
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/syntax.cpp #0:0 begin
 ```
@@ -454,6 +478,7 @@ ___
 
 ### 演習-ラムダ式
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/syntax.cpp #1:0 begin
 ```
@@ -464,6 +489,7 @@ ___
 
 ### 演習-ラムダ式のキャプチャ
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/syntax.cpp #2:0 begin
 ```
@@ -475,6 +501,7 @@ ___
 
 ### 演習-条件演算子
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/operator.cpp #0:0 begin
 ```
@@ -485,6 +512,7 @@ ___
 
 ### 演習-delete
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/operator.cpp #1:0 begin
 ```
@@ -495,6 +523,7 @@ ___
 
 ### 演習-sizeof
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/operator.cpp #2:0 begin
 ```
@@ -505,6 +534,7 @@ ___
 
 ### 演習-dynamic_castの削除
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/operator.cpp #3:0 begin
 ```
@@ -562,6 +592,7 @@ ___
 
 ### 演習-assert/static_assert
 * 問題
+
 ```cpp
     // @@@ exercise/programming_convention_q/etc.cpp #0:0 begin
 ```
@@ -585,6 +616,7 @@ ___
 
 ### 演習-SRP
 * 問題
+
 ```cpp
     // @@@ exercise/solid_q/srp_test_score.h #0:0 begin
 ```
@@ -601,6 +633,7 @@ ___
 
 ### 演習-OCP
 * 問題
+
 ```cpp
     // @@@ exercise/solid_q/ocp_test_score.h #0:0 begin
 ```
@@ -617,6 +650,7 @@ ___
 
 ### 演習-LSP
 * 問題
+
 ```cpp
     // @@@ exercise/solid_q/lsp_test_score.h #0:0 begin
 ```
@@ -633,6 +667,7 @@ ___
 
 ### 演習-ISP
 * 問題
+
 ```cpp
     // @@@ exercise/solid_q/isp_test_score.h #0:0 begin
 ```
@@ -649,6 +684,7 @@ ___
 
 ### 演習-DIP
 * 問題
+
 ```cpp
     // @@@ exercise/solid_q/dip_test_score.h #0:0 begin
 ```
@@ -696,6 +732,7 @@ ___
 ## デザインパターン
 ### 演習-ガード節
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/guard.cpp #0:0 begin
 ```
@@ -706,6 +743,7 @@ ___
 
 ### 演習-BitmaskType
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/enum_bitmask.cpp #0:0 begin
 ```
@@ -716,6 +754,7 @@ ___
 
 ### 演習-Pimpl
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/pimpl.cpp #0:0 begin
 ```
@@ -739,6 +778,7 @@ ___
 
 ### 演習-Accessor
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/accessor.cpp #0:0 begin
 ```
@@ -749,6 +789,7 @@ ___
 
 ### 演習-Copy-And-Swap
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/copy_and_swap.cpp #0:0 begin
 ```
@@ -759,6 +800,7 @@ ___
 
 ### 演習-Immutable
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/immutable.cpp #0:0 begin
 ```
@@ -769,6 +811,7 @@ ___
 
 ### 演習-Clone
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/clone.cpp #0:0 begin
 ```
@@ -779,6 +822,7 @@ ___
 
 ### 演習-NVI
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/nvi.cpp #0:0 begin
 ```
@@ -802,6 +846,7 @@ ___
 
 ### 演習-RAII
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/raii.cpp #0:0 begin
 ```
@@ -812,6 +857,7 @@ ___
 
 ### 演習-Future
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/future.cpp #0:0 begin
 ```
@@ -822,6 +868,7 @@ ___
 
 ### 演習-DI
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/di.cpp #0:0 begin
 ```
@@ -832,6 +879,7 @@ ___
 
 ### 演習-Singleton
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/singleton.cpp #0:0 begin
 ```
@@ -842,6 +890,7 @@ ___
 
 ### 演習-State
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/state.cpp #0:0 begin
 ```
@@ -852,6 +901,7 @@ ___
 
 ### 演習-Null Object
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/null_object.cpp #0:0 begin
 ```
@@ -862,6 +912,7 @@ ___
 
 ### 演習-Templateメソッド
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/template_method.cpp #0:0 begin
 ```
@@ -872,6 +923,7 @@ ___
 
 ### 演習-Factory
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/factory_lib.h #0:0 begin
 ```
@@ -888,6 +940,7 @@ ___
 
 ### 演習-Named Constructor
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/named_constructor_lib.h #0:0 begin
 ```
@@ -904,6 +957,7 @@ ___
 
 ### 演習-Proxy
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/proxy.cpp #0:0 begin
 ```
@@ -914,6 +968,7 @@ ___
 
 ### 演習-Strategy
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/strategy.cpp #0:0 begin
 ```
@@ -924,6 +979,7 @@ ___
 
 ### 演習-Visitor
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/visitor.cpp #0:0 begin
 ```
@@ -934,6 +990,7 @@ ___
 
 ### 演習-CRTP
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/crtp.cpp #0:0 begin
 ```
@@ -944,6 +1001,7 @@ ___
 
 ### 演習-Observer
 * 問題
+
 ```cpp
     // @@@ exercise/design_pattern_q/observer.cpp #0:0 begin
 ```
@@ -1127,6 +1185,7 @@ ___
 
 ### 演習-パラメータパック
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/parameter_pack.cpp #0:0 begin
 ```
@@ -1137,6 +1196,7 @@ ___
 
 ### 演習-エイリアステンプレート
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/template_alias.cpp #0:0 begin
 ```
@@ -1146,6 +1206,7 @@ ___
 
 ### 演習-名前空間による修飾不要な`operator<<`
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/put_to.cpp #0:0 begin
 ```
@@ -1156,6 +1217,7 @@ ___
 
 ### 演習-std::arrayの継承
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/safe_array.cpp #0:0 begin
 ```
@@ -1166,6 +1228,7 @@ ___
 
 ### 演習-SFINAEを利用しない関数テンプレートの特殊化によるis_void
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/is_void.cpp #0:0 begin
 ```
@@ -1176,8 +1239,9 @@ ___
 
 ### 演習-SFINAEを利用しないクラステンプレートの特殊化によるis_void
 * 問題
-    // @@@ exercise/template_q/is_void.cpp #1:0 begin
+
 ```cpp
+    // @@@ exercise/template_q/is_void.cpp #1:0 begin
 ```
 
 * 参照 [is_void_s](---)
@@ -1186,6 +1250,7 @@ ___
 
 ### 演習-SFINAEを利用した関数テンプレートの特殊化によるis_void
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/is_void.cpp #2:0 begin
 ```
@@ -1196,6 +1261,7 @@ ___
 
 ### 演習-SFINAEを利用したクラステンプレートの特殊化によるis_void
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/is_void.cpp #3:0 begin
 ```
@@ -1206,6 +1272,7 @@ ___
 
 ### 演習-テンプレートテンプレートパラメータ
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/template_template.cpp #0:0 begin
 ```
@@ -1216,6 +1283,7 @@ ___
 
 ### 演習-テンプレートパラメータを可変長にしたstd::is_same
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/is_same.cpp #0:0 begin
 ```
@@ -1226,6 +1294,7 @@ ___
 
 ### 演習-メンバ関数の存在の診断
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/exists_func.cpp #0:0 begin
 ```
@@ -1236,6 +1305,7 @@ ___
 
 ### 演習-範囲for文のオペランドになれるかどうかの診断
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/exists_func.cpp #1:0 begin
 ```
@@ -1246,6 +1316,7 @@ ___
 
 ### 演習-配列の長さの取り出し
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/array_op.cpp #0:0 begin
 ```
@@ -1256,6 +1327,7 @@ ___
 
 ### 演習-配列の次元の取り出し
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/array_op.cpp #1:0 begin
 ```
@@ -1266,6 +1338,7 @@ ___
 
 ### 演習-関数型のテンプレートパラメータを持つクラステンプレート
 * 問題
+
 ```cpp
     // @@@ exercise/template_q/scoped_guard.cpp #0:0 begin
 ```

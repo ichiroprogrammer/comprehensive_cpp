@@ -6,76 +6,76 @@ ___
 
 __この章の構成__
 
-&emsp;&emsp; [ユーティリティ](stdlib_and_concepts.md#SS_20_1)  
-&emsp;&emsp;&emsp; [std::move](stdlib_and_concepts.md#SS_20_1_1)  
-&emsp;&emsp;&emsp; [std::forward](stdlib_and_concepts.md#SS_20_1_2)  
+[ユーティリティ](stdlib_and_concepts.md#SS_20_1)  
+&emsp;[std::move](stdlib_and_concepts.md#SS_20_1_1)  
+&emsp;[std::forward](stdlib_and_concepts.md#SS_20_1_2)  
 
-&emsp;&emsp; [type_traits](stdlib_and_concepts.md#SS_20_2)  
-&emsp;&emsp;&emsp; [std::integral_constant](stdlib_and_concepts.md#SS_20_2_1)  
-&emsp;&emsp;&emsp; [std::true_type](stdlib_and_concepts.md#SS_20_2_2)  
-&emsp;&emsp;&emsp; [std::false_type](stdlib_and_concepts.md#SS_20_2_3)  
-&emsp;&emsp;&emsp; [std::is_same](stdlib_and_concepts.md#SS_20_2_4)  
-&emsp;&emsp;&emsp; [std::enable_if](stdlib_and_concepts.md#SS_20_2_5)  
-&emsp;&emsp;&emsp; [std::conditional](stdlib_and_concepts.md#SS_20_2_6)  
-&emsp;&emsp;&emsp; [std::is_void](stdlib_and_concepts.md#SS_20_2_7)  
-&emsp;&emsp;&emsp; [std::is_copy_assignable](stdlib_and_concepts.md#SS_20_2_8)  
-&emsp;&emsp;&emsp; [std::is_move_assignable](stdlib_and_concepts.md#SS_20_2_9)  
+[type_traits](stdlib_and_concepts.md#SS_20_2)  
+&emsp;[std::integral_constant](stdlib_and_concepts.md#SS_20_2_1)  
+&emsp;[std::true_type](stdlib_and_concepts.md#SS_20_2_2)  
+&emsp;[std::false_type](stdlib_and_concepts.md#SS_20_2_3)  
+&emsp;[std::is_same](stdlib_and_concepts.md#SS_20_2_4)  
+&emsp;[std::enable_if](stdlib_and_concepts.md#SS_20_2_5)  
+&emsp;[std::conditional](stdlib_and_concepts.md#SS_20_2_6)  
+&emsp;[std::is_void](stdlib_and_concepts.md#SS_20_2_7)  
+&emsp;[std::is_copy_assignable](stdlib_and_concepts.md#SS_20_2_8)  
+&emsp;[std::is_move_assignable](stdlib_and_concepts.md#SS_20_2_9)  
 
-&emsp;&emsp; [標準エクセプションクラス](stdlib_and_concepts.md#SS_20_3)  
-&emsp;&emsp;&emsp; [std::exception](stdlib_and_concepts.md#SS_20_3_1)  
+[標準エクセプションクラス](stdlib_and_concepts.md#SS_20_3)  
+&emsp;[std::exception](stdlib_and_concepts.md#SS_20_3_1)  
 
-&emsp;&emsp; [並列処理](stdlib_and_concepts.md#SS_20_4)  
-&emsp;&emsp;&emsp; [std::thread](stdlib_and_concepts.md#SS_20_4_1)  
-&emsp;&emsp;&emsp; [std::mutex](stdlib_and_concepts.md#SS_20_4_2)  
-&emsp;&emsp;&emsp; [std::atomic](stdlib_and_concepts.md#SS_20_4_3)  
-&emsp;&emsp;&emsp; [std::condition_variable](stdlib_and_concepts.md#SS_20_4_4)  
+[並列処理](stdlib_and_concepts.md#SS_20_4)  
+&emsp;[std::thread](stdlib_and_concepts.md#SS_20_4_1)  
+&emsp;[std::mutex](stdlib_and_concepts.md#SS_20_4_2)  
+&emsp;[std::atomic](stdlib_and_concepts.md#SS_20_4_3)  
+&emsp;[std::condition_variable](stdlib_and_concepts.md#SS_20_4_4)  
 
-&emsp;&emsp; [ロック所有ラッパー](stdlib_and_concepts.md#SS_20_5)  
-&emsp;&emsp;&emsp; [std::lock_guard](stdlib_and_concepts.md#SS_20_5_1)  
-&emsp;&emsp;&emsp; [std::unique_lock](stdlib_and_concepts.md#SS_20_5_2)  
-&emsp;&emsp;&emsp; [std::scoped_lock](stdlib_and_concepts.md#SS_20_5_3)  
+[ロック所有ラッパー](stdlib_and_concepts.md#SS_20_5)  
+&emsp;[std::lock_guard](stdlib_and_concepts.md#SS_20_5_1)  
+&emsp;[std::unique_lock](stdlib_and_concepts.md#SS_20_5_2)  
+&emsp;[std::scoped_lock](stdlib_and_concepts.md#SS_20_5_3)  
 
-&emsp;&emsp; [スマートポインタ](stdlib_and_concepts.md#SS_20_6)  
-&emsp;&emsp;&emsp; [std::unique_ptr](stdlib_and_concepts.md#SS_20_6_1)  
-&emsp;&emsp;&emsp;&emsp; [std::make_unique](stdlib_and_concepts.md#SS_20_6_1_1)  
+[スマートポインタ](stdlib_and_concepts.md#SS_20_6)  
+&emsp;[std::unique_ptr](stdlib_and_concepts.md#SS_20_6_1)  
+&emsp;&emsp;[std::make_unique](stdlib_and_concepts.md#SS_20_6_1_1)  
 
-&emsp;&emsp;&emsp; [std::shared_ptr](stdlib_and_concepts.md#SS_20_6_2)  
-&emsp;&emsp;&emsp;&emsp; [std::make_shared](stdlib_and_concepts.md#SS_20_6_2_1)  
-&emsp;&emsp;&emsp;&emsp; [std::enable_shared_from_this](stdlib_and_concepts.md#SS_20_6_2_2)  
+&emsp;[std::shared_ptr](stdlib_and_concepts.md#SS_20_6_2)  
+&emsp;&emsp;[std::make_shared](stdlib_and_concepts.md#SS_20_6_2_1)  
+&emsp;&emsp;[std::enable_shared_from_this](stdlib_and_concepts.md#SS_20_6_2_2)  
 
-&emsp;&emsp;&emsp; [std::weak_ptr](stdlib_and_concepts.md#SS_20_6_3)  
-&emsp;&emsp;&emsp; [std::auto_ptr](stdlib_and_concepts.md#SS_20_6_4)  
+&emsp;[std::weak_ptr](stdlib_and_concepts.md#SS_20_6_3)  
+&emsp;[std::auto_ptr](stdlib_and_concepts.md#SS_20_6_4)  
 
-&emsp;&emsp; [Polymorphic Memory Resource(pmr)](stdlib_and_concepts.md#SS_20_7)  
-&emsp;&emsp;&emsp; [std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_7_1)  
-&emsp;&emsp;&emsp; [std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_20_7_2)  
-&emsp;&emsp;&emsp; [pool_resource](stdlib_and_concepts.md#SS_20_7_3)  
+[Polymorphic Memory Resource(pmr)](stdlib_and_concepts.md#SS_20_7)  
+&emsp;[std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_7_1)  
+&emsp;[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_20_7_2)  
+&emsp;[pool_resource](stdlib_and_concepts.md#SS_20_7_3)  
 
-&emsp;&emsp; [コンテナ](stdlib_and_concepts.md#SS_20_8)  
-&emsp;&emsp;&emsp; [シーケンスコンテナ(Sequence Containers)](stdlib_and_concepts.md#SS_20_8_1)  
-&emsp;&emsp;&emsp;&emsp; [std::forward_list](stdlib_and_concepts.md#SS_20_8_1_1)  
+[コンテナ](stdlib_and_concepts.md#SS_20_8)  
+&emsp;[シーケンスコンテナ(Sequence Containers)](stdlib_and_concepts.md#SS_20_8_1)  
+&emsp;&emsp;[std::forward_list](stdlib_and_concepts.md#SS_20_8_1_1)  
 
-&emsp;&emsp;&emsp; [連想コンテナ(Associative Containers)](stdlib_and_concepts.md#SS_20_8_2)  
-&emsp;&emsp;&emsp; [無順序連想コンテナ(Unordered Associative Containers)](stdlib_and_concepts.md#SS_20_8_3)  
-&emsp;&emsp;&emsp;&emsp; [std::unordered_set](stdlib_and_concepts.md#SS_20_8_3_1)  
-&emsp;&emsp;&emsp;&emsp; [std::unordered_map](stdlib_and_concepts.md#SS_20_8_3_2)  
-&emsp;&emsp;&emsp;&emsp; [std::type_index](stdlib_and_concepts.md#SS_20_8_3_3)  
+&emsp;[連想コンテナ(Associative Containers)](stdlib_and_concepts.md#SS_20_8_2)  
+&emsp;[無順序連想コンテナ(Unordered Associative Containers)](stdlib_and_concepts.md#SS_20_8_3)  
+&emsp;&emsp;[std::unordered_set](stdlib_and_concepts.md#SS_20_8_3_1)  
+&emsp;&emsp;[std::unordered_map](stdlib_and_concepts.md#SS_20_8_3_2)  
+&emsp;&emsp;[std::type_index](stdlib_and_concepts.md#SS_20_8_3_3)  
 
-&emsp;&emsp;&emsp; [コンテナアダプタ(Container Adapters)](stdlib_and_concepts.md#SS_20_8_4)  
-&emsp;&emsp;&emsp; [特殊なコンテナ](stdlib_and_concepts.md#SS_20_8_5)  
+&emsp;[コンテナアダプタ(Container Adapters)](stdlib_and_concepts.md#SS_20_8_4)  
+&emsp;[特殊なコンテナ](stdlib_and_concepts.md#SS_20_8_5)  
 
-&emsp;&emsp; [std::optional](stdlib_and_concepts.md#SS_20_9)  
-&emsp;&emsp;&emsp; [戻り値の無効表現](stdlib_and_concepts.md#SS_20_9_1)  
-&emsp;&emsp;&emsp; [オブジェクトの遅延初期化](stdlib_and_concepts.md#SS_20_9_2)  
+[std::optional](stdlib_and_concepts.md#SS_20_9)  
+&emsp;[戻り値の無効表現](stdlib_and_concepts.md#SS_20_9_1)  
+&emsp;[オブジェクトの遅延初期化](stdlib_and_concepts.md#SS_20_9_2)  
 
-&emsp;&emsp; [std::variant](stdlib_and_concepts.md#SS_20_10)  
-&emsp;&emsp; [オブジェクトの比較](stdlib_and_concepts.md#SS_20_11)  
-&emsp;&emsp;&emsp; [std::rel_ops](stdlib_and_concepts.md#SS_20_11_1)  
-&emsp;&emsp;&emsp; [std::tuppleを使用した比較演算子の実装方法](stdlib_and_concepts.md#SS_20_11_2)  
+[std::variant](stdlib_and_concepts.md#SS_20_10)  
+[オブジェクトの比較](stdlib_and_concepts.md#SS_20_11)  
+&emsp;[std::rel_ops](stdlib_and_concepts.md#SS_20_11_1)  
+&emsp;[std::tuppleを使用した比較演算子の実装方法](stdlib_and_concepts.md#SS_20_11_2)  
 
-&emsp;&emsp; [その他](stdlib_and_concepts.md#SS_20_12)  
-&emsp;&emsp;&emsp; [SSO(Small String Optimization)](stdlib_and_concepts.md#SS_20_12_1)  
-&emsp;&emsp;&emsp; [heap allocation elision](stdlib_and_concepts.md#SS_20_12_2)  
+[その他](stdlib_and_concepts.md#SS_20_12)  
+&emsp;[SSO(Small String Optimization)](stdlib_and_concepts.md#SS_20_12_1)  
+&emsp;[heap allocation elision](stdlib_and_concepts.md#SS_20_12_2)  
   
   
 
@@ -502,7 +502,7 @@ mutex は、スレッド間で使用する共有リソースを排他制御す�
 
 
 以下のコード例では、メンバ変数のインクリメントがスレッド間の競合を引き起こす(こういったコード領域を
-[クリティカルセクション](cpp_idioms.md#SS_21_12_5)と呼ぶ)が、std::mutexによりこの問題を回避している。
+[クリティカルセクション](cpp_idioms.md#SS_21_14_5)と呼ぶ)が、std::mutexによりこの問題を回避している。
 
 ```cpp
     //  example/stdlib_and_concepts/thread_ut.cpp 48
@@ -594,7 +594,8 @@ atomicクラステンプレートは、型Tをアトミック操作するため�
 
 ### std::condition_variable <a id="SS_20_4_4"></a>
 condition_variable は、特定のイベントが発生するまでスレッドの待ち合わせを行うためのクラスである。
-最も単純な使用例を以下に示す(「[Spurious Wakeup](cpp_idioms.md#SS_21_12_15)」参照)。
+最も単純な使用例を以下に示す(「[Spurious Wakeup](cpp_idioms.md#SS_21_14_15)」参照)。
+
 ```cpp
     //  example/stdlib_and_concepts/thread_ut.cpp 135
 
@@ -807,9 +808,9 @@ std::unique_lockやstd::lock_guardによりmutexを使用する。
     ASSERT_EQ(push_count_max, pop_count);
 ```
 
-一般に条件変数には、[Spurious Wakeup](cpp_idioms.md#SS_21_12_15)という問題があり、std::condition_variableも同様である。
+一般に条件変数には、[Spurious Wakeup](cpp_idioms.md#SS_21_14_15)という問題があり、std::condition_variableも同様である。
 
-上記の抜粋である下記のコード例では[Spurious Wakeup](cpp_idioms.md#SS_21_12_15)の対策が行われていないため、
+上記の抜粋である下記のコード例では[Spurious Wakeup](cpp_idioms.md#SS_21_14_15)の対策が行われていないため、
 意図通り動作しない可能性がある。
 
 ```cpp
@@ -1673,6 +1674,7 @@ C++17から導入されたstd::optionalには、以下のような2つの用途�
    条件によってはそれが無駄になる場合にこの機能を使う)
 
 ### 戻り値の無効表現 <a id="SS_20_9_1"></a>
+
 ```cpp
     //  example/stdlib_and_concepts/optional_ut.cpp 11
 
@@ -1703,7 +1705,9 @@ C++17から導入されたstd::optionalには、以下のような2つの用途�
     ASSERT_THROW(ret1.value(), std::bad_optional_access);  // 値非保持の場合、エクセプション発生
 ```
 
+
 ### オブジェクトの遅延初期化 <a id="SS_20_9_2"></a>
+
 ```cpp
     //  example/stdlib_and_concepts/optional_ut.cpp 43
 
@@ -1743,6 +1747,7 @@ C++17から導入されたstd::optionalには、以下のような2つの用途�
     ASSERT_TRUE(resource->is_ready());
     ASSERT_EQ(0xdeadbeaf, (*resource)[0]);
 ```
+
 
 ## std::variant <a id="SS_20_10"></a>
 std::variantは、C++17で導入された型安全なunionである。
@@ -1806,6 +1811,7 @@ std::variantとstd::visit([Visitor](design_pattern.md#SS_9_2_5)パターンの�
     output_from_variant(var, oss);
     ASSERT_EQ("42|3.14|Hello, world!", oss.str());
 ```
+
 
 ## オブジェクトの比較 <a id="SS_20_11"></a>
 ### std::rel_ops <a id="SS_20_11_1"></a>

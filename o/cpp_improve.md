@@ -7,27 +7,27 @@ ___
 
 __この章の構成__
 
-&emsp;&emsp; [C++11の主な新規機能](cpp_improve.md#SS_18_1)  
-&emsp;&emsp;&emsp; [一般機能](cpp_improve.md#SS_18_1_1)  
-&emsp;&emsp;&emsp; [型に対する機能](cpp_improve.md#SS_18_1_2)  
-&emsp;&emsp;&emsp; [テンプレートに対する機能](cpp_improve.md#SS_18_1_3)  
-&emsp;&emsp;&emsp; [スレッドに関する機能](cpp_improve.md#SS_18_1_4)  
-&emsp;&emsp;&emsp; [その他のユーティリティ](cpp_improve.md#SS_18_1_5)  
-&emsp;&emsp;&emsp; [stdの変更、追加](cpp_improve.md#SS_18_1_6)  
+[C++11の主な新規機能](cpp_improve.md#SS_18_1)  
+&emsp;[一般機能](cpp_improve.md#SS_18_1_1)  
+&emsp;[型に対する機能](cpp_improve.md#SS_18_1_2)  
+&emsp;[テンプレートに対する機能](cpp_improve.md#SS_18_1_3)  
+&emsp;[スレッドに関する機能](cpp_improve.md#SS_18_1_4)  
+&emsp;[その他のユーティリティ](cpp_improve.md#SS_18_1_5)  
+&emsp;[stdの変更、追加](cpp_improve.md#SS_18_1_6)  
 
-&emsp;&emsp; [C++14の主な新規機能](cpp_improve.md#SS_18_2)  
-&emsp;&emsp;&emsp; [stdの変更、追加](cpp_improve.md#SS_18_2_1)  
+[C++14の主な新規機能](cpp_improve.md#SS_18_2)  
+&emsp;[stdの変更、追加](cpp_improve.md#SS_18_2_1)  
 
-&emsp;&emsp; [C++17の主な新規機能](cpp_improve.md#SS_18_3)  
-&emsp;&emsp;&emsp; [新機能、規制緩和](cpp_improve.md#SS_18_3_1)  
+[C++17の主な新規機能](cpp_improve.md#SS_18_3)  
+&emsp;[新機能、規制緩和](cpp_improve.md#SS_18_3_1)  
 
-&emsp;&emsp; [C++20の主な新規機能](cpp_improve.md#SS_18_4)  
-&emsp;&emsp;&emsp; [構文の新機能、規制緩和](cpp_improve.md#SS_18_4_1)  
-&emsp;&emsp;&emsp; [構文の新機能、規制緩和の例](cpp_improve.md#SS_18_4_2)  
-&emsp;&emsp;&emsp; [template関連](cpp_improve.md#SS_18_4_3)  
-&emsp;&emsp;&emsp; [template関連の新機能、規制緩和の例](cpp_improve.md#SS_18_4_4)  
+[C++20の主な新規機能](cpp_improve.md#SS_18_4)  
+&emsp;[構文の新機能、規制緩和](cpp_improve.md#SS_18_4_1)  
+&emsp;[構文の新機能、規制緩和の例](cpp_improve.md#SS_18_4_2)  
+&emsp;[template関連](cpp_improve.md#SS_18_4_3)  
+&emsp;[template関連の新機能、規制緩和の例](cpp_improve.md#SS_18_4_4)  
 
-&emsp;&emsp; [C++23の主な新規機能](cpp_improve.md#SS_18_5)  
+[C++23の主な新規機能](cpp_improve.md#SS_18_5)  
   
   
 
@@ -162,7 +162,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 |機能                                              |説明                                                      |
 |:-------------------------------------------------|:---------------------------------------------------------|
 |std::make_unique<>()                              |「[std::unique_ptr](stdlib_and_concepts.md#SS_20_6_1)」参照           |
-|std::exchange()                                   |二つの値を入れ替える。「[Copy-And-Swap](cpp_idioms.md#SS_21_1_3)」参照        |
+|std::exchange()                                   |二つの値を入れ替える。「[Copy-And-Swap](cpp_idioms.md#SS_21_1_4)」参照        |
 |[std::integer_sequence](cpp_improve.md#SS_18_2_1_1_1)                      |コンパイル時整数シーケンス                                |
 |[std::get()のオーバーロード](cpp_improve.md#SS_18_2_1_1_2)を追加           |タプルを型の集合と見なし、型を指定して対応する値を取得する|
 |`<type_traits>`                                   |xxx_t、xxx_vなどのエイリアステンプレート、定数テンプレート|
@@ -283,6 +283,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 ```
 
 #### 範囲for文のイテレータ型の不一致の許可 <a id="SS_18_3_1_3"></a>
+
 ```cpp
     //  example/cpp_improve/cpp17_ut.cpp 57
 
@@ -375,6 +376,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 
 ### 構文の新機能、規制緩和の例 <a id="SS_18_4_2"></a>
 #### friend指定された関数内から構造化束縛 <a id="SS_18_4_2_1"></a>
+
 ```cpp
     //  example/cpp_improve/cpp20_ut.cpp 9
 
@@ -406,6 +408,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 ```
 
 #### 構造化束縛カスタマイゼーションルール変更 <a id="SS_18_4_2_2"></a>
+
 ```cpp
     //  example/cpp_improve/cpp20_ut.cpp 42
 
@@ -491,6 +494,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 ```
 
 #### 非型テンプレートパラメータとしてクラス型を許可 <a id="SS_18_4_4_2"></a>
+
 ```cpp
     //  example/cpp_improve/cpp20_ut.cpp 123
 
@@ -549,6 +553,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 ```
 
 #### 関数テンプレートに明示的に型指定した場合にADLで見つからない問題を修正 <a id="SS_18_4_4_3"></a>
+
 ```cpp
     //  example/cpp_improve/cpp20_ut.cpp 179
     namespace adl_NS {
@@ -575,6 +580,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 ```
 
 #### エイリアステンプレート経由でのクラステンプレートのテンプレート引数推論 <a id="SS_18_4_4_4"></a>
+
 ```cpp
     //  example/cpp_improve/cpp20_ut.cpp 207
 
@@ -604,6 +610,7 @@ push_back()やinsert()等の要素追加のためのメンバ関数が、
 ```
 
 #### structテンプレートのテンプレート引数推論 <a id="SS_18_4_4_5"></a>
+
 ```cpp
     //  example/cpp_improve/cpp20_ut.cpp 236
 

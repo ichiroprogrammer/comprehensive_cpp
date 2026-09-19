@@ -28,26 +28,26 @@ ___
 
 __この章の構成__
 
-&emsp;&emsp; [禁止事項](naming_practice.md#SS_6_1)  
-&emsp;&emsp;&emsp; [略語リスト](naming_practice.md#SS_6_1_1)  
-&emsp;&emsp;&emsp; [言葉の対称性](naming_practice.md#SS_6_1_2)  
+[禁止事項](naming_practice.md#SS_6_1)  
+&emsp;[略語リスト](naming_practice.md#SS_6_1_1)  
+&emsp;[言葉の対称性](naming_practice.md#SS_6_1_2)  
 
-&emsp;&emsp; [識別子の命名](naming_practice.md#SS_6_2)  
-&emsp;&emsp;&emsp; [ファイル、ディレクトリの命名](naming_practice.md#SS_6_2_1)  
-&emsp;&emsp;&emsp; [ファイル名](naming_practice.md#SS_6_2_2)  
-&emsp;&emsp;&emsp; [ディレクトリ名](naming_practice.md#SS_6_2_3)  
-&emsp;&emsp;&emsp; [型名](naming_practice.md#SS_6_2_4)  
-&emsp;&emsp;&emsp; [定数名](naming_practice.md#SS_6_2_5)  
-&emsp;&emsp;&emsp; [ローカル変数名(自動変数名、仮引数名、関数内static変数名)](naming_practice.md#SS_6_2_6)  
-&emsp;&emsp;&emsp; [メンバ変数名](naming_practice.md#SS_6_2_7)  
-&emsp;&emsp;&emsp; [メンバ関数名](naming_practice.md#SS_6_2_8)  
-&emsp;&emsp;&emsp; [Accessorメンバ関数名](naming_practice.md#SS_6_2_9)  
-&emsp;&emsp;&emsp; [関数名](naming_practice.md#SS_6_2_10)  
-&emsp;&emsp;&emsp; [名前空間名](naming_practice.md#SS_6_2_11)  
-&emsp;&emsp;&emsp; [テンプレート名](naming_practice.md#SS_6_2_12)  
-&emsp;&emsp;&emsp; [テンプレートの仮引数名](naming_practice.md#SS_6_2_13)  
-&emsp;&emsp;&emsp; [マクロ名](naming_practice.md#SS_6_2_14)  
-&emsp;&emsp;&emsp; [その他の命名則](naming_practice.md#SS_6_2_15)  
+[識別子の命名](naming_practice.md#SS_6_2)  
+&emsp;[ファイル、ディレクトリの命名](naming_practice.md#SS_6_2_1)  
+&emsp;[ファイル名](naming_practice.md#SS_6_2_2)  
+&emsp;[ディレクトリ名](naming_practice.md#SS_6_2_3)  
+&emsp;[型名](naming_practice.md#SS_6_2_4)  
+&emsp;[定数名](naming_practice.md#SS_6_2_5)  
+&emsp;[ローカル変数名(自動変数名、仮引数名、関数内static変数名)](naming_practice.md#SS_6_2_6)  
+&emsp;[メンバ変数名](naming_practice.md#SS_6_2_7)  
+&emsp;[メンバ関数名](naming_practice.md#SS_6_2_8)  
+&emsp;[Accessorメンバ関数名](naming_practice.md#SS_6_2_9)  
+&emsp;[関数名](naming_practice.md#SS_6_2_10)  
+&emsp;[名前空間名](naming_practice.md#SS_6_2_11)  
+&emsp;[テンプレート名](naming_practice.md#SS_6_2_12)  
+&emsp;[テンプレートの仮引数名](naming_practice.md#SS_6_2_13)  
+&emsp;[マクロ名](naming_practice.md#SS_6_2_14)  
+&emsp;[その他の命名則](naming_practice.md#SS_6_2_15)  
   
   
 
@@ -116,7 +116,7 @@ ___
 ```
 
 * 英文字の大小で識別子を区別しない。
-  ただし、「[NVI(non virtual interface)](cpp_idioms.md#SS_21_1_7)」を使用するメンバ関数名は例外とする。
+  ただし、「[NVI(non virtual interface)](cpp_idioms.md#SS_21_1_8)」を使用するメンバ関数名は例外とする。
 
 ```cpp
     //  example/etc/naming.cpp 59
@@ -187,8 +187,7 @@ ___
 | lhs/rhs                           |左右                   |
 
 ## 識別子の命名 <a id="SS_6_2"></a>
-コードの可読性に大きな影響を与える識別子名はパッケージ外部(「パッケージの実装と公開」参照)
-に公開されるクラス名、関数名、名前空間名である。
+コードの可読性に大きな影響を与える識別子名は[パッケージ](cpp_idioms.md#SS_21_9_2)外部に公開されるクラス、関数、名前空間等の名称である。
 
 クラス名、関数名、名前空間名に良い名前を与えるためにこの章が存在するのだが、
 執筆中に生成AI(chatgpt、claude、gemini等)が公開されため、
@@ -219,12 +218,12 @@ ___
 
 
 ### ファイル、ディレクトリの命名 <a id="SS_6_2_1"></a>
-ファイル名、ディレクトリ名は、ソフトウェアを構成するパッケージや、
-それらの構造から強い影響を受けるため、「[パッケージとその構成ファイル](programming_convention.md#SS_3_7)」
-で定めたルールが守られていなければ、ファイル、ディレクトリへの適切な命名は困難である。
+ファイル名(や[ファイルペア](cpp_idioms.md#SS_21_9_1)名)、ディレクトリ名は、ソフトウェアを構成する[パッケージ](cpp_idioms.md#SS_21_9_2)やその構成物から、
+強い影響を受けるべきである。
+
 従って、ここで定める命名ルールに従っていないソースコードをベースとした開発、
 保守を行っているプログラマが、そのソースコードをここでの名称ルールに従わせる場合、
-まずは「[パッケージとその構成ファイル](programming_convention.md#SS_3_7)」の順守から始めなければならない。
+まずは「[ソースコードファイルとディレクトリ](programming_convention.md#SS_3_7)」の順守から始めなければならない。
 
 [注意] ほとんどのバージョン管理システムはファイル名、ディレクトリ名の大文字小文字を区別するが、
 OSによっては、その区別がないものがあるため、この違いがトラブルを発生させることがある。
@@ -308,7 +307,7 @@ OSによっては、その区別がないものがあるため、この違いが
 * 数字と見分けが難しい文字は単独では使用しない(o、l、\_o、\_l等は0や1と区別が困難)。
 
 ### メンバ変数名 <a id="SS_6_2_7"></a>
-* ローカル変数名と同じルールで生成した文字列に[Trailing Underscore(末尾アンダースコア)](cpp_idioms.md#SS_21_9_4)を適用する。
+* ローカル変数名と同じルールで生成した文字列に[Trailing Underscore(末尾アンダースコア)](cpp_idioms.md#SS_21_11_4)を適用する。
   (visual studioで開発を行うプロジェクトを除きメンバ変数をm'\_'で始めことはしない)。
 * [POD](core_lang_spec.md#SS_19_4_5)のメンバ変数の名前は、ローカル変数名と同じルールで生成する(末尾に'\_'はつけない)。
 
@@ -366,7 +365,7 @@ OSによっては、その区別がないものがあるため、この違いが
 
 ### Accessorメンバ関数名 <a id="SS_6_2_9"></a>
 * 慣習に従うと機能が類推しやすいため、 
-  一般的な[Accessor](cpp_idioms.md#SS_21_1_5)メンバ関数には、以下のような接頭語をつける。
+  一般的な[Accessor](cpp_idioms.md#SS_21_1_6)メンバ関数には、以下のような接頭語をつける。
 
 | 接頭語| 意味                  | 例                                        | 
 |:------|:----------------------|:------------------------------------------| 
@@ -424,7 +423,7 @@ OSによっては、その区別がないものがあるため、この違いが
 
 ### マクロ名 <a id="SS_6_2_14"></a>
 * 二重読み込みの防御用以外のマクロの名前は、定数名と同じルールで生成する。
-* 二重読み込みの防御用のマクロの名前は、「[二重読み込みの防御](programming_convention.md#SS_3_7_4)」で定めたルールで生成する。
+* 二重読み込みの防御用のマクロの名前は、「[二重読み込みの防御](programming_convention.md#SS_3_7_3)」で定めたルールで生成する。
 
 ### その他の命名則 <a id="SS_6_2_15"></a>
 * コレクションクラスやコンテナクラス、それらのインスタンスに対しては、

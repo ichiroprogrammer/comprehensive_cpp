@@ -15,30 +15,30 @@ ___
 
 __この章の構成__
 
-&emsp;&emsp; [インデント](coding_style.md#SS_5_1)  
-&emsp;&emsp;&emsp; [インデント用文字](coding_style.md#SS_5_1_1)  
-&emsp;&emsp;&emsp; [if、for、while、do-whileのインデント](coding_style.md#SS_5_1_2)  
-&emsp;&emsp;&emsp; [ブロックのインデント](coding_style.md#SS_5_1_3)  
-&emsp;&emsp;&emsp; [case、defaultのインデント](coding_style.md#SS_5_1_4)  
+[インデント](coding_style.md#SS_5_1)  
+&emsp;[インデント用文字](coding_style.md#SS_5_1_1)  
+&emsp;[if、for、while、do-whileのインデント](coding_style.md#SS_5_1_2)  
+&emsp;[ブロックのインデント](coding_style.md#SS_5_1_3)  
+&emsp;[case、defaultのインデント](coding_style.md#SS_5_1_4)  
 
-&emsp;&emsp; [ブロック(波括弧({}))](coding_style.md#SS_5_2)  
-&emsp;&emsp; [関数シグネチャ内の'()'](coding_style.md#SS_5_3)  
-&emsp;&emsp; [クラスのアクセスレベル](coding_style.md#SS_5_4)  
-&emsp;&emsp; [スペース](coding_style.md#SS_5_5)  
-&emsp;&emsp;&emsp; [文の後](coding_style.md#SS_5_5_1)  
-&emsp;&emsp;&emsp; [コンマの後  ](coding_style.md#SS_5_5_2)  
-&emsp;&emsp;&emsp; [単項演算子、二項演算子、三項演算子の前後](coding_style.md#SS_5_5_3)  
-&emsp;&emsp;&emsp; [不要なブランク文字](coding_style.md#SS_5_5_4)  
+[ブロック(波括弧({}))](coding_style.md#SS_5_2)  
+[関数シグネチャ内の'()'](coding_style.md#SS_5_3)  
+[クラスのアクセスレベル](coding_style.md#SS_5_4)  
+[スペース](coding_style.md#SS_5_5)  
+&emsp;[文の後](coding_style.md#SS_5_5_1)  
+&emsp;[コンマの後  ](coding_style.md#SS_5_5_2)  
+&emsp;[単項演算子、二項演算子、三項演算子の前後](coding_style.md#SS_5_5_3)  
+&emsp;[不要なブランク文字](coding_style.md#SS_5_5_4)  
 
-&emsp;&emsp; [三項演算子のスタイル](coding_style.md#SS_5_6)  
-&emsp;&emsp; [ポインタ型やリファレンス型インスタンスの宣言、定義の\*や&の場所](coding_style.md#SS_5_7)  
-&emsp;&emsp; [行数・桁数](coding_style.md#SS_5_8)  
-&emsp;&emsp;&emsp; [関数の行数](coding_style.md#SS_5_8_1)  
-&emsp;&emsp;&emsp; [行のカラム数](coding_style.md#SS_5_8_2)  
+[三項演算子のスタイル](coding_style.md#SS_5_6)  
+[ポインタ型やリファレンス型インスタンスの宣言、定義の\*や&の場所](coding_style.md#SS_5_7)  
+[行数・桁数](coding_style.md#SS_5_8)  
+&emsp;[関数の行数](coding_style.md#SS_5_8_1)  
+&emsp;[行のカラム数](coding_style.md#SS_5_8_2)  
 
-&emsp;&emsp; [ブロックの論理レベル](coding_style.md#SS_5_9)  
-&emsp;&emsp; [名前空間](coding_style.md#SS_5_10)  
-&emsp;&emsp; [clang-format](coding_style.md#SS_5_11)  
+[ブロックの論理レベル](coding_style.md#SS_5_9)  
+[名前空間](coding_style.md#SS_5_10)  
+[clang-format](coding_style.md#SS_5_11)  
   
   
 

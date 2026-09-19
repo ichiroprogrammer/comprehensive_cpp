@@ -12,15 +12,15 @@
 ___
 __この章の構成__
 
-&emsp;&emsp; [コンパイラ](dev_tools.md#SS_16_1)  
-&emsp;&emsp; [デバッガ](dev_tools.md#SS_16_2)  
-&emsp;&emsp;&emsp; [printfデバッグ](dev_tools.md#SS_16_2_1)  
+[コンパイラ](dev_tools.md#SS_16_1)  
+[デバッガ](dev_tools.md#SS_16_2)  
+&emsp;[printfデバッグ](dev_tools.md#SS_16_2_1)  
 
-&emsp;&emsp; [エディタ/IDE](dev_tools.md#SS_16_3)  
-&emsp;&emsp; [筆者の開発ツール環境](dev_tools.md#SS_16_4)  
-&emsp;&emsp;&emsp; [vim/neovimの設定](dev_tools.md#SS_16_4_1)  
+[エディタ/IDE](dev_tools.md#SS_16_3)  
+[筆者の開発ツール環境](dev_tools.md#SS_16_4)  
+&emsp;[vim/neovimの設定](dev_tools.md#SS_16_4_1)  
 
-&emsp;&emsp; [費用](dev_tools.md#SS_16_5)  
+[費用](dev_tools.md#SS_16_5)  
   
   
 

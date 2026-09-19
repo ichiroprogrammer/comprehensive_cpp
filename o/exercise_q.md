@@ -16,17 +16,17 @@ ___
 
 __この章の構成__
 
-&emsp;&emsp; [プログラミング規約(型)](exercise_q.md#SS_22_1)  
-&emsp;&emsp; [プログラミング規約(クラス)](exercise_q.md#SS_22_2)  
-&emsp;&emsp; [プログラミング規約(関数)](exercise_q.md#SS_22_3)  
-&emsp;&emsp; [プログラミング規約(構文)](exercise_q.md#SS_22_4)  
-&emsp;&emsp; [プログラミング規約(演算子)](exercise_q.md#SS_22_5)  
-&emsp;&emsp; [プログラミング規約(スコープ)](exercise_q.md#SS_22_6)  
-&emsp;&emsp; [プログラミング規約(その他)](exercise_q.md#SS_22_7)  
-&emsp;&emsp; [SOLID](exercise_q.md#SS_22_8)  
-&emsp;&emsp; [デザインパターン](exercise_q.md#SS_22_9)  
-&emsp;&emsp; [開発プロセスとインフラ(全般)](exercise_q.md#SS_22_10)  
-&emsp;&emsp; [テンプレートメタプログラミング](exercise_q.md#SS_22_11)  
+[プログラミング規約(型)](exercise_q.md#SS_22_1)  
+[プログラミング規約(クラス)](exercise_q.md#SS_22_2)  
+[プログラミング規約(関数)](exercise_q.md#SS_22_3)  
+[プログラミング規約(構文)](exercise_q.md#SS_22_4)  
+[プログラミング規約(演算子)](exercise_q.md#SS_22_5)  
+[プログラミング規約(スコープ)](exercise_q.md#SS_22_6)  
+[プログラミング規約(その他)](exercise_q.md#SS_22_7)  
+[SOLID](exercise_q.md#SS_22_8)  
+[デザインパターン](exercise_q.md#SS_22_9)  
+[開発プロセスとインフラ(全般)](exercise_q.md#SS_22_10)  
+[テンプレートメタプログラミング](exercise_q.md#SS_22_11)  
   
   
   
@@ -53,6 +53,7 @@ ___
 
 ### 演習-汎整数型の演算 <a id="SS_22_1_2"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/type.cpp 7
     TEST(ProgrammingConventionTypeQ, GeneralInteger)
@@ -74,6 +75,7 @@ ___
 
 ### 演習-浮動小数点型 <a id="SS_22_1_3"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/type.cpp 21
     double f(double a) noexcept { return 1 / a; }
@@ -110,6 +112,7 @@ ___
 
 ### 演習-enum <a id="SS_22_1_5"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/type.cpp 36
     // [Q]
@@ -148,6 +151,7 @@ ___
 
 ### 演習-配列の範囲for文 <a id="SS_22_1_6"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/type.cpp 67
     int32_t array_value() noexcept
@@ -217,6 +221,7 @@ ___
 
 ### 演習-const/constexpr <a id="SS_22_1_9"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/type.cpp 103
     // [Q]
@@ -261,6 +266,7 @@ ___
 
 ### 演習-危険なconst_cast <a id="SS_22_1_10"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/type.cpp 140
     // [Q]
@@ -285,6 +291,7 @@ ___
 
 ### 演習-リテラル <a id="SS_22_1_11"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/type.cpp 157
     int32_t literal_test(int64_t) noexcept { return 0; }
@@ -358,6 +365,7 @@ ___
 
 ### 演習-インスタンスの初期化 <a id="SS_22_1_15"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/type.cpp 179
     TEST(ProgrammingConventionTypeQ, Initialization)
@@ -433,6 +441,7 @@ ___
 
 ### 演習-凝集性の向上 <a id="SS_22_2_2"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/class.cpp 7
     // [Q]
@@ -523,6 +532,7 @@ ___
 
 ### 演習-メンバ変数の初期化 <a id="SS_22_2_5"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/class.cpp 51
     // [Q]
@@ -585,6 +595,7 @@ ___
 
 ### 演習-スライシング <a id="SS_22_2_6"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/class.cpp 106
     // [Q]
@@ -631,11 +642,12 @@ ___
     }
 ```
 
-* 参照 [スライシング](cpp_idioms.md#SS_21_10_3)
+* 参照 [スライシング](cpp_idioms.md#SS_21_12_3)
 * [解答例-スライシング](exercise_a.md#SS_23_2_6)
 
 ### 演習-オブジェクトの所有権 <a id="SS_22_2_7"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/class.cpp 151
     class A {
@@ -723,6 +735,7 @@ ___
 
 ### 演習-非メンバ関数の宣言 <a id="SS_22_3_1"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/func.cpp 5
     extern "C" double cos(double x);
@@ -741,6 +754,7 @@ ___
 
 ### 演習-メンバ関数の修飾 <a id="SS_22_3_2"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/func.cpp 17
     // [Q]
@@ -806,6 +820,7 @@ ___
 
 ### 演習-特殊メンバ関数の削除 <a id="SS_22_3_3"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/func.cpp 75
     // [Q]
@@ -820,6 +835,7 @@ ___
 
 ### 演習-委譲コンストラクタ <a id="SS_22_3_4"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/func.cpp 82
     // [Q]
@@ -870,6 +886,7 @@ ___
 
 ### 演習-copyコンストラクタ <a id="SS_22_3_5"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/func.cpp 125
     // [Q]
@@ -936,6 +953,7 @@ ___
 
 ### 演習-moveコンストラクタ <a id="SS_22_3_6"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/func.cpp 184
     // [Q]
@@ -949,6 +967,7 @@ ___
 
 ### 演習-関数分割 <a id="SS_22_3_7"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/func.cpp 190
     // [Q]
@@ -1011,6 +1030,7 @@ ___
 
 ### 演習-オーバーライド/オーバーロード <a id="SS_22_3_9"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/func.cpp 231
     // [Q]
@@ -1057,6 +1077,7 @@ ___
 
 ### 演習-オーバーロードによる誤用防止 <a id="SS_22_3_10"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/func.cpp 270
     // [Q]
@@ -1077,6 +1098,7 @@ ___
 
 ### 演習-仮引数の修飾 <a id="SS_22_3_11"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/func.cpp 283
     // [Q]
@@ -1113,6 +1135,7 @@ ___
 
 ### 演習-constexpr関数 <a id="SS_22_3_12"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/func.cpp 312
     // [Q]
@@ -1167,6 +1190,7 @@ ___
 
 ### 演習-コンテナの範囲for文 <a id="SS_22_4_1"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/syntax.cpp 12
     // [Q]
@@ -1194,6 +1218,7 @@ ___
 
 ### 演習-ラムダ式 <a id="SS_22_4_2"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/syntax.cpp 32
     // [Q]
@@ -1217,6 +1242,7 @@ ___
 
 ### 演習-ラムダ式のキャプチャ <a id="SS_22_4_3"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/syntax.cpp 48
     // [Q]
@@ -1253,6 +1279,7 @@ ___
 
 ### 演習-条件演算子 <a id="SS_22_5_1"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/operator.cpp 6
     // [Q]
@@ -1280,6 +1307,7 @@ ___
 
 ### 演習-delete <a id="SS_22_5_2"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/operator.cpp 26
     // [Q]
@@ -1349,6 +1377,7 @@ ___
 
 ### 演習-sizeof <a id="SS_22_5_3"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/operator.cpp 88
     // [Q]
@@ -1378,6 +1407,7 @@ ___
 
 ### 演習-dynamic_castの削除 <a id="SS_22_5_4"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/operator.cpp 110
     // [Q]
@@ -1473,6 +1503,7 @@ ___
 
 ### 演習-assert/static_assert <a id="SS_22_7_2"></a>
 * 問題
+
 ```cpp
     //  exercise/programming_convention_q/etc.cpp 4
     // [Q]
@@ -1541,6 +1572,7 @@ ___
 
 ### 演習-SRP <a id="SS_22_8_1"></a>
 * 問題
+
 ```cpp
     //  exercise/solid_q/srp_test_score.h 8
     // [Q]
@@ -1823,6 +1855,7 @@ ___
 
 ### 演習-OCP <a id="SS_22_8_2"></a>
 * 問題
+
 ```cpp
     //  exercise/solid_q/ocp_test_score.h 8
     // [Q]
@@ -2143,6 +2176,7 @@ ___
 
 ### 演習-LSP <a id="SS_22_8_3"></a>
 * 問題
+
 ```cpp
     //  exercise/solid_q/lsp_test_score.h 8
     // [Q]
@@ -2493,6 +2527,7 @@ ___
 
 ### 演習-ISP <a id="SS_22_8_4"></a>
 * 問題
+
 ```cpp
     //  exercise/solid_q/isp_test_score.h 8
     // [Q]
@@ -2886,6 +2921,7 @@ ___
 
 ### 演習-DIP <a id="SS_22_8_5"></a>
 * 問題
+
 ```cpp
     //  exercise/solid_q/dip_test_score.h 9
     // [Q]
@@ -3349,6 +3385,7 @@ ___
 ## デザインパターン <a id="SS_22_9"></a>
 ### 演習-ガード節 <a id="SS_22_9_1"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/guard.cpp 7
     // [Q]
@@ -3407,6 +3444,7 @@ ___
 
 ### 演習-BitmaskType <a id="SS_22_9_2"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/enum_bitmask.cpp 5
     // [Q]
@@ -3465,6 +3503,7 @@ ___
 
 ### 演習-Pimpl <a id="SS_22_9_3"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/pimpl.cpp 5
     // [Q] 下記クラスCollectionの宣言はクラスWidgetの宣言に依存している。
@@ -3529,6 +3568,7 @@ ___
 
 ### 演習-Accessor <a id="SS_22_9_5"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/accessor.cpp 5
     // [Q]
@@ -3629,12 +3669,13 @@ ___
     }
 ```
 
-* 参照 [Accessor](cpp_idioms.md#SS_21_1_5)
+* 参照 [Accessor](cpp_idioms.md#SS_21_1_6)
 * [解答例-Accessor](exercise_a.md#SS_23_9_5)
 
 
 ### 演習-Copy-And-Swap <a id="SS_22_9_6"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/copy_and_swap.cpp 5
     // [Q]
@@ -3703,12 +3744,13 @@ ___
     }
 ```
 
-* 参照 [Copy-And-Swap](cpp_idioms.md#SS_21_1_3)
+* 参照 [Copy-And-Swap](cpp_idioms.md#SS_21_1_4)
 * [解答例-Copy-And-Swap](exercise_a.md#SS_23_9_6)
 
 
 ### 演習-Immutable <a id="SS_22_9_7"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/immutable.cpp 5
     // [Q]
@@ -3818,12 +3860,13 @@ ___
     }
 ```
 
-* 参照 [Immutable](cpp_idioms.md#SS_21_1_6)
+* 参照 [Immutable](cpp_idioms.md#SS_21_1_7)
 * [解答例-Immutable](exercise_a.md#SS_23_9_7)
 
 
 ### 演習-Clone <a id="SS_22_9_8"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/clone.cpp 5
     // [Q]
@@ -3883,6 +3926,7 @@ ___
 
 ### 演習-NVI <a id="SS_22_9_9"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/nvi.cpp 7
     // [Q]
@@ -3992,7 +4036,7 @@ ___
     }
 ```
 
-* 参照 [NVI(non virtual interface)](cpp_idioms.md#SS_21_1_7)
+* 参照 [NVI(non virtual interface)](cpp_idioms.md#SS_21_1_8)
 * [解答例-NVI](exercise_a.md#SS_23_9_9)
 
 
@@ -4011,6 +4055,7 @@ ___
 
 ### 演習-RAII <a id="SS_22_9_11"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/raii.cpp 5
     // [Q]
@@ -4065,12 +4110,13 @@ ___
     }
 ```
 
-* 参照 [RAII(scoped guard)](cpp_idioms.md#SS_21_1_2)
+* 参照 [RAII(scoped guard)](cpp_idioms.md#SS_21_1_3)
 * [解答例-RAII](exercise_a.md#SS_23_9_11)
 
 
 ### 演習-Future <a id="SS_22_9_12"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/future.cpp 23
     // [Q]
@@ -4107,6 +4153,7 @@ ___
 
 ### 演習-DI <a id="SS_22_9_13"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/di.cpp 10
     // [Q]
@@ -4187,6 +4234,7 @@ ___
 
 ### 演習-Singleton <a id="SS_22_9_14"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/singleton.cpp 5
     // [Q]
@@ -4264,6 +4312,7 @@ ___
 
 ### 演習-State <a id="SS_22_9_15"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/state.cpp 5
     // [Q]
@@ -4353,6 +4402,7 @@ ___
 
 ### 演習-Null Object <a id="SS_22_9_16"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/null_object.cpp 38
     // [Q]
@@ -4434,6 +4484,7 @@ ___
 
 ### 演習-Templateメソッド <a id="SS_22_9_17"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/template_method.cpp 5
     // [Q]
@@ -4571,6 +4622,7 @@ ___
 
 ### 演習-Factory <a id="SS_22_9_18"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/factory_lib.h 6
     // [Q]
@@ -4719,6 +4771,7 @@ ___
 
 ### 演習-Named Constructor <a id="SS_22_9_19"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/named_constructor_lib.h 14
     // [Q]
@@ -4832,6 +4885,7 @@ ___
 
 ### 演習-Proxy <a id="SS_22_9_20"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/proxy.cpp 7
     // [Q]
@@ -4899,6 +4953,7 @@ ___
 
 ### 演習-Strategy <a id="SS_22_9_21"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/strategy.cpp 11
     // [Q]
@@ -4998,6 +5053,7 @@ ___
 
 ### 演習-Visitor <a id="SS_22_9_22"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/visitor.cpp 9
     // [Q]
@@ -5117,6 +5173,7 @@ ___
 
 ### 演習-CRTP <a id="SS_22_9_23"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/crtp.cpp 9
     // [Q]
@@ -5262,12 +5319,13 @@ ___
     }
 ```
 
-* 参照 [CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_21_1_4)
+* 参照 [CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_21_1_5)
 * [解答例-CRTP](exercise_a.md#SS_23_9_23)
 
 
 ### 演習-Observer <a id="SS_22_9_24"></a>
 * 問題
+
 ```cpp
     //  exercise/design_pattern_q/observer.cpp 7
     // [Q]
@@ -5526,6 +5584,7 @@ ___
 
 ### 演習-パラメータパック <a id="SS_22_11_1"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/parameter_pack.cpp 5
     // [Q]
@@ -5551,6 +5610,7 @@ ___
 
 ### 演習-エイリアステンプレート <a id="SS_22_11_2"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/template_alias.cpp 5
     // [Q]
@@ -5588,6 +5648,7 @@ ___
 
 ### 演習-名前空間による修飾不要な`operator<<` <a id="SS_22_11_3"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/put_to.cpp 3
     // [Q]
@@ -5654,6 +5715,7 @@ ___
 
 ### 演習-std::arrayの継承 <a id="SS_22_11_4"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/safe_array.cpp 3
     // [Q]
@@ -5675,6 +5737,7 @@ ___
 
 ### 演習-SFINAEを利用しない関数テンプレートの特殊化によるis_void <a id="SS_22_11_5"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/is_void.cpp 3
     // [Q]
@@ -5709,6 +5772,8 @@ ___
 
 ### 演習-SFINAEを利用しないクラステンプレートの特殊化によるis_void <a id="SS_22_11_6"></a>
 * 問題
+
+```cpp
     //  exercise/template_q/is_void.cpp 30
     // [Q]
     // 下記の仕様を満たすクラステンプレートis_void_s<T>と定数テンプレートis_void_s_v<T>を作れ。
@@ -5730,7 +5795,6 @@ ___
     #endif
     }
     }  // namespace
-```cpp
 ```
 
 * 参照 [is_void_s](template_meta_programming.md#SS_13_3_1_2)
@@ -5739,6 +5803,7 @@ ___
 
 ### 演習-SFINAEを利用した関数テンプレートの特殊化によるis_void <a id="SS_22_11_7"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/is_void.cpp 53
     // [Q]
@@ -5770,6 +5835,7 @@ ___
 
 ### 演習-SFINAEを利用したクラステンプレートの特殊化によるis_void <a id="SS_22_11_8"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/is_void.cpp 77
     // [Q]
@@ -5802,6 +5868,7 @@ ___
 
 ### 演習-テンプレートテンプレートパラメータ <a id="SS_22_11_9"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/template_template.cpp 3
     // [Q]
@@ -5824,6 +5891,7 @@ ___
 
 ### 演習-テンプレートパラメータを可変長にしたstd::is_same <a id="SS_22_11_10"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/is_same.cpp 3
     // [Q]
@@ -5856,6 +5924,7 @@ ___
 
 ### 演習-メンバ関数の存在の診断 <a id="SS_22_11_11"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/exists_func.cpp 3
     // [Q]
@@ -5880,6 +5949,7 @@ ___
 
 ### 演習-範囲for文のオペランドになれるかどうかの診断 <a id="SS_22_11_12"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/exists_func.cpp 20
     // [Q]
@@ -5910,6 +5980,7 @@ ___
 
 ### 演習-配列の長さの取り出し <a id="SS_22_11_13"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/array_op.cpp 3
     // [Q]
@@ -5936,6 +6007,7 @@ ___
 
 ### 演習-配列の次元の取り出し <a id="SS_22_11_14"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/array_op.cpp 22
     // [Q]
@@ -5964,6 +6036,7 @@ ___
 
 ### 演習-関数型のテンプレートパラメータを持つクラステンプレート <a id="SS_22_11_15"></a>
 * 問題
+
 ```cpp
     //  exercise/template_q/scoped_guard.cpp 8
     // [Q]

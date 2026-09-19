@@ -7,13 +7,13 @@ ___
 
 __この章の構成__
 
-&emsp;&emsp; [情報を付加しないコメント](comment.md#SS_7_1)  
-&emsp;&emsp; [コメントのスタイル](comment.md#SS_7_2)  
-&emsp;&emsp;&emsp; [クラスのコメント](comment.md#SS_7_2_1)  
-&emsp;&emsp;&emsp; [関数のコメント](comment.md#SS_7_2_2)  
-&emsp;&emsp;&emsp; [enumのコメント](comment.md#SS_7_2_3)  
-&emsp;&emsp;&emsp; [型エイリアスのコメント](comment.md#SS_7_2_4)  
-&emsp;&emsp;&emsp; [template仮引数のコメント](comment.md#SS_7_2_5)  
+[情報を付加しないコメント](comment.md#SS_7_1)  
+[コメントのスタイル](comment.md#SS_7_2)  
+&emsp;[クラスのコメント](comment.md#SS_7_2_1)  
+&emsp;[関数のコメント](comment.md#SS_7_2_2)  
+&emsp;[enumのコメント](comment.md#SS_7_2_3)  
+&emsp;[型エイリアスのコメント](comment.md#SS_7_2_4)  
+&emsp;[template仮引数のコメント](comment.md#SS_7_2_5)  
   
   
 
