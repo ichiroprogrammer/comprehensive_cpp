@@ -1,5 +1,5 @@
 <!-- deep/md/template_meta_programming.md -->
-# テンプレートメタプログラミング <a id="SS_13"></a>
+# 12 テンプレートメタプログラミング <a id="SS_12"></a>
 
 本章でのテンプレートメタプログラミングとは、下記の2つを指す。
 
@@ -40,9 +40,9 @@ C言語のqsort()のように強引なキャストを使い、この増加をあ
 ログ取得ライブラリやSTLを応用したNstdライブラリの実装を通して、
 これらのテクニックや、使用上の注意点について解説する。
 
-c++20から導入された[コンセプト](core_lang_spec.md#SS_19_11_3)によりジェネリックプログラミングは、
+c++20から導入された[コンセプト](core_lang_spec.md#SS_15_11_3)によりジェネリックプログラミングは、
 開発容易性、可読性、保守性が大きく向上しため、この章のコード例には、
-[コンセプト](core_lang_spec.md#SS_19_11_3)(`concept`, `requires`)を多用した。
+[コンセプト](core_lang_spec.md#SS_15_11_3)(`concept`, `requires`)を多用した。
 
 が、この副作用として、
 c++17までしか使えない読者の参考にならないコードが増えてしまうことを避けるため、
@@ -69,60 +69,60 @@ ___
 
 __この章の構成__
 
-[ログ取得ライブラリの開発](template_meta_programming.md#SS_13_1)  
-&emsp;[要件](template_meta_programming.md#SS_13_1_1)  
-&emsp;[ログ取得ライブラリのインターフェース](template_meta_programming.md#SS_13_1_2)  
-&emsp;[パラメータパックを使用したテクニック](template_meta_programming.md#SS_13_1_3)  
-&emsp;[Loggerの実装](template_meta_programming.md#SS_13_1_4)  
-&emsp;[ユーザ定義型とそのoperator\<\<のname lookup](template_meta_programming.md#SS_13_1_5)  
-&emsp;[Ints_tのログ登録](template_meta_programming.md#SS_13_1_6)  
+12.1 [ログ取得ライブラリの開発](template_meta_programming.md#SS_12_1)  
+&emsp;12.1.1 [要件](template_meta_programming.md#SS_12_1_1)  
+&emsp;12.1.2 [ログ取得ライブラリのインターフェース](template_meta_programming.md#SS_12_1_2)  
+&emsp;12.1.3 [パラメータパックを使用したテクニック](template_meta_programming.md#SS_12_1_3)  
+&emsp;12.1.4 [Loggerの実装](template_meta_programming.md#SS_12_1_4)  
+&emsp;12.1.5 [ユーザ定義型とそのoperator\<\<のname lookup](template_meta_programming.md#SS_12_1_5)  
+&emsp;12.1.6 [Ints_tのログ登録](template_meta_programming.md#SS_12_1_6)  
 
-[Nstdライブラリの開発](template_meta_programming.md#SS_13_2)  
-&emsp;[Nstdライブラリを使用したリファクタリング](template_meta_programming.md#SS_13_2_1)  
-&emsp;[安全なvector](template_meta_programming.md#SS_13_2_2)  
-&emsp;[安全な配列型コンテナ](template_meta_programming.md#SS_13_2_3)  
-&emsp;[初期化子リストの副作用](template_meta_programming.md#SS_13_2_4)  
+12.2 [Nstdライブラリの開発](template_meta_programming.md#SS_12_2)  
+&emsp;12.2.1 [Nstdライブラリを使用したリファクタリング](template_meta_programming.md#SS_12_2_1)  
+&emsp;12.2.2 [安全なvector](template_meta_programming.md#SS_12_2_2)  
+&emsp;12.2.3 [安全な配列型コンテナ](template_meta_programming.md#SS_12_2_3)  
+&emsp;12.2.4 [初期化子リストの副作用](template_meta_programming.md#SS_12_2_4)  
 
-[メタ関数のテクニック](template_meta_programming.md#SS_13_3)  
-&emsp;[is_void_xxxの実装](template_meta_programming.md#SS_13_3_1)  
-&emsp;[is_same_xxxの実装](template_meta_programming.md#SS_13_3_2)  
-&emsp;[AreConvertibleXxxの実装](template_meta_programming.md#SS_13_3_3)  
-&emsp;[関数の存在の診断](template_meta_programming.md#SS_13_3_4)  
+12.3 [メタ関数のテクニック](template_meta_programming.md#SS_12_3)  
+&emsp;12.3.1 [is_void_xxxの実装](template_meta_programming.md#SS_12_3_1)  
+&emsp;12.3.2 [is_same_xxxの実装](template_meta_programming.md#SS_12_3_2)  
+&emsp;12.3.3 [AreConvertibleXxxの実装](template_meta_programming.md#SS_12_3_3)  
+&emsp;12.3.4 [関数の存在の診断](template_meta_programming.md#SS_12_3_4)  
 
-[Nstdライブラリの開発2](template_meta_programming.md#SS_13_4)  
-&emsp;[SafeArray2の開発](template_meta_programming.md#SS_13_4_1)  
-&emsp;[Nstd::SafeIndexの開発](template_meta_programming.md#SS_13_4_2)  
-&emsp;[Nstd::SafeIndexのoperator\<\<の開発](template_meta_programming.md#SS_13_4_3)  
-&emsp;[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_13_4_4)  
+12.4 [Nstdライブラリの開発2](template_meta_programming.md#SS_12_4)  
+&emsp;12.4.1 [SafeArray2の開発](template_meta_programming.md#SS_12_4_1)  
+&emsp;12.4.2 [Nstd::SafeIndexの開発](template_meta_programming.md#SS_12_4_2)  
+&emsp;12.4.3 [Nstd::SafeIndexのoperator\<\<の開発](template_meta_programming.md#SS_12_4_3)  
+&emsp;12.4.4 [コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_12_4_4)  
 
-[Nstdライブラリの開発3(浮動小数点関連)](template_meta_programming.md#SS_13_5)  
-&emsp;[浮動小数点の比較](template_meta_programming.md#SS_13_5_1)  
-&emsp;[固定小数点クラス](template_meta_programming.md#SS_13_5_2)  
-&emsp;[固定小数点リテラル](template_meta_programming.md#SS_13_5_3)  
-&emsp;[有理数クラス](template_meta_programming.md#SS_13_5_4)  
-&emsp;[有理数リテラル](template_meta_programming.md#SS_13_5_5)  
+12.5 [Nstdライブラリの開発3(浮動小数点関連)](template_meta_programming.md#SS_12_5)  
+&emsp;12.5.1 [浮動小数点の比較](template_meta_programming.md#SS_12_5_1)  
+&emsp;12.5.2 [固定小数点クラス](template_meta_programming.md#SS_12_5_2)  
+&emsp;12.5.3 [固定小数点リテラル](template_meta_programming.md#SS_12_5_3)  
+&emsp;12.5.4 [有理数クラス](template_meta_programming.md#SS_12_5_4)  
+&emsp;12.5.5 [有理数リテラル](template_meta_programming.md#SS_12_5_5)  
 
-[ログ取得ライブラリの開発2](template_meta_programming.md#SS_13_6)  
-[その他のテンプレートテクニック](template_meta_programming.md#SS_13_7)  
-&emsp;[forwardingリファレンスとstd::forward](template_meta_programming.md#SS_13_7_1)  
-&emsp;[ジェネリックラムダによる関数内での関数テンプレートの定義](template_meta_programming.md#SS_13_7_2)  
-&emsp;[クラステンプレートと継承の再帰構造](template_meta_programming.md#SS_13_7_3)  
-&emsp;[意図しないname lookupの防止](template_meta_programming.md#SS_13_7_4)  
-&emsp;[Nstd::Type2Strの開発](template_meta_programming.md#SS_13_7_5)  
-&emsp;[静的な文字列オブジェクト](template_meta_programming.md#SS_13_7_6)  
-&emsp;[関数型をテンプレートパラメータで使う](template_meta_programming.md#SS_13_7_7)  
+12.6 [ログ取得ライブラリの開発2](template_meta_programming.md#SS_12_6)  
+12.7 [その他のテンプレートテクニック](template_meta_programming.md#SS_12_7)  
+&emsp;12.7.1 [forwardingリファレンスとstd::forward](template_meta_programming.md#SS_12_7_1)  
+&emsp;12.7.2 [ジェネリックラムダによる関数内での関数テンプレートの定義](template_meta_programming.md#SS_12_7_2)  
+&emsp;12.7.3 [クラステンプレートと継承の再帰構造](template_meta_programming.md#SS_12_7_3)  
+&emsp;12.7.4 [意図しないname lookupの防止](template_meta_programming.md#SS_12_7_4)  
+&emsp;12.7.5 [Nstd::Type2Strの開発](template_meta_programming.md#SS_12_7_5)  
+&emsp;12.7.6 [静的な文字列オブジェクト](template_meta_programming.md#SS_12_7_6)  
+&emsp;12.7.7 [関数型をテンプレートパラメータで使う](template_meta_programming.md#SS_12_7_7)  
 
-[注意点まとめ](template_meta_programming.md#SS_13_8)  
+12.8 [注意点まとめ](template_meta_programming.md#SS_12_8)  
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+[インデックス](seminer_intro.md#SS_1_2)に戻る。  
 ___
 
-## ログ取得ライブラリの開発 <a id="SS_13_1"></a>
+## 12.1 ログ取得ライブラリの開発 <a id="SS_12_1"></a>
 ここではログ取得ライブラリの開発を行う。
 
-### 要件 <a id="SS_13_1_1"></a>
+### 12.1.1 要件 <a id="SS_12_1_1"></a>
 
 ログ取得ライブラリの要件は、
 
@@ -155,7 +155,7 @@ ___
 単純化のためログの番号やタイムスタンプのサポートはしない。
 また、実行速度や仕様メモリ量の制限等も本章の趣旨とは離れるため考慮しない。
 
-### ログ取得ライブラリのインターフェース <a id="SS_13_1_2"></a>
+### 12.1.2 ログ取得ライブラリのインターフェース <a id="SS_12_1_2"></a>
 
 ログ取得コードにより、コードクローンが増えたり、主なロジックの可読性が下がったのでは、
 本末転倒であるため、下記のようにワンライナーで記述できるべきだろう。
@@ -172,7 +172,7 @@ ___
 ```
 
 CppLoggerFuncをクラス外の関数として実装した場合、ログ保持のための静的なオブジェクトが必要になる。
-これは避けるべきなので、「[Singleton](design_pattern.md#SS_9_1_1)」で述べた構造を導入すると、
+これは避けるべきなので、「[Singleton](design_pattern.md#SS_8_1_1)」で述べた構造を導入すると、
 
 ```cpp
     #define LOGGER(...) Logger::Inst().Set(__FILE__, __LINE__, __VA_ARGS__)
@@ -191,10 +191,10 @@ C言語プログラミングばかりをやりすぎて、
 「人は一昨日も行ったことを昨日も行ったという理由で、今日もそれを行う」
 という諺を思い出すと気持ちは分からなくもないが、 
 C++ではprintf(...)のような危険な可変長引数を取る関数を作ってはならない。
-[パラメータパック](core_lang_spec.md#SS_19_11_4)を使って実装するべきである。
+[パラメータパック](core_lang_spec.md#SS_15_11_4)を使って実装するべきである。
 
-### パラメータパックを使用したテクニック <a id="SS_13_1_3"></a>
-[パラメータパック](core_lang_spec.md#SS_19_11_4)を使用するには独特なテクニックが必要となるため、まずは単純な例から説明する。
+### 12.1.3 パラメータパックを使用したテクニック <a id="SS_12_1_3"></a>
+[パラメータパック](core_lang_spec.md#SS_15_11_4)を使用するには独特なテクニックが必要となるため、まずは単純な例から説明する。
 
 次のような単体テストをパスする関数テンプレートsumをパラメータパックで実装することを考える。
 
@@ -217,7 +217,7 @@ C++ではprintf(...)のような危険な可変長引数を取る関数を作っ
 sumの要件は、
 
 * 可変長引数を持つ
-* [算術型](core_lang_spec.md#SS_19_1_3)の引数と戻り値を持つ
+* [算術型](core_lang_spec.md#SS_15_1_3)の引数と戻り値を持つ
 * すべての引数の和を返す
 
 のようなものになるため、関数テンプレートsumは下記のように書ける。
@@ -346,15 +346,15 @@ sum(3)は1つ目のsumにマッチするため、最終的には下記のよう�
 C言語での可変長引数関数では不可能だった引数の型チェックができるようになったため、
 C言語でのランタイムエラーがコンパイルエラーにできるようになった。
 
-なお、上記コードで使用した[std::is_same](stdlib_and_concepts.md#SS_20_2_4)は、
+なお、上記コードで使用した[std::is_same](stdlib_and_concepts.md#SS_16_2_4)は、
 与えられた2つのテンプレートパラメータが同じ型であった場合、
 valueをtrueで初期化するクラステンプレートであり、 type_traitsで定義されている
 (後ほど使用するstd::is_same_vはstd::is_same<>::valueと等価な定数テンプレート)。
 この実装については、後ほど説明する。
 
-[演習-パラメータパック](exercise_q.md#SS_22_11_1)  
+[演習-パラメータパック](exercise_q.md#SS_18_11_1)  
 
-#### パラメータパックの畳みこみ式 <a id="SS_13_1_3_1"></a>
+#### 12.1.3.1 パラメータパックの畳みこみ式 <a id="SS_12_1_3_1"></a>
 上記したsumは、パラメータパックの展開に汎用的な再帰構造を用いたが、
 C++17で導入された畳みこみ式を用い、以下の様に簡潔に記述することもできる。
 
@@ -387,7 +387,7 @@ C++17で導入された畳みこみ式を用い、以下の様に簡潔に記述
 これらの演算子がオーバーロードである場合でも、畳みこみ式は利用できる。
 
 
-#### 前から演算するパラメータパック <a id="SS_13_1_3_2"></a>
+#### 12.1.3.2 前から演算するパラメータパック <a id="SS_12_1_3_2"></a>
 パラメータパックを使うプログラミングでは、
 上記したHEADとTAILによるリカーシブコールがよく使われるパターンであるが、
 これには後ろから処理されるという、微妙な問題点がある。
@@ -426,7 +426,7 @@ C++17で導入された畳みこみ式を用い、以下の様に簡潔に記述
 
 のようになるだろうが、
 std::numeric_limits<>::epsilonを使用していないため
-(「[浮動小数点型](core_lang_spec.md#SS_19_1_12)」参照)
+(「[浮動小数点型](core_lang_spec.md#SS_15_1_12)」参照)
 、このテストはパスしない。一方で、以下のテストはパスする。
 
 ```cpp
@@ -485,7 +485,7 @@ HEAD、TAILに加えHEAD2を導入することで、前からの演算を実装�
 ```
 
 
-### Loggerの実装 <a id="SS_13_1_4"></a>
+### 12.1.4 Loggerの実装 <a id="SS_12_1_4"></a>
 
 パラメータパックを使用したログ取得コードは以下のようになる。
 
@@ -674,10 +674,10 @@ Logging::Logger::set_innerがコンパイルできなければならない。
 なお、ヒューマンリーダブルな文字列でその状態を表示できる関数をユーザ定義型に与えることは、
 デバッガを使用したデバッグ時にも有用である。
 
-### ユーザ定義型とそのoperator\<\<のname lookup <a id="SS_13_1_5"></a>
+### 12.1.5 ユーザ定義型とそのoperator\<\<のname lookup <a id="SS_12_1_5"></a>
 
 ここで、一旦Logging::Loggerの開発を止め、
-Logging::Logger::set_innerでのApp::operator<<の[name lookup](core_lang_spec.md#SS_19_12_2)について考えてみることにする。
+Logging::Logger::set_innerでのApp::operator<<の[name lookup](core_lang_spec.md#SS_15_12_2)について考えてみることにする。
 
 ここまでで紹介したログ取得ライブラリやそれを使うユーザ定義型等の定義、宣言の順番は、
 
@@ -692,11 +692,11 @@ name lookupの原則に従い、App::Xの宣言は、App::operator<<より前に
 しかし、Logging::Loggerは、後から宣言されたApp::operator<<を使うことができる。
 多くのプログラマは、これについて気づいていないか、その理由を間違っての認識している。
 
-その認識とは、「テンプレート内の識別子の[name lookup](core_lang_spec.md#SS_19_12_2)は、
+その認識とは、「テンプレート内の識別子の[name lookup](core_lang_spec.md#SS_15_12_2)は、
 それがインスタンス化される時に行われる」というものであり、これにより
 「 Logging::Loggerのname lookupは単体テスト内で行われる。
 それはApp::operator<<宣言後であるためコンパイルできる」と考えることができるが、
-[two phase name lookup](core_lang_spec.md#SS_19_12_3)で行われるプロセスと反するため誤りである。
+[two phase name lookup](core_lang_spec.md#SS_15_12_3)で行われるプロセスと反するため誤りである。
 
 まずは、この認識の誤りを下記のコードで説明する。
 
@@ -764,8 +764,8 @@ App2::XとApp3::operator<<をLogging::Loggerの宣言より前に宣言するこ
 「型Xとそのoperator<<が同じ名前空間で宣言されているかどうか」である。
 
 名前空間Appの例の場合、型Xとそのoperator<<が同じ名前空間で宣言されているため、
-[ADL](core_lang_spec.md#SS_19_12_5)(実引数依存探索)が働く。
-また、Logging::Logger::set_inner(x)はテンプレートであるため、[two phase name lookup](core_lang_spec.md#SS_19_12_3)
+[ADL](core_lang_spec.md#SS_15_12_5)(実引数依存探索)が働く。
+また、Logging::Logger::set_inner(x)はテンプレートであるため、[two phase name lookup](core_lang_spec.md#SS_15_12_3)
 が使用される。
 その結果、Logging::Logger::set_inner(x)でのname lookupの対象には、
 「Logging::Logger::set_inner(x)がインスタンス化される場所
@@ -782,7 +782,7 @@ App3::operator<<は発見されない(繰り返すが、インスタン化の場
 その重要性の理由を知る必要はないように思われる。
 しかし、次の例で示すようにこのメカニズムを知らずに解決することができないケースが存在する。
 
-### Ints_tのログ登録 <a id="SS_13_1_6"></a>
+### 12.1.6 Ints_tのログ登録 <a id="SS_12_1_6"></a>
 話題はログ取得ライブラリの開発に戻る。
 アプリケーションの開発では、下記のように宣言された型エイリアスを使うことは珍しくない。
 
@@ -840,11 +840,11 @@ App3::operator<<は発見されない(繰り返すが、インスタン化の場
 ```
 
 Ints_tはAppで定義されているが、実際の型はstdで定義されているため、
-instsの[関連名前空間](core_lang_spec.md#SS_19_12_6)もstdであり、Appではない。
+instsの[関連名前空間](core_lang_spec.md#SS_15_12_6)もstdであり、Appではない。
 その結果App::operator<<は発見できず、このようなエラーになった。
 
 LOGGERからApp::operator<<を使う場合の単体テストは下記のようになるが、
-[ADL](core_lang_spec.md#SS_19_12_5)によってLogging::Logger::set_inner(ints)内に導入される名前空間はstdのみであり、
+[ADL](core_lang_spec.md#SS_15_12_5)によってLogging::Logger::set_inner(ints)内に導入される名前空間はstdのみであり、
 前記単体テスト同様にコンパイルできない。
 
 ```cpp
@@ -863,19 +863,19 @@ LOGGERからApp::operator<<を使う場合の単体テストは下記のよう�
 
 この解決方法は、
 
-* [operator\<\<をstd内で宣言する](template_meta_programming.md#SS_13_1_6_1)
-* [operator\<\<をグローバル名前空間内で宣言する](template_meta_programming.md#SS_13_1_6_2)
-* [operator\<\<をLogging内で宣言する](template_meta_programming.md#SS_13_1_6_3)
-* [Logging::Logger::set_inner(ints)内でusing namespace Appを行う](template_meta_programming.md#SS_13_1_6_4)
-* [Ints_tを構造体としてApp内に宣言する](template_meta_programming.md#SS_13_1_6_5)
-* [operator\<\<を使わない](template_meta_programming.md#SS_13_1_6_6)
+* [operator\<\<をstd内で宣言する](template_meta_programming.md#SS_12_1_6_1)
+* [operator\<\<をグローバル名前空間内で宣言する](template_meta_programming.md#SS_12_1_6_2)
+* [operator\<\<をLogging内で宣言する](template_meta_programming.md#SS_12_1_6_3)
+* [Logging::Logger::set_inner(ints)内でusing namespace Appを行う](template_meta_programming.md#SS_12_1_6_4)
+* [Ints_tを構造体としてApp内に宣言する](template_meta_programming.md#SS_12_1_6_5)
+* [operator\<\<を使わない](template_meta_programming.md#SS_12_1_6_6)
 
 のようにいくつか考えられる。以下では、順を追ってこれらの問題点について解説を行う。
 
 
-#### operator\<\<をstd内で宣言する <a id="SS_13_1_6_1"></a>
+#### 12.1.6.1 operator\<\<をstd内で宣言する <a id="SS_12_1_6_1"></a>
 ここで解決したい問題は、すでに示した通り、
-「[ADL](core_lang_spec.md#SS_19_12_5)によってLogging::Logger::set_inner(ints)内に導入される名前空間はstdである」
+「[ADL](core_lang_spec.md#SS_15_12_5)によってLogging::Logger::set_inner(ints)内に導入される名前空間はstdである」
 ことにって発生する。であれば、App内でのoperator<<の宣言をstdで行えばコンパイルできるはずである。
 下記はその変更を行ったコードである。
 
@@ -903,14 +903,14 @@ LOGGERからApp::operator<<を使う場合の単体テストは下記のよう�
     }  // namespace std
 ```
 
-上記コードは[two phase name lookup](core_lang_spec.md#SS_19_12_3)等の効果により、想定通りコンパイルできるが、
+上記コードは[two phase name lookup](core_lang_spec.md#SS_15_12_3)等の効果により、想定通りコンパイルできるが、
 stdをユーザが拡張することは一部の例外を除き未定義動作を引き起こす可能性があり、
 たとえこのコードがうまく動作したとしても
 (実際、このコードはこのドキュメント作成時には正常動作している)、
 未来においてその保証はなく、このようなプログラミングは厳に避けるべきである。
 
 
-#### operator\<\<をグローバル名前空間内で宣言する <a id="SS_13_1_6_2"></a>
+#### 12.1.6.2 operator\<\<をグローバル名前空間内で宣言する <a id="SS_12_1_6_2"></a>
 すでに述べた通り、
 「ADLによってLogging::Logger::set_inner(ints)内に導入される名前空間はstdのみである」ため、
 この関数の中でのname lookupに使用される名前空間は、std、グローバル名前空間、
@@ -941,8 +941,8 @@ Loggerを宣言しているLoggingの3つである。
     }
 ```
 
-このドキュメントで使用している[g++](cpp_idioms.md#SS_21_15_1)ではこのコードはコンパイルでき、
-動作も問題ないように思われるが、[clang++](cpp_idioms.md#SS_21_15_2)では以下のようなエラーが発生し、コンパイルできない。
+このドキュメントで使用している[g++](cpp_idioms.md#SS_17_15_1)ではこのコードはコンパイルでき、
+動作も問題ないように思われるが、[clang++](cpp_idioms.md#SS_17_15_2)では以下のようなエラーが発生し、コンパイルできない。
 
 ```
     ./logger_0.h:37:21: error: call to function 'operator<<' that is neither 
@@ -950,10 +950,10 @@ Loggerを宣言しているLoggingの3つである。
             oss_ << ":" << head;
 ```
 
-この理由は「[two phase name lookup](core_lang_spec.md#SS_19_12_3)」の後半で詳しく解説したので、ここでは繰り返さないが、
+この理由は「[two phase name lookup](core_lang_spec.md#SS_15_12_3)」の後半で詳しく解説したので、ここでは繰り返さないが、
 このようなコードを使うと、コード解析ツール等が使用できなくなることがあるため、
 避けるべきである
-(「[scan-buildによる静的解析](code_analysis.md#SS_4_2)」参照)
+(「[scan-buildによる静的解析](code_analysis.md#SS_3_2)」参照)
 。
 
 多くのプログラマは、コードに問題があるとしても、
@@ -975,7 +975,7 @@ clang++は「LOGGERの前にoperator<<を宣言せよ」と言っている。
   という名前空間Appローカルな宣言をグローバル名前空間で行うことによって、
   グローバル名前空間を汚染してしまう
   (このコードは名前空間を正しく使うことに対しての割れ窓
-  (「[割れ窓理論](cpp_idioms.md#SS_21_16_2)」参照)になってしまうかもしれない)。
+  (「[割れ窓理論](cpp_idioms.md#SS_17_16_2)」参照)になってしまうかもしれない)。
 * 例示したコードでのoperator<<(std::ostream& os, App::Ints_t const& ints)の定義は、
   単体テストファイル内にあったが、実際には何らかのヘッダファイル内で定義されることになる。
   その場合、ロガーのヘッダファイルよりも、
@@ -987,7 +987,7 @@ clang++は「LOGGERの前にoperator<<を宣言せよ」と言っている。
 以上述べた理由からこのアイデアを選択するべきではない。
 
 
-#### operator\<\<をLogging内で宣言する <a id="SS_13_1_6_3"></a>
+#### 12.1.6.3 operator\<\<をLogging内で宣言する <a id="SS_12_1_6_3"></a>
 前節でのグローバル名前空間内でのoperator<<の宣言はうまく行かなかったので、
 同様のことをLoggingで試す。
 
@@ -1015,23 +1015,23 @@ clang++は「LOGGERの前にoperator<<を宣言せよ」と言っている。
     }  // namespace Logging
 ```
 
-動作はするものの、当然ながら結果は「[operator\<\<をグローバル名前空間内で宣言する](template_meta_programming.md#SS_13_1_6_2)」
+動作はするものの、当然ながら結果は「[operator\<\<をグローバル名前空間内で宣言する](template_meta_programming.md#SS_12_1_6_2)」
 で述べた状況とほぼ同様であるため、このアイデアを採用することはできない。
 
-#### Logging::Logger::set_inner(ints)内でusing namespace Appを行う <a id="SS_13_1_6_4"></a>
+#### 12.1.6.4 Logging::Logger::set_inner(ints)内でusing namespace Appを行う <a id="SS_12_1_6_4"></a>
 Logging::Logger::set_inner(ints)内でusing namespace Appを行えば、
 意図通りに動作させることができるが、App内のロギングは名前空間Loggingに依存するため、
 AppとLoggingが循環した依存関係を持ってしまう。
-また、LoggingはAppに対して上位概念であるため、[依存関係逆転の原則(DIP)](solid.md#SS_8_5)にも反する。
+また、LoggingはAppに対して上位概念であるため、[依存関係逆転の原則(DIP)](solid.md#SS_7_5)にも反する。
 よって、このアイデアを採用することはできない。
 
-#### Ints_tを構造体としてApp内に宣言する <a id="SS_13_1_6_5"></a>
+#### 12.1.6.5 Ints_tを構造体としてApp内に宣言する <a id="SS_12_1_6_5"></a>
 
 App::Ints_t用のoperator<<がLogging::Logger::set_inner内でname lookup出来ない理由は、
-これまで述べてきたようにApp::Inst_tの[関連名前空間](core_lang_spec.md#SS_19_12_6)がAppではなく、stdになってしまうからである。
+これまで述べてきたようにApp::Inst_tの[関連名前空間](core_lang_spec.md#SS_15_12_6)がAppではなく、stdになってしまうからである。
 
 これを回避するためにはその原因を取り払えばよく、
-つまり、App::Inst_tの[関連名前空間](core_lang_spec.md#SS_19_12_6)がAppになるようにすればよい。
+つまり、App::Inst_tの[関連名前空間](core_lang_spec.md#SS_15_12_6)がAppになるようにすればよい。
 これを実現するために、次のコードを試してみる。
 
 ```cpp
@@ -1060,10 +1060,10 @@ App::Ints_t用のoperator<<がLogging::Logger::set_inner内でname lookup出来�
 
 * App::Ints_tをstd::vectorからpublic継承
 * using宣言によりstd::vectorのすべてのコンストラクタをApp::Ints_tに導入
-  (「[継承コンストラクタ](core_lang_spec.md#SS_19_6_1_2)」参照)
+  (「[継承コンストラクタ](core_lang_spec.md#SS_15_6_1_2)」参照)
 
 としているため、エイリアスで宣言されたInts_tと等価である。
-C++03では、[継承コンストラクタ](core_lang_spec.md#SS_19_6_1_2)が使えなかったため、
+C++03では、[継承コンストラクタ](core_lang_spec.md#SS_15_6_1_2)が使えなかったため、
 上記のような構造体を定義するためには、
 std::vectorのすべてのコンストラクタと等価なコンストラクタをApp::Ints_t内に定義することが必要で、
 実践的にはこのようなアイデアは使い物にならなかったが、
@@ -1073,7 +1073,7 @@ C++11での改善により、実践的なアイデアとして使用できるよ
 若干の「やりすぎ感」は否めない。
 
 
-#### operator\<\<を使わない <a id="SS_13_1_6_6"></a>
+#### 12.1.6.6 operator\<\<を使わない <a id="SS_12_1_6_6"></a>
 色々なアイデアを試してみたが、これまでの議論ではこれといった解決方法を発見できなかった。
 「[二ーバーの祈り](https://ja.wikipedia.org/wiki/%E3%83%8B%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E7%A5%88%E3%82%8A)」
 に従い、時にはどうにもならないことを受け入れることも重要である。
@@ -1142,7 +1142,7 @@ LOGGERの中でname lookupできる、エイリアスApp::Ints_tのoperator<<の
 App::ToString()によりstd::stringへ変換する必要があり、残念なインターフェースとなっている。
 
 
-#### Ints_tのログ登録のまとめ <a id="SS_13_1_6_7"></a>
+#### 12.1.6.7 Ints_tのログ登録のまとめ <a id="SS_12_1_6_7"></a>
 製品開発では、満足できる仕様の関数やクラスが作れず、妥協せざるを得ないことはよくあることである。
 このような場合、将来、良いアイデアが見つかった時に備えて、
 妥協コードを簡単に修正できるようなレベルにした後、捲土重来を期してさっさと退却するのがベストである。
@@ -1150,11 +1150,11 @@ App::ToString()によりstd::stringへ変換する必要があり、残念なイ
 時間を作り、関連書籍やウェブドキュメント等を読み、学習を継続する必要があることは言うまでもない。
 
 
-## Nstdライブラリの開発 <a id="SS_13_2"></a>
+## 12.2 Nstdライブラリの開発 <a id="SS_12_2"></a>
 
-「[operator\<\<を使わない](template_meta_programming.md#SS_13_1_6_6)」で導入したコードは、短いながらも汎用性が高い。
+「[operator\<\<を使わない](template_meta_programming.md#SS_12_1_6_6)」で導入したコードは、短いながらも汎用性が高い。
 このようなコードをローカルなファイルに閉じ込めてしまうと、
-コードクローンや、[車輪の再発明](cpp_idioms.md#SS_21_16_3)による開発効率の低下につながることがある。
+コードクローンや、[車輪の再発明](cpp_idioms.md#SS_17_16_3)による開発効率の低下につながることがある。
 
 通常、プロジェクトの全ファイルから参照可能で且つ、
 プロジェクトの他のパッケージに非依存なパッケージを用意することで、このような問題を回避できる。
@@ -1168,8 +1168,8 @@ App::ToString()によりstd::stringへ変換する必要があり、残念なイ
 大規模ソフトウェア開発においては特に重要であり、決して循環しないように維持しなければならない。
 
 
-### Nstdライブラリを使用したリファクタリング <a id="SS_13_2_1"></a>
-すでに述べた通り、「[operator\<\<を使わない](template_meta_programming.md#SS_13_1_6_6)」で導入したコードは、Nstdで定義するべきである。
+### 12.2.1 Nstdライブラリを使用したリファクタリング <a id="SS_12_2_1"></a>
+すでに述べた通り、「[operator\<\<を使わない](template_meta_programming.md#SS_12_1_6_6)」で導入したコードは、Nstdで定義するべきである。
 その場合、下記のようにさらに一般化するのが良いだろう。
 
 ```cpp
@@ -1232,7 +1232,7 @@ std::list等の他のコンテナや配列には対応できないという問�
 以降もしばらくNstdの開発を続ける。
 
 
-### 安全なvector <a id="SS_13_2_2"></a>
+### 12.2.2 安全なvector <a id="SS_12_2_2"></a>
 std::vector、std::basic_string、std::array等の配列型コンテナは、
 
 * operator[]経由でのメンバアクセスについて範囲の妥当性をチェックしない
@@ -1301,9 +1301,9 @@ std::vector、std::basic_string、std::array等の配列型コンテナは、
     }
 ```
 
-[演習-std::arrayの継承](exercise_q.md#SS_22_11_4)  
+[演習-std::arrayの継承](exercise_q.md#SS_18_11_4)  
 
-### 安全な配列型コンテナ <a id="SS_13_2_3"></a>
+### 12.2.3 安全な配列型コンテナ <a id="SS_12_2_3"></a>
 配列型コンテナはすでに述べたようにstd::vectorの他にすくなともstd::basic_string、
 std::arrayがあるため、それらにも範囲チェックを導入する。
 
@@ -1473,8 +1473,8 @@ SafeArrayにはメンバ変数が存在しないため、
 基底クラスstd::array(上記例ではbase_typeにエイリアスしている)
 には名前が非規定の配列メンバのみを持つため、
 これを初期化するためには初期化子リスト
-(「[初期化子リストコンストラクタ](core_lang_spec.md#SS_19_6_1_1)」、
-「[一様初期化](core_lang_spec.md#SS_19_6_6)」参照)を用いるのが良い。
+(「[初期化子リストコンストラクタ](core_lang_spec.md#SS_15_6_1_1)」、
+「[一様初期化](core_lang_spec.md#SS_15_6_6)」参照)を用いるのが良い。
 
 ということは、SafeArrayの初期化子リストコンストラクタには、
 「基底クラスstd::arrayに初期子リストを与えて初期化する」形式が必要になる。
@@ -1483,7 +1483,7 @@ SafeArrayにはメンバ変数が存在しないため、
 これを実現したのが上記に抜粋したわずか数行のコードである。
 
 
-### 初期化子リストの副作用 <a id="SS_13_2_4"></a>
+### 12.2.4 初期化子リストの副作用 <a id="SS_12_2_4"></a>
 上記SafeArrayの初期化子リストコンストラクタは以下のようなコードを許可しない。
 
 ```cpp
@@ -1525,26 +1525,26 @@ SafeArray2のコードは、
 * STLのtype_traitsの使用
 * テンプレートの特殊化
 * メンバ関数テンプレートとオーバーロードによる静的ディスパッチ(コンパイル時ディスパッチ)
-* [SFINAE](core_lang_spec.md#SS_19_11_1)
+* [SFINAE](core_lang_spec.md#SS_15_11_1)
 
 等のメタ関数系のテクニックが必要になるため、
 まずはこれらを含めたテンプレートのテクニックについて解説し、
 その後SafeArray2を見ていくことにする。
 
-## メタ関数のテクニック <a id="SS_13_3"></a>
-本節では、[type_traits](stdlib_and_concepts.md#SS_20_2)の[メタ関数](core_lang_spec.md#SS_19_11_2)の実装等で広く使われいる下記のようなテクニックを
+## 12.3 メタ関数のテクニック <a id="SS_12_3"></a>
+本節では、[type_traits](stdlib_and_concepts.md#SS_16_2)の[メタ関数](core_lang_spec.md#SS_15_11_2)の実装等で広く使われいる下記のようなテクニックを
 
-- [std::is_void](stdlib_and_concepts.md#SS_20_2_7)と同等のメタ関数を[is_void_xxxの実装](template_meta_programming.md#SS_13_3_1)
-- [std::is_same](stdlib_and_concepts.md#SS_20_2_4)と同等のメタ関数を[is_same_xxxの実装](template_meta_programming.md#SS_13_3_2)
-- std::is_convertibleと同等のメタ関数を[AreConvertibleXxxの実装](template_meta_programming.md#SS_13_3_3)
+- [std::is_void](stdlib_and_concepts.md#SS_16_2_7)と同等のメタ関数を[is_void_xxxの実装](template_meta_programming.md#SS_12_3_1)
+- [std::is_same](stdlib_and_concepts.md#SS_16_2_4)と同等のメタ関数を[is_same_xxxの実装](template_meta_programming.md#SS_12_3_2)
+- std::is_convertibleと同等のメタ関数を[AreConvertibleXxxの実装](template_meta_programming.md#SS_12_3_3)
 
 で紹介する。
 
 
-[演習-エイリアステンプレート](exercise_q.md#SS_22_11_2)  
+[演習-エイリアステンプレート](exercise_q.md#SS_18_11_2)  
 
 
-### is_void_xxxの実装 <a id="SS_13_3_1"></a>
+### 12.3.1 is_void_xxxの実装 <a id="SS_12_3_1"></a>
 ここではstd::is_voidに似た以下のような仕様を持ついくつかのテンプレートis_void_xxxの実装を考える。
 
 |テンプレートパラメータ|戻り値            |
@@ -1556,13 +1556,13 @@ SafeArray2のコードは、
 
 |is_void_xxx                  |実装方法                                               |
 |-----------------------------|-------------------------------------------------------|
-|[is_void_f](template_meta_programming.md#SS_13_3_1_1)             |関数テンプレートの特殊化                               |
-|[is_void_s](template_meta_programming.md#SS_13_3_1_2)             |クラステンプレートの特殊化                             |
-|[is_void_sfinae_f](template_meta_programming.md#SS_13_3_1_3)      |FINAEと関数テンプレートのオーバーロード                |
-|[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)      |FINAEとクラステンプレートの特殊化                      |
-|[is_void_concept_s](template_meta_programming.md#SS_13_3_1_5)     |コンセプトとクラステンプレートの特殊化                 |
-|[is_void_ena_s](template_meta_programming.md#SS_13_3_1_6)         |std::enable_ifによるSFINAEとクラステンプレートの特殊化 |
-|[is_void_cond_s](template_meta_programming.md#SS_13_3_1_7)        |std::conditionalと関数テンプレートの特殊化             |
+|[is_void_f](template_meta_programming.md#SS_12_3_1_1)             |関数テンプレートの特殊化                               |
+|[is_void_s](template_meta_programming.md#SS_12_3_1_2)             |クラステンプレートの特殊化                             |
+|[is_void_sfinae_f](template_meta_programming.md#SS_12_3_1_3)      |FINAEと関数テンプレートのオーバーロード                |
+|[is_void_sfinae_s](template_meta_programming.md#SS_12_3_1_4)      |FINAEとクラステンプレートの特殊化                      |
+|[is_void_concept_s](template_meta_programming.md#SS_12_3_1_5)     |コンセプトとクラステンプレートの特殊化                 |
+|[is_void_ena_s](template_meta_programming.md#SS_12_3_1_6)         |std::enable_ifによるSFINAEとクラステンプレートの特殊化 |
+|[is_void_cond_s](template_meta_programming.md#SS_12_3_1_7)        |std::conditionalと関数テンプレートの特殊化             |
 
 なお、実装例をシンプルに保つため、
 理解の妨げとなり得る下記のような正確性(例外条件の対応)等のためのコードを最低限に留めた。
@@ -1575,7 +1575,7 @@ SafeArray2のコードは、
 というここでの目的を見失わないための措置である。
 
 
-#### is_void_f <a id="SS_13_3_1_1"></a>
+#### 12.3.1.1 is_void_f <a id="SS_12_3_1_1"></a>
 関数テンプレートの特殊化を使用したis_void_fの実装は以下のようになる。
 
 ```cpp
@@ -1615,9 +1615,9 @@ SafeArray2のコードは、
 
 のような制限があるため用途は限られるが、関数テンプレートはオーバーロードすることが可能である。
 
-[演習-SFINAEを利用しない関数テンプレートの特殊化によるis_void](exercise_q.md#SS_22_11_5)
+[演習-SFINAEを利用しない関数テンプレートの特殊化によるis_void](exercise_q.md#SS_18_11_5)
 
-#### is_void_s <a id="SS_13_3_1_2"></a>
+#### 12.3.1.2 is_void_s <a id="SS_12_3_1_2"></a>
 クラステンプレートの特殊化を使用したis_void_sの実装は以下のようになる。
 
 ```cpp
@@ -1647,10 +1647,10 @@ is_void_fと同様に単純なので解説は不要だろう。これらの単�
     static_assert(is_void_s_v<void>);
 ```
 
-[演習-SFINAEを利用しないクラステンプレートの特殊化によるis_void](exercise_q.md#SS_22_11_6)
+[演習-SFINAEを利用しないクラステンプレートの特殊化によるis_void](exercise_q.md#SS_18_11_6)
 
-#### is_void_sfinae_f <a id="SS_13_3_1_3"></a>
-[SFINAE](core_lang_spec.md#SS_19_11_1)を使用した関数テンプレートis_void_sfinae_fの実装は以下のようになる。
+#### 12.3.1.3 is_void_sfinae_f <a id="SS_12_3_1_3"></a>
+[SFINAE](core_lang_spec.md#SS_15_11_1)を使用した関数テンプレートis_void_sfinae_fの実装は以下のようになる。
 
 ```cpp
     //  example/template/is_void_ut.cpp 62
@@ -1695,7 +1695,7 @@ is_void_fと同様に単純なので解説は不要だろう。これらの単�
 | == void | well-formed              |
 | != void | ill-formed               |
 
-であるため、Tがvoidの時のみ[name lookup](core_lang_spec.md#SS_19_12_2)の対象になる。
+であるため、Tがvoidの時のみ[name lookup](core_lang_spec.md#SS_15_12_2)の対象になる。
 
 2つ目のis_void_sfinae_f_detectorでは、
 
@@ -1704,7 +1704,7 @@ is_void_fと同様に単純なので解説は不要だろう。これらの単�
 | == void | ill-formed                  |
 | != void | well-formed                 |
 
-であるため、Tが非voidの時のみ[name lookup](core_lang_spec.md#SS_19_12_2)の対象になる。
+であるため、Tが非voidの時のみ[name lookup](core_lang_spec.md#SS_15_12_2)の対象になる。
 
 is_void_sfinae_fはこの性質を利用し、
 
@@ -1728,7 +1728,7 @@ is_void_sfinae_f_detectorのようなテンプレートに関しては大変都�
 というのは、外部から使用されたくない実装の詳細が使われてしまうことがあり得るからである。
 上記の例では、こういうことに備え
 「これは外部非公開である」ということを示す名前空間Inner\_
-(「[名前空間](programming_convention.md#SS_3_8_2)」参照)
+(「[名前空間](programming_convention.md#SS_2_8_2)」参照)
 を導入した。
 
 関数テンプレートはクラステンプレート内にも定義することができるため、
@@ -1773,10 +1773,10 @@ is_void_sfinae_fは下記のように実装することも可能である。こ�
     static_assert(is_void_sfinae_f_v<void>);
 ```
 
-[演習-SFINAEを利用した関数テンプレートの特殊化によるis_void](exercise_q.md#SS_22_11_7)
+[演習-SFINAEを利用した関数テンプレートの特殊化によるis_void](exercise_q.md#SS_18_11_7)
 
-#### is_void_sfinae_s <a id="SS_13_3_1_4"></a>
-[SFINAE](core_lang_spec.md#SS_19_11_1)を使用したクラステンプレートis_void_sfinae_sの実装は以下のようになる。
+#### 12.3.1.4 is_void_sfinae_s <a id="SS_12_3_1_4"></a>
+[SFINAE](core_lang_spec.md#SS_15_11_1)を使用したクラステンプレートis_void_sfinae_sの実装は以下のようになる。
 
 ```cpp
     //  example/template/is_void_ut.cpp 147
@@ -1805,7 +1805,7 @@ is_void_sfinae_fは下記のように実装することも可能である。こ�
 ```
 
 1つ目のis_void_sfinae_sはプライマリテンプレートである。
-is_void_sfinae_sの特殊化が[name lookup](core_lang_spec.md#SS_19_12_2)の対象の中に見つからなかった場合、
+is_void_sfinae_sの特殊化が[name lookup](core_lang_spec.md#SS_15_12_2)の対象の中に見つからなかった場合、
 これが使われる。
 
 2つ目のis_void_sfinae_sは、上記を抜粋した下記のコード
@@ -1876,14 +1876,14 @@ T != voidの場合、 2つ目のis_void_sfinae_sはill-formedになり、name lo
 が「well-formedであった場合に生成される型」が一致することを利用した静的ディスパッチは、
 SFINAEとクラステンプレートの特殊化を組み合わせたメタ関数の典型的な実装パターンである。
 ただし、一般にはill-formedを起こすためにst::enable_ifを使うことが多いため、
-「[is_void_ena_s](template_meta_programming.md#SS_13_3_1_6)の実装」でその例を示す。
+「[is_void_ena_s](template_meta_programming.md#SS_12_3_1_6)の実装」でその例を示す。
 
-[演習-SFINAEを利用したクラステンプレートの特殊化によるis_void](exercise_q.md#SS_22_11_8)
+[演習-SFINAEを利用したクラステンプレートの特殊化によるis_void](exercise_q.md#SS_18_11_8)
 
-#### is_void_concept_s <a id="SS_13_3_1_5"></a>
-[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)の実装で使用したSFINAEを回避し、
+#### 12.3.1.5 is_void_concept_s <a id="SS_12_3_1_5"></a>
+[is_void_sfinae_s](template_meta_programming.md#SS_12_3_1_4)の実装で使用したSFINAEを回避し、
 コンセプトを使用することで可読性の向上が見込める。
-以下の実装で使用した[same_as](template_meta_programming.md#SS_13_3_2_6)は\<concepts>で定義されているコンセプトと同様のものである。
+以下の実装で使用した[same_as](template_meta_programming.md#SS_12_3_2_6)は\<concepts>で定義されているコンセプトと同様のものである。
 
 ```cpp
     //  example/template/is_void_ut.cpp 193
@@ -1923,7 +1923,7 @@ SFINAEとクラステンプレートの特殊化を組み合わせたメタ関�
     constexpr bool is_void_concept_s_v<T> = true;
 ```
 
-以下に示した通り、[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)の実装で示した定数テンプレートのテストと同様になっている。
+以下に示した通り、[is_void_sfinae_s](template_meta_programming.md#SS_12_3_1_4)の実装で示した定数テンプレートのテストと同様になっている。
 
 ```cpp
     //  example/template/is_void_ut.cpp 232
@@ -1933,8 +1933,8 @@ SFINAEとクラステンプレートの特殊化を組み合わせたメタ関�
     static_assert(is_void_concept_s_v<void>);
 ```
 
-#### is_void_ena_s <a id="SS_13_3_1_6"></a>
-[std::enable_if](stdlib_and_concepts.md#SS_20_2_5)による[SFINAE](core_lang_spec.md#SS_19_11_1)とクラステンプレートの特殊化を使用した
+#### 12.3.1.6 is_void_ena_s <a id="SS_12_3_1_6"></a>
+[std::enable_if](stdlib_and_concepts.md#SS_16_2_5)による[SFINAE](core_lang_spec.md#SS_15_11_1)とクラステンプレートの特殊化を使用した
 is_void_ena_sの実装は以下のようになる。
 
 ```cpp
@@ -1954,7 +1954,7 @@ is_void_ena_sの実装は以下のようになる。
     constexpr bool is_void_ena_s_v{is_void_ena_s<T>::value};
 ```
 
-この例では、「[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)の実装」の
+この例では、「[is_void_sfinae_s](template_meta_programming.md#SS_12_3_1_4)の実装」の
 
 ```cpp
     //  example/template/is_void_ut.cpp 163
@@ -1973,9 +1973,9 @@ is_void_ena_sの実装は以下のようになる。
 ```
 
 で行っている。
-std::enable_ifの値パラメータis_void_f\<T>()は、「[is_void_f](template_meta_programming.md#SS_13_3_1_1)の実装」で示したものである。
+std::enable_ifの値パラメータis_void_f\<T>()は、「[is_void_f](template_meta_programming.md#SS_12_3_1_1)の実装」で示したものである。
 
-単体テストは、「[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)の実装」で示したものとほぼ同様で、以下のようになる。
+単体テストは、「[is_void_sfinae_s](template_meta_programming.md#SS_12_3_1_4)の実装」で示したものとほぼ同様で、以下のようになる。
 
 ```cpp
     //  example/template/is_void_ut.cpp 264
@@ -1991,8 +1991,8 @@ std::enable_ifの値パラメータis_void_f\<T>()は、「[is_void_f](template_
 ```
 
 
-#### is_void_cond_s <a id="SS_13_3_1_7"></a>
-[std::conditional](stdlib_and_concepts.md#SS_20_2_6)と関数テンプレートの特殊化を使用したis_void_cond_sの実装は以下のようになる。
+#### 12.3.1.7 is_void_cond_s <a id="SS_12_3_1_7"></a>
+[std::conditional](stdlib_and_concepts.md#SS_16_2_6)と関数テンプレートの特殊化を使用したis_void_cond_sの実装は以下のようになる。
 
 ```cpp
     //  example/template/is_void_ut.cpp 277
@@ -2004,9 +2004,9 @@ std::enable_ifの値パラメータis_void_f\<T>()は、「[is_void_f](template_
     constexpr bool is_void_cond_s_v{is_void_cond_s<T>::value};
 ```
 
-std::conditionalの値パラメータis_void_f\<T>()は、「[is_void_f](template_meta_programming.md#SS_13_3_1_1)の実装」で示したものである。
-この例では、[SFINAE](core_lang_spec.md#SS_19_11_1)もクラステンプレートの特殊化も使用していないが、
-下記単体テストからわかる通り、「[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)の実装」と同じ機能を備えている。
+std::conditionalの値パラメータis_void_f\<T>()は、「[is_void_f](template_meta_programming.md#SS_12_3_1_1)の実装」で示したものである。
+この例では、[SFINAE](core_lang_spec.md#SS_15_11_1)もクラステンプレートの特殊化も使用していないが、
+下記単体テストからわかる通り、「[is_void_sfinae_s](template_meta_programming.md#SS_12_3_1_4)の実装」と同じ機能を備えている。
 
 ```cpp
     //  example/template/is_void_ut.cpp 288
@@ -2022,7 +2022,7 @@ std::conditionalの値パラメータis_void_f\<T>()は、「[is_void_f](templat
 ```
 
 
-### is_same_xxxの実装 <a id="SS_13_3_2"></a>
+### 12.3.2 is_same_xxxの実装 <a id="SS_12_3_2"></a>
 ここではstd::is_same\<T, U>に似た、
 以下のような仕様を持ついくつかのテンプレートis_same_xxxの実装を考える。
 
@@ -2035,17 +2035,17 @@ std::conditionalの値パラメータis_void_f\<T>()は、「[is_void_f](templat
 
 |is_same_xxx                   |実装方法                                               |
 |------------------------------|-------------------------------------------------------|
-|[is_same_f](template_meta_programming.md#SS_13_3_2_1)              |関数テンプレートのオーバーロード                       |
-|[is_same_v](template_meta_programming.md#SS_13_3_2_2)              |定数テンプレートの特殊化                               |
-|[is_same_s](template_meta_programming.md#SS_13_3_2_3)              |クラステンプレートの特殊化                             |
-|[is_same_sfinae_f](template_meta_programming.md#SS_13_3_2_4)       |SFINAEと関数テンプレート/関数のオーバーロード          |
-|[is_same_sfinae_s](template_meta_programming.md#SS_13_3_2_5)       |SFINAEとクラステンプレートの特殊化                     |
-|[same_as](template_meta_programming.md#SS_13_3_2_6)                |[コンセプト](core_lang_spec.md#SS_19_11_3)よるis_same_sfinae_sと同一の機能      |
-|[is_same_templ](template_meta_programming.md#SS_13_3_2_7)          |テンプレートテンプレートパラメータ                     |
-|[IsSameSomeOf](template_meta_programming.md#SS_13_3_2_8)           |パラメータパックと再帰                                 |
-|[OneOf](template_meta_programming.md#SS_13_3_2_9)                  |IsSameSomeOfをコンセプトに                             |
+|[is_same_f](template_meta_programming.md#SS_12_3_2_1)              |関数テンプレートのオーバーロード                       |
+|[is_same_v](template_meta_programming.md#SS_12_3_2_2)              |定数テンプレートの特殊化                               |
+|[is_same_s](template_meta_programming.md#SS_12_3_2_3)              |クラステンプレートの特殊化                             |
+|[is_same_sfinae_f](template_meta_programming.md#SS_12_3_2_4)       |SFINAEと関数テンプレート/関数のオーバーロード          |
+|[is_same_sfinae_s](template_meta_programming.md#SS_12_3_2_5)       |SFINAEとクラステンプレートの特殊化                     |
+|[same_as](template_meta_programming.md#SS_12_3_2_6)                |[コンセプト](core_lang_spec.md#SS_15_11_3)よるis_same_sfinae_sと同一の機能      |
+|[is_same_templ](template_meta_programming.md#SS_12_3_2_7)          |テンプレートテンプレートパラメータ                     |
+|[IsSameSomeOf](template_meta_programming.md#SS_12_3_2_8)           |パラメータパックと再帰                                 |
+|[OneOf](template_meta_programming.md#SS_12_3_2_9)                  |IsSameSomeOfをコンセプトに                             |
 
-#### is_same_f <a id="SS_13_3_2_1"></a>
+#### 12.3.2.1 is_same_f <a id="SS_12_3_2_1"></a>
 関数テンプレートのオーバーロードを用いたis_same_fの実装は以下のようになる。
 
 ```cpp
@@ -2117,7 +2117,7 @@ is_same_f_helper\<T>()のようなテンプレートパラメータを直接使�
     static_assert(is_same_f_v<std::string, std::basic_string<char>>);
 ```
 
-#### is_same_v <a id="SS_13_3_2_2"></a>
+#### 12.3.2.2 is_same_v <a id="SS_12_3_2_2"></a>
 定数テンプレートの特殊化を用いたis_same_vの実装は以下のようになる。
 
 ```cpp
@@ -2142,7 +2142,7 @@ is_same_f_helper\<T>()のようなテンプレートパラメータを直接使�
 ```
 
 
-#### is_same_s <a id="SS_13_3_2_3"></a>
+#### 12.3.2.3 is_same_s <a id="SS_12_3_2_3"></a>
 クラステンプレートの特殊化を用いたis_same_sの実装は以下のようになる。
 
 ```cpp
@@ -2160,7 +2160,7 @@ is_same_f_helper\<T>()のようなテンプレートパラメータを直接使�
     constexpr bool is_same_s_v{is_same_s<T, U>::value};
 ```
 
-「[is_same_v](template_meta_programming.md#SS_13_3_2_2)の実装」と同様に単純であるため、解説は不要だろう。 単体テストは以下のようになる。
+「[is_same_v](template_meta_programming.md#SS_12_3_2_2)の実装」と同様に単純であるため、解説は不要だろう。 単体テストは以下のようになる。
 
 ```cpp
     //  example/template_cpp17/is_same_ut.cpp 97
@@ -2172,7 +2172,7 @@ is_same_f_helper\<T>()のようなテンプレートパラメータを直接使�
 ```
 
 
-#### is_same_sfinae_f <a id="SS_13_3_2_4"></a>
+#### 12.3.2.4 is_same_sfinae_f <a id="SS_12_3_2_4"></a>
 SFINAEと関数テンプレート/関数のオーバーロードを用いたis_same_sfinae_f実装は以下のようになる。
 
 ```cpp
@@ -2225,7 +2225,7 @@ T == Uの場合は、関数テンプレートis_same_sfinae_f_detectorが選択�
     static_assert(is_same_sfinae_f_v<std::string, std::basic_string<char>>);
 ```
 
-#### is_same_sfinae_s <a id="SS_13_3_2_5"></a>
+#### 12.3.2.5 is_same_sfinae_s <a id="SS_12_3_2_5"></a>
 SFINAEとクラステンプレートの特殊化を用いたis_same_sfinae_sの実装は以下のようになる。
 
 ```cpp
@@ -2254,7 +2254,7 @@ SFINAEとクラステンプレートの特殊化を用いたis_same_sfinae_sの�
     constexpr bool is_same_sfinae_s_v{is_same_sfinae_s<T, U>::value};
 ```
 
-「[is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)の実装」とほぼ同様であるため、解説は不要だろう。 
+「[is_void_sfinae_s](template_meta_programming.md#SS_12_3_1_4)の実装」とほぼ同様であるため、解説は不要だろう。 
 単体テストは以下のようになる。
 
 ```cpp
@@ -2266,8 +2266,8 @@ SFINAEとクラステンプレートの特殊化を用いたis_same_sfinae_sの�
     static_assert(is_same_sfinae_s_v<std::string, std::basic_string<char>>);
 ```
 
-#### same_as <a id="SS_13_3_2_6"></a>
-[SFINAE](core_lang_spec.md#SS_19_11_1)による[is_same_sfinae_s](template_meta_programming.md#SS_13_3_2_5)の難解なコードを[コンセプト](core_lang_spec.md#SS_19_11_3)
+#### 12.3.2.6 same_as <a id="SS_12_3_2_6"></a>
+[SFINAE](core_lang_spec.md#SS_15_11_1)による[is_same_sfinae_s](template_meta_programming.md#SS_12_3_2_5)の難解なコードを[コンセプト](core_lang_spec.md#SS_15_11_3)
 よりリファクタリングしたコードを以下に示す。
 
 ```cpp
@@ -2298,7 +2298,7 @@ is_same_sfinae_sは定数テンプレートであり、same_asはコンセプト
     static_assert(same_as<std::string, std::basic_string<char>>);
 ```
 
-「[is_same_s](template_meta_programming.md#SS_13_3_2_3)」で紹介した特殊化のテクニックを下記のように使用することができる。
+「[is_same_s](template_meta_programming.md#SS_12_3_2_3)」で紹介した特殊化のテクニックを下記のように使用することができる。
 
 ```cpp
     //  example/template_cpp17/is_same_ut.cpp 203
@@ -2330,7 +2330,7 @@ is_same_sfinae_sは定数テンプレートであり、same_asはコンセプト
     static_assert(is_same_concept_s<std::string, std::basic_string<char>>::value);
 ```
 
-#### is_same_templ <a id="SS_13_3_2_7"></a>
+#### 12.3.2.7 is_same_templ <a id="SS_12_3_2_7"></a>
 例えば、std::stringとstd::basic_string\<T>が同じもしくは違う型であることを確認するためには、
 すでに示したis_same_sを使用し、
 
@@ -2387,13 +2387,13 @@ is_same_sfinae_sは定数テンプレートであり、same_asはコンセプト
     static_assert(!gen_std_string_v<signed char>);
 ```
 
-[演習-テンプレートテンプレートパラメータ](exercise_q.md#SS_22_11_9)
+[演習-テンプレートテンプレートパラメータ](exercise_q.md#SS_18_11_9)
 
-#### IsSameSomeOf <a id="SS_13_3_2_8"></a>
+#### 12.3.2.8 IsSameSomeOf <a id="SS_12_3_2_8"></a>
 IsSameSomeOfはこれまでの例とは少々異なり、
 
 * 第1パラメータが第2パラメータ以降で指定された型のどれかと一致する
-  SameAsSomeOfという名前の[コンセプト](core_lang_spec.md#SS_19_11_3)を[畳み込み式](core_lang_spec.md#SS_19_11_5)を使用し定義する
+  SameAsSomeOfという名前の[コンセプト](core_lang_spec.md#SS_15_11_3)を[畳み込み式](core_lang_spec.md#SS_15_11_5)を使用し定義する
 * SameAsSomeOfで制約したテンプレートパラメータをstd::bool_constantからIsSameSomeOfを派生させる
 
 のような特徴のを持つ。
@@ -2440,7 +2440,7 @@ IsSameSomeOfはこれまでの例とは少々異なり、
 
 IsSameSomeOfは、TがUsのいずれかと一致するかどうかのほとんどの処理をSameAsSomeOfに移譲する。
 
-Usが1つだった場合、SameAsSomeOfは処理をstd::same_as(「[same_as](template_meta_programming.md#SS_13_3_2_6)」参照)に委譲する。
+Usが1つだった場合、SameAsSomeOfは処理をstd::same_as(「[same_as](template_meta_programming.md#SS_12_3_2_6)」参照)に委譲する。
 Usが複数だった場合、[畳み込み式](--)を使用し上記の処理をその数分、繰り返す。
 
 単体テストは以下のようになる。
@@ -2456,11 +2456,11 @@ Usが複数だった場合、[畳み込み式](--)を使用し上記の処理を
     static_assert(!Nstd::IsSameSomeOfV<std::string, int, char*>);
 ```
 
-[演習-テンプレートパラメータを可変長にしたstd::is_same](exercise_q.md#SS_22_11_10)
+[演習-テンプレートパラメータを可変長にしたstd::is_same](exercise_q.md#SS_18_11_10)
 
-#### OneOf <a id="SS_13_3_2_9"></a>
-OneOfは、[IsSameSomeOf](template_meta_programming.md#SS_13_3_2_8)同様の機能を持つコンセプトである。
-OneOfの実装にはシンプルに記述するための[畳み込み式](core_lang_spec.md#SS_19_11_5)を使用した。
+#### 12.3.2.9 OneOf <a id="SS_12_3_2_9"></a>
+OneOfは、[IsSameSomeOf](template_meta_programming.md#SS_12_3_2_8)同様の機能を持つコンセプトである。
+OneOfの実装にはシンプルに記述するための[畳み込み式](core_lang_spec.md#SS_15_11_5)を使用した。
 
 ```cpp
     //  essential/h/nstd_concepts.h 52
@@ -2481,7 +2481,7 @@ OneOfの実装にはシンプルに記述するための[畳み込み式](core_l
     static_assert(!Nstd::OneOf<std::string, int, char*>);
 ```
 
-### AreConvertibleXxxの実装 <a id="SS_13_3_3"></a>
+### 12.3.3 AreConvertibleXxxの実装 <a id="SS_12_3_3"></a>
 std::is_convertible\<FROM, TO>は、
 
 * 型FROMが型TOに変換できる場合、std::true_typeから派生する
@@ -2498,13 +2498,13 @@ std::is_convertible\<FROM, TO>は、
 
 |AreConvertibleXxx                     |実装方法                                     |
 |--------------------------------------|---------------------------------------------|
-|[AreConvertible](template_meta_programming.md#SS_13_3_3_1)                 |クラステンプレートの特殊化                   |
-|[ConvertibleToAll](template_meta_programming.md#SS_13_3_3_3)               |AreConvertibleをコンセプトへ                 |
-|[AreConvertibleWithoutNarrowConv](template_meta_programming.md#SS_13_3_3_2)|SFINAEとクラステンプレートの特殊化           |
-|[ConvertibleWithoutNarrowing](template_meta_programming.md#SS_13_3_3_4)    |AreConvertibleWithoutNarrowConvをコンセプトへ|
+|[AreConvertible](template_meta_programming.md#SS_12_3_3_1)                 |クラステンプレートの特殊化                   |
+|[ConvertibleToAll](template_meta_programming.md#SS_12_3_3_3)               |AreConvertibleをコンセプトへ                 |
+|[AreConvertibleWithoutNarrowConv](template_meta_programming.md#SS_12_3_3_2)|SFINAEとクラステンプレートの特殊化           |
+|[ConvertibleWithoutNarrowing](template_meta_programming.md#SS_12_3_3_4)    |AreConvertibleWithoutNarrowConvをコンセプトへ|
 
 
-#### AreConvertible <a id="SS_13_3_3_1"></a>
+#### 12.3.3.1 AreConvertible <a id="SS_12_3_3_1"></a>
 AreConvertibleの実装は以下のようになる。
 
 ```cpp
@@ -2537,7 +2537,7 @@ AreConvertibleの実装は以下のようになる。
 ```
 
 
-「[IsSameSomeOf](template_meta_programming.md#SS_13_3_2_8)の実装」のコードパターンとほぼ同様であるため、解説は不要だろうが、
+「[IsSameSomeOf](template_meta_programming.md#SS_12_3_2_8)の実装」のコードパターンとほぼ同様であるため、解説は不要だろうが、
 
 * パラメータパックの都合上、TOとFROMのパラメータの位置がstd::is_convertibleとは逆になる
 * IsSameSomeOfでは条件の一つがtrueであればIsSameSomeOf::valueがtrueとなるが、
@@ -2558,7 +2558,7 @@ AreConvertibleの実装は以下のようになる。
 ```
 
 
-#### AreConvertibleWithoutNarrowConv <a id="SS_13_3_3_2"></a>
+#### 12.3.3.2 AreConvertibleWithoutNarrowConv <a id="SS_12_3_3_2"></a>
 縮小無しの型変換ができるかどうかを判定するAreConvertibleWithoutNarrowConvは、
 AreConvertibleと同じように実装できるが、
 その場合、AreConvertibleに対してstd::is_convertibleが必要になったように、
@@ -2600,7 +2600,7 @@ SFINAEと関数テンプレート/関数のオーバーライドを使用し以�
 AreConvertibleWithoutNarrowConvはNstdで定義するため、その内部のみで用いる
 is_convertible_without_narrow_convはNstd::Inner\_で定義している。
 
-上記を抜粋した下記のコードは「縮小型変換を発生さる{}による初期化は[ill-formed](core_lang_spec.md#SS_19_14_1)になる」
+上記を抜粋した下記のコードは「縮小型変換を発生さる{}による初期化は[ill-formed](core_lang_spec.md#SS_15_14_1)になる」
 ことをSFINAEに利用している。
 
 ```cpp
@@ -2673,7 +2673,7 @@ is_convertible_without_narrow_convを利用したAreConvertibleWithoutNarrowConv
     static_assert(!Nstd::AreConvertibleWithoutNarrowConvV<double, float, int8_t>);
 ```
 
-#### ConvertibleToAll <a id="SS_13_3_3_3"></a>
+#### 12.3.3.3 ConvertibleToAll <a id="SS_12_3_3_3"></a>
 ConvertibleToAllの実装は下記のようになる。
 
 ```cpp
@@ -2708,11 +2708,11 @@ concept ConvertibleToAll = (std::convertible_to<FROMs, TO> && ...);
     static_assert(ConvertibleToAll_Test<bool, int, convert_bool>::value);
 ```
 
-#### ConvertibleWithoutNarrowing <a id="SS_13_3_3_4"></a>
+#### 12.3.3.4 ConvertibleWithoutNarrowing <a id="SS_12_3_3_4"></a>
 ConvertibleWithoutNarrowingは以下のようなコンセプトである。
 
-* [AreConvertibleWithoutNarrowConv](template_meta_programming.md#SS_13_3_3_2)と同様の機能を持つ
-* [ConvertibleToAll](template_meta_programming.md#SS_13_3_3_3)と同様構造を持つ
+* [AreConvertibleWithoutNarrowConv](template_meta_programming.md#SS_12_3_3_2)と同様の機能を持つ
+* [ConvertibleToAll](template_meta_programming.md#SS_12_3_3_3)と同様構造を持つ
 
 実装は以下のようになる。
 
@@ -2741,7 +2741,7 @@ concept ConvertibleWithoutNarrowing = Inner_::all_convertible_without_narrowing<
 単体テストは他の似たコンセプトとほぼ同様になるため省略する。
 
 
-### 関数の存在の診断 <a id="SS_13_3_4"></a>
+### 12.3.4 関数の存在の診断 <a id="SS_12_3_4"></a>
 Nstdライブラリの開発には関数の存在の診断が欠かせない。
 例えば、
 
@@ -2759,39 +2759,39 @@ Nstdライブラリの開発には関数の存在の診断が欠かせない。
 
 |メタ関数名                              |メタ関数の目的                                    |
 |----------------------------------------|--------------------------------------------------|
-|[exists_void_func_sfinae_f](template_meta_programming.md#SS_13_3_4_1)        |メンバ関数void func()を持つかどうかの判断         |
-|[exists_void_func_sfinae_s](template_meta_programming.md#SS_13_3_4_2)        |同上                                              |
-|[exists_void_func_sfinae_s2](template_meta_programming.md#SS_13_3_4_3)       |同上                                              |
-|[exists_void_func_concept](template_meta_programming.md#SS_13_3_4_4)         |同上。コンセプトによるSFINAEの回避                |
+|[exists_void_func_sfinae_f](template_meta_programming.md#SS_12_3_4_1)        |メンバ関数void func()を持つかどうかの判断         |
+|[exists_void_func_sfinae_s](template_meta_programming.md#SS_12_3_4_2)        |同上                                              |
+|[exists_void_func_sfinae_s2](template_meta_programming.md#SS_12_3_4_3)       |同上                                              |
+|[exists_void_func_concept](template_meta_programming.md#SS_12_3_4_4)         |同上。コンセプトによるSFINAEの回避                |
 
 * テンプレートパラメータに範囲for文ができるかどうかの診断について、
   次の表のように実装を示す。
 
 |メタ関数名                            |メタ関数の目的                                                     |
 |--------------------------------------|-------------------------------------------------------------------|
-|[exists_begin/exsits_end](template_meta_programming.md#SS_13_3_4_5)        |SFINAEを使用したstd::begin(T)/std::end(T)が存在するか否かの診断    |
-|[Array](template_meta_programming.md#SS_13_3_4_7)                          |型が配列である制約を行うためのコンセプト                           |
-|[Beginable/Endable](template_meta_programming.md#SS_13_3_4_8)              |[コンセプト](core_lang_spec.md#SS_19_11_3)を使用したexists_begin/exsits_endを単純化した例   |
-|[IsRange](template_meta_programming.md#SS_13_3_4_6)                        |exists_begin/exsits_endを使し、範囲forのオペランドになれるか?の判断|
-|[Ranged](template_meta_programming.md#SS_13_3_4_9)                         |機能はIsRangeと同一だが、[コンセプト](core_lang_spec.md#SS_19_11_3)を使用しSFINAEの回避     |
-|[Container](template_meta_programming.md#SS_13_3_4_10)                      |Ranged且つ!Arrayをコンテナと便宜的に決めつける                     |
+|[exists_begin/exsits_end](template_meta_programming.md#SS_12_3_4_5)        |SFINAEを使用したstd::begin(T)/std::end(T)が存在するか否かの診断    |
+|[Array](template_meta_programming.md#SS_12_3_4_7)                          |型が配列である制約を行うためのコンセプト                           |
+|[Beginable/Endable](template_meta_programming.md#SS_12_3_4_8)              |[コンセプト](core_lang_spec.md#SS_15_11_3)を使用したexists_begin/exsits_endを単純化した例   |
+|[IsRange](template_meta_programming.md#SS_12_3_4_6)                        |exists_begin/exsits_endを使し、範囲forのオペランドになれるか?の判断|
+|[Ranged](template_meta_programming.md#SS_12_3_4_9)                         |機能はIsRangeと同一だが、[コンセプト](core_lang_spec.md#SS_15_11_3)を使用しSFINAEの回避     |
+|[Container](template_meta_programming.md#SS_12_3_4_10)                      |Ranged且つ!Arrayをコンテナと便宜的に決めつける                     |
 
 * テンプレートパラメータにoperator<<(put toと発音する)ができるかどうかの診断について、
   次の表のように実装を示す。
 
 |メタ関数名                            |メタ関数の目的                                         |
 |--------------------------------------|-------------------------------------------------------|
-|[exists_put_to_as_member](template_meta_programming.md#SS_13_3_4_11)        |std::ostream::operator<<(T)が存在するか否かの診断      |
-|[exists_put_to_as_non_member](template_meta_programming.md#SS_13_3_4_12)    |operator<<(std::ostream&, T)が存在するか否かの診断     |
-|[ExistsPutTo](template_meta_programming.md#SS_13_3_4_13)                    |std::ostream& << Tができるかどうかの診断               |
-|[Printable](template_meta_programming.md#SS_13_3_4_14)                      |std::ostream& << Tができるかどうか制約コンセプト       |
+|[exists_put_to_as_member](template_meta_programming.md#SS_12_3_4_11)        |std::ostream::operator<<(T)が存在するか否かの診断      |
+|[exists_put_to_as_non_member](template_meta_programming.md#SS_12_3_4_12)    |operator<<(std::ostream&, T)が存在するか否かの診断     |
+|[ExistsPutTo](template_meta_programming.md#SS_12_3_4_13)                    |std::ostream& << Tができるかどうかの診断               |
+|[Printable](template_meta_programming.md#SS_12_3_4_14)                      |std::ostream& << Tができるかどうか制約コンセプト       |
 
 * テンプレートパラメータがT[N]やC\<T>の形式である時のTに、
   operator<<が適用できるかの診断については、Tの型を取り出す必要がある。
   そのようなメタ関数ValueTypeの実装を示す。
 
 
-#### exists_void_func_sfinae_f <a id="SS_13_3_4_1"></a>
+#### 12.3.4.1 exists_void_func_sfinae_f <a id="SS_12_3_4_1"></a>
 「テンプレートパラメータである型が、メンバ関数void func()を持つかどうかを診断する」
 exists_void_func_sfinae_f
 のSFINAEと関数テンプレート/関数のオーバーロードを用いた実装は以下のようになる。
@@ -2858,7 +2858,7 @@ decltypeの中での関数呼び出しは、実際には呼び出されず関数
 ```
 
 
-#### exists_void_func_sfinae_s <a id="SS_13_3_4_2"></a>
+#### 12.3.4.2 exists_void_func_sfinae_s <a id="SS_12_3_4_2"></a>
 「テンプレートパラメータである型が、メンバ関数void func()を持つかどうかを診断」する
 exists_void_func_sfinae_s
 のSFINAEとクラステンプレートの特殊化を用いた実装は以下のようになる。
@@ -2897,7 +2897,7 @@ exists_void_func_sfinae_fとほぼ等しいSFINAEを利用したクラステン�
 ```
 
 
-#### exists_void_func_sfinae_s2 <a id="SS_13_3_4_3"></a>
+#### 12.3.4.3 exists_void_func_sfinae_s2 <a id="SS_12_3_4_3"></a>
 exists_void_func_sfinae_sとほぼ同様の仕様を持つexists_void_func_sfinae_s2の
 
 * SFINAE
@@ -2959,15 +2959,15 @@ exists_void_func_sfinae_fと同じテスト用クラスを用いた単体テス�
     static_assert(!exists_void_func_sfinae_s2_v<Z>);
 ```
 
-[演習-メンバ関数の存在の診断](exercise_q.md#SS_22_11_11)
+[演習-メンバ関数の存在の診断](exercise_q.md#SS_18_11_11)
 
-#### exists_void_func_concept <a id="SS_13_3_4_4"></a>
-[exists_void_func_sfinae_s](template_meta_programming.md#SS_13_3_4_2)や[exists_void_func_sfinae_s2](template_meta_programming.md#SS_13_3_4_3)
+#### 12.3.4.4 exists_void_func_concept <a id="SS_12_3_4_4"></a>
+[exists_void_func_sfinae_s](template_meta_programming.md#SS_12_3_4_2)や[exists_void_func_sfinae_s2](template_meta_programming.md#SS_12_3_4_3)
 の実装で見たようなSFINAEによるテンプレートの特殊化は難解なコードを生み出す。
 また、シンタックスエラー時、ほぼ理解できない大量のコンパイラのメッセージを生成する。
 このため、このようなテクニックはきわめて有用である一方で、開発に多くの時間を消費する、
 保守員を選んでしまう、といった問題があった。
-以下に示すように、C++20から導入された[コンセプト](core_lang_spec.md#SS_19_11_3)はこのような問題の軽減につながる。
+以下に示すように、C++20から導入された[コンセプト](core_lang_spec.md#SS_15_11_3)はこのような問題の軽減につながる。
 
 ```cpp
     //  example/template_cpp17/exists_func_ut.cpp 138
@@ -3005,10 +3005,10 @@ exists_void_func_sfinae_fと同じテスト用クラスを用いた単体テス�
     static_assert(!exists_void_func_concept<decltype(Z{})>);  // Z::funcは呼び出せない
 ```
 
-#### exists_begin/exsits_end <a id="SS_13_3_4_5"></a>
+#### 12.3.4.5 exists_begin/exsits_end <a id="SS_12_3_4_5"></a>
 「テンプレートパラメータTに対して、
 std::begin(T)が存在するか否かの診断」をするexists_beginの実装は、
-「[exists_void_func_sfinae_s](template_meta_programming.md#SS_13_3_4_2)」
+「[exists_void_func_sfinae_s](template_meta_programming.md#SS_12_3_4_2)」
 で用いたパターンのメンバ関数を非メンバ関数に置き換えて使えば以下のようになる。
 
 ```cpp
@@ -3028,8 +3028,8 @@ std::begin(T)が存在するか否かの診断」をするexists_beginの実装�
 
 上記で使用したstd::void_tは、テンプレートパラメータが
 
-* [ill-formed](core_lang_spec.md#SS_19_14_1)ならばill-formedになる
-* [well-formed](core_lang_spec.md#SS_19_14_2)ならvoidを生成する
+* [ill-formed](core_lang_spec.md#SS_15_14_1)ならばill-formedになる
+* [well-formed](core_lang_spec.md#SS_15_14_2)ならvoidを生成する
 
 テンプレートである。
 
@@ -3058,7 +3058,7 @@ std::begin(T)が存在するか否かの診断」をするexists_beginの実装�
     std::declval<int[3]>())
 ```
 
-の戻り型が配列型の[rvalue](core_lang_spec.md#SS_19_7_1_2)である"int (&&) [3]"となり、
+の戻り型が配列型の[rvalue](core_lang_spec.md#SS_15_7_1_2)である"int (&&) [3]"となり、
 これに対応するstd::beginが定義されていないためである。
 
 これに対処する方法方はいくつかあるが、
@@ -3094,7 +3094,7 @@ std::begin(T)が存在するか否かの診断」をするexists_beginの実装�
 ということで、このコードは却下して、別のアイデアを試そう。
 
 テンプレートパラメータが配列である場合でも、
-そのオブジェクトが[lvalue](core_lang_spec.md#SS_19_7_1_1)(この例ではint (&)[3])であれば、
+そのオブジェクトが[lvalue](core_lang_spec.md#SS_15_7_1_1)(この例ではint (&)[3])であれば、
 std::beginはそのオブジェクトを使用できるので、
 decltype内で使用できるlvalueのT型オブジェクトを生成できれば、
 と考えれば下記のような実装を思いつくだろう。
@@ -3146,7 +3146,7 @@ decltype内で使用できるlvalueのT型オブジェクトを生成できれ�
     static_assert(exists_end_v<int[3]>);
 ```
 
-#### IsRange <a id="SS_13_3_4_6"></a>
+#### 12.3.4.6 IsRange <a id="SS_12_3_4_6"></a>
 [範囲for文](https://cpprefjp.github.io/lang/cpp11/range_based_for.html)
 文の":"の後ろにT型オブジェクトが指定できる要件は、
 
@@ -3183,9 +3183,9 @@ IsRangeの実装は以下のようになる。
     static_assert(IsRangeV<int[3]>);
 ```
 
-[演習-範囲for文のオペランドになれるかどうかの診断](exercise_q.md#SS_22_11_12)
+[演習-範囲for文のオペランドになれるかどうかの診断](exercise_q.md#SS_18_11_12)
 
-#### Array <a id="SS_13_3_4_7"></a>
+#### 12.3.4.7 Array <a id="SS_12_3_4_7"></a>
 
 以降の節で使用するため、テンプレートパラメータが配列である制約を下記のように宣言する。
 
@@ -3208,8 +3208,8 @@ IsRangeの実装は以下のようになる。
     static_assert(!Array<decltype(ptr)>);
 ```
 
-#### Beginable/Endable <a id="SS_13_3_4_8"></a>
-コンセプトを使用し、[exists_begin/exsits_end](template_meta_programming.md#SS_13_3_4_5)をリファクタリングした例を以下に示す。
+#### 12.3.4.8 Beginable/Endable <a id="SS_12_3_4_8"></a>
+コンセプトを使用し、[exists_begin/exsits_end](template_meta_programming.md#SS_12_3_4_5)をリファクタリングした例を以下に示す。
 
 ```cpp
     //  essential/h/nstd_concepts.h 15
@@ -3241,7 +3241,7 @@ IsRangeの実装は以下のようになる。
 ```
 
 
-#### Ranged <a id="SS_13_3_4_9"></a>
+#### 12.3.4.9 Ranged <a id="SS_12_3_4_9"></a>
 IsRangeと同一の機能を持つコンセプトRangedを以下のように定義する。
 
 ```cpp
@@ -3262,10 +3262,10 @@ IsRangeと同一の機能を持つコンセプトRangedを以下のように定�
     static_assert(Ranged<int[3]>);
 ```
 
-すでにみたようにRangedは[exists_begin/exsits_end](template_meta_programming.md#SS_13_3_4_5)の醜いコードを使用しないことで、
+すでにみたようにRangedは[exists_begin/exsits_end](template_meta_programming.md#SS_12_3_4_5)の醜いコードを使用しないことで、
 Rangedの可読性はIsRangedに比べ格段に改善している。
 
-#### Container <a id="SS_13_3_4_10"></a>
+#### 12.3.4.10 Container <a id="SS_12_3_4_10"></a>
 与えられた型をコンテナに制約するためのコンセプトを下記のように便宜的に宣言する。
 
 ```cpp
@@ -3297,7 +3297,7 @@ Rangedの可読性はIsRangedに比べ格段に改善している。
 
 ```
 
-#### exists_put_to_as_member <a id="SS_13_3_4_11"></a>
+#### 12.3.4.11 exists_put_to_as_member <a id="SS_12_3_4_11"></a>
 std::ostreamのメンバ関数operator<<の戻り型はstd::ostream&であるため、
 exists_put_to_as_memberの実装は以下のようになる("<<"は英語で"put to"と発音する)。
 
@@ -3317,7 +3317,7 @@ exists_put_to_as_memberの実装は以下のようになる("<<"は英語で"put
     constexpr bool exists_put_to_as_member_v{exists_put_to_as_member<T>::value};
 ```
 
-「[exists_void_func_sfinae_f](template_meta_programming.md#SS_13_3_4_1)の実装」と同様のパターンを使用したので解説は不要だろう。
+「[exists_void_func_sfinae_f](template_meta_programming.md#SS_12_3_4_1)の実装」と同様のパターンを使用したので解説は不要だろう。
 
 単体テストは以下のようになる。
 
@@ -3367,7 +3367,7 @@ exists_put_to_as_memberの実装は以下のようになる("<<"は英語で"put
 が定義されているため、配列がポインタに変換されてこのメンバ関数にバインドした結果である。
 
 
-#### exists_put_to_as_non_member <a id="SS_13_3_4_12"></a>
+#### 12.3.4.12 exists_put_to_as_non_member <a id="SS_12_3_4_12"></a>
 exists_put_to_as_non_memberの実装は以下のようになる。
 
 ```cpp
@@ -3386,11 +3386,11 @@ exists_put_to_as_non_memberの実装は以下のようになる。
     constexpr bool exists_put_to_as_non_member_v{exists_put_to_as_non_member<T>::value};
 ```
 
-「[exists_begin/exsits_end](template_meta_programming.md#SS_13_3_4_5)や[exists_put_to_as_member](template_meta_programming.md#SS_13_3_4_11)の実装」
+「[exists_begin/exsits_end](template_meta_programming.md#SS_12_3_4_5)や[exists_put_to_as_member](template_meta_programming.md#SS_12_3_4_11)の実装」
 で使用したパターンを混合しただけなので解説や単体テストは省略する。
 
 
-#### ExistsPutTo <a id="SS_13_3_4_13"></a>
+#### 12.3.4.13 ExistsPutTo <a id="SS_12_3_4_13"></a>
 テンプレートパラメータT、T型オブジェクトtに対して、
 std::ostream << tができるかどうかを判断するExistsPutToの実装は以下のようになる。
 
@@ -3407,7 +3407,7 @@ std::ostream << tができるかどうかを判断するExistsPutToの実装は�
     constexpr bool ExistsPutToV{ExistsPutTo<T>::value};
 ```
 
-「[IsRange](template_meta_programming.md#SS_13_3_4_6)の実装」に影響されて、一旦このように実装したが、先に書いた通り、
+「[IsRange](template_meta_programming.md#SS_12_3_4_6)の実装」に影響されて、一旦このように実装したが、先に書いた通り、
 そもそものExistsPutToの役割はstd::ostream << tができるかどうかの診断であることを思い出せば、
 下記のように、もっとシンプルに実装できることに気づくだろう。
 
@@ -3443,10 +3443,10 @@ std::ostream << tができるかどうかを判断するExistsPutToの実装は�
     static_assert(Nstd::ExistsPutToV<test_class_not_exits_put_to[3]>);
 ```
 
-#### Printable <a id="SS_13_3_4_14"></a>
+#### 12.3.4.14 Printable <a id="SS_12_3_4_14"></a>
 これまでのパターンに従ってPrintableを以下のように作る。
 
-* [SFINAE](core_lang_spec.md#SS_19_11_1)を利用した[ExistsPutTo](template_meta_programming.md#SS_13_3_4_13)は複雑で醜いため、リファクタリングする。
+* [SFINAE](core_lang_spec.md#SS_15_11_1)を利用した[ExistsPutTo](template_meta_programming.md#SS_12_3_4_13)は複雑で醜いため、リファクタリングする。
 * リファクタリングに合わせてコンセプト化し、それらしい名称にする。
 
 ```cpp
@@ -3479,9 +3479,9 @@ std::ostream << tができるかどうかを判断するExistsPutToの実装は�
     static_assert(Printable<Y>);
 ```
 
-これ以降は、[ExistsPutTo](template_meta_programming.md#SS_13_3_4_13)ではなくPrintableを使用する。
+これ以降は、[ExistsPutTo](template_meta_programming.md#SS_12_3_4_13)ではなくPrintableを使用する。
 
-#### ValueTypeの実装 <a id="SS_13_3_4_15"></a>
+#### 12.3.4.15 ValueTypeの実装 <a id="SS_12_3_4_15"></a>
 下記で示す通り、
 
 ```cpp
@@ -3723,7 +3723,7 @@ Value::type_n\<>のリカーシブ展開を頭の中で行うことは難しい�
 ```
 
 準備は整ったので上記のValueTypeに下記のようなコンテナ用特殊化を追加する。
-この特殊化のテンプレートパラメータの制約にはすでに開発したコンセプト[Container](template_meta_programming.md#SS_13_3_4_10)を使用する。
+この特殊化のテンプレートパラメータの制約にはすでに開発したコンセプト[Container](template_meta_programming.md#SS_12_3_4_10)を使用する。
 
 ```cpp
     //  example/template/value_type_ut.cpp 261
@@ -3897,15 +3897,15 @@ ValueTypeの最終的な単体テストのために上記を統合したテス�
     }  // namespace Nstd
 ```
 
-[演習-配列の長さの取り出し](exercise_q.md#SS_22_11_13)
-[演習-配列の次元の取り出し](exercise_q.md#SS_22_11_14)
+[演習-配列の長さの取り出し](exercise_q.md#SS_18_11_13)
+[演習-配列の次元の取り出し](exercise_q.md#SS_18_11_14)
 
-## Nstdライブラリの開発2 <a id="SS_13_4"></a>
+## 12.4 Nstdライブラリの開発2 <a id="SS_12_4"></a>
 ここでは予定していた通りSafeArray2を開発し、その後Nstdに必要なライブラリの開発を続ける。
 
 
-### SafeArray2の開発 <a id="SS_13_4_1"></a>
-「[安全な配列型コンテナ](template_meta_programming.md#SS_13_2_3)」で断念したSafeArray2の開発を再開する前に、
+### 12.4.1 SafeArray2の開発 <a id="SS_12_4_1"></a>
+「[安全な配列型コンテナ](template_meta_programming.md#SS_12_2_3)」で断念したSafeArray2の開発を再開する前に、
 SafeArray2の要件をまとめると、
 
 * std::arrayを基底クラスとする
@@ -3935,7 +3935,7 @@ SafeArray2の要件をまとめると、
 関数のシグネチャの差異よるオーバーロードは使えない。
 とすれば、テンプレートパラメータの型の差異によるオーバーロードを使うしか方法がない。
 縮小型変換が起こるか否かの場合分けは、
-コンセプト[ConvertibleWithoutNarrowing](template_meta_programming.md#SS_13_3_3_4)を使用したSFINAEで実現させることができる。
+コンセプト[ConvertibleWithoutNarrowing](template_meta_programming.md#SS_12_3_3_4)を使用したSFINAEで実現させることができる。
 という風な思考の変遷により以下のコードにたどり着く。
 
 
@@ -4069,7 +4069,7 @@ private:
 かなりの違和感があるだろうが、
 引数や戻り値に制限の多いコンストラクタテンプレートでSFINAEを起こすためには、
 このような記述が必要になる。
-一方で[コンセプト](core_lang_spec.md#SS_19_11_3)を使用したC++20スタイルのSFINAEの可読性の高さを実感できただろう。
+一方で[コンセプト](core_lang_spec.md#SS_15_11_3)を使用したC++20スタイルのSFINAEの可読性の高さを実感できただろう。
 
 なお、2つ目のコンストラクタテンプレートの中で使用した下記のコードは、
 パラメータパックで与えられた全引数をそれぞれにT型オブジェクトに変換するための記法である。
@@ -4083,8 +4083,8 @@ private:
 これにより、std::array\<T, N>のstd::initializer_listによる初期化が縮小変換を検出しなくなる。
 
 
-### Nstd::SafeIndexの開発 <a id="SS_13_4_2"></a>
-「[安全なvector](template_meta_programming.md#SS_13_2_2)」、「[安全な配列型コンテナ](template_meta_programming.md#SS_13_2_3)」等の中で、
+### 12.4.2 Nstd::SafeIndexの開発 <a id="SS_12_4_2"></a>
+「[安全なvector](template_meta_programming.md#SS_12_2_2)」、「[安全な配列型コンテナ](template_meta_programming.md#SS_12_2_3)」等の中で、
 
 * Nstd::SafeVector
 * Nstd::SafeString
@@ -4101,7 +4101,7 @@ std::stringは、実際にはstd::basic_string\<char>のエイリアスである
 Nstd::SafeStringの基底クラスはstd::basic_string\<char>であることがわかる。
 この形式は、std::vector\<T>と同形であるため、
 Nstd::SafeVectorとNstd::SafeStringの共通コードはテンプレートテンプレートパラメータ
-(「[is_same_templ](template_meta_programming.md#SS_13_3_2_7)」参照)を使用し下記のように書ける。
+(「[is_same_templ](template_meta_programming.md#SS_12_3_2_7)」参照)を使用し下記のように書ける。
 
 
 ```cpp
@@ -4194,7 +4194,7 @@ Nstd::SafeIndexにNstd::SafeArrayの実装が取り込めれば、リファク�
 理由は、パラメータパックにはそのすべてに型を指定するか、そのすべてに値を指定しなければならず、
 上記のコードのような型と値の混在が許されていないからである。
 
-値を型に変換する[std::integral_constant](stdlib_and_concepts.md#SS_20_2_1)を使用し、この問題を解決できる。
+値を型に変換する[std::integral_constant](stdlib_and_concepts.md#SS_16_2_1)を使用し、この問題を解決できる。
 std::arrayから派生した下記のStdArrayLikeは、std::integral_constant::valueから値を取り出し、
 基底クラスstd::arrayの第2テンプレートパラメータとする。
 この仕組みにより、StdArrayLikeは、
@@ -4327,7 +4327,7 @@ Nstd::SafeIndexのテンプレートテンプレートパラメータとして�
     ASSERT_THROW(u32str[5], std::out_of_range);
 ```
 
-### Nstd::SafeIndexのoperator\<\<の開発 <a id="SS_13_4_3"></a>
+### 12.4.3 Nstd::SafeIndexのoperator\<\<の開発 <a id="SS_12_4_3"></a>
 ここでは、Nstd::SafeIndexのoperator\<\<の開発を行う。
 
 他のoperator\<\<との間で定義が曖昧にならないようにするためには、
@@ -4392,8 +4392,8 @@ Nstd::SafeIndexのテンプレートテンプレートパラメータとして�
 
 この原因は、Nstd::SafeStringオブジェクトに対して、std::operator<<が使用されなかったからである。
 
-「[メタ関数のテクニック](template_meta_programming.md#SS_13_3)」で紹介したSFINAEによりこの問題を回避できるが、
-ここでも、すでにみてきた[コンセプト](core_lang_spec.md#SS_19_11_3)による制約によりこの問題に対処する。
+「[メタ関数のテクニック](template_meta_programming.md#SS_12_3)」で紹介したSFINAEによりこの問題を回避できるが、
+ここでも、すでにみてきた[コンセプト](core_lang_spec.md#SS_15_11_3)による制約によりこの問題に対処する。
 
 ```cpp
     //  example/template_cpp17/safe_index_put_to_ut.cpp 98
@@ -4440,8 +4440,8 @@ Nstd::SafeIndexのテンプレートテンプレートパラメータとして�
 ```
 
 
-### コンテナ用Nstd::operator\<\<の開発 <a id="SS_13_4_4"></a>
-「[Nstd::SafeIndexのoperator\<\<の開発](template_meta_programming.md#SS_13_4_3)」で定義したNstd::operator\<\<の構造は、
+### 12.4.4 コンテナ用Nstd::operator\<\<の開発 <a id="SS_12_4_4"></a>
+「[Nstd::SafeIndexのoperator\<\<の開発](template_meta_programming.md#SS_12_4_3)」で定義したNstd::operator\<\<の構造は、
 範囲for文に適用できる配列やstdコンテナにも使えるため、ここではその拡張を考える。
 
 すでに述べたように注意すべきは、
@@ -4506,7 +4506,7 @@ Nstd::SafeIndexのテンプレートテンプレートパラメータとして�
 ```
 
 ただし、このようなコードはコンパイラのバグによりコンパイルできないことがある。
-実際、現在使用中の[g++](cpp_idioms.md#SS_21_15_1)ではこのコードはコンパイルできず、
+実際、現在使用中の[g++](cpp_idioms.md#SS_17_15_1)ではこのコードはコンパイルできず、
 上記コードでコメントにも書いた通り、Inner_の中でPrintableを再定義することで、
 そのワークアラウンドを行っている。
 
@@ -4693,19 +4693,19 @@ range_put_to_sep<>()を用意した。
     }
 ```
 
-## Nstdライブラリの開発3(浮動小数点関連) <a id="SS_13_5"></a>
-[浮動小数点型](core_lang_spec.md#SS_19_1_12)を頻繁に使用するソフトウェアの開発を行うに場合、
+## 12.5 Nstdライブラリの開発3(浮動小数点関連) <a id="SS_12_5"></a>
+[浮動小数点型](core_lang_spec.md#SS_15_1_12)を頻繁に使用するソフトウェアの開発を行うに場合、
 ソースコードの中で、場当たり的に浮動小数点型を使用すると、
-[浮動小数点の誤差](core_lang_spec.md#SS_19_1_12_2)や[浮動小数点の演算エラー](core_lang_spec.md#SS_19_1_12_4)
+[浮動小数点の誤差](core_lang_spec.md#SS_15_1_12_2)や[浮動小数点の演算エラー](core_lang_spec.md#SS_15_1_12_4)
 にまつわるバグの修正に多くの工数をロスしてしまうことになる。
 
 これらの課題に対処するため、この節は浮動小数点演算によるバグを未然に防ぎ、
 精度を確保するための機能を提供することを目的としている。
-[浮動小数点の比較](template_meta_programming.md#SS_13_5_1)方法や、
-浮動小数点を避けて高精度な演算を実現する[固定小数点クラス](template_meta_programming.md#SS_13_5_2)および[有理数クラス](template_meta_programming.md#SS_13_5_4)を導入し、
+[浮動小数点の比較](template_meta_programming.md#SS_12_5_1)方法や、
+浮動小数点を避けて高精度な演算を実現する[固定小数点クラス](template_meta_programming.md#SS_12_5_2)および[有理数クラス](template_meta_programming.md#SS_12_5_4)を導入し、
 さらにそれらを簡単に使用できるリテラル表記もサポートしている。
 
-### 浮動小数点の比較 <a id="SS_13_5_1"></a>
+### 12.5.1 浮動小数点の比較 <a id="SS_12_5_1"></a>
 浮動小数点の演算には下記に示したような問題が起こり得るため、単純な==の比較はできない。
 
 ```cpp
@@ -4840,7 +4840,7 @@ dobuleとfloatを1つの式に混載するとfloatがdoubleに昇格されるた
     ASSERT_TRUE(Nstd::is_equal(a, b, 0.1F));  // 相対誤差を指定できる。
 ```
 
-### 固定小数点クラス <a id="SS_13_5_2"></a>
+### 12.5.2 固定小数点クラス <a id="SS_12_5_2"></a>
 以上で見てきたように浮動小数点の扱いはやや面倒であるため、
 浮動小数点のダイナミックレンジが必要な場合以外では安易に浮動小数点を使うべきでない。
 
@@ -5027,8 +5027,8 @@ FixedPointの単体テストコードを以下に示す。
     fp0 += 7;   ASSERT_EQ(FP4{0}, fp0);
 ```
 
-### 固定小数点リテラル <a id="SS_13_5_3"></a>
-[固定小数点クラス](template_meta_programming.md#SS_13_5_2)のようなクラス定義には、以下に示すようにユーザ定義リテラルを定義し、
+### 12.5.3 固定小数点リテラル <a id="SS_12_5_3"></a>
+[固定小数点クラス](template_meta_programming.md#SS_12_5_2)のようなクラス定義には、以下に示すようにユーザ定義リテラルを定義し、
 使い勝手のよい環境をユーザに提供するべきである。
 
 ```cpp
@@ -5072,8 +5072,8 @@ FixedPointの単体テストコードを以下に示す。
     EXPECT_NEAR(result.ToFloatPoint(), 173.25, 0.01);
 ```
 
-### 有理数クラス <a id="SS_13_5_4"></a>
-[固定小数点クラス](template_meta_programming.md#SS_13_5_2)では精度が足りず、浮動小数点を使用したくない場合、
+### 12.5.4 有理数クラス <a id="SS_12_5_4"></a>
+[固定小数点クラス](template_meta_programming.md#SS_12_5_2)では精度が足りず、浮動小数点を使用したくない場合、
 以下のコードで示す有理数クラスがちょうどよい選択となることがある。
 
 ```cpp
@@ -5236,10 +5236,10 @@ FixedPointの単体テストコードを以下に示す。
     ASSERT_EQ("1/2", oss.str());  // operator<<
 ```
 
-### 有理数リテラル <a id="SS_13_5_5"></a>
-[固定小数点クラス](template_meta_programming.md#SS_13_5_2)に対して、[固定小数点リテラル](template_meta_programming.md#SS_13_5_3)を定義したように、
+### 12.5.5 有理数リテラル <a id="SS_12_5_5"></a>
+[固定小数点クラス](template_meta_programming.md#SS_12_5_2)に対して、[固定小数点リテラル](template_meta_programming.md#SS_12_5_3)を定義したように、
 使い勝手のよい環境をユーザに提供するために、
-[有理数クラス](template_meta_programming.md#SS_13_5_4)に対して、有理数リテラルを定義するべきである。
+[有理数クラス](template_meta_programming.md#SS_12_5_4)に対して、有理数リテラルを定義するべきである。
 
 ```cpp
     //  example/template_cpp17/rational.h 147
@@ -5274,7 +5274,7 @@ FixedPointの単体テストコードを以下に示す。
     ASSERT_DOUBLE_EQ(static_cast<double>(r1), 0.5);
 ```
 
-## ログ取得ライブラリの開発2 <a id="SS_13_6"></a>
+## 12.6 ログ取得ライブラリの開発2 <a id="SS_12_6"></a>
 ログ取得ライブラリでの問題は「Logging名前空間が依存してよい名前空間」に
 
 ```cpp
@@ -5286,7 +5286,7 @@ FixedPointの単体テストコードを以下に示す。
 ```
 
 のようなコンテナに共通したoperator<<を定義することで解決する。
-それは 「[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_13_4_4)」で示したコードそのものであるため、
+それは 「[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_12_4_4)」で示したコードそのものであるため、
 これを使い、問題を解決したログ取得ライブラリを以下に示す。
 
 ```cpp
@@ -5409,14 +5409,14 @@ FixedPointの単体テストコードを以下に示す。
     ASSERT_EQ(exp, s);
 ```
 
-「[Nstdライブラリの開発](template_meta_programming.md#SS_13_2)」で示した依存関係も維持されており、
+「[Nstdライブラリの開発](template_meta_programming.md#SS_12_2)」で示した依存関係も維持されており、
 これでログ取得ライブラリは完成したと言って良いだろう。
 
 
-## その他のテンプレートテクニック <a id="SS_13_7"></a>
+## 12.7 その他のテンプレートテクニック <a id="SS_12_7"></a>
 ここでは、これまでの議論の対象にならなかったテンプレートのテクニックや注意点について記述する。
 
-### forwardingリファレンスとstd::forward <a id="SS_13_7_1"></a>
+### 12.7.1 forwardingリファレンスとstd::forward <a id="SS_12_7_1"></a>
 2個の文字列からstd::vector\<std::string>を生成する下記のような関数について考える。
 
 ```cpp
@@ -5449,7 +5449,7 @@ FixedPointの単体テストコードを以下に示す。
 ```
 
 このコードは正しく動作するものの、move代入できず、パフォーマンス問題を引き起こす可能性があるため、
-[forwardingリファレンス](core_lang_spec.md#SS_19_8_3)を使って下記のように書き直した。
+[forwardingリファレンス](core_lang_spec.md#SS_15_8_3)を使って下記のように書き直した。
 
 ```cpp
     //  example/template_cpp17/universal_ref_ut.cpp 41
@@ -5482,8 +5482,8 @@ FixedPointの単体テストコードを以下に示す。
 ```
 
 この原因は、
-「関数が受け取った[rvalue](core_lang_spec.md#SS_19_7_1_2)リファレンスは、
-その関数から別の関数に受け渡される時に[lvalue](core_lang_spec.md#SS_19_7_1_1)リファレンスとして扱われる」からである。
+「関数が受け取った[rvalue](core_lang_spec.md#SS_15_7_1_2)リファレンスは、
+その関数から別の関数に受け渡される時に[lvalue](core_lang_spec.md#SS_15_7_1_1)リファレンスとして扱われる」からである。
 
 この現象について下記の関数テンプレートを用いて解説を行う。
 
@@ -5646,7 +5646,7 @@ std::vector\<std::string>へのオブジェクトの挿入は、文字列リテ�
 ```
 
 上記のgen_vectorはリカーシブコールを使って実装したが、
-[畳み込み式](core_lang_spec.md#SS_19_11_5)を使用した下記の実装の方がより明確である。
+[畳み込み式](core_lang_spec.md#SS_15_11_5)を使用した下記の実装の方がより明確である。
 
 ```cpp
     //  example/template_cpp17/universal_ref_ut.cpp 209
@@ -5663,8 +5663,8 @@ std::vector\<std::string>へのオブジェクトの挿入は、文字列リテ�
 ```
 
 forwardingリファレンスはconstにすることができないが
-(T const&&はconstな[rvalue](core_lang_spec.md#SS_19_7_1_2)リファレンスである)、
-forwardingリファレンスが[lvalue](core_lang_spec.md#SS_19_7_1_1)リファレンスであった場合は、
+(T const&&はconstな[rvalue](core_lang_spec.md#SS_15_7_1_2)リファレンスである)、
+forwardingリファレンスが[lvalue](core_lang_spec.md#SS_15_7_1_1)リファレンスであった場合は、
 constなlvalueリファレンスとして扱うべきである。
 
 従って、下記のようなコードは書くべきではない。
@@ -5734,9 +5734,9 @@ constなlvalueリファレンスとして扱うべきである。
     f(std::string{});  // f(std::string&&)にはバインドできる
 ```
 
-なお、forwardingリファレンスは、[リファレンスcollapsing](core_lang_spec.md#SS_19_8_6)の一機能としても理解できる。
+なお、forwardingリファレンスは、[リファレンスcollapsing](core_lang_spec.md#SS_15_8_6)の一機能としても理解できる。
 
-### ジェネリックラムダによる関数内での関数テンプレートの定義 <a id="SS_13_7_2"></a>
+### 12.7.2 ジェネリックラムダによる関数内での関数テンプレートの定義 <a id="SS_12_7_2"></a>
 下記のようなクラスとoperator<<があった場合を考える。
 
 ```cpp
@@ -5755,7 +5755,7 @@ constなlvalueリファレンスとして扱うべきである。
     }
 ```
 
-「[Nstd::SafeIndexの開発](template_meta_programming.md#SS_13_4_2)」や「[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_13_4_4)」
+「[Nstd::SafeIndexの開発](template_meta_programming.md#SS_12_4_2)」や「[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_12_4_4)」
 の成果物との組み合わせの単体テストは下記のように書けるだろう。
 
 ```cpp
@@ -5806,10 +5806,10 @@ C++14からは下記のコードで示した通り引数にautoが使えるよ�
     ASSERT_EQ("0/1/2, 3/2/1, 6/5/4, 9/8/7", oss.str());
 ```
 
-この記法は[ジェネリックラムダ](core_lang_spec.md#SS_19_11_6)と呼ばれる。
+この記法は[ジェネリックラムダ](core_lang_spec.md#SS_15_11_6)と呼ばれる。
 この機能により関数の中で関数テンプレートと同等のものが定義できるようになった。
 
-#### ジェネリックラムダの内部構造 <a id="SS_13_7_2_1"></a>
+#### 12.7.2.1 ジェネリックラムダの内部構造 <a id="SS_12_7_2_1"></a>
 ジェネリックラムダは下記のように使用することができる。
 
 ```cpp
@@ -5865,7 +5865,7 @@ C++14からは下記のコードで示した通り引数にautoが使えるよ�
     ASSERT_EQ("1\n2.71\nhehe\n", oss.str());
 ```
 
-#### std::variantとジェネリックラムダ <a id="SS_13_7_2_2"></a>
+#### 12.7.2.2 std::variantとジェネリックラムダ <a id="SS_12_7_2_2"></a>
 unionは、オブジェクトを全く無関係な複数の型に切り替えることができるため、
 これが必要な場面では有用な機能であるが、未定義動作を誘発してしまう問題がある。
 この対策としてC++17で導入されたものが、std::variantである。
@@ -6066,7 +6066,7 @@ std::variant、上に示した関数テンプレート、ジェネリックラ�
     ASSERT_EQ('C', ret);
 ```
 
-ここで示した関数テンプレートは、デザインパターン[Visitor](design_pattern.md#SS_9_2_5)の例であり、
+ここで示した関数テンプレートは、デザインパターン[Visitor](design_pattern.md#SS_8_2_5)の例であり、
 ほぼこれと同様のものがstd::visitとして定義されている。
 
 ```cpp
@@ -6085,13 +6085,13 @@ std::variant、上に示した関数テンプレート、ジェネリックラ�
     ASSERT_EQ('C', ret);
 ```
 
-### クラステンプレートと継承の再帰構造 <a id="SS_13_7_3"></a>
+### 12.7.3 クラステンプレートと継承の再帰構造 <a id="SS_12_7_3"></a>
 クラステンプレートと継承の再帰構造はCRTPと呼ばれる。
 このコードパターンについては、
-「[CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_21_1_5)」で説明している。
+「[CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_17_1_5)」で説明している。
 
 
-### 意図しないname lookupの防止 <a id="SS_13_7_4"></a>
+### 12.7.4 意図しないname lookupの防止 <a id="SS_12_7_4"></a>
 下記のようにクラスや関数テンプレートが定義されている場合を考える。
 
 ```cpp
@@ -6147,7 +6147,7 @@ std::variant、上に示した関数テンプレート、ジェネリックラ�
 ```
 
 が名前空間Appの指定なしでコンパイルできる理由は、
-[ADL](core_lang_spec.md#SS_19_12_5)(実引数依存探索)により、Appもis_equalの[name lookup](core_lang_spec.md#SS_19_12_2)の対象になるからである。
+[ADL](core_lang_spec.md#SS_15_12_5)(実引数依存探索)により、Appもis_equalの[name lookup](core_lang_spec.md#SS_15_12_2)の対象になるからである。
 これは便利な機能であるが、その副作用として意図しないname
 lookupによるバグの混入を起こしてしまうことがある。
 
@@ -6204,13 +6204,13 @@ lookupによるバグの混入を起こしてしまうことがある。
 
 こういったname lookup、特にADLの問題に対処する方法は、
 
-* [ジェネリックすぎるテンプレートを書かない](template_meta_programming.md#SS_13_7_4_1)
-* [ADLが本当に必要でない限り名前を修飾する](template_meta_programming.md#SS_13_7_4_2)
-* [ADL Firewallを使う](template_meta_programming.md#SS_13_7_4_3)
+* [ジェネリックすぎるテンプレートを書かない](template_meta_programming.md#SS_12_7_4_1)
+* [ADLが本当に必要でない限り名前を修飾する](template_meta_programming.md#SS_12_7_4_2)
+* [ADL Firewallを使う](template_meta_programming.md#SS_12_7_4_3)
 
 のようにいくつか考えられる。これらについて以下で説明を行う。
 
-#### ジェネリックすぎるテンプレートを書かない <a id="SS_13_7_4_1"></a>
+#### 12.7.4.1 ジェネリックすぎるテンプレートを書かない <a id="SS_12_7_4_1"></a>
 ここでの「ジェネリックすぎるテンプレート」とは、
 シンタックス的には適用範囲が広いにもかかわらず、セマンティクス的な適用範囲は限られているものを指す。
 従って下記のような関数テンプレートを指す概念ではない。
@@ -6258,7 +6258,7 @@ lookupによるバグの混入を起こしてしまうことがある。
 ```
 
 ジェネリックなis_equalが必要であれば下記単体テストのように
-[ジェネリックラムダによる関数内での関数テンプレートの定義](template_meta_programming.md#SS_13_7_2)を行えばよい。
+[ジェネリックラムダによる関数内での関数テンプレートの定義](template_meta_programming.md#SS_12_7_2)を行えばよい。
 こうすることでその適用範囲はそれを定義した関数内に留まる。
 
 ```cpp
@@ -6283,16 +6283,16 @@ lookupによるバグの混入を起こしてしまうことがある。
 * テンプレートを使わない
 * 適用範囲の広いテンプレート(ジェネリック)に対してはアクセスできる箇所を局所化する
 
-といった方法の他にも、「[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_13_4_4)」で示した
+といった方法の他にも、「[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_12_4_4)」で示した
 
-* [std::enable_if](stdlib_and_concepts.md#SS_20_2_5)や[コンセプト](core_lang_spec.md#SS_19_11_3)等を使用してテンプレートに適用できる型を制約する
+* [std::enable_if](stdlib_and_concepts.md#SS_16_2_5)や[コンセプト](core_lang_spec.md#SS_15_11_3)等を使用してテンプレートに適用できる型を制約する
 
 ことも考えられる。
 ベストな方法は状況に大きく依存するため一概には決められない。
 その状況でのもっとも単純は方法を選ぶべきだろう(が、何が単純かも一概に決めることは難しい)。
 
 
-#### ADLが本当に必要でない限り名前を修飾する <a id="SS_13_7_4_2"></a>
+#### 12.7.4.2 ADLが本当に必要でない限り名前を修飾する <a id="SS_12_7_4_2"></a>
 下記のコードについて考える。
 
 ```cpp
@@ -6322,7 +6322,7 @@ lookupによるバグの混入を起こしてしまうことがある。
 
 基底クラスのメンバ関数を呼び出す場合は、T::f()、もしくは、this->f()と書く必要があるため、
 下記コードで呼び出した関数fは外部関数fの呼び出しになる
-([two phase name lookup](core_lang_spec.md#SS_19_12_3)の一回目のname lookupでfがバインドされるため)。
+([two phase name lookup](core_lang_spec.md#SS_15_12_3)の一回目のname lookupでfがバインドされるため)。
 
 ```cpp
     //  example/template_cpp17/suppress_adl_ut.cpp 197
@@ -6369,17 +6369,17 @@ ExecFのテンプレートパラメータにはクラスAしか使われない�
 ```
 
 こういった場合に備え単体テストを実行すべきなのだが、この程度の問題はコンパイルで検出したい。
-[ADL](core_lang_spec.md#SS_19_12_5)や[two phase name lookup](core_lang_spec.md#SS_19_12_3)が絡む場合ならなおさらである。
+[ADL](core_lang_spec.md#SS_15_12_5)や[two phase name lookup](core_lang_spec.md#SS_15_12_3)が絡む場合ならなおさらである。
 
-こういう意図しない[name lookup](core_lang_spec.md#SS_19_12_2)に備えるためには、
+こういう意図しない[name lookup](core_lang_spec.md#SS_15_12_2)に備えるためには、
 修飾されていない識別子を使わないこと、つまり、
 識別子には、名前空間、クラス名、this->等による修飾を施すことが重要である。
 
-ただし、「[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_13_4_4)」で示したコード等にはADLが欠かせないため、
+ただし、「[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_12_4_4)」で示したコード等にはADLが欠かせないため、
 修飾することをルール化することはできない。場合に合わせた運用が唯一の解となる。
 
 
-#### ADL Firewallを使う <a id="SS_13_7_4_3"></a>
+#### 12.7.4.3 ADL Firewallを使う <a id="SS_12_7_4_3"></a>
 下記のコードについて考える。
 
 ```cpp
@@ -6415,7 +6415,7 @@ ExecFのテンプレートパラメータにはクラスAしか使われない�
     }  // namespace App
 ```
 
-上記のApp::ToStringは「[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_13_4_4)」のコードを使用し、
+上記のApp::ToStringは「[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_12_4_4)」のコードを使用し、
 std::vectorオブジェクトをstd::stringに変換する。
 
 これに対しての単体テストは下記のようになる。
@@ -6458,7 +6458,7 @@ std::vectorオブジェクトをstd::stringに変換する。
 これが意図通りなら問題ないが、
 ここでは「新たに追加した関数テンプレートApp::operator<<はstd::vector\<App::XY>用ではなかった」
 としよう。その場合、これは意図しないADLによるバグの混入となる。
-「[ジェネリックすぎるテンプレートを書かない](template_meta_programming.md#SS_13_7_4_1)」
+「[ジェネリックすぎるテンプレートを書かない](template_meta_programming.md#SS_12_7_4_1)」
 で述べたように追加した関数テンプレートの適用範囲が広すぎることが原因であるが、
 XY型から生成されたオブジェクト(std::vector\<App::XY>も含む)によるADLのため、
 Appの宣言がname lookupの対象になったことにも原因がある。
@@ -6489,7 +6489,7 @@ Appの宣言がname lookupの対象になったことにも原因がある。
     }  // namespace App
 ```
 
-XY型オブジェクトを引数にした関数呼び出しによる[関連名前空間](core_lang_spec.md#SS_19_12_6)は、
+XY型オブジェクトを引数にした関数呼び出しによる[関連名前空間](core_lang_spec.md#SS_15_12_6)は、
 極小なApp::XY_Firewall\_であるため、意図しないADLは起こりづらく、起こっても発見しやすい。
 また、XY型用operator<<もApp::XY_Firewall\_で定義し、
 App内でusing XYを宣言したことで、これまで通りApp::XYが使える。
@@ -6497,8 +6497,8 @@ App内でusing XYを宣言したことで、これまで通りApp::XYが使え�
 このようなテクニックをADL firewallと呼ぶ。
 
 
-### Nstd::Type2Strの開発 <a id="SS_13_7_5"></a>
-「[Nstdライブラリの開発](template_meta_programming.md#SS_13_2)」等で行ったメタ関数の実装は、
+### 12.7.5 Nstd::Type2Strの開発 <a id="SS_12_7_5"></a>
+「[Nstdライブラリの開発](template_meta_programming.md#SS_12_2)」等で行ったメタ関数の実装は、
 
 * 入り組んだ<>や()の対応漏れ
 * &や&&のつけ忘れ
@@ -6506,11 +6506,11 @@ App内でusing XYを宣言したことで、これまで通りApp::XYが使え�
 * メタ関数メンバー::valueや::typeの漏れ
 
 等によるコンパイルエラーとの戦いである。
-また、これをクリアしても[two phase name lookup](core_lang_spec.md#SS_19_12_3)や[ADL](core_lang_spec.md#SS_19_12_5)が次の関門になる。
+また、これをクリアしても[two phase name lookup](core_lang_spec.md#SS_15_12_3)や[ADL](core_lang_spec.md#SS_15_12_5)が次の関門になる。
 これには、デバッガのステップ実行が強力な武器となるが、
 型を文字列に変換する関数があればこれもまた強力な武器となる。
 
-以下に示すNstd::Type2Strは、「[Nstdライブラリの開発](template_meta_programming.md#SS_13_2)」等で実際に使用したそのような関数である。
+以下に示すNstd::Type2Strは、「[Nstdライブラリの開発](template_meta_programming.md#SS_12_2)」等で実際に使用したそのような関数である。
 
 ```cpp
     //  essential/h/nstd_type2str.h 9
@@ -6560,7 +6560,7 @@ typeid::name()が返す文字列リテラルは引数の型の文字列表現を
 マングリングされているためヒューマンリーダブルではない。
 それをデマングルするのがabi::\_\_cxa\_demangleであるが、
 残念なことにこの関数は非標準であるため、
-それを使っているNstd::Inner\_::demangleは[g++](cpp_idioms.md#SS_21_15_1)/[clang++](cpp_idioms.md#SS_21_15_2)
+それを使っているNstd::Inner\_::demangleは[g++](cpp_idioms.md#SS_17_15_1)/[clang++](cpp_idioms.md#SS_17_15_2)
 でなければコンパイルできないだろう。
 
 それを除けば、
@@ -6596,7 +6596,7 @@ typeid::name()が返す文字列リテラルは引数の型の文字列表現を
     ASSERT_EQ("int (&) [3]", Nstd::Type2Str<decltype(r)>());
 ```
 
-### 静的な文字列オブジェクト <a id="SS_13_7_6"></a>
+### 12.7.6 静的な文字列オブジェクト <a id="SS_12_7_6"></a>
 std::stringは文字列を扱うことにおいて、非常に有益なクラスではあるが、
 コンパイル時に文字列が決定できる場合でも、動的にメモリを確保する。
 
@@ -6647,7 +6647,7 @@ std::stringは文字列を扱うことにおいて、非常に有益なクラス
 
 このような問題を回避するために、ここでは静的に文字列を扱うためのクラスStaticStringを開発する。
 
-#### StaticStringのヘルパークラスの開発 <a id="SS_13_7_6_1"></a>
+#### 12.7.6.1 StaticStringのヘルパークラスの開発 <a id="SS_12_7_6_1"></a>
 StaticStringオブジェクトは、char配列をメンバとして持つが、
 コンパイル時に解決できる配列の初期化にはパラメータパックが利用できる。
 そのパラメータパック生成クラスを下記のように定義する。
@@ -6733,7 +6733,7 @@ StaticStringオブジェクトは、char配列をメンバとして持つが、
 上記とほぼ同様のクラステンプレートstd::index_sequence、std::make_index_sequenceが、
 utilityで定義されているため、以下ではこれらを使用する。
 
-#### StaticStringの開発 <a id="SS_13_7_6_2"></a>
+#### 12.7.6.2 StaticStringの開発 <a id="SS_12_7_6_2"></a>
 StaticStringはすでに示したテクニックを使い、下記のように定義できる。
 
 ```cpp
@@ -6931,7 +6931,7 @@ StaticStringはすでに示したテクニックを使い、下記のように�
     static_assert("1234" != StaticString{"123"});
 ```
 
-[暗黙の型変換](core_lang_spec.md#SS_19_6_2_2)を利用した文字列リテラルからStaticStringオブジェクトへの変換は、
+[暗黙の型変換](core_lang_spec.md#SS_15_6_2_2)を利用した文字列リテラルからStaticStringオブジェクトへの変換は、
 StaticStringがテンプレートであるため機能せず、上記のように書く必要がある。
 
 同様にoperator + を追加する。
@@ -7023,7 +7023,7 @@ StaticStringがテンプレートであるため機能せず、上記のよう�
     ASSERT_EQ(ss2 + ss8, ss);  // 元に戻す。+、= が使用される。
 ```
 
-#### 整数をStaticStringに変換する関数の開発 <a id="SS_13_7_6_3"></a>
+#### 12.7.6.3 整数をStaticStringに変換する関数の開発 <a id="SS_12_7_6_3"></a>
 コンパイル時に__LINE__をStaticStringに変換できれば、
 ファイル位置をStaticStringで表現できるため、
 ここではその変換関数Int2StaticString\<>()の実装を行う。
@@ -7097,8 +7097,8 @@ Int2StaticString\<>()が得られる。
     ASSERT_EQ(std::to_string(line_num), ns.String());
 ```
 
-#### ファイル位置を静的に保持したエクセプションクラスの開発 <a id="SS_13_7_6_4"></a>
-「[静的な文字列オブジェクト](template_meta_programming.md#SS_13_7_6)」で見たように、
+#### 12.7.6.4 ファイル位置を静的に保持したエクセプションクラスの開発 <a id="SS_12_7_6_4"></a>
+「[静的な文字列オブジェクト](template_meta_programming.md#SS_12_7_6)」で見たように、
 ファイル位置を動的に保持するエクセプションクラスは使い勝手が悪い。
 ここでは、その問題を解決するためのExceptionクラスの実装を示す。
 
@@ -7215,7 +7215,7 @@ Exceptionクラスの利便性をさらに高めるため、下記の定義を�
     ASSERT_TRUE(caught);
 ```
 
-### 関数型をテンプレートパラメータで使う <a id="SS_13_7_7"></a>
+### 12.7.7 関数型をテンプレートパラメータで使う <a id="SS_12_7_7"></a>
 ここで使う「関数型」とは、
 
 * 関数へのポインタの型
@@ -7345,7 +7345,7 @@ std::unique_ptrの第2パラメータに関数型オブジェクトの型(std::f
 第1パラメータのポインタを引数に取る関数型であれば指定できる。
 
 このようなテンプレートパラメータを持つクラステンプレートの実装例を示すため、
-「[RAII(scoped guard)](cpp_idioms.md#SS_21_1_3)でも示したScopedGuardの実装を下記する。
+「[RAII(scoped guard)](cpp_idioms.md#SS_17_1_3)でも示したScopedGuardの実装を下記する。
 
 やや意外だが、このようなテンプレートパラメータに特別な記法はなく、以下のようにすれば良い。
 
@@ -7545,56 +7545,56 @@ C++17からサポートされた「クラステンプレートのテンプレー
 このような便利なテンプレートは、Nstdのようなライブラリで定義、宣言し、
 ソースコード全域からアクセスできるようにするとプロジェクトの開発効率が少しだけ高まる。
 
-[演習-関数型のテンプレートパラメータを持つクラステンプレート](exercise_q.md#SS_22_11_15)  
+[演習-関数型のテンプレートパラメータを持つクラステンプレート](exercise_q.md#SS_18_11_15)  
 
-## 注意点まとめ <a id="SS_13_8"></a>
+## 12.8 注意点まとめ <a id="SS_12_8"></a>
 本章では、テンプレートメタプログラミングのテクニックや注意点について解説したが、
 本章の情報量は多く、また他の章で行ったものもあるため以下にそれらをまとめる。
 
-* [name lookup](core_lang_spec.md#SS_19_12_2)には複雑なルールが適用されるため、非直感的なバインドが行われる場合がある。
+* [name lookup](core_lang_spec.md#SS_15_12_2)には複雑なルールが適用されるため、非直感的なバインドが行われる場合がある。
   従って、テンプレートライブラリの開発には単体テストは必須である。
 
-* 使用しているコンパイラが[two phase name lookup](core_lang_spec.md#SS_19_12_3)をサポートしているか否かに気を付ける。
+* 使用しているコンパイラが[two phase name lookup](core_lang_spec.md#SS_15_12_3)をサポートしているか否かに気を付ける。
   それがオプションである場合は、two phase name lookupを活性化させる。
 
 * 関数型マクロはそれ以外に実装方法がない時のみに使用する
-  (「[関数型マクロ](programming_convention.md#SS_3_6_1)」参照)
+  (「[関数型マクロ](programming_convention.md#SS_2_6_1)」参照)
   。
 
-* 可変長引数を持つ関数の実装には[パラメータパック](core_lang_spec.md#SS_19_11_4)を使う。
+* 可変長引数を持つ関数の実装には[パラメータパック](core_lang_spec.md#SS_15_11_4)を使う。
 
 * 処理速度や関数のリターンの型に影響する場合があるため、
-  パラメータパックの処理の順番に気を付ける(「[前から演算するパラメータパック](template_meta_programming.md#SS_13_1_3_2)」参照)。
+  パラメータパックの処理の順番に気を付ける(「[前から演算するパラメータパック](template_meta_programming.md#SS_12_1_3_2)」参照)。
 
-* [ADL](core_lang_spec.md#SS_19_12_5)を利用しない場合、テンプレートで使う識別子は名前空間名やthis->等で修飾する
-  (「[意図しないname lookupの防止](template_meta_programming.md#SS_13_7_4)」参照)。
+* [ADL](core_lang_spec.md#SS_15_12_5)を利用しない場合、テンプレートで使う識別子は名前空間名やthis->等で修飾する
+  (「[意図しないname lookupの防止](template_meta_programming.md#SS_12_7_4)」参照)。
 
 * テンプレートのインターフェースではないが、実装の都合上ヘッダファイルに記述する定義は、
   "namespace Inner\_"を使用し、非公開であることを明示する。
   また、"namespace Inner\_"で宣言、定義されている宣言、定義は単体テストを除き、
-  外部から参照しない(「[is_void_sfinae_f](template_meta_programming.md#SS_13_3_1_3)の実装」参照)。
+  外部から参照しない(「[is_void_sfinae_f](template_meta_programming.md#SS_12_3_1_3)の実装」参照)。
 
-* [forwardingリファレンス](core_lang_spec.md#SS_19_8_3)の実際の型がlvalueリファレンスであるならば、
+* [forwardingリファレンス](core_lang_spec.md#SS_15_8_3)の実際の型がlvalueリファレンスであるならば、
   constなlvalueリファレンスとして扱う
   。
 
 * ユニバーサルリファレンス引数を他の関数に渡すのであれば、std::forwardを使う
-  (「[forwardingリファレンス](core_lang_spec.md#SS_19_8_3)」、「[forwardingリファレンスとstd::forward](template_meta_programming.md#SS_13_7_1)」参照)。
+  (「[forwardingリファレンス](core_lang_spec.md#SS_15_8_3)」、「[forwardingリファレンスとstd::forward](template_meta_programming.md#SS_12_7_1)」参照)。
 
 * 関数テンプレートとその特殊化はソースコード上なるべく近い位置で定義する
-  (「[two phase name lookup](core_lang_spec.md#SS_19_12_3)」参照)。
+  (「[two phase name lookup](core_lang_spec.md#SS_15_12_3)」参照)。
 
-* [two phase name lookup](core_lang_spec.md#SS_19_12_3)により意図しない副作用が発生する可能性があるため、
+* [two phase name lookup](core_lang_spec.md#SS_15_12_3)により意図しない副作用が発生する可能性があるため、
   STLが特殊化を想定しているstd::hash等を除き、STLの拡張は行わない。
 
 * ユーザが定義するテンプレートは適切に定義された名前空間内で定義する
-  (「[スコープの定義と原則](programming_convention.md#SS_3_8_1)」参照)
+  (「[スコープの定義と原則](programming_convention.md#SS_2_8_1)」参照)
   。
 
 * 型とその2項演算子オーバーロードは同じ名前空間で定義する
-  (「[two phase name lookup](core_lang_spec.md#SS_19_12_3)」参照)。
+  (「[two phase name lookup](core_lang_spec.md#SS_15_12_3)」参照)。
 
-* 関数テンプレートのオーバーロードと特殊化の[name lookup](core_lang_spec.md#SS_19_12_2)の優先度に気を付ける。
+* 関数テンプレートのオーバーロードと特殊化の[name lookup](core_lang_spec.md#SS_15_12_2)の優先度に気を付ける。
   オーバーロードのベストマッチ選択後に特殊化された関数テンプレートがname lookupの対象になるため、
   下記コードが示すように直感に反する関数が選択される場合がある。
 
@@ -7624,23 +7624,22 @@ C++17からサポートされた「クラステンプレートのテンプレー
 ```
 
 * forwardingリファレンスを持つ関数テンプレートをオーバーロードしない。
-  「[forwardingリファレンスとstd::forward](template_meta_programming.md#SS_13_7_1)」で述べたように、
+  「[forwardingリファレンスとstd::forward](template_meta_programming.md#SS_12_7_1)」で述べたように、
   forwardingリファレンスはオーバーロードするためのものではなく、
   lvalue、rvalue両方を受け取ることができる関数テンプレートを、
   オーバーロードを使わずに実現するための記法である。
 
 * テンプレートに関数型オブジェクトを渡す場合、リファレンスの付け忘れに気を付ける
-  (「[関数型をテンプレートパラメータで使う](template_meta_programming.md#SS_13_7_7)」
-  、「[現象6 - STLのバグ?](debug.md#SS_15_9_6)」
+  (「[関数型をテンプレートパラメータで使う](template_meta_programming.md#SS_12_7_7)」
   参照)。
 
 * 意図しないテンプレートパラメータによるインスタンス化の防止や、
   コンパイルエラーを解読しやすくするために、適切にstatic_assert使うことは重要であるが、
-  static_assertによるテンプレートパラメータの制約よりも、[コンセプト](core_lang_spec.md#SS_19_11_3)による制約を優先する。
+  static_assertによるテンプレートパラメータの制約よりも、[コンセプト](core_lang_spec.md#SS_15_11_3)による制約を優先する。
 
 * ランタイム時の処理を削減する、static_assertを適切に用いる等の目的のために、
   関数テンプレートには適切にconstexprを付けて宣言する
-  (「[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_13_4_4)」
+  (「[コンテナ用Nstd::operator\<\<の開発](template_meta_programming.md#SS_12_4_4)」
   参照)。
 
 

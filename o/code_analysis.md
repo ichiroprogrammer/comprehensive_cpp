@@ -1,10 +1,10 @@
 <!-- ./md/code_analysis.md -->
-# コード解析 <a id="SS_4"></a>
+# 3 コード解析 <a id="SS_3"></a>
 本ドキュメントでは、ソースコードの品質を向上するために下記のような様々な方法を推奨する。
 
-* [自動単体テスト](process_and_infra.md#SS_11_2_1) 
-* [自動統合テスト](process_and_infra.md#SS_11_2_3)
-* [コードインスペクション](process_and_infra.md#SS_11_2_5_1_2)
+* [自動単体テスト](process_and_infra.md#SS_10_2_1) 
+* [自動統合テスト](process_and_infra.md#SS_10_2_3)
+* [コードインスペクション](process_and_infra.md#SS_10_2_5_1_2)
 * ツールによるコード解析
 
 ツールによるコード解析(以下、単にコード解析と呼ぶ)とは、
@@ -23,19 +23,19 @@ ___
 
 __この章の構成__
 
-[コンパイラによる静的解析](code_analysis.md#SS_4_1)  
-[scan-buildによる静的解析](code_analysis.md#SS_4_2)  
-[cppcheck静的解析](code_analysis.md#SS_4_3)  
-[sanitizerによる動的解析](code_analysis.md#SS_4_4)  
-[まとめ](code_analysis.md#SS_4_5)  
+3.1 [コンパイラによる静的解析](code_analysis.md#SS_3_1)  
+3.2 [scan-buildによる静的解析](code_analysis.md#SS_3_2)  
+3.3 [cppcheck静的解析](code_analysis.md#SS_3_3)  
+3.4 [sanitizerによる動的解析](code_analysis.md#SS_3_4)  
+3.5 [まとめ](code_analysis.md#SS_3_5)  
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+[インデックス](seminer_intro.md#SS_1_2)に戻る。  
 
 ___
 
-## コンパイラによる静的解析 <a id="SS_4_1"></a>
+## 3.1 コンパイラによる静的解析 <a id="SS_3_1"></a>
 コンパイラによる静的解析とは、コンパイラの警告出力を使用する解析である。
 静的解析の中で最も手軽に実施することができるが、
 意外なほど多くのソフトウェア開発でおざなりにされている。
@@ -43,15 +43,15 @@ ___
 多くのコンパイラでは警告をエラーとして扱うオプションが用意されているため、
 それをオンにしたビルドをすることで、多くのバグやバグの元となり得るコードを排除できる。
 
-### g++の警告機能 <a id="SS_4_1_1"></a>
+### 3.1.1 g++の警告機能 <a id="SS_3_1_1"></a>
 本ドキュメントのサンプルコードは、
-以下のような[g++](cpp_idioms.md#SS_21_15_1)/[clang++](cpp_idioms.md#SS_21_15_2)の警告機能を使用してビルドを行っている。
+以下のような[g++](cpp_idioms.md#SS_17_15_1)/[clang++](cpp_idioms.md#SS_17_15_2)の警告機能を使用してビルドを行っている。
 
 ```Makefile
     -Werror -Wall -Wextra -Weffc++
 ```
 
-また、[演習](exercise_q.md#SS_22)で使用するコードに関しては、あえて問題のあるコードを記述するため、
+また、[演習](exercise_q.md#SS_18)で使用するコードに関しては、あえて問題のあるコードを記述するため、
 下記のようなオプションを使用し一部の警告を抑止している。
 
 ```Makefile
@@ -80,7 +80,7 @@ ___
 
 上記コードでは、int32_tであるxとuint32_tであるyを比較することにより、xがuin32_tに型変換されるため、
 数学的には自明な x < y が成立しない。
-「[整数型](programming_convention.md#SS_3_1_1_1)」で述べたルールに違反したために発生する問題であるが、
+「[整数型](programming_convention.md#SS_2_1_1_1)」で述べたルールに違反したために発生する問題であるが、
 その検出はg++により下記のように行うことができる。
 
 ```cpp
@@ -94,8 +94,8 @@ ___
           |             ~~^~~
 ```
 
-次のコードは、[Pimpl](cpp_idioms.md#SS_21_2_1)パターンの誤った実装よってメモリリークを引き起こす
-(「[delete](programming_convention.md#SS_3_5_6_2)」参照)。
+次のコードは、[Pimpl](cpp_idioms.md#SS_17_2_1)パターンの誤った実装よってメモリリークを引き起こす
+(「[delete](programming_convention.md#SS_2_5_6_2)」参照)。
 
 ```cpp
     //  example/code_analysis/code_analysis.cpp 46
@@ -147,7 +147,7 @@ ___
           |           ^~~~~~~~~
 ```
 
-また、「[move処理](programming_convention.md#SS_3_9_4)」
+また、「[move処理](programming_convention.md#SS_2_9_4)」
 で触れたようなパフォーマンスに悪影響のある下記のようなコードに対しても、
 g++は適切な指摘をすることができる。
 
@@ -178,9 +178,9 @@ g++は適切な指摘をすることができる。
     code_analysis.cpp:82:21: note: remove ‘std::move’ call
 ```
 
-### clang++の警告機能 <a id="SS_4_1_2"></a>
+### 3.1.2 clang++の警告機能 <a id="SS_3_1_2"></a>
 clang++にもg++と同様の優れた警告機能が備わっているが、それらは実装が異なるため、
-下記のような混乱を引き起こすコードに対して(「[オーバーライド](programming_convention.md#SS_3_2_4_7)」参照)、
+下記のような混乱を引き起こすコードに対して(「[オーバーライド](programming_convention.md#SS_2_2_4_7)」参照)、
 clang++は、g++ができない問題点の指摘を行うことができる。
 
 ```cpp
@@ -218,7 +218,7 @@ clang++は、g++ができない問題点の指摘を行うことができる。
 
 こういった問題があるため、両コンパイラによるコンパイルを薦める。
 
-## scan-buildによる静的解析 <a id="SS_4_2"></a>
+## 3.2 scan-buildによる静的解析 <a id="SS_3_2"></a>
 scan-buildはclang++をベースにした静的解析ツールであり、
 コンパイラの警告機能では指摘できないバグやバグの元となり得るコードを指摘できる。
 
@@ -247,8 +247,8 @@ scan-buildはclang++をベースにした静的解析ツールであり、
 ```
 
 上記クラスIllegalShallowCopyは、オブジェクトをnewにより生成し、そのポインタをメンバ変数として持つ。
-このようなクラスに対しては[ディープコピー](cpp_idioms.md#SS_21_12_2)を実装するか、
-オブジェクトのコピーを禁止すべきであることは、「[コンストラクタ](programming_convention.md#SS_3_2_4_2)」で述べた通りである。
+このようなクラスに対しては[ディープコピー](cpp_idioms.md#SS_17_12_2)を実装するか、
+オブジェクトのコピーを禁止すべきであることは、「[コンストラクタ](programming_convention.md#SS_2_2_4_2)」で述べた通りである。
 
 こういったコードに対して、g++/clang++はその問題を発見できないが、
 scan-buildは下記のように適切な指摘を行うことができる。
@@ -262,7 +262,7 @@ scan-buildは下記のように適切な指摘を行うことができる。
 ```
 
 次に示すのは、
-「[RAII(scoped guard)](cpp_idioms.md#SS_21_1_3)」に従わなかったために発生した潜在的バグを含んだコードである。
+「[RAII(scoped guard)](cpp_idioms.md#SS_17_1_3)」に従わなかったために発生した潜在的バグを含んだコードである。
 
 ```cpp
     //  example/code_analysis/code_analysis.cpp 138
@@ -294,7 +294,7 @@ C++でのソフトウェア開発における必須アイテムの一つであ�
 
 	    > scan-build make
 
-## cppcheck静的解析 <a id="SS_4_3"></a>
+## 3.3 cppcheck静的解析 <a id="SS_3_3"></a>
 cppcheckはscan-buildと同様な静的解析ツールであり、
 コンパイラの警告機能では指摘できないバグやバグの元となり得るコードを指摘できる。
 
@@ -343,7 +343,7 @@ C++でのソフトウェア開発における必須アイテムの一つであ�
         > bear make --always-make       # compile_commands.jsonの生成
         > cppcheck --project=compile_commands.json 2> cppcheck_bugs.txt
 
-## sanitizerによる動的解析 <a id="SS_4_4"></a>
+## 3.4 sanitizerによる動的解析 <a id="SS_3_4"></a>
 本ドキュメントで扱うsanitizerとは、無償で利用できるC/C++動的解析ツールである。
 sanitizerオプションをオンにしたg++/clang++でテスト対象をビルドし、
 生成された実行形式バイナリを駆動することで使用することができる。
@@ -386,7 +386,7 @@ sanitizerオプションをオンにしたg++/clang++でテスト対象をビル
     }
 ```
 
-上記コードは、「[継承/派生](programming_convention.md#SS_3_2_6)」で説明した内容(基底クラスのデストラクタはvirtual)に反するため、
+上記コードは、「[継承/派生](programming_convention.md#SS_2_2_6)」で説明した内容(基底クラスのデストラクタはvirtual)に反するため、
 メモリ管理にstd::unique_ptr<>を使用しているにもかかわらずメモリリークを引き起こす。
 g++/clang++/scan-build/cppcheckはこの問題を指摘できないが、
 sanitizerは以下のような出力によりメモリリークを指摘することができる。
@@ -457,17 +457,17 @@ sanitizerは以上に示した通り極めて優れたバグ検出能力を持�
 このためプログラミングの最中に行われる動作確認や手作業でのシステムテスト(特に組み込みソフトウェア)
 に用いる実行形式バイナリにsanitizerを適用することは難しい。
 
-従って、[CI(継続的インテグレーション)](process_and_infra.md#SS_11_2_5)の一環で行われる
-[自動単体テスト](process_and_infra.md#SS_11_2_1)や[自動統合テスト](process_and_infra.md#SS_11_2_3)でのsanitizerの使用を薦める。
+従って、[CI(継続的インテグレーション)](process_and_infra.md#SS_10_2_5)の一環で行われる
+[自動単体テスト](process_and_infra.md#SS_10_2_1)や[自動統合テスト](process_and_infra.md#SS_10_2_3)でのsanitizerの使用を薦める。
 
 
-## まとめ <a id="SS_4_5"></a>
+## 3.5 まとめ <a id="SS_3_5"></a>
 以上で述べてきたようにコード解析ツールにはそれぞれ得手不得手があり、完璧なものは存在しないため、
 これらを組み合わせてコード品質の向上に努める必要があるが、
 これらの実施が各プログラマによって個別に行われるのであれば、
 コンパイル時間の増大等による新たなロスが発生する。
 
-上記や「[CI項目の例](process_and_infra.md#SS_11_2_5_5)」で述べたように自動化によって、こういったロスを回避しつつ、
+上記や「[CI項目の例](process_and_infra.md#SS_10_2_5_5)」で述べたように自動化によって、こういったロスを回避しつつ、
 様々なコード解析ツールを組み合わせて使用することが効率的なプロセスの要件となる。
 
 

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>C++ 中級/上級セミナー(V20.01)</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+    body {
+        margin: 0 auto;
+        max-width: none;
+        width: 1000px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        hyphens: auto;
+        overflow-wrap: break-word;
+        text-rendering: optimizeLegibility;
+        font-kerning: normal;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 2px solid black;
+    }
+
+    header {
+        margin-bottom: 4em;
+        text-align: center;
+        color: white;
+        background-color: lightblue;
+    }
+
+    h1:not(:first-of-type) {
+        page-break-before: always;
+    }
+
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">C++ 中級/上級セミナー(V20.01)</h1>
+<p class="author">autor:ichiro.inoue@exmotion</p>
+</header>
+<!-- ./md/seminer_intro.md -->
+<h1 id="イントロダクション">1 イントロダクション <a id="SS_1"></a></h1>
+<p>本ドキュメントは、C++でのプログラミング、デザイン、ソフトウェア開発におけるプロセス、
+ワークフロー等を解説するセミナーのテキストである。</p>
+<h2 id="ドキュメントの緒注意">1.1 ドキュメントの緒注意
+<a id="SS_1_1"></a></h2>
+<p><strong>技術用語の用法</strong></p>
+<ul>
+<li>参照
+<ul>
+<li>「～を参照する」というような文脈で使われる<strong>「参照」</strong>はそのまま使用する。</li>
+<li>C++での参照型を表す<strong>参照</strong>は使わず、代わりに<strong>「リファレンス」</strong>を使用する。</li>
+</ul></li>
+<li>例外
+<ul>
+<li>「～の場合は例外である」というような文脈で使われる<strong>「例外」</strong>はそのまま使用する。</li>
+<li>C++でthrowすると発生する事象を表す<strong>例外</strong>は使わず、代わりに<strong>「エクセプション」</strong>を使用する。</li>
+</ul></li>
+<li>classとクラス
+<ul>
+<li><strong>class</strong>はC++のキーワードとして使用する。</li>
+<li><strong>クラス</strong>は上記以外で使用する。</li>
+</ul></li>
+<li>プログラミングとコーディング、ソースコードとコード、インスタンスとオブジェクト、に関しては同義語として使用する。</li>
+</ul>
+<p><strong>コード例について</strong></p>
+<p>次章以降では、ソースコードを使って説明を行う場合がある。このような場合の注意点を述べる。</p>
+<ul>
+<li>「<code>// ...</code>」のような行は、ソースコードの省略を表す。</li>
+<li>特定の規則、法則、慣習等を説明するためのソースコードは、シンプルさを優先するため、
+その他の規則、法則、慣習に従っていない場合があるが、 <a
+href="cpp_idioms.html#SS_17_11_4">Trailing
+Underscore(末尾アンダースコア)</a>には従っている。
+また、一般に標準ライブラリのコンテナクラスをnewする必要はないが、
+コードの動作を示すためにあえてそのようにする場合がある。</li>
+<li>ソースコード内に動作説明のような本来不要なコメントがあるのは、
+読者にその意味を知らせるためであるため、製品コードのコメントをこのようにするべきではない。</li>
+<li>例示したコードの動作の確認、明示のために <a
+href="http://opencv.jp/googletestdocs/primer.html">google
+test(gtest)</a>のアサーション(下表)を使用する。</li>
+</ul>
+<p><strong>google test_のアサーションの簡単な説明</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">アサーションマクロ</th>
+<th style="text-align: left;">意味</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ASSERT_TRUE(x)</td>
+<td style="text-align: left;">xがtrue</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ASSERT_FALSE(x)</td>
+<td style="text-align: left;">xがfalse</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ASSERT_EQ(x, y)</td>
+<td style="text-align: left;">(x == y)がtrue</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ASSERT_NE(x, y)</td>
+<td style="text-align: left;">(x != y)がtrue</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ASSERT_GE(x, y)</td>
+<td style="text-align: left;">(x &gt;= y)がtrue</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ASSERT_GT(x, y)</td>
+<td style="text-align: left;">(x &gt; y)がtrue</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ASSERT_LE(x, y)</td>
+<td style="text-align: left;">(x &lt;= y)がtrue</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ASSERT_LT(x, y)</td>
+<td style="text-align: left;">(x &lt; y)がtrue</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ASSERT_STREQ(x, y)</td>
+<td style="text-align: left;">(std::string(x) ==
+std::string(y))がtrue</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ASSERT_DEATH(x, y)</td>
+<td style="text-align: left;">xを実行するとアボートすればtrue</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ASSERT_THROW(x, y)</td>
+<td style="text-align: left;">xを実行するとy例外が発生すればtrue</td>
+</tr>
+</tbody>
+</table>
+<h2 id="インデックス">1.2 インデックス <a id="SS_1_2"></a></h2>
+<hr />
+<p><strong>中級セミナー</strong></p>
+<ul>
+<li><a href="programming_convention.html#SS_2">プログラミング規約</a></li>
+<li><a href="coding_style.html#SS_4">コーディングスタイル</a></li>
+<li><a href="naming_practice.html#SS_5">命名規則</a></li>
+<li><a href="comment.html#SS_6">コメント</a></li>
+<li><a href="cpp_improve.html#SS_14">C++の進化と主な変更点</a></li>
+</ul>
+<p><strong>上級セミナー</strong></p>
+<ul>
+<li><a href="architecture.html#SS_9">アーキテクチャ</a></li>
+<li><a href="solid.html#SS_7">SOLID</a></li>
+<li><a href="design_pattern.html#SS_8">デザインパターン</a></li>
+</ul>
+<p><strong>演習</strong></p>
+<ul>
+<li><a href="exercise_q.html#SS_18">演習</a></li>
+<li><a href="exercise_a.html#SS_19">解答</a></li>
+</ul>
+<p><strong>Appendix</strong></p>
+<ul>
+<li><a href="code_analysis.html#SS_3">コード解析</a></li>
+<li><a href="process_and_infra.html#SS_10">開発プロセスとインフラ</a></li>
+<li><a href="core_lang_spec.html#SS_15">C++コア言語仕様</a></li>
+<li><a
+href="stdlib_and_concepts.html#SS_16">標準ライブラリとプログラミングの概念</a></li>
+<li><a href="cpp_idioms.html#SS_17">C++慣用語句</a></li>
+<li><a href="concurrency.html#SS_11">並行処理</a></li>
+<li><a
+href="template_meta_programming.html#SS_12">テンプレートメタプログラミング</a></li>
+<li><a
+href="dynamic_memory_allocation.html#SS_13">ダイナミックメモリアロケーション</a></li>
+<li><a href="bibliography.html#SS_20">参考文献</a></li>
+</ul>
+<hr />
+</body>
+</html>

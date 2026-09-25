@@ -1,97 +1,97 @@
 <!-- essential/md/stdlib_and_concepts.md -->
-# 標準ライブラリとプログラミングの概念 <a id="SS_20"></a>
+# 16 標準ライブラリとプログラミングの概念 <a id="SS_16"></a>
 この章では、C++標準ライブラリやそれによって導入されたプログラミングの概念等の紹介を行う。
 
 ___
 
 __この章の構成__
 
-[ユーティリティ](stdlib_and_concepts.md#SS_20_1)  
-&emsp;[std::move](stdlib_and_concepts.md#SS_20_1_1)  
-&emsp;[std::forward](stdlib_and_concepts.md#SS_20_1_2)  
+16.1 [ユーティリティ](stdlib_and_concepts.md#SS_16_1)  
+&emsp;16.1.1 [std::move](stdlib_and_concepts.md#SS_16_1_1)  
+&emsp;16.1.2 [std::forward](stdlib_and_concepts.md#SS_16_1_2)  
 
-[type_traits](stdlib_and_concepts.md#SS_20_2)  
-&emsp;[std::integral_constant](stdlib_and_concepts.md#SS_20_2_1)  
-&emsp;[std::true_type](stdlib_and_concepts.md#SS_20_2_2)  
-&emsp;[std::false_type](stdlib_and_concepts.md#SS_20_2_3)  
-&emsp;[std::is_same](stdlib_and_concepts.md#SS_20_2_4)  
-&emsp;[std::enable_if](stdlib_and_concepts.md#SS_20_2_5)  
-&emsp;[std::conditional](stdlib_and_concepts.md#SS_20_2_6)  
-&emsp;[std::is_void](stdlib_and_concepts.md#SS_20_2_7)  
-&emsp;[std::is_copy_assignable](stdlib_and_concepts.md#SS_20_2_8)  
-&emsp;[std::is_move_assignable](stdlib_and_concepts.md#SS_20_2_9)  
+16.2 [type_traits](stdlib_and_concepts.md#SS_16_2)  
+&emsp;16.2.1 [std::integral_constant](stdlib_and_concepts.md#SS_16_2_1)  
+&emsp;16.2.2 [std::true_type](stdlib_and_concepts.md#SS_16_2_2)  
+&emsp;16.2.3 [std::false_type](stdlib_and_concepts.md#SS_16_2_3)  
+&emsp;16.2.4 [std::is_same](stdlib_and_concepts.md#SS_16_2_4)  
+&emsp;16.2.5 [std::enable_if](stdlib_and_concepts.md#SS_16_2_5)  
+&emsp;16.2.6 [std::conditional](stdlib_and_concepts.md#SS_16_2_6)  
+&emsp;16.2.7 [std::is_void](stdlib_and_concepts.md#SS_16_2_7)  
+&emsp;16.2.8 [std::is_copy_assignable](stdlib_and_concepts.md#SS_16_2_8)  
+&emsp;16.2.9 [std::is_move_assignable](stdlib_and_concepts.md#SS_16_2_9)  
 
-[標準エクセプションクラス](stdlib_and_concepts.md#SS_20_3)  
-&emsp;[std::exception](stdlib_and_concepts.md#SS_20_3_1)  
+16.3 [標準エクセプションクラス](stdlib_and_concepts.md#SS_16_3)  
+&emsp;16.3.1 [std::exception](stdlib_and_concepts.md#SS_16_3_1)  
 
-[並列処理](stdlib_and_concepts.md#SS_20_4)  
-&emsp;[std::thread](stdlib_and_concepts.md#SS_20_4_1)  
-&emsp;[std::mutex](stdlib_and_concepts.md#SS_20_4_2)  
-&emsp;[std::atomic](stdlib_and_concepts.md#SS_20_4_3)  
-&emsp;[std::condition_variable](stdlib_and_concepts.md#SS_20_4_4)  
+16.4 [並列処理](stdlib_and_concepts.md#SS_16_4)  
+&emsp;16.4.1 [std::thread](stdlib_and_concepts.md#SS_16_4_1)  
+&emsp;16.4.2 [std::mutex](stdlib_and_concepts.md#SS_16_4_2)  
+&emsp;16.4.3 [std::atomic](stdlib_and_concepts.md#SS_16_4_3)  
+&emsp;16.4.4 [std::condition_variable](stdlib_and_concepts.md#SS_16_4_4)  
 
-[ロック所有ラッパー](stdlib_and_concepts.md#SS_20_5)  
-&emsp;[std::lock_guard](stdlib_and_concepts.md#SS_20_5_1)  
-&emsp;[std::unique_lock](stdlib_and_concepts.md#SS_20_5_2)  
-&emsp;[std::scoped_lock](stdlib_and_concepts.md#SS_20_5_3)  
+16.5 [ロック所有ラッパー](stdlib_and_concepts.md#SS_16_5)  
+&emsp;16.5.1 [std::lock_guard](stdlib_and_concepts.md#SS_16_5_1)  
+&emsp;16.5.2 [std::unique_lock](stdlib_and_concepts.md#SS_16_5_2)  
+&emsp;16.5.3 [std::scoped_lock](stdlib_and_concepts.md#SS_16_5_3)  
 
-[スマートポインタ](stdlib_and_concepts.md#SS_20_6)  
-&emsp;[std::unique_ptr](stdlib_and_concepts.md#SS_20_6_1)  
-&emsp;&emsp;[std::make_unique](stdlib_and_concepts.md#SS_20_6_1_1)  
+16.6 [スマートポインタ](stdlib_and_concepts.md#SS_16_6)  
+&emsp;16.6.1 [std::unique_ptr](stdlib_and_concepts.md#SS_16_6_1)  
+&emsp;&emsp;16.6.1.1 [std::make_unique](stdlib_and_concepts.md#SS_16_6_1_1)  
 
-&emsp;[std::shared_ptr](stdlib_and_concepts.md#SS_20_6_2)  
-&emsp;&emsp;[std::make_shared](stdlib_and_concepts.md#SS_20_6_2_1)  
-&emsp;&emsp;[std::enable_shared_from_this](stdlib_and_concepts.md#SS_20_6_2_2)  
+&emsp;16.6.2 [std::shared_ptr](stdlib_and_concepts.md#SS_16_6_2)  
+&emsp;&emsp;16.6.2.1 [std::make_shared](stdlib_and_concepts.md#SS_16_6_2_1)  
+&emsp;&emsp;16.6.2.2 [std::enable_shared_from_this](stdlib_and_concepts.md#SS_16_6_2_2)  
 
-&emsp;[std::weak_ptr](stdlib_and_concepts.md#SS_20_6_3)  
-&emsp;[std::auto_ptr](stdlib_and_concepts.md#SS_20_6_4)  
+&emsp;16.6.3 [std::weak_ptr](stdlib_and_concepts.md#SS_16_6_3)  
+&emsp;16.6.4 [std::auto_ptr](stdlib_and_concepts.md#SS_16_6_4)  
 
-[Polymorphic Memory Resource(pmr)](stdlib_and_concepts.md#SS_20_7)  
-&emsp;[std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_7_1)  
-&emsp;[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_20_7_2)  
-&emsp;[pool_resource](stdlib_and_concepts.md#SS_20_7_3)  
+16.7 [Polymorphic Memory Resource(pmr)](stdlib_and_concepts.md#SS_16_7)  
+&emsp;16.7.1 [std::pmr::memory_resource](stdlib_and_concepts.md#SS_16_7_1)  
+&emsp;16.7.2 [std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_16_7_2)  
+&emsp;16.7.3 [pool_resource](stdlib_and_concepts.md#SS_16_7_3)  
 
-[コンテナ](stdlib_and_concepts.md#SS_20_8)  
-&emsp;[シーケンスコンテナ(Sequence Containers)](stdlib_and_concepts.md#SS_20_8_1)  
-&emsp;&emsp;[std::forward_list](stdlib_and_concepts.md#SS_20_8_1_1)  
+16.8 [コンテナ](stdlib_and_concepts.md#SS_16_8)  
+&emsp;16.8.1 [シーケンスコンテナ(Sequence Containers)](stdlib_and_concepts.md#SS_16_8_1)  
+&emsp;&emsp;16.8.1.1 [std::forward_list](stdlib_and_concepts.md#SS_16_8_1_1)  
 
-&emsp;[連想コンテナ(Associative Containers)](stdlib_and_concepts.md#SS_20_8_2)  
-&emsp;[無順序連想コンテナ(Unordered Associative Containers)](stdlib_and_concepts.md#SS_20_8_3)  
-&emsp;&emsp;[std::unordered_set](stdlib_and_concepts.md#SS_20_8_3_1)  
-&emsp;&emsp;[std::unordered_map](stdlib_and_concepts.md#SS_20_8_3_2)  
-&emsp;&emsp;[std::type_index](stdlib_and_concepts.md#SS_20_8_3_3)  
+&emsp;16.8.2 [連想コンテナ(Associative Containers)](stdlib_and_concepts.md#SS_16_8_2)  
+&emsp;16.8.3 [無順序連想コンテナ(Unordered Associative Containers)](stdlib_and_concepts.md#SS_16_8_3)  
+&emsp;&emsp;16.8.3.1 [std::unordered_set](stdlib_and_concepts.md#SS_16_8_3_1)  
+&emsp;&emsp;16.8.3.2 [std::unordered_map](stdlib_and_concepts.md#SS_16_8_3_2)  
+&emsp;&emsp;16.8.3.3 [std::type_index](stdlib_and_concepts.md#SS_16_8_3_3)  
 
-&emsp;[コンテナアダプタ(Container Adapters)](stdlib_and_concepts.md#SS_20_8_4)  
-&emsp;[特殊なコンテナ](stdlib_and_concepts.md#SS_20_8_5)  
+&emsp;16.8.4 [コンテナアダプタ(Container Adapters)](stdlib_and_concepts.md#SS_16_8_4)  
+&emsp;16.8.5 [特殊なコンテナ](stdlib_and_concepts.md#SS_16_8_5)  
 
-[std::optional](stdlib_and_concepts.md#SS_20_9)  
-&emsp;[戻り値の無効表現](stdlib_and_concepts.md#SS_20_9_1)  
-&emsp;[オブジェクトの遅延初期化](stdlib_and_concepts.md#SS_20_9_2)  
+16.9 [std::optional](stdlib_and_concepts.md#SS_16_9)  
+&emsp;16.9.1 [戻り値の無効表現](stdlib_and_concepts.md#SS_16_9_1)  
+&emsp;16.9.2 [オブジェクトの遅延初期化](stdlib_and_concepts.md#SS_16_9_2)  
 
-[std::variant](stdlib_and_concepts.md#SS_20_10)  
-[オブジェクトの比較](stdlib_and_concepts.md#SS_20_11)  
-&emsp;[std::rel_ops](stdlib_and_concepts.md#SS_20_11_1)  
-&emsp;[std::tuppleを使用した比較演算子の実装方法](stdlib_and_concepts.md#SS_20_11_2)  
+16.10 [std::variant](stdlib_and_concepts.md#SS_16_10)  
+16.11 [オブジェクトの比較](stdlib_and_concepts.md#SS_16_11)  
+&emsp;16.11.1 [std::rel_ops](stdlib_and_concepts.md#SS_16_11_1)  
+&emsp;16.11.2 [std::tuppleを使用した比較演算子の実装方法](stdlib_and_concepts.md#SS_16_11_2)  
 
-[その他](stdlib_and_concepts.md#SS_20_12)  
-&emsp;[SSO(Small String Optimization)](stdlib_and_concepts.md#SS_20_12_1)  
-&emsp;[heap allocation elision](stdlib_and_concepts.md#SS_20_12_2)  
+16.12 [その他](stdlib_and_concepts.md#SS_16_12)  
+&emsp;16.12.1 [SSO(Small String Optimization)](stdlib_and_concepts.md#SS_16_12_1)  
+&emsp;16.12.2 [heap allocation elision](stdlib_and_concepts.md#SS_16_12_2)  
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+[インデックス](seminer_intro.md#SS_1_2)に戻る。  
 
 ___
 
 
-## ユーティリティ <a id="SS_20_1"></a>
-### std::move <a id="SS_20_1_1"></a>
-std::moveは引数を[rvalueリファレンス](core_lang_spec.md#SS_19_8_2)に変換する関数テンプレートである。
+## 16.1 ユーティリティ <a id="SS_16_1"></a>
+### 16.1.1 std::move <a id="SS_16_1_1"></a>
+std::moveは引数を[rvalueリファレンス](core_lang_spec.md#SS_15_8_2)に変換する関数テンプレートである。
 
 |引数                 |std::moveの動作                                    |
 |---------------------|---------------------------------------------------|
-|非const [lvalue](core_lang_spec.md#SS_19_7_1_1)|引数を[rvalueリファレンス](core_lang_spec.md#SS_19_8_2)にキャストする      |
-|const [lvalue](core_lang_spec.md#SS_19_7_1_1)  |引数をconst [rvalueリファレンス](core_lang_spec.md#SS_19_8_2)にキャストする|
+|非const [lvalue](core_lang_spec.md#SS_15_7_1_1)|引数を[rvalueリファレンス](core_lang_spec.md#SS_15_8_2)にキャストする      |
+|const [lvalue](core_lang_spec.md#SS_15_7_1_1)  |引数をconst [rvalueリファレンス](core_lang_spec.md#SS_15_8_2)にキャストする|
 
 この表の動作仕様を下記ののコードで示す。
 
@@ -118,36 +118,36 @@ std::moveは引数を[rvalueリファレンス](core_lang_spec.md#SS_19_8_2)に�
 
 std::moveは以下の２つの概念ときわめて密接に関連しており、
 
-* [rvalueリファレンス](core_lang_spec.md#SS_19_8_2)
-* [moveセマンティクス](cpp_idioms.md#SS_21_5_3)
+* [rvalueリファレンス](core_lang_spec.md#SS_15_8_2)
+* [moveセマンティクス](cpp_idioms.md#SS_17_5_3)
 
 これら3つが組み合わさることで、不要なコピーを避けた高効率なリソース管理が実現される。
 
-### std::forward <a id="SS_20_1_2"></a>
+### 16.1.2 std::forward <a id="SS_16_1_2"></a>
 std::forwardは、下記の２つの概念を実現するための関数テンプレートである。
 
-* [forwardingリファレンス](core_lang_spec.md#SS_19_8_3)
-* [perfect forwarding](core_lang_spec.md#SS_19_8_5)
+* [forwardingリファレンス](core_lang_spec.md#SS_15_8_3)
+* [perfect forwarding](core_lang_spec.md#SS_15_8_5)
 
 std::forwardを適切に使用することで、引数の値カテゴリを保持したまま転送でき、
 move可能なオブジェクトの不要なコピーを避けることができる。
 
-## type_traits <a id="SS_20_2"></a>
+## 16.2 type_traits <a id="SS_16_2"></a>
 type_traitsは、型に関する情報をコンパイル時に取得・変換するためのメタ関数群で、
 型特性の判定や型操作を静的に行うために用いられる。
 
 以下に代表的なものをいくつか説明する。
 
-- [std::integral_constant](stdlib_and_concepts.md#SS_20_2_1)
-- [std::true_type](stdlib_and_concepts.md#SS_20_2_2)/[std::false_type](stdlib_and_concepts.md#SS_20_2_3)
-- [std::is_same](stdlib_and_concepts.md#SS_20_2_4)
-- [std::enable_if](stdlib_and_concepts.md#SS_20_2_5)
-- [std::conditional](stdlib_and_concepts.md#SS_20_2_6)
-- [std::is_void](stdlib_and_concepts.md#SS_20_2_7)
-- [std::is_copy_assignable](stdlib_and_concepts.md#SS_20_2_8)
-- [std::is_move_assignable](stdlib_and_concepts.md#SS_20_2_9)
+- [std::integral_constant](stdlib_and_concepts.md#SS_16_2_1)
+- [std::true_type](stdlib_and_concepts.md#SS_16_2_2)/[std::false_type](stdlib_and_concepts.md#SS_16_2_3)
+- [std::is_same](stdlib_and_concepts.md#SS_16_2_4)
+- [std::enable_if](stdlib_and_concepts.md#SS_16_2_5)
+- [std::conditional](stdlib_and_concepts.md#SS_16_2_6)
+- [std::is_void](stdlib_and_concepts.md#SS_16_2_7)
+- [std::is_copy_assignable](stdlib_and_concepts.md#SS_16_2_8)
+- [std::is_move_assignable](stdlib_and_concepts.md#SS_16_2_9)
 
-### std::integral_constant <a id="SS_20_2_1"></a>
+### 16.2.1 std::integral_constant <a id="SS_16_2_1"></a>
 std::integral_constantは「テンプレートパラメータとして与えられた型とその定数から新たな型を定義する」
 クラステンプレートである。
 
@@ -173,11 +173,11 @@ std::integral_constantは「テンプレートパラメータとして与えら�
 また、すでに示したようにstd::true_type/std::false_typeを実装するためのクラステンプレートでもある。
 
 
-### std::true_type <a id="SS_20_2_2"></a>
-`std::true_type`(と`std::false_type`)は真/偽を返す標準ライブラリの[メタ関数](core_lang_spec.md#SS_19_11_2)群の戻り型となる型エイリアスであるため、
+### 16.2.2 std::true_type <a id="SS_16_2_2"></a>
+`std::true_type`(と`std::false_type`)は真/偽を返す標準ライブラリの[メタ関数](core_lang_spec.md#SS_15_11_2)群の戻り型となる型エイリアスであるため、
 最も使われるテンプレートの一つである。
 
-これらは、下記で確かめられる通り、後述する[std::integral_constant](stdlib_and_concepts.md#SS_20_2_1)を使い定義されている。
+これらは、下記で確かめられる通り、後述する[std::integral_constant](stdlib_and_concepts.md#SS_16_2_1)を使い定義されている。
 
 ```cpp
     //  example/stdlib_and_concepts/type_traits_ut.cpp 32
@@ -235,10 +235,10 @@ true/falseのメタ関数版と考えれば、追々理解できるだろう。
 IsCovertibleToIntの呼び出しをdecltypeのオペランドにすることで、
 std::true_typeかstd::false_typeを受け取ることができる。
 
-### std::false_type <a id="SS_20_2_3"></a>
-[std::true_type](stdlib_and_concepts.md#SS_20_2_2)を参照せよ。
+### 16.2.3 std::false_type <a id="SS_16_2_3"></a>
+[std::true_type](stdlib_and_concepts.md#SS_16_2_2)を参照せよ。
 
-### std::is_same <a id="SS_20_2_4"></a>
+### 16.2.4 std::is_same <a id="SS_16_2_4"></a>
 
 すでに上記の例でも使用したが、std::is_sameは2つのテンプレートパラメータが
 
@@ -298,7 +298,7 @@ std::is_base_ofを使うことで下記のようにstd::is_sameの基底クラ�
     static_assert(std::is_base_of_v<std::false_type, std::is_same<int, char>>);
 ```
 
-### std::enable_if <a id="SS_20_2_5"></a>
+### 16.2.5 std::enable_if <a id="SS_16_2_5"></a>
 std::enable_ifは、bool値である第1テンプレートパラメータが
 
 * trueである場合、型である第2テンプレートパラメータをメンバ型typeとして宣言する。
@@ -336,8 +336,8 @@ std::enable_ifの使用例を下記に示す。
 
 実装例から明らかなように
 
-* std::enable_if\<true>::typeは[well-formed](core_lang_spec.md#SS_19_14_2)
-* std::enable_if\<false>::typeは[ill-formed](core_lang_spec.md#SS_19_14_1)
+* std::enable_if\<true>::typeは[well-formed](core_lang_spec.md#SS_15_14_2)
+* std::enable_if\<false>::typeは[ill-formed](core_lang_spec.md#SS_15_14_1)
 
 となるため、下記のコードはコンパイルできない。
 
@@ -349,11 +349,11 @@ std::enable_ifの使用例を下記に示す。
     static_assert(std::is_same_v<int, std::enable_if_t<false, int>>);
 ```
 
-std::enable_ifのこの特性と後述する[SFINAE](core_lang_spec.md#SS_19_11_1)により、
+std::enable_ifのこの特性と後述する[SFINAE](core_lang_spec.md#SS_15_11_1)により、
 様々な静的ディスパッチを行うことができる。
 
 
-### std::conditional <a id="SS_20_2_6"></a>
+### 16.2.6 std::conditional <a id="SS_16_2_6"></a>
 
 std::conditionalは、bool値である第1テンプレートパラメータが
 
@@ -393,7 +393,7 @@ std::conditionalの使用例を下記に示す。
     static_assert(std::is_same_v<char, std::conditional_t<false, int, char>>);
 ```
 
-### std::is_void <a id="SS_20_2_7"></a>
+### 16.2.7 std::is_void <a id="SS_16_2_7"></a>
 std::is_voidはテンプレートパラメータの型が
 
 * voidである場合、std::true_type
@@ -411,22 +411,22 @@ std::is_voidはテンプレートパラメータの型が
     static_assert(!std::is_void<std::string>::value);
 ```
 
-### std::is_copy_assignable <a id="SS_20_2_8"></a>
+### 16.2.8 std::is_copy_assignable <a id="SS_16_2_8"></a>
 std::is_copy_assignableはテンプレートパラメータの型(T)がcopy代入可能かを調べる。
-Tが[CopyAssignable要件](cpp_idioms.md#SS_21_5_5)を満たすためには`std::is_copy_assignable<T>`がtrueでなければならないが、
+Tが[CopyAssignable要件](cpp_idioms.md#SS_17_5_5)を満たすためには`std::is_copy_assignable<T>`がtrueでなければならないが、
 その逆が成立するとは限らない。
 
 
-### std::is_move_assignable <a id="SS_20_2_9"></a>
+### 16.2.9 std::is_move_assignable <a id="SS_16_2_9"></a>
 std::is_move_assignableはテンプレートパラメータの型(T)がmove代入可能かを調べる。
-Tが[MoveAssignable要件](cpp_idioms.md#SS_21_5_4)を満たすためには`std::is_move_assignable<T>`がtrueでなければならないが、
+Tが[MoveAssignable要件](cpp_idioms.md#SS_17_5_4)を満たすためには`std::is_move_assignable<T>`がtrueでなければならないが、
 その逆が成立するとは限らない。
 
 
-## 標準エクセプションクラス <a id="SS_20_3"></a>
+## 16.3 標準エクセプションクラス <a id="SS_16_3"></a>
 C++標準ライブラリは、`<exception>`と`<stdexcept>`定義される標準エクセプションクラスを提供する。
 
-### std::exception <a id="SS_20_3_1"></a>
+### 16.3.1 std::exception <a id="SS_16_3_1"></a>
 exceptionクラスは、標準ライブラリが提供する全てのエクセプションクラスの基底クラスである。
 標準ライブラリによって送出されるエクセプションオブジェクトのクラスは全て、このクラスから派生する。
 したがって、標準のエクセプションは全てこのクラスで捕捉できる。
@@ -453,8 +453,8 @@ exceptionクラスは、標準ライブラリが提供する全てのエクセ�
             └── std::underflow_error
 ```
 
-## 並列処理 <a id="SS_20_4"></a>
-### std::thread <a id="SS_20_4_1"></a>
+## 16.4 並列処理 <a id="SS_16_4"></a>
+### 16.4.1 std::thread <a id="SS_16_4_1"></a>
 クラスthread は、新しい実行のスレッドの作成/待機/その他を行う機構を提供する。
 
 ```cpp
@@ -492,7 +492,7 @@ exceptionクラスは、標準ライブラリが提供する全てのエクセ�
     ASSERT_NE(c.count_, expected);
 ```
 
-### std::mutex <a id="SS_20_4_2"></a>
+### 16.4.2 std::mutex <a id="SS_16_4_2"></a>
 mutex は、スレッド間で使用する共有リソースを排他制御するためのクラスである。 
 
 | メンバ関数 | 動作説明                                                                                    |
@@ -502,7 +502,7 @@ mutex は、スレッド間で使用する共有リソースを排他制御す�
 
 
 以下のコード例では、メンバ変数のインクリメントがスレッド間の競合を引き起こす(こういったコード領域を
-[クリティカルセクション](cpp_idioms.md#SS_21_14_5)と呼ぶ)が、std::mutexによりこの問題を回避している。
+[クリティカルセクション](cpp_idioms.md#SS_17_14_5)と呼ぶ)が、std::mutexによりこの問題を回避している。
 
 ```cpp
     //  example/stdlib_and_concepts/thread_ut.cpp 48
@@ -547,12 +547,12 @@ mutex は、スレッド間で使用する共有リソースを排他制御す�
 
 lock()を呼び出した状態で、unlock()を呼び出さなかった場合、デッドロックを引き起こしてしまうため、
 永久に処理が完了しないバグの元となり得る。このような問題を避けるために、
-mutexは通常、[std::lock_guard](stdlib_and_concepts.md#SS_20_5_1)と組み合わせて使われる。
+mutexは通常、[std::lock_guard](stdlib_and_concepts.md#SS_16_5_1)と組み合わせて使われる。
 
-### std::atomic <a id="SS_20_4_3"></a>
+### 16.4.3 std::atomic <a id="SS_16_4_3"></a>
 atomicクラステンプレートは、型Tをアトミック操作するためのものである。
-[組み込み型](core_lang_spec.md#SS_19_1_2)に対する特殊化が提供されており、それぞれに特化した演算が用意されている。
-[std::mutex](stdlib_and_concepts.md#SS_20_4_2)で示したような単純なコードではstd::atomicを使用して下記のように書く方が一般的である。
+[組み込み型](core_lang_spec.md#SS_15_1_2)に対する特殊化が提供されており、それぞれに特化した演算が用意されている。
+[std::mutex](stdlib_and_concepts.md#SS_16_4_2)で示したような単純なコードではstd::atomicを使用して下記のように書く方が一般的である。
 
 ```cpp
     //  example/stdlib_and_concepts/thread_ut.cpp 92
@@ -592,9 +592,9 @@ atomicクラステンプレートは、型Tをアトミック操作するため�
     ASSERT_EQ(c.count_, expected);
 ```
 
-### std::condition_variable <a id="SS_20_4_4"></a>
+### 16.4.4 std::condition_variable <a id="SS_16_4_4"></a>
 condition_variable は、特定のイベントが発生するまでスレッドの待ち合わせを行うためのクラスである。
-最も単純な使用例を以下に示す(「[Spurious Wakeup](cpp_idioms.md#SS_21_14_15)」参照)。
+最も単純な使用例を以下に示す(「[Spurious Wakeup](cpp_idioms.md#SS_17_14_15)」参照)。
 
 ```cpp
     //  example/stdlib_and_concepts/thread_ut.cpp 135
@@ -632,15 +632,15 @@ condition_variable は、特定のイベントが発生するまでスレッド�
     t2.join();
 ```
 
-## ロック所有ラッパー <a id="SS_20_5"></a>
+## 16.5 ロック所有ラッパー <a id="SS_16_5"></a>
 ロック所有ラッパーとはミューテックスのロックおよびアンロックを管理するための以下のクラスを指す。
 
-- [std::lock_guard](stdlib_and_concepts.md#SS_20_5_1)
-- [std::unique_lock](stdlib_and_concepts.md#SS_20_5_2)
-- [std::scoped_lock](stdlib_and_concepts.md#SS_20_5_3)
+- [std::lock_guard](stdlib_and_concepts.md#SS_16_5_1)
+- [std::unique_lock](stdlib_and_concepts.md#SS_16_5_2)
+- [std::scoped_lock](stdlib_and_concepts.md#SS_16_5_3)
 
 
-### std::lock_guard <a id="SS_20_5_1"></a>
+### 16.5.1 std::lock_guard <a id="SS_16_5_1"></a>
 std::lock_guardを使わない問題のあるコードを以下に示す。
 
 ```cpp
@@ -715,7 +715,7 @@ std::lock_guardを使用して、このような問題に対処したコード�
     }  // lockオブジェクトのデストラクタでmtx_.unlock()が呼ばれる
 ```
 
-### std::unique_lock <a id="SS_20_5_2"></a>
+### 16.5.2 std::unique_lock <a id="SS_16_5_2"></a>
 std::unique_lockとは、ミューテックスのロック管理を柔軟に行えるロックオブジェクトである。
 std::lock_guardと異なり、ロックの手動解放や再取得が可能であり、特にcondition_variable::wait()と組み合わせて使用される。
 wait()は内部でロックを一時的に解放し、通知受信後に再取得する。
@@ -723,7 +723,7 @@ wait()は内部でロックを一時的に解放し、通知受信後に再取�
 下記の例では、IntQueue::push()、 IntQueue::pop_ng()、
 IntQueue::pop_ok()の中で行われるIntQueue::q_へのアクセスで発生する競合を回避するためにIntQueue::mtx_を使用する。
 
-下記のコード例では、[std::lock_guard](stdlib_and_concepts.md#SS_20_5_1)の説明で述べたようにmutex::lock()、mutex::unlock()を直接呼び出すのではなく、
+下記のコード例では、[std::lock_guard](stdlib_and_concepts.md#SS_16_5_1)の説明で述べたようにmutex::lock()、mutex::unlock()を直接呼び出すのではなく、
 std::unique_lockやstd::lock_guardによりmutexを使用する。
 
 ```cpp
@@ -808,9 +808,9 @@ std::unique_lockやstd::lock_guardによりmutexを使用する。
     ASSERT_EQ(push_count_max, pop_count);
 ```
 
-一般に条件変数には、[Spurious Wakeup](cpp_idioms.md#SS_21_14_15)という問題があり、std::condition_variableも同様である。
+一般に条件変数には、[Spurious Wakeup](cpp_idioms.md#SS_17_14_15)という問題があり、std::condition_variableも同様である。
 
-上記の抜粋である下記のコード例では[Spurious Wakeup](cpp_idioms.md#SS_21_14_15)の対策が行われていないため、
+上記の抜粋である下記のコード例では[Spurious Wakeup](cpp_idioms.md#SS_17_14_15)の対策が行われていないため、
 意図通り動作しない可能性がある。
 
 ```cpp
@@ -849,7 +849,7 @@ std::unique_lockやstd::lock_guardによりmutexを使用する。
     }
 ```
 
-### std::scoped_lock <a id="SS_20_5_3"></a>
+### 16.5.3 std::scoped_lock <a id="SS_16_5_3"></a>
 std::scoped_lockとは、複数のミューテックスを同時にロックするためのロックオブジェクトである。
 C++17で導入され、デッドロックを回避しながら複数のミューテックスを安全にロックできる。
 
@@ -959,7 +959,7 @@ transfer_ng()がデッドロックを引き起こすシナリオは、以下の�
     }
 ```
 
-## スマートポインタ <a id="SS_20_6"></a>
+## 16.6 スマートポインタ <a id="SS_16_6"></a>
 スマートポインタは、C++標準ライブラリが提供するメモリ管理クラス群を指す。
 生のポインタの代わりに使用され、リソース管理を容易にし、
 メモリリークや二重解放といった問題を防ぐことを目的としている。
@@ -967,40 +967,40 @@ transfer_ng()がデッドロックを引き起こすシナリオは、以下の�
 スマートポインタは通常、所有権とスコープに基づいてメモリの解放を自動的に行う。
 C++標準ライブラリでは、主に以下の3種類のスマートポインタが提供されている。
 
-* [std::unique_ptr](stdlib_and_concepts.md#SS_20_6_1)
-    - [std::make_unique](stdlib_and_concepts.md#SS_20_6_1_1)
-* [std::shared_ptr](stdlib_and_concepts.md#SS_20_6_2)
-    - [std::make_shared](stdlib_and_concepts.md#SS_20_6_2_1)
-    - [std::enable_shared_from_this](stdlib_and_concepts.md#SS_20_6_2_2)
-    - [std::weak_ptr](stdlib_and_concepts.md#SS_20_6_3)
-* [std::auto_ptr](stdlib_and_concepts.md#SS_20_6_4)
+* [std::unique_ptr](stdlib_and_concepts.md#SS_16_6_1)
+    - [std::make_unique](stdlib_and_concepts.md#SS_16_6_1_1)
+* [std::shared_ptr](stdlib_and_concepts.md#SS_16_6_2)
+    - [std::make_shared](stdlib_and_concepts.md#SS_16_6_2_1)
+    - [std::enable_shared_from_this](stdlib_and_concepts.md#SS_16_6_2_2)
+    - [std::weak_ptr](stdlib_and_concepts.md#SS_16_6_3)
+* [std::auto_ptr](stdlib_and_concepts.md#SS_16_6_4)
 
-### std::unique_ptr <a id="SS_20_6_1"></a>
+### 16.6.1 std::unique_ptr <a id="SS_16_6_1"></a>
 std::unique_ptrは、C++11で導入されたスマートポインタの一種であり、std::shared_ptrとは異なり、
-[オブジェクトの排他所有](cpp_idioms.md#SS_21_4_1)を表すために用いられる。所有権は一つのunique_ptrインスタンスに限定され、
+[オブジェクトの排他所有](cpp_idioms.md#SS_17_4_1)を表すために用いられる。所有権は一つのunique_ptrインスタンスに限定され、
 他のポインタと共有することはできない。ムーブ操作によってのみ所有権を移譲でき、
 スコープを抜けると自動的にリソースが解放されるため、メモリ管理の安全性と効率性が向上する。
 
-#### std::make_unique <a id="SS_20_6_1_1"></a>
+#### 16.6.1.1 std::make_unique <a id="SS_16_6_1_1"></a>
 [std::make_unique\<T\>(Args...)](https://cpprefjp.github.io/reference/memory/make_unique.html)は、
 クラスTをダイナミックに生成し、そのポインタを保持するshared_ptrオブジェクトを生成する。
 
-使用例については、「[オブジェクトの排他所有](cpp_idioms.md#SS_21_4_1)」を参照せよ。
+使用例については、「[オブジェクトの排他所有](cpp_idioms.md#SS_17_4_1)」を参照せよ。
 
-### std::shared_ptr <a id="SS_20_6_2"></a>
-std::shared_ptrは、同じくC++11で導入されたスマートポインタであり、[オブジェクトの共有所有](cpp_idioms.md#SS_21_4_2)を表すために用いられる。
+### 16.6.2 std::shared_ptr <a id="SS_16_6_2"></a>
+std::shared_ptrは、同じくC++11で導入されたスマートポインタであり、[オブジェクトの共有所有](cpp_idioms.md#SS_17_4_2)を表すために用いられる。
 複数のshared_ptrインスタンスが同じリソースを参照でき、
 内部の参照カウントによって最後の所有者が破棄された時点でリソースが解放される。
-[std::weak_ptr](stdlib_and_concepts.md#SS_20_6_3)は、shared_ptrと連携して使用されるスマートポインタであり、オブジェクトの非所有参照を表す。
+[std::weak_ptr](stdlib_and_concepts.md#SS_16_6_3)は、shared_ptrと連携して使用されるスマートポインタであり、オブジェクトの非所有参照を表す。
 参照カウントには影響せず、循環参照を防ぐために用いられる。weak_ptrから一時的にshared_ptrを取得するにはlock()を使用する。
 
-#### std::make_shared <a id="SS_20_6_2_1"></a>
+#### 16.6.2.1 std::make_shared <a id="SS_16_6_2_1"></a>
 [std::make_shared\<T\>(Args...)](https://cpprefjp.github.io/reference/memory/make_shared.html)は、
 クラスTをダイナミックに生成し、そのポインタを保持するshared_ptrオブジェクトを生成する。
 
-使用例については、「[オブジェクトの共有所有](cpp_idioms.md#SS_21_4_2)」を参照せよ。
+使用例については、「[オブジェクトの共有所有](cpp_idioms.md#SS_17_4_2)」を参照せよ。
 
-#### std::enable_shared_from_this <a id="SS_20_6_2_2"></a>
+#### 16.6.2.2 std::enable_shared_from_this <a id="SS_16_6_2_2"></a>
 `std::enable_shared_from_this`は、`shared_ptr`で管理されているオブジェクトが、
 自分自身への`shared_ptr`を安全に取得するための仕組みである。
 
@@ -1075,15 +1075,15 @@ shared_ptrのコンストラクタがenable_shared_from_thisの存在を検出�
    std::enable_shared_from_thisを継承したクラスのインスタンスは、必ずstd::make_sharedまたはshared_ptrのコンストラクタで生成する必要がある。
 
 C++17以降では、`weak_from_this()`メソッドも提供されている。これはshared_from_this()と同様の仕組みだが、
-weak_ptrを返すため[オブジェクトの循環所有](cpp_idioms.md#SS_21_4_3)を避けたい場合に有用である。
+weak_ptrを返すため[オブジェクトの循環所有](cpp_idioms.md#SS_17_4_3)を避けたい場合に有用である。
 
-### std::weak_ptr <a id="SS_20_6_3"></a>
+### 16.6.3 std::weak_ptr <a id="SS_16_6_3"></a>
 std::weak_ptrは、スマートポインタの一種である。
 
-std::weak_ptrは参照カウントに影響を与えず、[std::shared_ptr](stdlib_and_concepts.md#SS_20_6_2)とオブジェクトを共有所有するのではなく、
-その`shared_ptr`インスタンスとの関連のみを保持するのため、[オブジェクトの循環所有](cpp_idioms.md#SS_21_4_3)の問題を解決できる。
+std::weak_ptrは参照カウントに影響を与えず、[std::shared_ptr](stdlib_and_concepts.md#SS_16_6_2)とオブジェクトを共有所有するのではなく、
+その`shared_ptr`インスタンスとの関連のみを保持するのため、[オブジェクトの循環所有](cpp_idioms.md#SS_17_4_3)の問題を解決できる。
 
-[オブジェクトの循環所有](cpp_idioms.md#SS_21_4_3)で示した問題のあるクラスの修正版を以下に示す
+[オブジェクトの循環所有](cpp_idioms.md#SS_17_4_3)で示した問題のあるクラスの修正版を以下に示す
 (以下の例では、Xは前のままで、Yのみ修正した)。
 
 ```cpp
@@ -1158,7 +1158,7 @@ Xオブジェクトにアクセスする必要があるときに、
 下記のY::WhoIsWith()関数の内部処理のようにすることで、`std::weak_ptr<X>`オブジェクトから、
 それと紐づいた`std::shared_ptr<X>`オブジェクトを生成できる。
 
-なお、上記コードは[初期化付きif文](core_lang_spec.md#SS_19_9_4_3)を使うことで、
+なお、上記コードは[初期化付きif文](core_lang_spec.md#SS_15_9_4_3)を使うことで、
 生成した`std::shared_ptr<X>`オブジェクトのスコープを最小に留めている。
 
 ```cpp
@@ -1240,16 +1240,16 @@ Xと修正版Yの単体テストによりメモリーリークが修正された
 - 必要に応じて`lock()`でオブジェクトにアクセスできる
 - オブジェクトが既に解放されている場合は`lock()`が空の`shared_ptr`を返すため、安全に処理できる
 
-### std::auto_ptr <a id="SS_20_6_4"></a>
-`std::auto_ptr`はC++11以前に導入された初期のスマートポインタであるが、異常な[copyセマンティクス](cpp_idioms.md#SS_21_5_2)を持つため、
+### 16.6.4 std::auto_ptr <a id="SS_16_6_4"></a>
+`std::auto_ptr`はC++11以前に導入された初期のスマートポインタであるが、異常な[copyセマンティクス](cpp_idioms.md#SS_17_5_2)を持つため、
 多くの誤用を生み出し、C++11から非推奨とされ、C++17から規格から排除された。
 
 
-## Polymorphic Memory Resource(pmr) <a id="SS_20_7"></a>
+## 16.7 Polymorphic Memory Resource(pmr) <a id="SS_16_7"></a>
 Polymorphic Memory Resource(pmr)は、
 動的メモリ管理の柔軟性と効率性を向上させるための、C++17から導入された仕組みである。
 
-[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_20_7_2)はC++17で導入された標準ライブラリのクラスで、
+[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_16_7_2)はC++17で導入された標準ライブラリのクラスで、
 C++のメモリリソース管理を抽象化するための機能を提供する。
 
 例えば、std::vectorは以下のように宣言されていた。
@@ -1286,14 +1286,14 @@ std::pmrは以下のようなメモリ管理のカスタマイズを可能にす
 
 std::pmrの主要なコンポーネントは以下の通りである。
 
-* [std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_7_1)  
-* [std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_20_7_2)  
-* [pool_resource](stdlib_and_concepts.md#SS_20_7_3)
+* [std::pmr::memory_resource](stdlib_and_concepts.md#SS_16_7_1)  
+* [std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_16_7_2)  
+* [pool_resource](stdlib_and_concepts.md#SS_16_7_3)
 
-### std::pmr::memory_resource <a id="SS_20_7_1"></a>
+### 16.7.1 std::pmr::memory_resource <a id="SS_16_7_1"></a>
 std::pmr::memory_resourceは、
 ユーザー定義のメモリリソースをカスタマイズし、
-[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_20_7_2)を通じて利用可能にする[インターフェースクラス](core_lang_spec.md#SS_19_4_11)である。
+[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_16_7_2)を通じて利用可能にする[インターフェースクラス](core_lang_spec.md#SS_15_4_11)である。
 
 std::pmr::memory_resourceから派生した具象クラスの実装を以下に示す。
 
@@ -1403,15 +1403,15 @@ std::pmr::memory_resourceから派生した具象クラスの実装を以下に�
     };
 ```
 
-### std::pmr::polymorphic_allocator <a id="SS_20_7_2"></a>
+### 16.7.2 std::pmr::polymorphic_allocator <a id="SS_16_7_2"></a>
 std::pmr::polymorphic_allocatorはC++17で導入された標準ライブラリのクラスで、
 C++のメモリリソース管理を抽象化するための機能を提供する。
-[std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_7_1)を基盤とし、
+[std::pmr::memory_resource](stdlib_and_concepts.md#SS_16_7_1)を基盤とし、
 コンテナやアルゴリズムにカスタムメモリアロケーション戦略を容易に適用可能にする。
 std::allocatorと異なり、型に依存せず、
 ポリモーフィズムを活用してメモリリソースを切り替えられる点が特徴である。
 
-すでに示したmemory_resource_variable([std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_7_1))の単体テストを以下に示すことにより、
+すでに示したmemory_resource_variable([std::pmr::memory_resource](stdlib_and_concepts.md#SS_16_7_1))の単体テストを以下に示すことにより、
 polymorphic_allocatorの使用例とする。
 
 ```cpp
@@ -1451,8 +1451,8 @@ polymorphic_allocatorの使用例とする。
     ASSERT_GE(max, mrv.get_count());  // 解放後のメモリの回復のテスト
 ```
 
-### pool_resource <a id="SS_20_7_3"></a>
-pool_resourceは[std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_7_1)を基底とする下記の2つの具象クラスである。
+### 16.7.3 pool_resource <a id="SS_16_7_3"></a>
+pool_resourceは[std::pmr::memory_resource](stdlib_and_concepts.md#SS_16_7_1)を基底とする下記の2つの具象クラスである。
 
 * std::pmr::synchronized_pool_resourceは下記のような特徴を持つメモリプールである。
     * 非同期のメモリプールリソース
@@ -1516,17 +1516,17 @@ pool_resourceは[std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_7_1)を
 ```
 
 
-## コンテナ <a id="SS_20_8"></a>
+## 16.8 コンテナ <a id="SS_16_8"></a>
 データを格納し、
 効率的に操作するための汎用的なデータ構造を提供するC++標準ライブラリの下記のようなクラス群である。
 
-* [シーケンスコンテナ(Sequence Containers)](stdlib_and_concepts.md#SS_20_8_1)
+* [シーケンスコンテナ(Sequence Containers)](stdlib_and_concepts.md#SS_16_8_1)
 * [連想コンテナ(Associative Containers)(---)
-* [無順序連想コンテナ(Unordered Associative Containers)](stdlib_and_concepts.md#SS_20_8_3)
-* [コンテナアダプタ(Container Adapters)](stdlib_and_concepts.md#SS_20_8_4)
-* [特殊なコンテナ](stdlib_and_concepts.md#SS_20_8_5)
+* [無順序連想コンテナ(Unordered Associative Containers)](stdlib_and_concepts.md#SS_16_8_3)
+* [コンテナアダプタ(Container Adapters)](stdlib_and_concepts.md#SS_16_8_4)
+* [特殊なコンテナ](stdlib_and_concepts.md#SS_16_8_5)
 
-### シーケンスコンテナ(Sequence Containers) <a id="SS_20_8_1"></a>
+### 16.8.1 シーケンスコンテナ(Sequence Containers) <a id="SS_16_8_1"></a>
 データが挿入順に保持され、順序が重要な場合に使用する。
 
 | コンテナ                 | 説明                                                                |
@@ -1534,11 +1534,11 @@ pool_resourceは[std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_7_1)を
 | `std::vector`            | 動的な配列で、ランダムアクセスが高速。末尾への挿入/削除が効率的     |
 | `std::deque`             | 両端に効率的な挿入/削除が可能な動的配列                             |
 | `std::list`              | 双方向リスト。要素の順序を維持し、中間の挿入/削除が効率的           |
-| [std::forward_list](stdlib_and_concepts.md#SS_20_8_1_1) | 単方向リスト。軽量だが、双方向の操作はできない                      |
+| [std::forward_list](stdlib_and_concepts.md#SS_16_8_1_1) | 単方向リスト。軽量だが、双方向の操作はできない                      |
 | `std::array`             | 固定長配列で、サイズがコンパイル時に決まる                          |
 | `std::string`            | 可変長の文字列を管理するクラス(厳密には`std::basic_string`の特殊化) |
 
-#### std::forward_list <a id="SS_20_8_1_1"></a>
+#### 16.8.1.1 std::forward_list <a id="SS_16_8_1_1"></a>
 
 ```cpp
     //  example/stdlib_and_concepts/container_ut.cpp 14
@@ -1556,7 +1556,7 @@ pool_resourceは[std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_7_1)を
     EXPECT_EQ(*++it, 3);
 ```
 
-### 連想コンテナ(Associative Containers) <a id="SS_20_8_2"></a>
+### 16.8.2 連想コンテナ(Associative Containers) <a id="SS_16_8_2"></a>
 データがキーに基づいて自動的にソートされ、検索が高速である。
 
 | コンテナ           | 説明                                             |
@@ -1566,18 +1566,18 @@ pool_resourceは[std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_7_1)を
 | `std::map`         | ソートされたキーと値のペアを保持。キーは一意     |
 | `std::multimap`    | ソートされたキーと値のペアを保持。キーは重複可能 |
 
-### 無順序連想コンテナ(Unordered Associative Containers) <a id="SS_20_8_3"></a>
+### 16.8.3 無順序連想コンテナ(Unordered Associative Containers) <a id="SS_16_8_3"></a>
 ハッシュテーブルを基盤としたコンテナで、順序を保証しないが高速な検索を提供する。
 
 | コンテナ                  | 説明                                                   |
 |---------------------------|--------------------------------------------------------|
-| [std::unordered_set](stdlib_and_concepts.md#SS_20_8_3_1) | ハッシュテーブルベースの集合。重複は許されない         |
+| [std::unordered_set](stdlib_and_concepts.md#SS_16_8_3_1) | ハッシュテーブルベースの集合。重複は許されない         |
 | `std::unordered_multiset` | ハッシュテーブルベースの集合。重複が許される           |
-| [std::unordered_map](stdlib_and_concepts.md#SS_20_8_3_2) | ハッシュテーブルベースのキーと値のペア。キーは一意     |
+| [std::unordered_map](stdlib_and_concepts.md#SS_16_8_3_2) | ハッシュテーブルベースのキーと値のペア。キーは一意     |
 | `std::unordered_multimap` | ハッシュテーブルベースのキーと値のペア。キーは重複可能 |
-| [std::type_index](stdlib_and_concepts.md#SS_20_8_3_3)    | 型情報型を連想コンテナのキーとして使用するためのクラス |
+| [std::type_index](stdlib_and_concepts.md#SS_16_8_3_3)    | 型情報型を連想コンテナのキーとして使用するためのクラス |
 
-#### std::unordered_set <a id="SS_20_8_3_1"></a>
+#### 16.8.3.1 std::unordered_set <a id="SS_16_8_3_1"></a>
 
 ```cpp
     //  example/stdlib_and_concepts/container_ut.cpp 32
@@ -1597,7 +1597,7 @@ pool_resourceは[std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_7_1)を
     EXPECT_EQ(uset.size(), 5);
 ```
 
-#### std::unordered_map <a id="SS_20_8_3_2"></a>
+#### 16.8.3.2 std::unordered_map <a id="SS_16_8_3_2"></a>
 
 ```cpp
     //  example/stdlib_and_concepts/container_ut.cpp 52
@@ -1619,7 +1619,7 @@ pool_resourceは[std::pmr::memory_resource](stdlib_and_concepts.md#SS_20_7_1)を
     EXPECT_EQ(umap.find(4), umap.end());
 ```
 
-#### std::type_index <a id="SS_20_8_3_3"></a>
+#### 16.8.3.3 std::type_index <a id="SS_16_8_3_3"></a>
 std::type_indexはコンテナではないが、
 型情報型を連想コンテナのキーとして使用するためのクラスであるため、この場所に掲載する。
 
@@ -1643,7 +1643,7 @@ std::type_indexはコンテナではないが、
 ```
 
 
-### コンテナアダプタ(Container Adapters) <a id="SS_20_8_4"></a>
+### 16.8.4 コンテナアダプタ(Container Adapters) <a id="SS_16_8_4"></a>
 特定の操作のみを公開するためのラッパーコンテナ。
 
 | コンテナ              | 説明                                     |
@@ -1652,7 +1652,7 @@ std::type_indexはコンテナではないが、
 | `std::queue`          | FIFO(先入れ先出し)操作を提供するアダプタ |
 | `std::priority_queue` | 優先度に基づく操作を提供するアダプタ     |
 
-### 特殊なコンテナ <a id="SS_20_8_5"></a>
+### 16.8.5 特殊なコンテナ <a id="SS_16_8_5"></a>
 上記したようなコンテナとは一線を画すが、特定の用途や目的のために設計された一種のコンテナ。
 
 | コンテナ             | 説明                                                       |
@@ -1661,7 +1661,7 @@ std::type_indexはコンテナではないが、
 | `std::bitset`        | 固定長のビット集合を管理するクラス                         |
 | `std::basic_string`  | カスタム文字型をサポートする文字列コンテナ                 |
 
-## std::optional <a id="SS_20_9"></a>
+## 16.9 std::optional <a id="SS_16_9"></a>
 C++17から導入されたstd::optionalには、以下のような2つの用途がある。
 以下の用途2から、
 このクラスがオブジェクトのダイナミックなメモリアロケーションを行うような印象を受けるが、
@@ -1669,11 +1669,11 @@ C++17から導入されたstd::optionalには、以下のような2つの用途�
 このクラスがオブジェクトのダイナミックな生成が必要になった場合、プレースメントnewを実行する。
 ただし、std::optionalが保持する型自身がnewを実行する場合は、この限りではない。
 
-1. 関数の任意の型の[戻り値の無効表現](stdlib_and_concepts.md#SS_20_9_1)を持たせる
-2. [オブジェクトの遅延初期化](stdlib_and_concepts.md#SS_20_9_2)する(初期化処理が重く、
+1. 関数の任意の型の[戻り値の無効表現](stdlib_and_concepts.md#SS_16_9_1)を持たせる
+2. [オブジェクトの遅延初期化](stdlib_and_concepts.md#SS_16_9_2)する(初期化処理が重く、
    条件によってはそれが無駄になる場合にこの機能を使う)
 
-### 戻り値の無効表現 <a id="SS_20_9_1"></a>
+### 16.9.1 戻り値の無効表現 <a id="SS_16_9_1"></a>
 
 ```cpp
     //  example/stdlib_and_concepts/optional_ut.cpp 11
@@ -1706,7 +1706,7 @@ C++17から導入されたstd::optionalには、以下のような2つの用途�
 ```
 
 
-### オブジェクトの遅延初期化 <a id="SS_20_9_2"></a>
+### 16.9.2 オブジェクトの遅延初期化 <a id="SS_16_9_2"></a>
 
 ```cpp
     //  example/stdlib_and_concepts/optional_ut.cpp 43
@@ -1749,7 +1749,7 @@ C++17から導入されたstd::optionalには、以下のような2つの用途�
 ```
 
 
-## std::variant <a id="SS_20_10"></a>
+## 16.10 std::variant <a id="SS_16_10"></a>
 std::variantは、C++17で導入された型安全なunionである。
 このクラスは複数の型のうち1つの値を保持することができ、
 従来のunionに伴う低レベルな操作の安全性の問題を解消するために設計された。
@@ -1784,7 +1784,7 @@ std::variant自身では、オブジェクトのダイナミックな生成が�
     ASSERT_FLOAT_EQ(std::get<2>(var), 1.0);  // 2番目の型の値を取得
 ```
 
-std::variantとstd::visit([Visitor](design_pattern.md#SS_9_2_5)パターンの実装の一種)を組み合わせた場合の使用例を以下に示す。
+std::variantとstd::visit([Visitor](design_pattern.md#SS_8_2_5)パターンの実装の一種)を組み合わせた場合の使用例を以下に示す。
 
 ```cpp
     //  example/stdlib_and_concepts/variant_ut.cpp 37
@@ -1813,8 +1813,8 @@ std::variantとstd::visit([Visitor](design_pattern.md#SS_9_2_5)パターンの�
 ```
 
 
-## オブジェクトの比較 <a id="SS_20_11"></a>
-### std::rel_ops <a id="SS_20_11_1"></a>
+## 16.11 オブジェクトの比較 <a id="SS_16_11"></a>
+### 16.11.1 std::rel_ops <a id="SS_16_11_1"></a>
 クラスに`operator==`と`operator<`の2つの演算子が定義されていれば、
 それがメンバか否かにかかわらず、他の比較演算子 !=、<=、>、>= はこれらを基に自動的に導出できる。
 std::rel_opsでは`operator==`と`operator<=` を基に他の比較演算子を機械的に生成する仕組みが提供されている。
@@ -1862,11 +1862,11 @@ std::rel_opsでは`operator==`と`operator<=` を基に他の比較演算子を�
     ASSERT_FALSE(a >= b);  // aはb以上ではない
 ```
 
-なお、std::rel_opsはC++20から導入された[<=>演算子](core_lang_spec.md#SS_19_6_4_1)により不要になったため、
+なお、std::rel_opsはC++20から導入された[<=>演算子](core_lang_spec.md#SS_15_6_4_1)により不要になったため、
 非推奨とされた。
 
-### std::tuppleを使用した比較演算子の実装方法 <a id="SS_20_11_2"></a>
-クラスのメンバが多い場合、[==演算子](core_lang_spec.md#SS_19_6_3)で示したような方法は、
+### 16.11.2 std::tuppleを使用した比較演算子の実装方法 <a id="SS_16_11_2"></a>
+クラスのメンバが多い場合、[==演算子](core_lang_spec.md#SS_15_6_3)で示したような方法は、
 可読性、保守性の問題が発生する場合が多い。下記に示す方法はこの問題を幾分緩和する。
 
 ```cpp
@@ -1896,8 +1896,8 @@ std::rel_opsでは`operator==`と`operator<=` を基に他の比較演算子を�
     ASSERT_FALSE(a > b);
 ```
 
-## その他 <a id="SS_20_12"></a>
-### SSO(Small String Optimization) <a id="SS_20_12_1"></a>
+## 16.12 その他 <a id="SS_16_12"></a>
+### 16.12.1 SSO(Small String Optimization) <a id="SS_16_12_1"></a>
 一般にstd::stringで文字列を保持する場合、newしたメモリが使用される。
 64ビット環境であれば、newしたメモリのアドレスを保持する領域は8バイトになる。
 std::stringで保持する文字列が終端の'\0'も含め8バイト以下である場合、
@@ -1906,7 +1906,7 @@ std::stringで保持する文字列が終端の'\0'も含め8バイト以下で�
 
 SOOとはこのような最適化を指す。
 
-### heap allocation elision <a id="SS_20_12_2"></a>
+### 16.12.2 heap allocation elision <a id="SS_16_12_2"></a>
 C++11までの仕様では、new式によるダイナミックメモリアロケーションはコードに書かれた通りに、
 実行されなければならず、ひとまとめにしたり省略したりすることはできなかった。
 つまり、ヒープ割り当てに対する最適化は認められなかった。

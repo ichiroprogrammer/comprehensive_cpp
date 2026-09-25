@@ -36,7 +36,7 @@
     * [Inside-Outの原則](software_practice.md#SS_2_11)
     * [SOLID](software_practice.md#SS_2_12)
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+[インデックス](seminer_intro.md#SS_1_2)に戻る。  
 
 ___
 
@@ -333,7 +333,7 @@ YAGNI(You ain't gonna need it)とは、「機能(要件)は実際に必要とな
 クラスCがstd::string constのように状態が不変で 安定した仕様を持つならば、
 このような多重呼び出しが問題になることは稀である。
 
-従って、当然、以下のような[Fluent Interface](cpp_idioms.md#SS_21_14_12)の使用には問題ない。
+従って、当然、以下のような[Fluent Interface](cpp_idioms.md#SS_20_14_12)の使用には問題ない。
 
 ```cpp
 auto query = QueryBuilder()

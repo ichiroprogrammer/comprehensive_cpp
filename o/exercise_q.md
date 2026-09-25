@@ -1,5 +1,5 @@
 <!-- ./md/exercise_q.md -->
-# 演習 <a id="SS_22"></a>
+# 18 演習 <a id="SS_18"></a>
 
 本章では、これまで解説した内容の復習やより深い理解のために、
 解選択問題とプログラミング記述問題を提供する。
@@ -16,27 +16,27 @@ ___
 
 __この章の構成__
 
-[プログラミング規約(型)](exercise_q.md#SS_22_1)  
-[プログラミング規約(クラス)](exercise_q.md#SS_22_2)  
-[プログラミング規約(関数)](exercise_q.md#SS_22_3)  
-[プログラミング規約(構文)](exercise_q.md#SS_22_4)  
-[プログラミング規約(演算子)](exercise_q.md#SS_22_5)  
-[プログラミング規約(スコープ)](exercise_q.md#SS_22_6)  
-[プログラミング規約(その他)](exercise_q.md#SS_22_7)  
-[SOLID](exercise_q.md#SS_22_8)  
-[デザインパターン](exercise_q.md#SS_22_9)  
-[開発プロセスとインフラ(全般)](exercise_q.md#SS_22_10)  
-[テンプレートメタプログラミング](exercise_q.md#SS_22_11)  
+18.1 [プログラミング規約(型)](exercise_q.md#SS_18_1)  
+18.2 [プログラミング規約(クラス)](exercise_q.md#SS_18_2)  
+18.3 [プログラミング規約(関数)](exercise_q.md#SS_18_3)  
+18.4 [プログラミング規約(構文)](exercise_q.md#SS_18_4)  
+18.5 [プログラミング規約(演算子)](exercise_q.md#SS_18_5)  
+18.6 [プログラミング規約(スコープ)](exercise_q.md#SS_18_6)  
+18.7 [プログラミング規約(その他)](exercise_q.md#SS_18_7)  
+18.8 [SOLID](exercise_q.md#SS_18_8)  
+18.9 [デザインパターン](exercise_q.md#SS_18_9)  
+18.10 [開発プロセスとインフラ(全般)](exercise_q.md#SS_18_10)  
+18.11 [テンプレートメタプログラミング](exercise_q.md#SS_18_11)  
   
   
   
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+[インデックス](seminer_intro.md#SS_1_2)に戻る。  
 
 ___
 
-## プログラミング規約(型) <a id="SS_22_1"></a>
+## 18.1 プログラミング規約(型) <a id="SS_18_1"></a>
 
-### 演習-汎整数型の選択 <a id="SS_22_1_1"></a>
+### 18.1.1 演習-汎整数型の選択 <a id="SS_18_1_1"></a>
 * 問題  
   汎整数型には、特に理由がない限りに、int32\_tを使用するべきであるが、
   値が負にならない場合は、(A)を使用するべきである。  
@@ -48,10 +48,10 @@ ___
     3. uint32_t
     4. uint16_t
 
-* [解答-汎整数型の選択](exercise_a.md#SS_23_1_1)
+* [解答-汎整数型の選択](exercise_a.md#SS_19_1_1)
 
 
-### 演習-汎整数型の演算 <a id="SS_22_1_2"></a>
+### 18.1.2 演習-汎整数型の演算 <a id="SS_18_1_2"></a>
 * 問題
 
 ```cpp
@@ -69,11 +69,11 @@ ___
     }
 ```
 
-* 参照 [算術型](programming_convention.md#SS_3_1_1)
-* [解答例-汎整数型の演算](exercise_a.md#SS_23_1_2)
+* 参照 [算術型](programming_convention.md#SS_2_1_1)
+* [解答例-汎整数型の演算](exercise_a.md#SS_19_1_2)
 
 
-### 演習-浮動小数点型 <a id="SS_22_1_3"></a>
+### 18.1.3 演習-浮動小数点型 <a id="SS_18_1_3"></a>
 * 問題
 
 ```cpp
@@ -92,11 +92,11 @@ ___
     }
 ```
 
-* 参照 [浮動小数点型](programming_convention.md#SS_3_1_1_5)
-* [解答例-浮動小数点型](exercise_a.md#SS_23_1_3)
+* 参照 [浮動小数点型](programming_convention.md#SS_2_1_1_5)
+* [解答例-浮動小数点型](exercise_a.md#SS_19_1_3)
 
 
-### 演習-定数列挙 <a id="SS_22_1_4"></a>
+### 18.1.4 演習-定数列挙 <a id="SS_18_1_4"></a>
 * 問題  
   特に理由がない限り、一連の定数の列挙には(A)を定義して使用する。  
   (A)に相応しいものを下記より選べ。
@@ -107,10 +107,10 @@ ___
     3. 非スコープドenum
     4. スコープドenum
 
-* [解答-定数列挙](exercise_a.md#SS_23_1_4)
+* [解答-定数列挙](exercise_a.md#SS_19_1_4)
 
 
-### 演習-enum <a id="SS_22_1_5"></a>
+### 18.1.5 演習-enum <a id="SS_18_1_5"></a>
 * 問題
 
 ```cpp
@@ -145,11 +145,11 @@ ___
     }
 ```
 
-* 参照 [enum](core_lang_spec.md#SS_19_3_1)
-* [解答例-enum](exercise_a.md#SS_23_1_5)
+* 参照 [enum](core_lang_spec.md#SS_15_3_1)
+* [解答例-enum](exercise_a.md#SS_19_1_5)
 
 
-### 演習-配列の範囲for文 <a id="SS_22_1_6"></a>
+### 18.1.6 演習-配列の範囲for文 <a id="SS_18_1_6"></a>
 * 問題
 
 ```cpp
@@ -177,11 +177,11 @@ ___
     }
 ```
 
-* 参照 [配列](programming_convention.md#SS_3_1_7)
-* [解答例-配列の範囲for文](exercise_a.md#SS_23_1_6)
+* 参照 [配列](programming_convention.md#SS_2_1_7)
+* [解答例-配列の範囲for文](exercise_a.md#SS_19_1_6)
 
 
-### 演習-エイリアス <a id="SS_22_1_7"></a>
+### 18.1.7 演習-エイリアス <a id="SS_18_1_7"></a>
 * 問題
 
 ```cpp
@@ -197,11 +197,11 @@ ___
 
 ```
 
-* 参照 [型エイリアス](programming_convention.md#SS_3_1_8)
-* [解答例-エイリアス](exercise_a.md#SS_23_1_7)
+* 参照 [型エイリアス](programming_convention.md#SS_2_1_8)
+* [解答例-エイリアス](exercise_a.md#SS_19_1_7)
 
 
-### 演習-constの意味 <a id="SS_22_1_8"></a>
+### 18.1.8 演習-constの意味 <a id="SS_18_1_8"></a>
 * 問題  
   初期化後に変更されない変数はconstと宣言すべきであるが、
   以下のコードの2つのconstの意味にふさわしいものを選択せよ。
@@ -216,10 +216,10 @@ ___
     3. 左右ともconstはcountry自体が不変。
     4. 上記のどれでもない。
 
-* [解答-constの意味](exercise_a.md#SS_23_1_8)
+* [解答-constの意味](exercise_a.md#SS_19_1_8)
 
 
-### 演習-const/constexpr <a id="SS_22_1_9"></a>
+### 18.1.9 演習-const/constexpr <a id="SS_18_1_9"></a>
 * 問題
 
 ```cpp
@@ -260,11 +260,11 @@ ___
     }
 ```
 
-* 参照 [const/constexprインスタンス](programming_convention.md#SS_3_1_9)
-* [解答例-const/constexpr](exercise_a.md#SS_23_1_9)
+* 参照 [const/constexprインスタンス](programming_convention.md#SS_2_1_9)
+* [解答例-const/constexpr](exercise_a.md#SS_19_1_9)
 
 
-### 演習-危険なconst_cast <a id="SS_22_1_10"></a>
+### 18.1.10 演習-危険なconst_cast <a id="SS_18_1_10"></a>
 * 問題
 
 ```cpp
@@ -285,11 +285,11 @@ ___
     }
 ```
 
-* 参照 [const/constexprインスタンス](programming_convention.md#SS_3_1_9)
-* [解答例-危険なconst_cast](exercise_a.md#SS_23_1_10)
+* 参照 [const/constexprインスタンス](programming_convention.md#SS_2_1_9)
+* [解答例-危険なconst_cast](exercise_a.md#SS_19_1_10)
 
 
-### 演習-リテラル <a id="SS_22_1_11"></a>
+### 18.1.11 演習-リテラル <a id="SS_18_1_11"></a>
 * 問題
 
 ```cpp
@@ -315,12 +315,12 @@ ___
     }
 ```
 
-* 参照 [リテラル](core_lang_spec.md#SS_19_2)
+* 参照 [リテラル](core_lang_spec.md#SS_15_2)
 
-* [解答例-リテラル](exercise_a.md#SS_23_1_11)
+* [解答例-リテラル](exercise_a.md#SS_19_1_11)
 
 
-### 演習-適切なautoの使い方 <a id="SS_22_1_12"></a>
+### 18.1.12 演習-適切なautoの使い方 <a id="SS_18_1_12"></a>
 * 問題  
   以下のコードのautoの中で、使い方が好ましくないものを選べ。
 
@@ -330,10 +330,10 @@ ___
     3. auto s2 = s0;                   // s0は上記に定義されたもの
     4. auto s3 = get_name();           // get_name()は離れた場所に宣言
 
-* [解答-適切なautoの使い方](exercise_a.md#SS_23_1_12)
+* [解答-適切なautoの使い方](exercise_a.md#SS_19_1_12)
 
 
-### 演習-ポインタの初期化 <a id="SS_22_1_13"></a>
+### 18.1.13 演習-ポインタの初期化 <a id="SS_18_1_13"></a>
 * 問題  
   初期値が定まらないポインタ変数の初期化方法にふさわしいものを選べ。
 
@@ -343,10 +343,10 @@ ___
     3. nullptrを代入する。
     4. 何もしない。
 
-* [解答-ポインタの初期化](exercise_a.md#SS_23_1_13)
+* [解答-ポインタの初期化](exercise_a.md#SS_19_1_13)
 
 
-### 演習-vector初期化 <a id="SS_22_1_14"></a>
+### 18.1.14 演習-vector初期化 <a id="SS_18_1_14"></a>
 * 問題  
   以下のコード実行後のvecの状態を選べ。
 
@@ -360,10 +360,10 @@ ___
     3. vec.size()が1で、vec[0]は不定
     4. vec.size()が10で、vec[0] ～ vec[9]は0
 
-* [解答-vector初期化](exercise_a.md#SS_23_1_14)
+* [解答-vector初期化](exercise_a.md#SS_19_1_14)
 
 
-### 演習-インスタンスの初期化 <a id="SS_22_1_15"></a>
+### 18.1.15 演習-インスタンスの初期化 <a id="SS_18_1_15"></a>
 * 問題
 
 ```cpp
@@ -419,13 +419,13 @@ ___
     }
 ```
 
-* 参照 [インスタンスの初期化](programming_convention.md#SS_3_1_12)、[一様初期化](core_lang_spec.md#SS_19_6_6)
-* [解答例-インスタンスの初期化](exercise_a.md#SS_23_1_15)
+* 参照 [インスタンスの初期化](programming_convention.md#SS_2_1_12)、[一様初期化](core_lang_spec.md#SS_15_6_6)
+* [解答例-インスタンスの初期化](exercise_a.md#SS_19_1_15)
 
 
-## プログラミング規約(クラス) <a id="SS_22_2"></a>
+## 18.2 プログラミング規約(クラス) <a id="SS_18_2"></a>
 
-### 演習-凝集性の意味 <a id="SS_22_2_1"></a>
+### 18.2.1 演習-凝集性の意味 <a id="SS_18_2_1"></a>
 * 問題  
   クラスの凝集性とはLack of Cohesion in Methodsというメトリクスで計測される。
   この凝集性やメトリクスの説明として正しくないものを選べ。
@@ -436,10 +436,10 @@ ___
     3. メンバ変数やメンバ関数が多くなれば、凝集性は低くなりやすい。
     4. setterやgetterを使用することで、凝集性を高く保つことができる。
 
-* [解答-凝集性の意味](exercise_a.md#SS_23_2_1)
+* [解答-凝集性の意味](exercise_a.md#SS_19_2_1)
 
 
-### 演習-凝集性の向上 <a id="SS_22_2_2"></a>
+### 18.2.2 演習-凝集性の向上 <a id="SS_18_2_2"></a>
 * 問題
 
 ```cpp
@@ -487,11 +487,11 @@ ___
     }
 ```
 
-* 参照 [凝集性](programming_convention.md#SS_3_2_2_3)
-* [解答例-凝集性の向上](exercise_a.md#SS_23_2_2)
+* 参照 [凝集性](programming_convention.md#SS_2_2_2_3)
+* [解答例-凝集性の向上](exercise_a.md#SS_19_2_2)
 
 
-### 演習-メンバ変数の初期化方法の選択 <a id="SS_22_2_3"></a>
+### 18.2.3 演習-メンバ変数の初期化方法の選択 <a id="SS_18_2_3"></a>
 * 問題  
   非静的なメンバ変数の初期化には下記の3つの方法がある。
   これらの説明として誤っているものを下記選択肢より選べ。
@@ -506,10 +506,10 @@ ___
     3. 初期化方法０が使えない場合は、なるべく初期化方法１を使う。
     4. 初期化方法０、１が使えない場合のみ初期化方法２を使う。
 
-* [解答-メンバ変数の初期化方法の選択](exercise_a.md#SS_23_2_3)
+* [解答-メンバ変数の初期化方法の選択](exercise_a.md#SS_19_2_3)
 
 
-### 演習-メンバの型 <a id="SS_22_2_4"></a>
+### 18.2.4 演習-メンバの型 <a id="SS_18_2_4"></a>
 * 問題  
   以下のA::strの意味を表すものを選べ。
 
@@ -527,10 +527,10 @@ ___
     3. std::stringオブジェクトを返す関数
     4. 以上のいずれでもない
 
-* [解答-メンバの型](exercise_a.md#SS_23_2_4)
+* [解答-メンバの型](exercise_a.md#SS_19_2_4)
 
 
-### 演習-メンバ変数の初期化 <a id="SS_22_2_5"></a>
+### 18.2.5 演習-メンバ変数の初期化 <a id="SS_18_2_5"></a>
 * 問題
 
 ```cpp
@@ -589,11 +589,11 @@ ___
     }
 ```
 
-* 参照 [非静的なメンバ変数](programming_convention.md#SS_3_2_5_2)
-* [解答例-メンバ変数の初期化](exercise_a.md#SS_23_2_5)
+* 参照 [非静的なメンバ変数](programming_convention.md#SS_2_2_5_2)
+* [解答例-メンバ変数の初期化](exercise_a.md#SS_19_2_5)
 
 
-### 演習-スライシング <a id="SS_22_2_6"></a>
+### 18.2.6 演習-スライシング <a id="SS_18_2_6"></a>
 * 問題
 
 ```cpp
@@ -642,10 +642,10 @@ ___
     }
 ```
 
-* 参照 [スライシング](cpp_idioms.md#SS_21_12_3)
-* [解答例-スライシング](exercise_a.md#SS_23_2_6)
+* 参照 [スライシング](cpp_idioms.md#SS_17_12_3)
+* [解答例-スライシング](exercise_a.md#SS_19_2_6)
 
-### 演習-オブジェクトの所有権 <a id="SS_22_2_7"></a>
+### 18.2.7 演習-オブジェクトの所有権 <a id="SS_18_2_7"></a>
 * 問題
 
 ```cpp
@@ -727,13 +727,13 @@ ___
     }
 ```
 
-* 参照 [オブジェクトの所有権](cpp_idioms.md#SS_21_4)
-* [解答例-オブジェクトの所有権](exercise_a.md#SS_23_2_7)
+* 参照 [オブジェクトの所有権](cpp_idioms.md#SS_17_4)
+* [解答例-オブジェクトの所有権](exercise_a.md#SS_19_2_7)
 
 
-## プログラミング規約(関数) <a id="SS_22_3"></a>
+## 18.3 プログラミング規約(関数) <a id="SS_18_3"></a>
 
-### 演習-非メンバ関数の宣言 <a id="SS_22_3_1"></a>
+### 18.3.1 演習-非メンバ関数の宣言 <a id="SS_18_3_1"></a>
 * 問題
 
 ```cpp
@@ -748,11 +748,11 @@ ___
     }
 ```
 
-* 参照 [非メンバ関数](programming_convention.md#SS_3_3_11)
-* [解答例-非メンバ関数の宣言](exercise_a.md#SS_23_3_1)
+* 参照 [非メンバ関数](programming_convention.md#SS_2_3_11)
+* [解答例-非メンバ関数の宣言](exercise_a.md#SS_19_3_1)
 
 
-### 演習-メンバ関数の修飾 <a id="SS_22_3_2"></a>
+### 18.3.2 演習-メンバ関数の修飾 <a id="SS_18_3_2"></a>
 * 問題
 
 ```cpp
@@ -814,11 +814,11 @@ ___
     }
 ```
 
-* 参照 [メンバ関数](programming_convention.md#SS_3_2_4)
-* [解答例-メンバ関数の修飾](exercise_a.md#SS_23_3_2)
+* 参照 [メンバ関数](programming_convention.md#SS_2_2_4)
+* [解答例-メンバ関数の修飾](exercise_a.md#SS_19_3_2)
 
 
-### 演習-特殊メンバ関数の削除 <a id="SS_22_3_3"></a>
+### 18.3.3 演習-特殊メンバ関数の削除 <a id="SS_18_3_3"></a>
 * 問題
 
 ```cpp
@@ -829,11 +829,11 @@ ___
     class AutoGen {};
 ```
 
-* 参照 [特殊メンバ関数](programming_convention.md#SS_3_2_4_1)
-* [解答例-特殊メンバ関数の削除](exercise_a.md#SS_23_3_3)
+* 参照 [特殊メンバ関数](programming_convention.md#SS_2_2_4_1)
+* [解答例-特殊メンバ関数の削除](exercise_a.md#SS_19_3_3)
 
 
-### 演習-委譲コンストラクタ <a id="SS_22_3_4"></a>
+### 18.3.4 演習-委譲コンストラクタ <a id="SS_18_3_4"></a>
 * 問題
 
 ```cpp
@@ -880,11 +880,11 @@ ___
     }
 ```
 
-* 参照 [コンストラクタ](programming_convention.md#SS_3_2_4_2)
-* [解答例-委譲コンストラクタ](exercise_a.md#SS_23_3_4)
+* 参照 [コンストラクタ](programming_convention.md#SS_2_2_4_2)
+* [解答例-委譲コンストラクタ](exercise_a.md#SS_19_3_4)
 
 
-### 演習-copyコンストラクタ <a id="SS_22_3_5"></a>
+### 18.3.5 演習-copyコンストラクタ <a id="SS_18_3_5"></a>
 * 問題
 
 ```cpp
@@ -947,11 +947,11 @@ ___
     #endif
 ```
 
-* 参照 [コンストラクタ](programming_convention.md#SS_3_2_4_2)
-* [解答例-copyコンストラクタ](exercise_a.md#SS_23_3_5)
+* 参照 [コンストラクタ](programming_convention.md#SS_2_2_4_2)
+* [解答例-copyコンストラクタ](exercise_a.md#SS_19_3_5)
 
 
-### 演習-moveコンストラクタ <a id="SS_22_3_6"></a>
+### 18.3.6 演習-moveコンストラクタ <a id="SS_18_3_6"></a>
 * 問題
 
 ```cpp
@@ -961,11 +961,11 @@ ___
     // クラスIntegerHolder2を作成し、単体テストを行え。
 ```
 
-* 参照 [moveコンストラクタ、move代入演算子](programming_convention.md#SS_3_2_4_4)
-* [解答例-moveコンストラクタ](exercise_a.md#SS_23_3_6)
+* 参照 [moveコンストラクタ、move代入演算子](programming_convention.md#SS_2_2_4_4)
+* [解答例-moveコンストラクタ](exercise_a.md#SS_19_3_6)
 
 
-### 演習-関数分割 <a id="SS_22_3_7"></a>
+### 18.3.7 演習-関数分割 <a id="SS_18_3_7"></a>
 * 問題
 
 ```cpp
@@ -1010,11 +1010,11 @@ ___
     }
 ```
 
-* 参照 [関数構造のクライテリア](programming_convention.md#SS_3_3_1)
-* [解答例-関数分割](exercise_a.md#SS_23_3_7)
+* 参照 [関数構造のクライテリア](programming_convention.md#SS_2_3_1)
+* [解答例-関数分割](exercise_a.md#SS_19_3_7)
 
 
-### 演習-オーバーライド関数の修飾 <a id="SS_22_3_8"></a>
+### 18.3.8 演習-オーバーライド関数の修飾 <a id="SS_18_3_8"></a>
 * 問題  
   オーバーライドしたメンバ関数は、virtualと(A)を使用して宣言する。  
   (A)に相応しいものを下記より選べ。
@@ -1025,10 +1025,10 @@ ___
     3. overload
     4. const
 
-* [解答-オーバーライド関数の修飾](exercise_a.md#SS_23_3_8)
+* [解答-オーバーライド関数の修飾](exercise_a.md#SS_19_3_8)
 
 
-### 演習-オーバーライド/オーバーロード <a id="SS_22_3_9"></a>
+### 18.3.9 演習-オーバーライド/オーバーロード <a id="SS_18_3_9"></a>
 * 問題
 
 ```cpp
@@ -1071,11 +1071,11 @@ ___
     }
 ```
 
-* 参照 [オーバーライド](programming_convention.md#SS_3_2_4_7)
-* [解答例-オーバーライド/オーバーロード](exercise_a.md#SS_23_3_9)
+* 参照 [オーバーライド](programming_convention.md#SS_2_2_4_7)
+* [解答例-オーバーライド/オーバーロード](exercise_a.md#SS_19_3_9)
 
 
-### 演習-オーバーロードによる誤用防止 <a id="SS_22_3_10"></a>
+### 18.3.10 演習-オーバーロードによる誤用防止 <a id="SS_18_3_10"></a>
 * 問題
 
 ```cpp
@@ -1092,11 +1092,11 @@ ___
     }
 ```
 
-* 参照 [オーバーロード](programming_convention.md#SS_3_3_2)
-* [解答例-オーバーロードによる誤用防止](exercise_a.md#SS_23_3_10)
+* 参照 [オーバーロード](programming_convention.md#SS_2_3_2)
+* [解答例-オーバーロードによる誤用防止](exercise_a.md#SS_19_3_10)
 
 
-### 演習-仮引数の修飾 <a id="SS_22_3_11"></a>
+### 18.3.11 演習-仮引数の修飾 <a id="SS_18_3_11"></a>
 * 問題
 
 ```cpp
@@ -1129,11 +1129,11 @@ ___
     }
 ```
 
-* 参照 [実引数/仮引数](programming_convention.md#SS_3_3_4)
-* [解答例-仮引数の修飾](exercise_a.md#SS_23_3_11)
+* 参照 [実引数/仮引数](programming_convention.md#SS_2_3_4)
+* [解答例-仮引数の修飾](exercise_a.md#SS_19_3_11)
 
 
-### 演習-constexpr関数 <a id="SS_22_3_12"></a>
+### 18.3.12 演習-constexpr関数 <a id="SS_18_3_12"></a>
 * 問題
 
 ```cpp
@@ -1167,11 +1167,11 @@ ___
     }
 ```
 
-* 参照 [constexpr関数](core_lang_spec.md#SS_19_5_3)
-* [解答例-constexpr関数](exercise_a.md#SS_23_3_12)
+* 参照 [constexpr関数](core_lang_spec.md#SS_15_5_3)
+* [解答例-constexpr関数](exercise_a.md#SS_19_3_12)
 
 
-### 演習-エクセプションの型 <a id="SS_22_3_13"></a>
+### 18.3.13 演習-エクセプションの型 <a id="SS_18_3_13"></a>
 * 問題  
   try-catchでエクセプションを捕捉する場合、
   catchの中で宣言するエクセプション補足用の変数は(A)として定義する。  
@@ -1183,12 +1183,12 @@ ___
     3. 非constオブジェクト
     4. constオブジェクト
 
-* [解答-エクセプションの型](exercise_a.md#SS_23_3_13)
+* [解答-エクセプションの型](exercise_a.md#SS_19_3_13)
 
 
-## プログラミング規約(構文) <a id="SS_22_4"></a>
+## 18.4 プログラミング規約(構文) <a id="SS_18_4"></a>
 
-### 演習-コンテナの範囲for文 <a id="SS_22_4_1"></a>
+### 18.4.1 演習-コンテナの範囲for文 <a id="SS_18_4_1"></a>
 * 問題
 
 ```cpp
@@ -1212,11 +1212,11 @@ ___
     TEST(ProgrammingConventionSyntaxQ, RangeFor) { ASSERT_EQ("abcd", Accumlate(std::vector<std::string>{"a", "b", "cd"})); }
 ```
 
-* 参照 [範囲for文](core_lang_spec.md#SS_19_9_2)
-* [解答例-コンテナの範囲for文](exercise_a.md#SS_23_4_1)
+* 参照 [範囲for文](core_lang_spec.md#SS_15_9_2)
+* [解答例-コンテナの範囲for文](exercise_a.md#SS_19_4_1)
 
 
-### 演習-ラムダ式 <a id="SS_22_4_2"></a>
+### 18.4.2 演習-ラムダ式 <a id="SS_18_4_2"></a>
 * 問題
 
 ```cpp
@@ -1236,11 +1236,11 @@ ___
     }
 ```
 
-* 参照 [ラムダ式](programming_convention.md#SS_3_4_9)
-* [解答例-ラムダ式](exercise_a.md#SS_23_4_2)
+* 参照 [ラムダ式](programming_convention.md#SS_2_4_9)
+* [解答例-ラムダ式](exercise_a.md#SS_19_4_2)
 
 
-### 演習-ラムダ式のキャプチャ <a id="SS_22_4_3"></a>
+### 18.4.3 演習-ラムダ式のキャプチャ <a id="SS_18_4_3"></a>
 * 問題
 
 ```cpp
@@ -1272,12 +1272,12 @@ ___
     }
 ```
 
-* 参照 [ラムダ式](programming_convention.md#SS_3_4_9)
-* [解答例-ラムダ式のキャプチャ](exercise_a.md#SS_23_4_3)
+* 参照 [ラムダ式](programming_convention.md#SS_2_4_9)
+* [解答例-ラムダ式のキャプチャ](exercise_a.md#SS_19_4_3)
 
-## プログラミング規約(演算子) <a id="SS_22_5"></a>
+## 18.5 プログラミング規約(演算子) <a id="SS_18_5"></a>
 
-### 演習-条件演算子 <a id="SS_22_5_1"></a>
+### 18.5.1 演習-条件演算子 <a id="SS_18_5_1"></a>
 * 問題
 
 ```cpp
@@ -1301,11 +1301,11 @@ ___
     }
 ```
 
-* 参照 [条件演算子](programming_convention.md#SS_3_5_5)
-* [解答例-条件演算子](exercise_a.md#SS_23_5_1)
+* 参照 [条件演算子](programming_convention.md#SS_2_5_5)
+* [解答例-条件演算子](exercise_a.md#SS_19_5_1)
 
 
-### 演習-delete <a id="SS_22_5_2"></a>
+### 18.5.2 演習-delete <a id="SS_18_5_2"></a>
 * 問題
 
 ```cpp
@@ -1371,11 +1371,11 @@ ___
     }
 ```
 
-* 参照 [delete](programming_convention.md#SS_3_5_6_2)
-* [解答例-delete](exercise_a.md#SS_23_5_2)
+* 参照 [delete](programming_convention.md#SS_2_5_6_2)
+* [解答例-delete](exercise_a.md#SS_19_5_2)
 
 
-### 演習-sizeof <a id="SS_22_5_3"></a>
+### 18.5.3 演習-sizeof <a id="SS_18_5_3"></a>
 * 問題
 
 ```cpp
@@ -1401,11 +1401,11 @@ ___
     }
 ```
 
-* 参照 [sizeof](programming_convention.md#SS_3_5_7)
-* [解答例-sizeof](exercise_a.md#SS_23_5_3)
+* 参照 [sizeof](programming_convention.md#SS_2_5_7)
+* [解答例-sizeof](exercise_a.md#SS_19_5_3)
 
 
-### 演習-dynamic_castの削除 <a id="SS_22_5_4"></a>
+### 18.5.4 演習-dynamic_castの削除 <a id="SS_18_5_4"></a>
 * 問題
 
 ```cpp
@@ -1450,11 +1450,11 @@ ___
     }
 ```
 
-* 参照 [キャスト、暗黙の型変換](programming_convention.md#SS_3_5_10)
-* [解答例-dynamic_castの削除](exercise_a.md#SS_23_5_4)
+* 参照 [キャスト、暗黙の型変換](programming_convention.md#SS_2_5_10)
+* [解答例-dynamic_castの削除](exercise_a.md#SS_19_5_4)
 
 
-### 演習-キャスト <a id="SS_22_5_5"></a>
+### 18.5.5 演習-キャスト <a id="SS_18_5_5"></a>
 * 問題  
   キャストは避けるべきだが、やむを得ず使用する場合であっても、
   Cタイプキャスト、(A)、 dynamic_castは使用しない。  
@@ -1466,12 +1466,12 @@ ___
     3. const_cast
     4. 該当なし
 
-* [解答-キャスト](exercise_a.md#SS_23_5_5)
+* [解答-キャスト](exercise_a.md#SS_19_5_5)
 
 
-## プログラミング規約(スコープ) <a id="SS_22_6"></a>
+## 18.6 プログラミング規約(スコープ) <a id="SS_18_6"></a>
 
-### 演習-usingディレクティブ <a id="SS_22_6_1"></a>
+### 18.6.1 演習-usingディレクティブ <a id="SS_18_6_1"></a>
 * 問題  
   usingディレクティブ(using namespace NS)の使用上の注意として相応しいものを選べ。
 
@@ -1481,12 +1481,12 @@ ___
     3. ファイルスコープでusingディレクティブをすると便利である。
     4. using宣言よりusingディレクティブを優先するべきである。
 
-* [解答-usingディレクティブ](exercise_a.md#SS_23_6_1)
+* [解答-usingディレクティブ](exercise_a.md#SS_19_6_1)
 
 
-## プログラミング規約(その他) <a id="SS_22_7"></a>
+## 18.7 プログラミング規約(その他) <a id="SS_18_7"></a>
 
-### 演習-アサーションの選択 <a id="SS_22_7_1"></a>
+### 18.7.1 演習-アサーションの選択 <a id="SS_18_7_1"></a>
 * 問題  
   論理的にありえない(switchでそのcaseやdefaultを通過することはあり得ない等)
   状態を検知するために積極的に(A)を使用する。  
@@ -1498,10 +1498,10 @@ ___
     3. while(1);
     4. abort()
 
-* [解答-アサーションの選択](exercise_a.md#SS_23_7_1)
+* [解答-アサーションの選択](exercise_a.md#SS_19_7_1)
 
 
-### 演習-assert/static_assert <a id="SS_22_7_2"></a>
+### 18.7.2 演習-assert/static_assert <a id="SS_18_7_2"></a>
 * 問題
 
 ```cpp
@@ -1522,11 +1522,11 @@ ___
     };
 ```
 
-* 参照 [assertion](programming_convention.md#SS_3_11_1)
-* [解答例-assert/static_assert](exercise_a.md#SS_23_7_2)
+* 参照 [assertion](programming_convention.md#SS_2_11_1)
+* [解答例-assert/static_assert](exercise_a.md#SS_19_7_2)
 
 
-## SOLID <a id="SS_22_8"></a>
+## 18.8 SOLID <a id="SS_18_8"></a>
 以下の演習問題の単体テストで使用される
 
 ```cpp
@@ -1570,7 +1570,7 @@ ___
     class SolidDIP_A : public SolidFixture {};
 ```
 
-### 演習-SRP <a id="SS_22_8_1"></a>
+### 18.8.1 演習-SRP <a id="SS_18_8_1"></a>
 * 問題
 
 ```cpp
@@ -1849,11 +1849,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [単一責任の原則(SRP)](solid.md#SS_8_1)
-* [解答例-SRP](exercise_a.md#SS_23_8_1)
+* 参照 [単一責任の原則(SRP)](solid.md#SS_7_1)
+* [解答例-SRP](exercise_a.md#SS_19_8_1)
 
 
-### 演習-OCP <a id="SS_22_8_2"></a>
+### 18.8.2 演習-OCP <a id="SS_18_8_2"></a>
 * 問題
 
 ```cpp
@@ -2170,11 +2170,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [オープン・クローズドの原則(OCP)](solid.md#SS_8_2)
-* [解答例-OCP](exercise_a.md#SS_23_8_2)
+* 参照 [オープン・クローズドの原則(OCP)](solid.md#SS_7_2)
+* [解答例-OCP](exercise_a.md#SS_19_8_2)
 
 
-### 演習-LSP <a id="SS_22_8_3"></a>
+### 18.8.3 演習-LSP <a id="SS_18_8_3"></a>
 * 問題
 
 ```cpp
@@ -2521,11 +2521,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [リスコフの置換原則(LSP)](solid.md#SS_8_3)
-* [解答例-LSP](exercise_a.md#SS_23_8_3)
+* 参照 [リスコフの置換原則(LSP)](solid.md#SS_7_3)
+* [解答例-LSP](exercise_a.md#SS_19_8_3)
 
 
-### 演習-ISP <a id="SS_22_8_4"></a>
+### 18.8.4 演習-ISP <a id="SS_18_8_4"></a>
 * 問題
 
 ```cpp
@@ -2915,11 +2915,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [インターフェース分離の原則(ISP)](solid.md#SS_8_4)
-* [解答例-ISP](exercise_a.md#SS_23_8_4)
+* 参照 [インターフェース分離の原則(ISP)](solid.md#SS_7_4)
+* [解答例-ISP](exercise_a.md#SS_19_8_4)
 
 
-### 演習-DIP <a id="SS_22_8_5"></a>
+### 18.8.5 演習-DIP <a id="SS_18_8_5"></a>
 * 問題
 
 ```cpp
@@ -3357,11 +3357,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [依存関係逆転の原則(DIP)](solid.md#SS_8_5)
-* [解答例-DIP](exercise_a.md#SS_23_8_5)
+* 参照 [依存関係逆転の原則(DIP)](solid.md#SS_7_5)
+* [解答例-DIP](exercise_a.md#SS_19_8_5)
 
 
-### 演習-SOLIDの定義 <a id="SS_22_8_6"></a>
+### 18.8.6 演習-SOLIDの定義 <a id="SS_18_8_6"></a>
 * 問題  
   下記原則群と説明群を結びつけよ。
 
@@ -3379,11 +3379,11 @@ ___
     4. クラスは、そのクライアントが使用しないメソッドへの依存をそのクライアントに強制するべきではない。
     5. 上位レベルのモジュールは下位レベルのモジュールに依存すべきではない。
 
-* [解答-SOLIDの定義](exercise_a.md#SS_23_8_6)
+* [解答-SOLIDの定義](exercise_a.md#SS_19_8_6)
 
 
-## デザインパターン <a id="SS_22_9"></a>
-### 演習-ガード節 <a id="SS_22_9_1"></a>
+## 18.9 デザインパターン <a id="SS_18_9"></a>
+### 18.9.1 演習-ガード節 <a id="SS_18_9_1"></a>
 * 問題
 
 ```cpp
@@ -3438,11 +3438,11 @@ ___
     }
 ```
 
-* 参照 [ガード節(Early Return)](cpp_idioms.md#SS_21_1_1)
-* [解答例-ガード節](exercise_a.md#SS_23_9_1)
+* 参照 [ガード節(Early Return)](cpp_idioms.md#SS_17_1_1)
+* [解答例-ガード節](exercise_a.md#SS_19_9_1)
 
 
-### 演習-BitmaskType <a id="SS_22_9_2"></a>
+### 18.9.2 演習-BitmaskType <a id="SS_18_9_2"></a>
 * 問題
 
 ```cpp
@@ -3497,11 +3497,11 @@ ___
     }
 ```
 
-* 参照 [BitmaskType](cpp_idioms.md#SS_21_2_3)
-* [解答例-BitmaskType](exercise_a.md#SS_23_9_2)
+* 参照 [BitmaskType](cpp_idioms.md#SS_17_2_3)
+* [解答例-BitmaskType](exercise_a.md#SS_19_9_2)
 
 
-### 演習-Pimpl <a id="SS_22_9_3"></a>
+### 18.9.3 演習-Pimpl <a id="SS_18_9_3"></a>
 * 問題
 
 ```cpp
@@ -3549,11 +3549,11 @@ ___
 
 ```
 
-* 参照 [Pimpl](cpp_idioms.md#SS_21_2_1)
-* [解答例-Pimpl](exercise_a.md#SS_23_9_3)
+* 参照 [Pimpl](cpp_idioms.md#SS_17_2_1)
+* [解答例-Pimpl](exercise_a.md#SS_19_9_3)
 
 
-### 演習-Accessorの副作用 <a id="SS_22_9_4"></a>
+### 18.9.4 演習-Accessorの副作用 <a id="SS_18_9_4"></a>
 * 問題  
   Accessor(特にセッター)には重大な副作用がある。その副作用を下記から選択せよ。
 
@@ -3563,10 +3563,10 @@ ___
     3. 関数の巨大化
     4. クラスの巨大化
 
-* [解答-Accessorの副作用](exercise_a.md#SS_23_9_4)
+* [解答-Accessorの副作用](exercise_a.md#SS_19_9_4)
 
 
-### 演習-Accessor <a id="SS_22_9_5"></a>
+### 18.9.5 演習-Accessor <a id="SS_18_9_5"></a>
 * 問題
 
 ```cpp
@@ -3669,11 +3669,11 @@ ___
     }
 ```
 
-* 参照 [Accessor](cpp_idioms.md#SS_21_1_6)
-* [解答例-Accessor](exercise_a.md#SS_23_9_5)
+* 参照 [Accessor](cpp_idioms.md#SS_17_1_6)
+* [解答例-Accessor](exercise_a.md#SS_19_9_5)
 
 
-### 演習-Copy-And-Swap <a id="SS_22_9_6"></a>
+### 18.9.6 演習-Copy-And-Swap <a id="SS_18_9_6"></a>
 * 問題
 
 ```cpp
@@ -3744,11 +3744,11 @@ ___
     }
 ```
 
-* 参照 [Copy-And-Swap](cpp_idioms.md#SS_21_1_4)
-* [解答例-Copy-And-Swap](exercise_a.md#SS_23_9_6)
+* 参照 [Copy-And-Swap](cpp_idioms.md#SS_17_1_4)
+* [解答例-Copy-And-Swap](exercise_a.md#SS_19_9_6)
 
 
-### 演習-Immutable <a id="SS_22_9_7"></a>
+### 18.9.7 演習-Immutable <a id="SS_18_9_7"></a>
 * 問題
 
 ```cpp
@@ -3860,11 +3860,11 @@ ___
     }
 ```
 
-* 参照 [Immutable](cpp_idioms.md#SS_21_1_7)
-* [解答例-Immutable](exercise_a.md#SS_23_9_7)
+* 参照 [Immutable](cpp_idioms.md#SS_17_1_7)
+* [解答例-Immutable](exercise_a.md#SS_19_9_7)
 
 
-### 演習-Clone <a id="SS_22_9_8"></a>
+### 18.9.8 演習-Clone <a id="SS_18_9_8"></a>
 * 問題
 
 ```cpp
@@ -3920,11 +3920,11 @@ ___
     }
 ```
 
-* 参照 [Clone(仮想コンストラクタ)](design_pattern.md#SS_9_1_3)
-* [解答例-Clone](exercise_a.md#SS_23_9_8)
+* 参照 [Clone(仮想コンストラクタ)](design_pattern.md#SS_8_1_3)
+* [解答例-Clone](exercise_a.md#SS_19_9_8)
 
 
-### 演習-NVI <a id="SS_22_9_9"></a>
+### 18.9.9 演習-NVI <a id="SS_18_9_9"></a>
 * 問題
 
 ```cpp
@@ -4036,11 +4036,11 @@ ___
     }
 ```
 
-* 参照 [NVI(non virtual interface)](cpp_idioms.md#SS_21_1_8)
-* [解答例-NVI](exercise_a.md#SS_23_9_9)
+* 参照 [NVI(non virtual interface)](cpp_idioms.md#SS_17_1_8)
+* [解答例-NVI](exercise_a.md#SS_19_9_9)
 
 
-### 演習-RAIIの効果 <a id="SS_22_9_10"></a>
+### 18.9.10 演習-RAIIの効果 <a id="SS_18_9_10"></a>
 * 問題  
   RAIIにはどのような効果があるか？　下記より相応しいものを選択せよ。
 
@@ -4050,10 +4050,10 @@ ___
     3. クラスの実装を隠ぺい
     4. LIPの順守
 
-* [解答-RAIIの効果](exercise_a.md#SS_23_9_10)
+* [解答-RAIIの効果](exercise_a.md#SS_19_9_10)
 
 
-### 演習-RAII <a id="SS_22_9_11"></a>
+### 18.9.11 演習-RAII <a id="SS_18_9_11"></a>
 * 問題
 
 ```cpp
@@ -4110,11 +4110,11 @@ ___
     }
 ```
 
-* 参照 [RAII(scoped guard)](cpp_idioms.md#SS_21_1_3)
-* [解答例-RAII](exercise_a.md#SS_23_9_11)
+* 参照 [RAII(scoped guard)](cpp_idioms.md#SS_17_1_3)
+* [解答例-RAII](exercise_a.md#SS_19_9_11)
 
 
-### 演習-Future <a id="SS_22_9_12"></a>
+### 18.9.12 演習-Future <a id="SS_18_9_12"></a>
 * 問題
 
 ```cpp
@@ -4147,11 +4147,11 @@ ___
     }
 ```
 
-* 参照 [Future](cpp_idioms.md#SS_21_2_4)
-* [解答例-Future](exercise_a.md#SS_23_9_12)
+* 参照 [Future](cpp_idioms.md#SS_17_2_4)
+* [解答例-Future](exercise_a.md#SS_19_9_12)
 
 
-### 演習-DI <a id="SS_22_9_13"></a>
+### 18.9.13 演習-DI <a id="SS_18_9_13"></a>
 * 問題
 
 ```cpp
@@ -4228,11 +4228,11 @@ ___
     }
 ```
 
-* 参照 [DI(dependency injection)](design_pattern.md#SS_9_3_1)
-* [解答例-DI](exercise_a.md#SS_23_9_13)
+* 参照 [DI(dependency injection)](design_pattern.md#SS_8_3_1)
+* [解答例-DI](exercise_a.md#SS_19_9_13)
 
 
-### 演習-Singleton <a id="SS_22_9_14"></a>
+### 18.9.14 演習-Singleton <a id="SS_18_9_14"></a>
 * 問題
 
 ```cpp
@@ -4306,11 +4306,11 @@ ___
     }
 ```
 
-* 参照 [Singleton](design_pattern.md#SS_9_1_1)
-* [解答例-Singleton](exercise_a.md#SS_23_9_14)
+* 参照 [Singleton](design_pattern.md#SS_8_1_1)
+* [解答例-Singleton](exercise_a.md#SS_19_9_14)
 
 
-### 演習-State <a id="SS_22_9_15"></a>
+### 18.9.15 演習-State <a id="SS_18_9_15"></a>
 * 問題
 
 ```cpp
@@ -4396,11 +4396,11 @@ ___
     }
 ```
 
-* 参照 [State](design_pattern.md#SS_9_2_3)
-* [解答例-State](exercise_a.md#SS_23_9_15)
+* 参照 [State](design_pattern.md#SS_8_2_3)
+* [解答例-State](exercise_a.md#SS_19_9_15)
 
 
-### 演習-Null Object <a id="SS_22_9_16"></a>
+### 18.9.16 演習-Null Object <a id="SS_18_9_16"></a>
 * 問題
 
 ```cpp
@@ -4478,11 +4478,11 @@ ___
     }
 ```
 
-* 参照 [Null Object](cpp_idioms.md#SS_21_2_5)
-* [解答例-Null Object](exercise_a.md#SS_23_9_16)
+* 参照 [Null Object](cpp_idioms.md#SS_17_2_5)
+* [解答例-Null Object](exercise_a.md#SS_19_9_16)
 
 
-### 演習-Templateメソッド <a id="SS_22_9_17"></a>
+### 18.9.17 演習-Templateメソッド <a id="SS_18_9_17"></a>
 * 問題
 
 ```cpp
@@ -4616,11 +4616,11 @@ ___
     }
 ```
 
-* 参照 [Templateメソッド](design_pattern.md#SS_9_2_1)
-* [解答例-Templateメソッド](exercise_a.md#SS_23_9_17)
+* 参照 [Templateメソッド](design_pattern.md#SS_8_2_1)
+* [解答例-Templateメソッド](exercise_a.md#SS_19_9_17)
 
 
-### 演習-Factory <a id="SS_22_9_18"></a>
+### 18.9.18 演習-Factory <a id="SS_18_9_18"></a>
 * 問題
 
 ```cpp
@@ -4765,11 +4765,11 @@ ___
     }
 ```
 
-* 参照 [Factory](design_pattern.md#SS_9_1_4)
-* [解答例-Factory](exercise_a.md#SS_23_9_18)
+* 参照 [Factory](design_pattern.md#SS_8_1_4)
+* [解答例-Factory](exercise_a.md#SS_19_9_18)
 
 
-### 演習-Named Constructor <a id="SS_22_9_19"></a>
+### 18.9.19 演習-Named Constructor <a id="SS_18_9_19"></a>
 * 問題
 
 ```cpp
@@ -4879,11 +4879,11 @@ ___
     }
 ```
 
-* 参照 [Named Constructor](design_pattern.md#SS_9_1_2)
-* [解答例-Named Constructor](exercise_a.md#SS_23_9_19)
+* 参照 [Named Constructor](design_pattern.md#SS_8_1_2)
+* [解答例-Named Constructor](exercise_a.md#SS_19_9_19)
 
 
-### 演習-Proxy <a id="SS_22_9_20"></a>
+### 18.9.20 演習-Proxy <a id="SS_18_9_20"></a>
 * 問題
 
 ```cpp
@@ -4947,11 +4947,11 @@ ___
     }
 ```
 
-* 参照 [Proxy](design_pattern.md#SS_9_2_6)
-* [解答例-Proxy](exercise_a.md#SS_23_9_20)
+* 参照 [Proxy](design_pattern.md#SS_8_2_6)
+* [解答例-Proxy](exercise_a.md#SS_19_9_20)
 
 
-### 演習-Strategy <a id="SS_22_9_21"></a>
+### 18.9.21 演習-Strategy <a id="SS_18_9_21"></a>
 * 問題
 
 ```cpp
@@ -5047,11 +5047,11 @@ ___
     }
 ```
 
-* 参照 [Strategy](design_pattern.md#SS_9_2_2)
-* [解答例-Strategy](exercise_a.md#SS_23_9_21)
+* 参照 [Strategy](design_pattern.md#SS_8_2_2)
+* [解答例-Strategy](exercise_a.md#SS_19_9_21)
 
 
-### 演習-Visitor <a id="SS_22_9_22"></a>
+### 18.9.22 演習-Visitor <a id="SS_18_9_22"></a>
 * 問題
 
 ```cpp
@@ -5167,11 +5167,11 @@ ___
     }
 ```
 
-* 参照 [Visitor](design_pattern.md#SS_9_2_5)
-* [解答例-Visitor](exercise_a.md#SS_23_9_22)
+* 参照 [Visitor](design_pattern.md#SS_8_2_5)
+* [解答例-Visitor](exercise_a.md#SS_19_9_22)
 
 
-### 演習-CRTP <a id="SS_22_9_23"></a>
+### 18.9.23 演習-CRTP <a id="SS_18_9_23"></a>
 * 問題
 
 ```cpp
@@ -5319,11 +5319,11 @@ ___
     }
 ```
 
-* 参照 [CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_21_1_5)
-* [解答例-CRTP](exercise_a.md#SS_23_9_23)
+* 参照 [CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_17_1_5)
+* [解答例-CRTP](exercise_a.md#SS_19_9_23)
 
 
-### 演習-Observer <a id="SS_22_9_24"></a>
+### 18.9.24 演習-Observer <a id="SS_18_9_24"></a>
 * 問題
 
 ```cpp
@@ -5405,11 +5405,11 @@ ___
     }
 ```
 
-* 参照 [Observer](design_pattern.md#SS_9_2_4)
-* [解答例-Observer](exercise_a.md#SS_23_9_24)
+* 参照 [Observer](design_pattern.md#SS_8_2_4)
+* [解答例-Observer](exercise_a.md#SS_19_9_24)
 
 
-### 演習-デザインパターン選択1 <a id="SS_22_9_25"></a>
+### 18.9.25 演習-デザインパターン選択1 <a id="SS_18_9_25"></a>
 * 問題  
   オブジェクトの状態と、
   それに伴う振る舞いを分離して記述する場合に使用されるデザインパターンとは何か？
@@ -5421,10 +5421,10 @@ ___
     3. Observer
     4. Null Object
 
-* [解答-デザインパターン選択1](exercise_a.md#SS_23_9_25)
+* [解答-デザインパターン選択1](exercise_a.md#SS_19_9_25)
 
 
-### 演習-デザインパターン選択2 <a id="SS_22_9_26"></a>
+### 18.9.26 演習-デザインパターン選択2 <a id="SS_18_9_26"></a>
 * 問題  
   オブジェクトへのポインタがヌルかどうかを確かめるif文が頻繁に出てくる場合、
   そのif文を無くすために使われるデザインパターンは何か？
@@ -5436,10 +5436,10 @@ ___
     3. Observer
     4. Null Object
 
-* [解答-デザインパターン選択2](exercise_a.md#SS_23_9_26)
+* [解答-デザインパターン選択2](exercise_a.md#SS_19_9_26)
 
 
-### 演習-デザインパターン選択3 <a id="SS_22_9_27"></a>
+### 18.9.27 演習-デザインパターン選択3 <a id="SS_18_9_27"></a>
 * 問題  
   MVCアーキテクチャの実現のためによく使われるデザインパターンは何か？
   以下から選択せよ。
@@ -5450,12 +5450,12 @@ ___
     3. Observer
     4. Null Object
 
-* [解答-デザインパターン選択3](exercise_a.md#SS_23_9_27)
+* [解答-デザインパターン選択3](exercise_a.md#SS_19_9_27)
 
 
-## 開発プロセスとインフラ(全般) <a id="SS_22_10"></a>
+## 18.10 開発プロセスとインフラ(全般) <a id="SS_18_10"></a>
 
-### 演習-プロセス分類 <a id="SS_22_10_1"></a>
+### 18.10.1 演習-プロセス分類 <a id="SS_18_10_1"></a>
 * 問題  
   ソフトウェア開発プロセスは(A)、(B)、(C)の3つに分類できる。
   (A)から順に初期計画順守的であり、(C)から逆順に状況適応的である。 
@@ -5470,10 +5470,10 @@ ___
     3. アジャイル
     4. 無手順
 
-* [解答-プロセス分類](exercise_a.md#SS_23_10_1)
+* [解答-プロセス分類](exercise_a.md#SS_19_10_1)
 
 
-### 演習-V字モデル <a id="SS_22_10_2"></a>
+### 18.10.2 演習-V字モデル <a id="SS_18_10_2"></a>
 * 問題  
   ウォーターフォールモデルもしくはV字モデルと呼ばれるプロセスでは、  
   「フェーズA」→「フェーズB」→「フェーズC」→「フェーズD」→「プログラミング」   
@@ -5489,10 +5489,10 @@ ___
     3. 機能設計
     4. 要件分析
 
-* [解答-V字モデル](exercise_a.md#SS_23_10_2)
+* [解答-V字モデル](exercise_a.md#SS_19_10_2)
 
 
-### 演習-アジャイル <a id="SS_22_10_3"></a>
+### 18.10.3 演習-アジャイル <a id="SS_18_10_3"></a>
 * 問題  
   アジャイル系プロセスの説明にふさわしくないものを選べ。
 
@@ -5502,10 +5502,10 @@ ___
     3. ほとんどのアジャイル系プロセスでは、イテレーションを繰り返すことにより開発を進める。
     4. アジャイル系プロセスにはスクラムやXPがある。
 
-* [解答-アジャイル](exercise_a.md#SS_23_10_3)
+* [解答-アジャイル](exercise_a.md#SS_19_10_3)
 
 
-### 演習-自動化 <a id="SS_22_10_4"></a>
+### 18.10.4 演習-自動化 <a id="SS_18_10_4"></a>
 * 問題  
   一般に、(A)とは、個々のクラスや関数といったソフトウェア構成要素の機能が正確に
   動作することを検証するためのテストを指す。
@@ -5524,10 +5524,10 @@ ___
     5. 再現性
     6. 可塑性
 
-* [解答-自動化](exercise_a.md#SS_23_10_4)
+* [解答-自動化](exercise_a.md#SS_19_10_4)
 
 
-### 演習-単体テスト <a id="SS_22_10_5"></a>
+### 18.10.5 演習-単体テスト <a id="SS_18_10_5"></a>
 * 問題  
   単体テストの説明としてふさわしくないものを選べ。
 
@@ -5538,10 +5538,10 @@ ___
        機能追加、バグ修正、リファクタリング等のソースコード修正後の回帰テストが容易になる。
     4. 単体テストはアジャイル系プロセスのみで使われるテスト手法である。
 
-* [解答-単体テスト](exercise_a.md#SS_23_10_5)
+* [解答-単体テスト](exercise_a.md#SS_19_10_5)
 
 
-### 演習-リファクタリングに付随する活動 <a id="SS_22_10_6"></a>
+### 18.10.6 演習-リファクタリングに付随する活動 <a id="SS_18_10_6"></a>
 * 問題  
   リファクタリングに付随する活動ではないものを選べ。
 
@@ -5551,10 +5551,10 @@ ___
     3. 回帰テスト
     4. クラス分割
 
-* [解答-リファクタリングに付随する活動](exercise_a.md#SS_23_10_6)
+* [解答-リファクタリングに付随する活動](exercise_a.md#SS_19_10_6)
 
 
-### 演習-リファクタリング対象コード <a id="SS_22_10_7"></a>
+### 18.10.7 演習-リファクタリング対象コード <a id="SS_18_10_7"></a>
 * 問題  
   リファクタリングの対象とならないソースコードの問題点を下記から選べ。
 
@@ -5564,10 +5564,10 @@ ___
     3. メモリリーク
     4. 間違った依存関係
 
-* [解答-リファクタリング対象コード](exercise_a.md#SS_23_10_7)
+* [解答-リファクタリング対象コード](exercise_a.md#SS_19_10_7)
 
 
-### 演習-CI <a id="SS_22_10_8"></a>
+### 18.10.8 演習-CI <a id="SS_18_10_8"></a>
 * 問題  
   CI(継続的インテグレーション)を前提とするプロセスに特徴的な活動すべてを下記から選べ。
 
@@ -5577,12 +5577,12 @@ ___
     3. コミット前に回帰テストを行う。
     4. 開発者全員に共有されているブランチになるべく頻繁にコミットする。
 
-* [解答-CI](exercise_a.md#SS_23_10_8)
+* [解答-CI](exercise_a.md#SS_19_10_8)
 
 
-## テンプレートメタプログラミング <a id="SS_22_11"></a>
+## 18.11 テンプレートメタプログラミング <a id="SS_18_11"></a>
 
-### 演習-パラメータパック <a id="SS_22_11_1"></a>
+### 18.11.1 演習-パラメータパック <a id="SS_18_11_1"></a>
 * 問題
 
 ```cpp
@@ -5604,11 +5604,11 @@ ___
     }
 ```
 
-* 参照 [パラメータパック](core_lang_spec.md#SS_19_11_4)
-* [解答例-パラメータパック](exercise_a.md#SS_23_11_1)
+* 参照 [パラメータパック](core_lang_spec.md#SS_15_11_4)
+* [解答例-パラメータパック](exercise_a.md#SS_19_11_1)
 
 
-### 演習-エイリアステンプレート <a id="SS_22_11_2"></a>
+### 18.11.2 演習-エイリアステンプレート <a id="SS_18_11_2"></a>
 * 問題
 
 ```cpp
@@ -5643,10 +5643,10 @@ ___
     }
 ```
 
-* [解答例-エイリアステンプレート](exercise_a.md#SS_23_11_2)
+* [解答例-エイリアステンプレート](exercise_a.md#SS_19_11_2)
 
 
-### 演習-名前空間による修飾不要な`operator<<` <a id="SS_22_11_3"></a>
+### 18.11.3 演習-名前空間による修飾不要な`operator<<` <a id="SS_18_11_3"></a>
 * 問題
 
 ```cpp
@@ -5709,11 +5709,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [Ints_tのログ登録](template_meta_programming.md#SS_13_1_6)、[Ints_tを構造体としてApp内に宣言する](template_meta_programming.md#SS_13_1_6_5)、
-* [解答例-名前空間による修飾不要な`operator<<`](exercise_a.md#SS_23_11_3)
+* 参照 [Ints_tのログ登録](template_meta_programming.md#SS_12_1_6)、[Ints_tを構造体としてApp内に宣言する](template_meta_programming.md#SS_12_1_6_5)、
+* [解答例-名前空間による修飾不要な`operator<<`](exercise_a.md#SS_19_11_3)
 
 
-### 演習-std::arrayの継承 <a id="SS_22_11_4"></a>
+### 18.11.4 演習-std::arrayの継承 <a id="SS_18_11_4"></a>
 * 問題
 
 ```cpp
@@ -5731,11 +5731,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [安全な配列型コンテナ](template_meta_programming.md#SS_13_2_3)
-* [解答例-std::arrayの継承](exercise_a.md#SS_23_11_4)
+* 参照 [安全な配列型コンテナ](template_meta_programming.md#SS_12_2_3)
+* [解答例-std::arrayの継承](exercise_a.md#SS_19_11_4)
 
 
-### 演習-SFINAEを利用しない関数テンプレートの特殊化によるis_void <a id="SS_22_11_5"></a>
+### 18.11.5 演習-SFINAEを利用しない関数テンプレートの特殊化によるis_void <a id="SS_18_11_5"></a>
 * 問題
 
 ```cpp
@@ -5766,11 +5766,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_void_f](template_meta_programming.md#SS_13_3_1_1)
-* [解答例-SFINAEを利用しない関数テンプレートの特殊化によるis_void](exercise_a.md#SS_23_11_5)
+* 参照 [is_void_f](template_meta_programming.md#SS_12_3_1_1)
+* [解答例-SFINAEを利用しない関数テンプレートの特殊化によるis_void](exercise_a.md#SS_19_11_5)
 
 
-### 演習-SFINAEを利用しないクラステンプレートの特殊化によるis_void <a id="SS_22_11_6"></a>
+### 18.11.6 演習-SFINAEを利用しないクラステンプレートの特殊化によるis_void <a id="SS_18_11_6"></a>
 * 問題
 
 ```cpp
@@ -5797,11 +5797,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_void_s](template_meta_programming.md#SS_13_3_1_2)
-* [解答例-SFINAEを利用しないクラステンプレートの特殊化によるis_void](exercise_a.md#SS_23_11_6)
+* 参照 [is_void_s](template_meta_programming.md#SS_12_3_1_2)
+* [解答例-SFINAEを利用しないクラステンプレートの特殊化によるis_void](exercise_a.md#SS_19_11_6)
 
 
-### 演習-SFINAEを利用した関数テンプレートの特殊化によるis_void <a id="SS_22_11_7"></a>
+### 18.11.7 演習-SFINAEを利用した関数テンプレートの特殊化によるis_void <a id="SS_18_11_7"></a>
 * 問題
 
 ```cpp
@@ -5829,11 +5829,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_void_sfinae_f](template_meta_programming.md#SS_13_3_1_3)
-* [解答例-SFINAEを利用した関数テンプレートの特殊化によるis_void](exercise_a.md#SS_23_11_7)
+* 参照 [is_void_sfinae_f](template_meta_programming.md#SS_12_3_1_3)
+* [解答例-SFINAEを利用した関数テンプレートの特殊化によるis_void](exercise_a.md#SS_19_11_7)
 
 
-### 演習-SFINAEを利用したクラステンプレートの特殊化によるis_void <a id="SS_22_11_8"></a>
+### 18.11.8 演習-SFINAEを利用したクラステンプレートの特殊化によるis_void <a id="SS_18_11_8"></a>
 * 問題
 
 ```cpp
@@ -5862,11 +5862,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)
-* [解答例-SFINAEを利用したクラステンプレートの特殊化によるis_void](exercise_a.md#SS_23_11_8)
+* 参照 [is_void_sfinae_s](template_meta_programming.md#SS_12_3_1_4)
+* [解答例-SFINAEを利用したクラステンプレートの特殊化によるis_void](exercise_a.md#SS_19_11_8)
 
 
-### 演習-テンプレートテンプレートパラメータ <a id="SS_22_11_9"></a>
+### 18.11.9 演習-テンプレートテンプレートパラメータ <a id="SS_18_11_9"></a>
 * 問題
 
 ```cpp
@@ -5885,11 +5885,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_same_templ](template_meta_programming.md#SS_13_3_2_7)
-* [解答例-テンプレートテンプレートパラメータ](exercise_a.md#SS_23_11_9)
+* 参照 [is_same_templ](template_meta_programming.md#SS_12_3_2_7)
+* [解答例-テンプレートテンプレートパラメータ](exercise_a.md#SS_19_11_9)
 
 
-### 演習-テンプレートパラメータを可変長にしたstd::is_same <a id="SS_22_11_10"></a>
+### 18.11.10 演習-テンプレートパラメータを可変長にしたstd::is_same <a id="SS_18_11_10"></a>
 * 問題
 
 ```cpp
@@ -5918,11 +5918,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [IsSameSomeOf](template_meta_programming.md#SS_13_3_2_8)
-* [解答例-テンプレートパラメータを可変長にしたstd::is_same](exercise_a.md#SS_23_11_10)
+* 参照 [IsSameSomeOf](template_meta_programming.md#SS_12_3_2_8)
+* [解答例-テンプレートパラメータを可変長にしたstd::is_same](exercise_a.md#SS_19_11_10)
 
 
-### 演習-メンバ関数の存在の診断 <a id="SS_22_11_11"></a>
+### 18.11.11 演習-メンバ関数の存在の診断 <a id="SS_18_11_11"></a>
 * 問題
 
 ```cpp
@@ -5943,11 +5943,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [関数の存在の診断](template_meta_programming.md#SS_13_3_4)
-* [解答例-メンバ関数の存在の診断](exercise_a.md#SS_23_11_11)
+* 参照 [関数の存在の診断](template_meta_programming.md#SS_12_3_4)
+* [解答例-メンバ関数の存在の診断](exercise_a.md#SS_19_11_11)
 
 
-### 演習-範囲for文のオペランドになれるかどうかの診断 <a id="SS_22_11_12"></a>
+### 18.11.12 演習-範囲for文のオペランドになれるかどうかの診断 <a id="SS_18_11_12"></a>
 * 問題
 
 ```cpp
@@ -5974,11 +5974,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [関数の存在の診断](template_meta_programming.md#SS_13_3_4)
-* [解答例-範囲for文のオペランドになれるかどうかの診断](exercise_a.md#SS_23_11_12)
+* 参照 [関数の存在の診断](template_meta_programming.md#SS_12_3_4)
+* [解答例-範囲for文のオペランドになれるかどうかの診断](exercise_a.md#SS_19_11_12)
 
 
-### 演習-配列の長さの取り出し <a id="SS_22_11_13"></a>
+### 18.11.13 演習-配列の長さの取り出し <a id="SS_18_11_13"></a>
 * 問題
 
 ```cpp
@@ -6001,11 +6001,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [関数の存在の診断](template_meta_programming.md#SS_13_3_4)
-* [解答例-配列の長さの取り出し](exercise_a.md#SS_23_11_13)
+* 参照 [関数の存在の診断](template_meta_programming.md#SS_12_3_4)
+* [解答例-配列の長さの取り出し](exercise_a.md#SS_19_11_13)
 
 
-### 演習-配列の次元の取り出し <a id="SS_22_11_14"></a>
+### 18.11.14 演習-配列の次元の取り出し <a id="SS_18_11_14"></a>
 * 問題
 
 ```cpp
@@ -6030,11 +6030,11 @@ ___
     }  // namespace
 ```
 
-* 参照 [ValueTypeの実装](template_meta_programming.md#SS_13_3_4_15)
-* [解答例-配列の次元の取り出し](exercise_a.md#SS_23_11_14)
+* 参照 [ValueTypeの実装](template_meta_programming.md#SS_12_3_4_15)
+* [解答例-配列の次元の取り出し](exercise_a.md#SS_19_11_14)
 
 
-### 演習-関数型のテンプレートパラメータを持つクラステンプレート <a id="SS_22_11_15"></a>
+### 18.11.15 演習-関数型のテンプレートパラメータを持つクラステンプレート <a id="SS_18_11_15"></a>
 * 問題
 
 ```cpp
@@ -6077,7 +6077,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [関数型をテンプレートパラメータで使う](template_meta_programming.md#SS_13_7_7)
-* [解答例-関数型のテンプレートパラメータを持つクラステンプレート](exercise_a.md#SS_23_11_15)
+* 参照 [関数型をテンプレートパラメータで使う](template_meta_programming.md#SS_12_7_7)
+* [解答例-関数型のテンプレートパラメータを持つクラステンプレート](exercise_a.md#SS_19_11_15)
 
 
