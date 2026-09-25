@@ -44,7 +44,7 @@ public:
 
     static std::vector<std::string> const& GetStringsDefault()
     {
-        static const std::vector<std::string> strings_default{max_len, ""};
+        static std::vector<std::string> const strings_default{max_len, ""};
         return strings_default;
     }
 

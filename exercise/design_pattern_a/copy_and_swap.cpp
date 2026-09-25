@@ -1,5 +1,7 @@
 #include "gtest_wrapper.h"
 
+#include "suppress_warning.h"
+
 namespace {
 
 // @@@ sample begin 0:0
@@ -68,18 +70,6 @@ private:
     std::string name1_;
 };
 
-#if defined(__clang__)  // clangコンパイルでの警告抑止
-#define SUPPRESS_WARN_CLANG_BEGIN _Pragma("clang diagnostic push")
-#define SUPPRESS_WARN_CLANG_SELF_ASSIGN_OVERLOADED _Pragma("clang diagnostic ignored \"-Wself-assign-overloaded\"")
-#define SUPPRESS_WARN_CLANG_SELF_MOVE _Pragma("clang diagnostic ignored \"-Wself-move\"")
-#define SUPPRESS_WARN_CLANG_END _Pragma("clang diagnostic pop")
-#else
-#define SUPPRESS_WARN_CLANG_BEGIN
-#define SUPPRESS_WARN_CLANG_SELF_ASSIGN_OVERLOADED
-#define SUPPRESS_WARN_CLANG_SELF_MOVE
-#define SUPPRESS_WARN_CLANG_END
-#endif
-
 // 本来は下記単体テストは分割すべきだが、紙面の都合上一つにまとめる。
 TEST(DesignPatternA, CopyAndSwap)
 {
@@ -120,12 +110,12 @@ TEST(DesignPatternA, CopyAndSwap)
     ASSERT_STREQ("c0", b_copy.GetName0());
     ASSERT_EQ("c1", b_copy.GetName1());
 
-    SUPPRESS_WARN_CLANG_BEGIN;
+    SUPPRESS_WARN_BEGIN;
     SUPPRESS_WARN_CLANG_SELF_ASSIGN_OVERLOADED;
 
     b_copy = b_copy;
 
-    SUPPRESS_WARN_CLANG_END;
+    SUPPRESS_WARN_END;
 
     ASSERT_STREQ("c0", b_copy.GetName0());
     ASSERT_EQ("c1", b_copy.GetName1());
@@ -159,12 +149,12 @@ TEST(DesignPatternA, CopyAndSwap)
     ASSERT_EQ("", b_move.GetName1());
 #endif
 
-    SUPPRESS_WARN_CLANG_BEGIN;
+    SUPPRESS_WARN_BEGIN;
     SUPPRESS_WARN_CLANG_SELF_MOVE;
 
     c_move = std::move(c_move);
 
-    SUPPRESS_WARN_CLANG_END;
+    SUPPRESS_WARN_END;
 
     ASSERT_STREQ("a0", c_move.GetName0());
     ASSERT_EQ("a1", c_move.GetName1());
