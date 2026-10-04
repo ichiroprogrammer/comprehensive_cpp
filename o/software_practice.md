@@ -333,7 +333,11 @@ YAGNI(You ain't gonna need it)とは、「機能(要件)は実際に必要とな
 クラスCがstd::string constのように状態が不変で 安定した仕様を持つならば、
 このような多重呼び出しが問題になることは稀である。
 
+<<<<<<< HEAD
 従って、当然、以下のような[Fluent Interface](cpp_idioms.md#SS_20_14_12)の使用には問題ない。
+=======
+従って、当然、以下のような[Fluent Interface](glossary.md#SS_21_5_12)の使用には問題ない。
+>>>>>>> main
 
 ```cpp
 auto query = QueryBuilder()
@@ -401,7 +405,7 @@ auto query = QueryBuilder()
 ことをやめなければならない。
 
 ## Inside-Outの原則 <a id="SS_2_11"></a>
-この原則は、GUIアプリケーションを「[MVC](design_pattern.md#SS_9_3_2)」系のアーキテクチャで開発する場合、
+この原則は、GUIアプリケーションを「[MVC](design_pattern.md#SS_9_5_2)」系のアーキテクチャで開発する場合、
 「開発はGUI(View)からではなく、Modelから始めよ」という開発手順への制約である。
 
 （注：「7つの習慣」でも「Inside-Out」という用語が使用されているが、
@@ -424,11 +428,11 @@ Modelから開発を始め、それを外部の「回帰テスト用ソフトウ
 ## SOLID <a id="SS_2_12"></a>
 [SOLID](https://ja.wikipedia.org/wiki/SOLID)とは下記に示す5つの原則である。
 
-* [単一責任の原則(SRP)](solid.md#SS_8_1)
-* [オープン・クローズドの原則(OCP)](solid.md#SS_8_2)
-* [リスコフの置換原則(LSP)](solid.md#SS_8_3)
-* [インターフェース分離の原則(ISP)](solid.md#SS_8_4)
-* [依存関係逆転の原則(DIP)](solid.md#SS_8_5)
+* [単一責任の原則(SRP)](class_design.md#SS_8_1_1)
+* [オープン・クローズドの原則(OCP)](class_design.md#SS_8_1_2)
+* [リスコフの置換原則(LSP)](class_design.md#SS_8_1_3)
+* [インターフェース分離の原則(ISP)](class_design.md#SS_8_1_4)
+* [依存関係逆転の原則(DIP)](class_design.md#SS_8_1_5)
 
 この5原則はオブジェクト指向(OOD/OOP)プログラミングにおいて特に重要なものであり、
 すべてのプログラマはこれらに従って開発することが求められる。

@@ -642,7 +642,7 @@ ___
     }
 ```
 
-* 参照 [スライシング](cpp_idioms.md#SS_17_12_3)
+* 参照 [スライシング](class_design.md#SS_7_3_4_3)
 * [解答例-スライシング](exercise_a.md#SS_19_2_6)
 
 ### 18.2.7 演習-オブジェクトの所有権 <a id="SS_18_2_7"></a>
@@ -727,7 +727,7 @@ ___
     }
 ```
 
-* 参照 [オブジェクトの所有権](cpp_idioms.md#SS_17_4)
+* 参照 [オブジェクトの所有権](stdlib_and_concepts.md#SS_16_6_2)
 * [解答例-オブジェクトの所有権](exercise_a.md#SS_19_2_7)
 
 
@@ -748,7 +748,7 @@ ___
     }
 ```
 
-* 参照 [非メンバ関数](programming_convention.md#SS_2_3_11)
+* 参照 [非メンバ関数](programming_convention.md#SS_2_3_12)
 * [解答例-非メンバ関数の宣言](exercise_a.md#SS_19_3_1)
 
 
@@ -1092,7 +1092,7 @@ ___
     }
 ```
 
-* 参照 [オーバーロード](programming_convention.md#SS_2_3_2)
+* 参照 [オーバーロード](programming_convention.md#SS_2_3_3)
 * [解答例-オーバーロードによる誤用防止](exercise_a.md#SS_19_3_10)
 
 
@@ -1129,7 +1129,7 @@ ___
     }
 ```
 
-* 参照 [実引数/仮引数](programming_convention.md#SS_2_3_4)
+* 参照 [実引数/仮引数](programming_convention.md#SS_2_3_5)
 * [解答例-仮引数の修飾](exercise_a.md#SS_19_3_11)
 
 
@@ -1849,7 +1849,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [単一責任の原則(SRP)](solid.md#SS_7_1)
+* 参照 [単一責任の原則(SRP)](class_design.md#SS_7_1_1)
 * [解答例-SRP](exercise_a.md#SS_19_8_1)
 
 
@@ -2170,7 +2170,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [オープン・クローズドの原則(OCP)](solid.md#SS_7_2)
+* 参照 [オープン・クローズドの原則(OCP)](class_design.md#SS_7_1_2)
 * [解答例-OCP](exercise_a.md#SS_19_8_2)
 
 
@@ -2521,7 +2521,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [リスコフの置換原則(LSP)](solid.md#SS_7_3)
+* 参照 [リスコフの置換原則(LSP)](class_design.md#SS_7_1_3)
 * [解答例-LSP](exercise_a.md#SS_19_8_3)
 
 
@@ -2915,7 +2915,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [インターフェース分離の原則(ISP)](solid.md#SS_7_4)
+* 参照 [インターフェース分離の原則(ISP)](class_design.md#SS_7_1_4)
 * [解答例-ISP](exercise_a.md#SS_19_8_4)
 
 
@@ -3357,7 +3357,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [依存関係逆転の原則(DIP)](solid.md#SS_7_5)
+* 参照 [依存関係逆転の原則(DIP)](class_design.md#SS_7_1_5)
 * [解答例-DIP](exercise_a.md#SS_19_8_5)
 
 
@@ -3438,7 +3438,7 @@ ___
     }
 ```
 
-* 参照 [ガード節(Early Return)](cpp_idioms.md#SS_17_1_1)
+* 参照 [ガード節(Early Return)](design_pattern.md#SS_8_1_1)
 * [解答例-ガード節](exercise_a.md#SS_19_9_1)
 
 
@@ -3497,7 +3497,7 @@ ___
     }
 ```
 
-* 参照 [BitmaskType](cpp_idioms.md#SS_17_2_3)
+* 参照 [BitmaskType](design_pattern.md#SS_8_2_3)
 * [解答例-BitmaskType](exercise_a.md#SS_19_9_2)
 
 
@@ -3549,7 +3549,7 @@ ___
 
 ```
 
-* 参照 [Pimpl](cpp_idioms.md#SS_17_2_1)
+* 参照 [Pimpl](design_pattern.md#SS_8_2_1)
 * [解答例-Pimpl](exercise_a.md#SS_19_9_3)
 
 
@@ -3669,7 +3669,7 @@ ___
     }
 ```
 
-* 参照 [Accessor](cpp_idioms.md#SS_17_1_6)
+* 参照 [Accessor](design_pattern.md#SS_8_1_6)
 * [解答例-Accessor](exercise_a.md#SS_19_9_5)
 
 
@@ -3744,7 +3744,7 @@ ___
     }
 ```
 
-* 参照 [Copy-And-Swap](cpp_idioms.md#SS_17_1_4)
+* 参照 [Copy-And-Swap](design_pattern.md#SS_8_1_4)
 * [解答例-Copy-And-Swap](exercise_a.md#SS_19_9_6)
 
 
@@ -3860,7 +3860,7 @@ ___
     }
 ```
 
-* 参照 [Immutable](cpp_idioms.md#SS_17_1_7)
+* 参照 [Immutable](design_pattern.md#SS_8_1_7)
 * [解答例-Immutable](exercise_a.md#SS_19_9_7)
 
 
@@ -3920,7 +3920,7 @@ ___
     }
 ```
 
-* 参照 [Clone(仮想コンストラクタ)](design_pattern.md#SS_8_1_3)
+* 参照 [Clone(仮想コンストラクタ)](design_pattern.md#SS_8_3_3)
 * [解答例-Clone](exercise_a.md#SS_19_9_8)
 
 
@@ -4036,7 +4036,7 @@ ___
     }
 ```
 
-* 参照 [NVI(non virtual interface)](cpp_idioms.md#SS_17_1_8)
+* 参照 [NVI(non virtual interface)](design_pattern.md#SS_8_1_8)
 * [解答例-NVI](exercise_a.md#SS_19_9_9)
 
 
@@ -4110,7 +4110,7 @@ ___
     }
 ```
 
-* 参照 [RAII(scoped guard)](cpp_idioms.md#SS_17_1_3)
+* 参照 [RAII(scoped guard)](design_pattern.md#SS_8_1_3)
 * [解答例-RAII](exercise_a.md#SS_19_9_11)
 
 
@@ -4147,7 +4147,7 @@ ___
     }
 ```
 
-* 参照 [Future](cpp_idioms.md#SS_17_2_4)
+* 参照 [Future](design_pattern.md#SS_8_2_4)
 * [解答例-Future](exercise_a.md#SS_19_9_12)
 
 
@@ -4228,7 +4228,7 @@ ___
     }
 ```
 
-* 参照 [DI(dependency injection)](design_pattern.md#SS_8_3_1)
+* 参照 [DI(dependency injection)](design_pattern.md#SS_8_5_1)
 * [解答例-DI](exercise_a.md#SS_19_9_13)
 
 
@@ -4306,7 +4306,7 @@ ___
     }
 ```
 
-* 参照 [Singleton](design_pattern.md#SS_8_1_1)
+* 参照 [Singleton](design_pattern.md#SS_8_3_1)
 * [解答例-Singleton](exercise_a.md#SS_19_9_14)
 
 
@@ -4396,7 +4396,7 @@ ___
     }
 ```
 
-* 参照 [State](design_pattern.md#SS_8_2_3)
+* 参照 [State](design_pattern.md#SS_8_4_3)
 * [解答例-State](exercise_a.md#SS_19_9_15)
 
 
@@ -4478,7 +4478,7 @@ ___
     }
 ```
 
-* 参照 [Null Object](cpp_idioms.md#SS_17_2_5)
+* 参照 [Null Object](design_pattern.md#SS_8_2_5)
 * [解答例-Null Object](exercise_a.md#SS_19_9_16)
 
 
@@ -4616,7 +4616,7 @@ ___
     }
 ```
 
-* 参照 [Templateメソッド](design_pattern.md#SS_8_2_1)
+* 参照 [Templateメソッド](design_pattern.md#SS_8_4_1)
 * [解答例-Templateメソッド](exercise_a.md#SS_19_9_17)
 
 
@@ -4765,7 +4765,7 @@ ___
     }
 ```
 
-* 参照 [Factory](design_pattern.md#SS_8_1_4)
+* 参照 [Factory](design_pattern.md#SS_8_3_4)
 * [解答例-Factory](exercise_a.md#SS_19_9_18)
 
 
@@ -4879,7 +4879,7 @@ ___
     }
 ```
 
-* 参照 [Named Constructor](design_pattern.md#SS_8_1_2)
+* 参照 [Named Constructor](design_pattern.md#SS_8_3_2)
 * [解答例-Named Constructor](exercise_a.md#SS_19_9_19)
 
 
@@ -4947,7 +4947,7 @@ ___
     }
 ```
 
-* 参照 [Proxy](design_pattern.md#SS_8_2_6)
+* 参照 [Proxy](design_pattern.md#SS_8_4_6)
 * [解答例-Proxy](exercise_a.md#SS_19_9_20)
 
 
@@ -4955,7 +4955,7 @@ ___
 * 問題
 
 ```cpp
-    //  exercise/design_pattern_q/strategy.cpp 11
+    //  exercise/design_pattern_q/strategy.cpp 12
     // [Q]
     // 下記find_filesは醜悪であるだけでなく、拡張性もない。
     // Strategyパターンを用い、この問題に対処せよ。
@@ -5047,7 +5047,7 @@ ___
     }
 ```
 
-* 参照 [Strategy](design_pattern.md#SS_8_2_2)
+* 参照 [Strategy](design_pattern.md#SS_8_4_2)
 * [解答例-Strategy](exercise_a.md#SS_19_9_21)
 
 
@@ -5167,7 +5167,7 @@ ___
     }
 ```
 
-* 参照 [Visitor](design_pattern.md#SS_8_2_5)
+* 参照 [Visitor](design_pattern.md#SS_8_4_5)
 * [解答例-Visitor](exercise_a.md#SS_19_9_22)
 
 
@@ -5319,7 +5319,7 @@ ___
     }
 ```
 
-* 参照 [CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_17_1_5)
+* 参照 [CRTP(curiously recurring template pattern)](design_pattern.md#SS_8_1_5)
 * [解答例-CRTP](exercise_a.md#SS_19_9_23)
 
 
@@ -5405,7 +5405,7 @@ ___
     }
 ```
 
-* 参照 [Observer](design_pattern.md#SS_8_2_4)
+* 参照 [Observer](design_pattern.md#SS_8_4_4)
 * [解答例-Observer](exercise_a.md#SS_19_9_24)
 
 
