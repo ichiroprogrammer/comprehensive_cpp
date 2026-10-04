@@ -657,7 +657,7 @@ ___
 
         static std::vector<std::string> const& GetStringsDefault()
         {
-            static const std::vector<std::string> strings_default{max_len, ""};
+            static std::vector<std::string> const strings_default{max_len, ""};
             return strings_default;
         }
 
@@ -1103,7 +1103,7 @@ ___
 
 ### 解答-エクセプションの型 <a id="SS_23_3_13"></a>
 * 選択肢2
-* 参照 [エクセプション処理](programming_convention.md#SS_3_3_9)
+* 参照 [エクセプション処理](programming_convention.md#SS_3_3_10)
 * 解説  
   下記3つを統合して考えれば、必然的に「選択肢2」であることがわかる。
     * エクセプションでthrowされるオブジェクトのポインタがnullptrになることはない。
@@ -2303,7 +2303,7 @@ ___
     * ISP - 4
     * DIP - 5
 
-* 参照 [SOLID](solid.md#SS_8)
+* 参照 [SOLID](class_design.md#SS_8_1)
 * [演習-SOLIDの定義](exercise_q.md#SS_22_8_6)へ戻る。
 
 
@@ -2532,7 +2532,7 @@ ___
 
 ### 解答-Accessorの副作用 <a id="SS_23_9_4"></a>
 * 選択肢1
-* 参照 [Accessor](cpp_idioms.md#SS_21_1_6)
+* 参照 [Accessor](design_pattern.md#SS_9_1_6)
 * [演習-Accessorの副作用](exercise_q.md#SS_22_9_4)へ戻る。
 
 
@@ -2676,7 +2676,7 @@ ___
 ### 解答例-Copy-And-Swap <a id="SS_23_9_6"></a>
 
 ```cpp
-    //  exercise/design_pattern_a/copy_and_swap.cpp 5
+    //  exercise/design_pattern_a/copy_and_swap.cpp 7
     // [A]
     // 以下のクラスCopyAndSwapの
     //  * copyコンストラクタ
@@ -2742,18 +2742,6 @@ ___
         std::string name1_;
     };
 
-    #if defined(__clang__)  // clangコンパイルでの警告抑止
-    #define SUPPRESS_WARN_CLANG_BEGIN _Pragma("clang diagnostic push")
-    #define SUPPRESS_WARN_CLANG_SELF_ASSIGN_OVERLOADED _Pragma("clang diagnostic ignored \"-Wself-assign-overloaded\"")
-    #define SUPPRESS_WARN_CLANG_SELF_MOVE _Pragma("clang diagnostic ignored \"-Wself-move\"")
-    #define SUPPRESS_WARN_CLANG_END _Pragma("clang diagnostic pop")
-    #else
-    #define SUPPRESS_WARN_CLANG_BEGIN
-    #define SUPPRESS_WARN_CLANG_SELF_ASSIGN_OVERLOADED
-    #define SUPPRESS_WARN_CLANG_SELF_MOVE
-    #define SUPPRESS_WARN_CLANG_END
-    #endif
-
     // 本来は下記単体テストは分割すべきだが、紙面の都合上一つにまとめる。
     TEST(DesignPatternA, CopyAndSwap)
     {
@@ -2794,12 +2782,12 @@ ___
         ASSERT_STREQ("c0", b_copy.GetName0());
         ASSERT_EQ("c1", b_copy.GetName1());
 
-        SUPPRESS_WARN_CLANG_BEGIN;
+        SUPPRESS_WARN_BEGIN;
         SUPPRESS_WARN_CLANG_SELF_ASSIGN_OVERLOADED;
 
         b_copy = b_copy;
 
-        SUPPRESS_WARN_CLANG_END;
+        SUPPRESS_WARN_END;
 
         ASSERT_STREQ("c0", b_copy.GetName0());
         ASSERT_EQ("c1", b_copy.GetName1());
@@ -2833,12 +2821,12 @@ ___
         ASSERT_EQ("", b_move.GetName1());
     #endif
 
-        SUPPRESS_WARN_CLANG_BEGIN;
+        SUPPRESS_WARN_BEGIN;
         SUPPRESS_WARN_CLANG_SELF_MOVE;
 
         c_move = std::move(c_move);
 
-        SUPPRESS_WARN_CLANG_END;
+        SUPPRESS_WARN_END;
 
         ASSERT_STREQ("a0", c_move.GetName0());
         ASSERT_EQ("a1", c_move.GetName1());
@@ -3124,7 +3112,7 @@ ___
 
 ### 解答-RAIIの効果 <a id="SS_23_9_10"></a>
 * 選択肢1
-* 参照 [RAII(scoped guard)](cpp_idioms.md#SS_21_1_3)
+* 参照 [RAII(scoped guard)](design_pattern.md#SS_9_1_3)
 * [演習-RAIIの効果](exercise_q.md#SS_22_9_10)へ戻る。
 
 
@@ -4237,7 +4225,7 @@ ___
 ### 解答例-Strategy <a id="SS_23_9_21"></a>
 
 ```cpp
-    //  exercise/design_pattern_a/strategy.cpp 12
+    //  exercise/design_pattern_a/strategy.cpp 13
     // [A]
     // 下記find_filesは醜悪であるだけでなく、拡張性もない。
     // Strategyパターンを用い、この問題に対処せよ。
@@ -4774,19 +4762,19 @@ ___
 
 ### 解答-デザインパターン選択1 <a id="SS_23_9_25"></a>
 * 選択肢2
-* 参照 [State](design_pattern.md#SS_9_2_3)
+* 参照 [State](design_pattern.md#SS_9_4_3)
 * [演習-デザインパターン選択1](exercise_q.md#SS_22_9_25)へ戻る。
 
 
 ### 解答-デザインパターン選択2 <a id="SS_23_9_26"></a>
 * 選択肢4
-* 参照 [Null Object](cpp_idioms.md#SS_21_2_5)
+* 参照 [Null Object](design_pattern.md#SS_9_2_5)
 * [演習-デザインパターン選択2](exercise_q.md#SS_22_9_26)へ戻る。
 
 
 ### 解答-デザインパターン選択3 <a id="SS_23_9_27"></a>
 * 選択肢3
-* 参照 [Observer](design_pattern.md#SS_9_2_4)
+* 参照 [Observer](design_pattern.md#SS_9_4_4)
 * [演習-デザインパターン選択3](exercise_q.md#SS_22_9_27)へ戻る。
 
 

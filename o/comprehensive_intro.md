@@ -123,8 +123,7 @@ __コード例について__
 
 * 「`// ...`」のような行は、ソースコードの省略を表す。
 * 特定の規則、法則、慣習等を説明するためのソースコードは、シンプルさを優先するため、
-  その他の規則、法則、慣習に従っていない場合があるが、
-  [Trailing Underscore(末尾アンダースコア)](cpp_idioms.md#SS_21_11_4)には従っている。
+  その他の規則、法則、慣習に従っていない場合がある。
   また、一般に標準ライブラリのコンテナクラスをnewする必要はないが、
   コードの動作を示すためにあえてそのようにする場合がある。
 * ソースコード内に動作説明のような本来不要なコメントがあるのは、
@@ -171,7 +170,7 @@ __プロジェクト運用__
 __パターン__
 
 - [アーキテクチャ](architecture.md#SS_10)
-- [SOLID](solid.md#SS_8)
+- [クラス設計](class_design.md#SS_8)
 - [デザインパターン](design_pattern.md#SS_9)
 - [並行処理](concurrency.md#SS_12)
 - [テンプレートメタプログラミング](template_meta_programming.md#SS_13)
@@ -190,11 +189,10 @@ __Appendix__
 - [C++の進化と主な変更点](cpp_improve.md#SS_18)
 - [C++コア言語仕様](core_lang_spec.md#SS_19)
 - [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_20)
-- [C++慣用語句](cpp_idioms.md#SS_21)
+- [用語集](glossary.md#SS_21)
 - [演習](exercise_q.md#SS_22)
 - [解答](exercise_a.md#SS_23)
 - [参考文献](bibliography.md#SS_24)
 - [あとがき](afterword.md#SS_25)
-- [Sample Code](sample_code.md#SS_26)
 
 

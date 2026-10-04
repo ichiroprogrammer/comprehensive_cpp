@@ -1,6 +1,6 @@
 <!-- deep/md/dynamic_memory_allocation.md -->
 # ダイナミックメモリアロケーション <a id="SS_14"></a>
-本章で扱うダイナミックメモリアロケーション([ヒープ](cpp_idioms.md#SS_21_14_1)の使用)とは、new/delete、malloc/free
+本章で扱うダイナミックメモリアロケーション([ヒープ](glossary.md#SS_21_5_1)の使用)とは、new/delete、malloc/free
 によるメモリ確保/解放のことである。
 
 malloc/freeは、
@@ -144,7 +144,7 @@ UNIX系のOSでの典型的なmalloc/freeの実装例の一部を以下に示す
 ```
 
 上記で示したようにmalloc/freeで使用されるメモリはHeader_t型のheaderで管理され、
-このアクセスの競合は[スピンロック](cpp_idioms.md#SS_21_14_6)(SpinLock)によって回避される。
+このアクセスの競合は[スピンロック](glossary.md#SS_21_5_6)(SpinLock)によって回避される。
 headerが管理するメモリ用域からのメモリの切り出しはmalloc_innerによって行われるが、
 下のフラグメントの説明でも示す通り、
 headerで管理されたメモリは長さの上限が単純には決まらないリスト構造になるため、
@@ -182,7 +182,7 @@ sbrkは
 によるメモリ確保のトリガーとなる。
 これはOSのファイルシステムの動作を含む処理であるため、やはりリアルタイム性の保証は困難である。
 
-[フリースタンディング環境](cpp_idioms.md#SS_21_14_9)では、sbrkのようなシステムコールは存在しないため、
+[フリースタンディング環境](glossary.md#SS_21_5_9)では、sbrkのようなシステムコールは存在しないため、
 アプリケーションの未使用領域や静的に確保した領域を上記コードで示したようなリスト構造で管理し、
 mallocで使用することになる。
 このような環境では、sbrkによるリアルタイム性の阻害は発生しないものの、
@@ -427,7 +427,7 @@ MPoolFixedに限らずメモリアロケータが返すメモリは、
 MPoolFixed::alloc/MPoolFixed::freeを見ればわかる通り、malloc/freeの実装に比べ格段にシンプルであり、
 これによりリアルタイム性の保障は容易である。
 
-なお、この実装ではmalloc/freeと同様に使用制限の少ない[スピンロック](cpp_idioms.md#SS_21_14_6)(SpinLock)を使用したが、
+なお、この実装ではmalloc/freeと同様に使用制限の少ない[スピンロック](glossary.md#SS_21_5_6)(SpinLock)を使用したが、
 このロックは、ラウンドロビンでスケジューリングされるスレッドの競合を防ぐためのものであり、
 固定プライオリティでのスケジューリングが前提となるような組み込みソフトで使用した場合、
 デッドロックを引き起こす可能性がある。
@@ -735,7 +735,7 @@ MPoolから派生したクラスが、
 リアルタイム性が不要な処理であるため使用しているstdコンテナにすら、
 既存のエクセプション処理機構を使わせたく無くなるものである。
 
-コンパイラに[g++](cpp_idioms.md#SS_21_15_1)や[clang++](cpp_idioms.md#SS_21_15_2)を使っている場合、
+コンパイラに[g++](glossary.md#SS_21_6_1)や[clang++](glossary.md#SS_21_6_2)を使っている場合、
 下記関数を置き換えることでそういった要望を叶えることができる。
 
 |関数                                           |機能                            |
@@ -1052,7 +1052,7 @@ size2indexは要求されたサイズから、
 そのような場合、非スタック上でのオブジェクト生成には、
 
 * 限定的なクラスのみ、newによる動的な方法を用いる
-* その他のクラスに対しては、[Singleton](design_pattern.md#SS_9_1_1)や[Named Constructor](design_pattern.md#SS_9_1_2)と同様な静的な方法を用いる
+* その他のクラスに対しては、[Singleton](design_pattern.md#SS_9_3_1)や[Named Constructor](design_pattern.md#SS_9_3_2)と同様な静的な方法を用いる
 
 とし、グローバルnewを使用しないことが、より良いメモリ使用方法となり得る。
 
@@ -1139,7 +1139,7 @@ size2indexは要求されたサイズから、
 
 を記述しなければならず、コードクローンの温床となってしまう。
 これを避けるためには、
-[CRTP(curiously recurring template pattern)](cpp_idioms.md#SS_21_1_5)
+[CRTP(curiously recurring template pattern)](design_pattern.md#SS_9_1_5)
 を利用した下記のようなクラステンプレートを導入すれば良い。
 
 ```cpp
