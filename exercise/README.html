@@ -274,27 +274,58 @@
 </ul>
 <p>の理解を促すための演習問題を掲載している。</p>
 <h2 id="ビルド環境">ビルド環境 <a id="SS_1_1"></a></h2>
-<p><a
-href="https://www.cygwin.com/install.html">cygwin</a>に以下のパケージをインストールことで、</p>
+<ol type="1">
+<li><p><a
+href="https://www.cygwin.com/install.html">cygwin</a>(<code>https://www.cygwin.com/install.html</code>)
+にジャンプし、 自分の環境にあったインストーラをダウンロード</p></li>
+<li><p>インストーラを立ち上げ、以下のパケージを選択しインストール</p>
 <ul>
-<li>bash</li>
+<li>bash(これは選択しなくても自動でインストールされるかもしれない)</li>
 <li>git</li>
 <li>g++</li>
 <li>clang(clang-format)</li>
 <li>make</li>
-</ul>
+</ul></li>
+<li><p>ここまででインストールは完了。以下確認。</p></li>
+<li><p>windowsのメニューから<code>cygwin</code>を選択し、cygwinターミナルを起動する。</p></li>
+<li><p>cygwinターミナルから以下を実行(ターミナルのホームディレクトリは通常<code>C:/cygwin64/home/yourname</code>)</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git <span class="at">--version</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> version 2.51.0</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> g++ <span class="at">--version</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">g++</span> <span class="er">(</span><span class="ex">GCC</span><span class="kw">)</span> <span class="ex">14.4.0</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Copyright</span> <span class="er">(</span><span class="ex">C</span><span class="kw">)</span> <span class="ex">2024</span> Free Software Foundation, Inc.</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">This</span> is free software<span class="kw">;</span> <span class="ex">see</span> the source for copying conditions.  There is NO</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">warranty</span><span class="kw">;</span> <span class="ex">not</span> even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> clang <span class="at">--version</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">clang</span> version 22.1.8 <span class="er">(</span><span class="ex">ssh://tyan0@cygwin.com/git/cygwin-packages/clang</span> 19fccdabbb57f99161f3845d51607c9f9ccc3b94<span class="kw">)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Target:</span> x86_64-pc-windows-cygnus</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Thread</span> model: posix</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">InstalledDir:</span> /usr/bin</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make <span class="at">--version</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">GNU</span> Make 4.4.1</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ex">このプログラムは</span> x86_64-pc-cygwin 用にビルドされました</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ex">Copyright</span> <span class="er">(</span><span class="ex">C</span><span class="kw">)</span> <span class="ex">1988-2023</span> Free Software Foundation, Inc.</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ex">ライセンス</span> GPLv3+: GNU GPL バージョン 3 以降 <span class="op">&lt;</span>https://gnu.org/licenses/gpl.html<span class="op">&gt;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ex">これはフリーソフトウェアです:</span> 自由に変更および配布できます.</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ex">法律の許す限り、　無保証　です.</span></span></code></pre></div>
+<p>もしコマンドの実行でエラーが起こるようであれば、そのコマンドのインストールがされていない。
+もう一度インストーラからそのコマンドをインストールする。</p>
 <p><a
 href="#build">ビルド</a>できる予定であるが、もし問題が起こる場合、ichiro.inoue@exmtion.co.jpまでご連絡ください。</p>
 <h2 id="ビルド方法">ビルド方法 <a id="build"></a>
 <a id="SS_1_2"></a></h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">exercise/build.sh</span>   <span class="co"># すべてのソースコードがビルドされる。</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> exercise/some_dir</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span>                <span class="co"># some_dir内のソースコードのビルド</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> ut             <span class="co">#  some_dir内のソースコードの単体テスト</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> exercise/build.sh   <span class="co"># すべてのソースコードがビルドされる。</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd exercise/some_dir</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make                <span class="co"># some_dir内のソースコードのビルド</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make ut             <span class="co">#  some_dir内のソースコードの単体テスト</span></span></code></pre></div>
 <p>ほとんどの演習問題は[Q}の指示に従いコードを書き単体テストで動作を確かめることで完了できる。</p>
 <p>makefileの各種のターゲットは</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> help</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> help</span></code></pre></div>
 <p>を実行すればわかる。</p>
 <h2 id="使い方">使い方 <a id="SS_1_3"></a></h2>
 <p>演習は./exercise/xxx_qのソースコードの</p>
@@ -302,5 +333,15 @@ href="#build">ビルド</a>できる予定であるが、もし問題が起こ�
 <p>//[Q] … のような個所に掲載されている。</p>
 </blockquote>
 <p>exercise/xxx_aは、 exercise/xxx_qの回答例である。</p>
+<p>ソースコードの編集は各自の好みのエディタで問題ないが、特に内容であれば、VS-Codeを推奨する。</p>
+<p>windowsのエクスプローラーからcygwinのディレクトリを操作したい場合は、
+<code>C:/cygwin64/home/yourname</code>
+から対象ディレクトリを探せば容易に見つかるはずである。</p>
+<h2 id="readme.htmlの生成方法">README.htmlの生成方法
+<a id="SS_1_4"></a></h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd <span class="op">&lt;</span>GIT_TOP<span class="op">&gt;</span>/exercise</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ../md_gen/export/sh/md_to_html.sh <span class="at">-t</span> <span class="st">&quot;C++演習問題集&quot;</span> <span class="at">-a</span> <span class="st">&quot;講師名&quot;</span>  <span class="at">-H</span> <span class="at">-f</span> README.md</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv o/README.html .</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm <span class="at">-rf</span> o/</span></code></pre></div>
 </body>
 </html>
