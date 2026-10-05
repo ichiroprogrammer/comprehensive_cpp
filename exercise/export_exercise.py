@@ -70,6 +70,7 @@ def _main():
     dst_dir = os.path.join(get_args(), "exercise.git")
     copy_directories(src_dirs, dst_dir)
     shutil.copy(f"{sample_code_dir}/README.md", dst_dir)
+    shutil.copy(f"{sample_code_dir}/README.html", dst_dir)
 
     make_git_repos(dst_dir)
 
