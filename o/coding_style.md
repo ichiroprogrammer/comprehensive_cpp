@@ -577,13 +577,18 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 特定の型を明示して使用する必要がない場合、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 11
+    //  example/etc/aaa.cpp 13
 
     auto i  = 1;
     auto ui = 1U;
     auto d  = 1.0;
     auto s  = "str";
-    auto v  = {0, 1, 2};
+
+    auto v = {0, 1, 2};  // vはinitializer_list
+    static_assert(std::is_same_v<decltype(v), std::initializer_list<int>>);
+
+    int  ai[]{0, 1, 2};  // 配列のautoでの定義はできない
+    auto ai2 = std::array{0, 1, 2};
 
     for (auto i : v) {
         // 何らかの処理
@@ -613,7 +618,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 特定の型を明示して使用する必要がある場合、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 51
+    //  example/etc/aaa.cpp 58
 
     auto b  = new char[10]{0};
     auto v  = std::vector<int>{0, 1, 2};
@@ -654,7 +659,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 関数の戻り値を受け取る変数を宣言する場合、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 94
+    //  example/etc/aaa.cpp 101
 
     auto v = std::vector<int>{0, 1, 2};
 
@@ -675,7 +680,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 型を明示しないAAAスタイルは使うべきではない。
 
 ```cpp
-    //  example/etc/aaa.cpp 118
+    //  example/etc/aaa.cpp 125
 
     extern std::map<std::string, int> gen_map();
 
@@ -700,7 +705,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 インライン関数や関数テンプレートの宣言は、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 145
+    //  example/etc/aaa.cpp 152
 
     template <typename F, typename T>
     auto apply_0(F&& f, T value)
@@ -713,7 +718,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 AAAスタイルは出来る限り避けるべきである。
 
 ```cpp
-    //  example/etc/aaa.cpp 153
+    //  example/etc/aaa.cpp 160
 
     template <typename F, typename T>
     auto apply_1(F&& f, T value) -> decltype(f(std::declval<T>()))  // autoを使用しているが、AAAではない
@@ -739,7 +744,7 @@ AAAスタイルは出来る限り避けるべきである。
   また、下記のように縮小型変換(下記では、unsignedからsignedの変換)を防ぐこともできる。
 
 ```cpp
-    //  example/etc/aaa.cpp 180
+    //  example/etc/aaa.cpp 187
 
     auto v = std::vector<int>{0, 1, 2};
 
@@ -767,7 +772,7 @@ AAAスタイルでは、以下のような場合に注意が必要である。
   下記のような型推論は、直感に反する場合があるため、autoの使い方に対する習熟が必要である。
 
 ```cpp
-    //  example/etc/aaa.cpp 194
+    //  example/etc/aaa.cpp 201
 
     auto str0 = "str";
     static_assert(std::is_same_v<char const*, decltype(str0)>);  // str0はchar[4]ではない
