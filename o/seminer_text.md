@@ -837,19 +837,19 @@ ___
     const std::string s;  // NG
     std::string const t;  // OK
 
-    std::string const* s_ptr;  // NG
+    const std::string * s_ptr;  // NG
     std::string const* t_ptr;  // OK
 
-    std::string const& f();  // NG 関数の宣言
+    const std::string& f();  // NG 関数の宣言
     std::string const& g();  // OK 関数の宣言
 
-    char        abc[]{"abc"};
-    char const* a = abc;  // NG *aはconst
-    char const* b = abc;  // OK *aはconst
-    char* const c = abc;  // NG *aではなく、aがconstになり、意味が変わる
+    char abc[]{"abc"};
+    const char *a = abc;  // NG *aはconst
+    char const* b = abc;  // OK *bはconst
+    char* const c = abc;  // NG *cではなく、cがconstになり、意味が変わる
 
-    char const* const d = abc;  // NG
-    char const* const e = abc;  // OK
+    const char* const d = abc;  // NG
+    char const* const e = abc;  // OK eがconstで且つ、*eもconst
 ```
 
 * [演習-constの意味](#SS_18_1_8)
@@ -1303,7 +1303,7 @@ ___
     * ファイル外部から使用されるインラインクラス(クラステンプレート等)は、
       一つのヘッダファイルで宣言、定義する。
     * 「一つのヘッダファイル(a.h)と、一つの.cpp(a.cpp)で構成されたクラスA」のみをサポートするクラス
-      (Aのインターフェースや実装専用に定義されたクラス(「[Pimpl](#SS_8_2_1)」参照))は、
+      (Aのインターフェースや実装専用に定義されたクラス(「[Pimpl](#SS_8_2_1)」参照)や型、enum、エイリアス等)は、
       a.h、a.cppで宣言、定義する。
 
 ### 2.2.2 クラスの規模 <a id="SS_2_2_2"></a>
@@ -1679,14 +1679,17 @@ ___
         explicit A3(int32_t a, int32_t* b) noexcept : a_{a}, b_{b} {}
         // ...
     };
-
-    void f_A0(A0) noexcept {}
-    void f_A1(A1) noexcept {}
-    void f_A2(A2) noexcept {}
-    void f_A3(A3) noexcept {}
 ```
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 200
+    //  example/programming_convention/member_func_ut.cpp 197
+
+    void f_A0(A0) noexcept;
+    void f_A1(A1) noexcept;
+    void f_A2(A2) noexcept;
+    void f_A3(A3) noexcept;
+```
+```cpp
+    //  example/programming_convention/member_func_ut.cpp 208
 
     A0 a0 = 1;           // NG 1からA0への暗黙の型変換。
                          //    このような変換はセマンティクス的不整合につながる場合がある
@@ -1728,7 +1731,7 @@ ___
 * copy代入演算子は[lvalue修飾](#SS_15_8_7_2)をする。
 
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 233
+    //  example/programming_convention/member_func_ut.cpp 241
 
     class Widget {
     public:
@@ -1747,7 +1750,7 @@ ___
     };
 ```
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 262
+    //  example/programming_convention/member_func_ut.cpp 270
 
     Widget w0{1};
     Widget w1{2};
@@ -1759,7 +1762,7 @@ ___
     Widget{3} = Widget{4};  // NG lvalue修飾無しのmove代入演算子であるため、コンパイルできる
 ```
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 281
+    //  example/programming_convention/member_func_ut.cpp 289
 
     class Widget {  // 上記の修正
     public:
@@ -1778,7 +1781,7 @@ ___
     };
 ```
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 310
+    //  example/programming_convention/member_func_ut.cpp 318
 
     Widget w0{1};
     Widget w1{2};
@@ -1817,7 +1820,7 @@ ___
     * 一連の仮想関数の最後のものの宣言には、overrideを付けず、finalを付ける。
 
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 327
+    //  example/programming_convention/member_func_ut.cpp 335
 
     class Base {
     public:
@@ -1860,7 +1863,7 @@ ___
   そのオーバーライド関数にもデフォルト引数を持たせない。
 
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 372
+    //  example/programming_convention/member_func_ut.cpp 380
 
     class Base {
     public:
@@ -1878,7 +1881,7 @@ ___
 ```
 
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 396
+    //  example/programming_convention/member_func_ut.cpp 404
 
     auto  d = Derived{};
     Base& b{d};
@@ -1899,14 +1902,15 @@ ___
 
 ### 2.2.5 メンバ変数 <a id="SS_2_2_5"></a>
 #### 2.2.5.1 メンバ変数の数  <a id="SS_2_2_5_1"></a>
-* constexprでなく、publicやprotectedなメンバ変数を宣言しない。
+* constやconstexprではない、publicやprotectedなメンバ変数を宣言しない。
 * クラスの可変な状態を表すメンバ変数(non-const, non-static)は4個以内に留める(「[クラス凝集性のクライテリア](#SS_7_2)」参考)。
 
 #### 2.2.5.2 非静的なメンバ変数 <a id="SS_2_2_5_2"></a>
 * すべての非静的なメンバ変数は、コンストラクタ終了時までに明示的に初期化する。
 * 多くのコンパイラや静的解析ツールはインスペクタは、
-  [NSDMI](#SS_15_6_7_1)、[初期化子リストでの初期化](#SS_15_6_7_2)による初期化の漏れについては容易に発見、
-  指摘できることが多い。
+  [NSDMI](#SS_15_6_7_1)、[初期化子リストでの初期化](#SS_15_6_7_2)による初期化の漏れについては容易に発見、指摘できることが多い。
+* `std::thead`型であるメンバオブジェクトは、メンバ変数の最後に宣言する(スレッドは初期化された時点で走り出す可能性があり、
+  それにより、未初期化のメンバ変数にアクセスしてしまう可能性があるため)。
 * constメンバ変数は、[NSDMI](#SS_15_6_7_1)、
   [初期化子リストでの初期化](#SS_15_6_7_2)でなければ初期化できないため、それ以外に方法がない場合を除き、
   [コンストラクタ内での非静的なメンバ変数の初期値の代入](#SS_15_6_7_3)の使用を避ける。
@@ -2172,7 +2176,7 @@ ___
 ```
 
 #### 2.2.6.1 インターフェースの継承 <a id="SS_2_2_6_1"></a>
-* クラス間に「Is-a」の関係が成り立つときに限りpublic継承を行う。
+* クラス間に「[is-a](#SS_17_1_1)」の関係が成り立つときに限りpublic継承を行う。
     * public継承を行う場合、[リスコフの置換原則(LSP)](#SS_7_1_3)を守る。
     * インターフェースを継承しない場合、public継承をしない。
 * C#やJavaのinterfaceが必要ならば(インタフェースと実装の完全分離をしたい場合等)、
@@ -6673,8 +6677,7 @@ ___
 
 ### 4.1.5 スペース <a id="SS_4_1_5"></a>
 #### 4.1.5.1 文の後 <a id="SS_4_1_5_1"></a>
-* [定義] ステートメントキーワードとは、for、while、do-while、switch、try、if、else等を指す。
-* ステートメントキーワードの後には1スペースを入れる。
+* `if`、`else`、`for、`while`、`switch`、`try`等のステートメントを開始するキーワードの後には1スペースを入れる。
 * 関数名の直後にはスペースを入れない。
 
 ```cpp
@@ -7019,13 +7022,18 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 特定の型を明示して使用する必要がない場合、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 11
+    //  example/etc/aaa.cpp 13
 
     auto i  = 1;
     auto ui = 1U;
     auto d  = 1.0;
     auto s  = "str";
-    auto v  = {0, 1, 2};
+
+    auto v = {0, 1, 2};  // vはinitializer_list
+    static_assert(std::is_same_v<decltype(v), std::initializer_list<int>>);
+
+    int  ai[]{0, 1, 2};  // 配列のautoでの定義はできない
+    auto ai2 = std::array{0, 1, 2};
 
     for (auto i : v) {
         // 何らかの処理
@@ -7055,7 +7063,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 特定の型を明示して使用する必要がある場合、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 51
+    //  example/etc/aaa.cpp 58
 
     auto b  = new char[10]{0};
     auto v  = std::vector<int>{0, 1, 2};
@@ -7096,7 +7104,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 関数の戻り値を受け取る変数を宣言する場合、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 94
+    //  example/etc/aaa.cpp 101
 
     auto v = std::vector<int>{0, 1, 2};
 
@@ -7117,7 +7125,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 型を明示しないAAAスタイルは使うべきではない。
 
 ```cpp
-    //  example/etc/aaa.cpp 118
+    //  example/etc/aaa.cpp 125
 
     extern std::map<std::string, int> gen_map();
 
@@ -7142,7 +7150,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 インライン関数や関数テンプレートの宣言は、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 145
+    //  example/etc/aaa.cpp 152
 
     template <typename F, typename T>
     auto apply_0(F&& f, T value)
@@ -7155,7 +7163,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 AAAスタイルは出来る限り避けるべきである。
 
 ```cpp
-    //  example/etc/aaa.cpp 153
+    //  example/etc/aaa.cpp 160
 
     template <typename F, typename T>
     auto apply_1(F&& f, T value) -> decltype(f(std::declval<T>()))  // autoを使用しているが、AAAではない
@@ -7181,7 +7189,7 @@ AAAスタイルは出来る限り避けるべきである。
   また、下記のように縮小型変換(下記では、unsignedからsignedの変換)を防ぐこともできる。
 
 ```cpp
-    //  example/etc/aaa.cpp 180
+    //  example/etc/aaa.cpp 187
 
     auto v = std::vector<int>{0, 1, 2};
 
@@ -7209,7 +7217,7 @@ AAAスタイルでは、以下のような場合に注意が必要である。
   下記のような型推論は、直感に反する場合があるため、autoの使い方に対する習熟が必要である。
 
 ```cpp
-    //  example/etc/aaa.cpp 194
+    //  example/etc/aaa.cpp 201
 
     auto str0 = "str";
     static_assert(std::is_same_v<char const*, decltype(str0)>);  // str0はchar[4]ではない

@@ -747,19 +747,19 @@ ___
     const std::string s;  // NG
     std::string const t;  // OK
 
-    std::string const* s_ptr;  // NG
+    const std::string * s_ptr;  // NG
     std::string const* t_ptr;  // OK
 
-    std::string const& f();  // NG 関数の宣言
+    const std::string& f();  // NG 関数の宣言
     std::string const& g();  // OK 関数の宣言
 
-    char        abc[]{"abc"};
-    char const* a = abc;  // NG *aはconst
-    char const* b = abc;  // OK *aはconst
-    char* const c = abc;  // NG *aではなく、aがconstになり、意味が変わる
+    char abc[]{"abc"};
+    const char *a = abc;  // NG *aはconst
+    char const* b = abc;  // OK *bはconst
+    char* const c = abc;  // NG *cではなく、cがconstになり、意味が変わる
 
-    char const* const d = abc;  // NG
-    char const* const e = abc;  // OK
+    const char* const d = abc;  // NG
+    char const* const e = abc;  // OK eがconstで且つ、*eもconst
 ```
 
 * [演習-constの意味](exercise_q.md#SS_18_1_8)
@@ -1213,7 +1213,7 @@ ___
     * ファイル外部から使用されるインラインクラス(クラステンプレート等)は、
       一つのヘッダファイルで宣言、定義する。
     * 「一つのヘッダファイル(a.h)と、一つの.cpp(a.cpp)で構成されたクラスA」のみをサポートするクラス
-      (Aのインターフェースや実装専用に定義されたクラス(「[Pimpl](design_pattern.md#SS_8_2_1)」参照))は、
+      (Aのインターフェースや実装専用に定義されたクラス(「[Pimpl](design_pattern.md#SS_8_2_1)」参照)や型、enum、エイリアス等)は、
       a.h、a.cppで宣言、定義する。
 
 ### 2.2.2 クラスの規模 <a id="SS_2_2_2"></a>
@@ -1589,14 +1589,17 @@ ___
         explicit A3(int32_t a, int32_t* b) noexcept : a_{a}, b_{b} {}
         // ...
     };
-
-    void f_A0(A0) noexcept {}
-    void f_A1(A1) noexcept {}
-    void f_A2(A2) noexcept {}
-    void f_A3(A3) noexcept {}
 ```
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 200
+    //  example/programming_convention/member_func_ut.cpp 197
+
+    void f_A0(A0) noexcept;
+    void f_A1(A1) noexcept;
+    void f_A2(A2) noexcept;
+    void f_A3(A3) noexcept;
+```
+```cpp
+    //  example/programming_convention/member_func_ut.cpp 208
 
     A0 a0 = 1;           // NG 1からA0への暗黙の型変換。
                          //    このような変換はセマンティクス的不整合につながる場合がある
@@ -1638,7 +1641,7 @@ ___
 * copy代入演算子は[lvalue修飾](core_lang_spec.md#SS_15_8_7_2)をする。
 
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 233
+    //  example/programming_convention/member_func_ut.cpp 241
 
     class Widget {
     public:
@@ -1657,7 +1660,7 @@ ___
     };
 ```
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 262
+    //  example/programming_convention/member_func_ut.cpp 270
 
     Widget w0{1};
     Widget w1{2};
@@ -1669,7 +1672,7 @@ ___
     Widget{3} = Widget{4};  // NG lvalue修飾無しのmove代入演算子であるため、コンパイルできる
 ```
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 281
+    //  example/programming_convention/member_func_ut.cpp 289
 
     class Widget {  // 上記の修正
     public:
@@ -1688,7 +1691,7 @@ ___
     };
 ```
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 310
+    //  example/programming_convention/member_func_ut.cpp 318
 
     Widget w0{1};
     Widget w1{2};
@@ -1727,7 +1730,7 @@ ___
     * 一連の仮想関数の最後のものの宣言には、overrideを付けず、finalを付ける。
 
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 327
+    //  example/programming_convention/member_func_ut.cpp 335
 
     class Base {
     public:
@@ -1770,7 +1773,7 @@ ___
   そのオーバーライド関数にもデフォルト引数を持たせない。
 
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 372
+    //  example/programming_convention/member_func_ut.cpp 380
 
     class Base {
     public:
@@ -1788,7 +1791,7 @@ ___
 ```
 
 ```cpp
-    //  example/programming_convention/member_func_ut.cpp 396
+    //  example/programming_convention/member_func_ut.cpp 404
 
     auto  d = Derived{};
     Base& b{d};
@@ -1809,14 +1812,15 @@ ___
 
 ### 2.2.5 メンバ変数 <a id="SS_2_2_5"></a>
 #### 2.2.5.1 メンバ変数の数  <a id="SS_2_2_5_1"></a>
-* constexprでなく、publicやprotectedなメンバ変数を宣言しない。
+* constやconstexprではない、publicやprotectedなメンバ変数を宣言しない。
 * クラスの可変な状態を表すメンバ変数(non-const, non-static)は4個以内に留める(「[クラス凝集性のクライテリア](class_design.md#SS_7_2)」参考)。
 
 #### 2.2.5.2 非静的なメンバ変数 <a id="SS_2_2_5_2"></a>
 * すべての非静的なメンバ変数は、コンストラクタ終了時までに明示的に初期化する。
 * 多くのコンパイラや静的解析ツールはインスペクタは、
-  [NSDMI](core_lang_spec.md#SS_15_6_7_1)、[初期化子リストでの初期化](core_lang_spec.md#SS_15_6_7_2)による初期化の漏れについては容易に発見、
-  指摘できることが多い。
+  [NSDMI](core_lang_spec.md#SS_15_6_7_1)、[初期化子リストでの初期化](core_lang_spec.md#SS_15_6_7_2)による初期化の漏れについては容易に発見、指摘できることが多い。
+* `std::thead`型であるメンバオブジェクトは、メンバ変数の最後に宣言する(スレッドは初期化された時点で走り出す可能性があり、
+  それにより、未初期化のメンバ変数にアクセスしてしまう可能性があるため)。
 * constメンバ変数は、[NSDMI](core_lang_spec.md#SS_15_6_7_1)、
   [初期化子リストでの初期化](core_lang_spec.md#SS_15_6_7_2)でなければ初期化できないため、それ以外に方法がない場合を除き、
   [コンストラクタ内での非静的なメンバ変数の初期値の代入](core_lang_spec.md#SS_15_6_7_3)の使用を避ける。
@@ -2082,7 +2086,7 @@ ___
 ```
 
 #### 2.2.6.1 インターフェースの継承 <a id="SS_2_2_6_1"></a>
-* クラス間に「Is-a」の関係が成り立つときに限りpublic継承を行う。
+* クラス間に「[is-a](glossary.md#SS_17_1_1)」の関係が成り立つときに限りpublic継承を行う。
     * public継承を行う場合、[リスコフの置換原則(LSP)](class_design.md#SS_7_1_3)を守る。
     * インターフェースを継承しない場合、public継承をしない。
 * C#やJavaのinterfaceが必要ならば(インタフェースと実装の完全分離をしたい場合等)、

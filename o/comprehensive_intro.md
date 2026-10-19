@@ -132,21 +132,21 @@ __コード例について__
   [google test(gtest)](http://opencv.jp/googletestdocs/primer.html)のアサーション(下表)を使用する。
 
 
-__google test_のアサーションの簡単な説明__
+__google testのアサーションの簡単な説明__
 
-|アサーションマクロ  | 意味                                     |
-|:-------------------|:-----------------------------------------|
-| ASSERT_TRUE(x)     | xがtrue                                  |
-| ASSERT_FALSE(x)    | xがfalse                                 |
-| ASSERT_EQ(x, y)    | (x == y)がtrue                           |
-| ASSERT_NE(x, y)    | (x != y)がtrue                           |
-| ASSERT_GE(x, y)    | (x >= y)がtrue                           |
-| ASSERT_GT(x, y)    | (x >  y)がtrue                           |
-| ASSERT_LE(x, y)    | (x <= y)がtrue                           |
-| ASSERT_LT(x, y)    | (x <  y)がtrue                           |
-| ASSERT_STREQ(x, y) | (std::string(x) == std::string(y))がtrue |
-| ASSERT_DEATH(x, y) | xを実行するとアボートすればtrue          |
-| ASSERT_THROW(x, y) | xを実行するとy例外が発生すればtrue       |
+|アサーションマクロ    | 意味                                     |
+|:---------------------|:-----------------------------------------|
+| ASSERT_TRUE(x)       | xがtrue                                  |
+| ASSERT_FALSE(x)      | !xがtrue                                 |
+| ASSERT_EQ(x, y)      | (x == y)がtrue                           |
+| ASSERT_NE(x, y)      | (x != y)がtrue                           |
+| ASSERT_GE(x, y)      | (x >= y)がtrue                           |
+| ASSERT_GT(x, y)      | (x >  y)がtrue                           |
+| ASSERT_LE(x, y)      | (x <= y)がtrue                           |
+| ASSERT_LT(x, y)      | (x <  y)がtrue                           |
+| ASSERT_STREQ(x, y)   | (std::string(x) == std::string(y))がtrue |
+| ASSERT_DEATH(x, msg) | xを実行するとアボートすればtrue          |
+| ASSERT_THROW(x, msg) | xを実行するとy例外が発生すればtrue       |
 
 
 ## インデックス <a id="SS_1_3"></a>
