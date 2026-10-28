@@ -145,27 +145,9 @@ gitには以下のような基本的なコマンドに加えて、
 本ドキュメントでは、「[開発プロセスとインフラ](process_and_infra.md#SS_11)」で述べたように、単体テスト、
 統合テストを自動化することを推奨している。
 
-本ドキュメントで使用するディレクトリやファイル間の依存関係を解析するためのソフトウェア
-[deps](deps.md#SS_17)の開発においても、当然これを実践している。
+開発中のソフトウェアが、
 
-depsの開発においては、単体テスト、統合テストは下記のようなdeps/build.shによって行われる。
-
-```sh
-    //  deps/example/deps/build.sh 3
-
-    readonly BASE_DIR=$(cd $(dirname $0); pwd)
-    readonly BASENAME="$(basename $0)"
-
-    $BASE_DIR/../../essential/build/build_core.sh $BASE_DIR $@ -i
-    # build_core.shによって下記が行われ、何らかのエラーが発生した場合、非0でexitする。
-    # * ビルド & UT & IT
-    # * 静的解析
-    # * 動的解析
-```
-
-depsが、
-
-* xxxリビジョンまでは、build.shが成功(値0でexit)
+* xxxリビジョンまでは、build.sh(ビルド用スクリプト)が成功(値0でexit)
 * yyyリジョンでは、build.shが失敗(非0でexit)
 
 のような状態に陥ったとする([CI(継続的インテグレーション)](process_and_infra.md#SS_11_2_5)を導入しているソフトウェア開発では、
@@ -175,7 +157,7 @@ bisectはこれをダイレクトにサポートする。
 
 ```sh
     git bisect start xxx yyy
-    git bisect run deps/build.sh
+    git bisect run <DIR>/build.sh
 ```
 
 上記コマンドは、xxx～yyyのリビジョン毎にbuild.shを実行し、build.shが非0でexitした場合、
@@ -214,7 +196,7 @@ TATとはターンアラウンドタイムの略語であり、一度の試行�
 ただし、これには「[依存関係の整理](debug.md#SS_15_3_2)」で説明したような努力が必要である。
 
 ### 依存関係の整理 <a id="SS_15_3_2"></a>
-「[ソースコードファイルとディレクトリ](programming_convention.md#SS_3_7)」で述べたようにソースコードを[パッケージ](glossary.md#SS_21_3_2)分割し、
+「[ソースコードファイルとディレクトリ](programming_convention.md#SS_3_7)」で述べたようにソースコードを[パッケージ](glossary.md#SS_20_3_2)分割し、
 そのパッケージをライブラリとしてまとめ、ライブラリ間の循環依存がないようにすることで、
 差分ビルドは有効に働くことが多い(その場合、当然無駄なインクルードもしない必要がある)。
 
@@ -227,8 +209,8 @@ TATとはターンアラウンドタイムの略語であり、一度の試行�
 等他にも良い影響があるため、この構造を維持するべきである。
 そのためには、
 
-* 静的解析ツール等を使った依存関係の監視(「[deps](deps.md#SS_17)」参照)
-* ビルドツールの使い方の工夫(「[makeによる依存関係の維持](deps.md#SS_17_3)」参照)
+* 静的解析ツール等を使った依存関係の監視
+* ビルドツールの使い方の工夫(依存すべきでないヘッダファイル置き場のディレクトリをインクルードパスから除外する等)
 
 等が必要になる。
 
@@ -256,50 +238,14 @@ TATとはターンアラウンドタイムの略語であり、一度の試行�
 
 等の効果を期待できるため、現在のソフトウェア開発において欠かすことができない手法である。
 
-[deps](deps.md#SS_17)に関しても、以下のシェルスクリプトにより自動統合テストを実現している。
-
-```sh
-    //  deps/example/deps/it.sh 6
-
-    function help(){
-        echo "$BASENAME  [option]"
-        echo "    -a BIN : BIN is test target(default:./g++/deps)"
-        echo "    -d     : debug mode"
-        echo "    -h     : show this message"
-
-        exit $1
-    }
-
-    // ...
-
-    function test_a2pu() {
-        local -r exp=$1
-        local -r in=$2
-        local -r act=${exp}.act
-        rm -f $act
-
-        $APP a2pu -i $in -o $act $dir
-        diff $exp $act
-
-        rm $act
-    }
-
-    // ...
-
-    echo test_a 0         && test_a it_data/a_ut_data.txt it_data/p2p_ut_data.txt 
-    echo test_a2pu 0      && test_a2pu it_data/pu_ut_data.pu it_data/p2p_ut_data.txt 
-    echo test_a2pu 1      && test_a2pu it_data/pu_ut_data_s.pu it_data/p2p_ut_data_s.txt
-    echo test_deps_fake   && test_deps_fake
-    echo test_deps_dep    && test_deps_dep
-    echo test_deps_dep2   && test_deps_dep2
-```
-
-上記でも使ったunix系のコマンドは、
+上記を実行するためのテスト用スクリプトは、unix系のコマンドを駆使して開発することが効率的であることにとどまらず、
 
 * 統合テストのみならず、様々な自動化に関して非常に強力なツールである
 * [cygwin](https://www.cygwin.com/)によりwindows上でもunixでの使用感とほぼ同等に使える
+* windows上でもwslにより、unixのコマンドがほぼ制限なく使用できる
 
 ため、
+
 [The Art  of  Command  Line](https://github.com/jlevy/the-art-of-command-line/blob/master/README-ja.md)
 等を参考に学習するべきである。
 
@@ -312,134 +258,8 @@ TATとはターンアラウンドタイムの略語であり、一度の試行�
 こういったことに備えるために、
 ソースコードにあらかじめログを仕込んでおくことは昔から行われてきており、今なお有効な手法である。
 
-[deps](deps.md#SS_17)の開発にもログは有効であり、
-
-* ログ取得用のクラスと関数テンプレート
-  (「[ログ取得ライブラリの開発](template_meta_programming.md#SS_13_1)」、「[ログ取得ライブラリの開発2](template_meta_programming.md#SS_13_6)」参照)
-
-```cpp
-    //  deps/example/deps/logging/h/logging/logger.h 11
-
-    namespace Logging {
-    class Logger {
-    public:
-        static Logger& Inst(char const* filename = nullptr);
-
-        template <typename HEAD, typename... TAIL>
-        void Set(char const* filename, uint32_t line_no, HEAD const& head, TAIL... tails)
-        {
-            auto   path     = std::string_view{filename};
-            size_t npos     = path.find_last_of('/');
-            auto   basename = (npos != std::string_view::npos) ? path.substr(npos + 1) : path;
-
-            os_.width(12);
-            os_ << basename << ":";
-
-            os_.width(3);
-            os_ << line_no;
-
-            set_inner(head, tails...);
-        }
-
-        // ...
-
-    private:
-        void set_inner() { os_ << std::endl; }
-
-        template <typename HEAD, typename... TAIL>
-        void set_inner(HEAD const& head, TAIL... tails)
-        {
-            using Nstd::operator<<;
-            os_ << ":" << head;
-            set_inner(tails...);
-        }
-
-        template <typename HEAD, typename... TAIL>
-        void set_inner(char sep, HEAD const& head, TAIL... tails)
-        {
-            using Nstd::operator<<;
-            os_ << sep << head;
-            set_inner(tails...);
-        }
-
-        // ...
-    };
-    }  // namespace Logging
-
-    #define LOGGER_INIT(filename) Logging::Logger::Inst(filename)
-    #define LOGGER(...) Logging::Logger::Inst().Set(__FILE__, __LINE__, __VA_ARGS__)
-```
-
-* オブジェクトを文字列変換するため関数
-
-```cpp
-    //  deps/example/deps/app/src/deps_opts.h 53
-
-    std::string          ToStringDepsOpts(DepsOpts const& deps_opts, std::string_view indent = "");
-    inline std::ostream& operator<<(std::ostream& os, DepsOpts const& opts) { return os << ToStringDepsOpts(opts); }
-```
-
-* ログの取得方法
-
-```cpp
-    //  deps/example/deps/app/src/main.cpp 43
-    std::unique_ptr<Dependency::ScenarioGenerator> gen_scenario(App::DepsOpts const& opt)
-    try {
-        using namespace Dependency;
-
-        switch (opt.GetCmd()) {
-        case App::DepsOpts::Cmd::GenPkg:
-            LOGGER("start GenPkg");
-            return std::make_unique<PkgGenerator>(opt.In(), opt.IsRecursive(), opt.Dirs(), opt.Exclude());
-        case App::DepsOpts::Cmd::GenSrc:
-            LOGGER("start GenPkg");
-            return std::make_unique<SrcsGenerator>(opt.In(), opt.IsRecursive(), opt.Dirs(), opt.Exclude());
-            // ...
-        }
-    }
-    catch (std::runtime_error const& e) {
-        LOGGER("error occured:", e.what());
-
-        std::cerr << e.what() << std::endl;
-
-        return std::make_unique<ScenarioGeneratorNop>(false);
-    }
-
-    // ...
-
-    int main(int argc, char* argv[])
-    {
-        App::DepsOpts d_opt{argc, argv};
-
-        LOGGER_INIT(d_opt.Log() == "-" ? nullptr : d_opt.Log().c_str());
-
-        LOGGER("Options", '\n', d_opt);
-
-        auto out_sel   = OStreamSelector{d_opt.Out()};
-        auto exit_code = gen_scenario(d_opt)->Output(out_sel.OStream()) ? 0 : -1;
-
-        LOGGER("Exit", exit_code);
-
-        return exit_code;
-    }
-```
-
-によりログを取得している。これにより以下のような内容のログファイルが取得できる。
-
-```
-    app/src/main.cpp:109:Options
-    cmd       : GenPkg
-    in        : 
-    out       : 
-    recursive : true
-    src_as_pkg: false
-    log       : it_data/log_exp.txt.act
-    dirs      : ut_data
-    exclude   : 
-    parsed    : true
-    app/src/main.cpp: 51:start GenPkg
-    app/src/main.cpp:114:Exit:0
-```
+ログの実装においては、[二段階文字列化(STRINGIZE)](design_pattern.md#SS_9_1_9)や、
+テンプレートを使用した「[ログ取得ライブラリの開発](template_meta_programming.md#SS_13_1)」が役立つはずである。
 
 なお、組み込みソフトの場合、ファイルが使えないこともよくあるため、ログをメモリ上にストアし、
 [モニター](debug.md#SS_15_6_1)の機能によりそれを吸い上げる必要がある(ファイルが使える場合にもこれは同様である)。
@@ -488,22 +308,22 @@ ARMを使っているのであれば、[https://developer.arm.com/](https://deve
 必ずと言っていいほど極度に解析困難なバグに悩まされることになる。
 
 ### メモリ保護 <a id="SS_15_6_2"></a>
-組み込みソフトは、[フリースタンディング環境](glossary.md#SS_21_5_9)で動作させることが一般的である。
+組み込みソフトは、[フリースタンディング環境](glossary.md#SS_20_5_9)で動作させることが一般的である。
 その場合、CPUのデフォルトの設定では、読み取り専用領域
 (インストラクション、文字列リテラル、constなPOD等)に対しても書き込みできるため、
 例えば、構造体ポインタ(struct_ptr)にnullptrが代入された状態で、
 `struct_ptr->m = x;`が実行されば0アドレス付近のコードが破壊される。
 
-多くのCPUでは、この領域には割り込みベクタが配置されているため、[CPU例外](glossary.md#SS_21_5_11)が発生する。
+多くのCPUでは、この領域には割り込みベクタが配置されているため、[CPU例外](glossary.md#SS_20_5_11)が発生する。
 それを捕捉する機能が実装されていなければソフトは暴走する。CPU例外を捕捉する機能が実装されている場合でも、
 その例外コードは「不正なインストラクションの実行」を示すことがほとんどであるため真の原因特定は難しい。
 
-[メモリ保護機構](glossary.md#SS_21_5_10)を適切に設定することにより、上記のような暴走を回避し、
+[メモリ保護機構](glossary.md#SS_20_5_10)を適切に設定することにより、上記のような暴走を回避し、
 問題のインストラクションを実行したアドレスを特定することは容易である。
 後は、ツールチェーンに付属するaddr2line、readelf、objdump、nmのようなバイナリ解析ツールを使い、
 アドレスからソースコードを特定すればよい。
 
-ただし、jtagデバッガを使用する場合、[メモリ保護機構](glossary.md#SS_21_5_10)の設定には注意が必要である。
+ただし、jtagデバッガを使用する場合、[メモリ保護機構](glossary.md#SS_20_5_10)の設定には注意が必要である。
 jtagデバッガがブレークポイントを設定する方法は2つある。一つはハードウェアブレークであり、 
 他方はソフトウェアブレークである。ソフトウェアブレークを設定する場合、 
 デバッガは、
@@ -516,7 +336,7 @@ jtagデバッガがブレークポイントを設定する方法は2つある。
 
 ### 割り込みベクタ <a id="SS_15_6_3"></a>
 ほとんどの組み込みソフトではIRQを捕捉するための処理は実装されているが、
-その一方で、[CPU例外](glossary.md#SS_21_5_11)を捕捉する処理が実装されていないことが多い。
+その一方で、[CPU例外](glossary.md#SS_20_5_11)を捕捉する処理が実装されていないことが多い。
 
 CPU例外を捕捉する処理が未実装の場合、0除算やメモリ保護違反が発生すると、システムは予測不能な動作をする。
 最悪の場合、割り込みベクタ領域が破壊され、以降の割り込み処理が正常に動作しなくなる。
@@ -527,7 +347,7 @@ CPU例外を捕捉する処理が未実装の場合、0除算やメモリ保護�
 組み込みソフトにおいてもassertが使えるようにすることは重要である。
 assert(false)となった場合、モニターを呼び出し、デバッグできる状態に移行することが開発効率を向上させる。
 標準ライブラリのassertは、条件が偽の場合にabort()を呼び出すが、
-[フリースタンディング環境](glossary.md#SS_21_5_9)ではこれが適切に動作しないことが多い。
+[フリースタンディング環境](glossary.md#SS_20_5_9)ではこれが適切に動作しないことが多い。
 そのため、assertマクロを独自に実装し、失敗時にファイル名、行番号、スタックトレースを記録した後、
 モニターに制御を渡すようにすることで、assert(false)の原因を効率よく調査できる。
 
@@ -580,28 +400,6 @@ assert(false)となった場合、モニターを呼び出し、デバッグで�
 [CI(継続的インテグレーション)](process_and_infra.md#SS_11_2_5)と組み合わせれば、
 効率的に運用できる(「[自動統合テストの実施](debug.md#SS_15_5)」参照)。
 
-なお、[deps](deps.md#SS_17)に関しても、以下のようにすることで単体テスト、
-統合テスト時にsanitizerによる動的解析を行っている。
-
-```Makefile
-    //  deps/example/deps/Makefile 174
-
-    ut: $(EXES_UT_DONE)  # 単体テスト用ターゲット
-
-    it: $(EXE_IT_DONE)  # 統合テスト用ターゲット
-
-    SANITIZER_DIR=sanitizer/
-    .PHONY : sanitizer
-    san:  # g++ sanitizerビルド
-    	$(MAKE) O=$(SANITIZER_DIR) \
-    		SANITIZER_OPT="-fsanitize=address,leak,undefined,float-divide-by-zero,float-cast-overflow"
-
-    san-ut: sanitizer  # g++ sanitizerバイナリでの単体テスト
-    	make O=$(SANITIZER_DIR) ut
-
-    san-it: sanitizer  # g++ sanitizerバイナリでの統合テスト
-    	make O=$(SANITIZER_DIR) it
-```
 
 ## 難しいバグの対処 <a id="SS_15_8"></a>
 一般に下記のような現象の原因特定は難しい。その再現性が悪いとなおさらそうなる。
@@ -782,10 +580,10 @@ RTOSのコードハック以外の方法はない)。
 ここで注意すべきは、この変更で静的オブジェクトの配置が大きく変わっていないことを確かめることである。
 linuxの場合、それにはnmコマンドが最適である。
 
-参考のため、「[deps](deps.md#SS_17)」の実行形式バイナリにnmを適用した例を示す。
+参考のため、あるソフトウェアの実行形式バイナリにnmを適用した例を示す。
 
 ```
-    > nm --demangle g++/deps
+    > nm --demangle g++/app
 
     000000000008b000 D __data_start
     00000000000085b0 t __do_global_dtors_aux
@@ -1099,7 +897,7 @@ STLの関数は引数オブジェクトをコピーすることがあるため�
 ```
 
 下記のように文字列リテラルから変換されたされたstd::stringオブジェクトである
-[rvalue](core_lang_spec.md#SS_19_7_1_2)を引数に取ることができる。
+[rvalue](core_lang_spec.md#SS_18_7_1_2)を引数に取ることができる。
 
 ```cpp
     //  example/etc/debug.cpp 96
@@ -1245,5 +1043,10 @@ C++を使用する意味がなくなる。
 
 一旦ダークサイドに落ちてしまえば、それは習慣となり、そこでプログラマとしての成長は終わる。
 そうならないために学習あるのみである。
+
+
+---
+
+---
 
 

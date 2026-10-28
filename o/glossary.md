@@ -1,69 +1,69 @@
 <!-- essential/md/glossary.md -->
-# 用語集 <a id="SS_21"></a>
+# 用語集 <a id="SS_20"></a>
 この章では、C++慣用言句ついて解説を行う。
 
 ___
 
 __この章の構成__
 
-[オブジェクト指向](glossary.md#SS_21_1)  
-&emsp;[is-a](glossary.md#SS_21_1_1)  
-&emsp;[has-a](glossary.md#SS_21_1_2)  
-&emsp;[is-implemented-in-terms-of](glossary.md#SS_21_1_3)  
-&emsp;&emsp;[public継承によるis-implemented-in-terms-of](glossary.md#SS_21_1_3_1)  
-&emsp;&emsp;[private継承によるis-implemented-in-terms-of](glossary.md#SS_21_1_3_2)  
-&emsp;&emsp;[コンポジションによる(has-a)is-implemented-in-terms-of](glossary.md#SS_21_1_3_3)  
+[オブジェクト指向](glossary.md#SS_20_1)  
+&emsp;[is-a](glossary.md#SS_20_1_1)  
+&emsp;[has-a](glossary.md#SS_20_1_2)  
+&emsp;[is-implemented-in-terms-of](glossary.md#SS_20_1_3)  
+&emsp;&emsp;[public継承によるis-implemented-in-terms-of](glossary.md#SS_20_1_3_1)  
+&emsp;&emsp;[private継承によるis-implemented-in-terms-of](glossary.md#SS_20_1_3_2)  
+&emsp;&emsp;[コンポジションによる(has-a)is-implemented-in-terms-of](glossary.md#SS_20_1_3_3)  
 
-[Robert C. Martinのコンポーネント原則](glossary.md#SS_21_2)  
-&emsp;[リリース等価の原則(REP)](glossary.md#SS_21_2_1)  
-&emsp;[共通閉鎖の原則(CCP)](glossary.md#SS_21_2_2)  
-&emsp;[共通再利用の原則(CRP)](glossary.md#SS_21_2_3)  
-&emsp;[非循環依存の原則(ADP)](glossary.md#SS_21_2_4)  
+[Robert C. Martinのコンポーネント原則](glossary.md#SS_20_2)  
+&emsp;[リリース等価の原則(REP)](glossary.md#SS_20_2_1)  
+&emsp;[共通閉鎖の原則(CCP)](glossary.md#SS_20_2_2)  
+&emsp;[共通再利用の原則(CRP)](glossary.md#SS_20_2_3)  
+&emsp;[非循環依存の原則(ADP)](glossary.md#SS_20_2_4)  
 
-[コード・ユニット](glossary.md#SS_21_3)  
-&emsp;[ファイルペア](glossary.md#SS_21_3_1)  
-&emsp;&emsp;[パッケージ内のファイルペアの配置](glossary.md#SS_21_3_1_1)  
+[コード・ユニット](glossary.md#SS_20_3)  
+&emsp;[ファイルペア](glossary.md#SS_20_3_1)  
+&emsp;&emsp;[パッケージ内のファイルペアの配置](glossary.md#SS_20_3_1_1)  
 
-&emsp;[パッケージ](glossary.md#SS_21_3_2)  
-&emsp;[モジュール](glossary.md#SS_21_3_3)  
+&emsp;[パッケージ](glossary.md#SS_20_3_2)  
+&emsp;[モジュール](glossary.md#SS_20_3_3)  
 
-[Modern CMake project layout](glossary.md#SS_21_4)  
-&emsp;[Modern CMake project layoutのカスタマイズ](glossary.md#SS_21_4_1)  
+[Modern CMake project layout](glossary.md#SS_20_4)  
+&emsp;[Modern CMake project layoutのカスタマイズ](glossary.md#SS_20_4_1)  
 
-[ソフトウェア一般](glossary.md#SS_21_5)  
-&emsp;[ヒープ](glossary.md#SS_21_5_1)  
-&emsp;[プライオリティインバージョン](glossary.md#SS_21_5_2)  
-&emsp;[スレッドセーフ](glossary.md#SS_21_5_3)  
-&emsp;[リエントラント](glossary.md#SS_21_5_4)  
-&emsp;[クリティカルセクション](glossary.md#SS_21_5_5)  
-&emsp;[スピンロック](glossary.md#SS_21_5_6)  
-&emsp;[ミックスイン](glossary.md#SS_21_5_7)  
-&emsp;[ハンドル](glossary.md#SS_21_5_8)  
-&emsp;[フリースタンディング環境](glossary.md#SS_21_5_9)  
-&emsp;[メモリ保護機構](glossary.md#SS_21_5_10)  
-&emsp;[CPU例外](glossary.md#SS_21_5_11)  
-&emsp;[Fluent Interface](glossary.md#SS_21_5_12)  
-&emsp;[Unbounded Functions](glossary.md#SS_21_5_13)  
-&emsp;[サイクロマティック複雑度](glossary.md#SS_21_5_14)  
-&emsp;[凝集性](glossary.md#SS_21_5_15)  
-&emsp;&emsp;[凝集性の欠如](glossary.md#SS_21_5_15_1)  
-&emsp;&emsp;[LCOM](glossary.md#SS_21_5_15_2)  
-&emsp;&emsp;[PercentLackOfCohesion](glossary.md#SS_21_5_15_3)  
+[ソフトウェア一般](glossary.md#SS_20_5)  
+&emsp;[ヒープ](glossary.md#SS_20_5_1)  
+&emsp;[プライオリティインバージョン](glossary.md#SS_20_5_2)  
+&emsp;[スレッドセーフ](glossary.md#SS_20_5_3)  
+&emsp;[リエントラント](glossary.md#SS_20_5_4)  
+&emsp;[クリティカルセクション](glossary.md#SS_20_5_5)  
+&emsp;[スピンロック](glossary.md#SS_20_5_6)  
+&emsp;[ミックスイン](glossary.md#SS_20_5_7)  
+&emsp;[ハンドル](glossary.md#SS_20_5_8)  
+&emsp;[フリースタンディング環境](glossary.md#SS_20_5_9)  
+&emsp;[メモリ保護機構](glossary.md#SS_20_5_10)  
+&emsp;[CPU例外](glossary.md#SS_20_5_11)  
+&emsp;[Fluent Interface](glossary.md#SS_20_5_12)  
+&emsp;[Unbounded Functions](glossary.md#SS_20_5_13)  
+&emsp;[サイクロマティック複雑度](glossary.md#SS_20_5_14)  
+&emsp;[凝集性](glossary.md#SS_20_5_15)  
+&emsp;&emsp;[凝集性の欠如](glossary.md#SS_20_5_15_1)  
+&emsp;&emsp;[LCOM](glossary.md#SS_20_5_15_2)  
+&emsp;&emsp;[PercentLackOfCohesion](glossary.md#SS_20_5_15_3)  
 
-&emsp;[Spurious Wakeup](glossary.md#SS_21_5_16)  
-&emsp;[副作用](glossary.md#SS_21_5_17)  
-&emsp;[Itanium C++ ABI](glossary.md#SS_21_5_18)  
+&emsp;[Spurious Wakeup](glossary.md#SS_20_5_16)  
+&emsp;[副作用](glossary.md#SS_20_5_17)  
+&emsp;[Itanium C++ ABI](glossary.md#SS_20_5_18)  
 
-[C++コンパイラ](glossary.md#SS_21_6)  
-&emsp;[g++](glossary.md#SS_21_6_1)  
-&emsp;[clang++](glossary.md#SS_21_6_2)  
+[C++コンパイラ](glossary.md#SS_20_6)  
+&emsp;[g++](glossary.md#SS_20_6_1)  
+&emsp;[clang++](glossary.md#SS_20_6_2)  
 
-[非ソフトウェア用語](glossary.md#SS_21_7)  
-&emsp;[セマンティクス](glossary.md#SS_21_7_1)  
-&emsp;[割れ窓理論](glossary.md#SS_21_7_2)  
-&emsp;[車輪の再発明](glossary.md#SS_21_7_3)  
+[非ソフトウェア用語](glossary.md#SS_20_7)  
+&emsp;[セマンティクス](glossary.md#SS_20_7_1)  
+&emsp;[割れ窓理論](glossary.md#SS_20_7_2)  
+&emsp;[車輪の再発明](glossary.md#SS_20_7_3)  
 
-[DAG(有向非循環グラフ)](glossary.md#SS_21_8)  
+[DAG(有向非循環グラフ)](glossary.md#SS_20_8)  
   
   
 
@@ -72,8 +72,8 @@ __この章の構成__
 ___
 
 
-## オブジェクト指向 <a id="SS_21_1"></a>
-### is-a <a id="SS_21_1_1"></a>
+## オブジェクト指向 <a id="SS_20_1"></a>
+### is-a <a id="SS_20_1_1"></a>
 「is-a」の関係は、オブジェクト指向プログラミング（OOP）
 においてクラス間の継承関係を説明する際に使われる概念である。
 クラスDerivedとBaseが「is-a」の関係である場合、
@@ -225,11 +225,11 @@ penguinとbirdの関係はis-aの関係ではあるが、
 ```
 
 修正されたKyukancho はstd::string インスタンスをメンバ変数として持ち、
-kyukanchoとstd::stringの関係を[has-a](glossary.md#SS_21_1_2)の関係と呼ぶ。
+kyukanchoとstd::stringの関係を[has-a](glossary.md#SS_20_1_2)の関係と呼ぶ。
 
 ---
 
-### has-a <a id="SS_21_1_2"></a>
+### has-a <a id="SS_20_1_2"></a>
 「has-a」の関係は、
 あるクラスのインスタンスが別のクラスのインスタンスを構成要素として含む関係を指す。
 つまり、あるクラスのオブジェクトが別のクラスのオブジェクトを保持している関係である。
@@ -264,19 +264,19 @@ Carクラスの例ではCarクラスにはEngine型のメンバ変数が存在�
 
 ---
 
-### is-implemented-in-terms-of <a id="SS_21_1_3"></a>
+### is-implemented-in-terms-of <a id="SS_20_1_3"></a>
 「is-implemented-in-terms-of」の関係は、
 オブジェクト指向プログラミング（OOP）において、
 あるクラスが別のクラスの機能を内部的に利用して実装されていることを示す概念である。
 これは、あるクラスが他のクラスのインターフェースやメンバ関数を用いて、
 自身の機能を提供する場合に使われる。
-[has-a](glossary.md#SS_21_1_2)の関係は、is-implemented-in-terms-of の関係の一種である。
+[has-a](glossary.md#SS_20_1_2)の関係は、is-implemented-in-terms-of の関係の一種である。
 
 is-implemented-in-terms-ofは下記の手段1-3に示した方法がある。
 
-* 手段1.[public継承によるis-implemented-in-terms-of](glossary.md#SS_21_1_3_1)  
-* 手段2.[private継承によるis-implemented-in-terms-of](glossary.md#SS_21_1_3_2)  
-* 手段3.[コンポジションによる(has-a)is-implemented-in-terms-of](glossary.md#SS_21_1_3_3)  
+* 手段1.[public継承によるis-implemented-in-terms-of](glossary.md#SS_20_1_3_1)  
+* 手段2.[private継承によるis-implemented-in-terms-of](glossary.md#SS_20_1_3_2)  
+* 手段3.[コンポジションによる(has-a)is-implemented-in-terms-of](glossary.md#SS_20_1_3_3)  
 
 手段1-3にはそれぞれ、長所、短所があるため、必要に応じて手段を選択する必要がある。
 以下の議論を単純にするため、下記のようにクラスS、C、CCを定める。
@@ -289,7 +289,7 @@ is-implemented-in-terms-ofは下記の手段1-3に示した方法がある。
 依存関係の複雑さから考えた場合、CはSに強く依存する。
 場合によっては、この依存はCCからSへの依存間にも影響をあたえる。
 従って、手段3が依存関係を単純にしやすい。
-手段1は[is-a](glossary.md#SS_21_1_1)に見え、以下に示すような問題も考慮する必要があるため、
+手段1は[is-a](glossary.md#SS_20_1_1)に見え、以下に示すような問題も考慮する必要があるため、
 可読性、保守性を劣化させる可能性がある。
 
 ```cpp
@@ -312,7 +312,7 @@ is-implemented-in-terms-ofは下記の手段1-3に示した方法がある。
 の実現手段でもあるため、一概にコーディング規約などで排除することもできない。
 
 
-#### public継承によるis-implemented-in-terms-of <a id="SS_21_1_3_1"></a>
+#### public継承によるis-implemented-in-terms-of <a id="SS_20_1_3_1"></a>
 public継承によるis-implemented-in-terms-ofの実装例を以下に示す。
 
 ```cpp
@@ -331,11 +331,11 @@ public継承によるis-implemented-in-terms-ofの実装例を以下に示す。
 ```
 
 すでに述べたようにこの方法は、
-[private継承によるis-implemented-in-terms-of](glossary.md#SS_21_1_3_2)や、
-[コンポジションによる(has-a)is-implemented-in-terms-of](glossary.md#SS_21_1_3_3)
+[private継承によるis-implemented-in-terms-of](glossary.md#SS_20_1_3_2)や、
+[コンポジションによる(has-a)is-implemented-in-terms-of](glossary.md#SS_20_1_3_3)
 と比べコードがシンプルになる。 
 
-#### private継承によるis-implemented-in-terms-of <a id="SS_21_1_3_2"></a>
+#### private継承によるis-implemented-in-terms-of <a id="SS_20_1_3_2"></a>
 private継承によるis-implemented-in-terms-ofの実装例を以下に示す。
 
 ```cpp
@@ -360,11 +360,11 @@ private継承によるis-implemented-in-terms-ofの実装例を以下に示す�
     ASSERT_EQ(str.size(), 0);
 ```
 
-この方法は、[public継承によるis-implemented-in-terms-of](glossary.md#SS_21_1_3_1)が持つデストラクタ問題は発生せす、
-[is-a](glossary.md#SS_21_1_1)と誤解してしまう問題も発生しない。
+この方法は、[public継承によるis-implemented-in-terms-of](glossary.md#SS_20_1_3_1)が持つデストラクタ問題は発生せす、
+[is-a](glossary.md#SS_20_1_1)と誤解してしまう問題も発生しない。
 
 
-#### コンポジションによる(has-a)is-implemented-in-terms-of <a id="SS_21_1_3_3"></a>
+#### コンポジションによる(has-a)is-implemented-in-terms-of <a id="SS_20_1_3_3"></a>
 コンポジションによる(has-a)is-implemented-in-terms-ofの実装例を示す。
 
 ```cpp
@@ -417,19 +417,19 @@ private継承によるis-implemented-in-terms-ofの実装例を以下に示す�
 
 ---
 
-## Robert C. Martinのコンポーネント原則 <a id="SS_21_2"></a>
+## Robert C. Martinのコンポーネント原則 <a id="SS_20_2"></a>
 Robert C. Martin が提唱した、クラスや関数より粒度の大きい「コンポーネント」
 （このドキュメントではパッケージに相当する）の設計原則群。
 本ドキュメントでは、**凝集性**＝何を一つのライブラリにまとめるかを扱う3原則（REP/CCP/CRP）と、
-それと一体で判断すべき依存構造の原則 [非循環依存の原則(ADP)](glossary.md#SS_21_2_4)を用いる。
+それと一体で判断すべき依存構造の原則 [非循環依存の原則(ADP)](glossary.md#SS_20_2_4)を用いる。
 
 | 原則                           | 一文での定義                             | 視点   | 力の向き／作用   |
 |:------------------------------ |:-----------------------------------------|:-------|:-----------------|
-| [リリース等価の原則(REP)](glossary.md#SS_21_2_1) | リリースノートが一本の筋として書けるか   | 提供側 | 凝集（まとめる） |
-| [共通閉鎖の原則(CCP)](glossary.md#SS_21_2_2)     | 変更される理由が一つか                   | 提供側 | 凝集（まとめる） |
-| [共通再利用の原則(CRP)](glossary.md#SS_21_2_3)   | 利用者に不要な依存まで抱えさせていないか | 利用側 | 分割（割る）     |
+| [リリース等価の原則(REP)](glossary.md#SS_20_2_1) | リリースノートが一本の筋として書けるか   | 提供側 | 凝集（まとめる） |
+| [共通閉鎖の原則(CCP)](glossary.md#SS_20_2_2)     | 変更される理由が一つか                   | 提供側 | 凝集（まとめる） |
+| [共通再利用の原則(CRP)](glossary.md#SS_20_2_3)   | 利用者に不要な依存まで抱えさせていないか | 利用側 | 分割（割る）     |
  
-### リリース等価の原則(REP) <a id="SS_21_2_1"></a>
+### リリース等価の原則(REP) <a id="SS_20_2_1"></a>
 REPとは、Reuse-Release Equivalence Principle(再利用・リリース等価の原則)の略称であり、
 再利用の単位はリリースの単位に等しい、という原則である。
 ライブラリとして再利用させるなら、
@@ -437,31 +437,31 @@ REPとは、Reuse-Release Equivalence Principle(再利用・リリース等価�
 一つのリリースとして筋の通らない寄せ集めは再利用単位として不適切である。
 REPは「まとめる方向性の根拠」になり得る。
 
-### 共通閉鎖の原則(CCP) <a id="SS_21_2_2"></a>
+### 共通閉鎖の原則(CCP) <a id="SS_20_2_2"></a>
 CCPとは、Common Closure Principle(共通閉鎖の原則)の略称であり、
 同じ理由・同じタイミングで変更されるものを一つのライブラリに集める原則である。
 [単一責任の原則(SRP)](class_design.md#SS_8_1_1)をライブラリ粒度へ拡大したもので、
 「このライブラリが変更される理由は一つである」と言える状態を目指す。
 ある仕様変更の影響が単一ライブラリの中に閉じる（closure）ことを狙う。
-CCPは、[リリース等価の原則(REP)](glossary.md#SS_21_2_1)と同様に「パッケージをまとめることの根拠」になり得る。
+CCPは、[リリース等価の原則(REP)](glossary.md#SS_20_2_1)と同様に「パッケージをまとめることの根拠」になり得る。
 
-### 共通再利用の原則(CRP) <a id="SS_21_2_3"></a>
+### 共通再利用の原則(CRP) <a id="SS_20_2_3"></a>
 CRPとは、Common Reuse Principle(共通再利用の原則)の略称であり、
 一緒に再利用されないものを同じライブラリに入れない原則である。利用側が一部の機能のためにリンクしたとき、
 使わない機能や、それが連れてくる依存まで巻き込まれないようにする。
 [インターフェース分離の原則(ISP)](class_design.md#SS_8_1_4)をライブラリ粒度へ適用したものに相当する。
-[リリース等価の原則(REP)](glossary.md#SS_21_2_1)/[共通閉鎖の原則(CCP)](glossary.md#SS_21_2_2)とは逆に、「パッケージを分割することの根拠」になり得る。
+[リリース等価の原則(REP)](glossary.md#SS_20_2_1)/[共通閉鎖の原則(CCP)](glossary.md#SS_20_2_2)とは逆に、「パッケージを分割することの根拠」になり得る。
 
 
-### 非循環依存の原則(ADP) <a id="SS_21_2_4"></a>
+### 非循環依存の原則(ADP) <a id="SS_20_2_4"></a>
 ADPとは、Acyclic Dependencies Principle(非循環依存の原則)の略称であり、
 ライブラリ間の依存関係に循環を作ってはならない、という原則である。
-依存グラフは後述の[DAG(有向非循環グラフ)](glossary.md#SS_21_8)でなければならない。
+依存グラフは後述の[DAG(有向非循環グラフ)](glossary.md#SS_20_8)でなければならない。
 循環があると、ライブラリを独立してビルド・テスト・リリースすることが困難になる。
 
 ---
 
-## コード・ユニット <a id="SS_21_3"></a>
+## コード・ユニット <a id="SS_20_3"></a>
 
 このドキュメントでは、以下のような概念をコード・ユニットと呼ぶ。
 これらの概念は、コード全体の構成単位となることを前提とする。
@@ -470,34 +470,34 @@ ADPとは、Acyclic Dependencies Principle(非循環依存の原則)の略称で
 |:-------------|:-----------------------------------------------------------------------------------------------|
 |ヘッダファイル|`*.h` `*.hpp` `*.hxx`                                                                           |
 |実装ファイル  |`*.c` `*.cpp` `*.cxx`                                                                           |
-|ファイルペア  |`name.h`と`name.c`の組み合わせ /「[ファイルペア](glossary.md#SS_21_3_1)」で解説                                   |
-|モジュール    |モジュール ≒  パッケージ / 「[モジュール](glossary.md#SS_21_3_3)」で解説                                          |
-|パッケージ    |「[パッケージ](glossary.md#SS_21_3_2)」で解説 / CMake([Modern CMake project layout](glossary.md#SS_21_4))のビルド単位(ライブラリ) |
+|ファイルペア  |`name.h`と`name.c`の組み合わせ /「[ファイルペア](glossary.md#SS_20_3_1)」で解説                                   |
+|モジュール    |モジュール ≒  パッケージ / 「[モジュール](glossary.md#SS_20_3_3)」で解説                                          |
+|パッケージ    |「[パッケージ](glossary.md#SS_20_3_2)」で解説 / CMake([Modern CMake project layout](glossary.md#SS_20_4))のビルド単位(ライブラリ) |
 
 ここでは、これらの概念に意味と定義を与える。
 
 - ファイルペア ＝ １つの実装ファイルとヘッダファイル(稀に、実装ファイルやヘッダファイルのみ)
-- パッケージ(CMakeのビルド単位) ≒  [Robert C. Martinのコンポーネント原則](glossary.md#SS_21_2)における「コンポーネント」
+- パッケージ(CMakeのビルド単位) ≒  [Robert C. Martinのコンポーネント原則](glossary.md#SS_20_2)における「コンポーネント」
 - パッケージ(CMakeのビルド単位) ∋  (複数の似た機能を持つ)ファイルペア
 
 
-### ファイルペア <a id="SS_21_3_1"></a>
+### ファイルペア <a id="SS_20_3_1"></a>
 - このドキュメントでは、実装ファイルとそれに対応するヘッダファイルのペアを単にファイルペアと呼ぶ。
   - ファイルペアは、ソースコードの静的構造上の最小単位である。
   - ヘッダファイルのみでインライン関数や型の宣言・定義を完結させる場合、実装ファイルを持たないファイルペアが例外的に存在する
     （厳密には「ペア」ではないが、本ドキュメントではこれもファイルペアと呼ぶ）。
 - ヘッダファイル一つに対し実装ファイルは原則一つとし、逆に一つの実装ファイルが複数のヘッダを持ってはならない。
   これによりファイルペアの境界を機械的かつ一意に判定可能にする。
-- ファイルペアのファイルの配置は、「[パッケージ内のファイルペアの配置](glossary.md#SS_21_3_1_1)」で示す。 
+- ファイルペアのファイルの配置は、「[パッケージ内のファイルペアの配置](glossary.md#SS_20_3_1_1)」で示す。 
 
 
-#### パッケージ内のファイルペアの配置 <a id="SS_21_3_1_1"></a>
+#### パッケージ内のファイルペアの配置 <a id="SS_20_3_1_1"></a>
 パッケージ内でのファイルペアのヘッダの配置は以下の２パターンのみでなければならない。
 
-- [ファイルペアの機能をパッケージ内部でのみ使用する場合](glossary.md#SS_21_3_1_1_1)
-- [ファイルペアの機能をパッケージが外部公開する場合](glossary.md#SS_21_3_1_1_2)
+- [ファイルペアの機能をパッケージ内部でのみ使用する場合](glossary.md#SS_20_3_1_1_1)
+- [ファイルペアの機能をパッケージが外部公開する場合](glossary.md#SS_20_3_1_1_2)
 
-##### ファイルペアの機能をパッケージ内部でのみ使用する場合 <a id="SS_21_3_1_1_1"></a>
+##### ファイルペアの機能をパッケージ内部でのみ使用する場合 <a id="SS_20_3_1_1_1"></a>
 
 ```sh
 package/
@@ -506,7 +506,7 @@ package/
     └── fp_name.cpp  # fp_nameの実装ファイル
 ```
 
-##### ファイルペアの機能をパッケージが外部公開する場合 <a id="SS_21_3_1_1_2"></a>
+##### ファイルペアの機能をパッケージが外部公開する場合 <a id="SS_20_3_1_1_2"></a>
 
 ```sh
 package/
@@ -517,19 +517,19 @@ package/
     └── fp_name.cpp    # fp_nameの実装ファイル
 ```
 
-### パッケージ <a id="SS_21_3_2"></a>
+### パッケージ <a id="SS_20_3_2"></a>
 このドキュメントでのパッケージとは、以下の特徴を持つソースコードツリーである。 
 
-- **類似した機能**を持つ複数の[ファイルペア](glossary.md#SS_21_3_1)の集合体
-- パッケージのソースコードは、専用のディレクトリの配下に配置され、[Modern CMake project layout](glossary.md#SS_21_4)と同等の形状を持つ。
+- **類似した機能**を持つ複数の[ファイルペア](glossary.md#SS_20_3_1)の集合体
+- パッケージのソースコードは、専用のディレクトリの配下に配置され、[Modern CMake project layout](glossary.md#SS_20_4)と同等の形状を持つ。
 - パッケージは専用の名前空間を持つ。
 - パッケージのビルド生成物はライブラリである。
-- ライブラリ粒度の凝集性は、関数レベル/クラスの古典的凝集度分類ではなく、[Robert C. Martinのコンポーネント原則](glossary.md#SS_21_2)
-  (「[Robert C. Martinのコンポーネント原則](glossary.md#SS_21_2)」のコンポーネントとはこのドキュメントではパッケージを指す)で判断する。
+- ライブラリ粒度の凝集性は、関数レベル/クラスの古典的凝集度分類ではなく、[Robert C. Martinのコンポーネント原則](glossary.md#SS_20_2)
+  (「[Robert C. Martinのコンポーネント原則](glossary.md#SS_20_2)」のコンポーネントとはこのドキュメントではパッケージを指す)で判断する。
   中核は次の三原則のパワーバランスである。
-    - [リリース等価の原則(REP)](glossary.md#SS_21_2_1)
-    - [共通閉鎖の原則(CCP)](glossary.md#SS_21_2_2)
-    - [共通再利用の原則(CRP)](glossary.md#SS_21_2_3)
+    - [リリース等価の原則(REP)](glossary.md#SS_20_2_1)
+    - [共通閉鎖の原則(CCP)](glossary.md#SS_20_2_2)
+    - [共通再利用の原則(CRP)](glossary.md#SS_20_2_3)
 
 さらに以下に注意する必要がある。特にREPとCRPは、両者とも凝集性の話であるため混同しやすいが、
 問いの視点が異なる(CCPは「変更理由の単一性」という別の軸の指標である)。
@@ -546,7 +546,7 @@ TCP層だけ欲しい利用者まで HTTP側の更新で再ビルド・再検証
 修正は `libnet-tcp` と `libnet-http` への分割である。
 
 
-### モジュール <a id="SS_21_3_3"></a>
+### モジュール <a id="SS_20_3_3"></a>
 明確に定義された公開インターフェースを通じて他の要素と協調する、論理的または物理的な構成単位、
 と捉えるのが一般的だろう。
 
@@ -556,14 +556,14 @@ TCP層だけ欲しい利用者まで HTTP側の更新で再ビルド・再検証
 
 > 上記定義のモジュール ≒  パッケージ
 
-とし、[パッケージ](glossary.md#SS_21_3_2)としてその粒度を詳細に定義付けている。
+とし、[パッケージ](glossary.md#SS_20_3_2)としてその粒度を詳細に定義付けている。
 
 __[注]__:
-ここでのモジュールとC++20で導入された[モジュール](core_lang_spec.md#SS_19_10_2)は似た概念であるが、異なるものである。
+ここでのモジュールとC++20で導入された[モジュール](core_lang_spec.md#SS_18_10_2)は似た概念であるが、異なるものである。
 
 --- 
 
-## Modern CMake project layout <a id="SS_21_4"></a>
+## Modern CMake project layout <a id="SS_20_4"></a>
 [Modern CMake project layout](https://cliutils.gitlab.io/modern-cmake/chapters/basics/structure.html)
 はパッケージ単位でディレクトリを分割し、各パッケージが独立したビルド単位となる構造である。
 このような構造はビルドツールに[CMake](https://cliutils.gitlab.io/modern-cmake/)を使用する場合は特に有効であるが、
@@ -673,8 +673,8 @@ __[トップレベルCMakeLists.txt例]__
 
 ---
 
-### Modern CMake project layoutのカスタマイズ <a id="SS_21_4_1"></a>
-このドキュメントでは、以下の方針に基づいて[Modern CMake project layout](glossary.md#SS_21_4)の構成をカスタマイズすることを推奨する。
+### Modern CMake project layoutのカスタマイズ <a id="SS_20_4_1"></a>
+このドキュメントでは、以下の方針に基づいて[Modern CMake project layout](glossary.md#SS_20_4)の構成をカスタマイズすることを推奨する。
 
 - パス名が過度に長くなることを避ける。
 - `tests`（または `test`）という語は統合テストを指す場合もあるため、
@@ -721,8 +721,8 @@ __[置き換え後のディレクトリ構造例]__
 ---
 
 
-## ソフトウェア一般 <a id="SS_21_5"></a>
-### ヒープ <a id="SS_21_5_1"></a>
+## ソフトウェア一般 <a id="SS_20_5"></a>
+### ヒープ <a id="SS_20_5_1"></a>
 ヒープとは、プログラム実行時に動的メモリ割り当てを行うためのメモリ領域である。
 malloc、calloc、reallocといった関数を使用して必要なサイズのメモリを確保し、freeで解放する。
 スタックとは異なり、プログラマが明示的にメモリ管理を行う必要があり、解放漏れはメモリリークを引き起こす。
@@ -731,7 +731,7 @@ malloc、calloc、reallocといった関数を使用して必要なサイズの�
 連続的な割り当てと解放により利用可能なメモリが分散する課題がある。適切なヒープ管理は、
 C/C++プログラミングにおける重要なスキルの一つである。
 
-### プライオリティインバージョン <a id="SS_21_5_2"></a>
+### プライオリティインバージョン <a id="SS_20_5_2"></a>
 プライオリティインバージョン（優先度逆転）とは、
 低優先度スレッドが保持するミューテックスを高優先度スレッドが待機している間に、
 無関係な中優先度スレッドが割り込んで実行される現象である。典型的なシナリオを以下に示す。
@@ -751,35 +751,35 @@ H から見れば、本来無関係な M に実行権を奪われている状態
 
 ---
 
-### スレッドセーフ <a id="SS_21_5_3"></a>
+### スレッドセーフ <a id="SS_20_5_3"></a>
 スレッドセーフとは「複数のスレッドから同時にアクセスされても、
-排他制御などの機構([std::mutex](stdlib_and_concepts.md#SS_20_4_2))により共有データの整合性が保たれ、正しく動作する性質」である。
+排他制御などの機構([std::mutex](stdlib_and_concepts.md#SS_19_4_2))により共有データの整合性が保たれ、正しく動作する性質」である。
 
 ---
 
-### リエントラント <a id="SS_21_5_4"></a>
+### リエントラント <a id="SS_20_5_4"></a>
 リエントラントとは「実行中に同じ関数が再度呼び出されても、グローバル変数や静的変数に依存せず、
 ローカル変数のみで動作するため正しく動作する性質」である。
 
-一般に、リエントラントな関数は[スレッドセーフ](glossary.md#SS_21_5_3)であるが、逆は成り立たない。
+一般に、リエントラントな関数は[スレッドセーフ](glossary.md#SS_20_5_3)であるが、逆は成り立たない。
 
 ---
 
-### クリティカルセクション <a id="SS_21_5_5"></a>
+### クリティカルセクション <a id="SS_20_5_5"></a>
 複数のスレッドから同時にアクセスされると競合状態を引き起こす可能性があるコード領域をクリティカルセクションと呼ぶ。
 典型的には、共有変数や共有データ構造を読み書きするコード部分がこれに該当する。
-クリティカルセクションは、[std::mutex](stdlib_and_concepts.md#SS_20_4_2)等の排他制御機構によって保護し、
+クリティカルセクションは、[std::mutex](stdlib_and_concepts.md#SS_19_4_2)等の排他制御機構によって保護し、
 一度に一つのスレッドのみが実行できるようにする必要がある。
 
 ---
 
-### スピンロック <a id="SS_21_5_6"></a>
+### スピンロック <a id="SS_20_5_6"></a>
 スピンロックとは、
 スレッドがロックを取得できるまでCPUを占有したままビジーループで待機する排他制御方式である。
 スリープを伴わずカーネルを呼び出さないため、短時間の競合では高速に動作するが、
 長時間の待機ではCPUを浪費しやすい。リアルタイム処理や割り込み制御に適する。
 
-C++11では、スピンロックは[std::atomic](stdlib_and_concepts.md#SS_20_4_3)を使用して以下のように定義できる。
+C++11では、スピンロックは[std::atomic](stdlib_and_concepts.md#SS_19_4_3)を使用して以下のように定義できる。
 
 ```cpp
     //  h/spin_lock.h 3
@@ -803,8 +803,8 @@ C++11では、スピンロックは[std::atomic](stdlib_and_concepts.md#SS_20_4_
     };
 ```
 
-以下の単体テスト(「[std::mutex](stdlib_and_concepts.md#SS_20_4_2)」の単体テストを参照)
-に示したように[std::scoped_lock](stdlib_and_concepts.md#SS_20_5_3)のテンプレートパラメータとして使用できる。
+以下の単体テスト(「[std::mutex](stdlib_and_concepts.md#SS_19_4_2)」の単体テストを参照)
+に示したように[std::scoped_lock](stdlib_and_concepts.md#SS_19_5_3)のテンプレートパラメータとして使用できる。
 
 ```cpp
     //  example/glossary/spin_lock_ut.cpp 11
@@ -846,7 +846,7 @@ C++11では、スピンロックは[std::atomic](stdlib_and_concepts.md#SS_20_4_
 
 ---
 
-### ミックスイン <a id="SS_21_5_7"></a>
+### ミックスイン <a id="SS_20_5_7"></a>
 ミックスインとは、オブジェクト指向プログラミングにおいて、
 複数のクラスに対して特定の機能やメソッドを提供するための設計パターンである。
 「混ぜ込む（mix in）」という名称が示すとおり、既存のクラスに機能を追加する目的で使用される。
@@ -855,17 +855,17 @@ C++では[CRTP(curiously recurring template pattern)](design_pattern.md#SS_9_1_5
 
 ---
 
-### ハンドル <a id="SS_21_5_8"></a>
+### ハンドル <a id="SS_20_5_8"></a>
 CやC++の文脈でのハンドルとは、ポインタかリファレンスを指す。
 
 ---
 
-### フリースタンディング環境 <a id="SS_21_5_9"></a>
+### フリースタンディング環境 <a id="SS_20_5_9"></a>
 [フリースタンディング環境](https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AA%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E7%92%B0%E5%A2%83)とは、
 組み込みソフトウェアやOSのように、その実行にOSの補助を受けられないソフトウエアを指す。
 
 
-### メモリ保護機構 <a id="SS_21_5_10"></a>
+### メモリ保護機構 <a id="SS_20_5_10"></a>
 メモリ保護機構とは、MMU(Memory Management Unit)やMPU(Memory Protection Unit)と呼ばれることが多い。
 メモリ保護機構は以下のような機能を持つ。
 
@@ -880,7 +880,7 @@ CやC++の文脈でのハンドルとは、ポインタかリファレンスを�
 問題箇所を特定しやすくなる。特に組み込みシステムでは、デバッガが常時利用できない環境において、
 このような検出機能が重要となる。
 
-### CPU例外 <a id="SS_21_5_11"></a>
+### CPU例外 <a id="SS_20_5_11"></a>
 CPU例外とは、プログラム実行中にCPUが検出する異常事象であり、以下のようなものを指す。
 
 - 0除算例外:  
@@ -889,7 +889,7 @@ CPU例外とは、プログラム実行中にCPUが検出する異常事象で�
 - 不正インストラクション例外:   
     未定義の命令コードや、現在のCPUモードでは実行できない命令を実行しようとした場合に発生する。
 - メモリ保護違反例外:
-    [メモリ保護機構](glossary.md#SS_21_5_10)の設定に反した命令を実行した場合に発生する。例えば、リードオンリー領域への書き込み、
+    [メモリ保護機構](glossary.md#SS_20_5_10)の設定に反した命令を実行した場合に発生する。例えば、リードオンリー領域への書き込み、
     実行禁止領域からの命令フェッチ、アクセス権のない領域への参照などが該当する。
 - アライメント例外:
     プロセッサが要求するアライメント境界に違反したメモリアクセスを行った場合に発生する。
@@ -899,7 +899,7 @@ CPU例外とは、プログラム実行中にCPUが検出する異常事象で�
 特に組み込みシステムでは、例外発生時のレジスタ状態やスタックトレースを記録する機構を用意しておくことが、
 効果的なデバッグ手法となる。
 
-### Fluent Interface <a id="SS_21_5_12"></a>
+### Fluent Interface <a id="SS_20_5_12"></a>
 メソッドや演算子の連鎖によって一連の操作を一文で表現できるように設計する手法であり、
 C++ においては古くから`std::ostream`の`operator<<`がその代表例である。
 `std::cout << "value=" << x << std::endl;` はまさに Fluent Interfaceであり、
@@ -917,7 +917,7 @@ __補足：__
 ---
 
 
-### Unbounded Functions <a id="SS_21_5_13"></a>
+### Unbounded Functions <a id="SS_20_5_13"></a>
 unbounded function とは操作対象のバッファサイズを引数として受け取らない関数を指す。
 strcpy や gets のように書き込み先のサイズ検証を行わないため、
 入力データ次第でバッファの境界を超えて書き込みが発生するリスクがある。
@@ -926,24 +926,24 @@ MISRA-CやAUTOSAR等のコーディング標準ではunbounded functionの使用
 
 ---
 
-### サイクロマティック複雑度 <a id="SS_21_5_14"></a>
+### サイクロマティック複雑度 <a id="SS_20_5_14"></a>
 [サイクロマティック複雑度](https://ja.wikipedia.org/wiki/%E5%BE%AA%E7%92%B0%E7%9A%84%E8%A4%87%E9%9B%91%E5%BA%A6)
 とは関数の複雑さを表すメトリクスである。
 
 ---
 
-### 凝集性 <a id="SS_21_5_15"></a>
+### 凝集性 <a id="SS_20_5_15"></a>
 [凝集性(凝集度)](https://ja.wikipedia.org/wiki/%E5%87%9D%E9%9B%86%E5%BA%A6)
-とはクラス設計の妥当性を表す尺度の一種であり、「[PercentLackOfCohesion](glossary.md#SS_21_5_15_3)」というメトリクスで計測される。
+とはクラス設計の妥当性を表す尺度の一種であり、「[PercentLackOfCohesion](glossary.md#SS_20_5_15_3)」というメトリクスで計測される。
 
-* [凝集性の欠如](glossary.md#SS_21_5_15_1)メトリクスの値が100に近ければ凝集性は低く、この値が0に近ければ凝集性は高い。
+* [凝集性の欠如](glossary.md#SS_20_5_15_1)メトリクスの値が100に近ければ凝集性は低く、この値が0に近ければ凝集性は高い。
 * メンバ変数やメンバ関数が多くなれば、凝集性は低くなりやすい。
 * 凝集性は、クラスのメンバがどれだけ一貫した責任を持つかを示す。
 * 「[単一責任の原則(SRP)](class_design.md#SS_8_1_1)」を守ると凝集性は高くなりやすい。
 * 「[Accessor](design_pattern.md#SS_9_1_6)」を多用すれば、振る舞いが分散しがちになるため、通常、凝集性は低くなる。
    従って、下記のようなクラスは凝集性が低い。言い換えれば、凝集性を下げることなく、
    より小さいクラスに分割できる。
-   なお、以下のクラスでは、実際に計測すると、[PercentLackOfCohesion](glossary.md#SS_21_5_15_3)が100に近い値となっている。
+   なお、以下のクラスでは、実際に計測すると、[PercentLackOfCohesion](glossary.md#SS_20_5_15_3)が100に近い値となっている。
 
 ```cpp
     //  example/glossary/lack_of_cohesion_ut.cpp 7
@@ -1013,17 +1013,17 @@ MISRA-CやAUTOSAR等のコーディング標準ではunbounded functionの使用
     }
 ```
 
-#### 凝集性の欠如 <a id="SS_21_5_15_1"></a>
-[凝集性の欠如](glossary.md#SS_21_5_15_1)とはLack of Cohesion in Methodsの和訳であり、[LCOM](glossary.md#SS_21_5_15_2)と呼ばれる。
+#### 凝集性の欠如 <a id="SS_20_5_15_1"></a>
+[凝集性の欠如](glossary.md#SS_20_5_15_1)とはLack of Cohesion in Methodsの和訳であり、[LCOM](glossary.md#SS_20_5_15_2)と呼ばれる。
 
 LCOMはメソッドペアの数に基づく非正規化の整数値であるため、
 メソッド数が多いクラスほど値が大きくなりやすく、クラス間で単純に値の大小を比較することはできない。
-この弱点を補う指標として実務上広く用いられるのが、[PercentLackOfCohesion](glossary.md#SS_21_5_15_3)である。
+この弱点を補う指標として実務上広く用いられるのが、[PercentLackOfCohesion](glossary.md#SS_20_5_15_3)である。
 PercentLackOfCohesionはLCOMと同じ「メンバの共有度合い」という概念を扱うが、
 クラス規模に依存しないよう0〜100%に正規化して算出される点が異なる。すなわち両者は
 同一の計算式ではなく、後者はクラス規模の影響を除去した実務向けの指標と位置付けられる。
 
-#### LCOM <a id="SS_21_5_15_2"></a>
+#### LCOM <a id="SS_20_5_15_2"></a>
 LCOMの定義 (Chidamber & Kemerer版)を以下に述べる。  
 
 あるクラス `C` が、メソッド集合 `{M1, M2, ..., Mn}` を持つとする（本文書中では数式番号ではなく記号のみで表現する）。
@@ -1060,15 +1060,15 @@ LCOM = 0           （|P| ≤ |Q| の場合）
 この定義は非負値を取り、下限は0である。
 
 
-#### PercentLackOfCohesion <a id="SS_21_5_15_3"></a>
+#### PercentLackOfCohesion <a id="SS_20_5_15_3"></a>
 厳密性を欠くが、クラスの凝集性を測定するためには、
 テクマトリックス社製のUnderstandのメトリクスPercentLackOfCohesionを使用するのが実践的である。
 
-PercentLackOfCohesionは、[LCOM](glossary.md#SS_21_5_15_2)と同様に使用できるメトリクスであり、0〜100に正規化された値である。
+PercentLackOfCohesionは、[LCOM](glossary.md#SS_20_5_15_2)と同様に使用できるメトリクスであり、0〜100に正規化された値である。
 
 ---
 
-### Spurious Wakeup <a id="SS_21_5_16"></a>
+### Spurious Wakeup <a id="SS_20_5_16"></a>
 [Spurious Wakeup](https://en.wikipedia.org/wiki/Spurious_wakeup)とは、
 条件変数に対する通知待ちの状態であるスレッドが、その通知がされていないにもかかわらず、
 起き上がってしまう現象のことを指す。
@@ -1136,7 +1136,7 @@ std::condition_variable::wait()の第2引数を下記のようにすることで
 
 ---
 
-### 副作用 <a id="SS_21_5_17"></a>
+### 副作用 <a id="SS_20_5_17"></a>
 プログラミングにおいて、式の評価による作用には、
 主たる作用とそれ以外の
 [副作用](https://ja.wikipedia.org/wiki/%E5%89%AF%E4%BD%9C%E7%94%A8_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0))
@@ -1149,13 +1149,13 @@ std::condition_variable::wait()の第2引数を下記のようにすることで
 
 ---
 
-### Itanium C++ ABI <a id="SS_21_5_18"></a>
+### Itanium C++ ABI <a id="SS_20_5_18"></a>
 ItaniumC++ABIとは、C++コンパイラ間でバイナリ互換性を確保するための規約である。
 関数呼び出し規約、クラスレイアウト、仮想関数テーブル、例外処理、
 名前修飾(マングリング)などC++のオブジェクト表現と呼び出し方法に関する標準ルールを定めている。
 
 もともとはIntelItanium(IA-64)プロセッサ向けに策定されたが、
-[g++](glossary.md#SS_21_6_1)や[clang++](glossary.md#SS_21_6_2)はx86/x86-64やARM64など多くのプラットフォームでもItaniumC++ABI準拠の規約を採用している。
+[g++](glossary.md#SS_20_6_1)や[clang++](glossary.md#SS_20_6_2)はx86/x86-64やARM64など多くのプラットフォームでもItaniumC++ABI準拠の規約を採用している。
 そのため異なるコンパイラ間でもオブジェクトファイルやライブラリのリンクが可能である。
 また、typeid(...).name()をデマングルした場合、
 constがeast-const形式(T const)で表示されるのもこのABIの規約によるものである。
@@ -1168,10 +1168,10 @@ constがeast-const形式(T const)で表示されるのもこのABIの規約に�
 
 ---
 
-## C++コンパイラ <a id="SS_21_6"></a>
+## C++コンパイラ <a id="SS_20_6"></a>
 本ドキュメントで使用するg++/clang++のバージョンは以下のとおりである。
 
-### g++ <a id="SS_21_6_1"></a>
+### g++ <a id="SS_20_6_1"></a>
 
 ```
     g++ (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0
@@ -1180,7 +1180,7 @@ constがeast-const形式(T const)で表示されるのもこのABIの規約に�
     warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
 
-### clang++ <a id="SS_21_6_2"></a>
+### clang++ <a id="SS_20_6_2"></a>
 
 ```
     Ubuntu clang version 14.0.0-1ubuntu1
@@ -1189,8 +1189,8 @@ constがeast-const形式(T const)で表示されるのもこのABIの規約に�
     InstalledDir: /usr/bin
 ```
 
-## 非ソフトウェア用語 <a id="SS_21_7"></a>
-### セマンティクス <a id="SS_21_7_1"></a>
+## 非ソフトウェア用語 <a id="SS_20_7"></a>
+### セマンティクス <a id="SS_20_7_1"></a>
 シンタックスとは構文論のことであり、セマンティクスとは意味論のことである。
 セマンティクス、シンタックスの違いをはっきりと際立たせる以下の有名な例文により、
 セマンティクスの意味を直感的に理解することができる。
@@ -1206,7 +1206,7 @@ constがeast-const形式(T const)で表示されるのもこのABIの規約に�
 
 ---
 
-### 割れ窓理論 <a id="SS_21_7_2"></a>
+### 割れ窓理論 <a id="SS_20_7_2"></a>
 [割れ窓理論](https://ja.wikipedia.org/wiki/%E5%89%B2%E3%82%8C%E7%AA%93%E7%90%86%E8%AB%96)とは、
 軽微な犯罪も徹底的に取り締まることで、凶悪犯罪を含めた犯罪を抑止できるとする環境犯罪学上の理論。
 アメリカの犯罪学者ジョージ・ケリングが考案した。
@@ -1224,15 +1224,17 @@ constがeast-const形式(T const)で表示されるのもこのABIの規約に�
 
 ---
 
-### 車輪の再発明 <a id="SS_21_7_3"></a>
+### 車輪の再発明 <a id="SS_20_7_3"></a>
 [車輪の再発明](https://ja.wikipedia.org/wiki/%E8%BB%8A%E8%BC%AA%E3%81%AE%E5%86%8D%E7%99%BA%E6%98%8E)
 とは、広く受け入れられ確立されている技術や解決法を（知らずに、または意図的に無視して）
 再び一から作ること」を指すための慣用句である。
 ソフトウェア開発では、STLのような優れたライブラリを使わずに、
 それと同様なライブラリを自分たちで実装するような非効率な様を指すことが多い。
 
-## DAG(有向非循環グラフ) <a id="SS_21_8"></a>
+## DAG(有向非循環グラフ) <a id="SS_20_8"></a>
 DAGとは、Directed Acyclic Graph([有向非循環グラフ](https://ja.wikipedia.org/wiki/%E6%9C%89%E5%90%91%E9%9D%9E%E5%B7%A1%E5%9B%9E%E3%82%B0%E3%83%A9%E3%83%95))の略称である。
+
+---
 
 ---
 

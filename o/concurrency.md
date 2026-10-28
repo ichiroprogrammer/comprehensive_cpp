@@ -5,7 +5,7 @@
 11以降のC++は、下記するような言語拡張、
 STLの大幅な機能追加等により、この問題の軽減に成功している。
 
-* [ラムダ式](core_lang_spec.md#SS_19_10_3)
+* [ラムダ式](core_lang_spec.md#SS_18_10_3)
 * std::futre、std::async、std::promiseによる[Future](design_pattern.md#SS_9_2_4)パターンのサポート
 * std::unique_lock、std::condition_variableによるイベント通知
 * ロック機構のRAIIのサポート(「[RAII(scoped guard)](design_pattern.md#SS_9_1_3)」参照)
@@ -528,7 +528,7 @@ TwoPhaseTaskPtrのキュー管理機構は、
     std::condition_variable::wait(lock)
 ```
 
-を使用する場合、「[Spurious Wakeup](glossary.md#SS_21_5_16)」への対処が必要になるが、
+を使用する場合、「[Spurious Wakeup](glossary.md#SS_20_5_16)」への対処が必要になるが、
 
 ```cpp
     std::condition_variable::wait(lock, 関数オブジェクト)
@@ -691,5 +691,10 @@ TwoPhaseTaskPtrキュー管理機構は以下のようにしてTwoPhaseTaskPtr�
 一方でハードウェア性能を十分に引き出すソフトウェアの開発には絶大な効果を発揮する方法であるため、
 多くのプログラマにとって、避けて通ることはできない、時間を投資するに値する技術である。
 そのことを良く心得て、実践に当たってほしい。
+
+
+---
+
+---
 
 

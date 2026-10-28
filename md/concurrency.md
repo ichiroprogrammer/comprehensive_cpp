@@ -379,3 +379,8 @@ TwoPhaseTaskPtrキュー管理機構は以下のようにしてTwoPhaseTaskPtr�
 そのことを良く心得て、実践に当たってほしい。
 
 
+---
+
+---
+
+

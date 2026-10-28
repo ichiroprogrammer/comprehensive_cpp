@@ -1,6 +1,6 @@
 <!-- deep/md/dynamic_memory_allocation.md -->
 # ダイナミックメモリアロケーション <a id="SS_14"></a>
-本章で扱うダイナミックメモリアロケーション([ヒープ](glossary.md#SS_21_5_1)の使用)とは、new/delete、malloc/free
+本章で扱うダイナミックメモリアロケーション([ヒープ](glossary.md#SS_20_5_1)の使用)とは、new/delete、malloc/free
 によるメモリ確保/解放のことである。
 
 malloc/freeは、
@@ -56,7 +56,7 @@ ___
 ## malloc/freeの問題点 <a id="SS_14_1"></a>
 UNIX系のOSでの典型的なmalloc/freeの実装例の一部を以下に示す
 (この実装は長いため、
-全体は巻末の「[example/dynamic_memory_allocation/malloc_ut.cpp](sample_code.md#SS_26_2_35)」に掲載する)。
+全体は巻末の「[example/dynamic_memory_allocation/malloc_ut.cpp](sample_code.md#SS_25_2_1)」に掲載する)。
 
 ```cpp
     //  example/dynamic_memory_allocation/malloc_ut.cpp 19
@@ -144,7 +144,7 @@ UNIX系のOSでの典型的なmalloc/freeの実装例の一部を以下に示す
 ```
 
 上記で示したようにmalloc/freeで使用されるメモリはHeader_t型のheaderで管理され、
-このアクセスの競合は[スピンロック](glossary.md#SS_21_5_6)(SpinLock)によって回避される。
+このアクセスの競合は[スピンロック](glossary.md#SS_20_5_6)(SpinLock)によって回避される。
 headerが管理するメモリ用域からのメモリの切り出しはmalloc_innerによって行われるが、
 下のフラグメントの説明でも示す通り、
 headerで管理されたメモリは長さの上限が単純には決まらないリスト構造になるため、
@@ -182,7 +182,7 @@ sbrkは
 によるメモリ確保のトリガーとなる。
 これはOSのファイルシステムの動作を含む処理であるため、やはりリアルタイム性の保証は困難である。
 
-[フリースタンディング環境](glossary.md#SS_21_5_9)では、sbrkのようなシステムコールは存在しないため、
+[フリースタンディング環境](glossary.md#SS_20_5_9)では、sbrkのようなシステムコールは存在しないため、
 アプリケーションの未使用領域や静的に確保した領域を上記コードで示したようなリスト構造で管理し、
 mallocで使用することになる。
 このような環境では、sbrkによるリアルタイム性の阻害は発生しないものの、
@@ -277,7 +277,7 @@ malloc/freeにリアルタイム性がない原因は、
 
 そのため、固定長のメモリプールは、
 
-* 複数個のメモリプールを統合的に扱う[インターフェースクラス](core_lang_spec.md#SS_19_4_11)MPool
+* 複数個のメモリプールを統合的に扱う[インターフェースクラス](core_lang_spec.md#SS_18_4_11)MPool
 * MPoolを基底クラスとし、固定長メモリブロックを管理するクラステンプレートMPoolFixed
 
 によって実装することにする。
@@ -427,7 +427,7 @@ MPoolFixedに限らずメモリアロケータが返すメモリは、
 MPoolFixed::alloc/MPoolFixed::freeを見ればわかる通り、malloc/freeの実装に比べ格段にシンプルであり、
 これによりリアルタイム性の保障は容易である。
 
-なお、この実装ではmalloc/freeと同様に使用制限の少ない[スピンロック](glossary.md#SS_21_5_6)(SpinLock)を使用したが、
+なお、この実装ではmalloc/freeと同様に使用制限の少ない[スピンロック](glossary.md#SS_20_5_6)(SpinLock)を使用したが、
 このロックは、ラウンドロビンでスケジューリングされるスレッドの競合を防ぐためのものであり、
 固定プライオリティでのスケジューリングが前提となるような組み込みソフトで使用した場合、
 デッドロックを引き起こす可能性がある。
@@ -486,7 +486,7 @@ MPoolFixedの単体テストは、下記のようになる。
 
 ### 可変長メモリプール <a id="SS_14_2_2"></a>
 可変長メモリプールを生成するMPoolVariableの実装は下記のようになる
-(全体は巻末の「[example/dynamic_memory_allocation/mpool_variable.h](sample_code.md#SS_26_2_36)」に掲載する)。
+(全体は巻末の「[example/dynamic_memory_allocation/mpool_variable.h](sample_code.md#SS_25_2_2)」に掲載する)。
 
 ```cpp
     //  example/dynamic_memory_allocation/mpool_variable.h 59
@@ -735,7 +735,7 @@ MPoolから派生したクラスが、
 リアルタイム性が不要な処理であるため使用しているstdコンテナにすら、
 既存のエクセプション処理機構を使わせたく無くなるものである。
 
-コンパイラに[g++](glossary.md#SS_21_6_1)や[clang++](glossary.md#SS_21_6_2)を使っている場合、
+コンパイラに[g++](glossary.md#SS_20_6_1)や[clang++](glossary.md#SS_20_6_2)を使っている場合、
 下記関数を置き換えることでそういった要望を叶えることができる。
 
 |関数                                           |機能                            |
@@ -890,7 +890,7 @@ C++11では、以下のような方法により、このような問題を回避
 
 静的オブジェクトを含まないアプリケーションでは、
 上記のコードのsetupで行っているmpool_tableの初期化は
-[一様初期化](core_lang_spec.md#SS_19_6_6)で行った方が良いが、
+[一様初期化](core_lang_spec.md#SS_18_6_6)で行った方が良いが、
 例で用いたアプリケーションにはnewを行う静的オブジェクトが存在するため
 (google testは静的オブジェクトを利用する)、
 setupで行っているような方法以外では、
@@ -899,7 +899,7 @@ setupで行っているような方法以外では、
 mpool_tableはMPoolポインタを保持するが、そのポインタが指すオブジェクトの実態は、
 gen_mpool<>が生成したMPoolFixed<>オブジェクトである。
 gen_mpool<>については、その内部に静的に確保したメモリを使用して、
-[プレースメントnew](core_lang_spec.md#SS_19_6_9)によりMPoolオブジェクトを生成する下記の関数テンプレートである。
+[プレースメントnew](core_lang_spec.md#SS_18_6_9)によりMPoolオブジェクトを生成する下記の関数テンプレートである。
 
 ```cpp
     //  example/dynamic_memory_allocation/global_new_delete.cpp 8
@@ -1058,7 +1058,7 @@ size2indexは要求されたサイズから、
 
 グローバルnewを使わずに動的にオブジェクトを生成するためには、
 
-* [プレースメントnew](core_lang_spec.md#SS_19_6_9)を使う
+* [プレースメントnew](core_lang_spec.md#SS_18_6_9)を使う
 * クラス毎にnew/deleteをオーバーロードする
 
 という2つの選択肢が考えられるが、プレースメントnewは見慣れないシンタックスを用いるため、これの使用は避けるべきである。
@@ -1314,7 +1314,7 @@ OpNewを使うプロジェクトには導入するべきだろう。
 (「[可変長メモリプール](dynamic_memory_allocation.md#SS_14_2_2)」参照)を使う。
 
 C++14の環境で標準ライブラリのアロケータを置き換える場合は、上記のような方法で実現できるが、
-C++17以降では、[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_20_7_2)を使用するべきである。
+C++17以降では、[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_19_7_2)を使用するべきである。
 
 ### デバッグ用イテレータ <a id="SS_14_5_1"></a>
 [可変長メモリプール](dynamic_memory_allocation.md#SS_14_2_2)を使用すると、
@@ -1408,5 +1408,8 @@ C++17以降では、[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_
 デバッグ用入出力機能からこのような出力を得られるようにしておくべきである。
 
 
+---
+
+---
 
 

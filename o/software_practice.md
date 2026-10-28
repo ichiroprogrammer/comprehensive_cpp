@@ -333,7 +333,7 @@ YAGNI(You ain't gonna need it)とは、「機能(要件)は実際に必要とな
 クラスCがstd::string constのように状態が不変で 安定した仕様を持つならば、
 このような多重呼び出しが問題になることは稀である。
 
-従って、当然、以下のような[Fluent Interface](glossary.md#SS_21_5_12)の使用には問題ない。
+従って、当然、以下のような[Fluent Interface](glossary.md#SS_20_5_12)の使用には問題ない。
 
 ```cpp
 auto query = QueryBuilder()
@@ -435,5 +435,8 @@ Modelから開発を始め、それを外部の「回帰テスト用ソフトウ
 
 これらの詳細は後ほど行う。
 
+---
+
+---
 
 
