@@ -30,7 +30,7 @@ __この章の構成__
 &emsp;8.1.6 [Accessor](design_pattern.md#SS_8_1_6)  
 &emsp;8.1.7 [Immutable](design_pattern.md#SS_8_1_7)  
 &emsp;8.1.8 [NVI(non virtual interface)](design_pattern.md#SS_8_1_8)  
-&emsp;8.1.9 [二段階文字列化(STRINGIZE) ](design_pattern.md#SS_8_1_9)  
+&emsp;8.1.9 [二段階文字列化(STRINGIZE)](design_pattern.md#SS_8_1_9)  
 
 8.2 [実装パターン](design_pattern.md#SS_8_2)  
 &emsp;8.2.1 [Pimpl](design_pattern.md#SS_8_2_1)  
@@ -1032,7 +1032,7 @@ privateなメンバ関数はデフォルト引数を持つべきではない。
 
 ---
 
-### 8.1.9 二段階文字列化(STRINGIZE)  <a id="SS_8_1_9"></a>
+### 8.1.9 二段階文字列化(STRINGIZE) <a id="SS_8_1_9"></a>
 本節では、プリプロセッサの文字列化演算子 `#` を二段階のマクロで包むイディオムと、
 その代表的な応用2つを解説する。
 
@@ -3429,7 +3429,7 @@ ThreadOldStyleStateStr()、ThreadOldStyleRun()、ThreadOldStyleAbort()、ThreadO
         Suspending,
     };
 
-    ThreadOldStyleState thread_old_style_state;
+    ThreadOldStyleState thread_old_style_state;  // 状態の保存
     // ...
     }  // namespace
 
@@ -3448,6 +3448,7 @@ ThreadOldStyleStateStr()、ThreadOldStyleRun()、ThreadOldStyleAbort()、ThreadO
         }
     }
 
+    // スレッドをrunning状態に移行させる
     void ThreadOldStyleRun()
     {
         switch (thread_old_style_state) {
@@ -3455,14 +3456,14 @@ ThreadOldStyleStateStr()、ThreadOldStyleRun()、ThreadOldStyleAbort()、ThreadO
         case ThreadOldStyleState::Running:
             thread_old_style_state = ThreadOldStyleState::Running;
             break;
-        case ThreadOldStyleState::Suspending:
-            --thread_old_style_suspend_count;
+        case ThreadOldStyleState::Suspending:  // suspend状態
+            --thread_old_style_suspend_count;  // suspend状態はネスティングする
             if (thread_old_style_suspend_count == 0) {
-                thread_old_style_state = ThreadOldStyleState::Running;
+                thread_old_style_state = ThreadOldStyleState::Running;  // suspend状態 ->  running状態
             }
             break;
         default:
-            assert(false);
+            assert(false);  // バグ以外でここに来ることはない
         }
     }
 
@@ -5303,5 +5304,9 @@ ViewはModelの[Observer](design_pattern.md#SS_8_4_4)であるため、ModelはV
 [演習-デザインパターン選択1](exercise_q.md#SS_18_9_25)  
 [演習-デザインパターン選択2](exercise_q.md#SS_18_9_26)  
 [演習-デザインパターン選択3](exercise_q.md#SS_18_9_27)  
+
+---
+
+---
 
 

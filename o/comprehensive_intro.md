@@ -181,18 +181,21 @@ __ツール等__
 
 - [開発ツール](dev_tools.md#SS_16)
 - [デバッグ](debug.md#SS_15)
-- [deps](deps.md#SS_17)
 
 
 __Appendix__
 
-- [C++の進化と主な変更点](cpp_improve.md#SS_18)
-- [C++コア言語仕様](core_lang_spec.md#SS_19)
-- [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_20)
-- [用語集](glossary.md#SS_21)
-- [演習](exercise_q.md#SS_22)
-- [解答](exercise_a.md#SS_23)
-- [参考文献](bibliography.md#SS_24)
-- [あとがき](afterword.md#SS_25)
+- [C++の進化と主な変更点](cpp_improve.md#SS_17)
+- [C++コア言語仕様](core_lang_spec.md#SS_18)
+- [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_19)
+- [用語集](glossary.md#SS_20)
+- [演習](exercise_q.md#SS_21)
+- [解答](exercise_a.md#SS_22)
+- [参考文献](bibliography.md#SS_23)
+- [あとがき](afterword.md#SS_24)
+
+---
+
+---
 
 

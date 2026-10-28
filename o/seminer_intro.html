@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>C++ 中級/上級セミナー(V20.02)</title>
+  <title>C++ 中級/上級セミナー(V20.03)</title>
   <style>
     html {
       color: #1a1a1a;
@@ -196,7 +196,7 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">C++ 中級/上級セミナー(V20.02)</h1>
+<h1 class="title">C++ 中級/上級セミナー(V20.03)</h1>
 <p class="author">autor:ichiro.inoue@exmotion</p>
 </header>
 <!-- ./md/seminer_intro.md -->
@@ -238,7 +238,7 @@
 href="http://opencv.jp/googletestdocs/primer.html">google
 test(gtest)</a>のアサーション(下表)を使用する。</li>
 </ul>
-<p><strong>google test_のアサーションの簡単な説明</strong></p>
+<p><strong>google testのアサーションの簡単な説明</strong></p>
 <table>
 <thead>
 <tr class="header">
@@ -253,7 +253,7 @@ test(gtest)</a>のアサーション(下表)を使用する。</li>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ASSERT_FALSE(x)</td>
-<td style="text-align: left;">xがfalse</td>
+<td style="text-align: left;">!xがtrue</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">ASSERT_EQ(x, y)</td>
@@ -285,11 +285,11 @@ test(gtest)</a>のアサーション(下表)を使用する。</li>
 std::string(y))がtrue</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ASSERT_DEATH(x, y)</td>
+<td style="text-align: left;">ASSERT_DEATH(x, msg)</td>
 <td style="text-align: left;">xを実行するとアボートすればtrue</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">ASSERT_THROW(x, y)</td>
+<td style="text-align: left;">ASSERT_THROW(x, msg)</td>
 <td style="text-align: left;">xを実行するとy例外が発生すればtrue</td>
 </tr>
 </tbody>

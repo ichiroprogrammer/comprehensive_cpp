@@ -1408,5 +1408,8 @@ C++17以降では、[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_
 デバッグ用入出力機能からこのような出力を得られるようにしておくべきである。
 
 
+---
+
+---
 
 

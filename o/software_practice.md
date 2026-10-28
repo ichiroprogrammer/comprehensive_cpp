@@ -334,9 +334,13 @@ YAGNI(You ain't gonna need it)とは、「機能(要件)は実際に必要とな
 このような多重呼び出しが問題になることは稀である。
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 従って、当然、以下のような[Fluent Interface](cpp_idioms.md#SS_20_14_12)の使用には問題ない。
 =======
 従って、当然、以下のような[Fluent Interface](glossary.md#SS_21_5_12)の使用には問題ない。
+>>>>>>> main
+=======
+従って、当然、以下のような[Fluent Interface](glossary.md#SS_20_5_12)の使用には問題ない。
 >>>>>>> main
 
 ```cpp
@@ -439,5 +443,8 @@ Modelから開発を始め、それを外部の「回帰テスト用ソフトウ
 
 これらの詳細は後ほど行う。
 
+---
+
+---
 
 
