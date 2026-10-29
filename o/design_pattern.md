@@ -5307,6 +5307,8 @@ ViewはModelの[Observer](design_pattern.md#SS_9_4_4)であるため、ModelはV
 
 ---
 
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](design_pattern.md#SS_9)
+
 ---
 
 

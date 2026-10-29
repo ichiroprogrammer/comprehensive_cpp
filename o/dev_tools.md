@@ -352,6 +352,8 @@ vim/neovimの設定について興味がなければ、「[費用](dev_tools.md#
 
 ---
 
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](dev_tools.md#SS_16)
+
 ---
 
 

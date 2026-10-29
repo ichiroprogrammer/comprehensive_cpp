@@ -695,6 +695,8 @@ TwoPhaseTaskPtrキュー管理機構は以下のようにしてTwoPhaseTaskPtr�
 
 ---
 
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](concurrency.md#SS_12)
+
 ---
 
 

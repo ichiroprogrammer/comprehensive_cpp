@@ -851,6 +851,8 @@ GUIオブジェクト(ボタンやテキストボックス等)を直接操作す
 
 ---
 
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](architecture.md#SS_10)
+
 ---
 
 

@@ -50,6 +50,8 @@ ___
 
 ---
 
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](bibliography.md#SS_23)
+
 ---
 
 

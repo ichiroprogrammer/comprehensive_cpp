@@ -1613,6 +1613,8 @@ d2_refが指しているオブジェクト(d2)へコピーされた」からで�
 
 ---
 
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](class_design.md#SS_8)
+
 ---
 
 

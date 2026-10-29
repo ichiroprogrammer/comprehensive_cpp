@@ -1047,6 +1047,8 @@ C++を使用する意味がなくなる。
 
 ---
 
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](debug.md#SS_15)
+
 ---
 
 

@@ -7708,6 +7708,8 @@ RVOとはこのような最適化を指す。
 ```
 ---
 
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](core_lang_spec.md#SS_18)
+
 ---
 
 

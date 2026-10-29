@@ -5538,6 +5538,8 @@ ___
 
 ---
 
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](exercise_a.md#SS_22)
+
 ---
 
 

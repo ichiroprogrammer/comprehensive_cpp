@@ -6083,6 +6083,8 @@ ___
 
 ---
 
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](exercise_q.md#SS_21)
+
 ---
 
 

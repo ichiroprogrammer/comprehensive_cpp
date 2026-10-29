@@ -2752,6 +2752,8 @@ new/deleteの呼び出しをまとめたり省略したりすることができ�
 
 ---
 
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](stdlib_and_concepts.md#SS_19)
+
 ---
 
 

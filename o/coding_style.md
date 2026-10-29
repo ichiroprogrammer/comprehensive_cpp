@@ -1039,6 +1039,8 @@ C++ ではハイフンが減算演算子と衝突するため、識別子の宣�
 
 ---
 
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](coding_style.md#SS_5)
+
 ---
 
 
