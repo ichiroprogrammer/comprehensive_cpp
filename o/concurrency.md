@@ -695,6 +695,8 @@ TwoPhaseTaskPtrキュー管理機構は以下のようにしてTwoPhaseTaskPtr�
 
 ---
 
+[インデックス](seminer_intro.md#SS_1_2) <!-- ss_top / -->
+
 ---
 
 

@@ -635,6 +635,8 @@ not yet.
 
 ---
 
+[インデックス](seminer_intro.md#SS_1_2) <!-- ss_top / -->
+
 ---
 
 
