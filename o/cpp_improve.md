@@ -635,7 +635,7 @@ not yet.
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2) <!-- ss_top / -->
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](cpp_improve.md#SS_14)
 
 ---
 

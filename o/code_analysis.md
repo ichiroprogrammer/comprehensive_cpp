@@ -472,7 +472,7 @@ sanitizerは以上に示した通り極めて優れたバグ検出能力を持�
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2) <!-- ss_top / -->
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](code_analysis.md#SS_3)
 
 ---
 

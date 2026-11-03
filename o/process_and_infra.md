@@ -1731,7 +1731,7 @@ CIの環境として、
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2) <!-- ss_top / -->
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](process_and_infra.md#SS_10)
 
 ---
 

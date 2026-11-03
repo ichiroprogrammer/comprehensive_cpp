@@ -850,7 +850,7 @@ GUIオブジェクト(ボタンやテキストボックス等)を直接操作す
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2) <!-- ss_top / -->
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](architecture.md#SS_9)
 
 ---
 

@@ -5884,6 +5884,8 @@ C++20からこの問題の対策として、[constinit](core_lang_spec.md#SS_15_
 
 ---
 
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](programming_convention.md#SS_2)
+
 ---
 
 

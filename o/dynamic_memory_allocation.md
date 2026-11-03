@@ -1410,6 +1410,8 @@ C++17以降では、[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_
 
 ---
 
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](dynamic_memory_allocation.md#SS_13)
+
 ---
 
 

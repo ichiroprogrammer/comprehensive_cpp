@@ -5538,7 +5538,7 @@ ___
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2) <!-- ss_top / -->
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](exercise_a.md#SS_19)
 
 ---
 
