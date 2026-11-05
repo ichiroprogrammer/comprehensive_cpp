@@ -37,8 +37,8 @@ class GreetingState_Japanese : public GreetingState {
 };
 
 class GreetingState_French : public GreetingState {
-    virtual std::string good_morning() const override { return "Bonjour"; }
-    virtual std::string hello() const override { return "Bonjour"; }
+    virtual std::string good_morning() const override { return "bonjour"; }
+    virtual std::string hello() const override { return "bonjour"; }
     virtual std::string good_evening() const override { return "bonne soirée"; }
 };
 
@@ -82,8 +82,8 @@ TEST(DesignPatternA, State)
     ASSERT_EQ("こんばんは", greeting.GoodEvening());
 
     greeting.SetLanguage(Language::French);
-    ASSERT_EQ("Bonjour", greeting.GoodMorning());
-    ASSERT_EQ("Bonjour", greeting.Hello());
+    ASSERT_EQ("bonjour", greeting.GoodMorning());
+    ASSERT_EQ("bonjour", greeting.Hello());
     ASSERT_EQ("bonne soirée", greeting.GoodEvening());
 
     greeting.SetLanguage(Language::English);
