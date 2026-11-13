@@ -352,7 +352,6 @@ valueをtrueで初期化するクラステンプレートであり、 type_trait
 (後ほど使用するstd::is_same_vはstd::is_same<>::valueと等価な定数テンプレート)。
 この実装については、後ほど説明する。
 
-[演習-パラメータパック](exercise_q.md#SS_22_11_1)  
 
 #### パラメータパックの畳みこみ式 <a id="SS_14_1_3_1"></a>
 上記したsumは、パラメータパックの展開に汎用的な再帰構造を用いたが、
@@ -1301,7 +1300,6 @@ std::vector、std::basic_string、std::array等の配列型コンテナは、
     }
 ```
 
-[演習-std::arrayの継承](exercise_q.md#SS_22_11_4)  
 
 ### 安全な配列型コンテナ <a id="SS_14_2_3"></a>
 配列型コンテナはすでに述べたようにstd::vectorの他にすくなともstd::basic_string、
@@ -1541,7 +1539,6 @@ SafeArray2のコードは、
 で紹介する。
 
 
-[演習-エイリアステンプレート](exercise_q.md#SS_22_11_2)  
 
 
 ### is_void_xxxの実装 <a id="SS_14_3_1"></a>
@@ -1615,7 +1612,6 @@ SafeArray2のコードは、
 
 のような制限があるため用途は限られるが、関数テンプレートはオーバーロードすることが可能である。
 
-[演習-SFINAEを利用しない関数テンプレートの特殊化によるis_void](exercise_q.md#SS_22_11_5)
 
 #### is_void_s <a id="SS_14_3_1_2"></a>
 クラステンプレートの特殊化を使用したis_void_sの実装は以下のようになる。
@@ -1647,7 +1643,6 @@ is_void_fと同様に単純なので解説は不要だろう。これらの単�
     static_assert(is_void_s_v<void>);
 ```
 
-[演習-SFINAEを利用しないクラステンプレートの特殊化によるis_void](exercise_q.md#SS_22_11_6)
 
 #### is_void_sfinae_f <a id="SS_14_3_1_3"></a>
 [SFINAE](core_lang_spec.md#SS_19_11_1)を使用した関数テンプレートis_void_sfinae_fの実装は以下のようになる。
@@ -1773,7 +1768,6 @@ is_void_sfinae_fは下記のように実装することも可能である。こ�
     static_assert(is_void_sfinae_f_v<void>);
 ```
 
-[演習-SFINAEを利用した関数テンプレートの特殊化によるis_void](exercise_q.md#SS_22_11_7)
 
 #### is_void_sfinae_s <a id="SS_14_3_1_4"></a>
 [SFINAE](core_lang_spec.md#SS_19_11_1)を使用したクラステンプレートis_void_sfinae_sの実装は以下のようになる。
@@ -1878,7 +1872,6 @@ SFINAEとクラステンプレートの特殊化を組み合わせたメタ関�
 ただし、一般にはill-formedを起こすためにst::enable_ifを使うことが多いため、
 「[is_void_ena_s](template_meta_programming.md#SS_14_3_1_6)の実装」でその例を示す。
 
-[演習-SFINAEを利用したクラステンプレートの特殊化によるis_void](exercise_q.md#SS_22_11_8)
 
 #### is_void_concept_s <a id="SS_14_3_1_5"></a>
 [is_void_sfinae_s](template_meta_programming.md#SS_14_3_1_4)の実装で使用したSFINAEを回避し、
@@ -2387,7 +2380,6 @@ is_same_sfinae_sは定数テンプレートであり、same_asはコンセプト
     static_assert(!gen_std_string_v<signed char>);
 ```
 
-[演習-テンプレートテンプレートパラメータ](exercise_q.md#SS_22_11_9)
 
 #### IsSameSomeOf <a id="SS_14_3_2_8"></a>
 IsSameSomeOfはこれまでの例とは少々異なり、
@@ -2456,7 +2448,6 @@ Usが複数だった場合、[畳み込み式](--)を使用し上記の処理を
     static_assert(!Nstd::IsSameSomeOfV<std::string, int, char*>);
 ```
 
-[演習-テンプレートパラメータを可変長にしたstd::is_same](exercise_q.md#SS_22_11_10)
 
 #### OneOf <a id="SS_14_3_2_9"></a>
 OneOfは、[IsSameSomeOf](template_meta_programming.md#SS_14_3_2_8)同様の機能を持つコンセプトである。
@@ -2959,7 +2950,6 @@ exists_void_func_sfinae_fと同じテスト用クラスを用いた単体テス�
     static_assert(!exists_void_func_sfinae_s2_v<Z>);
 ```
 
-[演習-メンバ関数の存在の診断](exercise_q.md#SS_22_11_11)
 
 #### exists_void_func_concept <a id="SS_14_3_4_4"></a>
 [exists_void_func_sfinae_s](template_meta_programming.md#SS_14_3_4_2)や[exists_void_func_sfinae_s2](template_meta_programming.md#SS_14_3_4_3)
@@ -3183,7 +3173,6 @@ IsRangeの実装は以下のようになる。
     static_assert(IsRangeV<int[3]>);
 ```
 
-[演習-範囲for文のオペランドになれるかどうかの診断](exercise_q.md#SS_22_11_12)
 
 #### Array <a id="SS_14_3_4_7"></a>
 
@@ -3897,8 +3886,6 @@ ValueTypeの最終的な単体テストのために上記を統合したテス�
     }  // namespace Nstd
 ```
 
-[演習-配列の長さの取り出し](exercise_q.md#SS_22_11_13)
-[演習-配列の次元の取り出し](exercise_q.md#SS_22_11_14)
 
 ## Nstdライブラリの開発2 <a id="SS_14_4"></a>
 ここでは予定していた通りSafeArray2を開発し、その後Nstdに必要なライブラリの開発を続ける。
@@ -7545,7 +7532,6 @@ C++17からサポートされた「クラステンプレートのテンプレー
 このような便利なテンプレートは、Nstdのようなライブラリで定義、宣言し、
 ソースコード全域からアクセスできるようにするとプロジェクトの開発効率が少しだけ高まる。
 
-[演習-関数型のテンプレートパラメータを持つクラステンプレート](exercise_q.md#SS_22_11_15)  
 
 ## 注意点まとめ <a id="SS_14_8"></a>
 本章では、テンプレートメタプログラミングのテクニックや注意点について解説したが、

@@ -1,7 +1,7 @@
 <!-- ./md/sample_code.md -->
-# Sample Code <a id="SS_26"></a>
-## vim <a id="SS_26_1"></a>
-### vim_config/README.md <a id="SS_26_1_1"></a>
+# Sample Code <a id="SS_24"></a>
+## vim <a id="SS_24_1"></a>
+### vim_config/README.md <a id="SS_24_1_1"></a>
 
 
 ```vim
@@ -108,7 +108,7 @@
         101 |:checkhealt                   |足りないパッケージや設定等のチェック      |
 ```
 
-### vim_config/inputrc <a id="SS_26_1_2"></a>
+### vim_config/inputrc <a id="SS_24_1_2"></a>
 
 
 ```vim
@@ -117,7 +117,7 @@
           3 set show-all-if-unmodified on
 ```
 
-### vim_config/nvim/autoload/buffers.vim <a id="SS_26_1_3"></a>
+### vim_config/nvim/autoload/buffers.vim <a id="SS_24_1_3"></a>
 
 
 ```vim
@@ -211,7 +211,7 @@
          88 endfunction
 ```
 
-### vim_config/nvim/autoload/cd.vim <a id="SS_26_1_4"></a>
+### vim_config/nvim/autoload/cd.vim <a id="SS_24_1_4"></a>
 
 
 ```vim
@@ -253,7 +253,7 @@
          36 endfunction
 ```
 
-### vim_config/nvim/autoload/git_diff.vim <a id="SS_26_1_5"></a>
+### vim_config/nvim/autoload/git_diff.vim <a id="SS_24_1_5"></a>
 
 
 ```vim
@@ -506,7 +506,7 @@
         247 
 ```
 
-### vim_config/nvim/autoload/git_session.vim <a id="SS_26_1_6"></a>
+### vim_config/nvim/autoload/git_session.vim <a id="SS_24_1_6"></a>
 
 
 ```vim
@@ -578,7 +578,7 @@
          66 endfunction
 ```
 
-### vim_config/nvim/autoload/grep.vim <a id="SS_26_1_7"></a>
+### vim_config/nvim/autoload/grep.vim <a id="SS_24_1_7"></a>
 
 
 ```vim
@@ -627,7 +627,7 @@
          43 
 ```
 
-### vim_config/nvim/autoload/multi_hl.vim <a id="SS_26_1_8"></a>
+### vim_config/nvim/autoload/multi_hl.vim <a id="SS_24_1_8"></a>
 
 
 ```vim
@@ -655,7 +655,7 @@
          22 endfunction
 ```
 
-### vim_config/nvim/autoload/next_file.vim <a id="SS_26_1_9"></a>
+### vim_config/nvim/autoload/next_file.vim <a id="SS_24_1_9"></a>
 
 
 ```vim
@@ -732,7 +732,7 @@
          71 
 ```
 
-### vim_config/nvim/autoload/term.vim <a id="SS_26_1_10"></a>
+### vim_config/nvim/autoload/term.vim <a id="SS_24_1_10"></a>
 
 
 ```vim
@@ -761,7 +761,7 @@
          23 
 ```
 
-### vim_config/nvim/autoload/termdbg.vim <a id="SS_26_1_11"></a>
+### vim_config/nvim/autoload/termdbg.vim <a id="SS_24_1_11"></a>
 
 
 ```vim
@@ -813,7 +813,7 @@
          46 
 ```
 
-### vim_config/nvim/cheatsheet.md <a id="SS_26_1_12"></a>
+### vim_config/nvim/cheatsheet.md <a id="SS_24_1_12"></a>
 
 
 ```vim
@@ -969,7 +969,7 @@
         150     * terminal 端末通信 call/drop
 ```
 
-### vim_config/nvim/ftplugin/c.vim <a id="SS_26_1_13"></a>
+### vim_config/nvim/ftplugin/c.vim <a id="SS_24_1_13"></a>
 
 
 ```vim
@@ -984,7 +984,7 @@
           9 
 ```
 
-### vim_config/nvim/ftplugin/python.vim <a id="SS_26_1_14"></a>
+### vim_config/nvim/ftplugin/python.vim <a id="SS_24_1_14"></a>
 
 
 ```vim
@@ -995,7 +995,7 @@
           5 
 ```
 
-### vim_config/nvim/ftplugin/ruby.vim <a id="SS_26_1_15"></a>
+### vim_config/nvim/ftplugin/ruby.vim <a id="SS_24_1_15"></a>
 
 
 ```vim
@@ -1005,7 +1005,7 @@
           4 setlocal tags=tags,./tags
 ```
 
-### vim_config/nvim/init.vim <a id="SS_26_1_16"></a>
+### vim_config/nvim/init.vim <a id="SS_24_1_16"></a>
 
 
 ```vim
@@ -1058,7 +1058,7 @@
          47 endif
 ```
 
-### vim_config/nvim/org.vim <a id="SS_26_1_17"></a>
+### vim_config/nvim/org.vim <a id="SS_24_1_17"></a>
 
 
 ```vim
@@ -1113,7 +1113,7 @@
          49 "set iskeyword+=-
 ```
 
-### vim_config/nvim/package.vim <a id="SS_26_1_18"></a>
+### vim_config/nvim/package.vim <a id="SS_24_1_18"></a>
 
 
 ```vim
@@ -1189,14 +1189,14 @@
          70 endif
 ```
 
-### vim_config/nvim/plugin/buffers.vim <a id="SS_26_1_19"></a>
+### vim_config/nvim/plugin/buffers.vim <a id="SS_24_1_19"></a>
 
 
 ```vim
           1 command! -nargs=0 Buff     call buffers#begin()
 ```
 
-### vim_config/nvim/plugin/cd.vim <a id="SS_26_1_20"></a>
+### vim_config/nvim/plugin/cd.vim <a id="SS_24_1_20"></a>
 
 
 ```vim
@@ -1207,7 +1207,7 @@
           5 
 ```
 
-### vim_config/nvim/plugin/clear_undo.vim <a id="SS_26_1_21"></a>
+### vim_config/nvim/plugin/clear_undo.vim <a id="SS_24_1_21"></a>
 
 
 ```vim
@@ -1224,7 +1224,7 @@
          11 
 ```
 
-### vim_config/nvim/plugin/ctags_ext.vim <a id="SS_26_1_22"></a>
+### vim_config/nvim/plugin/ctags_ext.vim <a id="SS_24_1_22"></a>
 
 
 ```vim
@@ -1241,7 +1241,7 @@
          11 
 ```
 
-### vim_config/nvim/plugin/dev_env.vim <a id="SS_26_1_23"></a>
+### vim_config/nvim/plugin/dev_env.vim <a id="SS_24_1_23"></a>
 
 
 ```vim
@@ -1266,7 +1266,7 @@
          19 command! -nargs=0 DevEnv     call dev_env#setup()
 ```
 
-### vim_config/nvim/plugin/git_diff.vim <a id="SS_26_1_24"></a>
+### vim_config/nvim/plugin/git_diff.vim <a id="SS_24_1_24"></a>
 
 
 ```vim
@@ -1275,7 +1275,7 @@
           3 command! -nargs=0 GitDiffOff    call git_diff#show_diff_off()
 ```
 
-### vim_config/nvim/plugin/git_session.vim <a id="SS_26_1_25"></a>
+### vim_config/nvim/plugin/git_session.vim <a id="SS_24_1_25"></a>
 
 
 ```vim
@@ -1286,7 +1286,7 @@
           5 command! -nargs=0 SessionPath   call git_session#set_path()
 ```
 
-### vim_config/nvim/plugin/grep.vim <a id="SS_26_1_26"></a>
+### vim_config/nvim/plugin/grep.vim <a id="SS_24_1_26"></a>
 
 
 ```vim
@@ -1295,7 +1295,7 @@
           3 
 ```
 
-### vim_config/nvim/plugin/keybind.vim <a id="SS_26_1_27"></a>
+### vim_config/nvim/plugin/keybind.vim <a id="SS_24_1_27"></a>
 
 
 ```vim
@@ -1323,7 +1323,7 @@
          22 
 ```
 
-### vim_config/nvim/plugin/multi_hl.vim <a id="SS_26_1_28"></a>
+### vim_config/nvim/plugin/multi_hl.vim <a id="SS_24_1_28"></a>
 
 
 ```vim
@@ -1333,7 +1333,7 @@
           4 command! -nargs=0 MultiHlClear     call multi_hl#clear()
 ```
 
-### vim_config/nvim/plugin/next_file.vim <a id="SS_26_1_29"></a>
+### vim_config/nvim/plugin/next_file.vim <a id="SS_24_1_29"></a>
 
 
 ```vim
@@ -1347,7 +1347,7 @@
           8 nmap <C-q>      :NF<CR>
 ```
 
-### vim_config/nvim/plugin/path_set.vim <a id="SS_26_1_30"></a>
+### vim_config/nvim/plugin/path_set.vim <a id="SS_24_1_30"></a>
 
 
 ```vim
@@ -1372,7 +1372,7 @@
          19 command! -nargs=0 PathSet  call path_set#set()
 ```
 
-### vim_config/nvim/plugin/scratch.vim <a id="SS_26_1_31"></a>
+### vim_config/nvim/plugin/scratch.vim <a id="SS_24_1_31"></a>
 
 
 ```vim
@@ -1393,7 +1393,7 @@
          15 
 ```
 
-### vim_config/nvim/plugin/term.vim <a id="SS_26_1_32"></a>
+### vim_config/nvim/plugin/term.vim <a id="SS_24_1_32"></a>
 
 
 ```vim
@@ -1412,7 +1412,7 @@
          13 
 ```
 
-### vim_config/nvim/plugin/termdbg.vim <a id="SS_26_1_33"></a>
+### vim_config/nvim/plugin/termdbg.vim <a id="SS_24_1_33"></a>
 
 
 ```vim
@@ -1422,7 +1422,7 @@
           4 
 ```
 
-### vim_config/nvim/rplugin/python3/next_file.py <a id="SS_26_1_34"></a>
+### vim_config/nvim/rplugin/python3/next_file.py <a id="SS_24_1_34"></a>
 
 
 ```vim
@@ -1469,7 +1469,7 @@
          41 
 ```
 
-### vim_config/vim.sh <a id="SS_26_1_35"></a>
+### vim_config/vim.sh <a id="SS_24_1_35"></a>
 
 
 ```vim
@@ -1529,7 +1529,7 @@
          54 fi
 ```
 
-### vim_config/vim/gvimrc <a id="SS_26_1_36"></a>
+### vim_config/vim/gvimrc <a id="SS_24_1_36"></a>
 
 
 ```vim
@@ -1542,7 +1542,7 @@
           7 
 ```
 
-### vim_config/vim/vimrc <a id="SS_26_1_37"></a>
+### vim_config/vim/vimrc <a id="SS_24_1_37"></a>
 
 
 ```vim
@@ -1551,8 +1551,8 @@
           3 source $XDG_CONFIG_HOME/nvim/init.vim
 ```
 
-## C++ <a id="SS_26_2"></a>
-### example/dynamic_memory_allocation/malloc_ut.cpp <a id="SS_26_2_1"></a>
+## C++ <a id="SS_24_2"></a>
+### example/dynamic_memory_allocation/malloc_ut.cpp <a id="SS_24_2_1"></a>
 
 
 ```cpp
@@ -1770,7 +1770,7 @@
         212 }  // namespace MallocFree
 ```
 
-### example/dynamic_memory_allocation/mpool_variable.h <a id="SS_26_2_2"></a>
+### example/dynamic_memory_allocation/mpool_variable.h <a id="SS_24_2_2"></a>
 
 
 ```cpp

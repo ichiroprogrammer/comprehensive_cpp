@@ -190,10 +190,8 @@ __Appendix__
 - [C++コア言語仕様](core_lang_spec.md#SS_19)
 - [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_20)
 - [用語集](glossary.md#SS_21)
-- [演習](exercise_q.md#SS_22)
-- [解答](exercise_a.md#SS_23)
-- [参考文献](bibliography.md#SS_24)
-- [あとがき](afterword.md#SS_25)
+- [参考文献](bibliography.md#SS_22)
+- [あとがき](afterword.md#SS_23)
 
 ---
 
