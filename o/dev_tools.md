@@ -1,5 +1,5 @@
 <!-- ./md/dev_tools.md -->
-# 開発ツール <a id="SS_16"></a>
+# 開発ツール <a id="SS_17"></a>
 この章で触れる開発ツールとは、以下の3つである。
 
 * コンパイラ
@@ -12,19 +12,19 @@
 ___
 __この章の構成__
 
-[コンパイラ](dev_tools.md#SS_16_1)  
-[デバッガ](dev_tools.md#SS_16_2)  
-&emsp;[printfデバッグ](dev_tools.md#SS_16_2_1)  
+[コンパイラ](dev_tools.md#SS_17_1)  
+[デバッガ](dev_tools.md#SS_17_2)  
+&emsp;[printfデバッグ](dev_tools.md#SS_17_2_1)  
 
-[エディタ/IDE](dev_tools.md#SS_16_3)  
-[筆者の開発ツール環境](dev_tools.md#SS_16_4)  
-&emsp;[vim/neovimの設定](dev_tools.md#SS_16_4_1)  
+[エディタ/IDE](dev_tools.md#SS_17_3)  
+[筆者の開発ツール環境](dev_tools.md#SS_17_4)  
+&emsp;[vim/neovimの設定](dev_tools.md#SS_17_4_1)  
 
-[費用](dev_tools.md#SS_16_5)  
+[費用](dev_tools.md#SS_17_5)  
   
   
 
-## コンパイラ <a id="SS_16_1"></a>
+## コンパイラ <a id="SS_17_1"></a>
 コンパイラの要件とは、以下のようなものである。
 
 * C++11以上の規約に準拠している。
@@ -67,7 +67,7 @@ __この章の構成__
 その場合、sanitizerを使用できる。Visual Studio 19でもaddress sanitizerは使用できるようなので、
 windowsアプリケーションの開発にはsanitizerを用いることことを強く推奨する。
 
-## デバッガ <a id="SS_16_2"></a>
+## デバッガ <a id="SS_17_2"></a>
 当然ながらデバッガは下記を選択するのが良いだろう。
 
 * gcc/g++に対してはgdb
@@ -85,7 +85,7 @@ PC上のコンパイラを使用した単体テストを推奨している(「[�
 工数の方がよほど高価であることを忘れてはならない
 (ただし、半導体メーカ純正品よりもサードパーティ品の方が、数分の一の費用である場合があるので注意)。
 
-### printfデバッグ <a id="SS_16_2_1"></a>
+### printfデバッグ <a id="SS_17_2_1"></a>
 printfデバッグとは、printf()やstd::coutを使ったデバッグ手法のことである。
 これ自体はそれなりに有効な手段であり、完全に否定はできないが、
 これ以外にデバッグ手法を知らないプログラマに出会うと、
@@ -93,7 +93,7 @@ printfデバッグとは、printf()やstd::coutを使ったデバッグ手法の
 ホモ・サピエンスの名に恥じないプログラマになるために最新のデバッガを導入しよう。
 導入でロスした時間はデバッグの効率化でお釣りが来る。
 
-## エディタ/IDE <a id="SS_16_3"></a>
+## エディタ/IDE <a id="SS_17_3"></a>
 エディタ/IDEの良し悪しについて語ることには、宗教論争ような危険が伴う。
 「宗論はどちら負けても釈迦の恥」というように、不毛な戦いは避けるべきであるが、
 とはいえ、各プログラマにその選択の全権を与えるのも問題である。
@@ -150,7 +150,7 @@ printfデバッグとは、printf()やstd::coutを使ったデバッグ手法の
 少なく見積もってもこれだけの選択肢があるのであるから、
 間違っても日本国内でのみで流通しているようなローカルなエディタ/IDEを使ってはならない。
 
-## 筆者の開発ツール環境 <a id="SS_16_4"></a>
+## 筆者の開発ツール環境 <a id="SS_17_4"></a>
 筆者は、windows、cygwin、linuxでソフトウェアを開発する必要があるため、一般のプログラマと比べ、
 少々事情は異なると思うが、参考のためC++での開発ツールを紹介する。
 
@@ -176,12 +176,12 @@ printfデバッグとは、printf()やstd::coutを使ったデバッグ手法の
     * gdb
     * vim/neovim
 
-### vim/neovimの設定 <a id="SS_16_4_1"></a>
+### vim/neovimの設定 <a id="SS_17_4_1"></a>
 参考のため、このドキュメントを作成するために筆者が使用しているvim/neovimの設定やプラグイン、
 その管理方法を紹介する。
-vim/neovimの設定について興味がなければ、「[費用](dev_tools.md#SS_16_5)」まで飛んでほしい。
+vim/neovimの設定について興味がなければ、「[費用](dev_tools.md#SS_17_5)」まで飛んでほしい。
 
-#### 設定ファイルと管理 <a id="SS_16_4_1_1"></a>
+#### 設定ファイルと管理 <a id="SS_17_4_1_1"></a>
 このドキュメント作成時、cygwinパッケージにはneovimは存在せず、
 優れたコード補完機能はneovimでなければ動作しない。
 このドキュメントのコードはcygwin、linux両方でビルドでき、
@@ -200,83 +200,83 @@ vim/neovimの設定について興味がなければ、「[費用](dev_tools.md#
 筆者の場合は、クラウド上のgitでvim_configリポジトリとして管理している。
 
 以下、順を追ってvim_configリポジトリとして管理しているファイルについて簡単に説明する。
-詳細については「[vim](sample_code.md#SS_25_1)」を参照してほしい。
+詳細については「[vim](sample_code.md#SS_26_1)」を参照してほしい。
 
-#### ドキュメント <a id="SS_16_4_1_2"></a>
+#### ドキュメント <a id="SS_17_4_1_2"></a>
 |ファイル                              |機能                              |
 |:-------------------------------------|:---------------------------------|
-|[vim_config/README.md](sample_code.md#SS_25_1_1)         |リポジトリの説明、インストール手順|
-|[vim_config/nvim/cheatsheet.md](sample_code.md#SS_25_1_12)|自分用ヘルプやtodo                |
+|[vim_config/README.md](sample_code.md#SS_26_1_1)         |リポジトリの説明、インストール手順|
+|[vim_config/nvim/cheatsheet.md](sample_code.md#SS_26_1_12)|自分用ヘルプやtodo                |
 
 
-#### 初期化 <a id="SS_16_4_1_3"></a>
+#### 初期化 <a id="SS_17_4_1_3"></a>
 |ファイル                            |機能                |
 |:-----------------------------------|:-------------------|
-|[vim_config/nvim/init.vim](sample_code.md#SS_25_1_16)   |nvim初期化          |
-|[vim_config/nvim/org.vim](sample_code.md#SS_25_1_17)    |基本設定            |
-|[vim_config/nvim/package.vim](sample_code.md#SS_25_1_18)|外部パッケージ初期化|
-|[vim_config/vim/gvimrc](sample_code.md#SS_25_1_36)      |gvim初期化          |
-|[vim_config/vim/vimrc](sample_code.md#SS_25_1_37)       |vim初期化           |
-|[vim_config/vim.sh](sample_code.md#SS_25_1_35)          |エイリアス等の設定  |
-|[vim_config/inputrc](sample_code.md#SS_25_1_2)         |gdb設定             |
+|[vim_config/nvim/init.vim](sample_code.md#SS_26_1_16)   |nvim初期化          |
+|[vim_config/nvim/org.vim](sample_code.md#SS_26_1_17)    |基本設定            |
+|[vim_config/nvim/package.vim](sample_code.md#SS_26_1_18)|外部パッケージ初期化|
+|[vim_config/vim/gvimrc](sample_code.md#SS_26_1_36)      |gvim初期化          |
+|[vim_config/vim/vimrc](sample_code.md#SS_26_1_37)       |vim初期化           |
+|[vim_config/vim.sh](sample_code.md#SS_26_1_35)          |エイリアス等の設定  |
+|[vim_config/inputrc](sample_code.md#SS_26_1_2)         |gdb設定             |
 
 
-#### 独自スクリプト <a id="SS_16_4_1_4"></a>
-##### c/c++編集 <a id="SS_16_4_1_4_1"></a>
+#### 独自スクリプト <a id="SS_17_4_1_4"></a>
+##### c/c++編集 <a id="SS_17_4_1_4_1"></a>
 
 |ファイル                                       |機能                            |
 |:----------------------------------------------|:-------------------------------|
-|[vim_config/nvim/autoload/next_file.vim](sample_code.md#SS_25_1_9)|xxx.cpp xxx.h xxx_ut.cpp切り替え|
-|[vim_config/nvim/plugin/next_file.vim](sample_code.md#SS_25_1_29)  |同上                            |
-|[vim_config/nvim/plugin/ctags_ext.vim](sample_code.md#SS_25_1_22)  |ctags作成                       |
-|[vim_config/nvim/plugin/dev_env.vim](sample_code.md#SS_25_1_23)    |開発用画面設定                  |
-|[vim_config/nvim/autoload/termdbg.vim](sample_code.md#SS_25_1_11)  |gdb連動                         |
-|[vim_config/nvim/plugin/termdbg.vim](sample_code.md#SS_25_1_33)    |同上                            |
+|[vim_config/nvim/autoload/next_file.vim](sample_code.md#SS_26_1_9)|xxx.cpp xxx.h xxx_ut.cpp切り替え|
+|[vim_config/nvim/plugin/next_file.vim](sample_code.md#SS_26_1_29)  |同上                            |
+|[vim_config/nvim/plugin/ctags_ext.vim](sample_code.md#SS_26_1_22)  |ctags作成                       |
+|[vim_config/nvim/plugin/dev_env.vim](sample_code.md#SS_26_1_23)    |開発用画面設定                  |
+|[vim_config/nvim/autoload/termdbg.vim](sample_code.md#SS_26_1_11)  |gdb連動                         |
+|[vim_config/nvim/plugin/termdbg.vim](sample_code.md#SS_26_1_33)    |同上                            |
 
 
-##### bash起動 <a id="SS_16_4_1_4_2"></a>
+##### bash起動 <a id="SS_17_4_1_4_2"></a>
 
 |ファイル                                  |機能         |
 |:-----------------------------------------|:------------|
-|[vim_config/nvim/autoload/term.vim](sample_code.md#SS_25_1_10)|:terminal設定|
-|[vim_config/nvim/plugin/term.vim](sample_code.md#SS_25_1_32)  |同上         |
+|[vim_config/nvim/autoload/term.vim](sample_code.md#SS_26_1_10)|:terminal設定|
+|[vim_config/nvim/plugin/term.vim](sample_code.md#SS_26_1_32)  |同上         |
 
-##### git連動 <a id="SS_16_4_1_4_3"></a>
+##### git連動 <a id="SS_17_4_1_4_3"></a>
 
 |ファイル                                         |機能                   |
 |:------------------------------------------------|:----------------------|
-|[vim_config/nvim/autoload/git_diff.vim](sample_code.md#SS_25_1_5)   |git diffをvimdiffで表示|
-|[vim_config/nvim/plugin/git_diff.vim](sample_code.md#SS_25_1_24)     |同上                   |
-|[vim_config/nvim/autoload/git_session.vim](sample_code.md#SS_25_1_6)|mksessionやpath設定    |
-|[vim_config/nvim/plugin/git_session.vim](sample_code.md#SS_25_1_25)  |同上                   |
+|[vim_config/nvim/autoload/git_diff.vim](sample_code.md#SS_26_1_5)   |git diffをvimdiffで表示|
+|[vim_config/nvim/plugin/git_diff.vim](sample_code.md#SS_26_1_24)     |同上                   |
+|[vim_config/nvim/autoload/git_session.vim](sample_code.md#SS_26_1_6)|mksessionやpath設定    |
+|[vim_config/nvim/plugin/git_session.vim](sample_code.md#SS_26_1_25)  |同上                   |
 
-##### ファイルタイプ設定 <a id="SS_16_4_1_4_4"></a>
+##### ファイルタイプ設定 <a id="SS_17_4_1_4_4"></a>
 
 |ファイル                                    |機能                        |
 |:-------------------------------------------|:---------------------------|
-|[vim_config/nvim/ftplugin/c.vim](sample_code.md#SS_25_1_13)     |c/c++ファイルのインデント等 |
-|[vim_config/nvim/ftplugin/python.vim](sample_code.md#SS_25_1_14)|pythonファイルのインデント等|
-|[vim_config/nvim/ftplugin/ruby.vim](sample_code.md#SS_25_1_15)  |rubyファイルのインデント等  |
+|[vim_config/nvim/ftplugin/c.vim](sample_code.md#SS_26_1_13)     |c/c++ファイルのインデント等 |
+|[vim_config/nvim/ftplugin/python.vim](sample_code.md#SS_26_1_14)|pythonファイルのインデント等|
+|[vim_config/nvim/ftplugin/ruby.vim](sample_code.md#SS_26_1_15)  |rubyファイルのインデント等  |
 
-##### その他 <a id="SS_16_4_1_4_5"></a>
+##### その他 <a id="SS_17_4_1_4_5"></a>
 
 |ファイル                                             |機能                      |
 |:----------------------------------------------------|:-------------------------|
-|[vim_config/nvim/autoload/buffers.vim](sample_code.md#SS_25_1_3)        |バッファエクスプロー      |
-|[vim_config/nvim/plugin/buffers.vim](sample_code.md#SS_25_1_19)          |同上                      |
-|[vim_config/nvim/autoload/grep.vim](sample_code.md#SS_25_1_7)           |grep                      |
-|[vim_config/nvim/plugin/grep.vim](sample_code.md#SS_25_1_26)             |同上                      |
-|[vim_config/nvim/autoload/cd.vim](sample_code.md#SS_25_1_4)             |カレントディレクトリの変更|
-|[vim_config/nvim/plugin/cd.vim](sample_code.md#SS_25_1_20)               |同上                      |
-|[vim_config/nvim/autoload/multi_hl.vim](sample_code.md#SS_25_1_8)       |マルチハイライト          |
-|[vim_config/nvim/plugin/multi_hl.vim](sample_code.md#SS_25_1_28)         |同上                      |
-|[vim_config/nvim/plugin/clear_undo.vim](sample_code.md#SS_25_1_21)       |undo履歴クリア            |
-|[vim_config/nvim/plugin/keybind.vim](sample_code.md#SS_25_1_27)          |キーバインドの設定        |
-|[vim_config/nvim/plugin/scratch.vim](sample_code.md#SS_25_1_31)          |スクラッチウインド        |
-|[vim_config/nvim/plugin/path_set.vim](sample_code.md#SS_25_1_30)         |pathの追加                |
-|[vim_config/nvim/rplugin/python3/next_file.py](sample_code.md#SS_25_1_34)|pythonでのプラグイン例    |
+|[vim_config/nvim/autoload/buffers.vim](sample_code.md#SS_26_1_3)        |バッファエクスプロー      |
+|[vim_config/nvim/plugin/buffers.vim](sample_code.md#SS_26_1_19)          |同上                      |
+|[vim_config/nvim/autoload/grep.vim](sample_code.md#SS_26_1_7)           |grep                      |
+|[vim_config/nvim/plugin/grep.vim](sample_code.md#SS_26_1_26)             |同上                      |
+|[vim_config/nvim/autoload/cd.vim](sample_code.md#SS_26_1_4)             |カレントディレクトリの変更|
+|[vim_config/nvim/plugin/cd.vim](sample_code.md#SS_26_1_20)               |同上                      |
+|[vim_config/nvim/autoload/multi_hl.vim](sample_code.md#SS_26_1_8)       |マルチハイライト          |
+|[vim_config/nvim/plugin/multi_hl.vim](sample_code.md#SS_26_1_28)         |同上                      |
+|[vim_config/nvim/plugin/clear_undo.vim](sample_code.md#SS_26_1_21)       |undo履歴クリア            |
+|[vim_config/nvim/plugin/keybind.vim](sample_code.md#SS_26_1_27)          |キーバインドの設定        |
+|[vim_config/nvim/plugin/scratch.vim](sample_code.md#SS_26_1_31)          |スクラッチウインド        |
+|[vim_config/nvim/plugin/path_set.vim](sample_code.md#SS_26_1_30)         |pathの追加                |
+|[vim_config/nvim/rplugin/python3/next_file.py](sample_code.md#SS_26_1_34)|pythonでのプラグイン例    |
 
-#### 外部パッケージ <a id="SS_16_4_1_5"></a>
+#### 外部パッケージ <a id="SS_17_4_1_5"></a>
 
 |パッケージ              |機能              |
 |:-----------------------|:-----------------|
@@ -292,7 +292,7 @@ vim/neovimの設定について興味がなければ、「[費用](dev_tools.md#
 |aklt/plantuml-syntax    |Plant Umlサポート |
 
 
-## 費用 <a id="SS_16_5"></a>
+## 費用 <a id="SS_17_5"></a>
 コンパイラ、デバッガ、エディタ/IDEの費用は、
 ライセンス形態によっては総額が単価×プログラマの人数となるため、
 プロジェクトやそのプロジェクトを所有する事業体にとっては重荷になる。
@@ -352,7 +352,7 @@ vim/neovimの設定について興味がなければ、「[費用](dev_tools.md#
 
 ---
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](dev_tools.md#SS_16)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](dev_tools.md#SS_17)
 
 ---
 
