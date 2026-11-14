@@ -19,6 +19,9 @@ MDS:=comprehensive_intro.md \
      exercise_q.md exercise_a.md \
      bibliography.md afterword.md
 
+# mainをマージすると以下の演習が削除されることに注意
+# exercise_q.md exercise_a.md \		
+
 INDEX_OPT:=--exclude $(addsuffix :1,$(MDS) sample_code.md)
 
 include essential/make/md.mk

@@ -4,22 +4,138 @@
 __この章の構成__
 
 [プログラミング規約(型)](exercise_a.md#SS_23_1)  
+&emsp;[解答-汎整数型の選択](exercise_a.md#SS_23_1_1)  
+&emsp;[解答例-汎整数型の演算](exercise_a.md#SS_23_1_2)  
+&emsp;[解答例-浮動小数点型](exercise_a.md#SS_23_1_3)  
+&emsp;[解答-定数列挙](exercise_a.md#SS_23_1_4)  
+&emsp;[解答例-enum](exercise_a.md#SS_23_1_5)  
+&emsp;[解答例-配列の範囲for文](exercise_a.md#SS_23_1_6)  
+&emsp;[解答例-エイリアス](exercise_a.md#SS_23_1_7)  
+&emsp;[解答-constの意味](exercise_a.md#SS_23_1_8)  
+&emsp;[解答例-const/constexpr](exercise_a.md#SS_23_1_9)  
+&emsp;[解答例-危険なconst_cast](exercise_a.md#SS_23_1_10)  
+&emsp;[解答例-リテラル](exercise_a.md#SS_23_1_11)  
+&emsp;[解答-適切なautoの使い方](exercise_a.md#SS_23_1_12)  
+&emsp;[解答-ポインタの初期化](exercise_a.md#SS_23_1_13)  
+&emsp;[解答-vector初期化](exercise_a.md#SS_23_1_14)  
+&emsp;[解答例-インスタンスの初期化](exercise_a.md#SS_23_1_15)  
+
 [プログラミング規約(クラス)](exercise_a.md#SS_23_2)  
+&emsp;[解答-凝集性の意味](exercise_a.md#SS_23_2_1)  
+&emsp;[解答例-凝集性の向上](exercise_a.md#SS_23_2_2)  
+&emsp;[解答-メンバ変数の初期化方法の選択](exercise_a.md#SS_23_2_3)  
+&emsp;[解答-メンバの型](exercise_a.md#SS_23_2_4)  
+&emsp;[解答例-メンバ変数の初期化](exercise_a.md#SS_23_2_5)  
+&emsp;[解答例-スライシング](exercise_a.md#SS_23_2_6)  
+&emsp;[解答例-オブジェクトの所有権](exercise_a.md#SS_23_2_7)  
+
 [プログラミング規約(関数)](exercise_a.md#SS_23_3)  
+&emsp;[解答例-非メンバ関数の宣言](exercise_a.md#SS_23_3_1)  
+&emsp;[解答例-メンバ関数の修飾](exercise_a.md#SS_23_3_2)  
+&emsp;[解答例-特殊メンバ関数の削除](exercise_a.md#SS_23_3_3)  
+&emsp;[解答例-委譲コンストラクタ](exercise_a.md#SS_23_3_4)  
+&emsp;[解答例-copyコンストラクタ](exercise_a.md#SS_23_3_5)  
+&emsp;[解答例-moveコンストラクタ](exercise_a.md#SS_23_3_6)  
+&emsp;[解答例-関数分割](exercise_a.md#SS_23_3_7)  
+&emsp;[解答-オーバーライド関数の修飾](exercise_a.md#SS_23_3_8)  
+&emsp;[解答例-オーバーライド/オーバーロード](exercise_a.md#SS_23_3_9)  
+&emsp;[解答例-オーバーロードによる誤用防止](exercise_a.md#SS_23_3_10)  
+&emsp;[解答例-仮引数の修飾](exercise_a.md#SS_23_3_11)  
+&emsp;[解答例-constexpr関数](exercise_a.md#SS_23_3_12)  
+&emsp;[解答-エクセプションの型](exercise_a.md#SS_23_3_13)  
+
 [プログラミング規約(構文)](exercise_a.md#SS_23_4)  
+&emsp;[解答例-コンテナの範囲for文](exercise_a.md#SS_23_4_1)  
+&emsp;[解答例-ラムダ式](exercise_a.md#SS_23_4_2)  
+&emsp;[解答例-ラムダ式のキャプチャ](exercise_a.md#SS_23_4_3)  
+
 [プログラミング規約(演算子)](exercise_a.md#SS_23_5)  
+&emsp;[解答例-条件演算子](exercise_a.md#SS_23_5_1)  
+&emsp;[解答例-delete](exercise_a.md#SS_23_5_2)  
+&emsp;[解答例-sizeof](exercise_a.md#SS_23_5_3)  
+&emsp;[解答例-dynamic_castの削除](exercise_a.md#SS_23_5_4)  
+&emsp;[解答-キャスト](exercise_a.md#SS_23_5_5)  
+
 [プログラミング規約(スコープ)](exercise_a.md#SS_23_6)  
+&emsp;[解答-usingディレクティブ](exercise_a.md#SS_23_6_1)  
+
 [プログラミング規約(その他)](exercise_a.md#SS_23_7)  
+&emsp;[解答-アサーションの選択](exercise_a.md#SS_23_7_1)  
+&emsp;[解答例-assert/static_assert](exercise_a.md#SS_23_7_2)  
+
 [SOLID](exercise_a.md#SS_23_8)  
+&emsp;[解答例-SRP](exercise_a.md#SS_23_8_1)  
+&emsp;[解答例-OCP](exercise_a.md#SS_23_8_2)  
+&emsp;[解答例-LSP](exercise_a.md#SS_23_8_3)  
+&emsp;[解答例-ISP](exercise_a.md#SS_23_8_4)  
+&emsp;[解答例-DIP](exercise_a.md#SS_23_8_5)  
+&emsp;[解答-SOLIDの定義](exercise_a.md#SS_23_8_6)  
+
 [デザインパターン](exercise_a.md#SS_23_9)  
+&emsp;[解答例-ガード節](exercise_a.md#SS_23_9_1)  
+&emsp;[解答例-BitmaskType](exercise_a.md#SS_23_9_2)  
+&emsp;[解答例-Pimpl](exercise_a.md#SS_23_9_3)  
+&emsp;[解答-Accessorの副作用](exercise_a.md#SS_23_9_4)  
+&emsp;[解答例-Accessor](exercise_a.md#SS_23_9_5)  
+&emsp;[解答例-Copy-And-Swap](exercise_a.md#SS_23_9_6)  
+&emsp;[解答例-Immutable](exercise_a.md#SS_23_9_7)  
+&emsp;[解答例-Clone](exercise_a.md#SS_23_9_8)  
+&emsp;[解答例-NVI](exercise_a.md#SS_23_9_9)  
+&emsp;[解答-RAIIの効果](exercise_a.md#SS_23_9_10)  
+&emsp;[解答例-RAII](exercise_a.md#SS_23_9_11)  
+&emsp;[解答例-Future](exercise_a.md#SS_23_9_12)  
+&emsp;[解答例-DI](exercise_a.md#SS_23_9_13)  
+&emsp;[解答例-Singleton](exercise_a.md#SS_23_9_14)  
+&emsp;[解答例-State](exercise_a.md#SS_23_9_15)  
+&emsp;[解答例-Null Object](exercise_a.md#SS_23_9_16)  
+&emsp;[解答例-Templateメソッド](exercise_a.md#SS_23_9_17)  
+&emsp;[解答例-Factory](exercise_a.md#SS_23_9_18)  
+&emsp;[解答例-Named Constructor](exercise_a.md#SS_23_9_19)  
+&emsp;[解答例-Proxy](exercise_a.md#SS_23_9_20)  
+&emsp;[解答例-Strategy](exercise_a.md#SS_23_9_21)  
+&emsp;[解答例-Visitor](exercise_a.md#SS_23_9_22)  
+&emsp;[解答例-CRTP](exercise_a.md#SS_23_9_23)  
+&emsp;[解答例-Observer](exercise_a.md#SS_23_9_24)  
+&emsp;[解答-デザインパターン選択1](exercise_a.md#SS_23_9_25)  
+&emsp;[解答-デザインパターン選択2](exercise_a.md#SS_23_9_26)  
+&emsp;[解答-デザインパターン選択3](exercise_a.md#SS_23_9_27)  
+
 [開発プロセスとインフラ(全般)](exercise_a.md#SS_23_10)  
+&emsp;[解答-プロセス分類](exercise_a.md#SS_23_10_1)  
+&emsp;[解答-V字モデル](exercise_a.md#SS_23_10_2)  
+&emsp;[解答-アジャイル](exercise_a.md#SS_23_10_3)  
+&emsp;[解答-自動化](exercise_a.md#SS_23_10_4)  
+&emsp;[解答-単体テスト](exercise_a.md#SS_23_10_5)  
+&emsp;[解答-リファクタリングに付随する活動](exercise_a.md#SS_23_10_6)  
+&emsp;[解答-リファクタリング対象コード](exercise_a.md#SS_23_10_7)  
+&emsp;[解答-CI](exercise_a.md#SS_23_10_8)  
+
 [テンプレートメタプログラミング](exercise_a.md#SS_23_11)  
+&emsp;[解答例-パラメータパック](exercise_a.md#SS_23_11_1)  
+&emsp;[解答例-エイリアステンプレート](exercise_a.md#SS_23_11_2)  
+&emsp;[解答例-名前空間による修飾不要な`operator<<`](exercise_a.md#SS_23_11_3)  
+&emsp;[解答例-std::arrayの継承](exercise_a.md#SS_23_11_4)  
+&emsp;[解答例-SFINAEを利用しない関数テンプレートの特殊化によるis_void](exercise_a.md#SS_23_11_5)  
+&emsp;[解答例-SFINAEを利用しないクラステンプレートの特殊化によるis_void](exercise_a.md#SS_23_11_6)  
+&emsp;[解答例-SFINAEを利用した関数テンプレートの特殊化によるis_void](exercise_a.md#SS_23_11_7)  
+&emsp;[解答例-SFINAEを利用したクラステンプレートの特殊化によるis_void](exercise_a.md#SS_23_11_8)  
+&emsp;[解答例-テンプレートテンプレートパラメータ](exercise_a.md#SS_23_11_9)  
+&emsp;[解答例-テンプレートパラメータを可変長にしたstd::is_same](exercise_a.md#SS_23_11_10)  
+&emsp;[解答例-メンバ関数の存在の診断](exercise_a.md#SS_23_11_11)  
+&emsp;[解答例-範囲for文のオペランドになれるかどうかの診断](exercise_a.md#SS_23_11_12)  
+&emsp;[解答例-配列の長さの取り出し](exercise_a.md#SS_23_11_13)  
+&emsp;[解答例-配列の次元の取り出し](exercise_a.md#SS_23_11_14)  
+&emsp;[解答例-関数型のテンプレートパラメータを持つクラステンプレート](exercise_a.md#SS_23_11_15)  
   
   
-  
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
 
 ___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](exercise_a.md#SS_23_end)
+
+___
+
 
 ## プログラミング規約(型) <a id="SS_23_1"></a>
 
@@ -5542,4 +5658,6 @@ ___
 
 ---
 
+
+<a id="SS_23_end"></a>
 

@@ -84,7 +84,10 @@ __この章の構成__
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](stdlib_and_concepts.md#SS_20_end)
 
 ___
 
@@ -2756,4 +2759,6 @@ new/deleteの呼び出しをまとめたり省略したりすることができ�
 
 ---
 
+
+<a id="SS_20_end"></a>
 

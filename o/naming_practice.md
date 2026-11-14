@@ -51,9 +51,14 @@ __この章の構成__
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](naming_practice.md#SS_6_end)
 
 ___
+
+
 
 ## 禁止事項 <a id="SS_6_1"></a>
 
@@ -482,4 +487,6 @@ OSによっては、その区別がないものがあるため、この違いが
 
 ---
 
+
+<a id="SS_6_end"></a>
 

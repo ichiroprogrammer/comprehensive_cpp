@@ -27,6 +27,8 @@ new/deleteは通常malloc/freeを使って実装されているため同じ問�
 
 本章では、このようなテクニックの実装を詳しく説明する。
 
+___
+
 __この章の構成__
 
 [malloc/freeの問題点](dynamic_memory_allocation.md#SS_15_1)  
@@ -49,9 +51,13 @@ __この章の構成__
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](dynamic_memory_allocation.md#SS_15_end)
 
 ___
+
 
 ## malloc/freeの問題点 <a id="SS_15_1"></a>
 UNIX系のOSでの典型的なmalloc/freeの実装例の一部を以下に示す
@@ -1414,4 +1420,6 @@ C++17以降では、[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_
 
 ---
 
+
+<a id="SS_15_end"></a>
 

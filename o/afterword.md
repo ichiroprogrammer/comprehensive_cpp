@@ -11,7 +11,8 @@
 
 ___
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](afterword.md#SS_25_end)
 
 ___
 
@@ -174,4 +175,6 @@ ___
 
 ---
 
+
+<a id="SS_25_end"></a>
 

@@ -54,12 +54,23 @@ __この章の構成__
 &emsp;[アーキテクチャ再構築の準備](architecture.md#SS_10_5_1)  
 &emsp;[アーキテクチャ再構築のチーム編成](architecture.md#SS_10_5_2)  
 &emsp;[アーキテクチャ再構築の手順](architecture.md#SS_10_5_3)  
+&emsp;&emsp;[現在のソースコードをベースに再構築するかどうかを判断する](architecture.md#SS_10_5_3_1)  
+&emsp;&emsp;[パッケージ間の依存関係を整理する](architecture.md#SS_10_5_3_2)  
+&emsp;&emsp;[依存関係が整理されたパッケージ毎に単体テストを作る](architecture.md#SS_10_5_3_3)  
+&emsp;&emsp;[統合テストプログラムを作る](architecture.md#SS_10_5_3_4)  
+&emsp;&emsp;[単体テストや統合テストを自動実行できる環境を整える](architecture.md#SS_10_5_3_5)  
+&emsp;&emsp;[リファクタリングを行う](architecture.md#SS_10_5_3_6)  
+&emsp;&emsp;[まとめ](architecture.md#SS_10_5_3_7)  
   
   
-  
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
 
 ___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](architecture.md#SS_10_end)
+
+___
+
 
 ## アーキテクチャの定義 <a id="SS_10_1"></a>
 以上の考察からここでのアーキテクチャやそれにまつわる概念を以下のように定義する。
@@ -855,4 +866,6 @@ GUIオブジェクト(ボタンやテキストボックス等)を直接操作す
 
 ---
 
+
+<a id="SS_10_end"></a>
 

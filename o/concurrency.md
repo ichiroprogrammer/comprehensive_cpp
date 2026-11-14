@@ -36,9 +36,13 @@ __この章の構成__
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](concurrency.md#SS_13_end)
 
 ___
+
 
 ## ref_async_r5改善プログラムの要件 <a id="SS_13_1"></a>
 「[自動統合テスト](process_and_infra.md#SS_11_2_4)」で開発したref_async_r5は、
@@ -699,4 +703,6 @@ TwoPhaseTaskPtrキュー管理機構は以下のようにしてTwoPhaseTaskPtr�
 
 ---
 
+
+<a id="SS_13_end"></a>
 

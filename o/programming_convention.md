@@ -180,9 +180,13 @@ __この章の構成__
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](programming_convention.md#SS_3_end)
 
 ___
+
 
 ## 型とインスタンス <a id="SS_3_1"></a>
 
@@ -5888,4 +5892,6 @@ C++20からこの問題の対策として、[constinit](core_lang_spec.md#SS_19_
 
 ---
 
+
+<a id="SS_3_end"></a>
 

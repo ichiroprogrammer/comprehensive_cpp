@@ -30,7 +30,10 @@ __この章の構成__
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](class_design.md#SS_8_end)
 
 ___
 
@@ -1617,4 +1620,6 @@ d2_refが指しているオブジェクト(d2)へコピーされた」からで�
 
 ---
 
+
+<a id="SS_8_end"></a>
 

@@ -31,9 +31,13 @@ __この章の構成__
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](cpp_improve.md#SS_18_end)
 
 ___
+
 
 ## C++11の主な新規機能 <a id="SS_18_1"></a>
 ### 一般機能 <a id="SS_18_1_1"></a>
@@ -639,4 +643,6 @@ not yet.
 
 ---
 
+
+<a id="SS_18_end"></a>
 

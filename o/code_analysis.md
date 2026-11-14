@@ -24,6 +24,9 @@ ___
 __この章の構成__
 
 [コンパイラによる静的解析](code_analysis.md#SS_4_1)  
+&emsp;[g++の警告機能](code_analysis.md#SS_4_1_1)  
+&emsp;[clang++の警告機能](code_analysis.md#SS_4_1_2)  
+
 [scan-buildによる静的解析](code_analysis.md#SS_4_2)  
 [cppcheck静的解析](code_analysis.md#SS_4_3)  
 [sanitizerによる動的解析](code_analysis.md#SS_4_4)  
@@ -31,9 +34,13 @@ __この章の構成__
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](code_analysis.md#SS_4_end)
 
 ___
+
 
 ## コンパイラによる静的解析 <a id="SS_4_1"></a>
 コンパイラによる静的解析とは、コンパイラの警告出力を使用する解析である。
@@ -476,4 +483,6 @@ sanitizerは以上に示した通り極めて優れたバグ検出能力を持�
 
 ---
 
+
+<a id="SS_4_end"></a>
 

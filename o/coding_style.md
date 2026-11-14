@@ -18,17 +18,31 @@
 
 ___
 
+
 __この章の構成__
 
 [コード全体のスタイル](coding_style.md#SS_5_1)  
 &emsp;[インデント](coding_style.md#SS_5_1_1)  
+&emsp;&emsp;[インデント用文字](coding_style.md#SS_5_1_1_1)  
+&emsp;&emsp;[if、for、while、do-whileのインデント](coding_style.md#SS_5_1_1_2)  
+&emsp;&emsp;[ブロックのインデント](coding_style.md#SS_5_1_1_3)  
+&emsp;&emsp;[case、defaultのインデント](coding_style.md#SS_5_1_1_4)  
+
 &emsp;[ブロック(波括弧({}))](coding_style.md#SS_5_1_2)  
 &emsp;[関数シグネチャ内の'()'](coding_style.md#SS_5_1_3)  
 &emsp;[クラスのアクセスレベル](coding_style.md#SS_5_1_4)  
 &emsp;[スペース](coding_style.md#SS_5_1_5)  
+&emsp;&emsp;[文の後](coding_style.md#SS_5_1_5_1)  
+&emsp;&emsp;[コンマの後  ](coding_style.md#SS_5_1_5_2)  
+&emsp;&emsp;[単項演算子、二項演算子、三項演算子の前後](coding_style.md#SS_5_1_5_3)  
+&emsp;&emsp;[不要なブランク文字](coding_style.md#SS_5_1_5_4)  
+
 &emsp;[三項演算子のスタイル](coding_style.md#SS_5_1_6)  
 &emsp;[ポインタ型やリファレンス型インスタンスの宣言、定義の\*や&の場所](coding_style.md#SS_5_1_7)  
 &emsp;[行数・桁数](coding_style.md#SS_5_1_8)  
+&emsp;&emsp;[関数の行数](coding_style.md#SS_5_1_8_1)  
+&emsp;&emsp;[行のカラム数](coding_style.md#SS_5_1_8_2)  
+
 &emsp;[ブロックの論理レベル](coding_style.md#SS_5_1_9)  
 &emsp;[名前空間](coding_style.md#SS_5_1_10)  
 &emsp;[clang-format](coding_style.md#SS_5_1_11)  
@@ -48,9 +62,14 @@ __この章の構成__
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](coding_style.md#SS_5_end)
 
 ___
+
+
 
 ## コード全体のスタイル <a id="SS_5_1"></a>
 以下は、clang-formatを使えない場合のスタイルの指針である。
@@ -1043,4 +1062,6 @@ C++ ではハイフンが減算演算子と衝突するため、識別子の宣�
 
 ---
 
+
+<a id="SS_5_end"></a>
 

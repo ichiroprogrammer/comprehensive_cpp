@@ -238,7 +238,10 @@ __この章の構成__
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](core_lang_spec.md#SS_19_end)
 
 ___
 
@@ -7712,4 +7715,6 @@ RVOとはこのような最適化を指す。
 
 ---
 
+
+<a id="SS_19_end"></a>
 

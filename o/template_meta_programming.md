@@ -116,8 +116,13 @@ __この章の構成__
   
   
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
 ___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](template_meta_programming.md#SS_14_end)
+
+___
+
 
 ## ログ取得ライブラリの開発 <a id="SS_14_1"></a>
 ここではログ取得ライブラリの開発を行う。
@@ -7650,4 +7655,6 @@ C++17からサポートされた「クラステンプレートのテンプレー
 
 ---
 
+
+<a id="SS_14_end"></a>
 

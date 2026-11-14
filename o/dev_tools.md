@@ -10,6 +10,7 @@
 ソフトウェア開発プロジェクトにとって極めて重要なファクターである。
 
 ___
+
 __この章の構成__
 
 [コンパイラ](dev_tools.md#SS_17_1)  
@@ -19,10 +20,23 @@ __この章の構成__
 [エディタ/IDE](dev_tools.md#SS_17_3)  
 [筆者の開発ツール環境](dev_tools.md#SS_17_4)  
 &emsp;[vim/neovimの設定](dev_tools.md#SS_17_4_1)  
+&emsp;&emsp;[設定ファイルと管理](dev_tools.md#SS_17_4_1_1)  
+&emsp;&emsp;[ドキュメント](dev_tools.md#SS_17_4_1_2)  
+&emsp;&emsp;[初期化](dev_tools.md#SS_17_4_1_3)  
+&emsp;&emsp;[独自スクリプト](dev_tools.md#SS_17_4_1_4)  
+&emsp;&emsp;[外部パッケージ](dev_tools.md#SS_17_4_1_5)  
 
 [費用](dev_tools.md#SS_17_5)  
   
   
+
+___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](dev_tools.md#SS_17_end)
+
+___
+
 
 ## コンパイラ <a id="SS_17_1"></a>
 コンパイラの要件とは、以下のようなものである。
@@ -356,4 +370,6 @@ vim/neovimの設定について興味がなければ、「[費用](dev_tools.md#
 
 ---
 
+
+<a id="SS_17_end"></a>
 

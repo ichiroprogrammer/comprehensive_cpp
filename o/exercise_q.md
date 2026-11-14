@@ -30,9 +30,13 @@ __この章の構成__
   
   
   
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](exercise_q.md#SS_22_end)
 
 ___
+
 
 ## プログラミング規約(型) <a id="SS_22_1"></a>
 
@@ -6087,4 +6091,6 @@ ___
 
 ---
 
+
+<a id="SS_22_end"></a>
 
