@@ -1,4 +1,4 @@
-SRCS:=lib.cpp lib_ut.cpp
+SRCS:=lib.cpp lib_ut.cpp scoped_guard_ut.cpp
 SRCS2:=main.cpp lib.cpp
 
 OBJDIR:=

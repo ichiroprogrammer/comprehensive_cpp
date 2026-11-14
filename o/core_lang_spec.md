@@ -238,7 +238,10 @@ __この章の構成__
   
   
 
-[インデックス](seminer_intro.md#SS_1_2)に戻る。  
+___
+
+
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](core_lang_spec.md#SS_15_end)
 
 ___
 
@@ -2212,12 +2215,12 @@ constexprラムダはC++17から導入された機能であり、以下の条件
 
 これらの特殊メンバ関数に対しての設計のガイドラインには、以下のようなものがある。
 
-* [0の原則(Rule of Zero)](class_design.md#SS_7_4_1)
-* [5の原則(Rule of Five)](class_design.md#SS_7_4_2)
+* [0の原則(Rule of Zero)](class_design.md#SS_8_4_1)
+* [5の原則(Rule of Five)](class_design.md#SS_8_4_2)
 
 この2つの原則(ガイドライン)の使い分けに関しては、
 
-* リソース管理を外部([RAII(scoped guard)](design_pattern.md#SS_8_1_3)クラス)に任せられる場合: 0の法則を採用し、特殊メンバ関数を明示的に定義しない。
+* リソース管理を外部([RAII(scoped guard)](design_pattern.md#SS_9_1_3)クラス)に任せられる場合: 0の法則を採用し、特殊メンバ関数を明示的に定義しない。
 * リソースをクラス内で直接管理する場合: 5の法則を採用し、すべての特殊メンバ関数を適切に定義する。
 
 とすることで安全で保守性性の高いコードを設計できる。
@@ -3358,7 +3361,7 @@ rvalueリファレンスは、
 
 * C++11で導入されたシンタックスであり、任意の型Tに対して、`T&&`で宣言される。
 * 「テンポラリオブジェクト([rvalue](core_lang_spec.md#SS_15_7_1_2))」をバインドできるリファレンス。
-* C++11の[moveセマンティクス](class_design.md#SS_7_3_3)と[perfect forwarding](core_lang_spec.md#SS_15_8_5)を実現するために導入された。
+* C++11の[moveセマンティクス](class_design.md#SS_8_3_3)と[perfect forwarding](core_lang_spec.md#SS_15_8_5)を実現するために導入された。
 * **注意1** 型が`T&&`である変数の値カテゴリは[lvalue](core_lang_spec.md#SS_15_7_1_1)である。
 * **注意2** 型が`T&&`である変数は、`T&`でバインドできる。
 
@@ -3421,7 +3424,7 @@ ref_refの型は`int &&`であるが、ref_refの値カテゴリは[rvalue](core
 rvalueリファレンス型の仮引数（`T&&`）を持つ関数は、ムーブコンストラクタやムーブ代入演算子など頻繁に使用される。
 しかし、関数内では仮引数は名前を持つため、常にlvalueとして扱われる。
 この動作を理解することは、
-[moveセマンティクス](class_design.md#SS_7_3_3)や[perfect forwarding](core_lang_spec.md#SS_15_8_5)を正しく実装/使用するために極めて重要である。
+[moveセマンティクス](class_design.md#SS_8_3_3)や[perfect forwarding](core_lang_spec.md#SS_15_8_5)を正しく実装/使用するために極めて重要である。
 
 ```cpp
     //  example/core_lang_spec/rvalue_lvalue_ut.cpp 150
@@ -7201,7 +7204,7 @@ tryブロック内でエクセプションが投げられると、制御はtry�
 エクセプションのtry-catchは[関数tryブロック](core_lang_spec.md#SS_15_13_2)によっても実装できる。
 
 一般にエクセプションオブジェクトのcatchには上記ののコード例のように`T const&`を使用することが好ましい。
-これにより、エクセプションオブジェクトの[スライシング](class_design.md#SS_7_3_4_3)を避けることができる。
+これにより、エクセプションオブジェクトの[スライシング](class_design.md#SS_8_3_4_3)を避けることができる。
 
 ### 15.13.2 関数tryブロック <a id="SS_15_13_2"></a>
 関数tryブロックとはtry-catchを本体とした下記のような関数のブロックを指す。
@@ -7282,7 +7285,7 @@ catchブロック内でエクセプション処理を完了できない場合、
 ```
 
 再throwには`throw;`と`throw e;`の2つの記法があるが、上記のように`throw;`を使用すべきである。
-`throw e;`では、元のエクセプションオブジェクトが[スライシング](class_design.md#SS_7_3_4_3)される可能性があるためである。
+`throw e;`では、元のエクセプションオブジェクトが[スライシング](class_design.md#SS_8_3_4_3)される可能性があるためである。
 `throw;`は元のエクセプションオブジェクトをそのまま保持して再送出する。
 
 ### 15.13.5 catch-all <a id="SS_15_13_5"></a>
@@ -7712,4 +7715,6 @@ RVOとはこのような最適化を指す。
 
 ---
 
+
+<a id="SS_15_end"></a>
 

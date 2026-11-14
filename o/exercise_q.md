@@ -30,9 +30,13 @@ __この章の構成__
   
   
   
-[インデックス](seminer_intro.md#SS_1_2)に戻る。  
+___
+
+
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](exercise_q.md#SS_18_end)
 
 ___
+
 
 ## 18.1 プログラミング規約(型) <a id="SS_18_1"></a>
 
@@ -642,7 +646,7 @@ ___
     }
 ```
 
-* 参照 [スライシング](class_design.md#SS_7_3_4_3)
+* 参照 [スライシング](class_design.md#SS_8_3_4_3)
 * [解答例-スライシング](exercise_a.md#SS_19_2_6)
 
 ### 18.2.7 演習-オブジェクトの所有権 <a id="SS_18_2_7"></a>
@@ -1849,7 +1853,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [単一責任の原則(SRP)](class_design.md#SS_7_1_1)
+* 参照 [単一責任の原則(SRP)](class_design.md#SS_8_1_1)
 * [解答例-SRP](exercise_a.md#SS_19_8_1)
 
 
@@ -2170,7 +2174,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [オープン・クローズドの原則(OCP)](class_design.md#SS_7_1_2)
+* 参照 [オープン・クローズドの原則(OCP)](class_design.md#SS_8_1_2)
 * [解答例-OCP](exercise_a.md#SS_19_8_2)
 
 
@@ -2521,7 +2525,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [リスコフの置換原則(LSP)](class_design.md#SS_7_1_3)
+* 参照 [リスコフの置換原則(LSP)](class_design.md#SS_8_1_3)
 * [解答例-LSP](exercise_a.md#SS_19_8_3)
 
 
@@ -2915,7 +2919,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [インターフェース分離の原則(ISP)](class_design.md#SS_7_1_4)
+* 参照 [インターフェース分離の原則(ISP)](class_design.md#SS_8_1_4)
 * [解答例-ISP](exercise_a.md#SS_19_8_4)
 
 
@@ -3357,7 +3361,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [依存関係逆転の原則(DIP)](class_design.md#SS_7_1_5)
+* 参照 [依存関係逆転の原則(DIP)](class_design.md#SS_8_1_5)
 * [解答例-DIP](exercise_a.md#SS_19_8_5)
 
 
@@ -3438,7 +3442,7 @@ ___
     }
 ```
 
-* 参照 [ガード節(Early Return)](design_pattern.md#SS_8_1_1)
+* 参照 [ガード節(Early Return)](design_pattern.md#SS_9_1_1)
 * [解答例-ガード節](exercise_a.md#SS_19_9_1)
 
 
@@ -3497,7 +3501,7 @@ ___
     }
 ```
 
-* 参照 [BitmaskType](design_pattern.md#SS_8_2_3)
+* 参照 [BitmaskType](design_pattern.md#SS_9_2_3)
 * [解答例-BitmaskType](exercise_a.md#SS_19_9_2)
 
 
@@ -3549,7 +3553,7 @@ ___
 
 ```
 
-* 参照 [Pimpl](design_pattern.md#SS_8_2_1)
+* 参照 [Pimpl](design_pattern.md#SS_9_2_1)
 * [解答例-Pimpl](exercise_a.md#SS_19_9_3)
 
 
@@ -3669,7 +3673,7 @@ ___
     }
 ```
 
-* 参照 [Accessor](design_pattern.md#SS_8_1_6)
+* 参照 [Accessor](design_pattern.md#SS_9_1_6)
 * [解答例-Accessor](exercise_a.md#SS_19_9_5)
 
 
@@ -3744,7 +3748,7 @@ ___
     }
 ```
 
-* 参照 [Copy-And-Swap](design_pattern.md#SS_8_1_4)
+* 参照 [Copy-And-Swap](design_pattern.md#SS_9_1_4)
 * [解答例-Copy-And-Swap](exercise_a.md#SS_19_9_6)
 
 
@@ -3860,7 +3864,7 @@ ___
     }
 ```
 
-* 参照 [Immutable](design_pattern.md#SS_8_1_7)
+* 参照 [Immutable](design_pattern.md#SS_9_1_7)
 * [解答例-Immutable](exercise_a.md#SS_19_9_7)
 
 
@@ -3920,7 +3924,7 @@ ___
     }
 ```
 
-* 参照 [Clone(仮想コンストラクタ)](design_pattern.md#SS_8_3_3)
+* 参照 [Clone(仮想コンストラクタ)](design_pattern.md#SS_9_3_3)
 * [解答例-Clone](exercise_a.md#SS_19_9_8)
 
 
@@ -4036,7 +4040,7 @@ ___
     }
 ```
 
-* 参照 [NVI(non virtual interface)](design_pattern.md#SS_8_1_8)
+* 参照 [NVI(non virtual interface)](design_pattern.md#SS_9_1_8)
 * [解答例-NVI](exercise_a.md#SS_19_9_9)
 
 
@@ -4110,7 +4114,7 @@ ___
     }
 ```
 
-* 参照 [RAII(scoped guard)](design_pattern.md#SS_8_1_3)
+* 参照 [RAII(scoped guard)](design_pattern.md#SS_9_1_3)
 * [解答例-RAII](exercise_a.md#SS_19_9_11)
 
 
@@ -4147,7 +4151,7 @@ ___
     }
 ```
 
-* 参照 [Future](design_pattern.md#SS_8_2_4)
+* 参照 [Future](design_pattern.md#SS_9_2_4)
 * [解答例-Future](exercise_a.md#SS_19_9_12)
 
 
@@ -4228,7 +4232,7 @@ ___
     }
 ```
 
-* 参照 [DI(dependency injection)](design_pattern.md#SS_8_5_1)
+* 参照 [DI(dependency injection)](design_pattern.md#SS_9_5_1)
 * [解答例-DI](exercise_a.md#SS_19_9_13)
 
 
@@ -4306,7 +4310,7 @@ ___
     }
 ```
 
-* 参照 [Singleton](design_pattern.md#SS_8_3_1)
+* 参照 [Singleton](design_pattern.md#SS_9_3_1)
 * [解答例-Singleton](exercise_a.md#SS_19_9_14)
 
 
@@ -4396,7 +4400,7 @@ ___
     }
 ```
 
-* 参照 [State](design_pattern.md#SS_8_4_3)
+* 参照 [State](design_pattern.md#SS_9_4_3)
 * [解答例-State](exercise_a.md#SS_19_9_15)
 
 
@@ -4478,7 +4482,7 @@ ___
     }
 ```
 
-* 参照 [Null Object](design_pattern.md#SS_8_2_5)
+* 参照 [Null Object](design_pattern.md#SS_9_2_5)
 * [解答例-Null Object](exercise_a.md#SS_19_9_16)
 
 
@@ -4616,7 +4620,7 @@ ___
     }
 ```
 
-* 参照 [Templateメソッド](design_pattern.md#SS_8_4_1)
+* 参照 [Templateメソッド](design_pattern.md#SS_9_4_1)
 * [解答例-Templateメソッド](exercise_a.md#SS_19_9_17)
 
 
@@ -4765,7 +4769,7 @@ ___
     }
 ```
 
-* 参照 [Factory](design_pattern.md#SS_8_3_4)
+* 参照 [Factory](design_pattern.md#SS_9_3_4)
 * [解答例-Factory](exercise_a.md#SS_19_9_18)
 
 
@@ -4879,7 +4883,7 @@ ___
     }
 ```
 
-* 参照 [Named Constructor](design_pattern.md#SS_8_3_2)
+* 参照 [Named Constructor](design_pattern.md#SS_9_3_2)
 * [解答例-Named Constructor](exercise_a.md#SS_19_9_19)
 
 
@@ -4947,7 +4951,7 @@ ___
     }
 ```
 
-* 参照 [Proxy](design_pattern.md#SS_8_4_6)
+* 参照 [Proxy](design_pattern.md#SS_9_4_6)
 * [解答例-Proxy](exercise_a.md#SS_19_9_20)
 
 
@@ -5047,7 +5051,7 @@ ___
     }
 ```
 
-* 参照 [Strategy](design_pattern.md#SS_8_4_2)
+* 参照 [Strategy](design_pattern.md#SS_9_4_2)
 * [解答例-Strategy](exercise_a.md#SS_19_9_21)
 
 
@@ -5167,7 +5171,7 @@ ___
     }
 ```
 
-* 参照 [Visitor](design_pattern.md#SS_8_4_5)
+* 参照 [Visitor](design_pattern.md#SS_9_4_5)
 * [解答例-Visitor](exercise_a.md#SS_19_9_22)
 
 
@@ -5319,7 +5323,7 @@ ___
     }
 ```
 
-* 参照 [CRTP(curiously recurring template pattern)](design_pattern.md#SS_8_1_5)
+* 参照 [CRTP(curiously recurring template pattern)](design_pattern.md#SS_9_1_5)
 * [解答例-CRTP](exercise_a.md#SS_19_9_23)
 
 
@@ -5405,7 +5409,7 @@ ___
     }
 ```
 
-* 参照 [Observer](design_pattern.md#SS_8_4_4)
+* 参照 [Observer](design_pattern.md#SS_9_4_4)
 * [解答例-Observer](exercise_a.md#SS_19_9_24)
 
 
@@ -5709,7 +5713,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [Ints_tのログ登録](template_meta_programming.md#SS_12_1_6)、[Ints_tを構造体としてApp内に宣言する](template_meta_programming.md#SS_12_1_6_5)、
+* 参照 [Ints_tのログ登録](template_meta_programming.md#SS_13_1_6)、[Ints_tを構造体としてApp内に宣言する](template_meta_programming.md#SS_13_1_6_5)、
 * [解答例-名前空間による修飾不要な`operator<<`](exercise_a.md#SS_19_11_3)
 
 
@@ -5731,7 +5735,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [安全な配列型コンテナ](template_meta_programming.md#SS_12_2_3)
+* 参照 [安全な配列型コンテナ](template_meta_programming.md#SS_13_2_3)
 * [解答例-std::arrayの継承](exercise_a.md#SS_19_11_4)
 
 
@@ -5766,7 +5770,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_void_f](template_meta_programming.md#SS_12_3_1_1)
+* 参照 [is_void_f](template_meta_programming.md#SS_13_3_1_1)
 * [解答例-SFINAEを利用しない関数テンプレートの特殊化によるis_void](exercise_a.md#SS_19_11_5)
 
 
@@ -5797,7 +5801,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_void_s](template_meta_programming.md#SS_12_3_1_2)
+* 参照 [is_void_s](template_meta_programming.md#SS_13_3_1_2)
 * [解答例-SFINAEを利用しないクラステンプレートの特殊化によるis_void](exercise_a.md#SS_19_11_6)
 
 
@@ -5829,7 +5833,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_void_sfinae_f](template_meta_programming.md#SS_12_3_1_3)
+* 参照 [is_void_sfinae_f](template_meta_programming.md#SS_13_3_1_3)
 * [解答例-SFINAEを利用した関数テンプレートの特殊化によるis_void](exercise_a.md#SS_19_11_7)
 
 
@@ -5862,7 +5866,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_void_sfinae_s](template_meta_programming.md#SS_12_3_1_4)
+* 参照 [is_void_sfinae_s](template_meta_programming.md#SS_13_3_1_4)
 * [解答例-SFINAEを利用したクラステンプレートの特殊化によるis_void](exercise_a.md#SS_19_11_8)
 
 
@@ -5885,7 +5889,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [is_same_templ](template_meta_programming.md#SS_12_3_2_7)
+* 参照 [is_same_templ](template_meta_programming.md#SS_13_3_2_7)
 * [解答例-テンプレートテンプレートパラメータ](exercise_a.md#SS_19_11_9)
 
 
@@ -5918,7 +5922,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [IsSameSomeOf](template_meta_programming.md#SS_12_3_2_8)
+* 参照 [IsSameSomeOf](template_meta_programming.md#SS_13_3_2_8)
 * [解答例-テンプレートパラメータを可変長にしたstd::is_same](exercise_a.md#SS_19_11_10)
 
 
@@ -5943,7 +5947,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [関数の存在の診断](template_meta_programming.md#SS_12_3_4)
+* 参照 [関数の存在の診断](template_meta_programming.md#SS_13_3_4)
 * [解答例-メンバ関数の存在の診断](exercise_a.md#SS_19_11_11)
 
 
@@ -5974,7 +5978,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [関数の存在の診断](template_meta_programming.md#SS_12_3_4)
+* 参照 [関数の存在の診断](template_meta_programming.md#SS_13_3_4)
 * [解答例-範囲for文のオペランドになれるかどうかの診断](exercise_a.md#SS_19_11_12)
 
 
@@ -6001,7 +6005,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [関数の存在の診断](template_meta_programming.md#SS_12_3_4)
+* 参照 [関数の存在の診断](template_meta_programming.md#SS_13_3_4)
 * [解答例-配列の長さの取り出し](exercise_a.md#SS_19_11_13)
 
 
@@ -6030,7 +6034,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [ValueTypeの実装](template_meta_programming.md#SS_12_3_4_15)
+* 参照 [ValueTypeの実装](template_meta_programming.md#SS_13_3_4_15)
 * [解答例-配列の次元の取り出し](exercise_a.md#SS_19_11_14)
 
 
@@ -6077,7 +6081,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [関数型をテンプレートパラメータで使う](template_meta_programming.md#SS_12_7_7)
+* 参照 [関数型をテンプレートパラメータで使う](template_meta_programming.md#SS_13_7_7)
 * [解答例-関数型のテンプレートパラメータを持つクラステンプレート](exercise_a.md#SS_19_11_15)
 
 
@@ -6087,4 +6091,6 @@ ___
 
 ---
 
+
+<a id="SS_18_end"></a>
 

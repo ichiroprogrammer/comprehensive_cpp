@@ -1,5 +1,5 @@
 <!-- deep/md/dynamic_memory_allocation.md -->
-# 13 ダイナミックメモリアロケーション <a id="SS_13"></a>
+# 14 ダイナミックメモリアロケーション <a id="SS_14"></a>
 本章で扱うダイナミックメモリアロケーション([ヒープ](glossary.md#SS_17_5_1)の使用)とは、new/delete、malloc/free
 によるメモリ確保/解放のことである。
 
@@ -8,7 +8,7 @@ malloc/freeは、
 * 最長処理時間を規定できない(リアルタイム性の欠如)
 * メモリのフラグメントを起こす
 
-等の問題(「[malloc/freeの問題点](dynamic_memory_allocation.md#SS_13_1)」参照)を持っている。
+等の問題(「[malloc/freeの問題点](dynamic_memory_allocation.md#SS_14_1)」参照)を持っている。
 new/deleteは通常malloc/freeを使って実装されているため同じ問題を持っているが、
 これらが汎用OS上でのアプリケーションで実際の不具合につながることはほとんどない。一方で、 
 
@@ -19,44 +19,50 @@ new/deleteは通常malloc/freeを使って実装されているため同じ問�
 
 このような場合、以下のようなテクニックが有効となる。
 
-* 「[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_13_4_1)」で述べたようなnewを実装する。
-* グローバルnewを使用せず、 「[クラスnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_13_4_3)」で述べたようなクラス毎のnewを実装する。
+* 「[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)」で述べたようなnewを実装する。
+* グローバルnewを使用せず、 「[クラスnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_3)」で述べたようなクラス毎のnewを実装する。
 * malloc/newを用いてエクセプション送出を行っているツールチェーンを使用している場合、
- 「[エクセプション処理機構の変更](dynamic_memory_allocation.md#SS_13_3_2)」で述べたような方法でリアルタイム制を確保するか、
+ 「[エクセプション処理機構の変更](dynamic_memory_allocation.md#SS_14_3_2)」で述べたような方法でリアルタイム制を確保するか、
   エクセプションを使用しない。
 
 本章では、このようなテクニックの実装を詳しく説明する。
 
+___
+
 __この章の構成__
 
-13.1 [malloc/freeの問題点](dynamic_memory_allocation.md#SS_13_1)  
-13.2 [メモリプール](dynamic_memory_allocation.md#SS_13_2)  
-&emsp;13.2.1 [固定長メモリプール](dynamic_memory_allocation.md#SS_13_2_1)  
-&emsp;13.2.2 [可変長メモリプール](dynamic_memory_allocation.md#SS_13_2_2)  
+14.1 [malloc/freeの問題点](dynamic_memory_allocation.md#SS_14_1)  
+14.2 [メモリプール](dynamic_memory_allocation.md#SS_14_2)  
+&emsp;14.2.1 [固定長メモリプール](dynamic_memory_allocation.md#SS_14_2_1)  
+&emsp;14.2.2 [可変長メモリプール](dynamic_memory_allocation.md#SS_14_2_2)  
 
-13.3 [メモリプールのエクセプション](dynamic_memory_allocation.md#SS_13_3)  
-&emsp;13.3.1 [MPoolBadAlloc](dynamic_memory_allocation.md#SS_13_3_1)  
-&emsp;13.3.2 [エクセプション処理機構の変更](dynamic_memory_allocation.md#SS_13_3_2)  
+14.3 [メモリプールのエクセプション](dynamic_memory_allocation.md#SS_14_3)  
+&emsp;14.3.1 [MPoolBadAlloc](dynamic_memory_allocation.md#SS_14_3_1)  
+&emsp;14.3.2 [エクセプション処理機構の変更](dynamic_memory_allocation.md#SS_14_3_2)  
 
-13.4 [new/deleteのオーバーロード](dynamic_memory_allocation.md#SS_13_4)  
-&emsp;13.4.1 [グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_13_4_1)  
-&emsp;13.4.2 [デバッグ用イテレータ](dynamic_memory_allocation.md#SS_13_4_2)  
-&emsp;13.4.3 [クラスnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_13_4_3)  
-&emsp;13.4.4 [new/deleteのオーバーロードのまとめ](dynamic_memory_allocation.md#SS_13_4_4)  
+14.4 [new/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4)  
+&emsp;14.4.1 [グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)  
+&emsp;14.4.2 [デバッグ用イテレータ](dynamic_memory_allocation.md#SS_14_4_2)  
+&emsp;14.4.3 [クラスnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_3)  
+&emsp;14.4.4 [new/deleteのオーバーロードのまとめ](dynamic_memory_allocation.md#SS_14_4_4)  
 
-13.5 [標準ライブラリのコンテナ用アロケータ](dynamic_memory_allocation.md#SS_13_5)  
-&emsp;13.5.1 [デバッグ用イテレータ](dynamic_memory_allocation.md#SS_13_5_1)  
+14.5 [標準ライブラリのコンテナ用アロケータ](dynamic_memory_allocation.md#SS_14_5)  
+&emsp;14.5.1 [デバッグ用イテレータ](dynamic_memory_allocation.md#SS_14_5_1)  
   
   
-
-[インデックス](seminer_intro.md#SS_1_2)に戻る。  
 
 ___
 
-## 13.1 malloc/freeの問題点 <a id="SS_13_1"></a>
+
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](dynamic_memory_allocation.md#SS_14_end)
+
+___
+
+
+## 14.1 malloc/freeの問題点 <a id="SS_14_1"></a>
 UNIX系のOSでの典型的なmalloc/freeの実装例の一部を以下に示す
 (この実装は長いため、
-全体は巻末の「[example/dynamic_memory_allocation/malloc_ut.cpp](sample_code.md#SS_21_1_1)」に掲載する)。
+全体は巻末の「[example/dynamic_memory_allocation/malloc_ut.cpp](sample_code.md#SS_22_1_1)」に掲載する)。
 
 ```cpp
     //  example/dynamic_memory_allocation/malloc_ut.cpp 19
@@ -250,16 +256,16 @@ freeはこのリストを辿りメモリを最適な場所に戻す必要があ�
 (繰り返しになるが、windows/linuxのような通常のOS上のアプリケーションでは、
 このような仕様が問題になることはほとんどない)。
 
-## 13.2 メモリプール <a id="SS_13_2"></a>
+## 14.2 メモリプール <a id="SS_14_2"></a>
 このドキュメントでは、メモリの確保/解放をサポートするサブシステムをメモリプールと呼ぶ。
 
-[malloc/freeの問題点](dynamic_memory_allocation.md#SS_13_1)の問題を回避するすために２種類のメモリプールの実装を示す。
+[malloc/freeの問題点](dynamic_memory_allocation.md#SS_14_1)の問題を回避するすために２種類のメモリプールの実装を示す。
 
-* リアルタイム性が保証されれた[固定長メモリプール](dynamic_memory_allocation.md#SS_13_2_1)
-* フラグメントの状態を確認することができる[可変長メモリプール](dynamic_memory_allocation.md#SS_13_2_2)
+* リアルタイム性が保証されれた[固定長メモリプール](dynamic_memory_allocation.md#SS_14_2_1)
+* フラグメントの状態を確認することができる[可変長メモリプール](dynamic_memory_allocation.md#SS_14_2_2)
 
 
-### 13.2.1 固定長メモリプール <a id="SS_13_2_1"></a>
+### 14.2.1 固定長メモリプール <a id="SS_14_2_1"></a>
 malloc/freeにリアルタイム性がない原因は、
 
 * リアルタイム性がないOSのシステムコールを使用している
@@ -282,7 +288,7 @@ malloc/freeにリアルタイム性がない原因は、
 
 によって実装することにする。
 
-まずは、MPoolを下記に示す。なお、throwするオブジェクトの型は[MPoolBadAlloc](dynamic_memory_allocation.md#SS_13_3_1)を使用している。
+まずは、MPoolを下記に示す。なお、throwするオブジェクトの型は[MPoolBadAlloc](dynamic_memory_allocation.md#SS_14_3_1)を使用している。
 
 ```cpp
     //  example/dynamic_memory_allocation/mpool.h 12
@@ -484,9 +490,9 @@ MPoolFixedの単体テストは、下記のようになる。
     ASSERT_THROW(mpf.Alloc(65), MPoolBadAlloc);  // MPoolBadAlloc例外が発生するはず
 ```
 
-### 13.2.2 可変長メモリプール <a id="SS_13_2_2"></a>
+### 14.2.2 可変長メモリプール <a id="SS_14_2_2"></a>
 可変長メモリプールを生成するMPoolVariableの実装は下記のようになる
-(全体は巻末の「[example/dynamic_memory_allocation/mpool_variable.h](sample_code.md#SS_21_1_2)」に掲載する)。
+(全体は巻末の「[example/dynamic_memory_allocation/mpool_variable.h](sample_code.md#SS_22_1_2)」に掲載する)。
 
 ```cpp
     //  example/dynamic_memory_allocation/mpool_variable.h 59
@@ -668,7 +674,7 @@ mpv:249
                0:3014     <- アロケーションされていないメモリの塊
 ```
 
-## 13.3 メモリプールのエクセプション <a id="SS_13_3"></a>
+## 14.3 メモリプールのエクセプション <a id="SS_14_3"></a>
 メモリプール内で回復不可能なエラーが発生した場合、
 エクセプションの送出によりそのことを使用側にそれを伝えなければならない。
 
@@ -678,14 +684,14 @@ mpv:249
 
 ここでは、
 
-- エクセプション用の型[MPoolBadAlloc](dynamic_memory_allocation.md#SS_13_3_1)の開発
-- [エクセプション処理機構の変更](dynamic_memory_allocation.md#SS_13_3_2)
+- エクセプション用の型[MPoolBadAlloc](dynamic_memory_allocation.md#SS_14_3_1)の開発
+- [エクセプション処理機構の変更](dynamic_memory_allocation.md#SS_14_3_2)
 
 を通じて、メモリプールのエクセプション機構を紹介する。
 
-### 13.3.1 MPoolBadAlloc <a id="SS_13_3_1"></a>
+### 14.3.1 MPoolBadAlloc <a id="SS_14_3_1"></a>
 MPoolBadAllocは下記のように定義されたクラスであり、
-「[ファイル位置を静的に保持したエクセプションクラスの開発](template_meta_programming.md#SS_12_7_6_4)」
+「[ファイル位置を静的に保持したエクセプションクラスの開発](template_meta_programming.md#SS_13_7_6_4)」
 で示したのクラスライブラリ基づいたメモリプール専用のエクセプション型である。
 
 ```cpp
@@ -728,7 +734,7 @@ MPoolから派生したクラスが、
 のような処理の継続ができない場合に用いるエクセプション専用クラスである。
 
 
-### 13.3.2 エクセプション処理機構の変更 <a id="SS_13_3_2"></a>
+### 14.3.2 エクセプション処理機構の変更 <a id="SS_14_3_2"></a>
 多くのコンパイラのエクセプション処理機構にはnew/deleteやmalloc/freeが使われているため、
 リアルタイム性が必要な個所でエクセプション処理を行ってはならない。
 そういった規制でプログラミングを行っていると、
@@ -817,17 +823,17 @@ MPoolから派生したクラスが、
 安易にエクセプションや標準ライブラリのコンテナを使用禁止することなく、安全に使用する方法を探るべきだろう。
 
 
-## 13.4 new/deleteのオーバーロード <a id="SS_13_4"></a>
+## 14.4 new/deleteのオーバーロード <a id="SS_14_4"></a>
 前述したように、組み込みソフトにはmalloc/freeを使用したnew/deleteではシステムの制限を満たせないことが多い。
 C++11では、以下のような方法により、このような問題を回避することができる。
 
-* [グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_13_4_1)
-* [クラスnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_13_4_3)
+* [グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)
+* [クラスnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_3)
 
 
 
-### 13.4.1 グローバルnew/deleteのオーバーロード <a id="SS_13_4_1"></a>
-[固定長メモリプール](dynamic_memory_allocation.md#SS_13_2_1)を使用した`operator new`のオーバーロードの実装例を以下に示す。
+### 14.4.1 グローバルnew/deleteのオーバーロード <a id="SS_14_4_1"></a>
+[固定長メモリプール](dynamic_memory_allocation.md#SS_14_2_1)を使用した`operator new`のオーバーロードの実装例を以下に示す。
 
 ```cpp
     //  example/dynamic_memory_allocation/global_new_delete.cpp 31
@@ -969,12 +975,12 @@ size2indexは要求されたサイズから、
 `operator delete(void* mem)`は、それ以外のメモリ解放に使用される。
 
 コードから明らかな通り、size付きの`operator delete`の方がループの回転数が少なくなるため、
-高速に動作するが、malloc/freeの実装(「[malloc/freeの問題点](dynamic_memory_allocation.md#SS_13_1)」参照)で使用したHeader_t
+高速に動作するが、malloc/freeの実装(「[malloc/freeの問題点](dynamic_memory_allocation.md#SS_14_1)」参照)で使用したHeader_t
 を導入することでこの実行コストはほとんど排除できる。
 そのトレードオフとしてメモリコストが増えるため、ここでは例示した仕様にした。
 
-### 13.4.2 デバッグ用イテレータ <a id="SS_13_4_2"></a>
-[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_13_4_1)で示したグローバルnew/deleteの実装は、適切なメモリの量を調整する必要がある。
+### 14.4.2 デバッグ用イテレータ <a id="SS_14_4_2"></a>
+[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)で示したグローバルnew/deleteの実装は、適切なメモリの量を調整する必要がある。
 そのためには、これを使用するアプリケーションをある程度動作させた後、
 グローバルnew/deleteのメモリの消費量を計測しなければならない。
 
@@ -1043,8 +1049,8 @@ size2indexは要求されたサイズから、
 
 
 
-### 13.4.3 クラスnew/deleteのオーバーロード <a id="SS_13_4_3"></a>
-「[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_13_4_1)」で示したコードのロックを、
+### 14.4.3 クラスnew/deleteのオーバーロード <a id="SS_14_4_3"></a>
+「[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)」で示したコードのロックを、
 「割り込みディセーブル/イネーブル」に置き換えることで、リアルタイム性を保障することができるが、
 この機構はある程度多くのメモリを必要とするため、
 極めてメモリ制限の厳しいシステムでは使用が困難である場合もあるだろう。
@@ -1052,7 +1058,7 @@ size2indexは要求されたサイズから、
 そのような場合、非スタック上でのオブジェクト生成には、
 
 * 限定的なクラスのみ、newによる動的な方法を用いる
-* その他のクラスに対しては、[Singleton](design_pattern.md#SS_8_3_1)や[Named Constructor](design_pattern.md#SS_8_3_2)と同様な静的な方法を用いる
+* その他のクラスに対しては、[Singleton](design_pattern.md#SS_9_3_1)や[Named Constructor](design_pattern.md#SS_9_3_2)と同様な静的な方法を用いる
 
 とし、グローバルnewを使用しないことが、より良いメモリ使用方法となり得る。
 
@@ -1064,7 +1070,7 @@ size2indexは要求されたサイズから、
 という2つの選択肢が考えられるが、プレースメントnewは見慣れないシンタックスを用いるため、これの使用は避けるべきである。
 従って、その方法はクラス毎のnew/deleteのオーバーロードになる。
 
-メモリ管理に「[固定長メモリプール](dynamic_memory_allocation.md#SS_13_2_1)」で示したMPoolFixedを利用した実装例を以下に示す。
+メモリ管理に「[固定長メモリプール](dynamic_memory_allocation.md#SS_14_2_1)」で示したMPoolFixedを利用した実装例を以下に示す。
 
 ```cpp
     //  example/dynamic_memory_allocation/class_new_delete_ut.cpp 14
@@ -1139,7 +1145,7 @@ size2indexは要求されたサイズから、
 
 を記述しなければならず、コードクローンの温床となってしまう。
 これを避けるためには、
-[CRTP(curiously recurring template pattern)](design_pattern.md#SS_8_1_5)
+[CRTP(curiously recurring template pattern)](design_pattern.md#SS_9_1_5)
 を利用した下記のようなクラステンプレートを導入すれば良い。
 
 ```cpp
@@ -1197,7 +1203,7 @@ OpNewをクラステンプレートとし、内部で利用しないテンプレ
 別のクラスからはOpNewの別インスタンスを使用できるようにするためである。
 
 この方法は、コードが若干複雑にることを除けば、
-「[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_13_4_1)」に比べ、優れているように見えてしまうかもしれないが、
+「[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)」に比べ、優れているように見えてしまうかもしれないが、
 下記のように、さらに派生クラスを定義してしまうとnewが失敗してしまうことがあるので注意が必要である。
 
 ```cpp
@@ -1243,20 +1249,20 @@ OpNewをクラステンプレートとし、内部で利用しないテンプレ
 OpNewを使うプロジェクトには導入するべきだろう。
 
 
-### 13.4.4 new/deleteのオーバーロードのまとめ <a id="SS_13_4_4"></a>
+### 14.4.4 new/deleteのオーバーロードのまとめ <a id="SS_14_4_4"></a>
 ここまで、malloc/freeの問題の様々な回避方法を示したのでその組み合わせをまとめる。
 
 1. リアルタイムパスでのオブジェクトの生成/解放を行う必要があるクラスのnew/deleteのオーバーロードを
-  [固定長メモリプール](dynamic_memory_allocation.md#SS_13_2_1)により実装する。
-2. グローバルnew/deleteのオーバーロードを[可変長メモリプール](dynamic_memory_allocation.md#SS_13_2_2)により実装する。
+  [固定長メモリプール](dynamic_memory_allocation.md#SS_14_2_1)により実装する。
+2. グローバルnew/deleteのオーバーロードを[可変長メモリプール](dynamic_memory_allocation.md#SS_14_2_2)により実装する。
 
 上記1によりリアルタイム性の問題は発生しない。
 2により、フラグメントの状態を調査できるようになる。
 ここではデバッグイテレータの実装を行っていないが、
-[デバッグ用イテレータ](dynamic_memory_allocation.md#SS_13_5_1)の実装例が参考になるだろう。
+[デバッグ用イテレータ](dynamic_memory_allocation.md#SS_14_5_1)の実装例が参考になるだろう。
 
 
-## 13.5 標準ライブラリのコンテナ用アロケータ <a id="SS_13_5"></a>
+## 14.5 標準ライブラリのコンテナ用アロケータ <a id="SS_14_5"></a>
 アロケータの定義例を以下に示す。
 
 ```cpp
@@ -1311,13 +1317,13 @@ OpNewを使うプロジェクトには導入するべきだろう。
 これまでと同様にMPoolから派生したクラスを使用するが、
 リアルタイム性は不要であるためメモリ効率が悪いMPoolFixedは使わない。
 代わりに、可変長メモリを扱うためメモリ効率がよいMPoolVariabl
-(「[可変長メモリプール](dynamic_memory_allocation.md#SS_13_2_2)」参照)を使う。
+(「[可変長メモリプール](dynamic_memory_allocation.md#SS_14_2_2)」参照)を使う。
 
 C++14の環境で標準ライブラリのアロケータを置き換える場合は、上記のような方法で実現できるが、
 C++17以降では、[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_16_7_2)を使用するべきである。
 
-### 13.5.1 デバッグ用イテレータ <a id="SS_13_5_1"></a>
-[可変長メモリプール](dynamic_memory_allocation.md#SS_13_2_2)を使用すると、
+### 14.5.1 デバッグ用イテレータ <a id="SS_14_5_1"></a>
+[可変長メモリプール](dynamic_memory_allocation.md#SS_14_2_2)を使用すると、
 メモリのフラグメントによりアロケーションが失敗することがあり得る。
 このような事態が発生している可能性がある場合、
 アロケータが保持しているメモリの状態を表示させることがデバッグの第一歩となる。
@@ -1404,14 +1410,16 @@ C++17以降では、[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_
                      0:4018
 ```
 
-「[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_13_4_1)」でも述べたように、
+「[グローバルnew/deleteのオーバーロード](dynamic_memory_allocation.md#SS_14_4_1)」でも述べたように、
 デバッグ用入出力機能からこのような出力を得られるようにしておくべきである。
 
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](dynamic_memory_allocation.md#SS_13)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](dynamic_memory_allocation.md#SS_14)
 
 ---
 
+
+<a id="SS_14_end"></a>
 

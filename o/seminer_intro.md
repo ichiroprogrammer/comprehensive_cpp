@@ -55,16 +55,16 @@ ___
 __中級セミナー__
 
 - [プログラミング規約](programming_convention.md#SS_2)
-- [コーディングスタイル](coding_style.md#SS_4)
-- [命名規則](naming_practice.md#SS_5)
-- [コメント](comment.md#SS_6)
-- [C++の進化と主な変更点](cpp_improve.md#SS_14)
+- [コーディングスタイル](coding_style.md#SS_3)
+- [命名規則](naming_practice.md#SS_4)
+- [コメント](comment.md#SS_5)
+- [C++の進化と主な変更点](cpp_improve.md#SS_6)
 
 __上級セミナー__
 
-- [アーキテクチャ](architecture.md#SS_9)
-- [クラス設計](class_design.md#SS_7)
-- [デザインパターン](design_pattern.md#SS_8)
+- [アーキテクチャ](architecture.md#SS_7)
+- [クラス設計](class_design.md#SS_8)
+- [デザインパターン](design_pattern.md#SS_9)
 
 __演習__
 
@@ -74,15 +74,15 @@ __演習__
 
 __Appendix__
 
-- [コード解析](code_analysis.md#SS_3)
+- [コード解析](code_analysis.md#SS_20)
 - [開発プロセスとインフラ](process_and_infra.md#SS_10)
 - [C++コア言語仕様](core_lang_spec.md#SS_15)
 - [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_16)
 - [用語集](glossary.md#SS_17)
-- [並行処理](concurrency.md#SS_11)
-- [テンプレートメタプログラミング](template_meta_programming.md#SS_12)
-- [ダイナミックメモリアロケーション](dynamic_memory_allocation.md#SS_13)
-- [参考文献](bibliography.md#SS_20)
+- [並行処理](concurrency.md#SS_12)
+- [テンプレートメタプログラミング](template_meta_programming.md#SS_13)
+- [ダイナミックメモリアロケーション](dynamic_memory_allocation.md#SS_14)
+- [参考文献](bibliography.md#SS_21)
 
 ---
 

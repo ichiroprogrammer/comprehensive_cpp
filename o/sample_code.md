@@ -1,7 +1,7 @@
 <!-- ./md/sample_code.md -->
-# 21 Sample Code <a id="SS_21"></a>
-## 21.1 C++ <a id="SS_21_1"></a>
-### 21.1.1 example/dynamic_memory_allocation/malloc_ut.cpp <a id="SS_21_1_1"></a>
+# 22 Sample Code <a id="SS_22"></a>
+## 22.1 C++ <a id="SS_22_1"></a>
+### 22.1.1 example/dynamic_memory_allocation/malloc_ut.cpp <a id="SS_22_1_1"></a>
 
 
 ```cpp
@@ -219,7 +219,7 @@
         212 }  // namespace MallocFree
 ```
 
-### 21.1.2 example/dynamic_memory_allocation/mpool_variable.h <a id="SS_21_1_2"></a>
+### 22.1.2 example/dynamic_memory_allocation/mpool_variable.h <a id="SS_22_1_2"></a>
 
 
 ```cpp

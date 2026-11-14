@@ -4,22 +4,138 @@
 __この章の構成__
 
 19.1 [プログラミング規約(型)](exercise_a.md#SS_19_1)  
+&emsp;19.1.1 [解答-汎整数型の選択](exercise_a.md#SS_19_1_1)  
+&emsp;19.1.2 [解答例-汎整数型の演算](exercise_a.md#SS_19_1_2)  
+&emsp;19.1.3 [解答例-浮動小数点型](exercise_a.md#SS_19_1_3)  
+&emsp;19.1.4 [解答-定数列挙](exercise_a.md#SS_19_1_4)  
+&emsp;19.1.5 [解答例-enum](exercise_a.md#SS_19_1_5)  
+&emsp;19.1.6 [解答例-配列の範囲for文](exercise_a.md#SS_19_1_6)  
+&emsp;19.1.7 [解答例-エイリアス](exercise_a.md#SS_19_1_7)  
+&emsp;19.1.8 [解答-constの意味](exercise_a.md#SS_19_1_8)  
+&emsp;19.1.9 [解答例-const/constexpr](exercise_a.md#SS_19_1_9)  
+&emsp;19.1.10 [解答例-危険なconst_cast](exercise_a.md#SS_19_1_10)  
+&emsp;19.1.11 [解答例-リテラル](exercise_a.md#SS_19_1_11)  
+&emsp;19.1.12 [解答-適切なautoの使い方](exercise_a.md#SS_19_1_12)  
+&emsp;19.1.13 [解答-ポインタの初期化](exercise_a.md#SS_19_1_13)  
+&emsp;19.1.14 [解答-vector初期化](exercise_a.md#SS_19_1_14)  
+&emsp;19.1.15 [解答例-インスタンスの初期化](exercise_a.md#SS_19_1_15)  
+
 19.2 [プログラミング規約(クラス)](exercise_a.md#SS_19_2)  
+&emsp;19.2.1 [解答-凝集性の意味](exercise_a.md#SS_19_2_1)  
+&emsp;19.2.2 [解答例-凝集性の向上](exercise_a.md#SS_19_2_2)  
+&emsp;19.2.3 [解答-メンバ変数の初期化方法の選択](exercise_a.md#SS_19_2_3)  
+&emsp;19.2.4 [解答-メンバの型](exercise_a.md#SS_19_2_4)  
+&emsp;19.2.5 [解答例-メンバ変数の初期化](exercise_a.md#SS_19_2_5)  
+&emsp;19.2.6 [解答例-スライシング](exercise_a.md#SS_19_2_6)  
+&emsp;19.2.7 [解答例-オブジェクトの所有権](exercise_a.md#SS_19_2_7)  
+
 19.3 [プログラミング規約(関数)](exercise_a.md#SS_19_3)  
+&emsp;19.3.1 [解答例-非メンバ関数の宣言](exercise_a.md#SS_19_3_1)  
+&emsp;19.3.2 [解答例-メンバ関数の修飾](exercise_a.md#SS_19_3_2)  
+&emsp;19.3.3 [解答例-特殊メンバ関数の削除](exercise_a.md#SS_19_3_3)  
+&emsp;19.3.4 [解答例-委譲コンストラクタ](exercise_a.md#SS_19_3_4)  
+&emsp;19.3.5 [解答例-copyコンストラクタ](exercise_a.md#SS_19_3_5)  
+&emsp;19.3.6 [解答例-moveコンストラクタ](exercise_a.md#SS_19_3_6)  
+&emsp;19.3.7 [解答例-関数分割](exercise_a.md#SS_19_3_7)  
+&emsp;19.3.8 [解答-オーバーライド関数の修飾](exercise_a.md#SS_19_3_8)  
+&emsp;19.3.9 [解答例-オーバーライド/オーバーロード](exercise_a.md#SS_19_3_9)  
+&emsp;19.3.10 [解答例-オーバーロードによる誤用防止](exercise_a.md#SS_19_3_10)  
+&emsp;19.3.11 [解答例-仮引数の修飾](exercise_a.md#SS_19_3_11)  
+&emsp;19.3.12 [解答例-constexpr関数](exercise_a.md#SS_19_3_12)  
+&emsp;19.3.13 [解答-エクセプションの型](exercise_a.md#SS_19_3_13)  
+
 19.4 [プログラミング規約(構文)](exercise_a.md#SS_19_4)  
+&emsp;19.4.1 [解答例-コンテナの範囲for文](exercise_a.md#SS_19_4_1)  
+&emsp;19.4.2 [解答例-ラムダ式](exercise_a.md#SS_19_4_2)  
+&emsp;19.4.3 [解答例-ラムダ式のキャプチャ](exercise_a.md#SS_19_4_3)  
+
 19.5 [プログラミング規約(演算子)](exercise_a.md#SS_19_5)  
+&emsp;19.5.1 [解答例-条件演算子](exercise_a.md#SS_19_5_1)  
+&emsp;19.5.2 [解答例-delete](exercise_a.md#SS_19_5_2)  
+&emsp;19.5.3 [解答例-sizeof](exercise_a.md#SS_19_5_3)  
+&emsp;19.5.4 [解答例-dynamic_castの削除](exercise_a.md#SS_19_5_4)  
+&emsp;19.5.5 [解答-キャスト](exercise_a.md#SS_19_5_5)  
+
 19.6 [プログラミング規約(スコープ)](exercise_a.md#SS_19_6)  
+&emsp;19.6.1 [解答-usingディレクティブ](exercise_a.md#SS_19_6_1)  
+
 19.7 [プログラミング規約(その他)](exercise_a.md#SS_19_7)  
+&emsp;19.7.1 [解答-アサーションの選択](exercise_a.md#SS_19_7_1)  
+&emsp;19.7.2 [解答例-assert/static_assert](exercise_a.md#SS_19_7_2)  
+
 19.8 [SOLID](exercise_a.md#SS_19_8)  
+&emsp;19.8.1 [解答例-SRP](exercise_a.md#SS_19_8_1)  
+&emsp;19.8.2 [解答例-OCP](exercise_a.md#SS_19_8_2)  
+&emsp;19.8.3 [解答例-LSP](exercise_a.md#SS_19_8_3)  
+&emsp;19.8.4 [解答例-ISP](exercise_a.md#SS_19_8_4)  
+&emsp;19.8.5 [解答例-DIP](exercise_a.md#SS_19_8_5)  
+&emsp;19.8.6 [解答-SOLIDの定義](exercise_a.md#SS_19_8_6)  
+
 19.9 [デザインパターン](exercise_a.md#SS_19_9)  
+&emsp;19.9.1 [解答例-ガード節](exercise_a.md#SS_19_9_1)  
+&emsp;19.9.2 [解答例-BitmaskType](exercise_a.md#SS_19_9_2)  
+&emsp;19.9.3 [解答例-Pimpl](exercise_a.md#SS_19_9_3)  
+&emsp;19.9.4 [解答-Accessorの副作用](exercise_a.md#SS_19_9_4)  
+&emsp;19.9.5 [解答例-Accessor](exercise_a.md#SS_19_9_5)  
+&emsp;19.9.6 [解答例-Copy-And-Swap](exercise_a.md#SS_19_9_6)  
+&emsp;19.9.7 [解答例-Immutable](exercise_a.md#SS_19_9_7)  
+&emsp;19.9.8 [解答例-Clone](exercise_a.md#SS_19_9_8)  
+&emsp;19.9.9 [解答例-NVI](exercise_a.md#SS_19_9_9)  
+&emsp;19.9.10 [解答-RAIIの効果](exercise_a.md#SS_19_9_10)  
+&emsp;19.9.11 [解答例-RAII](exercise_a.md#SS_19_9_11)  
+&emsp;19.9.12 [解答例-Future](exercise_a.md#SS_19_9_12)  
+&emsp;19.9.13 [解答例-DI](exercise_a.md#SS_19_9_13)  
+&emsp;19.9.14 [解答例-Singleton](exercise_a.md#SS_19_9_14)  
+&emsp;19.9.15 [解答例-State](exercise_a.md#SS_19_9_15)  
+&emsp;19.9.16 [解答例-Null Object](exercise_a.md#SS_19_9_16)  
+&emsp;19.9.17 [解答例-Templateメソッド](exercise_a.md#SS_19_9_17)  
+&emsp;19.9.18 [解答例-Factory](exercise_a.md#SS_19_9_18)  
+&emsp;19.9.19 [解答例-Named Constructor](exercise_a.md#SS_19_9_19)  
+&emsp;19.9.20 [解答例-Proxy](exercise_a.md#SS_19_9_20)  
+&emsp;19.9.21 [解答例-Strategy](exercise_a.md#SS_19_9_21)  
+&emsp;19.9.22 [解答例-Visitor](exercise_a.md#SS_19_9_22)  
+&emsp;19.9.23 [解答例-CRTP](exercise_a.md#SS_19_9_23)  
+&emsp;19.9.24 [解答例-Observer](exercise_a.md#SS_19_9_24)  
+&emsp;19.9.25 [解答-デザインパターン選択1](exercise_a.md#SS_19_9_25)  
+&emsp;19.9.26 [解答-デザインパターン選択2](exercise_a.md#SS_19_9_26)  
+&emsp;19.9.27 [解答-デザインパターン選択3](exercise_a.md#SS_19_9_27)  
+
 19.10 [開発プロセスとインフラ(全般)](exercise_a.md#SS_19_10)  
+&emsp;19.10.1 [解答-プロセス分類](exercise_a.md#SS_19_10_1)  
+&emsp;19.10.2 [解答-V字モデル](exercise_a.md#SS_19_10_2)  
+&emsp;19.10.3 [解答-アジャイル](exercise_a.md#SS_19_10_3)  
+&emsp;19.10.4 [解答-自動化](exercise_a.md#SS_19_10_4)  
+&emsp;19.10.5 [解答-単体テスト](exercise_a.md#SS_19_10_5)  
+&emsp;19.10.6 [解答-リファクタリングに付随する活動](exercise_a.md#SS_19_10_6)  
+&emsp;19.10.7 [解答-リファクタリング対象コード](exercise_a.md#SS_19_10_7)  
+&emsp;19.10.8 [解答-CI](exercise_a.md#SS_19_10_8)  
+
 19.11 [テンプレートメタプログラミング](exercise_a.md#SS_19_11)  
+&emsp;19.11.1 [解答例-パラメータパック](exercise_a.md#SS_19_11_1)  
+&emsp;19.11.2 [解答例-エイリアステンプレート](exercise_a.md#SS_19_11_2)  
+&emsp;19.11.3 [解答例-名前空間による修飾不要な`operator<<`](exercise_a.md#SS_19_11_3)  
+&emsp;19.11.4 [解答例-std::arrayの継承](exercise_a.md#SS_19_11_4)  
+&emsp;19.11.5 [解答例-SFINAEを利用しない関数テンプレートの特殊化によるis_void](exercise_a.md#SS_19_11_5)  
+&emsp;19.11.6 [解答例-SFINAEを利用しないクラステンプレートの特殊化によるis_void](exercise_a.md#SS_19_11_6)  
+&emsp;19.11.7 [解答例-SFINAEを利用した関数テンプレートの特殊化によるis_void](exercise_a.md#SS_19_11_7)  
+&emsp;19.11.8 [解答例-SFINAEを利用したクラステンプレートの特殊化によるis_void](exercise_a.md#SS_19_11_8)  
+&emsp;19.11.9 [解答例-テンプレートテンプレートパラメータ](exercise_a.md#SS_19_11_9)  
+&emsp;19.11.10 [解答例-テンプレートパラメータを可変長にしたstd::is_same](exercise_a.md#SS_19_11_10)  
+&emsp;19.11.11 [解答例-メンバ関数の存在の診断](exercise_a.md#SS_19_11_11)  
+&emsp;19.11.12 [解答例-範囲for文のオペランドになれるかどうかの診断](exercise_a.md#SS_19_11_12)  
+&emsp;19.11.13 [解答例-配列の長さの取り出し](exercise_a.md#SS_19_11_13)  
+&emsp;19.11.14 [解答例-配列の次元の取り出し](exercise_a.md#SS_19_11_14)  
+&emsp;19.11.15 [解答例-関数型のテンプレートパラメータを持つクラステンプレート](exercise_a.md#SS_19_11_15)  
   
   
-  
-[インデックス](seminer_intro.md#SS_1_2)に戻る。  
 
 ___
+
+
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](exercise_a.md#SS_19_end)
+
+___
+
 
 ## 19.1 プログラミング規約(型) <a id="SS_19_1"></a>
 
@@ -2303,7 +2419,7 @@ ___
     * ISP - 4
     * DIP - 5
 
-* 参照 [SOLID](class_design.md#SS_7_1)
+* 参照 [SOLID](class_design.md#SS_8_1)
 * [演習-SOLIDの定義](exercise_q.md#SS_18_8_6)へ戻る。
 
 
@@ -2532,7 +2648,7 @@ ___
 
 ### 19.9.4 解答-Accessorの副作用 <a id="SS_19_9_4"></a>
 * 選択肢1
-* 参照 [Accessor](design_pattern.md#SS_8_1_6)
+* 参照 [Accessor](design_pattern.md#SS_9_1_6)
 * [演習-Accessorの副作用](exercise_q.md#SS_18_9_4)へ戻る。
 
 
@@ -3112,7 +3228,7 @@ ___
 
 ### 19.9.10 解答-RAIIの効果 <a id="SS_19_9_10"></a>
 * 選択肢1
-* 参照 [RAII(scoped guard)](design_pattern.md#SS_8_1_3)
+* 参照 [RAII(scoped guard)](design_pattern.md#SS_9_1_3)
 * [演習-RAIIの効果](exercise_q.md#SS_18_9_10)へ戻る。
 
 
@@ -4762,19 +4878,19 @@ ___
 
 ### 19.9.25 解答-デザインパターン選択1 <a id="SS_19_9_25"></a>
 * 選択肢2
-* 参照 [State](design_pattern.md#SS_8_4_3)
+* 参照 [State](design_pattern.md#SS_9_4_3)
 * [演習-デザインパターン選択1](exercise_q.md#SS_18_9_25)へ戻る。
 
 
 ### 19.9.26 解答-デザインパターン選択2 <a id="SS_19_9_26"></a>
 * 選択肢4
-* 参照 [Null Object](design_pattern.md#SS_8_2_5)
+* 参照 [Null Object](design_pattern.md#SS_9_2_5)
 * [演習-デザインパターン選択2](exercise_q.md#SS_18_9_26)へ戻る。
 
 
 ### 19.9.27 解答-デザインパターン選択3 <a id="SS_19_9_27"></a>
 * 選択肢3
-* 参照 [Observer](design_pattern.md#SS_8_4_4)
+* 参照 [Observer](design_pattern.md#SS_9_4_4)
 * [演習-デザインパターン選択3](exercise_q.md#SS_18_9_27)へ戻る。
 
 
@@ -5542,4 +5658,6 @@ ___
 
 ---
 
+
+<a id="SS_19_end"></a>
 

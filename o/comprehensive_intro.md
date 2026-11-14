@@ -150,7 +150,6 @@ __google testのアサーションの簡単な説明__
 
 
 ## インデックス <a id="SS_1_3"></a>
-___
 
 __思想__
 
@@ -159,40 +158,41 @@ __思想__
 
 __プロジェクト運用__
 
+- [アーキテクチャ](architecture.md#SS_10)
+- [開発プロセスとインフラ](process_and_infra.md#SS_11)
+- [リファクタリングの例](refactring_expamples.md#SS_12)
 - [プログラミング規約](programming_convention.md#SS_3)
 - [コード解析](code_analysis.md#SS_4)
 - [コーディングスタイル](coding_style.md#SS_5)
 - [命名規則](naming_practice.md#SS_6)
 - [コメント](comment.md#SS_7)
-- [開発プロセスとインフラ](process_and_infra.md#SS_11)
 
 
 __パターン__
 
-- [アーキテクチャ](architecture.md#SS_10)
 - [クラス設計](class_design.md#SS_8)
 - [デザインパターン](design_pattern.md#SS_9)
-- [並行処理](concurrency.md#SS_12)
-- [テンプレートメタプログラミング](template_meta_programming.md#SS_13)
-- [ダイナミックメモリアロケーション](dynamic_memory_allocation.md#SS_14)
+- [並行処理](concurrency.md#SS_13)
+- [テンプレートメタプログラミング](template_meta_programming.md#SS_14)
+- [ダイナミックメモリアロケーション](dynamic_memory_allocation.md#SS_15)
 
 
 __ツール等__
 
-- [開発ツール](dev_tools.md#SS_16)
-- [デバッグ](debug.md#SS_15)
+- [開発ツール](dev_tools.md#SS_17)
+- [デバッグ](debug.md#SS_16)
 
 
 __Appendix__
 
-- [C++の進化と主な変更点](cpp_improve.md#SS_17)
-- [C++コア言語仕様](core_lang_spec.md#SS_18)
-- [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_19)
-- [用語集](glossary.md#SS_20)
-- [演習](exercise_q.md#SS_21)
-- [解答](exercise_a.md#SS_22)
-- [参考文献](bibliography.md#SS_23)
-- [あとがき](afterword.md#SS_24)
+- [C++の進化と主な変更点](cpp_improve.md#SS_18)
+- [C++コア言語仕様](core_lang_spec.md#SS_19)
+- [標準ライブラリとプログラミングの概念](stdlib_and_concepts.md#SS_20)
+- [用語集](glossary.md#SS_21)
+- [演習](exercise_q.md#SS_22)
+- [解答](exercise_a.md#SS_23)
+- [参考文献](bibliography.md#SS_24)
+- [あとがき](afterword.md#SS_25)
 
 ---
 

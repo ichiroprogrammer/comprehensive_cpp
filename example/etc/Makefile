@@ -1,5 +1,5 @@
 SRCS:=\
-	debug.cpp ut.cpp scoped_guard_ut.cpp
+	debug.cpp ut.cpp
 
 OBJDIR:=
 SHARED:=../../essential/

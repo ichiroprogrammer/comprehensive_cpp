@@ -1,5 +1,5 @@
 <!-- practical/md/comment.md -->
-# 6 コメント <a id="SS_6"></a>
+# 5 コメント <a id="SS_5"></a>
 コメントの目的は、複雑怪奇なソースコードのエクスキューズでない。
 ソースコードから読み取れない情報や、ソースコードのサマリーを書くべきである。
 
@@ -7,21 +7,25 @@ ___
 
 __この章の構成__
 
-6.1 [情報を付加しないコメント](comment.md#SS_6_1)  
-6.2 [コメントのスタイル](comment.md#SS_6_2)  
-&emsp;6.2.1 [クラスのコメント](comment.md#SS_6_2_1)  
-&emsp;6.2.2 [関数のコメント](comment.md#SS_6_2_2)  
-&emsp;6.2.3 [enumのコメント](comment.md#SS_6_2_3)  
-&emsp;6.2.4 [型エイリアスのコメント](comment.md#SS_6_2_4)  
-&emsp;6.2.5 [template仮引数のコメント](comment.md#SS_6_2_5)  
+5.1 [情報を付加しないコメント](comment.md#SS_5_1)  
+5.2 [コメントのスタイル](comment.md#SS_5_2)  
+&emsp;5.2.1 [クラスのコメント](comment.md#SS_5_2_1)  
+&emsp;5.2.2 [関数のコメント](comment.md#SS_5_2_2)  
+&emsp;5.2.3 [enumのコメント](comment.md#SS_5_2_3)  
+&emsp;5.2.4 [型エイリアスのコメント](comment.md#SS_5_2_4)  
+&emsp;5.2.5 [template仮引数のコメント](comment.md#SS_5_2_5)  
   
   
-
-[インデックス](seminer_intro.md#SS_1_2)に戻る。  
 
 ___
 
-## 6.1 情報を付加しないコメント <a id="SS_6_1"></a>
+
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](comment.md#SS_5_end)
+
+___
+
+
+## 5.1 情報を付加しないコメント <a id="SS_5_1"></a>
 以下のような情報を付加しないコメントは無駄であるだけではなく、可読性に悪影響を与える場合もあるため、
 避けるべきである。
 
@@ -33,13 +37,13 @@ ___
 特に2、3のコメントを書くプログラマは、バージョン管理システムに未習熟である可能性が高い。
 そういうプログラマには、バージョン管理システムの書籍を読ませることを推奨する。
 
-## 6.2 コメントのスタイル <a id="SS_6_2"></a>
+## 5.2 コメントのスタイル <a id="SS_5_2"></a>
 有償、無名もしくは、日本でしか使われていないコメントフォーマットやそのツールを使うべきではない。
 本ドキュメントでは、doxygenを推奨する。
 
 doxygenフォーマットの各要素に対する書き方を例示する。
 
-### 6.2.1 クラスのコメント <a id="SS_6_2_1"></a>
+### 5.2.1 クラスのコメント <a id="SS_5_2_1"></a>
 
 ```cpp
     //  example/etc/comment.cpp 9
@@ -49,7 +53,7 @@ doxygenフォーマットの各要素に対する書き方を例示する。
     public:
 ```
 
-### 6.2.2 関数のコメント <a id="SS_6_2_2"></a>
+### 5.2.2 関数のコメント <a id="SS_5_2_2"></a>
 
 ```cpp
     //  example/etc/comment.cpp 42
@@ -60,7 +64,7 @@ doxygenフォーマットの各要素に対する書き方を例示する。
     std::vector<std::string> FindFileRecursively(IsMatch is_match);
 ```
 
-### 6.2.3 enumのコメント <a id="SS_6_2_3"></a>
+### 5.2.3 enumのコメント <a id="SS_5_2_3"></a>
 
 ```cpp
     //  example/etc/comment.cpp 20
@@ -74,7 +78,7 @@ doxygenフォーマットの各要素に対する書き方を例示する。
     };
 ```
 
-### 6.2.4 型エイリアスのコメント <a id="SS_6_2_4"></a>
+### 5.2.4 型エイリアスのコメント <a id="SS_5_2_4"></a>
 
 ```cpp
     //  example/etc/comment.cpp 36
@@ -84,7 +88,7 @@ doxygenフォーマットの各要素に対する書き方を例示する。
     using IsMatch = std::function<bool(std::filesystem::path const&)>;
 ```
 
-### 6.2.5 template仮引数のコメント <a id="SS_6_2_5"></a>
+### 5.2.5 template仮引数のコメント <a id="SS_5_2_5"></a>
 
 ```cpp
     //  example/etc/comment.cpp 62
@@ -104,8 +108,10 @@ doxygenフォーマットの各要素に対する書き方を例示する。
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](comment.md#SS_6)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](comment.md#SS_5)
 
 ---
 
+
+<a id="SS_5_end"></a>
 
