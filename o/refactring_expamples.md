@@ -30,8 +30,11 @@ __この章の構成__
 [自動統合テストの実装](refactring_expamples.md#SS_12_15)  
   
   
-  
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+
+___
+
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](refactring_expamples.md#SS_12_end)
 
 ___
 
@@ -1147,4 +1150,6 @@ ref_async_r5に追加された機能をスクリプト言語(下記例ではbash
 ---
 
 
+
+<a id="SS_12_end"></a>
 

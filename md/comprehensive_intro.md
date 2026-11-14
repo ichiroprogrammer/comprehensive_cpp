@@ -106,7 +106,6 @@
 // @@@ essential/md/intro_notation.md #0:0 begin 0 -1
 
 ## インデックス
-___
 
 __思想__
 

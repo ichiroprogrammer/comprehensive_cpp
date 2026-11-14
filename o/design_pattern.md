@@ -61,10 +61,13 @@ __この章の構成__
   
   
 
+___
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
+
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](design_pattern.md#SS_9_end)
 
 ___
+
 
 ## イディオム <a id="SS_9_1"></a>
 
@@ -5298,4 +5301,6 @@ ViewはModelの[Observer](design_pattern.md#SS_9_4_4)であるため、ModelはV
 
 ---
 
+
+<a id="SS_9_end"></a>
 
