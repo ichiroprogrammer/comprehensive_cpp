@@ -119,7 +119,7 @@ __この章の構成__
 ___
 
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](template_meta_programming.md#SS_14_end)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](template_meta_programming.md#SS_14_999)/[次の章](dynamic_memory_allocation.md#SS_15)
 
 ___
 
@@ -177,7 +177,7 @@ ___
 ```
 
 CppLoggerFuncをクラス外の関数として実装した場合、ログ保持のための静的なオブジェクトが必要になる。
-これは避けるべきなので、「[Singleton](design_pattern.md#SS_9_3_1)」で述べた構造を導入すると、
+これは避けるべきなので、「[Singleton](design_pattern.md#SS_12_3_1)」で述べた構造を導入すると、
 
 ```cpp
     #define LOGGER(...) Logger::Inst().Set(__FILE__, __LINE__, __VA_ARGS__)
@@ -957,7 +957,7 @@ Loggerを宣言しているLoggingの3つである。
 この理由は「[two phase name lookup](core_lang_spec.md#SS_19_12_3)」の後半で詳しく解説したので、ここでは繰り返さないが、
 このようなコードを使うと、コード解析ツール等が使用できなくなることがあるため、
 避けるべきである
-(「[scan-buildによる静的解析](code_analysis.md#SS_4_2)」参照)
+(「[scan-buildによる静的解析](code_analysis.md#SS_5_2)」参照)
 。
 
 多くのプログラマは、コードに問題があるとしても、
@@ -1026,7 +1026,7 @@ clang++は「LOGGERの前にoperator<<を宣言せよ」と言っている。
 Logging::Logger::set_inner(ints)内でusing namespace Appを行えば、
 意図通りに動作させることができるが、App内のロギングは名前空間Loggingに依存するため、
 AppとLoggingが循環した依存関係を持ってしまう。
-また、LoggingはAppに対して上位概念であるため、[依存関係逆転の原則(DIP)](class_design.md#SS_8_1_5)にも反する。
+また、LoggingはAppに対して上位概念であるため、[依存関係逆転の原則(DIP)](class_design.md#SS_11_1_5)にも反する。
 よって、このアイデアを採用することはできない。
 
 #### Ints_tを構造体としてApp内に宣言する <a id="SS_14_1_6_5"></a>
@@ -1728,7 +1728,7 @@ is_void_sfinae_f_detectorのようなテンプレートに関しては大変都�
 というのは、外部から使用されたくない実装の詳細が使われてしまうことがあり得るからである。
 上記の例では、こういうことに備え
 「これは外部非公開である」ということを示す名前空間Inner\_
-(「[名前空間](programming_convention.md#SS_3_8_2)」参照)
+(「[名前空間](programming_convention.md#SS_6_8_2)」参照)
 を導入した。
 
 関数テンプレートはクラステンプレート内にも定義することができるため、
@@ -6058,7 +6058,7 @@ std::variant、上に示した関数テンプレート、ジェネリックラ�
     ASSERT_EQ('C', ret);
 ```
 
-ここで示した関数テンプレートは、デザインパターン[Visitor](design_pattern.md#SS_9_4_5)の例であり、
+ここで示した関数テンプレートは、デザインパターン[Visitor](design_pattern.md#SS_12_4_5)の例であり、
 ほぼこれと同様のものがstd::visitとして定義されている。
 
 ```cpp
@@ -6080,7 +6080,7 @@ std::variant、上に示した関数テンプレート、ジェネリックラ�
 ### クラステンプレートと継承の再帰構造 <a id="SS_14_7_3"></a>
 クラステンプレートと継承の再帰構造はCRTPと呼ばれる。
 このコードパターンについては、
-「[CRTP(curiously recurring template pattern)](design_pattern.md#SS_9_1_5)」で説明している。
+「[CRTP(curiously recurring template pattern)](design_pattern.md#SS_12_1_5)」で説明している。
 
 
 ### 意図しないname lookupの防止 <a id="SS_14_7_4"></a>
@@ -7337,7 +7337,7 @@ std::unique_ptrの第2パラメータに関数型オブジェクトの型(std::f
 第1パラメータのポインタを引数に取る関数型であれば指定できる。
 
 このようなテンプレートパラメータを持つクラステンプレートの実装例を示すため、
-「[RAII(scoped guard)](design_pattern.md#SS_9_1_3)でも示したScopedGuardの実装を下記する。
+「[RAII(scoped guard)](design_pattern.md#SS_12_1_3)でも示したScopedGuardの実装を下記する。
 
 やや意外だが、このようなテンプレートパラメータに特別な記法はなく、以下のようにすれば良い。
 
@@ -7549,7 +7549,7 @@ C++17からサポートされた「クラステンプレートのテンプレー
   それがオプションである場合は、two phase name lookupを活性化させる。
 
 * 関数型マクロはそれ以外に実装方法がない時のみに使用する
-  (「[関数型マクロ](programming_convention.md#SS_3_6_1)」参照)
+  (「[関数型マクロ](programming_convention.md#SS_6_6_1)」参照)
   。
 
 * 可変長引数を持つ関数の実装には[パラメータパック](core_lang_spec.md#SS_19_11_4)を使う。
@@ -7579,7 +7579,7 @@ C++17からサポートされた「クラステンプレートのテンプレー
   STLが特殊化を想定しているstd::hash等を除き、STLの拡張は行わない。
 
 * ユーザが定義するテンプレートは適切に定義された名前空間内で定義する
-  (「[スコープの定義と原則](programming_convention.md#SS_3_8_1)」参照)
+  (「[スコープの定義と原則](programming_convention.md#SS_6_8_1)」参照)
   。
 
 * 型とその2項演算子オーバーロードは同じ名前空間で定義する
@@ -7637,10 +7637,10 @@ C++17からサポートされた「クラステンプレートのテンプレー
 
 ---
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](template_meta_programming.md#SS_14)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](template_meta_programming.md#SS_14)/[次の章](dynamic_memory_allocation.md#SS_15)
 
 ---
 
 
-<a id="SS_14_end"></a>
+<a id="SS_14_999"></a>
 

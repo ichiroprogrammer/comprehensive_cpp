@@ -6,15 +6,15 @@
 STLの大幅な機能追加等により、この問題の軽減に成功している。
 
 * [ラムダ式](core_lang_spec.md#SS_19_10_3)
-* std::futre、std::async、std::promiseによる[Future](design_pattern.md#SS_9_2_4)パターンのサポート
+* std::futre、std::async、std::promiseによる[Future](design_pattern.md#SS_12_2_4)パターンのサポート
 * std::unique_lock、std::condition_variableによるイベント通知
-* ロック機構のRAIIのサポート(「[RAII(scoped guard)](design_pattern.md#SS_9_1_3)」参照)
+* ロック機構のRAIIのサポート(「[RAII(scoped guard)](design_pattern.md#SS_12_1_3)」参照)
 * std::atomic等によるアトミック処理の簡易化
 
-本章では、「[自動統合テスト](process_and_infra.md#SS_11_2_4)」で開発したref_async_r5を改善することによって、
+本章では、「[自動統合テスト](process_and_infra.md#SS_4_2_4)」で開発したref_async_r5を改善することによって、
 これらを用いたC++11での並行プログラミングを例示する。
 
-なお、本来であればこの章は「[デザインパターン](design_pattern.md#SS_9)」に含めるべきだろうが、
+なお、本来であればこの章は「[デザインパターン](design_pattern.md#SS_12)」に含めるべきだろうが、
 サンプルコードの説明の都合上ここに掲載することとした。
 
 ___
@@ -39,13 +39,13 @@ __この章の構成__
 ___
 
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](concurrency.md#SS_13_end)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](concurrency.md#SS_13_999)/[次の章](template_meta_programming.md#SS_14)
 
 ___
 
 
 ## ref_async_r5改善プログラムの要件 <a id="SS_13_1"></a>
-「[自動統合テスト](process_and_infra.md#SS_11_2_4)」で開発したref_async_r5は、
+「[自動統合テスト](process_and_infra.md#SS_4_2_4)」で開発したref_async_r5は、
 少なくとも以下のような並行処理にまつわる問題を持っている。
 
 1. メインスレッドのメインループがstd::getline()でブロックしてしまうため、
@@ -64,7 +64,7 @@ ___
 * プログラム名をref_async_r6(不適切だが、名前の継承とわかり易さを優先する)。
 * ref_async_r6のModelは、同時に実行できるスレッド数の上限を持たない。
 * ref_async_r5と同じ統合テスト項目
-  (「[自動統合テストのための仕様追加](refactring_expamples.md#SS_12_12)」参考)をパスしなければならない。
+  (「[自動統合テストのための仕様追加](refactring_expamples.md#SS_10_12)」参考)をパスしなければならない。
     * コマンド処理が終了したときの出力が競合してはならない。
     * ref_async_r5と同様にコマンド処理の順番はファースト・イン・ファースト・アウトとする。
 * 複数種類の同時入力に対応できる構造にする(メインスレッドがstd::getline()でブロックしない構造)。
@@ -182,7 +182,7 @@ ref_async_r6では、上記1を選択し、
 「スレッドセーフでない処理(Viewの出力)を特定の単一スレッドで行うことにより、その競合を回避する」
 例を示す。
 
-[MVC](design_pattern.md#SS_9_5_2)の構造により、Viewの出力は、Modelの状態変更(メンバー変数の変更)
+[MVC](design_pattern.md#SS_12_5_2)の構造により、Viewの出力は、Modelの状態変更(メンバー変数の変更)
 をトリガーとして(通常はそのコンテキスト上で)行われるため、
 Viewの出力が競合するのであれば、その前段のModelのメンバ変数変更も競合する。
 Viewの改善では、この両競合を同時に回避することはできないため、
@@ -455,7 +455,7 @@ DispatcherやTwoPhaseTaskPtrオブジェクトは以上の前提から、以下�
 Dispatcherは、「[TwoPhaseTaskIF(TwoPhaseTaskPtr)](concurrency.md#SS_13_2_1)」で説明した動作に加え、
 以下のような特徴、前提を持つ。
 
-* Dispatcherは、[Singleton](design_pattern.md#SS_9_3_1)として実装され、
+* Dispatcherは、[Singleton](design_pattern.md#SS_12_3_1)として実装され、
   ref_async_r6のどこからでもそのpublic関数を呼び出すことができる。
 * Dispatcher::ExecUntilStop()は、メインスレッド上でイベント待ちループを形成し、
   Dispatcher::Stop()が呼び出されると、そのループを抜ける。
@@ -672,14 +672,14 @@ TwoPhaseTaskPtrキュー管理機構は以下のようにしてTwoPhaseTaskPtr�
 
 * 排他制御1を使用し、スピンロックを実装できる(「[固定長メモリプール](dynamic_memory_allocation.md#SS_15_2_1)」参照)。
 
-* 排他制御2を使用する場合、[RAII(scoped guard)](design_pattern.md#SS_9_1_3)を使用する。
+* 排他制御2を使用する場合、[RAII(scoped guard)](design_pattern.md#SS_12_1_3)を使用する。
     * lock()/unlock()を直接ソースコードに書かない。代わりに`std::lock_guard<std::mutex>`を使用する。
 
 * 排他制御3を使用する場合、アーキテクチャに大きな影響を与えるため、
   それが必要になるのであれば、できるだけ早期に対応する。
 
 * より直感的な記述ができるため、std::thread(とstd::promiseやstd::packaged_task)
-  よりstd::asyncを優先して使用する(「[Future](design_pattern.md#SS_9_2_4)」参照)。
+  よりstd::asyncを優先して使用する(「[Future](design_pattern.md#SS_12_2_4)」参照)。
     * std::asyncを使用する場合、第1引数にはstd::launch::asyncを指定する。
     * std::thread、std::asyncから起動されるスレッドのエントリー関数オブジェクトは、
       プログラムが終了手続きに入る前にreturnさせる。
@@ -699,10 +699,10 @@ TwoPhaseTaskPtrキュー管理機構は以下のようにしてTwoPhaseTaskPtr�
 
 ---
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](concurrency.md#SS_13)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](concurrency.md#SS_13)/[次の章](template_meta_programming.md#SS_14)
 
 ---
 
 
-<a id="SS_13_end"></a>
+<a id="SS_13_999"></a>
 

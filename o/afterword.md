@@ -12,7 +12,7 @@
 ___
 
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](afterword.md#SS_23_end)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](afterword.md#SS_23_999)/[次の章](sample_code.md#SS_24)
 
 ___
 
@@ -171,10 +171,10 @@ ___
 
 ---
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](afterword.md#SS_23)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](afterword.md#SS_23)/[次の章](sample_code.md#SS_24)
 
 ---
 
 
-<a id="SS_23_end"></a>
+<a id="SS_23_999"></a>
 

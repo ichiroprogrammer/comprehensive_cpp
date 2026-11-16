@@ -241,7 +241,7 @@ __この章の構成__
 ___
 
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](core_lang_spec.md#SS_19_end)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](core_lang_spec.md#SS_19_999)/[次の章](stdlib_and_concepts.md#SS_20)
 
 ___
 
@@ -1304,7 +1304,7 @@ PODとは、 Plain Old Dataの略語であり、
 C言語の構造体のレイアウトと互換性を持つことが一般的である。
 
 ポリモーフィックなクラスは、
-仮想関数呼び出しを行う(「[オーバーライドとオーバーロードの違い](programming_convention.md#SS_3_13_1)」に注意)
+仮想関数呼び出しを行う(「[オーバーライドとオーバーロードの違い](programming_convention.md#SS_6_13_1)」に注意)
 ためのメモリレイアウトが必要になる。
 それを示すために、まずは下記のようにクラスX、Y、Zを定義する。
 
@@ -2051,7 +2051,7 @@ consteval関数の呼び出しは、その結果が定数式でなければコ�
 constinitはC++20から導入されたキーワードであり、
 静的記憶域期間（static、namespaceスコープ）またはthread_local変数が、
 コンパイル時に初期化されることを保証するために使用される。
-これにより、「[Static Initialization Order Fiasco(静的初期化順序問題)](programming_convention.md#SS_3_13_5)」を回避できる。
+これにより、「[Static Initialization Order Fiasco(静的初期化順序問題)](programming_convention.md#SS_6_13_5)」を回避できる。
 
 このキーワードを付与すると、初期化が動的である場合にはコンパイルエラーとなる。
 ただし、constexprと異なり、変数自体がconstになるわけではないため、再代入は可能である。
@@ -2215,12 +2215,12 @@ constexprラムダはC++17から導入された機能であり、以下の条件
 
 これらの特殊メンバ関数に対しての設計のガイドラインには、以下のようなものがある。
 
-* [0の原則(Rule of Zero)](class_design.md#SS_8_4_1)
-* [5の原則(Rule of Five)](class_design.md#SS_8_4_2)
+* [0の原則(Rule of Zero)](class_design.md#SS_11_4_1)
+* [5の原則(Rule of Five)](class_design.md#SS_11_4_2)
 
 この2つの原則(ガイドライン)の使い分けに関しては、
 
-* リソース管理を外部([RAII(scoped guard)](design_pattern.md#SS_9_1_3)クラス)に任せられる場合: 0の法則を採用し、特殊メンバ関数を明示的に定義しない。
+* リソース管理を外部([RAII(scoped guard)](design_pattern.md#SS_12_1_3)クラス)に任せられる場合: 0の法則を採用し、特殊メンバ関数を明示的に定義しない。
 * リソースをクラス内で直接管理する場合: 5の法則を採用し、すべての特殊メンバ関数を適切に定義する。
 
 とすることで安全で保守性性の高いコードを設計できる。
@@ -3059,8 +3059,8 @@ rvalueをバインドするリファレンスが存在しない状態で、
 そのrvalueがメンバ変数へのリファレンスを返す関数を呼び出し、
 そのリファレンスをバインドするリファレンス変数を初期化した場合、
 リファレンスが指すオブジェクトはすでにライフタイムを終了している。
-このような状態のリファレンスを[danglingリファレンス](programming_convention.md#SS_3_13_2)と呼ぶ。
-同様に、このような状態のポインタを[danglingポインタ](programming_convention.md#SS_3_13_3)と呼ぶ。
+このような状態のリファレンスを[danglingリファレンス](programming_convention.md#SS_6_13_2)と呼ぶ。
+同様に、このような状態のポインタを[danglingポインタ](programming_convention.md#SS_6_13_3)と呼ぶ。
 
 ### プレースメントnew <a id="SS_19_6_9"></a>
 プレースメントnewは、既に確保済みの生ストレージ上で、
@@ -3361,7 +3361,7 @@ rvalueリファレンスは、
 
 * C++11で導入されたシンタックスであり、任意の型Tに対して、`T&&`で宣言される。
 * 「テンポラリオブジェクト([rvalue](core_lang_spec.md#SS_19_7_1_2))」をバインドできるリファレンス。
-* C++11の[moveセマンティクス](class_design.md#SS_8_3_3)と[perfect forwarding](core_lang_spec.md#SS_19_8_5)を実現するために導入された。
+* C++11の[moveセマンティクス](class_design.md#SS_11_3_3)と[perfect forwarding](core_lang_spec.md#SS_19_8_5)を実現するために導入された。
 * **注意1** 型が`T&&`である変数の値カテゴリは[lvalue](core_lang_spec.md#SS_19_7_1_1)である。
 * **注意2** 型が`T&&`である変数は、`T&`でバインドできる。
 
@@ -3424,7 +3424,7 @@ ref_refの型は`int &&`であるが、ref_refの値カテゴリは[rvalue](core
 rvalueリファレンス型の仮引数（`T&&`）を持つ関数は、ムーブコンストラクタやムーブ代入演算子など頻繁に使用される。
 しかし、関数内では仮引数は名前を持つため、常にlvalueとして扱われる。
 この動作を理解することは、
-[moveセマンティクス](class_design.md#SS_8_3_3)や[perfect forwarding](core_lang_spec.md#SS_19_8_5)を正しく実装/使用するために極めて重要である。
+[moveセマンティクス](class_design.md#SS_11_3_3)や[perfect forwarding](core_lang_spec.md#SS_19_8_5)を正しく実装/使用するために極めて重要である。
 
 ```cpp
     //  example/core_lang_spec/rvalue_lvalue_ut.cpp 150
@@ -7204,7 +7204,7 @@ tryブロック内でエクセプションが投げられると、制御はtry�
 エクセプションのtry-catchは[関数tryブロック](core_lang_spec.md#SS_19_13_2)によっても実装できる。
 
 一般にエクセプションオブジェクトのcatchには上記ののコード例のように`T const&`を使用することが好ましい。
-これにより、エクセプションオブジェクトの[スライシング](class_design.md#SS_8_3_4_3)を避けることができる。
+これにより、エクセプションオブジェクトの[スライシング](class_design.md#SS_11_3_4_3)を避けることができる。
 
 ### 関数tryブロック <a id="SS_19_13_2"></a>
 関数tryブロックとはtry-catchを本体とした下記のような関数のブロックを指す。
@@ -7285,7 +7285,7 @@ catchブロック内でエクセプション処理を完了できない場合、
 ```
 
 再throwには`throw;`と`throw e;`の2つの記法があるが、上記のように`throw;`を使用すべきである。
-`throw e;`では、元のエクセプションオブジェクトが[スライシング](class_design.md#SS_8_3_4_3)される可能性があるためである。
+`throw e;`では、元のエクセプションオブジェクトが[スライシング](class_design.md#SS_11_3_4_3)される可能性があるためである。
 `throw;`は元のエクセプションオブジェクトをそのまま保持して再送出する。
 
 ### catch-all <a id="SS_19_13_5"></a>
@@ -7711,10 +7711,10 @@ RVOとはこのような最適化を指す。
 ```
 ---
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](core_lang_spec.md#SS_19)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](core_lang_spec.md#SS_19)/[次の章](stdlib_and_concepts.md#SS_20)
 
 ---
 
 
-<a id="SS_19_end"></a>
+<a id="SS_19_999"></a>
 
