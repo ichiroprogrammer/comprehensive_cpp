@@ -69,7 +69,7 @@ __この章の構成__
 
 ___
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](glossary.md#SS_21_end)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](glossary.md#SS_21_999)/[次の章](exercise_q.md#SS_22)
 
 ___
 
@@ -137,7 +137,7 @@ C++でのOOPでは、DerivedはBaseのpublic継承として定義される。
     };
 ```
 
-bird::flyのオーバーライド関数(penguin::fly)について、[リスコフの置換原則(LSP)](class_design.md#SS_8_1_3)に反した例を下記する。
+bird::flyのオーバーライド関数(penguin::fly)について、[リスコフの置換原則(LSP)](class_design.md#SS_11_1_3)に反した例を下記する。
 
 ```cpp
     //  example/glossary/class_relation_ut.cpp 50
@@ -442,7 +442,7 @@ REPは「まとめる方向性の根拠」になり得る。
 ### 共通閉鎖の原則(CCP) <a id="SS_21_2_2"></a>
 CCPとは、Common Closure Principle(共通閉鎖の原則)の略称であり、
 同じ理由・同じタイミングで変更されるものを一つのライブラリに集める原則である。
-[単一責任の原則(SRP)](class_design.md#SS_8_1_1)をライブラリ粒度へ拡大したもので、
+[単一責任の原則(SRP)](class_design.md#SS_11_1_1)をライブラリ粒度へ拡大したもので、
 「このライブラリが変更される理由は一つである」と言える状態を目指す。
 ある仕様変更の影響が単一ライブラリの中に閉じる（closure）ことを狙う。
 CCPは、[リリース等価の原則(REP)](glossary.md#SS_21_2_1)と同様に「パッケージをまとめることの根拠」になり得る。
@@ -451,7 +451,7 @@ CCPは、[リリース等価の原則(REP)](glossary.md#SS_21_2_1)と同様に�
 CRPとは、Common Reuse Principle(共通再利用の原則)の略称であり、
 一緒に再利用されないものを同じライブラリに入れない原則である。利用側が一部の機能のためにリンクしたとき、
 使わない機能や、それが連れてくる依存まで巻き込まれないようにする。
-[インターフェース分離の原則(ISP)](class_design.md#SS_8_1_4)をライブラリ粒度へ適用したものに相当する。
+[インターフェース分離の原則(ISP)](class_design.md#SS_11_1_4)をライブラリ粒度へ適用したものに相当する。
 [リリース等価の原則(REP)](glossary.md#SS_21_2_1)/[共通閉鎖の原則(CCP)](glossary.md#SS_21_2_2)とは逆に、「パッケージを分割することの根拠」になり得る。
 
 
@@ -539,7 +539,7 @@ package/
 - **REP は提供側の問い**: 「これらを一つの製品として、一つのバージョン番号・一本のリリースノートで出して筋が通るか？」。  
   関心事はバージョン管理とリリース工程。  
 - **CRP は利用側の問い**: 「利用者はこれを丸ごと使うか。使わない物まで巻き込ませていないか？」。  
-  パッケージ版の[インターフェース分離の原則(ISP)](class_design.md#SS_8_1_4)と考えて差し支えない。
+  パッケージ版の[インターフェース分離の原則(ISP)](class_design.md#SS_11_1_4)と考えて差し支えない。
 
 判別のコツは**片方のルールだけをやぶる例**で考えることである。  
 [例]:  
@@ -853,7 +853,7 @@ C++11では、スピンロックは[std::atomic](stdlib_and_concepts.md#SS_20_4_
 複数のクラスに対して特定の機能やメソッドを提供するための設計パターンである。
 「混ぜ込む（mix in）」という名称が示すとおり、既存のクラスに機能を追加する目的で使用される。
 
-C++では[CRTP(curiously recurring template pattern)](design_pattern.md#SS_9_1_5)や通常の継承によってミックスインを実現する。
+C++では[CRTP(curiously recurring template pattern)](design_pattern.md#SS_12_1_5)や通常の継承によってミックスインを実現する。
 
 ---
 
@@ -941,8 +941,8 @@ MISRA-CやAUTOSAR等のコーディング標準ではunbounded functionの使用
 * [凝集性の欠如](glossary.md#SS_21_5_15_1)メトリクスの値が100に近ければ凝集性は低く、この値が0に近ければ凝集性は高い。
 * メンバ変数やメンバ関数が多くなれば、凝集性は低くなりやすい。
 * 凝集性は、クラスのメンバがどれだけ一貫した責任を持つかを示す。
-* 「[単一責任の原則(SRP)](class_design.md#SS_8_1_1)」を守ると凝集性は高くなりやすい。
-* 「[Accessor](design_pattern.md#SS_9_1_6)」を多用すれば、振る舞いが分散しがちになるため、通常、凝集性は低くなる。
+* 「[単一責任の原則(SRP)](class_design.md#SS_11_1_1)」を守ると凝集性は高くなりやすい。
+* 「[Accessor](design_pattern.md#SS_12_1_6)」を多用すれば、振る舞いが分散しがちになるため、通常、凝集性は低くなる。
    従って、下記のようなクラスは凝集性が低い。言い換えれば、凝集性を下げることなく、
    より小さいクラスに分割できる。
    なお、以下のクラスでは、実際に計測すると、[PercentLackOfCohesion](glossary.md#SS_21_5_15_3)が100に近い値となっている。
@@ -969,7 +969,7 @@ MISRA-CやAUTOSAR等のコーディング標準ではunbounded functionの使用
 ```
 
 良く設計されたクラスは、下記のようにメンバが結合しあっているため凝集性が高い
-(ただし、「[Immutable](design_pattern.md#SS_9_1_7)」の観点からは、QuadraticEquation::Set()がない方が良い)。
+(ただし、「[Immutable](design_pattern.md#SS_12_1_7)」の観点からは、QuadraticEquation::Set()がない方が良い)。
 言い換えれば、凝集性を落とさずにクラスを分割することは難しい。
 なお、上記の凝集性を欠くクラスを凝集性が高くなるように修正した例を以下に示す。
 
@@ -1238,10 +1238,10 @@ DAGとは、Directed Acyclic Graph([有向非循環グラフ](https://ja.wikiped
 
 ---
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](glossary.md#SS_21)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](glossary.md#SS_21)/[次の章](exercise_q.md#SS_22)
 
 ---
 
 
-<a id="SS_21_end"></a>
+<a id="SS_21_999"></a>
 

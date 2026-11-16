@@ -158,20 +158,23 @@ __思想__
 
 __プロジェクト運用__
 
-- [アーキテクチャ](architecture.md#SS_10)
-- [開発プロセスとインフラ](process_and_infra.md#SS_11)
-- [リファクタリングの例](refactring_expamples.md#SS_12)
-- [プログラミング規約](programming_convention.md#SS_3)
-- [コード解析](code_analysis.md#SS_4)
-- [コーディングスタイル](coding_style.md#SS_5)
-- [命名規則](naming_practice.md#SS_6)
-- [コメント](comment.md#SS_7)
+- [アーキテクチャ](architecture.md#SS_3)
+- [開発プロセスとインフラ](process_and_infra.md#SS_4)
+- [コード解析](code_analysis.md#SS_5)
+
+__プログラミング__
+
+- [プログラミング規約](programming_convention.md#SS_6)
+- [コーディングスタイル](coding_style.md#SS_7)
+- [命名規則](naming_practice.md#SS_8)
+- [コメント](comment.md#SS_9)
+- [リファクタリングの例](refactring_expamples.md#SS_10)
 
 
 __パターン__
 
-- [クラス設計](class_design.md#SS_8)
-- [デザインパターン](design_pattern.md#SS_9)
+- [クラス設計](class_design.md#SS_11)
+- [デザインパターン](design_pattern.md#SS_12)
 - [並行処理](concurrency.md#SS_13)
 - [テンプレートメタプログラミング](template_meta_programming.md#SS_14)
 - [ダイナミックメモリアロケーション](dynamic_memory_allocation.md#SS_15)

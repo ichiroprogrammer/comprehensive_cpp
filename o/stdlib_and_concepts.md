@@ -87,7 +87,7 @@ __この章の構成__
 ___
 
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](stdlib_and_concepts.md#SS_20_end)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](stdlib_and_concepts.md#SS_20_999)/[次の章](glossary.md#SS_21)
 
 ___
 
@@ -127,7 +127,7 @@ std::moveは引数を[rvalueリファレンス](core_lang_spec.md#SS_19_8_2)に�
 std::moveは以下の２つの概念ときわめて密接に関連しており、
 
 * [rvalueリファレンス](core_lang_spec.md#SS_19_8_2)
-* [moveセマンティクス](class_design.md#SS_8_3_3)
+* [moveセマンティクス](class_design.md#SS_11_3_3)
 
 これら3つが組み合わさることで、不要なコピーを避けた高効率なリソース管理が実現される。
 
@@ -435,7 +435,7 @@ CopyAssignable要件は、C++において型がcopy代入をサポートする�
    代入後、代入先のオブジェクトの値は代入元のオブジェクトの値と一致していなければならない。
 
 3. 正しいセマンティクス  
-   copy代入によって代入元のオブジェクトが変更されてはならない(「[copyセマンティクス](class_design.md#SS_8_3_2)」に注意)。
+   copy代入によって代入元のオブジェクトが変更されてはならない(「[copyセマンティクス](class_design.md#SS_11_3_2)」に注意)。
    代入先のオブジェクトが保持していたリソース(例: メモリ)は適切に解放される必要がある。
 
 4. デフォルト実装  
@@ -465,7 +465,7 @@ move代入はリソースを効率的に転送する操作であり、以下の�
 
 4. 効率性  
    move代入は通常、copy代入よりも効率的であることが求められる。
-   これは、リソースの複製を避けることで達成される(「[moveセマンティクス](class_design.md#SS_8_3_3)」参照)。
+   これは、リソースの複製を避けることで達成される(「[moveセマンティクス](class_design.md#SS_11_3_3)」参照)。
 
 5. デフォルト実装  
    move代入演算子が明示的に定義されていない場合でも、
@@ -1295,7 +1295,7 @@ Xと修正版Yの単体テストによりメモリーリークが修正された
 - オブジェクトが既に解放されている場合は`lock()`が空の`shared_ptr`を返すため、安全に処理できる
 
 #### std::auto_ptr <a id="SS_20_6_1_5"></a>
-`std::auto_ptr`はC++11以前に導入された初期のスマートポインタであるが、異常な[copyセマンティクス](class_design.md#SS_8_3_2)を持つため、
+`std::auto_ptr`はC++11以前に導入された初期のスマートポインタであるが、異常な[copyセマンティクス](class_design.md#SS_11_3_2)を持つため、
 多くの誤用を生み出し、C++11から非推奨とされ、C++17から規格から排除された。
 
 
@@ -2584,7 +2584,7 @@ std::variant自身では、オブジェクトのダイナミックな生成が�
     ASSERT_FLOAT_EQ(std::get<2>(var), 1.0);  // 2番目の型の値を取得
 ```
 
-std::variantとstd::visit([Visitor](design_pattern.md#SS_9_4_5)パターンの実装の一種)を組み合わせた場合の使用例を以下に示す。
+std::variantとstd::visit([Visitor](design_pattern.md#SS_12_4_5)パターンの実装の一種)を組み合わせた場合の使用例を以下に示す。
 
 ```cpp
     //  example/stdlib_and_concepts/variant_ut.cpp 37
@@ -2755,10 +2755,10 @@ new/deleteの呼び出しをまとめたり省略したりすることができ�
 
 ---
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](stdlib_and_concepts.md#SS_20)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](stdlib_and_concepts.md#SS_20)/[次の章](glossary.md#SS_21)
 
 ---
 
 
-<a id="SS_20_end"></a>
+<a id="SS_20_999"></a>
 

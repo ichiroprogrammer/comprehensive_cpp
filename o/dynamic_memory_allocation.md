@@ -54,7 +54,7 @@ __この章の構成__
 ___
 
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](dynamic_memory_allocation.md#SS_15_end)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](dynamic_memory_allocation.md#SS_15_999)/[次の章](debug.md#SS_16)
 
 ___
 
@@ -1058,7 +1058,7 @@ size2indexは要求されたサイズから、
 そのような場合、非スタック上でのオブジェクト生成には、
 
 * 限定的なクラスのみ、newによる動的な方法を用いる
-* その他のクラスに対しては、[Singleton](design_pattern.md#SS_9_3_1)や[Named Constructor](design_pattern.md#SS_9_3_2)と同様な静的な方法を用いる
+* その他のクラスに対しては、[Singleton](design_pattern.md#SS_12_3_1)や[Named Constructor](design_pattern.md#SS_12_3_2)と同様な静的な方法を用いる
 
 とし、グローバルnewを使用しないことが、より良いメモリ使用方法となり得る。
 
@@ -1145,7 +1145,7 @@ size2indexは要求されたサイズから、
 
 を記述しなければならず、コードクローンの温床となってしまう。
 これを避けるためには、
-[CRTP(curiously recurring template pattern)](design_pattern.md#SS_9_1_5)
+[CRTP(curiously recurring template pattern)](design_pattern.md#SS_12_1_5)
 を利用した下記のようなクラステンプレートを導入すれば良い。
 
 ```cpp
@@ -1416,10 +1416,10 @@ C++17以降では、[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_
 
 ---
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](dynamic_memory_allocation.md#SS_15)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](dynamic_memory_allocation.md#SS_15)/[次の章](debug.md#SS_16)
 
 ---
 
 
-<a id="SS_15_end"></a>
+<a id="SS_15_999"></a>
 

@@ -132,7 +132,7 @@ __この章の構成__
 ___
 
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](exercise_a.md#SS_23_end)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](exercise_a.md#SS_23_999)/[次の章](bibliography.md#SS_24)
 
 ___
 
@@ -141,7 +141,7 @@ ___
 
 ### 解答-汎整数型の選択 <a id="SS_23_1_1"></a>
 * 選択肢3
-* 参照 [算術型](programming_convention.md#SS_3_1_1)
+* 参照 [算術型](programming_convention.md#SS_6_1_1)
 * 解説  
   代入する小さい整数に合わせて8ビット型や16ビット型を使うと、
   それら同士の演算時にint昇格が起こり、わかりづらいバグを生むことがある。  
@@ -306,7 +306,7 @@ ___
 
 ### 解答-constの意味 <a id="SS_23_1_8"></a>
 * 選択肢1
-* 参照 [const/constexprインスタンス](programming_convention.md#SS_3_1_9)
+* 参照 [const/constexprインスタンス](programming_convention.md#SS_6_1_9)
 * [演習-constの意味](exercise_q.md#SS_22_1_8)へ戻る。
 
 
@@ -418,7 +418,7 @@ ___
 
 ### 解答-vector初期化 <a id="SS_23_1_14"></a>
 * 選択肢1
-* 参照 [インスタンスの初期化](programming_convention.md#SS_3_1_12)
+* 参照 [インスタンスの初期化](programming_convention.md#SS_6_1_12)
 * [演習-vector初期化](exercise_q.md#SS_22_1_14)へ戻る。
 
 
@@ -468,7 +468,7 @@ ___
 
 ### 解答-凝集性の意味 <a id="SS_23_2_1"></a>
 * 選択肢4
-* 参照 [凝集性](programming_convention.md#SS_3_2_2_3)
+* 参照 [凝集性](programming_convention.md#SS_6_2_2_3)
 * [演習-凝集性の意味](exercise_q.md#SS_22_2_1)へ戻る。
 
 
@@ -519,13 +519,13 @@ ___
 
 ### 解答-メンバ変数の初期化方法の選択 <a id="SS_23_2_3"></a>
 * 選択肢2
-* 参照 [非静的なメンバ変数](programming_convention.md#SS_3_2_5_2)
+* 参照 [非静的なメンバ変数](programming_convention.md#SS_6_2_5_2)
 * [演習-メンバ変数の初期化方法の選択](exercise_q.md#SS_22_2_3)へ戻る。
 
 
 ### 解答-メンバの型 <a id="SS_23_2_4"></a>
 * 選択肢3
-* 参照 [インスタンスの初期化](programming_convention.md#SS_3_1_12)
+* 参照 [インスタンスの初期化](programming_convention.md#SS_6_1_12)
 * 解説  
   関数の宣言と、クラスのデフォルトコンストラクタ呼び出しによるオブジェクトの生成は、
   プログラマを混乱させることがあるので注意が必要である。
@@ -1081,7 +1081,7 @@ ___
 
 ### 解答-オーバーライド関数の修飾 <a id="SS_23_3_8"></a>
 * 選択肢2
-* 参照 [オーバーライド](programming_convention.md#SS_3_2_4_7)
+* 参照 [オーバーライド](programming_convention.md#SS_6_2_4_7)
 * [演習-オーバーライド関数の修飾](exercise_q.md#SS_22_3_8)へ戻る。
 
 
@@ -1219,7 +1219,7 @@ ___
 
 ### 解答-エクセプションの型 <a id="SS_23_3_13"></a>
 * 選択肢2
-* 参照 [エクセプション処理](programming_convention.md#SS_3_3_10)
+* 参照 [エクセプション処理](programming_convention.md#SS_6_3_10)
 * 解説  
   下記3つを統合して考えれば、必然的に「選択肢2」であることがわかる。
     * エクセプションでthrowされるオブジェクトのポインタがnullptrになることはない。
@@ -1492,7 +1492,7 @@ ___
 
 ### 解答-キャスト <a id="SS_23_5_5"></a>
 * 選択肢3  
-* 参照 [キャスト、暗黙の型変換](programming_convention.md#SS_3_5_10)
+* 参照 [キャスト、暗黙の型変換](programming_convention.md#SS_6_5_10)
 * 解説  
   reinterpret_castも避けるべきであるが、組み込みソフト等でのハードウエアアドレスの記述等には、
   使わざるを得ない。
@@ -1503,7 +1503,7 @@ ___
 
 ### 解答-usingディレクティブ <a id="SS_23_6_1"></a>
 * 選択肢1
-* 参照 [using宣言/usingディレクティブ](programming_convention.md#SS_3_8_3)
+* 参照 [using宣言/usingディレクティブ](programming_convention.md#SS_6_8_3)
 * [演習-usingディレクティブ](exercise_q.md#SS_22_6_1)へ戻る。
 
 
@@ -1511,7 +1511,7 @@ ___
 
 ### 解答-アサーションの選択 <a id="SS_23_7_1"></a>
 * 選択肢1
-* 参照 [assertion](programming_convention.md#SS_3_11_1)
+* 参照 [assertion](programming_convention.md#SS_6_11_1)
 * [演習-アサーションの選択](exercise_q.md#SS_22_7_1)へ戻る。
 
 
@@ -2419,7 +2419,7 @@ ___
     * ISP - 4
     * DIP - 5
 
-* 参照 [SOLID](class_design.md#SS_8_1)
+* 参照 [SOLID](class_design.md#SS_11_1)
 * [演習-SOLIDの定義](exercise_q.md#SS_22_8_6)へ戻る。
 
 
@@ -2648,7 +2648,7 @@ ___
 
 ### 解答-Accessorの副作用 <a id="SS_23_9_4"></a>
 * 選択肢1
-* 参照 [Accessor](design_pattern.md#SS_9_1_6)
+* 参照 [Accessor](design_pattern.md#SS_12_1_6)
 * [演習-Accessorの副作用](exercise_q.md#SS_22_9_4)へ戻る。
 
 
@@ -3228,7 +3228,7 @@ ___
 
 ### 解答-RAIIの効果 <a id="SS_23_9_10"></a>
 * 選択肢1
-* 参照 [RAII(scoped guard)](design_pattern.md#SS_9_1_3)
+* 参照 [RAII(scoped guard)](design_pattern.md#SS_12_1_3)
 * [演習-RAIIの効果](exercise_q.md#SS_22_9_10)へ戻る。
 
 
@@ -4878,19 +4878,19 @@ ___
 
 ### 解答-デザインパターン選択1 <a id="SS_23_9_25"></a>
 * 選択肢2
-* 参照 [State](design_pattern.md#SS_9_4_3)
+* 参照 [State](design_pattern.md#SS_12_4_3)
 * [演習-デザインパターン選択1](exercise_q.md#SS_22_9_25)へ戻る。
 
 
 ### 解答-デザインパターン選択2 <a id="SS_23_9_26"></a>
 * 選択肢4
-* 参照 [Null Object](design_pattern.md#SS_9_2_5)
+* 参照 [Null Object](design_pattern.md#SS_12_2_5)
 * [演習-デザインパターン選択2](exercise_q.md#SS_22_9_26)へ戻る。
 
 
 ### 解答-デザインパターン選択3 <a id="SS_23_9_27"></a>
 * 選択肢3
-* 参照 [Observer](design_pattern.md#SS_9_4_4)
+* 参照 [Observer](design_pattern.md#SS_12_4_4)
 * [演習-デザインパターン選択3](exercise_q.md#SS_22_9_27)へ戻る。
 
 
@@ -4902,7 +4902,7 @@ ___
     * B - 2
     * C - 3
 
-* 参照 [プロセス](process_and_infra.md#SS_11_1)
+* 参照 [プロセス](process_and_infra.md#SS_4_1)
 * [演習-プロセス分類](exercise_q.md#SS_22_10_1)へ戻る。
 
 
@@ -4913,13 +4913,13 @@ ___
     * フェーズC - 3
     * フェーズD - 1
 
-* 参照 [ウォーターフォールモデル、V字モデル](process_and_infra.md#SS_11_1_1)
+* 参照 [ウォーターフォールモデル、V字モデル](process_and_infra.md#SS_4_1_1)
 * [演習-V字モデル](exercise_q.md#SS_22_10_2)へ戻る。
 
 
 ### 解答-アジャイル <a id="SS_23_10_3"></a>
 * 選択肢2
-* 参照 [アジャイル系プロセス](process_and_infra.md#SS_11_1_2)
+* 参照 [アジャイル系プロセス](process_and_infra.md#SS_4_1_2)
 * [演習-アジャイル](exercise_q.md#SS_22_10_3)へ戻る。
 
 
@@ -4929,31 +4929,31 @@ ___
     * B - 4
     * C - 5
 
-* 参照 [自動単体テスト](process_and_infra.md#SS_11_2_1)
+* 参照 [自動単体テスト](process_and_infra.md#SS_4_2_1)
 * [演習-自動化](exercise_q.md#SS_22_10_4)へ戻る。
 
 
 ### 解答-単体テスト <a id="SS_23_10_5"></a>
 * 選択肢4
-* 参照 [自動単体テスト](process_and_infra.md#SS_11_2_1)
+* 参照 [自動単体テスト](process_and_infra.md#SS_4_2_1)
 * [演習-単体テスト](exercise_q.md#SS_22_10_5)へ戻る。
 
 
 ### 解答-リファクタリングに付随する活動 <a id="SS_23_10_6"></a>
 * 選択肢2
-* 参照 [リファクタリング](process_and_infra.md#SS_11_2_2)
+* 参照 [リファクタリング](process_and_infra.md#SS_4_2_2)
 * [演習-リファクタリングに付随する活動](exercise_q.md#SS_22_10_6)へ戻る。
 
 
 ### 解答-リファクタリング対象コード <a id="SS_23_10_7"></a>
 * 選択肢3
-* 参照 [リファクタリング](process_and_infra.md#SS_11_2_2)
+* 参照 [リファクタリング](process_and_infra.md#SS_4_2_2)
 * [演習-リファクタリング対象コード](exercise_q.md#SS_22_10_7)へ戻る。
 
 
 ### 解答-CI <a id="SS_23_10_8"></a>
 * 選択肢2, 4
-* 参照 [CI(継続的インテグレーション)](process_and_infra.md#SS_11_2_5)
+* 参照 [CI(継続的インテグレーション)](process_and_infra.md#SS_4_2_5)
 * [演習-CI](exercise_q.md#SS_22_10_8)へ戻る。
 
 
@@ -5654,10 +5654,10 @@ ___
 
 ---
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](exercise_a.md#SS_23)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](exercise_a.md#SS_23)/[次の章](bibliography.md#SS_24)
 
 ---
 
 
-<a id="SS_23_end"></a>
+<a id="SS_23_999"></a>
 

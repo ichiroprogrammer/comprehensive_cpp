@@ -33,7 +33,7 @@ __この章の構成__
 ___
 
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](exercise_q.md#SS_22_end)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](exercise_q.md#SS_22_999)/[次の章](exercise_a.md#SS_23)
 
 ___
 
@@ -73,7 +73,7 @@ ___
     }
 ```
 
-* 参照 [算術型](programming_convention.md#SS_3_1_1)
+* 参照 [算術型](programming_convention.md#SS_6_1_1)
 * [解答例-汎整数型の演算](exercise_a.md#SS_23_1_2)
 
 
@@ -96,7 +96,7 @@ ___
     }
 ```
 
-* 参照 [浮動小数点型](programming_convention.md#SS_3_1_1_5)
+* 参照 [浮動小数点型](programming_convention.md#SS_6_1_1_5)
 * [解答例-浮動小数点型](exercise_a.md#SS_23_1_3)
 
 
@@ -181,7 +181,7 @@ ___
     }
 ```
 
-* 参照 [配列](programming_convention.md#SS_3_1_7)
+* 参照 [配列](programming_convention.md#SS_6_1_7)
 * [解答例-配列の範囲for文](exercise_a.md#SS_23_1_6)
 
 
@@ -201,7 +201,7 @@ ___
 
 ```
 
-* 参照 [型エイリアス](programming_convention.md#SS_3_1_8)
+* 参照 [型エイリアス](programming_convention.md#SS_6_1_8)
 * [解答例-エイリアス](exercise_a.md#SS_23_1_7)
 
 
@@ -264,7 +264,7 @@ ___
     }
 ```
 
-* 参照 [const/constexprインスタンス](programming_convention.md#SS_3_1_9)
+* 参照 [const/constexprインスタンス](programming_convention.md#SS_6_1_9)
 * [解答例-const/constexpr](exercise_a.md#SS_23_1_9)
 
 
@@ -289,7 +289,7 @@ ___
     }
 ```
 
-* 参照 [const/constexprインスタンス](programming_convention.md#SS_3_1_9)
+* 参照 [const/constexprインスタンス](programming_convention.md#SS_6_1_9)
 * [解答例-危険なconst_cast](exercise_a.md#SS_23_1_10)
 
 
@@ -423,7 +423,7 @@ ___
     }
 ```
 
-* 参照 [インスタンスの初期化](programming_convention.md#SS_3_1_12)、[一様初期化](core_lang_spec.md#SS_19_6_6)
+* 参照 [インスタンスの初期化](programming_convention.md#SS_6_1_12)、[一様初期化](core_lang_spec.md#SS_19_6_6)
 * [解答例-インスタンスの初期化](exercise_a.md#SS_23_1_15)
 
 
@@ -491,7 +491,7 @@ ___
     }
 ```
 
-* 参照 [凝集性](programming_convention.md#SS_3_2_2_3)
+* 参照 [凝集性](programming_convention.md#SS_6_2_2_3)
 * [解答例-凝集性の向上](exercise_a.md#SS_23_2_2)
 
 
@@ -593,7 +593,7 @@ ___
     }
 ```
 
-* 参照 [非静的なメンバ変数](programming_convention.md#SS_3_2_5_2)
+* 参照 [非静的なメンバ変数](programming_convention.md#SS_6_2_5_2)
 * [解答例-メンバ変数の初期化](exercise_a.md#SS_23_2_5)
 
 
@@ -646,7 +646,7 @@ ___
     }
 ```
 
-* 参照 [スライシング](class_design.md#SS_8_3_4_3)
+* 参照 [スライシング](class_design.md#SS_11_3_4_3)
 * [解答例-スライシング](exercise_a.md#SS_23_2_6)
 
 ### 演習-オブジェクトの所有権 <a id="SS_22_2_7"></a>
@@ -752,7 +752,7 @@ ___
     }
 ```
 
-* 参照 [非メンバ関数](programming_convention.md#SS_3_3_12)
+* 参照 [非メンバ関数](programming_convention.md#SS_6_3_12)
 * [解答例-非メンバ関数の宣言](exercise_a.md#SS_23_3_1)
 
 
@@ -818,7 +818,7 @@ ___
     }
 ```
 
-* 参照 [メンバ関数](programming_convention.md#SS_3_2_4)
+* 参照 [メンバ関数](programming_convention.md#SS_6_2_4)
 * [解答例-メンバ関数の修飾](exercise_a.md#SS_23_3_2)
 
 
@@ -833,7 +833,7 @@ ___
     class AutoGen {};
 ```
 
-* 参照 [特殊メンバ関数](programming_convention.md#SS_3_2_4_1)
+* 参照 [特殊メンバ関数](programming_convention.md#SS_6_2_4_1)
 * [解答例-特殊メンバ関数の削除](exercise_a.md#SS_23_3_3)
 
 
@@ -884,7 +884,7 @@ ___
     }
 ```
 
-* 参照 [コンストラクタ](programming_convention.md#SS_3_2_4_2)
+* 参照 [コンストラクタ](programming_convention.md#SS_6_2_4_2)
 * [解答例-委譲コンストラクタ](exercise_a.md#SS_23_3_4)
 
 
@@ -951,7 +951,7 @@ ___
     #endif
 ```
 
-* 参照 [コンストラクタ](programming_convention.md#SS_3_2_4_2)
+* 参照 [コンストラクタ](programming_convention.md#SS_6_2_4_2)
 * [解答例-copyコンストラクタ](exercise_a.md#SS_23_3_5)
 
 
@@ -965,7 +965,7 @@ ___
     // クラスIntegerHolder2を作成し、単体テストを行え。
 ```
 
-* 参照 [moveコンストラクタ、move代入演算子](programming_convention.md#SS_3_2_4_4)
+* 参照 [moveコンストラクタ、move代入演算子](programming_convention.md#SS_6_2_4_4)
 * [解答例-moveコンストラクタ](exercise_a.md#SS_23_3_6)
 
 
@@ -1014,7 +1014,7 @@ ___
     }
 ```
 
-* 参照 [関数構造のクライテリア](programming_convention.md#SS_3_3_1)
+* 参照 [関数構造のクライテリア](programming_convention.md#SS_6_3_1)
 * [解答例-関数分割](exercise_a.md#SS_23_3_7)
 
 
@@ -1075,7 +1075,7 @@ ___
     }
 ```
 
-* 参照 [オーバーライド](programming_convention.md#SS_3_2_4_7)
+* 参照 [オーバーライド](programming_convention.md#SS_6_2_4_7)
 * [解答例-オーバーライド/オーバーロード](exercise_a.md#SS_23_3_9)
 
 
@@ -1096,7 +1096,7 @@ ___
     }
 ```
 
-* 参照 [オーバーロード](programming_convention.md#SS_3_3_3)
+* 参照 [オーバーロード](programming_convention.md#SS_6_3_3)
 * [解答例-オーバーロードによる誤用防止](exercise_a.md#SS_23_3_10)
 
 
@@ -1133,7 +1133,7 @@ ___
     }
 ```
 
-* 参照 [実引数/仮引数](programming_convention.md#SS_3_3_5)
+* 参照 [実引数/仮引数](programming_convention.md#SS_6_3_5)
 * [解答例-仮引数の修飾](exercise_a.md#SS_23_3_11)
 
 
@@ -1240,7 +1240,7 @@ ___
     }
 ```
 
-* 参照 [ラムダ式](programming_convention.md#SS_3_4_9)
+* 参照 [ラムダ式](programming_convention.md#SS_6_4_9)
 * [解答例-ラムダ式](exercise_a.md#SS_23_4_2)
 
 
@@ -1276,7 +1276,7 @@ ___
     }
 ```
 
-* 参照 [ラムダ式](programming_convention.md#SS_3_4_9)
+* 参照 [ラムダ式](programming_convention.md#SS_6_4_9)
 * [解答例-ラムダ式のキャプチャ](exercise_a.md#SS_23_4_3)
 
 ## プログラミング規約(演算子) <a id="SS_22_5"></a>
@@ -1305,7 +1305,7 @@ ___
     }
 ```
 
-* 参照 [条件演算子](programming_convention.md#SS_3_5_5)
+* 参照 [条件演算子](programming_convention.md#SS_6_5_5)
 * [解答例-条件演算子](exercise_a.md#SS_23_5_1)
 
 
@@ -1375,7 +1375,7 @@ ___
     }
 ```
 
-* 参照 [delete](programming_convention.md#SS_3_5_6_2)
+* 参照 [delete](programming_convention.md#SS_6_5_6_2)
 * [解答例-delete](exercise_a.md#SS_23_5_2)
 
 
@@ -1405,7 +1405,7 @@ ___
     }
 ```
 
-* 参照 [sizeof](programming_convention.md#SS_3_5_7)
+* 参照 [sizeof](programming_convention.md#SS_6_5_7)
 * [解答例-sizeof](exercise_a.md#SS_23_5_3)
 
 
@@ -1454,7 +1454,7 @@ ___
     }
 ```
 
-* 参照 [キャスト、暗黙の型変換](programming_convention.md#SS_3_5_10)
+* 参照 [キャスト、暗黙の型変換](programming_convention.md#SS_6_5_10)
 * [解答例-dynamic_castの削除](exercise_a.md#SS_23_5_4)
 
 
@@ -1526,7 +1526,7 @@ ___
     };
 ```
 
-* 参照 [assertion](programming_convention.md#SS_3_11_1)
+* 参照 [assertion](programming_convention.md#SS_6_11_1)
 * [解答例-assert/static_assert](exercise_a.md#SS_23_7_2)
 
 
@@ -1853,7 +1853,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [単一責任の原則(SRP)](class_design.md#SS_8_1_1)
+* 参照 [単一責任の原則(SRP)](class_design.md#SS_11_1_1)
 * [解答例-SRP](exercise_a.md#SS_23_8_1)
 
 
@@ -2174,7 +2174,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [オープン・クローズドの原則(OCP)](class_design.md#SS_8_1_2)
+* 参照 [オープン・クローズドの原則(OCP)](class_design.md#SS_11_1_2)
 * [解答例-OCP](exercise_a.md#SS_23_8_2)
 
 
@@ -2525,7 +2525,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [リスコフの置換原則(LSP)](class_design.md#SS_8_1_3)
+* 参照 [リスコフの置換原則(LSP)](class_design.md#SS_11_1_3)
 * [解答例-LSP](exercise_a.md#SS_23_8_3)
 
 
@@ -2919,7 +2919,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [インターフェース分離の原則(ISP)](class_design.md#SS_8_1_4)
+* 参照 [インターフェース分離の原則(ISP)](class_design.md#SS_11_1_4)
 * [解答例-ISP](exercise_a.md#SS_23_8_4)
 
 
@@ -3361,7 +3361,7 @@ ___
     }  // namespace
 ```
 
-* 参照 [依存関係逆転の原則(DIP)](class_design.md#SS_8_1_5)
+* 参照 [依存関係逆転の原則(DIP)](class_design.md#SS_11_1_5)
 * [解答例-DIP](exercise_a.md#SS_23_8_5)
 
 
@@ -3442,7 +3442,7 @@ ___
     }
 ```
 
-* 参照 [ガード節(Early Return)](design_pattern.md#SS_9_1_1)
+* 参照 [ガード節(Early Return)](design_pattern.md#SS_12_1_1)
 * [解答例-ガード節](exercise_a.md#SS_23_9_1)
 
 
@@ -3501,7 +3501,7 @@ ___
     }
 ```
 
-* 参照 [BitmaskType](design_pattern.md#SS_9_2_3)
+* 参照 [BitmaskType](design_pattern.md#SS_12_2_3)
 * [解答例-BitmaskType](exercise_a.md#SS_23_9_2)
 
 
@@ -3553,7 +3553,7 @@ ___
 
 ```
 
-* 参照 [Pimpl](design_pattern.md#SS_9_2_1)
+* 参照 [Pimpl](design_pattern.md#SS_12_2_1)
 * [解答例-Pimpl](exercise_a.md#SS_23_9_3)
 
 
@@ -3673,7 +3673,7 @@ ___
     }
 ```
 
-* 参照 [Accessor](design_pattern.md#SS_9_1_6)
+* 参照 [Accessor](design_pattern.md#SS_12_1_6)
 * [解答例-Accessor](exercise_a.md#SS_23_9_5)
 
 
@@ -3748,7 +3748,7 @@ ___
     }
 ```
 
-* 参照 [Copy-And-Swap](design_pattern.md#SS_9_1_4)
+* 参照 [Copy-And-Swap](design_pattern.md#SS_12_1_4)
 * [解答例-Copy-And-Swap](exercise_a.md#SS_23_9_6)
 
 
@@ -3864,7 +3864,7 @@ ___
     }
 ```
 
-* 参照 [Immutable](design_pattern.md#SS_9_1_7)
+* 参照 [Immutable](design_pattern.md#SS_12_1_7)
 * [解答例-Immutable](exercise_a.md#SS_23_9_7)
 
 
@@ -3924,7 +3924,7 @@ ___
     }
 ```
 
-* 参照 [Clone(仮想コンストラクタ)](design_pattern.md#SS_9_3_3)
+* 参照 [Clone(仮想コンストラクタ)](design_pattern.md#SS_12_3_3)
 * [解答例-Clone](exercise_a.md#SS_23_9_8)
 
 
@@ -4040,7 +4040,7 @@ ___
     }
 ```
 
-* 参照 [NVI(non virtual interface)](design_pattern.md#SS_9_1_8)
+* 参照 [NVI(non virtual interface)](design_pattern.md#SS_12_1_8)
 * [解答例-NVI](exercise_a.md#SS_23_9_9)
 
 
@@ -4114,7 +4114,7 @@ ___
     }
 ```
 
-* 参照 [RAII(scoped guard)](design_pattern.md#SS_9_1_3)
+* 参照 [RAII(scoped guard)](design_pattern.md#SS_12_1_3)
 * [解答例-RAII](exercise_a.md#SS_23_9_11)
 
 
@@ -4151,7 +4151,7 @@ ___
     }
 ```
 
-* 参照 [Future](design_pattern.md#SS_9_2_4)
+* 参照 [Future](design_pattern.md#SS_12_2_4)
 * [解答例-Future](exercise_a.md#SS_23_9_12)
 
 
@@ -4232,7 +4232,7 @@ ___
     }
 ```
 
-* 参照 [DI(dependency injection)](design_pattern.md#SS_9_5_1)
+* 参照 [DI(dependency injection)](design_pattern.md#SS_12_5_1)
 * [解答例-DI](exercise_a.md#SS_23_9_13)
 
 
@@ -4310,7 +4310,7 @@ ___
     }
 ```
 
-* 参照 [Singleton](design_pattern.md#SS_9_3_1)
+* 参照 [Singleton](design_pattern.md#SS_12_3_1)
 * [解答例-Singleton](exercise_a.md#SS_23_9_14)
 
 
@@ -4400,7 +4400,7 @@ ___
     }
 ```
 
-* 参照 [State](design_pattern.md#SS_9_4_3)
+* 参照 [State](design_pattern.md#SS_12_4_3)
 * [解答例-State](exercise_a.md#SS_23_9_15)
 
 
@@ -4482,7 +4482,7 @@ ___
     }
 ```
 
-* 参照 [Null Object](design_pattern.md#SS_9_2_5)
+* 参照 [Null Object](design_pattern.md#SS_12_2_5)
 * [解答例-Null Object](exercise_a.md#SS_23_9_16)
 
 
@@ -4620,7 +4620,7 @@ ___
     }
 ```
 
-* 参照 [Templateメソッド](design_pattern.md#SS_9_4_1)
+* 参照 [Templateメソッド](design_pattern.md#SS_12_4_1)
 * [解答例-Templateメソッド](exercise_a.md#SS_23_9_17)
 
 
@@ -4769,7 +4769,7 @@ ___
     }
 ```
 
-* 参照 [Factory](design_pattern.md#SS_9_3_4)
+* 参照 [Factory](design_pattern.md#SS_12_3_4)
 * [解答例-Factory](exercise_a.md#SS_23_9_18)
 
 
@@ -4883,7 +4883,7 @@ ___
     }
 ```
 
-* 参照 [Named Constructor](design_pattern.md#SS_9_3_2)
+* 参照 [Named Constructor](design_pattern.md#SS_12_3_2)
 * [解答例-Named Constructor](exercise_a.md#SS_23_9_19)
 
 
@@ -4951,7 +4951,7 @@ ___
     }
 ```
 
-* 参照 [Proxy](design_pattern.md#SS_9_4_6)
+* 参照 [Proxy](design_pattern.md#SS_12_4_6)
 * [解答例-Proxy](exercise_a.md#SS_23_9_20)
 
 
@@ -5051,7 +5051,7 @@ ___
     }
 ```
 
-* 参照 [Strategy](design_pattern.md#SS_9_4_2)
+* 参照 [Strategy](design_pattern.md#SS_12_4_2)
 * [解答例-Strategy](exercise_a.md#SS_23_9_21)
 
 
@@ -5171,7 +5171,7 @@ ___
     }
 ```
 
-* 参照 [Visitor](design_pattern.md#SS_9_4_5)
+* 参照 [Visitor](design_pattern.md#SS_12_4_5)
 * [解答例-Visitor](exercise_a.md#SS_23_9_22)
 
 
@@ -5323,7 +5323,7 @@ ___
     }
 ```
 
-* 参照 [CRTP(curiously recurring template pattern)](design_pattern.md#SS_9_1_5)
+* 参照 [CRTP(curiously recurring template pattern)](design_pattern.md#SS_12_1_5)
 * [解答例-CRTP](exercise_a.md#SS_23_9_23)
 
 
@@ -5409,7 +5409,7 @@ ___
     }
 ```
 
-* 参照 [Observer](design_pattern.md#SS_9_4_4)
+* 参照 [Observer](design_pattern.md#SS_12_4_4)
 * [解答例-Observer](exercise_a.md#SS_23_9_24)
 
 
@@ -6087,10 +6087,10 @@ ___
 
 ---
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](exercise_q.md#SS_22)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](exercise_q.md#SS_22)/[次の章](exercise_a.md#SS_23)
 
 ---
 
 
-<a id="SS_22_end"></a>
+<a id="SS_22_999"></a>
 

@@ -22,7 +22,7 @@ __この章の構成__
 ___
 
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](bibliography.md#SS_24_end)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](bibliography.md#SS_24_999)/[次の章](afterword.md#SS_25)
 
 ___
 
@@ -65,10 +65,10 @@ ___
 
 ---
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](bibliography.md#SS_24)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](bibliography.md#SS_24)/[次の章](afterword.md#SS_25)
 
 ---
 
 
-<a id="SS_24_end"></a>
+<a id="SS_24_999"></a>
 

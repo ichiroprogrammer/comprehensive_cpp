@@ -40,7 +40,7 @@
 ___
 
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](software_practice.md#SS_2_end)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の最後](software_practice.md#SS_2_999)/[次の章](architecture.md#SS_3)
 
 ___
 
@@ -75,7 +75,7 @@ DRYとは、"Don't repeat yourself."の略であることから推測できる�
 また、手作業によるミスは避けられず、それによりさらに多くの工数が奪われる。
 
 容易に推測できるように、これらの自動化は絶大な効果を発揮するため、
-生産性改善の必須項目となっている(「[自動単体テスト](process_and_infra.md#SS_11_2_1)」、「[自動統合テスト](process_and_infra.md#SS_11_2_4)」参照)。
+生産性改善の必須項目となっている(「[自動単体テスト](process_and_infra.md#SS_4_2_1)」、「[自動統合テスト](process_and_infra.md#SS_4_2_4)」参照)。
 
 様々な自動化にスクリプト言語の習得が必要ならば、それを良い学習機会と捉えるべきである。
 その投資対効果は間違いなく、ポジティブである。
@@ -100,7 +100,7 @@ DRYとは、"Don't repeat yourself."の略であることから推測できる�
 等の様々な問題が発生する。また、コードクローンは、コードクローンの原因にもなるため、
 これらの問題は時とともに加速度的に大きくなる。
 
-言語仕様に精通し、プログラミングイデオムや、[デザインパターン](design_pattern.md#SS_9)を学び、
+言語仕様に精通し、プログラミングイデオムや、[デザインパターン](design_pattern.md#SS_12)を学び、
 その知識を利用して定期的にリファクタリングを行うことでコードクローンの発生は軽減、回避可能である。
 
 ## KISSの原則 <a id="SS_2_3"></a>
@@ -209,7 +209,7 @@ YAGNI(You ain't gonna need it)とは、「機能(要件)は実際に必要とな
 * XXXコントローラや、XXXマネージャ等の命名は、それらの責務が限定されない場合が多い
   (こういった名前を、「強すぎる名前」と呼ぶ)。もっと限定的な(弱い)名前を付ける。
 
-「[命名規則](naming_practice.md#SS_6)」に詳細をまとめたので参照してほしい。
+「[命名規則](naming_practice.md#SS_8)」に詳細をまとめたので参照してほしい。
 
 ## ノコギリの刃を研ぐ <a id="SS_2_7"></a>
 まずは、「[7つの習慣](https://ja.wikipedia.org/wiki/7%E3%81%A4%E3%81%AE%E7%BF%92%E6%85%A3)」
@@ -405,7 +405,7 @@ auto query = QueryBuilder()
 ことをやめなければならない。
 
 ## Inside-Outの原則 <a id="SS_2_11"></a>
-この原則は、GUIアプリケーションを「[MVC](design_pattern.md#SS_9_5_2)」系のアーキテクチャで開発する場合、
+この原則は、GUIアプリケーションを「[MVC](design_pattern.md#SS_12_5_2)」系のアーキテクチャで開発する場合、
 「開発はGUI(View)からではなく、Modelから始めよ」という開発手順への制約である。
 
 （注：「7つの習慣」でも「Inside-Out」という用語が使用されているが、
@@ -428,11 +428,11 @@ Modelから開発を始め、それを外部の「回帰テスト用ソフトウ
 ## SOLID <a id="SS_2_12"></a>
 [SOLID](https://ja.wikipedia.org/wiki/SOLID)とは下記に示す5つの原則である。
 
-* [単一責任の原則(SRP)](class_design.md#SS_8_1_1)
-* [オープン・クローズドの原則(OCP)](class_design.md#SS_8_1_2)
-* [リスコフの置換原則(LSP)](class_design.md#SS_8_1_3)
-* [インターフェース分離の原則(ISP)](class_design.md#SS_8_1_4)
-* [依存関係逆転の原則(DIP)](class_design.md#SS_8_1_5)
+* [単一責任の原則(SRP)](class_design.md#SS_11_1_1)
+* [オープン・クローズドの原則(OCP)](class_design.md#SS_11_1_2)
+* [リスコフの置換原則(LSP)](class_design.md#SS_11_1_3)
+* [インターフェース分離の原則(ISP)](class_design.md#SS_11_1_4)
+* [依存関係逆転の原則(DIP)](class_design.md#SS_11_1_5)
 
 この5原則はオブジェクト指向(OOD/OOP)プログラミングにおいて特に重要なものであり、
 すべてのプログラマはこれらに従って開発することが求められる。
@@ -441,10 +441,10 @@ Modelから開発を始め、それを外部の「回帰テスト用ソフトウ
 
 ---
 
-[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](software_practice.md#SS_2)
+[インデックス](comprehensive_intro.md#SS_1_3)/[章の先頭](software_practice.md#SS_2)/[次の章](architecture.md#SS_3)
 
 ---
 
 
-<a id="SS_2_end"></a>
+<a id="SS_2_999"></a>
 
