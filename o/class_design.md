@@ -46,8 +46,6 @@ SOLIDとは、オブジェクト指向・プログラミング(OOD/OOP)におい
 * [インターフェース分離の原則(ISP)](class_design.md#SS_11_1_4)
 * [依存関係逆転の原則(DIP)](class_design.md#SS_11_1_5)
 
-[インデックス](comprehensive_intro.md#SS_1_3)に戻る。  
-
 ___
 
 ### 単一責任の原則(SRP) <a id="SS_11_1_1"></a>
