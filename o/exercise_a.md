@@ -132,7 +132,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](exercise_a.md#SS_19_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](exercise_a.md#SS_19_999)/[次の章](code_analysis.md#SS_20)
 
 ___
 
@@ -5654,10 +5654,10 @@ ___
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](exercise_a.md#SS_19)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](exercise_a.md#SS_19)/[次の章](code_analysis.md#SS_20)
 
 ---
 
 
-<a id="SS_19_end"></a>
+<a id="SS_19_999"></a>
 

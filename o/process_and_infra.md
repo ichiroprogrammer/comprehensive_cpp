@@ -48,7 +48,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](process_and_infra.md#SS_10_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](process_and_infra.md#SS_10_999)/[次の章](refactring_expamples.md#SS_11)
 
 ___
 
@@ -638,10 +638,10 @@ CIの環境として、
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](process_and_infra.md#SS_10)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](process_and_infra.md#SS_10)/[次の章](refactring_expamples.md#SS_11)
 
 ---
 
 
-<a id="SS_10_end"></a>
+<a id="SS_10_999"></a>
 

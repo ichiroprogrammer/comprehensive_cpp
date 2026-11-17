@@ -34,7 +34,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](cpp_improve.md#SS_6_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](cpp_improve.md#SS_6_999)/[次の章](architecture.md#SS_7)
 
 ___
 
@@ -639,10 +639,10 @@ not yet.
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](cpp_improve.md#SS_6)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](cpp_improve.md#SS_6)/[次の章](architecture.md#SS_7)
 
 ---
 
 
-<a id="SS_6_end"></a>
+<a id="SS_6_999"></a>
 

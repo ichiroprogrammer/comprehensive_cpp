@@ -33,7 +33,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](class_design.md#SS_8_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](class_design.md#SS_8_999)/[次の章](design_pattern.md#SS_9)
 
 ___
 
@@ -1616,10 +1616,10 @@ d2_refが指しているオブジェクト(d2)へコピーされた」からで�
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](class_design.md#SS_8)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](class_design.md#SS_8)/[次の章](design_pattern.md#SS_9)
 
 ---
 
 
-<a id="SS_8_end"></a>
+<a id="SS_8_999"></a>
 

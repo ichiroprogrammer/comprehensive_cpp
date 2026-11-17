@@ -64,7 +64,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](design_pattern.md#SS_9_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](design_pattern.md#SS_9_999)/[次の章](process_and_infra.md#SS_10)
 
 ___
 
@@ -5323,10 +5323,10 @@ ViewはModelの[Observer](design_pattern.md#SS_9_4_4)であるため、ModelはV
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](design_pattern.md#SS_9)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](design_pattern.md#SS_9)/[次の章](process_and_infra.md#SS_10)
 
 ---
 
 
-<a id="SS_9_end"></a>
+<a id="SS_9_999"></a>
 

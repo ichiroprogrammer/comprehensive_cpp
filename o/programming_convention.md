@@ -183,7 +183,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](programming_convention.md#SS_2_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](programming_convention.md#SS_2_999)/[次の章](coding_style.md#SS_3)
 
 ___
 
@@ -5888,10 +5888,10 @@ C++20からこの問題の対策として、[constinit](core_lang_spec.md#SS_15_
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](programming_convention.md#SS_2)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](programming_convention.md#SS_2)/[次の章](coding_style.md#SS_3)
 
 ---
 
 
-<a id="SS_2_end"></a>
+<a id="SS_2_999"></a>
 

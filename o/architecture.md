@@ -67,7 +67,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](architecture.md#SS_7_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](architecture.md#SS_7_999)/[次の章](class_design.md#SS_8)
 
 ___
 
@@ -861,10 +861,10 @@ GUIオブジェクト(ボタンやテキストボックス等)を直接操作す
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](architecture.md#SS_7)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](architecture.md#SS_7)/[次の章](class_design.md#SS_8)
 
 ---
 
 
-<a id="SS_7_end"></a>
+<a id="SS_7_999"></a>
 

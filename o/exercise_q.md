@@ -33,7 +33,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](exercise_q.md#SS_18_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](exercise_q.md#SS_18_999)/[次の章](exercise_a.md#SS_19)
 
 ___
 
@@ -6087,10 +6087,10 @@ ___
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](exercise_q.md#SS_18)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](exercise_q.md#SS_18)/[次の章](exercise_a.md#SS_19)
 
 ---
 
 
-<a id="SS_18_end"></a>
+<a id="SS_18_999"></a>
 

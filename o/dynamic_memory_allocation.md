@@ -54,7 +54,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](dynamic_memory_allocation.md#SS_14_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](dynamic_memory_allocation.md#SS_14_999)/[次の章](core_lang_spec.md#SS_15)
 
 ___
 
@@ -1416,10 +1416,10 @@ C++17以降では、[std::pmr::polymorphic_allocator](stdlib_and_concepts.md#SS_
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](dynamic_memory_allocation.md#SS_14)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](dynamic_memory_allocation.md#SS_14)/[次の章](core_lang_spec.md#SS_15)
 
 ---
 
 
-<a id="SS_14_end"></a>
+<a id="SS_14_999"></a>
 

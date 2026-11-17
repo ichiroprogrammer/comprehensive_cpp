@@ -119,7 +119,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](template_meta_programming.md#SS_13_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](template_meta_programming.md#SS_13_999)/[次の章](dynamic_memory_allocation.md#SS_14)
 
 ___
 
@@ -7650,10 +7650,10 @@ C++17からサポートされた「クラステンプレートのテンプレー
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](template_meta_programming.md#SS_13)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](template_meta_programming.md#SS_13)/[次の章](dynamic_memory_allocation.md#SS_14)
 
 ---
 
 
-<a id="SS_13_end"></a>
+<a id="SS_13_999"></a>
 

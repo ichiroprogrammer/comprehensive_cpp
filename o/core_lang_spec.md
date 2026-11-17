@@ -241,7 +241,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](core_lang_spec.md#SS_15_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](core_lang_spec.md#SS_15_999)/[次の章](stdlib_and_concepts.md#SS_16)
 
 ___
 
@@ -7711,10 +7711,10 @@ RVOとはこのような最適化を指す。
 ```
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](core_lang_spec.md#SS_15)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](core_lang_spec.md#SS_15)/[次の章](stdlib_and_concepts.md#SS_16)
 
 ---
 
 
-<a id="SS_15_end"></a>
+<a id="SS_15_999"></a>
 

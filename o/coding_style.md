@@ -65,7 +65,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](coding_style.md#SS_3_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](coding_style.md#SS_3_999)/[次の章](naming_practice.md#SS_4)
 
 ___
 
@@ -1058,10 +1058,10 @@ C++ ではハイフンが減算演算子と衝突するため、識別子の宣�
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](coding_style.md#SS_3)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](coding_style.md#SS_3)/[次の章](naming_practice.md#SS_4)
 
 ---
 
 
-<a id="SS_3_end"></a>
+<a id="SS_3_999"></a>
 

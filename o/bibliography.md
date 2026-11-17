@@ -22,7 +22,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](bibliography.md#SS_21_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](bibliography.md#SS_21_999)/[次の章](sample_code.md#SS_22)
 
 ___
 
@@ -65,10 +65,10 @@ ___
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](bibliography.md#SS_21)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](bibliography.md#SS_21)/[次の章](sample_code.md#SS_22)
 
 ---
 
 
-<a id="SS_21_end"></a>
+<a id="SS_21_999"></a>
 

@@ -39,7 +39,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](concurrency.md#SS_12_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](concurrency.md#SS_12_999)/[次の章](template_meta_programming.md#SS_13)
 
 ___
 
@@ -699,10 +699,10 @@ TwoPhaseTaskPtrキュー管理機構は以下のようにしてTwoPhaseTaskPtr�
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](concurrency.md#SS_12)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](concurrency.md#SS_12)/[次の章](template_meta_programming.md#SS_13)
 
 ---
 
 
-<a id="SS_12_end"></a>
+<a id="SS_12_999"></a>
 

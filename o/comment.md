@@ -20,7 +20,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](comment.md#SS_5_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](comment.md#SS_5_999)/[次の章](cpp_improve.md#SS_6)
 
 ___
 
@@ -108,10 +108,10 @@ doxygenフォーマットの各要素に対する書き方を例示する。
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](comment.md#SS_5)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](comment.md#SS_5)/[次の章](cpp_improve.md#SS_6)
 
 ---
 
 
-<a id="SS_5_end"></a>
+<a id="SS_5_999"></a>
 

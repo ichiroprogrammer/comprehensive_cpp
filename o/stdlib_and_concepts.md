@@ -87,7 +87,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](stdlib_and_concepts.md#SS_16_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](stdlib_and_concepts.md#SS_16_999)/[次の章](glossary.md#SS_17)
 
 ___
 
@@ -2755,10 +2755,10 @@ new/deleteの呼び出しをまとめたり省略したりすることができ�
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](stdlib_and_concepts.md#SS_16)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](stdlib_and_concepts.md#SS_16)/[次の章](glossary.md#SS_17)
 
 ---
 
 
-<a id="SS_16_end"></a>
+<a id="SS_16_999"></a>
 

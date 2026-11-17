@@ -54,7 +54,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](naming_practice.md#SS_4_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](naming_practice.md#SS_4_999)/[次の章](comment.md#SS_5)
 
 ___
 
@@ -483,10 +483,10 @@ OSによっては、その区別がないものがあるため、この違いが
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](naming_practice.md#SS_4)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](naming_practice.md#SS_4)/[次の章](comment.md#SS_5)
 
 ---
 
 
-<a id="SS_4_end"></a>
+<a id="SS_4_999"></a>
 

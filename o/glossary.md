@@ -69,7 +69,7 @@ __この章の構成__
 
 ___
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](glossary.md#SS_17_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](glossary.md#SS_17_999)/[次の章](exercise_q.md#SS_18)
 
 ___
 
@@ -1238,10 +1238,10 @@ DAGとは、Directed Acyclic Graph([有向非循環グラフ](https://ja.wikiped
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](glossary.md#SS_17)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](glossary.md#SS_17)/[次の章](exercise_q.md#SS_18)
 
 ---
 
 
-<a id="SS_17_end"></a>
+<a id="SS_17_999"></a>
 

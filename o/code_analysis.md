@@ -37,7 +37,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](code_analysis.md#SS_20_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](code_analysis.md#SS_20_999)/[次の章](bibliography.md#SS_21)
 
 ___
 
@@ -479,10 +479,10 @@ sanitizerは以上に示した通り極めて優れたバグ検出能力を持�
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](code_analysis.md#SS_20)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](code_analysis.md#SS_20)/[次の章](bibliography.md#SS_21)
 
 ---
 
 
-<a id="SS_20_end"></a>
+<a id="SS_20_999"></a>
 

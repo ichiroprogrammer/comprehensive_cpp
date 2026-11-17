@@ -34,7 +34,7 @@ __この章の構成__
 ___
 
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の最後](refactring_expamples.md#SS_11_end)
+[インデックス](seminer_intro.md#SS_1_2)/[章の最後](refactring_expamples.md#SS_11_999)/[次の章](concurrency.md#SS_12)
 
 ___
 
@@ -1145,11 +1145,11 @@ ref_async_r5に追加された機能をスクリプト言語(下記例ではbash
 
 ---
 
-[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](refactring_expamples.md#SS_11)
+[インデックス](seminer_intro.md#SS_1_2)/[章の先頭](refactring_expamples.md#SS_11)/[次の章](concurrency.md#SS_12)
 
 ---
 
 
 
-<a id="SS_11_end"></a>
+<a id="SS_11_999"></a>
 
