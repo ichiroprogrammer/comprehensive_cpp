@@ -80,7 +80,7 @@ ___
   (ハードタブはビューアにより見え方が変わるため使用しない)。
 
 ```cpp
-    //  example/etc/coding_style.cpp 13
+    //  example/coding_style/coding_style.cpp 13
 
     int32_t f0() noexcept
     {
@@ -122,7 +122,7 @@ ___
   その直後に配置する。'}'はcaseと同じカラムに置く。
 
 ```cpp
-    //  example/etc/coding_style.cpp 47
+    //  example/coding_style/coding_style.cpp 47
 
     switch (var_a) {
     case 1: {                   // OK
@@ -150,7 +150,7 @@ ___
 * 関数宣言に続く'{'は、関数宣言の直後に改行し、直前の行の先頭と同じカラムに '{' を配置する。
 
 ```cpp
-    //  example/etc/coding_style.cpp 76
+    //  example/coding_style/coding_style.cpp 76
 
     void f0(int32_t var_x, int32_t* var_y) noexcept { // NG {の前に改行
         if (var_x == 0)
@@ -217,7 +217,7 @@ ___
 * 全体が一行に収まるときは、そのまま一行に書く。
 
 ```cpp
-    //  example/etc/coding_style.cpp 140
+    //  example/coding_style/coding_style.cpp 140
 
     void function();            // OK
     void function(int32_t foo,  // OK
@@ -239,7 +239,7 @@ ___
 * メンバ関数等のネストが深くなりすぎるため、クラスのアクセスレベルはインデントしない。
 
 ```cpp
-    //  example/etc/coding_style.cpp 161
+    //  example/coding_style/coding_style.cpp 161
 
     class A {
         public:         // NG
@@ -255,7 +255,7 @@ ___
 * 関数名の直後にはスペースを入れない。
 
 ```cpp
-    //  example/etc/coding_style.cpp 177
+    //  example/coding_style/coding_style.cpp 177
 
     for (;;) {                          // OK forの後ろにはスペース
         // ...
@@ -288,7 +288,7 @@ ___
 * 行最後の文字でないコンマ(,)の後には1スペースを入れる。
 
 ```cpp
-    //  example/etc/coding_style.cpp 220
+    //  example/coding_style/coding_style.cpp 220
 
     for (int32_t i{0}, j{0}; i + j < 10; ++i, ++j) {  // OK
         // ...
@@ -307,7 +307,7 @@ ___
 * []、->、ピリオド(.)、コンマ(,)は除き、 二項演算子、三項演算子の前後には1スペースを入れる。
 
 ```cpp
-    //  example/etc/coding_style.cpp 241
+    //  example/coding_style/coding_style.cpp 241
 
     var_a=0;                        // NG
     var_a = 0;                      // OK
@@ -335,7 +335,7 @@ ___
 * 三項演算子は以下のように書く。
 
 ```cpp
-    //  example/etc/coding_style.cpp 265
+    //  example/coding_style/coding_style.cpp 265
 
     auto ret = condition ? x : y;  // ワンライナーが基本
 
@@ -346,7 +346,7 @@ ___
 * 以下のような表記方法も認められる。この表記は、switch文やif-else-if文と同様に使える。
 
 ```cpp
-    //  example/etc/coding_style.cpp 278
+    //  example/coding_style/coding_style.cpp 278
 
     auto max = (a > b) ? a :
                (b > c) ? b : 
@@ -359,7 +359,7 @@ ___
 * ポインタ型やリファレンス型インスタンスの宣言、定義の\*や&は型の直後に配置する。
 
 ```cpp
-    //  example/etc/coding_style.cpp 299
+    //  example/coding_style/coding_style.cpp 299
 
     char* a;  // OK
     char *b;  // NG 型の直後に*
@@ -370,7 +370,7 @@ ___
 * 一つの文で複数の変数の定義をしない。
 
 ```cpp
-    //  example/etc/coding_style.cpp 306
+    //  example/coding_style/coding_style.cpp 306
 
     char*   c, d;  // NG dはchar*ではない
     int32_t e, f;  // NG
@@ -390,7 +390,7 @@ ___
     * 関数の宣言
 
     ```.cpp
-            //  example/etc/coding_style.cpp 317
+            //  example/coding_style/coding_style.cpp 317
 
             int32_t f(int32_t arg1,  // OK
                       int32_t arg2,
@@ -405,7 +405,7 @@ ___
     * 定義を伴う関数の宣言
 
     ```.cpp
-            //  example/etc/coding_style.cpp 328
+            //  example/coding_style/coding_style.cpp 328
 
             int32_t f(int32_t arg1,  // OK
                       int32_t arg2,
@@ -426,7 +426,7 @@ ___
     * 関数呼び出し
 
     ```.cpp
-            //  example/etc/coding_style.cpp 348
+            //  example/coding_style/coding_style.cpp 348
 
             int32_t ret{f(arg1,
                           arg2,
@@ -436,7 +436,7 @@ ___
     * 論理演算子は行末ではなく、行頭に配置(行中にあってもよい)
 
     ```.cpp
-            //  example/etc/coding_style.cpp 354
+            //  example/coding_style/coding_style.cpp 354
 
             if (((arg1 == arg2) && (arg2 == arg3))
               || (arg3 == 3)) {
@@ -447,7 +447,7 @@ ___
     * 代入の'='の前で改行し、'='を行頭に持ってくる。 
 
     ```.cpp
-            //  example/etc/coding_style.cpp 362
+            //  example/coding_style/coding_style.cpp 362
 
             auto some_looooooooooooooooooooog_variable  // 式の最後までが100カラムに入らない場合
                  = arg1 + 1;
@@ -456,7 +456,7 @@ ___
     * 長い文字列
 
     ```.cpp
-            //  example/etc/coding_style.cpp 368
+            //  example/coding_style/coding_style.cpp 368
 
             std::cout << "foobarfubarhoge"
                          "hugahogehoge"
@@ -467,7 +467,7 @@ ___
 * 各ブロックの抽象度を揃える。
 
 ```cpp
-    //  example/etc/coding_style.cpp 394
+    //  example/coding_style/coding_style.cpp 394
 
     void DoSomethingNG() noexcept  // NG
     {
@@ -500,7 +500,7 @@ ___
 * ネストが深くなりすぎるため、名前空間用のインデントはしない。
 
 ```cpp
-    //  example/etc/coding_style.cpp 423
+    //  example/coding_style/coding_style.cpp 423
     namespace event {
 
     class A {  // インデントなし
@@ -596,7 +596,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 特定の型を明示して使用する必要がない場合、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 13
+    //  example/coding_style/aaa.cpp 13
 
     auto i  = 1;
     auto ui = 1U;
@@ -637,7 +637,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 特定の型を明示して使用する必要がある場合、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 58
+    //  example/coding_style/aaa.cpp 58
 
     auto b  = new char[10]{0};
     auto v  = std::vector<int>{0, 1, 2};
@@ -678,7 +678,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 関数の戻り値を受け取る変数を宣言する場合、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 101
+    //  example/coding_style/aaa.cpp 101
 
     auto v = std::vector<int>{0, 1, 2};
 
@@ -699,7 +699,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 型を明示しないAAAスタイルは使うべきではない。
 
 ```cpp
-    //  example/etc/aaa.cpp 125
+    //  example/coding_style/aaa.cpp 125
 
     extern std::map<std::string, int> gen_map();
 
@@ -724,7 +724,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 インライン関数や関数テンプレートの宣言は、下記のように書く。
 
 ```cpp
-    //  example/etc/aaa.cpp 152
+    //  example/coding_style/aaa.cpp 152
 
     template <typename F, typename T>
     auto apply_0(F&& f, T value)
@@ -737,7 +737,7 @@ AAAスタイルとは、「可能な場合、型を左辺に明示して変数�
 AAAスタイルは出来る限り避けるべきである。
 
 ```cpp
-    //  example/etc/aaa.cpp 160
+    //  example/coding_style/aaa.cpp 160
 
     template <typename F, typename T>
     auto apply_1(F&& f, T value) -> decltype(f(std::declval<T>()))  // autoを使用しているが、AAAではない
@@ -763,7 +763,7 @@ AAAスタイルは出来る限り避けるべきである。
   また、下記のように縮小型変換(下記では、unsignedからsignedの変換)を防ぐこともできる。
 
 ```cpp
-    //  example/etc/aaa.cpp 187
+    //  example/coding_style/aaa.cpp 187
 
     auto v = std::vector<int>{0, 1, 2};
 
@@ -791,7 +791,7 @@ AAAスタイルでは、以下のような場合に注意が必要である。
   下記のような型推論は、直感に反する場合があるため、autoの使い方に対する習熟が必要である。
 
 ```cpp
-    //  example/etc/aaa.cpp 201
+    //  example/coding_style/aaa.cpp 201
 
     auto str0 = "str";
     static_assert(std::is_same_v<char const*, decltype(str0)>);  // str0はchar[4]ではない
@@ -871,7 +871,7 @@ east-constとは、`const`修飾子を修飾する型要素の右側(east＝右)
 テンプレート展開や型推論の際に一貫性があり、C++コミュニティではしばしば論理的・直感的と評価されている。
 
 ```cpp
-    //  example/etc/east_west_const.cpp 12
+    //  example/coding_style/east_west_const.cpp 12
 
     char              str[] = "hehe";  // 配列strに書き込み可能
     char const*       str0  = str;     // str0が指すオブジェクトはconstなので、*str0への書き込み不可
@@ -902,7 +902,7 @@ C言語からの伝統的な表記法であり、多くの標準ライブラリ�
 可読性は慣れに依存するが、`const`の位置が一貫しないケース(`T* const`など)では理解しづらくなることもある。
 
 ```cpp
-    //  example/etc/east_west_const.cpp 37
+    //  example/coding_style/east_west_const.cpp 37
 
     char              str[] = "hehe";  // 配列strに書き込み可能
     char const*       str0  = str;     // str0が指すオブジェクトはconstなので、*str0への書き込み不可

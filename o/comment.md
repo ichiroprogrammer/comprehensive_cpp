@@ -46,7 +46,7 @@ doxygenフォーマットの各要素に対する書き方を例示する。
 ### クラスのコメント <a id="SS_9_2_1"></a>
 
 ```cpp
-    //  example/etc/comment.cpp 9
+    //  example/comment/comment.cpp 9
 
     /// @brief ディレクトリ配下の特定のファイルをリカーシブに探して、その一覧を返すクラス
     class FileFinder {
@@ -56,7 +56,7 @@ doxygenフォーマットの各要素に対する書き方を例示する。
 ### 関数のコメント <a id="SS_9_2_2"></a>
 
 ```cpp
-    //  example/etc/comment.cpp 42
+    //  example/comment/comment.cpp 42
 
     /// @brief 条件にマッチしたファイルをリカーシブに探して返す
     /// @param is_match どのようなファイルかをラムダ式で指定する
@@ -67,7 +67,7 @@ doxygenフォーマットの各要素に対する書き方を例示する。
 ### enumのコメント <a id="SS_9_2_3"></a>
 
 ```cpp
-    //  example/etc/comment.cpp 20
+    //  example/comment/comment.cpp 20
 
     /// @enum FileSort
     /// FindFileRecursivelyの条件
@@ -81,7 +81,7 @@ doxygenフォーマットの各要素に対する書き方を例示する。
 ### 型エイリアスのコメント <a id="SS_9_2_4"></a>
 
 ```cpp
-    //  example/etc/comment.cpp 36
+    //  example/comment/comment.cpp 36
 
     /// @typedef IsMatch
     /// @brief   FindFileRecursivelyの仮引数の型
@@ -91,7 +91,7 @@ doxygenフォーマットの各要素に対する書き方を例示する。
 ### template仮引数のコメント <a id="SS_9_2_5"></a>
 
 ```cpp
-    //  example/etc/comment.cpp 62
+    //  example/comment/comment.cpp 62
 
     /// @brief BASIC_TYPEで指定する基本型のビット長を持つ固定小数点を扱うためのクラス
     /// @tparam BASIC_TYPE       全体のビット長や、符号を指定するための整数型

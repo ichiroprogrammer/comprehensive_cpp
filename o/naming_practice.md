@@ -69,7 +69,7 @@ ___
     * `_`で始まる識別子
 
 ```cpp
-    //  example/etc/naming.cpp 12
+    //  example/naming_practice/naming.cpp 12
 
     int32_t     _max;           // NG
     int32_t     max;            // OK
@@ -83,7 +83,7 @@ ___
 * システムハンガリアン的な命名は、不要な変更を発生させるため使用しない。  
 
 ```cpp
-    //  example/etc/naming.cpp 25
+    //  example/naming_practice/naming.cpp 25
 
     int32_t s32_read_counter;  // NG
     int32_t read_counter;      // OK
@@ -92,7 +92,7 @@ ___
 * 名前に列挙のための数字をつけない。  
 
 ```cpp
-    //  example/etc/naming.cpp 32
+    //  example/naming_practice/naming.cpp 32
 
     int32_t name1;         // NG
     int32_t name2;         // NG
@@ -105,7 +105,7 @@ ___
   下記のコード例のようにsignalの意味でsigを使用する場合は、その省語を[略語リスト](naming_practice.md#SS_8_1_1)リストに掲載する。
 
 ```cpp
-    //  example/etc/naming.cpp 42
+    //  example/naming_practice/naming.cpp 42
 
     int32_t acnt;            // NG
     int32_t account;         // OK
@@ -124,7 +124,7 @@ ___
   ただし、「[NVI(non virtual interface)](design_pattern.md#SS_12_1_8)」を使用するメンバ関数名は例外とする。
 
 ```cpp
-    //  example/etc/naming.cpp 59
+    //  example/naming_practice/naming.cpp 59
 
     // NGの例 一見同じに見える
     class XxxCallBack {
@@ -268,7 +268,7 @@ OSによっては、その区別がないものがあるため、この違いが
     * 正規表現[A-Z][A-Z0-9]+で表される文字列(慣習的に小文字を使わない文字列のみ。TCP等)
 
 ```cpp
-    //  example/etc/naming.cpp 73
+    //  example/naming_practice/naming.cpp 73
 
     class XxxController;                     // OK
     class xxx_control;                       // NG
@@ -287,7 +287,7 @@ OSによっては、その区別がないものがあるため、この違いが
   型名と同じルールで生成する。
 
 ```cpp
-    //  example/etc/naming.cpp 86
+    //  example/naming_practice/naming.cpp 86
 
     constexpr int SOME_CONSTANT{0};  // NG  定数
     constexpr int SomeConstant{0};   // OK  定数
@@ -317,7 +317,7 @@ OSによっては、その区別がないものがあるため、この違いが
 * [POD](core_lang_spec.md#SS_19_4_5)のメンバ変数の名前は、ローカル変数名と同じルールで生成する(末尾に'\_'はつけない)。
 
 ```cpp
-    //  example/etc/naming.cpp 102
+    //  example/naming_practice/naming.cpp 102
 
     class Foo {
     private:
@@ -335,7 +335,7 @@ OSによっては、その区別がないものがあるため、この違いが
 * enumのメンバ名は、型名と同じルールで生成する。
 
 ```cpp
-    //  example/etc/naming.cpp 117
+    //  example/naming_practice/naming.cpp 117
 
     enum class SignalType {
         RED,    // NG
@@ -352,7 +352,7 @@ OSによっては、その区別がないものがあるため、この違いが
 * private、protectedメンバ関数の名前は、ローカル変数名と同じルールで生成する。
 
 ```cpp
-    //  example/etc/naming.cpp 125
+    //  example/naming_practice/naming.cpp 125
 
     class Fee {
     public:
@@ -386,7 +386,7 @@ OSによっては、その区別がないものがあるため、この違いが
   変更対象の変数名の末尾から'\_'を除いた名前にする。
 
 ```cpp
-    //  example/etc/naming.cpp 140
+    //  example/naming_practice/naming.cpp 140
 
     class Fii {
     public:
@@ -437,7 +437,7 @@ OSによっては、その区別がないものがあるため、この違いが
     * 集合、群等を名前に取り入れる。
 
 ```cpp
-    //  example/etc/naming.cpp 160
+    //  example/naming_practice/naming.cpp 160
 
     class StringCollector {  // OK 文字列の集合を扱うことを示す
     public:
@@ -453,7 +453,7 @@ OSによっては、その区別がないものがあるため、この違いが
 * 名前を構成する単語は、概念が大きい順番に左から並べる。
 
 ```cpp
-    //  example/etc/naming.cpp 175
+    //  example/naming_practice/naming.cpp 175
 
     // 下記例のXXX_YYY_R0は、XXX回路のYYYサブ回路のR0レジスタを表す。
     auto volatile& XXX_YYY_R0 = *reinterpret_cast<uint32_t*>(0x1300'0000);
@@ -463,7 +463,7 @@ OSによっては、その区別がないものがあるため、この違いが
 ```
 
 ```cpp
-    //  example/etc/naming.cpp 183
+    //  example/naming_practice/naming.cpp 183
 
     // OK DataFormatterという概念のインターフェース クラス
     class DataFormatterIF {
